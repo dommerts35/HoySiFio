@@ -1,0 +1,175 @@
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
+import 'cliente_make_info_widget.dart' show ClienteMakeInfoWidget;
+import 'package:flutter/material.dart';
+
+class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  final formKey = GlobalKey<FormState>();
+  // State field(s) for fullName widget.
+  FocusNode? fullNameFocusNode;
+  TextEditingController? fullNameTextController;
+  String? Function(BuildContext, String?)? fullNameTextControllerValidator;
+  String? _fullNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        '21mzdkhm' /* Ingrese los nombres completos ... */,
+      );
+    }
+
+    if (val.length < 5) {
+      return FFLocalizations.of(context).getText(
+        'wqcqgli1' /* Ingrese los nombres completos ... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for fullSecondName widget.
+  FocusNode? fullSecondNameFocusNode;
+  TextEditingController? fullSecondNameTextController;
+  String? Function(BuildContext, String?)?
+      fullSecondNameTextControllerValidator;
+  String? _fullSecondNameTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'r3mdo8kj' /* Ingrese los apellidos completo... */,
+      );
+    }
+
+    if (val.length < 5) {
+      return FFLocalizations.of(context).getText(
+        'w9iip6zv' /* Ingrese los apellidos completo... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for cedula widget.
+  FocusNode? cedulaFocusNode;
+  TextEditingController? cedulaTextController;
+  String? Function(BuildContext, String?)? cedulaTextControllerValidator;
+  String? _cedulaTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'u3ijjh2x' /* Ingrese el número de cédula de... */,
+      );
+    }
+
+    if (val.length < 10) {
+      return FFLocalizations.of(context).getText(
+        'eco3r01j' /* El número de cédula es de 10 d... */,
+      );
+    }
+    if (val.length > 10) {
+      return FFLocalizations.of(context).getText(
+        'h54r93ga' /* El número de cédula es de 10 d... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for phoneNumber widget.
+  FocusNode? phoneNumberFocusNode;
+  TextEditingController? phoneNumberTextController;
+  String? Function(BuildContext, String?)? phoneNumberTextControllerValidator;
+  String? _phoneNumberTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'inhoc3i3' /* Ingrese el número de teléfono ... */,
+      );
+    }
+
+    if (val.length < 10) {
+      return FFLocalizations.of(context).getText(
+        'ombehtbq' /* El número de teléfono es de 10... */,
+      );
+    }
+    if (val.length > 10) {
+      return FFLocalizations.of(context).getText(
+        'gik78wpo' /* El número de teléfono es de 10... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for direccion widget.
+  FocusNode? direccionFocusNode;
+  TextEditingController? direccionTextController;
+  String? Function(BuildContext, String?)? direccionTextControllerValidator;
+  String? _direccionTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'pepfwjpo' /* Ingrese la Dirección domicilia... */,
+      );
+    }
+
+    return null;
+  }
+
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'mm05figr' /* Ingrese el email de su cliente */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'mae9m98y' /* Email no encontrado. */,
+      );
+    }
+    return null;
+  }
+
+  // State field(s) for Switch widget.
+  bool? switchValue;
+  // Stores action output result for [Validate Form] action in enviar widget.
+  bool? validarMake;
+  // Stores action output result for [Backend Call - Create Document] action in enviar widget.
+  ClientesRecord? queryMakeCliente;
+
+  @override
+  void initState(BuildContext context) {
+    fullNameTextControllerValidator = _fullNameTextControllerValidator;
+    fullSecondNameTextControllerValidator =
+        _fullSecondNameTextControllerValidator;
+    cedulaTextControllerValidator = _cedulaTextControllerValidator;
+    phoneNumberTextControllerValidator = _phoneNumberTextControllerValidator;
+    direccionTextControllerValidator = _direccionTextControllerValidator;
+    emailTextControllerValidator = _emailTextControllerValidator;
+  }
+
+  @override
+  void dispose() {
+    fullNameFocusNode?.dispose();
+    fullNameTextController?.dispose();
+
+    fullSecondNameFocusNode?.dispose();
+    fullSecondNameTextController?.dispose();
+
+    cedulaFocusNode?.dispose();
+    cedulaTextController?.dispose();
+
+    phoneNumberFocusNode?.dispose();
+    phoneNumberTextController?.dispose();
+
+    direccionFocusNode?.dispose();
+    direccionTextController?.dispose();
+
+    emailFocusNode?.dispose();
+    emailTextController?.dispose();
+  }
+}

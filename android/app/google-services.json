@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "977081590795",
+    "project_id": "hoy-si-fio-7c5yyn",
+    "storage_bucket": "hoy-si-fio-7c5yyn.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977081590795:android:8c942aaf647d6f6415930e",
+        "android_client_info": {
+          "package_name": "com.mycompany.hoysifio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmcCIYdsDOEhWu2_WfKo_8YYcZr917vOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
