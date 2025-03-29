@@ -35,7 +35,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     DocumentReference? idTendero,
     double? total,
     List<DataTypeProductosStruct>? producto,
-    List<DataTypeProductoHistorialStruct>? historialProd,
+    List<HistorialPagosStruct>? historialProd,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -161,14 +161,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
   bool hasProducto() => _producto != null;
 
   // "historialProd" field.
-  List<DataTypeProductoHistorialStruct>? _historialProd;
-  List<DataTypeProductoHistorialStruct> get historialProd =>
-      _historialProd ?? const [];
-  set historialProd(List<DataTypeProductoHistorialStruct>? val) =>
-      _historialProd = val;
+  List<HistorialPagosStruct>? _historialProd;
+  List<HistorialPagosStruct> get historialProd => _historialProd ?? const [];
+  set historialProd(List<HistorialPagosStruct>? val) => _historialProd = val;
 
-  void updateHistorialProd(
-      Function(List<DataTypeProductoHistorialStruct>) updateFn) {
+  void updateHistorialProd(Function(List<HistorialPagosStruct>) updateFn) {
     updateFn(_historialProd ??= []);
   }
 
@@ -195,7 +192,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         historialProd: getStructList(
           data['historialProd'],
-          DataTypeProductoHistorialStruct.fromMap,
+          HistorialPagosStruct.fromMap,
         ),
       );
 
@@ -362,11 +359,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           true,
           structBuilder: DataTypeProductosStruct.fromSerializableMap,
         ),
-        historialProd: deserializeStructParam<DataTypeProductoHistorialStruct>(
+        historialProd: deserializeStructParam<HistorialPagosStruct>(
           data['historialProd'],
           ParamType.DataStruct,
           true,
-          structBuilder: DataTypeProductoHistorialStruct.fromSerializableMap,
+          structBuilder: HistorialPagosStruct.fromSerializableMap,
         ),
       );
 

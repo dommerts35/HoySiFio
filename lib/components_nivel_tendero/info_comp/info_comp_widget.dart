@@ -7,38 +7,38 @@ export 'info_comp_model.dart';
 class InfoCompWidget extends StatefulWidget {
   const InfoCompWidget({
     super.key,
-    required this.parameter1,
-    required this.parameter2,
-    required this.parameter3,
-    required this.parameter4,
-    required this.parameter5,
-    required this.parameter6,
-    this.parameter7,
-    this.parameter8,
+    required this.fullName,
+    required this.secondName,
+    required this.phoneNumber,
+    required this.ced,
+    required this.domicilio,
+    required this.email,
+    this.alq,
+    this.prop,
   });
 
   /// fullName
-  final String? parameter1;
+  final String? fullName;
 
   /// secondName
-  final String? parameter2;
+  final String? secondName;
 
   /// phoneNumber
-  final String? parameter3;
+  final String? phoneNumber;
 
   /// ced
-  final int? parameter4;
+  final int? ced;
 
   /// domicilio
-  final String? parameter5;
+  final String? domicilio;
 
   /// email
-  final String? parameter6;
+  final String? email;
 
   /// alq
-  final bool? parameter7;
+  final bool? alq;
 
-  final bool? parameter8;
+  final bool? prop;
 
   @override
   State<InfoCompWidget> createState() => _InfoCompWidgetState();
@@ -123,7 +123,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                             ),
                                       ),
                                       Text(
-                                        '${widget.parameter1}',
+                                        '${widget.fullName}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -138,7 +138,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                         ),
                                       ),
                                       Text(
-                                        '${widget.parameter2}',
+                                        '${widget.secondName}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -161,7 +161,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      ' Número de teléfono: ${widget.parameter3}',
+                                      ' Número de teléfono: ${widget.phoneNumber}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -185,7 +185,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Text(
-                                        ' Cédula: ${widget.parameter4?.toString()}',
+                                        ' Cédula: ${widget.ced?.toString()}',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

@@ -228,10 +228,12 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                               List<ClientesRecord> listViewClientesRecordList =
                                   snapshot.data!;
 
-                              return ListView.builder(
+                              return ListView.separated(
                                 padding: EdgeInsets.zero,
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewClientesRecordList.length,
+                                separatorBuilder: (_, __) =>
+                                    SizedBox(height: 5.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewClientesRecord =
                                       listViewClientesRecordList[listViewIndex];

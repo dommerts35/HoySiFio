@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'cliente_make_info_model.dart';
@@ -816,68 +817,95 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                           _model.validarMake = false;
                         }
                         if (_model.validarMake == true) {
-                          var clientesRecordReference =
-                              ClientesRecord.collection.doc();
-                          await clientesRecordReference
-                              .set(createClientesRecordData(
-                            cliente: createDataTypeClienteStruct(
-                              nombre: _model.fullNameTextController.text,
-                              telf: _model.phoneNumberTextController.text,
-                              apellido:
-                                  _model.fullSecondNameTextController.text,
-                              cedula: int.tryParse(
+                          _model.queryValidarCedula =
+                              await queryClientesRecordOnce(
+                            queryBuilder: (clientesRecord) =>
+                                clientesRecord.where(
+                              'cliente.cedula',
+                              isEqualTo: int.tryParse(
                                   _model.cedulaTextController.text),
-                              direccionDomicilio:
-                                  _model.direccionTextController.text,
-                              viviendaAlq: _model.switchValue == true,
-                              viviendaPropia: _model.switchValue == false,
-                              emailCliente: _model.emailTextController.text,
-                              isFiando: false,
-                              fechaPago: getCurrentTimestamp,
-                              idTendero: widget.tenderoRef,
-                              total: 0.0,
-                              clearUnsetFields: false,
-                              create: true,
                             ),
-                          ));
-                          _model.queryMakeCliente =
-                              ClientesRecord.getDocumentFromData(
-                                  createClientesRecordData(
-                                    cliente: createDataTypeClienteStruct(
-                                      nombre:
-                                          _model.fullNameTextController.text,
-                                      telf:
-                                          _model.phoneNumberTextController.text,
-                                      apellido: _model
-                                          .fullSecondNameTextController.text,
-                                      cedula: int.tryParse(
-                                          _model.cedulaTextController.text),
-                                      direccionDomicilio:
-                                          _model.direccionTextController.text,
-                                      viviendaAlq: _model.switchValue == true,
-                                      viviendaPropia:
-                                          _model.switchValue == false,
-                                      emailCliente:
-                                          _model.emailTextController.text,
-                                      isFiando: false,
-                                      fechaPago: getCurrentTimestamp,
-                                      idTendero: widget.tenderoRef,
-                                      total: 0.0,
-                                      clearUnsetFields: false,
-                                      create: true,
-                                    ),
+                            singleRecord: true,
+                          ).then((s) => s.firstOrNull);
+                          if (_model.queryValidarCedula?.cliente != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Ya existe un cliente con esa cédula.',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                   ),
-                                  clientesRecordReference);
-
-                          context.pushNamed(
-                            ListaProdClienWidget.routeName,
-                            queryParameters: {
-                              'tenderoRef': serializeParam(
-                                widget.tenderoRef,
-                                ParamType.DocumentReference,
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
                               ),
-                            }.withoutNulls,
-                          );
+                            );
+                          } else {
+                            var clientesRecordReference =
+                                ClientesRecord.collection.doc();
+                            await clientesRecordReference
+                                .set(createClientesRecordData(
+                              cliente: createDataTypeClienteStruct(
+                                nombre: _model.fullNameTextController.text,
+                                telf: _model.phoneNumberTextController.text,
+                                apellido:
+                                    _model.fullSecondNameTextController.text,
+                                cedula: int.tryParse(
+                                    _model.cedulaTextController.text),
+                                direccionDomicilio:
+                                    _model.direccionTextController.text,
+                                viviendaAlq: _model.switchValue == true,
+                                viviendaPropia: _model.switchValue == false,
+                                emailCliente: _model.emailTextController.text,
+                                isFiando: false,
+                                fechaPago: getCurrentTimestamp,
+                                idTendero: widget.tenderoRef,
+                                total: 0.0,
+                                clearUnsetFields: false,
+                                create: true,
+                              ),
+                            ));
+                            _model.queryMakeCliente =
+                                ClientesRecord.getDocumentFromData(
+                                    createClientesRecordData(
+                                      cliente: createDataTypeClienteStruct(
+                                        nombre:
+                                            _model.fullNameTextController.text,
+                                        telf: _model
+                                            .phoneNumberTextController.text,
+                                        apellido: _model
+                                            .fullSecondNameTextController.text,
+                                        cedula: int.tryParse(
+                                            _model.cedulaTextController.text),
+                                        direccionDomicilio:
+                                            _model.direccionTextController.text,
+                                        viviendaAlq: _model.switchValue == true,
+                                        viviendaPropia:
+                                            _model.switchValue == false,
+                                        emailCliente:
+                                            _model.emailTextController.text,
+                                        isFiando: false,
+                                        fechaPago: getCurrentTimestamp,
+                                        idTendero: widget.tenderoRef,
+                                        total: 0.0,
+                                        clearUnsetFields: false,
+                                        create: true,
+                                      ),
+                                    ),
+                                    clientesRecordReference);
+
+                            context.pushNamed(
+                              ListaProdClienWidget.routeName,
+                              queryParameters: {
+                                'tenderoRef': serializeParam(
+                                  widget.tenderoRef,
+                                  ParamType.DocumentReference,
+                                ),
+                              }.withoutNulls,
+                            );
+                          }
                         }
 
                         safeSetState(() {});

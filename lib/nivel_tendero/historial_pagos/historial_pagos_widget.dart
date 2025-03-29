@@ -1,4 +1,3 @@
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,10 +8,10 @@ export 'historial_pagos_model.dart';
 class HistorialPagosWidget extends StatefulWidget {
   const HistorialPagosWidget({
     super.key,
-    required this.dtPassed,
+    required this.idCliente,
   });
 
-  final List<DataTypeProductoHistorialStruct>? dtPassed;
+  final DocumentReference? idCliente;
 
   static String routeName = 'historialPagos';
   static String routePath = '/historialPagos';
@@ -161,104 +160,85 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Builder(
-                                        builder: (context) {
-                                          final listaItemsDTPassed = widget
-                                                  .dtPassed
-                                                  ?.map((e) => e.nombreProd)
-                                                  .toList()
-                                                  .toList() ??
-                                              [];
-
-                                          return ListView.builder(
-                                            padding: EdgeInsets.zero,
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                listaItemsDTPassed.length,
-                                            itemBuilder: (context,
-                                                listaItemsDTPassedIndex) {
-                                              final listaItemsDTPassedItem =
-                                                  listaItemsDTPassed[
-                                                      listaItemsDTPassedIndex];
-                                              return Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 12.0, 16.0, 12.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 4,
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            RichText(
-                                                              textScaler:
-                                                                  MediaQuery.of(
-                                                                          context)
-                                                                      .textScaler,
-                                                              text: TextSpan(
-                                                                children: [
-                                                                  TextSpan(
-                                                                    text: FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'ey3dqpm8' /* prod1 */,
-                                                                    ),
-                                                                    style:
-                                                                        TextStyle(),
-                                                                  )
-                                                                ],
-                                                                style: FlutterFlowTheme.of(
+                                      ListView(
+                                        padding: EdgeInsets.zero,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Expanded(
+                                                  flex: 4,
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                12.0, 0.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        RichText(
+                                                          textScaler:
+                                                              MediaQuery.of(
+                                                                      context)
+                                                                  .textScaler,
+                                                          text: TextSpan(
+                                                            children: [
+                                                              TextSpan(
+                                                                text: FFLocalizations.of(
                                                                         context)
-                                                                    .bodyLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Inter',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      flex: 2,
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .end,
-                                                        children: [
-                                                          Text(
-                                                            '\$?',
-                                                            textAlign:
-                                                                TextAlign.end,
+                                                                    .getText(
+                                                                  'ey3dqpm8' /* prod1 */,
+                                                                ),
+                                                                style:
+                                                                    TextStyle(),
+                                                              )
+                                                            ],
                                                             style: FlutterFlowTheme
                                                                     .of(context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Text(
+                                                        '\$?',
+                                                        textAlign:
+                                                            TextAlign.end,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .headlineSmall
                                                                 .override(
                                                                   fontFamily:
@@ -266,16 +246,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                          ),
-                                                        ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        },
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(

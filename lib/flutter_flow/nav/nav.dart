@@ -231,6 +231,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'cedula',
               ParamType.int,
             ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
             direccionDomicilio: params.getParam(
               'direccionDomicilio',
               ParamType.String,
@@ -247,24 +253,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'emailCliente',
               ParamType.String,
             ),
-            tenderoRef: params.getParam(
-              'tenderoRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['tenderos'],
-            ),
           ),
         ),
         FFRoute(
           name: HistorialPagosWidget.routeName,
           path: HistorialPagosWidget.routePath,
           builder: (context, params) => HistorialPagosWidget(
-            dtPassed: params.getParam<DataTypeProductoHistorialStruct>(
-              'dtPassed',
-              ParamType.DataStruct,
-              isList: true,
-              structBuilder:
-                  DataTypeProductoHistorialStruct.fromSerializableMap,
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
             ),
           ),
         ),
@@ -330,57 +329,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ClienteProdValorPagoWidget.routeName,
           path: ClienteProdValorPagoWidget.routePath,
           builder: (context, params) => ClienteProdValorPagoWidget(
-            nombre: params.getParam(
-              'nombre',
-              ParamType.String,
-            ),
-            telf: params.getParam(
-              'telf',
-              ParamType.String,
-            ),
-            isFiando: params.getParam(
-              'isFiando',
-              ParamType.bool,
-            ),
             idCliente: params.getParam(
               'idCliente',
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['clientes'],
-            ),
-            fechaPago: params.getParam(
-              'fechaPago',
-              ParamType.DateTime,
-            ),
-            apellido: params.getParam(
-              'apellido',
-              ParamType.String,
-            ),
-            cedula: params.getParam(
-              'cedula',
-              ParamType.int,
-            ),
-            direccionDomicilio: params.getParam(
-              'direccionDomicilio',
-              ParamType.String,
-            ),
-            viviendaAlq: params.getParam(
-              'viviendaAlq',
-              ParamType.bool,
-            ),
-            viviendaProp: params.getParam(
-              'viviendaProp',
-              ParamType.bool,
-            ),
-            emailCliente: params.getParam(
-              'emailCliente',
-              ParamType.String,
-            ),
-            tenderoRef: params.getParam(
-              'tenderoRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['tenderos'],
             ),
           ),
         )

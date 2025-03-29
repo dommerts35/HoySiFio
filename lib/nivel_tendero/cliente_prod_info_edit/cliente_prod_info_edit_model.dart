@@ -13,21 +13,7 @@ class ClienteProdInfoEditModel
 
   double? tempSum1;
 
-  List<DataTypeProductosStruct> dtProdToHistorial = [];
-  void addToDtProdToHistorial(DataTypeProductosStruct item) =>
-      dtProdToHistorial.add(item);
-  void removeFromDtProdToHistorial(DataTypeProductosStruct item) =>
-      dtProdToHistorial.remove(item);
-  void removeAtIndexFromDtProdToHistorial(int index) =>
-      dtProdToHistorial.removeAt(index);
-  void insertAtIndexInDtProdToHistorial(
-          int index, DataTypeProductosStruct item) =>
-      dtProdToHistorial.insert(index, item);
-  void updateDtProdToHistorialAtIndex(
-          int index, Function(DataTypeProductosStruct) updateFn) =>
-      dtProdToHistorial[index] = updateFn(dtProdToHistorial[index]);
-
-  DateTime? dateDTProdToHistorial;
+  double? lastSum;
 
   ///  State fields for stateful widgets in this page.
 
@@ -42,13 +28,17 @@ class ClienteProdInfoEditModel
   FocusNode? valorTFFocusNode;
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
-  DateTime? datePicked;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ClientesRecord? queryPaga;
+  ClientesRecord? queryAnadirFirst;
+  // Stores action output result for [Firestore Query - Query a collection] action in Icon widget.
+  ClientesRecord? queryDeleteFirst;
+  DateTime? datePicked;
+  // Stores action output result for [Backend Call - Read Document] action in Button widget.
+  ClientesRecord? readPago;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ClientesRecord? queryHistorial;
   // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  ClientesRecord? finalQuery;
+  ClientesRecord? readEnviar;
 
   @override
   void initState(BuildContext context) {

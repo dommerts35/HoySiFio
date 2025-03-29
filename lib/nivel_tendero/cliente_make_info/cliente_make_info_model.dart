@@ -138,6 +138,8 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   bool? switchValue;
   // Stores action output result for [Validate Form] action in enviar widget.
   bool? validarMake;
+  // Stores action output result for [Firestore Query - Query a collection] action in enviar widget.
+  ClientesRecord? queryValidarCedula;
   // Stores action output result for [Backend Call - Create Document] action in enviar widget.
   ClientesRecord? queryMakeCliente;
 
