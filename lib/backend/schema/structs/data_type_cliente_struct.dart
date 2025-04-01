@@ -35,7 +35,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     DocumentReference? idTendero,
     double? total,
     List<DataTypeProductosStruct>? producto,
-    List<HistorialPagosStruct>? historialProd,
+    List<DataTypeHistorialPagoStruct>? historialPagadosProd,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -51,7 +51,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _idTendero = idTendero,
         _total = total,
         _producto = producto,
-        _historialProd = historialProd,
+        _historialPagadosProd = historialPagadosProd,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -160,16 +160,19 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasProducto() => _producto != null;
 
-  // "historialProd" field.
-  List<HistorialPagosStruct>? _historialProd;
-  List<HistorialPagosStruct> get historialProd => _historialProd ?? const [];
-  set historialProd(List<HistorialPagosStruct>? val) => _historialProd = val;
+  // "historialPagadosProd" field.
+  List<DataTypeHistorialPagoStruct>? _historialPagadosProd;
+  List<DataTypeHistorialPagoStruct> get historialPagadosProd =>
+      _historialPagadosProd ?? const [];
+  set historialPagadosProd(List<DataTypeHistorialPagoStruct>? val) =>
+      _historialPagadosProd = val;
 
-  void updateHistorialProd(Function(List<HistorialPagosStruct>) updateFn) {
-    updateFn(_historialProd ??= []);
+  void updateHistorialPagadosProd(
+      Function(List<DataTypeHistorialPagoStruct>) updateFn) {
+    updateFn(_historialPagadosProd ??= []);
   }
 
-  bool hasHistorialProd() => _historialProd != null;
+  bool hasHistorialPagadosProd() => _historialPagadosProd != null;
 
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
@@ -190,9 +193,9 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           data['producto'],
           DataTypeProductosStruct.fromMap,
         ),
-        historialProd: getStructList(
-          data['historialProd'],
-          HistorialPagosStruct.fromMap,
+        historialPagadosProd: getStructList(
+          data['historialPagadosProd'],
+          DataTypeHistorialPagoStruct.fromMap,
         ),
       );
 
@@ -215,7 +218,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'idTendero': _idTendero,
         'total': _total,
         'producto': _producto?.map((e) => e.toMap()).toList(),
-        'historialProd': _historialProd?.map((e) => e.toMap()).toList(),
+        'historialPagadosProd':
+            _historialPagadosProd?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -277,8 +281,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.DataStruct,
           isList: true,
         ),
-        'historialProd': serializeParam(
-          _historialProd,
+        'historialPagadosProd': serializeParam(
+          _historialPagadosProd,
           ParamType.DataStruct,
           isList: true,
         ),
@@ -359,11 +363,12 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           true,
           structBuilder: DataTypeProductosStruct.fromSerializableMap,
         ),
-        historialProd: deserializeStructParam<HistorialPagosStruct>(
-          data['historialProd'],
+        historialPagadosProd:
+            deserializeStructParam<DataTypeHistorialPagoStruct>(
+          data['historialPagadosProd'],
           ParamType.DataStruct,
           true,
-          structBuilder: HistorialPagosStruct.fromSerializableMap,
+          structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
         ),
       );
 
@@ -388,7 +393,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         idTendero == other.idTendero &&
         total == other.total &&
         listEquality.equals(producto, other.producto) &&
-        listEquality.equals(historialProd, other.historialProd);
+        listEquality.equals(historialPagadosProd, other.historialPagadosProd);
   }
 
   @override
@@ -407,7 +412,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         idTendero,
         total,
         producto,
-        historialProd
+        historialPagadosProd
       ]);
 }
 

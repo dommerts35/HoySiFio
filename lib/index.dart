@@ -16,5 +16,7 @@ export '/nivel_tendero/historial_pagos/historial_pagos_widget.dart'
     show HistorialPagosWidget;
 export '/nivel_tendero/cliente_read_info/cliente_read_info_widget.dart'
     show ClienteReadInfoWidget;
-export '/nivel_tendero/cliente_prod_valor_pago/cliente_prod_valor_pago_widget.dart'
-    show ClienteProdValorPagoWidget;
+export '/nivel_tendero/cliente_prod_valor_pago_first/cliente_prod_valor_pago_first_widget.dart'
+    show ClienteProdValorPagoFirstWidget;
+export '/nivel_tendero/cliente_prod_valor_pago_after/cliente_prod_valor_pago_after_widget.dart'
+    show ClienteProdValorPagoAfterWidget;

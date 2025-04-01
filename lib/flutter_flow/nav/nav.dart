@@ -326,14 +326,64 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ClienteProdValorPagoWidget.routeName,
-          path: ClienteProdValorPagoWidget.routePath,
-          builder: (context, params) => ClienteProdValorPagoWidget(
+          name: ClienteProdValorPagoFirstWidget.routeName,
+          path: ClienteProdValorPagoFirstWidget.routePath,
+          builder: (context, params) => ClienteProdValorPagoFirstWidget(
             idCliente: params.getParam(
               'idCliente',
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['clientes'],
+            ),
+            passedDTProd: params.getParam<DataTypeProductosStruct>(
+              'passedDTProd',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeProductosStruct.fromSerializableMap,
+            ),
+            lastSumTotalPagoToVPF: params.getParam(
+              'lastSumTotalPagoToVPF',
+              ParamType.double,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClienteProdValorPagoAfterWidget.routeName,
+          path: ClienteProdValorPagoAfterWidget.routePath,
+          builder: (context, params) => ClienteProdValorPagoAfterWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            indexFromHistorial: params.getParam(
+              'indexFromHistorial',
+              ParamType.int,
+            ),
+            totalFromHistorial: params.getParam(
+              'totalFromHistorial',
+              ParamType.double,
+            ),
+            transferFromHistorial: params.getParam(
+              'transferFromHistorial',
+              ParamType.bool,
+            ),
+            efectivoFromHistorial: params.getParam(
+              'efectivoFromHistorial',
+              ParamType.bool,
+            ),
+            dtHistorial: params.getParam(
+              'dtHistorial',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            dtClientePassed: params.getParam(
+              'dtClientePassed',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: DataTypeClienteStruct.fromSerializableMap,
             ),
           ),
         )

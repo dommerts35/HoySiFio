@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'cliente_prod_info_edit_model.dart';
 export 'cliente_prod_info_edit_model.dart';
@@ -80,6 +81,17 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
     super.initState();
     _model = createModel(context, () => ClienteProdInfoEditModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.readOnLoad =
+          await ClientesRecord.getDocumentOnce(widget.idCliente!);
+      _model.lastSumTotalPago = valueOrDefault<double>(
+        _model.readOnLoad?.cliente.total,
+        0.0,
+      );
+      safeSetState(() {});
+    });
+
     _model.prodTFTextController ??= TextEditingController();
     _model.prodTFFocusNode ??= FocusNode();
 
@@ -133,15 +145,46 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                         size: 24.0,
                       ),
                       onPressed: () async {
-                        context.goNamed(
-                          ListaProdClienWidget.routeName,
-                          queryParameters: {
-                            'tenderoRef': serializeParam(
-                              widget.tenderoRef,
-                              ParamType.DocumentReference,
+                        _model.readBack = await ClientesRecord.getDocumentOnce(
+                            widget.idCliente!);
+                        _model.tempCount = 0;
+                        _model.tempSum1 = 0.0;
+                        safeSetState(() {});
+                        while (_model.tempCount! <
+                            _model.readBack!.cliente.producto.length) {
+                          _model.tempSum1 = (double var1, double var2) {
+                            return var2 += var1;
+                          }(
+                              _model.readBack!.cliente.producto
+                                  .elementAtOrNull(_model.tempCount!)!
+                                  .valorProd,
+                              _model.tempSum1!);
+                          _model.tempCount = _model.tempCount! + 1;
+                          safeSetState(() {});
+                        }
+                        _model.lastSumTotalPago = _model.tempSum1;
+                        safeSetState(() {});
+
+                        await widget.idCliente!
+                            .update(createClientesRecordData(
+                          cliente: createDataTypeClienteStruct(
+                            total: _model.lastSumTotalPago,
+                            clearUnsetFields: false,
+                          ),
+                        ));
+                        if ((_model.readBack?.cliente.total == 0.0) ||
+                            (_model.readBack?.cliente.total == null)) {
+                          await widget.idCliente!
+                              .update(createClientesRecordData(
+                            cliente: createDataTypeClienteStruct(
+                              isFiando: false,
+                              clearUnsetFields: false,
                             ),
-                          }.withoutNulls,
-                        );
+                          ));
+                        }
+                        context.safePop();
+
+                        safeSetState(() {});
                       },
                     ),
                   ),
@@ -567,7 +610,14 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                         snapshot.data!;
 
                                                     return Text(
-                                                      'Total de productos fiados: \$${_model.lastSum == null ? textClientesRecord.cliente.total.toString() : _model.lastSum?.toString()}',
+                                                      'Total de productos fiados: \$${valueOrDefault<String>(
+                                                        _model.lastSumTotalPago
+                                                            ?.toString(),
+                                                        '0',
+                                                      )}'
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 33,
+                                                      ),
                                                       maxLines: 1,
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -876,22 +926,16 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                 _model.valorTFTextController
                                                     ?.clear();
                                               });
+                                              _model.readAnadirFirst =
+                                                  await ClientesRecord
+                                                      .getDocumentOnce(
+                                                          widget.idCliente!);
                                               _model.tempCount = 0;
                                               _model.tempSum1 = 0.0;
                                               safeSetState(() {});
-                                              _model.queryAnadirFirst =
-                                                  await queryClientesRecordOnce(
-                                                queryBuilder:
-                                                    (clientesRecord) =>
-                                                        clientesRecord.where(
-                                                  'cliente.cedula',
-                                                  isEqualTo: widget.cedula,
-                                                ),
-                                                singleRecord: true,
-                                              ).then((s) => s.firstOrNull);
                                               while (_model.tempCount! <
                                                   _model
-                                                      .queryAnadirFirst!
+                                                      .readAnadirFirst!
                                                       .cliente
                                                       .producto
                                                       .length) {
@@ -899,7 +943,7 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                         double var2) {
                                                   return var2 += var1;
                                                 }(
-                                                    _model.queryAnadirFirst!
+                                                    _model.readAnadirFirst!
                                                         .cliente.producto
                                                         .elementAtOrNull(
                                                             _model.tempCount!)!
@@ -909,17 +953,22 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                     _model.tempCount! + 1;
                                                 safeSetState(() {});
                                               }
-                                              _model.lastSum = _model.tempSum1;
+                                              _model.lastSumTotalPago =
+                                                  _model.tempSum1;
                                               safeSetState(() {});
 
                                               await widget.idCliente!.update(
                                                   createClientesRecordData(
                                                 cliente:
                                                     createDataTypeClienteStruct(
-                                                  total: _model.tempSum1,
+                                                  total:
+                                                      _model.lastSumTotalPago,
                                                   clearUnsetFields: false,
                                                 ),
                                               ));
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 1000));
                                             }
 
                                             safeSetState(() {});
@@ -963,7 +1012,21 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                       Expanded(
                                         child: StreamBuilder<ClientesRecord>(
                                           stream: ClientesRecord.getDocument(
-                                              widget.idCliente!),
+                                              widget.idCliente!)
+                                            ..listen(
+                                                (vistaMainClientesRecord) async {
+                                              if (_model.vistaMainPreviousSnapshot !=
+                                                      null &&
+                                                  !ClientesRecordDocumentEquality()
+                                                      .equals(
+                                                          vistaMainClientesRecord,
+                                                          _model
+                                                              .vistaMainPreviousSnapshot)) {
+                                                safeSetState(() {});
+                                              }
+                                              _model.vistaMainPreviousSnapshot =
+                                                  vistaMainClientesRecord;
+                                            }),
                                           builder: (context, snapshot) {
                                             // Customize what your widget looks like when it's loading.
                                             if (!snapshot.hasData) {
@@ -1137,24 +1200,14 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                                       0.0;
                                                                   safeSetState(
                                                                       () {});
-                                                                  _model.queryDeleteFirst =
-                                                                      await queryClientesRecordOnce(
-                                                                    queryBuilder:
-                                                                        (clientesRecord) =>
-                                                                            clientesRecord.where(
-                                                                      'cliente.cedula',
-                                                                      isEqualTo:
+                                                                  _model.readDeleteFirst =
+                                                                      await ClientesRecord.getDocumentOnce(
                                                                           widget
-                                                                              .cedula,
-                                                                    ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
+                                                                              .idCliente!);
                                                                   while (_model
                                                                           .tempCount! <
                                                                       _model
-                                                                          .queryDeleteFirst!
+                                                                          .readDeleteFirst!
                                                                           .cliente
                                                                           .producto
                                                                           .length) {
@@ -1167,7 +1220,7 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                                           var1;
                                                                     }(
                                                                         _model
-                                                                            .queryDeleteFirst!
+                                                                            .readDeleteFirst!
                                                                             .cliente
                                                                             .producto
                                                                             .elementAtOrNull(_model
@@ -1181,7 +1234,7 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                                     safeSetState(
                                                                         () {});
                                                                   }
-                                                                  _model.lastSum =
+                                                                  _model.lastSumTotalPago =
                                                                       _model
                                                                           .tempSum1;
                                                                   safeSetState(
@@ -1194,7 +1247,7 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                                     cliente:
                                                                         createDataTypeClienteStruct(
                                                                       total: _model
-                                                                          .tempSum1,
+                                                                          .lastSumTotalPago,
                                                                       clearUnsetFields:
                                                                           false,
                                                                     ),
@@ -1390,59 +1443,53 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                                                     await ClientesRecord
                                                         .getDocumentOnce(
                                                             widget.idCliente!);
-                                                _model.tempCount = _model
-                                                        .readPago!
-                                                        .cliente
-                                                        .producto
-                                                        .length -
-                                                    1;
+                                                _model.tempCount = 0;
                                                 safeSetState(() {});
-                                                while (_model.tempCount! >= 0) {
-                                                  await widget.idCliente!.update(
-                                                      createClientesRecordData(
-                                                    cliente:
-                                                        createDataTypeClienteStruct(
-                                                      fieldValues: {
-                                                        'producto': FieldValue
-                                                            .arrayRemove([
-                                                          getDataTypeProductosFirestoreData(
-                                                            createDataTypeProductosStruct(
-                                                              nombreProd: (_model
-                                                                      .readPago
-                                                                      ?.cliente
-                                                                      .producto
-                                                                      .elementAtOrNull(
-                                                                          _model
-                                                                              .tempCount!))
-                                                                  ?.nombreProd,
-                                                              valorProd: (_model
-                                                                      .readPago
-                                                                      ?.cliente
-                                                                      .producto
-                                                                      .elementAtOrNull(
-                                                                          _model
-                                                                              .tempCount!))
-                                                                  ?.valorProd,
-                                                              clearUnsetFields:
-                                                                  false,
-                                                            ),
-                                                            true,
-                                                          )
-                                                        ]),
-                                                      },
-                                                      clearUnsetFields: false,
-                                                    ),
+                                                while (_model.tempCount! <
+                                                    _model.readPago!.cliente
+                                                        .producto.length) {
+                                                  _model.addToDtProdItem(
+                                                      DataTypeProductosStruct(
+                                                    nombreProd: (_model.readPago
+                                                            ?.cliente.producto
+                                                            .elementAtOrNull(
+                                                                _model
+                                                                    .tempCount!))
+                                                        ?.nombreProd,
+                                                    valorProd: (_model.readPago
+                                                            ?.cliente.producto
+                                                            .elementAtOrNull(
+                                                                _model
+                                                                    .tempCount!))
+                                                        ?.valorProd,
+                                                    diaPagado:
+                                                        getCurrentTimestamp,
                                                   ));
+                                                  safeSetState(() {});
+                                                  _model.tempCount =
+                                                      _model.tempCount! + 1;
+                                                  safeSetState(() {});
                                                 }
 
                                                 context.pushNamed(
-                                                  ClienteProdValorPagoWidget
+                                                  ClienteProdValorPagoFirstWidget
                                                       .routeName,
                                                   queryParameters: {
                                                     'idCliente': serializeParam(
                                                       widget.idCliente,
                                                       ParamType
                                                           .DocumentReference,
+                                                    ),
+                                                    'passedDTProd':
+                                                        serializeParam(
+                                                      _model.dtProdItem,
+                                                      ParamType.DataStruct,
+                                                      isList: true,
+                                                    ),
+                                                    'lastSumTotalPagoToVPF':
+                                                        serializeParam(
+                                                      _model.lastSumTotalPago,
+                                                      ParamType.double,
                                                     ),
                                                   }.withoutNulls,
                                                 );
@@ -1598,19 +1645,17 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                             _model.tempCount = _model.tempCount! + 1;
                             safeSetState(() {});
                           }
-                          _model.lastSum = _model.tempSum1;
+                          _model.lastSumTotalPago = _model.tempSum1;
                           safeSetState(() {});
 
                           firestoreBatch.update(
                               widget.idCliente!,
                               createClientesRecordData(
                                 cliente: createDataTypeClienteStruct(
-                                  total: _model.tempSum1,
+                                  total: _model.lastSumTotalPago,
                                   clearUnsetFields: false,
                                 ),
                               ));
-                          await Future.delayed(
-                              const Duration(milliseconds: 100));
                           if (!(_model
                               .readEnviar!.cliente.producto.isNotEmpty)) {
                             firestoreBatch.update(
@@ -1649,7 +1694,7 @@ class _ClienteProdInfoEditWidgetState extends State<ClienteProdInfoEditWidget> {
                         safeSetState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
-                        'ioedc5d2' /* Enviar */,
+                        '5bfvmyfh' /* Guardar */,
                       ),
                       options: FFButtonOptions(
                         width: double.infinity,

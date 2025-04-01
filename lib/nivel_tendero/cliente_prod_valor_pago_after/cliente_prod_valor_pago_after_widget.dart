@@ -5,36 +5,49 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'cliente_prod_valor_pago_model.dart';
-export 'cliente_prod_valor_pago_model.dart';
+import 'cliente_prod_valor_pago_after_model.dart';
+export 'cliente_prod_valor_pago_after_model.dart';
 
-class ClienteProdValorPagoWidget extends StatefulWidget {
-  const ClienteProdValorPagoWidget({
+class ClienteProdValorPagoAfterWidget extends StatefulWidget {
+  const ClienteProdValorPagoAfterWidget({
     super.key,
     required this.idCliente,
+    this.indexFromHistorial,
+    required this.totalFromHistorial,
+    this.transferFromHistorial,
+    this.efectivoFromHistorial,
+    this.dtHistorial,
+    this.dtClientePassed,
   });
 
   /// idCliente
   final DocumentReference? idCliente;
 
-  static String routeName = 'clienteProd-ValorPago';
-  static String routePath = '/clienteProdValorPago';
+  final int? indexFromHistorial;
+  final double? totalFromHistorial;
+  final bool? transferFromHistorial;
+  final bool? efectivoFromHistorial;
+  final DataTypeHistorialPagoStruct? dtHistorial;
+  final DataTypeClienteStruct? dtClientePassed;
+
+  static String routeName = 'clienteProd-ValorPagoAfter';
+  static String routePath = '/clienteProdValorPagoAfter';
 
   @override
-  State<ClienteProdValorPagoWidget> createState() =>
-      _ClienteProdValorPagoWidgetState();
+  State<ClienteProdValorPagoAfterWidget> createState() =>
+      _ClienteProdValorPagoAfterWidgetState();
 }
 
-class _ClienteProdValorPagoWidgetState
-    extends State<ClienteProdValorPagoWidget> {
-  late ClienteProdValorPagoModel _model;
+class _ClienteProdValorPagoAfterWidgetState
+    extends State<ClienteProdValorPagoAfterWidget> {
+  late ClienteProdValorPagoAfterModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ClienteProdValorPagoModel());
+    _model = createModel(context, () => ClienteProdValorPagoAfterModel());
 
     _model.valorAPTextController ??= TextEditingController();
     _model.valorAPFocusNode ??= FocusNode();
@@ -90,37 +103,14 @@ class _ClienteProdValorPagoWidgetState
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    StreamBuilder<ClientesRecord>(
-                      stream: ClientesRecord.getDocument(widget.idCliente!),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-
-                        final textClientesRecord = snapshot.data!;
-
-                        return Text(
-                          'Total: ${textClientesRecord.cliente.total.toString()}',
-                          style: FlutterFlowTheme.of(context)
-                              .headlineMedium
-                              .override(
+                    Text(
+                      'Total: \$${widget.totalFromHistorial?.toString()}',
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
                                 fontFamily: 'Inter Tight',
                                 fontSize: 40.0,
                                 letterSpacing: 0.0,
                               ),
-                        );
-                      },
                     ),
                     Text(
                       'Total de productos fiados',
@@ -188,7 +178,7 @@ class _ClienteProdValorPagoWidgetState
                                           isDense: true,
                                           labelText: FFLocalizations.of(context)
                                               .getText(
-                                            'kzamg66u' /* Valor a Pagar */,
+                                            'd59gff11' /* Valor a Pagar */,
                                           ),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
@@ -201,7 +191,7 @@ class _ClienteProdValorPagoWidgetState
                                                   ),
                                           hintText: FFLocalizations.of(context)
                                               .getText(
-                                            'vifxjq73' /* #.## */,
+                                            '0luvnqx5' /* #.## */,
                                           ),
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
@@ -295,7 +285,7 @@ class _ClienteProdValorPagoWidgetState
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'n2orvs3t' /* Transferencia */,
+                                                  '9xivha2p' /* Transferencia */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -333,7 +323,8 @@ class _ClienteProdValorPagoWidgetState
                                                 child: Checkbox(
                                                   value: _model
                                                           .checkTransferValue ??=
-                                                      false,
+                                                      widget
+                                                          .transferFromHistorial!,
                                                   onChanged: (newValue) async {
                                                     safeSetState(() => _model
                                                             .checkTransferValue =
@@ -387,7 +378,7 @@ class _ClienteProdValorPagoWidgetState
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  '3wg5skqm' /* Efectivo */,
+                                                  'yl0zre28' /* Efectivo */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -425,7 +416,8 @@ class _ClienteProdValorPagoWidgetState
                                                 child: Checkbox(
                                                   value: _model
                                                           .checkEfectivoValue ??=
-                                                      false,
+                                                      widget
+                                                          .efectivoFromHistorial!,
                                                   onChanged: (newValue) async {
                                                     safeSetState(() => _model
                                                             .checkEfectivoValue =
@@ -444,7 +436,7 @@ class _ClienteProdValorPagoWidgetState
                                                         });
                                                       } else {
                                                         safeSetState(() {
-                                                          _model.checkTransferValue =
+                                                          _model.checkEfectivoValue =
                                                               true;
                                                         });
                                                       }
@@ -499,7 +491,7 @@ class _ClienteProdValorPagoWidgetState
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'nvdugge5' /* Fecha de Pago:  */,
+                                                      'iisu0mpl' /* Fecha de Pago:  */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -549,9 +541,7 @@ class _ClienteProdValorPagoWidgetState
                                                       return Text(
                                                         dateTimeFormat(
                                                           "d/M/y",
-                                                          textClientesRecord
-                                                              .cliente
-                                                              .fechaPago!,
+                                                          getCurrentTimestamp,
                                                           locale:
                                                               FFLocalizations.of(
                                                                       context)
@@ -583,18 +573,68 @@ class _ClienteProdValorPagoWidgetState
                                                       0.0, 50.0, 0.0, 0.0),
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  _model.readPagaParcial =
+                                                  _model.readPagoAfter =
                                                       await ClientesRecord
                                                           .getDocumentOnce(
                                                               widget
                                                                   .idCliente!);
+                                                  _model
+                                                      .updateDtProdHistorialAfterStruct(
+                                                    (e) => e
+                                                      ..totalPagado = ((widget
+                                                                      .totalFromHistorial!) -
+                                                                  double.parse(_model
+                                                                      .valorAPTextController
+                                                                      .text)) <
+                                                              0.0
+                                                          ? 0.0
+                                                          : ((widget
+                                                                  .totalFromHistorial!) -
+                                                              double.parse(_model
+                                                                  .valorAPTextController
+                                                                  .text))
+                                                      ..transferencia = _model
+                                                          .checkTransferValue
+                                                      ..efectivo = _model
+                                                          .checkEfectivoValue
+                                                      ..fechaPago =
+                                                          getCurrentTimestamp
+                                                      ..productos = widget
+                                                          .dtHistorial!
+                                                          .productos
+                                                          .toList(),
+                                                  );
+                                                  _model.dtClienteAfter =
+                                                      widget.dtClientePassed;
+                                                  safeSetState(() {});
+                                                  _model
+                                                      .updateDtClienteAfterStruct(
+                                                    (e) => e
+                                                      ..updateHistorialPagadosProd(
+                                                        (e) => e[widget
+                                                                .indexFromHistorial!] =
+                                                            _model
+                                                                .dtProdHistorialAfter!,
+                                                      ),
+                                                  );
+                                                  safeSetState(() {});
+
+                                                  await widget.idCliente!.update(
+                                                      createClientesRecordData(
+                                                    cliente:
+                                                        updateDataTypeClienteStruct(
+                                                      _model.dtClienteAfter,
+                                                      clearUnsetFields: false,
+                                                    ),
+                                                  ));
+                                                  context.safePop();
 
                                                   safeSetState(() {});
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  'h1hzgltz' /* Pagar */,
+                                                  'mztmsqm7' /* Pagar */,
                                                 ),
                                                 options: FFButtonOptions(
                                                   width: double.infinity,

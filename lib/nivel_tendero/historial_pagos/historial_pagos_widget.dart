@@ -1,6 +1,8 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'historial_pagos_model.dart';
 export 'historial_pagos_model.dart';
@@ -128,243 +130,606 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                   ),
                             ),
                           ),
-                          ListView(
-                            padding: EdgeInsets.fromLTRB(
-                              0,
-                              12.0,
-                              0,
-                              44.0,
-                            ),
-                            primary: false,
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  constraints: BoxConstraints(
-                                    maxWidth: 570.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      width: 2.0,
+                          StreamBuilder<ClientesRecord>(
+                            stream:
+                                ClientesRecord.getDocument(widget.idCliente!),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
                                     ),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      ListView(
-                                        padding: EdgeInsets.zero,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 12.0, 16.0, 12.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Expanded(
-                                                  flex: 4,
-                                                  child: Padding(
+                                );
+                              }
+
+                              final mainHistorialViewClientesRecord =
+                                  snapshot.data!;
+
+                              return Builder(
+                                builder: (context) {
+                                  final listaProdGroup =
+                                      mainHistorialViewClientesRecord
+                                          .cliente.historialPagadosProd
+                                          .sortedList(
+                                              keyOf: (e) => e.fechaPago!,
+                                              desc: true)
+                                          .toList();
+
+                                  return ListView.separated(
+                                    padding: EdgeInsets.fromLTRB(
+                                      0,
+                                      12.0,
+                                      0,
+                                      44.0,
+                                    ),
+                                    primary: false,
+                                    shrinkWrap: true,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: listaProdGroup.length,
+                                    separatorBuilder: (_, __) =>
+                                        SizedBox(height: 12.0),
+                                    itemBuilder:
+                                        (context, listaProdGroupIndex) {
+                                      final listaProdGroupItem =
+                                          listaProdGroup[listaProdGroupIndex];
+                                      return Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          constraints: BoxConstraints(
+                                            maxWidth: 570.0,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Builder(
+                                                builder: (context) {
+                                                  final singleProd =
+                                                      listaProdGroupItem
+                                                          .productos
+                                                          .map((e) => e)
+                                                          .toList();
+
+                                                  return Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: List.generate(
+                                                        singleProd.length,
+                                                        (singleProdIndex) {
+                                                      final singleProdItem =
+                                                          singleProd[
+                                                              singleProdIndex];
+                                                      return Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    12.0,
+                                                                    16.0,
+                                                                    12.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: [
+                                                            Expanded(
+                                                              flex: 4,
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            0.0),
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      '${listaProdGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Expanded(
+                                                              flex: 2,
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  Text(
+                                                                    '\$ ${listaProdGroupItem.productos.elementAtOrNull(singleProdIndex)?.valorProd.toString()}',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .end,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Inter Tight',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    }),
+                                                  );
+                                                },
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                12.0, 0.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        RichText(
-                                                          textScaler:
-                                                              MediaQuery.of(
-                                                                      context)
-                                                                  .textScaler,
-                                                          text: TextSpan(
-                                                            children: [
-                                                              TextSpan(
-                                                                text: FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  'ey3dqpm8' /* prod1 */,
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Total: ${listaProdGroupItem.totalGeneral.toString()}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Fecha del Pago: ${dateTimeFormat(
+                                                        "d/M/y",
+                                                        listaProdGroupItem
+                                                            .fechaPago,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      )}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Método de Pago:',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Transferencia:',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Theme(
+                                                            data: ThemeData(
+                                                              checkboxTheme:
+                                                                  CheckboxThemeData(
+                                                                visualDensity:
+                                                                    VisualDensity
+                                                                        .compact,
+                                                                materialTapTargetSize:
+                                                                    MaterialTapTargetSize
+                                                                        .shrinkWrap,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4.0),
                                                                 ),
-                                                                style:
-                                                                    TextStyle(),
-                                                              )
-                                                            ],
+                                                              ),
+                                                              unselectedWidgetColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                            ),
+                                                            child: Checkbox(
+                                                              value: _model
+                                                                          .checkboxValueMap1[
+                                                                      listaProdGroupItem] ??=
+                                                                  listaProdGroupItem
+                                                                      .transferencia,
+                                                              onChanged: true
+                                                                  ? null
+                                                                  : (newValue) async {
+                                                                      safeSetState(() =>
+                                                                          _model.checkboxValueMap1[listaProdGroupItem] =
+                                                                              newValue!);
+                                                                    },
+                                                              side: BorderSide(
+                                                                width: 2,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                              ),
+                                                              activeColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              checkColor: true
+                                                                  ? null
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Efectivo',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Theme(
+                                                            data: ThemeData(
+                                                              checkboxTheme:
+                                                                  CheckboxThemeData(
+                                                                visualDensity:
+                                                                    VisualDensity
+                                                                        .compact,
+                                                                materialTapTargetSize:
+                                                                    MaterialTapTargetSize
+                                                                        .shrinkWrap,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              4.0),
+                                                                ),
+                                                              ),
+                                                              unselectedWidgetColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                            ),
+                                                            child: Checkbox(
+                                                              value: _model
+                                                                          .checkboxValueMap2[
+                                                                      listaProdGroupItem] ??=
+                                                                  listaProdGroupItem
+                                                                      .efectivo,
+                                                              onChanged: true
+                                                                  ? null
+                                                                  : (newValue) async {
+                                                                      safeSetState(() =>
+                                                                          _model.checkboxValueMap2[listaProdGroupItem] =
+                                                                              newValue!);
+                                                                    },
+                                                              side: BorderSide(
+                                                                width: 2,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                              ),
+                                                              activeColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              checkColor: true
+                                                                  ? null
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                              if (listaProdGroupItem
+                                                      .totalPagado >
+                                                  0.0)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        ClienteProdValorPagoAfterWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'idCliente':
+                                                              serializeParam(
+                                                            widget.idCliente,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'indexFromHistorial':
+                                                              serializeParam(
+                                                            listaProdGroupIndex,
+                                                            ParamType.int,
+                                                          ),
+                                                          'totalFromHistorial':
+                                                              serializeParam(
+                                                            listaProdGroupItem
+                                                                .totalPagado,
+                                                            ParamType.double,
+                                                          ),
+                                                          'transferFromHistorial':
+                                                              serializeParam(
+                                                            listaProdGroupItem
+                                                                .transferencia,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'efectivoFromHistorial':
+                                                              serializeParam(
+                                                            listaProdGroupItem
+                                                                .efectivo,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'dtHistorial':
+                                                              serializeParam(
+                                                            mainHistorialViewClientesRecord
+                                                                .cliente
+                                                                .historialPagadosProd
+                                                                .elementAtOrNull(
+                                                                    listaProdGroupIndex),
+                                                            ParamType
+                                                                .DataStruct,
+                                                          ),
+                                                          'dtClientePassed':
+                                                              serializeParam(
+                                                            mainHistorialViewClientesRecord
+                                                                .cliente,
+                                                            ParamType
+                                                                .DataStruct,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      width: 180.0,
+                                                      height: 32.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent1,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 2.0,
+                                                        ),
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Falta pagar: \$${listaProdGroupItem.totalPagado.toString()}',
+                                                            textAlign: TextAlign
+                                                                .center,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyLarge
+                                                                .bodyMedium
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
                                                           ),
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                                Expanded(
-                                                  flex: 2,
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment.end,
-                                                    children: [
-                                                      Text(
-                                                        '\$?',
-                                                        textAlign:
-                                                            TextAlign.end,
-                                                        style:
+                                              if (listaProdGroupItem
+                                                      .totalPagado <=
+                                                  0.0)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 90.0,
+                                                    height: 32.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent3,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter Tight',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
+                                                                .tertiary,
+                                                        width: 2.0,
                                                       ),
-                                                    ],
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            'b4tb641b' /* Pagado */,
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .tertiary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'w3h5xdjx' /* Mon. July 3rd */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 180.0,
-                                          height: 32.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent1,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 0.0, 8.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '7zx8y5mc' /* Falta pagar: */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
+                                            ].addToEnd(SizedBox(height: 10.0)),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 90.0,
-                                          height: 32.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent3,
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .tertiary,
-                                              width: 2.0,
-                                            ),
-                                          ),
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8.0, 0.0, 8.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'b4tb641b' /* Pagado */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .tertiary,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ].divide(SizedBox(height: 12.0)),
+                                      );
+                                    },
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ],
                       ),

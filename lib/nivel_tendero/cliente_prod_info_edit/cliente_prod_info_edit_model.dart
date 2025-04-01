@@ -13,11 +13,24 @@ class ClienteProdInfoEditModel
 
   double? tempSum1;
 
-  double? lastSum;
+  double? lastSumTotalPago;
+
+  List<DataTypeProductosStruct> dtProdItem = [];
+  void addToDtProdItem(DataTypeProductosStruct item) => dtProdItem.add(item);
+  void removeFromDtProdItem(DataTypeProductosStruct item) =>
+      dtProdItem.remove(item);
+  void removeAtIndexFromDtProdItem(int index) => dtProdItem.removeAt(index);
+  void insertAtIndexInDtProdItem(int index, DataTypeProductosStruct item) =>
+      dtProdItem.insert(index, item);
+  void updateDtProdItemAtIndex(
+          int index, Function(DataTypeProductosStruct) updateFn) =>
+      dtProdItem[index] = updateFn(dtProdItem[index]);
 
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - Read Document] action in clienteProd-InfoEdit widget.
+  ClientesRecord? readOnLoad;
   // Model for infoComp component.
   late InfoCompModel infoCompModel;
   // State field(s) for prodTF widget.
@@ -28,10 +41,11 @@ class ClienteProdInfoEditModel
   FocusNode? valorTFFocusNode;
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ClientesRecord? queryAnadirFirst;
-  // Stores action output result for [Firestore Query - Query a collection] action in Icon widget.
-  ClientesRecord? queryDeleteFirst;
+  // Stores action output result for [Backend Call - Read Document] action in Button widget.
+  ClientesRecord? readAnadirFirst;
+  ClientesRecord? vistaMainPreviousSnapshot;
+  // Stores action output result for [Backend Call - Read Document] action in Icon widget.
+  ClientesRecord? readDeleteFirst;
   DateTime? datePicked;
   // Stores action output result for [Backend Call - Read Document] action in Button widget.
   ClientesRecord? readPago;
@@ -39,6 +53,8 @@ class ClienteProdInfoEditModel
   ClientesRecord? queryHistorial;
   // Stores action output result for [Backend Call - Read Document] action in Button widget.
   ClientesRecord? readEnviar;
+  // Stores action output result for [Backend Call - Read Document] action in iconoBack widget.
+  ClientesRecord? readBack;
 
   @override
   void initState(BuildContext context) {

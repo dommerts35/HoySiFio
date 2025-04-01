@@ -10,12 +10,18 @@ import '/flutter_flow/flutter_flow_util.dart';
 class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
   DataTypeHistorialPagoStruct({
     DateTime? fechaPago,
-    List<HistorialPagosStruct>? productos,
+    List<DataTypeProductosStruct>? productos,
     double? totalPagado,
+    bool? transferencia,
+    bool? efectivo,
+    double? totalGeneral,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _fechaPago = fechaPago,
         _productos = productos,
         _totalPagado = totalPagado,
+        _transferencia = transferencia,
+        _efectivo = efectivo,
+        _totalGeneral = totalGeneral,
         super(firestoreUtilData);
 
   // "fechaPago" field.
@@ -26,11 +32,11 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
   bool hasFechaPago() => _fechaPago != null;
 
   // "productos" field.
-  List<HistorialPagosStruct>? _productos;
-  List<HistorialPagosStruct> get productos => _productos ?? const [];
-  set productos(List<HistorialPagosStruct>? val) => _productos = val;
+  List<DataTypeProductosStruct>? _productos;
+  List<DataTypeProductosStruct> get productos => _productos ?? const [];
+  set productos(List<DataTypeProductosStruct>? val) => _productos = val;
 
-  void updateProductos(Function(List<HistorialPagosStruct>) updateFn) {
+  void updateProductos(Function(List<DataTypeProductosStruct>) updateFn) {
     updateFn(_productos ??= []);
   }
 
@@ -46,14 +52,41 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
 
   bool hasTotalPagado() => _totalPagado != null;
 
+  // "transferencia" field.
+  bool? _transferencia;
+  bool get transferencia => _transferencia ?? false;
+  set transferencia(bool? val) => _transferencia = val;
+
+  bool hasTransferencia() => _transferencia != null;
+
+  // "efectivo" field.
+  bool? _efectivo;
+  bool get efectivo => _efectivo ?? false;
+  set efectivo(bool? val) => _efectivo = val;
+
+  bool hasEfectivo() => _efectivo != null;
+
+  // "totalGeneral" field.
+  double? _totalGeneral;
+  double get totalGeneral => _totalGeneral ?? 0.0;
+  set totalGeneral(double? val) => _totalGeneral = val;
+
+  void incrementTotalGeneral(double amount) =>
+      totalGeneral = totalGeneral + amount;
+
+  bool hasTotalGeneral() => _totalGeneral != null;
+
   static DataTypeHistorialPagoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeHistorialPagoStruct(
         fechaPago: data['fechaPago'] as DateTime?,
         productos: getStructList(
           data['productos'],
-          HistorialPagosStruct.fromMap,
+          DataTypeProductosStruct.fromMap,
         ),
         totalPagado: castToType<double>(data['totalPagado']),
+        transferencia: data['transferencia'] as bool?,
+        efectivo: data['efectivo'] as bool?,
+        totalGeneral: castToType<double>(data['totalGeneral']),
       );
 
   static DataTypeHistorialPagoStruct? maybeFromMap(dynamic data) => data is Map
@@ -64,6 +97,9 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         'fechaPago': _fechaPago,
         'productos': _productos?.map((e) => e.toMap()).toList(),
         'totalPagado': _totalPagado,
+        'transferencia': _transferencia,
+        'efectivo': _efectivo,
+        'totalGeneral': _totalGeneral,
       }.withoutNulls;
 
   @override
@@ -81,6 +117,18 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
           _totalPagado,
           ParamType.double,
         ),
+        'transferencia': serializeParam(
+          _transferencia,
+          ParamType.bool,
+        ),
+        'efectivo': serializeParam(
+          _efectivo,
+          ParamType.bool,
+        ),
+        'totalGeneral': serializeParam(
+          _totalGeneral,
+          ParamType.double,
+        ),
       }.withoutNulls;
 
   static DataTypeHistorialPagoStruct fromSerializableMap(
@@ -91,14 +139,29 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
           ParamType.DateTime,
           false,
         ),
-        productos: deserializeStructParam<HistorialPagosStruct>(
+        productos: deserializeStructParam<DataTypeProductosStruct>(
           data['productos'],
           ParamType.DataStruct,
           true,
-          structBuilder: HistorialPagosStruct.fromSerializableMap,
+          structBuilder: DataTypeProductosStruct.fromSerializableMap,
         ),
         totalPagado: deserializeParam(
           data['totalPagado'],
+          ParamType.double,
+          false,
+        ),
+        transferencia: deserializeParam(
+          data['transferencia'],
+          ParamType.bool,
+          false,
+        ),
+        efectivo: deserializeParam(
+          data['efectivo'],
+          ParamType.bool,
+          false,
+        ),
+        totalGeneral: deserializeParam(
+          data['totalGeneral'],
           ParamType.double,
           false,
         ),
@@ -113,17 +176,29 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
     return other is DataTypeHistorialPagoStruct &&
         fechaPago == other.fechaPago &&
         listEquality.equals(productos, other.productos) &&
-        totalPagado == other.totalPagado;
+        totalPagado == other.totalPagado &&
+        transferencia == other.transferencia &&
+        efectivo == other.efectivo &&
+        totalGeneral == other.totalGeneral;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([fechaPago, productos, totalPagado]);
+  int get hashCode => const ListEquality().hash([
+        fechaPago,
+        productos,
+        totalPagado,
+        transferencia,
+        efectivo,
+        totalGeneral
+      ]);
 }
 
 DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
   DateTime? fechaPago,
   double? totalPagado,
+  bool? transferencia,
+  bool? efectivo,
+  double? totalGeneral,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -132,6 +207,9 @@ DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
     DataTypeHistorialPagoStruct(
       fechaPago: fechaPago,
       totalPagado: totalPagado,
+      transferencia: transferencia,
+      efectivo: efectivo,
+      totalGeneral: totalGeneral,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

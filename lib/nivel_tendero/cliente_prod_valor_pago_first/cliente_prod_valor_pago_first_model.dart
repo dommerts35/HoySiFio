@@ -1,10 +1,19 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'cliente_prod_valor_pago_widget.dart' show ClienteProdValorPagoWidget;
+import 'cliente_prod_valor_pago_first_widget.dart'
+    show ClienteProdValorPagoFirstWidget;
 import 'package:flutter/material.dart';
 
-class ClienteProdValorPagoModel
-    extends FlutterFlowModel<ClienteProdValorPagoWidget> {
+class ClienteProdValorPagoFirstModel
+    extends FlutterFlowModel<ClienteProdValorPagoFirstWidget> {
+  ///  Local state fields for this page.
+
+  DataTypeHistorialPagoStruct? dtProdHistorial;
+  void updateDtProdHistorialStruct(
+      Function(DataTypeHistorialPagoStruct) updateFn) {
+    updateFn(dtProdHistorial ??= DataTypeHistorialPagoStruct());
+  }
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();

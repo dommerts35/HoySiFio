@@ -589,9 +589,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Historial',
       'en': 'Record',
     },
-    'ioedc5d2': {
-      'es': 'Enviar',
-      'en': '',
+    '5bfvmyfh': {
+      'es': 'Guardar',
+      'en': 'Send',
     },
     '1606cen3': {
       'es': 'Ingrese el nombre del cliente.',
@@ -655,18 +655,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'rhc1o40z': {
       'es': 'Aquí se mostrarán los productos fiados.',
       'en': 'Here the products on credit will be displayed.',
-    },
-    'ey3dqpm8': {
-      'es': 'prod1',
-      'en': 'prod1',
-    },
-    'w3h5xdjx': {
-      'es': 'Mon. July 3rd',
-      'en': 'Mon. July 3rd',
-    },
-    '7zx8y5mc': {
-      'es': 'Falta pagar:',
-      'en': 'Payment pending:',
     },
     'b4tb641b': {
       'es': 'Pagado',
@@ -796,7 +784,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // clienteProd-ValorPago
+  // clienteProd-ValorPagoFirst
   {
     'kzamg66u': {
       'es': 'Valor a Pagar',
@@ -822,47 +810,86 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Pagar',
       'en': 'Pay',
     },
-    'byyhpred': {
+    'wbwoo38z': {
+      'es': 'Hubo un error.',
+      'en': '',
+    },
+    'i034dszp': {
+      'es': 'Please choose an option from the dropdown',
+      'en': '',
+    },
+    '8dwfvz75': {
+      'es': 'Home',
+      'en': 'Home',
+    },
+  },
+  // clienteProd-ValorPagoAfter
+  {
+    'd59gff11': {
+      'es': 'Valor a Pagar',
+      'en': 'Amount to Pay',
+    },
+    '0luvnqx5': {
+      'es': '#.##',
+      'en': '#.##',
+    },
+    '9xivha2p': {
+      'es': 'Transferencia',
+      'en': 'Transfer',
+    },
+    'yl0zre28': {
+      'es': 'Efectivo',
+      'en': 'Cash',
+    },
+    'iisu0mpl': {
+      'es': 'Fecha de Pago: ',
+      'en': 'Payment Date:',
+    },
+    'mztmsqm7': {
+      'es': 'Pagar',
+      'en': 'Pay',
+    },
+    '5jqvtbm0': {
       'es': 'Ingrese el nombre del cliente.',
       'en': 'Enter the customer\'s name.',
     },
-    'l4xd2gip': {
+    'num0cj6j': {
       'es': 'Ingrese un nombre con más de 2 carácteres',
       'en': 'Enter a name with more than 2 characters',
     },
-    '5s3l2b78': {
+    'ugfhzv1u': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
-    '20k7dzrx': {
+    'saoomw3q': {
       'es': 'Número de teléfono is required',
       'en': 'Phone number is required',
     },
-    '8if1inlw': {
+    'e9b3puqr': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
-    'ydcr6sym': {
+    'zu9nykog': {
       'es': 'Ingrese los productos',
       'en': 'Enter the products',
     },
-    '2l84htcc': {
+    '7xudlu54': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
-    'h1sb94hm': {
+    '7xf6cwel': {
       'es': 'Ingrese el pago',
       'en': 'Enter the payment',
     },
-    'z6c09ibb': {
+    'vt7xeqiq': {
       'es': 'El número de teléfono debe de tener 10 dígitos',
       'en': 'The phone number must have 10 digits',
     },
-    'mxk2qofv': {
+    'tjwkv1qn': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
-    '8dwfvz75': {
+    'pui50i3u': {
       'es': 'Home',
       'en': 'Home',
     },
