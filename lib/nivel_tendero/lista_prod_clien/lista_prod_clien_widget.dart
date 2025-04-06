@@ -268,11 +268,6 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                               listViewClientesRecord.reference,
                                               ParamType.DocumentReference,
                                             ),
-                                            'fechaPago': serializeParam(
-                                              listViewClientesRecord
-                                                  .cliente.fechaPago,
-                                              ParamType.DateTime,
-                                            ),
                                             'apellido': serializeParam(
                                               listViewClientesRecord
                                                   .cliente.apellido,
@@ -385,7 +380,7 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        'Fiando: \$${listViewClientesRecord.cliente.total.toString()}',
+                                                        'Fiando: \$${listViewClientesRecord.cliente.totalDeudaCompleta.toString()}',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -398,38 +393,6 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                                                 ),
                                                       ),
                                                     ),
-                                                    if (listViewClientesRecord
-                                                            .cliente.isFiando ==
-                                                        true)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Fecha de Pago: ${dateTimeFormat(
-                                                            "d/M/y",
-                                                            listViewClientesRecord
-                                                                .cliente
-                                                                .fechaPago,
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
                                                   ],
                                                 ),
                                               ),
@@ -533,11 +496,6 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                             'idCliente': serializeParam(
                                               listViewClientesRecord.reference,
                                               ParamType.DocumentReference,
-                                            ),
-                                            'fechaPago': serializeParam(
-                                              listViewClientesRecord
-                                                  .cliente.fechaPago,
-                                              ParamType.DateTime,
                                             ),
                                             'apellido': serializeParam(
                                               listViewClientesRecord
@@ -658,38 +616,6 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                                                 ),
                                                       ),
                                                     ),
-                                                    if (listViewClientesRecord
-                                                            .cliente.isFiando ==
-                                                        true)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Fecha de Pago: ${dateTimeFormat(
-                                                            "d/M/y",
-                                                            listViewClientesRecord
-                                                                .cliente
-                                                                .fechaPago,
-                                                            locale: FFLocalizations
-                                                                    .of(context)
-                                                                .languageCode,
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
                                                   ],
                                                 ),
                                               ),
@@ -786,11 +712,6 @@ class _ListaProdClienWidgetState extends State<ListaProdClienWidget>
                                             'idCliente': serializeParam(
                                               listViewClientesRecord.reference,
                                               ParamType.DocumentReference,
-                                            ),
-                                            'fechaPago': serializeParam(
-                                              listViewClientesRecord
-                                                  .cliente.fechaPago,
-                                              ParamType.DateTime,
                                             ),
                                             'apellido': serializeParam(
                                               '',

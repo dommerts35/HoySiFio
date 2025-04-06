@@ -10,11 +10,9 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   DataTypeProductosStruct({
     String? nombreProd,
     double? valorProd,
-    DateTime? diaPagado,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombreProd = nombreProd,
         _valorProd = valorProd,
-        _diaPagado = diaPagado,
         super(firestoreUtilData);
 
   // "nombreProd" field.
@@ -33,18 +31,10 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
 
   bool hasValorProd() => _valorProd != null;
 
-  // "diaPagado" field.
-  DateTime? _diaPagado;
-  DateTime? get diaPagado => _diaPagado;
-  set diaPagado(DateTime? val) => _diaPagado = val;
-
-  bool hasDiaPagado() => _diaPagado != null;
-
   static DataTypeProductosStruct fromMap(Map<String, dynamic> data) =>
       DataTypeProductosStruct(
         nombreProd: data['nombreProd'] as String?,
         valorProd: castToType<double>(data['valorProd']),
-        diaPagado: data['diaPagado'] as DateTime?,
       );
 
   static DataTypeProductosStruct? maybeFromMap(dynamic data) => data is Map
@@ -54,7 +44,6 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'nombreProd': _nombreProd,
         'valorProd': _valorProd,
-        'diaPagado': _diaPagado,
       }.withoutNulls;
 
   @override
@@ -66,10 +55,6 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
         'valorProd': serializeParam(
           _valorProd,
           ParamType.double,
-        ),
-        'diaPagado': serializeParam(
-          _diaPagado,
-          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -86,11 +71,6 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
-        diaPagado: deserializeParam(
-          data['diaPagado'],
-          ParamType.DateTime,
-          false,
-        ),
       );
 
   @override
@@ -100,19 +80,16 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is DataTypeProductosStruct &&
         nombreProd == other.nombreProd &&
-        valorProd == other.valorProd &&
-        diaPagado == other.diaPagado;
+        valorProd == other.valorProd;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([nombreProd, valorProd, diaPagado]);
+  int get hashCode => const ListEquality().hash([nombreProd, valorProd]);
 }
 
 DataTypeProductosStruct createDataTypeProductosStruct({
   String? nombreProd,
   double? valorProd,
-  DateTime? diaPagado,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -121,7 +98,6 @@ DataTypeProductosStruct createDataTypeProductosStruct({
     DataTypeProductosStruct(
       nombreProd: nombreProd,
       valorProd: valorProd,
-      diaPagado: diaPagado,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

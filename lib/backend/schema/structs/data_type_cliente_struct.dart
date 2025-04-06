@@ -12,7 +12,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     String? nombre,
     String? telf,
     bool? isFiando,
-    DateTime? fechaPago,
 
     /// apellido
     String? apellido,
@@ -36,11 +35,15 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     double? total,
     List<DataTypeProductosStruct>? producto,
     List<DataTypeHistorialPagoStruct>? historialPagadosProd,
+    List<DataTypeHistorialPagoStruct>? historialPorPagarProd,
+
+    /// hora/dia de ultima actualizacion al datatype
+    DateTime? lastUpdate,
+    double? totalDeudaCompleta,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
         _isFiando = isFiando,
-        _fechaPago = fechaPago,
         _apellido = apellido,
         _cedula = cedula,
         _direccionDomicilio = direccionDomicilio,
@@ -52,6 +55,9 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _total = total,
         _producto = producto,
         _historialPagadosProd = historialPagadosProd,
+        _historialPorPagarProd = historialPorPagarProd,
+        _lastUpdate = lastUpdate,
+        _totalDeudaCompleta = totalDeudaCompleta,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -74,13 +80,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
   set isFiando(bool? val) => _isFiando = val;
 
   bool hasIsFiando() => _isFiando != null;
-
-  // "fechaPago" field.
-  DateTime? _fechaPago;
-  DateTime? get fechaPago => _fechaPago;
-  set fechaPago(DateTime? val) => _fechaPago = val;
-
-  bool hasFechaPago() => _fechaPago != null;
 
   // "apellido" field.
   String? _apellido;
@@ -174,12 +173,42 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasHistorialPagadosProd() => _historialPagadosProd != null;
 
+  // "historialPorPagarProd" field.
+  List<DataTypeHistorialPagoStruct>? _historialPorPagarProd;
+  List<DataTypeHistorialPagoStruct> get historialPorPagarProd =>
+      _historialPorPagarProd ?? const [];
+  set historialPorPagarProd(List<DataTypeHistorialPagoStruct>? val) =>
+      _historialPorPagarProd = val;
+
+  void updateHistorialPorPagarProd(
+      Function(List<DataTypeHistorialPagoStruct>) updateFn) {
+    updateFn(_historialPorPagarProd ??= []);
+  }
+
+  bool hasHistorialPorPagarProd() => _historialPorPagarProd != null;
+
+  // "lastUpdate" field.
+  DateTime? _lastUpdate;
+  DateTime? get lastUpdate => _lastUpdate;
+  set lastUpdate(DateTime? val) => _lastUpdate = val;
+
+  bool hasLastUpdate() => _lastUpdate != null;
+
+  // "totalDeudaCompleta" field.
+  double? _totalDeudaCompleta;
+  double get totalDeudaCompleta => _totalDeudaCompleta ?? 0.0;
+  set totalDeudaCompleta(double? val) => _totalDeudaCompleta = val;
+
+  void incrementTotalDeudaCompleta(double amount) =>
+      totalDeudaCompleta = totalDeudaCompleta + amount;
+
+  bool hasTotalDeudaCompleta() => _totalDeudaCompleta != null;
+
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
         nombre: data['nombre'] as String?,
         telf: data['telf'] as String?,
         isFiando: data['isFiando'] as bool?,
-        fechaPago: data['fechaPago'] as DateTime?,
         apellido: data['apellido'] as String?,
         cedula: castToType<int>(data['cedula']),
         direccionDomicilio: data['direccionDomicilio'] as String?,
@@ -197,6 +226,12 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           data['historialPagadosProd'],
           DataTypeHistorialPagoStruct.fromMap,
         ),
+        historialPorPagarProd: getStructList(
+          data['historialPorPagarProd'],
+          DataTypeHistorialPagoStruct.fromMap,
+        ),
+        lastUpdate: data['lastUpdate'] as DateTime?,
+        totalDeudaCompleta: castToType<double>(data['totalDeudaCompleta']),
       );
 
   static DataTypeClienteStruct? maybeFromMap(dynamic data) => data is Map
@@ -207,7 +242,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'nombre': _nombre,
         'telf': _telf,
         'isFiando': _isFiando,
-        'fechaPago': _fechaPago,
         'apellido': _apellido,
         'cedula': _cedula,
         'direccionDomicilio': _direccionDomicilio,
@@ -220,6 +254,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'producto': _producto?.map((e) => e.toMap()).toList(),
         'historialPagadosProd':
             _historialPagadosProd?.map((e) => e.toMap()).toList(),
+        'historialPorPagarProd':
+            _historialPorPagarProd?.map((e) => e.toMap()).toList(),
+        'lastUpdate': _lastUpdate,
+        'totalDeudaCompleta': _totalDeudaCompleta,
       }.withoutNulls;
 
   @override
@@ -235,10 +273,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'isFiando': serializeParam(
           _isFiando,
           ParamType.bool,
-        ),
-        'fechaPago': serializeParam(
-          _fechaPago,
-          ParamType.DateTime,
         ),
         'apellido': serializeParam(
           _apellido,
@@ -286,6 +320,19 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.DataStruct,
           isList: true,
         ),
+        'historialPorPagarProd': serializeParam(
+          _historialPorPagarProd,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'lastUpdate': serializeParam(
+          _lastUpdate,
+          ParamType.DateTime,
+        ),
+        'totalDeudaCompleta': serializeParam(
+          _totalDeudaCompleta,
+          ParamType.double,
+        ),
       }.withoutNulls;
 
   static DataTypeClienteStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -303,11 +350,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         isFiando: deserializeParam(
           data['isFiando'],
           ParamType.bool,
-          false,
-        ),
-        fechaPago: deserializeParam(
-          data['fechaPago'],
-          ParamType.DateTime,
           false,
         ),
         apellido: deserializeParam(
@@ -370,6 +412,23 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           true,
           structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
         ),
+        historialPorPagarProd:
+            deserializeStructParam<DataTypeHistorialPagoStruct>(
+          data['historialPorPagarProd'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+        ),
+        lastUpdate: deserializeParam(
+          data['lastUpdate'],
+          ParamType.DateTime,
+          false,
+        ),
+        totalDeudaCompleta: deserializeParam(
+          data['totalDeudaCompleta'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -382,7 +441,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         nombre == other.nombre &&
         telf == other.telf &&
         isFiando == other.isFiando &&
-        fechaPago == other.fechaPago &&
         apellido == other.apellido &&
         cedula == other.cedula &&
         direccionDomicilio == other.direccionDomicilio &&
@@ -393,7 +451,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         idTendero == other.idTendero &&
         total == other.total &&
         listEquality.equals(producto, other.producto) &&
-        listEquality.equals(historialPagadosProd, other.historialPagadosProd);
+        listEquality.equals(historialPagadosProd, other.historialPagadosProd) &&
+        listEquality.equals(
+            historialPorPagarProd, other.historialPorPagarProd) &&
+        lastUpdate == other.lastUpdate &&
+        totalDeudaCompleta == other.totalDeudaCompleta;
   }
 
   @override
@@ -401,7 +463,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         nombre,
         telf,
         isFiando,
-        fechaPago,
         apellido,
         cedula,
         direccionDomicilio,
@@ -412,7 +473,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         idTendero,
         total,
         producto,
-        historialPagadosProd
+        historialPagadosProd,
+        historialPorPagarProd,
+        lastUpdate,
+        totalDeudaCompleta
       ]);
 }
 
@@ -420,7 +484,6 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   String? nombre,
   String? telf,
   bool? isFiando,
-  DateTime? fechaPago,
   String? apellido,
   int? cedula,
   String? direccionDomicilio,
@@ -430,6 +493,8 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   DocumentReference? idCliente,
   DocumentReference? idTendero,
   double? total,
+  DateTime? lastUpdate,
+  double? totalDeudaCompleta,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -439,7 +504,6 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       nombre: nombre,
       telf: telf,
       isFiando: isFiando,
-      fechaPago: fechaPago,
       apellido: apellido,
       cedula: cedula,
       direccionDomicilio: direccionDomicilio,
@@ -449,6 +513,8 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       idCliente: idCliente,
       idTendero: idTendero,
       total: total,
+      lastUpdate: lastUpdate,
+      totalDeudaCompleta: totalDeudaCompleta,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

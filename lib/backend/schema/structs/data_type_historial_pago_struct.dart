@@ -9,27 +9,24 @@ import '/flutter_flow/flutter_flow_util.dart';
 
 class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
   DataTypeHistorialPagoStruct({
-    DateTime? fechaPago,
     List<DataTypeProductosStruct>? productos,
+    DateTime? fechaPago,
     double? totalPagado,
+    double? totalPorPagar,
     bool? transferencia,
     bool? efectivo,
     double? totalGeneral,
+    String? idTransaccion,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
-  })  : _fechaPago = fechaPago,
-        _productos = productos,
+  })  : _productos = productos,
+        _fechaPago = fechaPago,
         _totalPagado = totalPagado,
+        _totalPorPagar = totalPorPagar,
         _transferencia = transferencia,
         _efectivo = efectivo,
         _totalGeneral = totalGeneral,
+        _idTransaccion = idTransaccion,
         super(firestoreUtilData);
-
-  // "fechaPago" field.
-  DateTime? _fechaPago;
-  DateTime? get fechaPago => _fechaPago;
-  set fechaPago(DateTime? val) => _fechaPago = val;
-
-  bool hasFechaPago() => _fechaPago != null;
 
   // "productos" field.
   List<DataTypeProductosStruct>? _productos;
@@ -42,6 +39,13 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
 
   bool hasProductos() => _productos != null;
 
+  // "fechaPago" field.
+  DateTime? _fechaPago;
+  DateTime? get fechaPago => _fechaPago;
+  set fechaPago(DateTime? val) => _fechaPago = val;
+
+  bool hasFechaPago() => _fechaPago != null;
+
   // "totalPagado" field.
   double? _totalPagado;
   double get totalPagado => _totalPagado ?? 0.0;
@@ -51,6 +55,16 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
       totalPagado = totalPagado + amount;
 
   bool hasTotalPagado() => _totalPagado != null;
+
+  // "totalPorPagar" field.
+  double? _totalPorPagar;
+  double get totalPorPagar => _totalPorPagar ?? 0.0;
+  set totalPorPagar(double? val) => _totalPorPagar = val;
+
+  void incrementTotalPorPagar(double amount) =>
+      totalPorPagar = totalPorPagar + amount;
+
+  bool hasTotalPorPagar() => _totalPorPagar != null;
 
   // "transferencia" field.
   bool? _transferencia;
@@ -76,17 +90,26 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
 
   bool hasTotalGeneral() => _totalGeneral != null;
 
+  // "idTransaccion" field.
+  String? _idTransaccion;
+  String get idTransaccion => _idTransaccion ?? '';
+  set idTransaccion(String? val) => _idTransaccion = val;
+
+  bool hasIdTransaccion() => _idTransaccion != null;
+
   static DataTypeHistorialPagoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeHistorialPagoStruct(
-        fechaPago: data['fechaPago'] as DateTime?,
         productos: getStructList(
           data['productos'],
           DataTypeProductosStruct.fromMap,
         ),
+        fechaPago: data['fechaPago'] as DateTime?,
         totalPagado: castToType<double>(data['totalPagado']),
+        totalPorPagar: castToType<double>(data['totalPorPagar']),
         transferencia: data['transferencia'] as bool?,
         efectivo: data['efectivo'] as bool?,
         totalGeneral: castToType<double>(data['totalGeneral']),
+        idTransaccion: data['idTransaccion'] as String?,
       );
 
   static DataTypeHistorialPagoStruct? maybeFromMap(dynamic data) => data is Map
@@ -94,27 +117,33 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
       : null;
 
   Map<String, dynamic> toMap() => {
-        'fechaPago': _fechaPago,
         'productos': _productos?.map((e) => e.toMap()).toList(),
+        'fechaPago': _fechaPago,
         'totalPagado': _totalPagado,
+        'totalPorPagar': _totalPorPagar,
         'transferencia': _transferencia,
         'efectivo': _efectivo,
         'totalGeneral': _totalGeneral,
+        'idTransaccion': _idTransaccion,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'fechaPago': serializeParam(
-          _fechaPago,
-          ParamType.DateTime,
-        ),
         'productos': serializeParam(
           _productos,
           ParamType.DataStruct,
           isList: true,
         ),
+        'fechaPago': serializeParam(
+          _fechaPago,
+          ParamType.DateTime,
+        ),
         'totalPagado': serializeParam(
           _totalPagado,
+          ParamType.double,
+        ),
+        'totalPorPagar': serializeParam(
+          _totalPorPagar,
           ParamType.double,
         ),
         'transferencia': serializeParam(
@@ -129,24 +158,33 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
           _totalGeneral,
           ParamType.double,
         ),
+        'idTransaccion': serializeParam(
+          _idTransaccion,
+          ParamType.String,
+        ),
       }.withoutNulls;
 
   static DataTypeHistorialPagoStruct fromSerializableMap(
           Map<String, dynamic> data) =>
       DataTypeHistorialPagoStruct(
-        fechaPago: deserializeParam(
-          data['fechaPago'],
-          ParamType.DateTime,
-          false,
-        ),
         productos: deserializeStructParam<DataTypeProductosStruct>(
           data['productos'],
           ParamType.DataStruct,
           true,
           structBuilder: DataTypeProductosStruct.fromSerializableMap,
         ),
+        fechaPago: deserializeParam(
+          data['fechaPago'],
+          ParamType.DateTime,
+          false,
+        ),
         totalPagado: deserializeParam(
           data['totalPagado'],
+          ParamType.double,
+          false,
+        ),
+        totalPorPagar: deserializeParam(
+          data['totalPorPagar'],
           ParamType.double,
           false,
         ),
@@ -165,6 +203,11 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        idTransaccion: deserializeParam(
+          data['idTransaccion'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -174,31 +217,37 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     const listEquality = ListEquality();
     return other is DataTypeHistorialPagoStruct &&
-        fechaPago == other.fechaPago &&
         listEquality.equals(productos, other.productos) &&
+        fechaPago == other.fechaPago &&
         totalPagado == other.totalPagado &&
+        totalPorPagar == other.totalPorPagar &&
         transferencia == other.transferencia &&
         efectivo == other.efectivo &&
-        totalGeneral == other.totalGeneral;
+        totalGeneral == other.totalGeneral &&
+        idTransaccion == other.idTransaccion;
   }
 
   @override
   int get hashCode => const ListEquality().hash([
-        fechaPago,
         productos,
+        fechaPago,
         totalPagado,
+        totalPorPagar,
         transferencia,
         efectivo,
-        totalGeneral
+        totalGeneral,
+        idTransaccion
       ]);
 }
 
 DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
   DateTime? fechaPago,
   double? totalPagado,
+  double? totalPorPagar,
   bool? transferencia,
   bool? efectivo,
   double? totalGeneral,
+  String? idTransaccion,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -207,9 +256,11 @@ DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
     DataTypeHistorialPagoStruct(
       fechaPago: fechaPago,
       totalPagado: totalPagado,
+      totalPorPagar: totalPorPagar,
       transferencia: transferencia,
       efectivo: efectivo,
       totalGeneral: totalGeneral,
+      idTransaccion: idTransaccion,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

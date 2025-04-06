@@ -6,11 +6,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for fullNameEdit widget.
-  FocusNode? fullNameEditFocusNode;
-  TextEditingController? fullNameEditTextController;
-  String? Function(BuildContext, String?)? fullNameEditTextControllerValidator;
-  String? _fullNameEditTextControllerValidator(
+  // State field(s) for fullNameRead widget.
+  FocusNode? fullNameReadFocusNode;
+  TextEditingController? fullNameReadTextController;
+  String? Function(BuildContext, String?)? fullNameReadTextControllerValidator;
+  String? _fullNameReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
@@ -27,12 +27,12 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for secondNameEdit widget.
-  FocusNode? secondNameEditFocusNode;
-  TextEditingController? secondNameEditTextController;
+  // State field(s) for secondNameRead widget.
+  FocusNode? secondNameReadFocusNode;
+  TextEditingController? secondNameReadTextController;
   String? Function(BuildContext, String?)?
-      secondNameEditTextControllerValidator;
-  String? _secondNameEditTextControllerValidator(
+      secondNameReadTextControllerValidator;
+  String? _secondNameReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
@@ -49,12 +49,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for cedulaEdit widget.
-  FocusNode? cedulaEditFocusNode;
-  TextEditingController? cedulaEditTextController;
-  String? Function(BuildContext, String?)? cedulaEditTextControllerValidator;
-  String? _cedulaEditTextControllerValidator(
-      BuildContext context, String? val) {
+  // State field(s) for ceduRead widget.
+  FocusNode? ceduReadFocusNode;
+  TextEditingController? ceduReadTextController;
+  String? Function(BuildContext, String?)? ceduReadTextControllerValidator;
+  String? _ceduReadTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'jgt2mo47' /* Ingrese la cédula del cliente */,
@@ -75,12 +74,12 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for phoneNumberEdit widget.
-  FocusNode? phoneNumberEditFocusNode;
-  TextEditingController? phoneNumberEditTextController;
+  // State field(s) for phoneNumberRead widget.
+  FocusNode? phoneNumberReadFocusNode;
+  TextEditingController? phoneNumberReadTextController;
   String? Function(BuildContext, String?)?
-      phoneNumberEditTextControllerValidator;
-  String? _phoneNumberEditTextControllerValidator(
+      phoneNumberReadTextControllerValidator;
+  String? _phoneNumberReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
@@ -102,11 +101,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for direccionEdit widget.
-  FocusNode? direccionEditFocusNode;
-  TextEditingController? direccionEditTextController;
-  String? Function(BuildContext, String?)? direccionEditTextControllerValidator;
-  String? _direccionEditTextControllerValidator(
+  // State field(s) for direccionRead widget.
+  FocusNode? direccionReadFocusNode;
+  TextEditingController? direccionReadTextController;
+  String? Function(BuildContext, String?)? direccionReadTextControllerValidator;
+  String? _direccionReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
@@ -117,11 +116,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for emailEdit widget.
-  FocusNode? emailEditFocusNode;
-  TextEditingController? emailEditTextController;
-  String? Function(BuildContext, String?)? emailEditTextControllerValidator;
-  String? _emailEditTextControllerValidator(BuildContext context, String? val) {
+  // State field(s) for emailRead widget.
+  FocusNode? emailReadFocusNode;
+  TextEditingController? emailReadTextController;
+  String? Function(BuildContext, String?)? emailReadTextControllerValidator;
+  String? _emailReadTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'dc4mgfzk' /* Ingrese el email del cliente */,
@@ -136,40 +135,45 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
     return null;
   }
 
-  // State field(s) for Switch widget.
-  bool? switchValue;
+  // State field(s) for viviendaRead widget.
+  FocusNode? viviendaReadFocusNode;
+  TextEditingController? viviendaReadTextController;
+  String? Function(BuildContext, String?)? viviendaReadTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
-    fullNameEditTextControllerValidator = _fullNameEditTextControllerValidator;
-    secondNameEditTextControllerValidator =
-        _secondNameEditTextControllerValidator;
-    cedulaEditTextControllerValidator = _cedulaEditTextControllerValidator;
-    phoneNumberEditTextControllerValidator =
-        _phoneNumberEditTextControllerValidator;
-    direccionEditTextControllerValidator =
-        _direccionEditTextControllerValidator;
-    emailEditTextControllerValidator = _emailEditTextControllerValidator;
+    fullNameReadTextControllerValidator = _fullNameReadTextControllerValidator;
+    secondNameReadTextControllerValidator =
+        _secondNameReadTextControllerValidator;
+    ceduReadTextControllerValidator = _ceduReadTextControllerValidator;
+    phoneNumberReadTextControllerValidator =
+        _phoneNumberReadTextControllerValidator;
+    direccionReadTextControllerValidator =
+        _direccionReadTextControllerValidator;
+    emailReadTextControllerValidator = _emailReadTextControllerValidator;
   }
 
   @override
   void dispose() {
-    fullNameEditFocusNode?.dispose();
-    fullNameEditTextController?.dispose();
+    fullNameReadFocusNode?.dispose();
+    fullNameReadTextController?.dispose();
 
-    secondNameEditFocusNode?.dispose();
-    secondNameEditTextController?.dispose();
+    secondNameReadFocusNode?.dispose();
+    secondNameReadTextController?.dispose();
 
-    cedulaEditFocusNode?.dispose();
-    cedulaEditTextController?.dispose();
+    ceduReadFocusNode?.dispose();
+    ceduReadTextController?.dispose();
 
-    phoneNumberEditFocusNode?.dispose();
-    phoneNumberEditTextController?.dispose();
+    phoneNumberReadFocusNode?.dispose();
+    phoneNumberReadTextController?.dispose();
 
-    direccionEditFocusNode?.dispose();
-    direccionEditTextController?.dispose();
+    direccionReadFocusNode?.dispose();
+    direccionReadTextController?.dispose();
 
-    emailEditFocusNode?.dispose();
-    emailEditTextController?.dispose();
+    emailReadFocusNode?.dispose();
+    emailReadTextController?.dispose();
+
+    viviendaReadFocusNode?.dispose();
+    viviendaReadTextController?.dispose();
   }
 }

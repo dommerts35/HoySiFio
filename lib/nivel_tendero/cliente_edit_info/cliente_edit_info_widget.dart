@@ -16,7 +16,6 @@ class ClienteEditInfoWidget extends StatefulWidget {
     required this.telf,
     required this.isFiando,
     required this.idCliente,
-    required this.fechaPago,
     required this.apellido,
     required this.cedula,
     required this.direccionDomicilio,
@@ -37,9 +36,6 @@ class ClienteEditInfoWidget extends StatefulWidget {
 
   /// idCliente
   final DocumentReference? idCliente;
-
-  /// FechaPago
-  final DateTime? fechaPago;
 
   /// secondName
   final String? apellido;
@@ -997,10 +993,6 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget> {
                               'idCliente': serializeParam(
                                 widget.idCliente,
                                 ParamType.DocumentReference,
-                              ),
-                              'fechaPago': serializeParam(
-                                widget.fechaPago,
-                                ParamType.DateTime,
                               ),
                               'apellido': serializeParam(
                                 _model.secondNameEditTextController.text,

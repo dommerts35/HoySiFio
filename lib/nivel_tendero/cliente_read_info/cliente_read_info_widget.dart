@@ -13,7 +13,6 @@ class ClienteReadInfoWidget extends StatefulWidget {
     required this.telf,
     required this.isFiando,
     required this.idCliente,
-    required this.fechaPago,
     required this.apellido,
     required this.cedula,
     required this.direccionDomicilio,
@@ -34,9 +33,6 @@ class ClienteReadInfoWidget extends StatefulWidget {
 
   /// idCliente
   final DocumentReference? idCliente;
-
-  /// FechaPago
-  final DateTime? fechaPago;
 
   /// secondName
   final String? apellido;
@@ -75,49 +71,59 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
     super.initState();
     _model = createModel(context, () => ClienteReadInfoModel());
 
-    _model.fullNameEditTextController ??= TextEditingController(
+    _model.fullNameReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.nombre,
       '---',
     ));
-    _model.fullNameEditFocusNode ??= FocusNode();
-    _model.fullNameEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.secondNameEditTextController ??= TextEditingController(
+    _model.fullNameReadFocusNode ??= FocusNode();
+
+    _model.secondNameReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.apellido,
       '---',
     ));
-    _model.secondNameEditFocusNode ??= FocusNode();
-    _model.secondNameEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.cedulaEditTextController ??= TextEditingController(
+    _model.secondNameReadFocusNode ??= FocusNode();
+
+    _model.ceduReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.cedula?.toString(),
       '---',
     ));
-    _model.cedulaEditFocusNode ??= FocusNode();
-    _model.cedulaEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.phoneNumberEditTextController ??= TextEditingController(
+    _model.ceduReadFocusNode ??= FocusNode();
+
+    _model.phoneNumberReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.telf,
       '---',
     ));
-    _model.phoneNumberEditFocusNode ??= FocusNode();
-    _model.phoneNumberEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.direccionEditTextController ??= TextEditingController(
+    _model.phoneNumberReadFocusNode ??= FocusNode();
+
+    _model.direccionReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.direccionDomicilio,
       '---',
     ));
-    _model.direccionEditFocusNode ??= FocusNode();
-    _model.direccionEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.emailEditTextController ??= TextEditingController(
+    _model.direccionReadFocusNode ??= FocusNode();
+
+    _model.emailReadTextController ??= TextEditingController(
         text: valueOrDefault<String>(
       widget.emailCliente,
       '---',
     ));
-    _model.emailEditFocusNode ??= FocusNode();
-    _model.emailEditFocusNode!.addListener(() => safeSetState(() {}));
-    _model.switchValue = widget.viviendaAlq == true ? true : false;
+    _model.emailReadFocusNode ??= FocusNode();
+
+    _model.viviendaReadTextController ??= TextEditingController(text: () {
+      if (widget.viviendaProp == true) {
+        return 'Propia';
+      } else if (widget.viviendaAlq == true) {
+        return 'Alquilada';
+      } else {
+        return '-';
+      }
+    }());
+    _model.viviendaReadFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -170,9 +176,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      FFLocalizations.of(context).getText(
-                        'dda6o5kw' /* Cliente */,
-                      ),
+                      'Cliente ${widget.nombre}',
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
                                 fontFamily: 'Inter Tight',
@@ -222,9 +226,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                   children: [
                                     TextFormField(
                                       controller:
-                                          _model.fullNameEditTextController,
-                                      focusNode: _model.fullNameEditFocusNode,
-                                      autofocus: true,
+                                          _model.fullNameReadTextController,
+                                      focusNode: _model.fullNameReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -259,50 +263,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model.fullNameEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -313,11 +277,8 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             fontFamily: 'Inter Tight',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLength: 21,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .fullNameEditTextControllerValidator
+                                          .fullNameReadTextControllerValidator
                                           .asValidator(context),
                                       inputFormatters: [
                                         FilteringTextInputFormatter.allow(
@@ -326,9 +287,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                     ),
                                     TextFormField(
                                       controller:
-                                          _model.secondNameEditTextController,
-                                      focusNode: _model.secondNameEditFocusNode,
-                                      autofocus: true,
+                                          _model.secondNameReadTextController,
+                                      focusNode: _model.secondNameReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -363,51 +324,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model
-                                                    .secondNameEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -418,11 +338,8 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             fontFamily: 'Inter Tight',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLength: 21,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .secondNameEditTextControllerValidator
+                                          .secondNameReadTextControllerValidator
                                           .asValidator(context),
                                       inputFormatters: [
                                         FilteringTextInputFormatter.allow(
@@ -430,10 +347,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       ],
                                     ),
                                     TextFormField(
-                                      controller:
-                                          _model.cedulaEditTextController,
-                                      focusNode: _model.cedulaEditFocusNode,
-                                      autofocus: true,
+                                      controller: _model.ceduReadTextController,
+                                      focusNode: _model.ceduReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -465,50 +381,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model.cedulaEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -519,20 +395,17 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLength: 10,
                                       keyboardType: TextInputType.number,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .cedulaEditTextControllerValidator
+                                          .ceduReadTextControllerValidator
                                           .asValidator(context),
                                     ),
                                     TextFormField(
                                       controller:
-                                          _model.phoneNumberEditTextController,
+                                          _model.phoneNumberReadTextController,
                                       focusNode:
-                                          _model.phoneNumberEditFocusNode,
-                                      autofocus: true,
+                                          _model.phoneNumberReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -564,51 +437,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model
-                                                    .phoneNumberEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -619,19 +451,16 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLength: 10,
                                       keyboardType: TextInputType.phone,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .phoneNumberEditTextControllerValidator
+                                          .phoneNumberReadTextControllerValidator
                                           .asValidator(context),
                                     ),
                                     TextFormField(
                                       controller:
-                                          _model.direccionEditTextController,
-                                      focusNode: _model.direccionEditFocusNode,
-                                      autofocus: true,
+                                          _model.direccionReadTextController,
+                                      focusNode: _model.direccionReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -663,51 +492,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model
-                                                    .direccionEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -718,18 +506,15 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             fontFamily: 'Inter',
                                             letterSpacing: 0.0,
                                           ),
-                                      maxLength: 30,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .direccionEditTextControllerValidator
+                                          .direccionReadTextControllerValidator
                                           .asValidator(context),
                                     ),
                                     TextFormField(
                                       controller:
-                                          _model.emailEditTextController,
-                                      focusNode: _model.emailEditFocusNode,
-                                      autofocus: true,
+                                          _model.emailReadTextController,
+                                      focusNode: _model.emailReadFocusNode,
+                                      autofocus: false,
                                       textCapitalization:
                                           TextCapitalization.words,
                                       readOnly: true,
@@ -761,50 +546,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               fontSize: 12.0,
                                               letterSpacing: 0.0,
                                             ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            width: 2.0,
-                                          ),
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                        ),
-                                        filled: true,
-                                        fillColor: (_model.emailEditFocusNode
-                                                    ?.hasFocus ??
-                                                false)
-                                            ? FlutterFlowTheme.of(context)
-                                                .accent1
-                                            : FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
                                         contentPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 16.0, 20.0, 16.0, 20.0),
@@ -816,61 +561,64 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                       keyboardType: TextInputType.emailAddress,
-                                      cursorColor:
-                                          FlutterFlowTheme.of(context).primary,
                                       validator: _model
-                                          .emailEditTextControllerValidator
+                                          .emailReadTextControllerValidator
                                           .asValidator(context),
                                     ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            '4nd7ks31' /* Vivienda Propia */,
+                                    TextFormField(
+                                      controller:
+                                          _model.viviendaReadTextController,
+                                      focusNode: _model.viviendaReadFocusNode,
+                                      autofocus: false,
+                                      textCapitalization:
+                                          TextCapitalization.words,
+                                      readOnly: true,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          'hkcjeory' /* Vivienda */,
+                                        ),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                        errorStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        enabledBorder: InputBorder.none,
+                                        focusedBorder: InputBorder.none,
+                                        errorBorder: InputBorder.none,
+                                        focusedErrorBorder: InputBorder.none,
+                                        contentPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                16.0, 20.0, 16.0, 20.0),
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyLarge
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                        Switch.adaptive(
-                                          value: _model.switchValue!,
-                                          onChanged: true
-                                              ? null
-                                              : (newValue) async {
-                                                  safeSetState(() => _model
-                                                      .switchValue = newValue);
-                                                },
-                                          activeColor: true
-                                              ? FlutterFlowTheme.of(context)
-                                                  .accent1
-                                              : FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          activeTrackColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                          inactiveTrackColor: true
-                                              ? FlutterFlowTheme.of(context)
-                                                  .accent3
-                                              : Color(0xFFEF9239),
-                                        ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'd3hgsx7p' /* Vivienda Alquilada */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Inter',
-                                                letterSpacing: 0.0,
-                                              ),
-                                        ),
-                                      ],
+                                      keyboardType: TextInputType.emailAddress,
+                                      validator: _model
+                                          .viviendaReadTextControllerValidator
+                                          .asValidator(context),
                                     ),
                                   ]
                                       .divide(SizedBox(height: 14.0))

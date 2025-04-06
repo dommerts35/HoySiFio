@@ -161,10 +161,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['clientes'],
             ),
-            fechaPago: params.getParam(
-              'fechaPago',
-              ParamType.DateTime,
-            ),
             apellido: params.getParam(
               'apellido',
               ParamType.String,
@@ -219,10 +215,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['clientes'],
             ),
-            fechaPago: params.getParam(
-              'fechaPago',
-              ParamType.DateTime,
-            ),
             apellido: params.getParam(
               'apellido',
               ParamType.String,
@@ -265,6 +257,48 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['clientes'],
             ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.int,
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            viviendaProp: params.getParam(
+              'viviendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -288,10 +322,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['clientes'],
-            ),
-            fechaPago: params.getParam(
-              'fechaPago',
-              ParamType.DateTime,
             ),
             apellido: params.getParam(
               'apellido',
@@ -326,31 +356,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ClienteProdValorPagoFirstWidget.routeName,
-          path: ClienteProdValorPagoFirstWidget.routePath,
-          builder: (context, params) => ClienteProdValorPagoFirstWidget(
-            idCliente: params.getParam(
-              'idCliente',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['clientes'],
-            ),
-            passedDTProd: params.getParam<DataTypeProductosStruct>(
-              'passedDTProd',
-              ParamType.DataStruct,
-              isList: true,
-              structBuilder: DataTypeProductosStruct.fromSerializableMap,
-            ),
-            lastSumTotalPagoToVPF: params.getParam(
-              'lastSumTotalPagoToVPF',
-              ParamType.double,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: ClienteProdValorPagoAfterWidget.routeName,
-          path: ClienteProdValorPagoAfterWidget.routePath,
-          builder: (context, params) => ClienteProdValorPagoAfterWidget(
+          name: ClienteProdValorPagoWidget.routeName,
+          path: ClienteProdValorPagoWidget.routePath,
+          builder: (context, params) => ClienteProdValorPagoWidget(
             idCliente: params.getParam(
               'idCliente',
               ParamType.DocumentReference,
@@ -361,8 +369,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'indexFromHistorial',
               ParamType.int,
             ),
-            totalFromHistorial: params.getParam(
-              'totalFromHistorial',
+            totalPagadoFromHistorial: params.getParam(
+              'totalPagadoFromHistorial',
               ParamType.double,
             ),
             transferFromHistorial: params.getParam(
@@ -379,11 +387,117 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
             ),
-            dtClientePassed: params.getParam(
-              'dtClientePassed',
-              ParamType.DataStruct,
+            totalPorPagarFromHistorial: params.getParam(
+              'totalPorPagarFromHistorial',
+              ParamType.double,
+            ),
+            totalGeneralFromHistorial: params.getParam(
+              'totalGeneralFromHistorial',
+              ParamType.double,
+            ),
+            sumaProductosTemporales: params.getParam(
+              'sumaProductosTemporales',
+              ParamType.double,
+            ),
+            idTransaccionPassed: params.getParam(
+              'idTransaccionPassed',
+              ParamType.String,
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.int,
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
               isList: false,
-              structBuilder: DataTypeClienteStruct.fromSerializableMap,
+              collectionNamePath: ['tenderos'],
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            vivendaProp: params.getParam(
+              'vivendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistorialPorPagarWidget.routeName,
+          path: HistorialPorPagarWidget.routePath,
+          builder: (context, params) => HistorialPorPagarWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.int,
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            viviendaProp: params.getParam(
+              'viviendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
             ),
           ),
         )

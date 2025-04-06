@@ -3,10 +3,14 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
-import 'historial_pagos_widget.dart' show HistorialPagosWidget;
+import 'historial_por_pagar_widget.dart' show HistorialPorPagarWidget;
 import 'package:flutter/material.dart';
 
-class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
+class HistorialPorPagarModel extends FlutterFlowModel<HistorialPorPagarWidget> {
+  ///  Local state fields for this page.
+
+  double sumaTemporalCalculada = 0.0;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Checkbox widget.
@@ -25,24 +29,27 @@ class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
           .map((e) => e.key)
           .toList();
 
+  // Stores action output result for [Backend Call - Read Document] action in conFaltaPag widget.
+  ClientesRecord? readForSumaCalculada;
+
   /// Query cache managers for this widget.
 
-  final _queryNameClienteHistorialPagadoManager =
+  final _queryNameClienteHistorialPorPagarManager =
       StreamRequestManager<ClientesRecord>();
-  Stream<ClientesRecord> queryNameClienteHistorialPagado({
+  Stream<ClientesRecord> queryNameClienteHistorialPorPagar({
     String? uniqueQueryKey,
     bool? overrideCache,
     required Stream<ClientesRecord> Function() requestFn,
   }) =>
-      _queryNameClienteHistorialPagadoManager.performRequest(
+      _queryNameClienteHistorialPorPagarManager.performRequest(
         uniqueQueryKey: uniqueQueryKey,
         overrideCache: overrideCache,
         requestFn: requestFn,
       );
-  void clearQueryNameClienteHistorialPagadoCache() =>
-      _queryNameClienteHistorialPagadoManager.clear();
-  void clearQueryNameClienteHistorialPagadoCacheKey(String? uniqueKey) =>
-      _queryNameClienteHistorialPagadoManager.clearRequest(uniqueKey);
+  void clearQueryNameClienteHistorialPorPagarCache() =>
+      _queryNameClienteHistorialPorPagarManager.clear();
+  void clearQueryNameClienteHistorialPorPagarCacheKey(String? uniqueKey) =>
+      _queryNameClienteHistorialPorPagarManager.clearRequest(uniqueKey);
 
   @override
   void initState(BuildContext context) {}
@@ -51,6 +58,6 @@ class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
   void dispose() {
     /// Dispose query cache managers for this widget.
 
-    clearQueryNameClienteHistorialPagadoCache();
+    clearQueryNameClienteHistorialPorPagarCache();
   }
 }

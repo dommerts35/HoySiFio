@@ -1,18 +1,3 @@
 {
-  "indexes": [
-    {
-      "collectionGroup": "clientes",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "cliente.nombre",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "cliente.fechaPago",
-          "order": "ASCENDING"
-        }
-      ]
-    }
-  ]
+  "indexes": []
 }

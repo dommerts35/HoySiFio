@@ -163,7 +163,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Shopkeeper',
     },
     'fr5mniu6': {
-      'es': 'Bienvenido',
+      'es': 'Bienvenida',
       'en': 'Welcome',
     },
     'w4y47z9b': {
@@ -553,6 +553,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // clienteProd-InfoEdit
   {
+    '3upxvyh0': {
+      'es': 'Productos pagados',
+      'en': 'Record',
+    },
+    'cynop57y': {
+      'es': 'Productos por pagar',
+      'en': 'Record',
+    },
     'qkzdh8m8': {
       'es': 'Fiar Productos',
       'en': 'Products on Due',
@@ -576,18 +584,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '28ox95x7': {
       'es': 'Añadir Producto',
       'en': 'Add Product',
-    },
-    'uwlfqv5j': {
-      'es': 'Fecha de Pago del Producto',
-      'en': 'Product Payment Date',
-    },
-    'cs2ofbsh': {
-      'es': 'Pagar',
-      'en': 'Pay',
-    },
-    '3upxvyh0': {
-      'es': 'Historial',
-      'en': 'Record',
     },
     '5bfvmyfh': {
       'es': 'Guardar',
@@ -634,12 +630,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '8bowq0tq': {
-      'es': 'Editar cliente',
+      'es': 'Información del cliente',
       'en': 'Edit client',
-    },
-    'ktufeslb': {
-      'es': 'Edición de datos del cliente',
-      'en': 'Editing customer data',
     },
     'cp1evi8d': {
       'es': 'Home',
@@ -649,11 +641,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // historialPagos
   {
     'gxg9u041': {
-      'es': 'Historial',
+      'es': 'Historial de productos\npagados',
       'en': 'Record',
     },
     'rhc1o40z': {
-      'es': 'Aquí se mostrarán los productos fiados.',
+      'es': 'Aquí se mostrarán los productos pagados del cliente: ',
       'en': 'Here the products on credit will be displayed.',
     },
     'b4tb641b': {
@@ -691,13 +683,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Email',
       'en': 'E-mail',
     },
-    '4nd7ks31': {
-      'es': 'Vivienda Propia',
-      'en': 'Own Home',
-    },
-    'd3hgsx7p': {
-      'es': 'Vivienda Alquilada',
-      'en': 'Rented Housing',
+    'hkcjeory': {
+      'es': 'Vivienda',
+      'en': 'E-mail',
     },
     '687r2v4n': {
       'es': 'Ingrese los nombres del cliente.',
@@ -775,55 +763,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
-    'dda6o5kw': {
-      'es': 'Cliente',
-      'en': 'Customer',
-    },
     '5meoqm1p': {
       'es': 'Home',
       'en': 'Home',
     },
   },
-  // clienteProd-ValorPagoFirst
-  {
-    'kzamg66u': {
-      'es': 'Valor a Pagar',
-      'en': 'Amount to Pay',
-    },
-    'vifxjq73': {
-      'es': '#.##',
-      'en': '#.##',
-    },
-    'n2orvs3t': {
-      'es': 'Transferencia',
-      'en': 'Transfer',
-    },
-    '3wg5skqm': {
-      'es': 'Efectivo',
-      'en': 'Cash',
-    },
-    'nvdugge5': {
-      'es': 'Fecha de Pago: ',
-      'en': 'Payment Date:',
-    },
-    'h1hzgltz': {
-      'es': 'Pagar',
-      'en': 'Pay',
-    },
-    'wbwoo38z': {
-      'es': 'Hubo un error.',
-      'en': '',
-    },
-    'i034dszp': {
-      'es': 'Please choose an option from the dropdown',
-      'en': '',
-    },
-    '8dwfvz75': {
-      'es': 'Home',
-      'en': 'Home',
-    },
-  },
-  // clienteProd-ValorPagoAfter
+  // clienteProd-ValorPago
   {
     'd59gff11': {
       'es': 'Valor a Pagar',
@@ -892,6 +837,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'pui50i3u': {
       'es': 'Home',
       'en': 'Home',
+    },
+  },
+  // historialPorPagar
+  {
+    'ayphq84c': {
+      'es': 'Historial de productos\npor pagar',
+      'en': 'Record',
+    },
+    'whsw90kw': {
+      'es': 'Aquí se mostrarán los productos por pagar',
+      'en': 'Here the products on credit will be displayed.',
+    },
+    'xdk9lh0i': {
+      'es': 'Home',
+      'en': '',
     },
   },
   // Miscellaneous

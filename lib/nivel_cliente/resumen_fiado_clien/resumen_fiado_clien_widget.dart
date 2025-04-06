@@ -39,24 +39,7 @@ class _ResumenFiadoClienWidgetState extends State<ResumenFiadoClienWidget> {
     _model = createModel(context, () => ResumenFiadoClienModel());
 
     // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.queryPago = await queryClientesRecordOnce(
-        queryBuilder: (clientesRecord) => clientesRecord
-            .where(
-              'cliente.fechaPago',
-              isLessThanOrEqualTo: getCurrentTimestamp,
-            )
-            .where(
-              'cliente.nombre',
-              isEqualTo: widget.nombre,
-            ),
-      );
-      while (FFAppState().count <= _model.queryPago!.length) {
-        FFAppState().count = FFAppState().count + 1;
-        safeSetState(() {});
-        await Future.delayed(const Duration(milliseconds: 1000));
-      }
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -225,15 +208,7 @@ class _ResumenFiadoClienWidgetState extends State<ResumenFiadoClienWidget> {
                                                           snapshot.data!;
 
                                                       return Text(
-                                                        'Dia a Pagar: ${dateTimeFormat(
-                                                          "d/M/y",
-                                                          test1Item.cliente
-                                                              .fechaPago,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        )} de la tienda: ${textTenderosRecord.tenderos.nombreTienda}',
+                                                        '',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:

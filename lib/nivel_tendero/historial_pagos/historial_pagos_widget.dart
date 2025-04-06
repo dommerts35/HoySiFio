@@ -10,10 +10,30 @@ export 'historial_pagos_model.dart';
 class HistorialPagosWidget extends StatefulWidget {
   const HistorialPagosWidget({
     super.key,
-    required this.idCliente,
+    this.idCliente,
+    this.idTendero,
+    this.nombre,
+    this.telf,
+    this.isFiando,
+    this.apellido,
+    this.cedula,
+    this.direccionDomicilio,
+    this.viviendaAlq,
+    this.viviendaProp,
+    this.emailCliente,
   });
 
   final DocumentReference? idCliente;
+  final DocumentReference? idTendero;
+  final String? nombre;
+  final String? telf;
+  final bool? isFiando;
+  final String? apellido;
+  final int? cedula;
+  final String? direccionDomicilio;
+  final bool? viviendaAlq;
+  final bool? viviendaProp;
+  final String? emailCliente;
 
   static String routeName = 'historialPagos';
   static String routePath = '/historialPagos';
@@ -93,7 +113,55 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    context.safePop();
+                                    context.pushNamed(
+                                      ClienteProdInfoEditWidget.routeName,
+                                      queryParameters: {
+                                        'nombre': serializeParam(
+                                          widget.nombre,
+                                          ParamType.String,
+                                        ),
+                                        'telf': serializeParam(
+                                          widget.telf,
+                                          ParamType.String,
+                                        ),
+                                        'isFiando': serializeParam(
+                                          widget.isFiando,
+                                          ParamType.bool,
+                                        ),
+                                        'idCliente': serializeParam(
+                                          widget.idCliente,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'apellido': serializeParam(
+                                          widget.apellido,
+                                          ParamType.String,
+                                        ),
+                                        'cedula': serializeParam(
+                                          widget.cedula,
+                                          ParamType.int,
+                                        ),
+                                        'tenderoRef': serializeParam(
+                                          widget.idTendero,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'direccionDomicilio': serializeParam(
+                                          widget.direccionDomicilio,
+                                          ParamType.String,
+                                        ),
+                                        'viviendaAlq': serializeParam(
+                                          widget.viviendaAlq,
+                                          ParamType.bool,
+                                        ),
+                                        'viviendaProp': serializeParam(
+                                          widget.viviendaProp,
+                                          ParamType.bool,
+                                        ),
+                                        'emailCliente': serializeParam(
+                                          widget.emailCliente,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
                                   },
                                 ),
                               ),
@@ -102,8 +170,11 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     24.0, 20.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'gxg9u041' /* Historial */,
+                                    'gxg9u041' /* Historial de productos
+pagados */
+                                    ,
                                   ),
+                                  maxLines: 2,
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
@@ -116,7 +187,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 4.0, 0.0, 0.0),
+                                25.0, 10.0, 0.0, 0.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'rhc1o40z' /* Aquí se mostrarán los producto... */,
@@ -128,6 +199,46 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     fontFamily: 'Inter',
                                     letterSpacing: 0.0,
                                   ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                25.0, 0.0, 0.0, 0.0),
+                            child: StreamBuilder<ClientesRecord>(
+                              stream: _model.queryNameClienteHistorialPagado(
+                                requestFn: () => ClientesRecord.getDocument(
+                                    widget.idCliente!),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: CircularProgressIndicator(
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                          FlutterFlowTheme.of(context).primary,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                final textClientesRecord = snapshot.data!;
+
+                                return Text(
+                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
+                                  textAlign: TextAlign.start,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                );
+                              },
                             ),
                           ),
                           StreamBuilder<ClientesRecord>(
@@ -154,7 +265,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
 
                               return Builder(
                                 builder: (context) {
-                                  final listaProdGroup =
+                                  final listaProdPagadosGroup =
                                       mainHistorialViewClientesRecord
                                           .cliente.historialPagadosProd
                                           .sortedList(
@@ -172,13 +283,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
-                                    itemCount: listaProdGroup.length,
+                                    itemCount: listaProdPagadosGroup.length,
                                     separatorBuilder: (_, __) =>
                                         SizedBox(height: 12.0),
                                     itemBuilder:
-                                        (context, listaProdGroupIndex) {
-                                      final listaProdGroupItem =
-                                          listaProdGroup[listaProdGroupIndex];
+                                        (context, listaProdPagadosGroupIndex) {
+                                      final listaProdPagadosGroupItem =
+                                          listaProdPagadosGroup[
+                                              listaProdPagadosGroupIndex];
                                       return Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
@@ -205,7 +317,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                               Builder(
                                                 builder: (context) {
                                                   final singleProd =
-                                                      listaProdGroupItem
+                                                      listaProdPagadosGroupItem
                                                           .productos
                                                           .map((e) => e)
                                                           .toList();
@@ -256,7 +368,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           .start,
                                                                   children: [
                                                                     Text(
-                                                                      '${listaProdGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
+                                                                      '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -282,7 +394,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .end,
                                                                 children: [
                                                                   Text(
-                                                                    '\$ ${listaProdGroupItem.productos.elementAtOrNull(singleProdIndex)?.valorProd.toString()}',
+                                                                    '\$ ${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.valorProd.toString()}',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .end,
@@ -315,7 +427,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Total: ${listaProdGroupItem.totalGeneral.toString()}',
+                                                      'Total general de los productos: \$${listaProdPagadosGroupItem.totalGeneral.toString()}',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -333,29 +445,13 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                     child: Text(
                                                       'Fecha del Pago: ${dateTimeFormat(
                                                         "d/M/y",
-                                                        listaProdGroupItem
+                                                        listaProdPagadosGroupItem
                                                             .fechaPago,
                                                         locale:
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .languageCode,
                                                       )}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 4.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Método de Pago:',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .labelMedium
@@ -423,14 +519,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                             child: Checkbox(
                                                               value: _model
                                                                           .checkboxValueMap1[
-                                                                      listaProdGroupItem] ??=
-                                                                  listaProdGroupItem
+                                                                      listaProdPagadosGroupItem] ??=
+                                                                  listaProdPagadosGroupItem
                                                                       .transferencia,
                                                               onChanged: true
                                                                   ? null
                                                                   : (newValue) async {
                                                                       safeSetState(() =>
-                                                                          _model.checkboxValueMap1[listaProdGroupItem] =
+                                                                          _model.checkboxValueMap1[listaProdPagadosGroupItem] =
                                                                               newValue!);
                                                                     },
                                                               side: BorderSide(
@@ -503,14 +599,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                             child: Checkbox(
                                                               value: _model
                                                                           .checkboxValueMap2[
-                                                                      listaProdGroupItem] ??=
-                                                                  listaProdGroupItem
+                                                                      listaProdPagadosGroupItem] ??=
+                                                                  listaProdPagadosGroupItem
                                                                       .efectivo,
                                                               onChanged: true
                                                                   ? null
                                                                   : (newValue) async {
                                                                       safeSetState(() =>
-                                                                          _model.checkboxValueMap2[listaProdGroupItem] =
+                                                                          _model.checkboxValueMap2[listaProdPagadosGroupItem] =
                                                                               newValue!);
                                                                     },
                                                               side: BorderSide(
@@ -536,129 +632,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                   ),
                                                 ],
                                               ),
-                                              if (listaProdGroupItem
-                                                      .totalPagado >
-                                                  0.0)
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 0.0),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                        ClienteProdValorPagoAfterWidget
-                                                            .routeName,
-                                                        queryParameters: {
-                                                          'idCliente':
-                                                              serializeParam(
-                                                            widget.idCliente,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'indexFromHistorial':
-                                                              serializeParam(
-                                                            listaProdGroupIndex,
-                                                            ParamType.int,
-                                                          ),
-                                                          'totalFromHistorial':
-                                                              serializeParam(
-                                                            listaProdGroupItem
-                                                                .totalPagado,
-                                                            ParamType.double,
-                                                          ),
-                                                          'transferFromHistorial':
-                                                              serializeParam(
-                                                            listaProdGroupItem
-                                                                .transferencia,
-                                                            ParamType.bool,
-                                                          ),
-                                                          'efectivoFromHistorial':
-                                                              serializeParam(
-                                                            listaProdGroupItem
-                                                                .efectivo,
-                                                            ParamType.bool,
-                                                          ),
-                                                          'dtHistorial':
-                                                              serializeParam(
-                                                            mainHistorialViewClientesRecord
-                                                                .cliente
-                                                                .historialPagadosProd
-                                                                .elementAtOrNull(
-                                                                    listaProdGroupIndex),
-                                                            ParamType
-                                                                .DataStruct,
-                                                          ),
-                                                          'dtClientePassed':
-                                                              serializeParam(
-                                                            mainHistorialViewClientesRecord
-                                                                .cliente,
-                                                            ParamType
-                                                                .DataStruct,
-                                                          ),
-                                                        }.withoutNulls,
-                                                      );
-                                                    },
-                                                    child: Container(
-                                                      width: 180.0,
-                                                      height: 32.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent1,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      8.0,
-                                                                      0.0,
-                                                                      8.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Falta pagar: \$${listaProdGroupItem.totalPagado.toString()}',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              if (listaProdGroupItem
+                                              if (listaProdPagadosGroupItem
                                                       .totalPagado <=
                                                   0.0)
                                                 Padding(

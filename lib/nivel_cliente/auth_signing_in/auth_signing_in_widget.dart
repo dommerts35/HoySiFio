@@ -266,7 +266,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'fr5mniu6' /* Bienvenido */,
+                                                    'fr5mniu6' /* Bienvenida */,
                                                   ),
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(

@@ -7,14 +7,10 @@ export 'info_comp_model.dart';
 class InfoCompWidget extends StatefulWidget {
   const InfoCompWidget({
     super.key,
-    required this.fullName,
-    required this.secondName,
-    required this.phoneNumber,
-    required this.ced,
-    required this.domicilio,
-    required this.email,
-    this.alq,
-    this.prop,
+    this.fullName,
+    this.secondName,
+    this.phoneNumber,
+    this.ced,
   });
 
   /// fullName
@@ -28,17 +24,6 @@ class InfoCompWidget extends StatefulWidget {
 
   /// ced
   final int? ced;
-
-  /// domicilio
-  final String? domicilio;
-
-  /// email
-  final String? email;
-
-  /// alq
-  final bool? alq;
-
-  final bool? prop;
 
   @override
   State<InfoCompWidget> createState() => _InfoCompWidgetState();
@@ -72,7 +57,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 280.0,
-      height: 105.0,
+      height: 96.0,
       child: Stack(
         children: [
           Card(

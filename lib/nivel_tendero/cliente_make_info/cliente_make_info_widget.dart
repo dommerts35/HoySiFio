@@ -860,7 +860,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                 viviendaPropia: _model.switchValue == false,
                                 emailCliente: _model.emailTextController.text,
                                 isFiando: false,
-                                fechaPago: getCurrentTimestamp,
                                 idTendero: widget.tenderoRef,
                                 total: 0.0,
                                 clearUnsetFields: false,
@@ -887,7 +886,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                         emailCliente:
                                             _model.emailTextController.text,
                                         isFiando: false,
-                                        fechaPago: getCurrentTimestamp,
                                         idTendero: widget.tenderoRef,
                                         total: 0.0,
                                         clearUnsetFields: false,
