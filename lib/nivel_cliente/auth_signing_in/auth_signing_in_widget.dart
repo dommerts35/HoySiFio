@@ -1126,10 +1126,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       true
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary
+                                                                      .primary
                                                                   : FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
+                                                                      .accent1,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -1232,10 +1232,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       true
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary
+                                                                      .primary
                                                                   : FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
+                                                                      .accent1,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2625,10 +2625,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       true
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary
+                                                                      .primary
                                                                   : FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
+                                                                      .accent1,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2731,10 +2731,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       true
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
-                                                                      .tertiary
+                                                                      .primary
                                                                   : FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primary,
+                                                                      .accent1,
                                                               textStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)

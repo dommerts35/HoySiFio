@@ -1802,6 +1802,28 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                           if (_shouldSetState) safeSetState(() {});
                           return;
                         }
+                        if ((_model.isVivProp == false) &&
+                            (_model.isVivAlq == false)) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('¡Alerta!'),
+                                content: Text(
+                                    'Por favor, ingrese el tipo de vivienda de su cliente.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
                         _model.validarMake = true;
                         if (_model.formKey.currentState == null ||
                             !_model.formKey.currentState!.validate()) {

@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -1766,20 +1765,6 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                               clearUnsetFields: false,
                             ),
                           ));
-                          if (_model.emailEditTextController.text.isEmpty) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Email required!',
-                                ),
-                              ),
-                            );
-                            return;
-                          }
-                          await authManager.resetPassword(
-                            email: _model.emailEditTextController.text,
-                            context: context,
-                          );
 
                           context.goNamed(
                             ClienteProdInfoEditWidget.routeName,
