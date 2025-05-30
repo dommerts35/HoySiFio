@@ -6,7 +6,8 @@ import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/flutter_flow/flutter_flow_theme.dart';
+import '/backend/push_notifications/push_notifications_handler.dart'
+    show PushNotificationsHandler;
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -77,14 +78,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.loggedIn
-          ? ListaProdClienWidget()
+          ? AuthSigningInWidget()
           : AuthSigningInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? ListaProdClienWidget()
+              ? AuthSigningInWidget()
               : AuthSigningInWidget(),
         ),
         FFRoute(
@@ -93,14 +94,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AuthSigningInWidget(),
         ),
         FFRoute(
-          name: ListaProdClienWidget.routeName,
-          path: ListaProdClienWidget.routePath,
-          builder: (context, params) => ListaProdClienWidget(
+          name: ListaClientesWidget.routeName,
+          path: ListaClientesWidget.routePath,
+          builder: (context, params) => ListaClientesWidget(
             tenderoRef: params.getParam(
               'tenderoRef',
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
             ),
           ),
         ),
@@ -114,28 +119,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['tenderos'],
             ),
-          ),
-        ),
-        FFRoute(
-          name: PagoFinalWidget.routeName,
-          path: PagoFinalWidget.routePath,
-          builder: (context, params) => PagoFinalWidget(),
-        ),
-        FFRoute(
-          name: ResumenFiadoClienWidget.routeName,
-          path: ResumenFiadoClienWidget.routePath,
-          asyncParams: {
-            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
-          },
-          builder: (context, params) => ResumenFiadoClienWidget(
-            nombre: params.getParam(
-              'nombre',
+            nombreTienda: params.getParam(
+              'nombreTienda',
               ParamType.String,
-            ),
-            doc: params.getParam<ClientesRecord>(
-              'doc',
-              ParamType.Document,
-              isList: true,
             ),
           ),
         ),
@@ -167,7 +153,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             direccionDomicilio: params.getParam(
               'direccionDomicilio',
@@ -221,7 +207,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             tenderoRef: params.getParam(
               'tenderoRef',
@@ -281,7 +267,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             direccionDomicilio: params.getParam(
               'direccionDomicilio',
@@ -329,7 +315,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             direccionDomicilio: params.getParam(
               'direccionDomicilio',
@@ -395,10 +381,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'totalGeneralFromHistorial',
               ParamType.double,
             ),
-            sumaProductosTemporales: params.getParam(
-              'sumaProductosTemporales',
-              ParamType.double,
-            ),
             idTransaccionPassed: params.getParam(
               'idTransaccionPassed',
               ParamType.String,
@@ -421,7 +403,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             tenderoRef: params.getParam(
               'tenderoRef',
@@ -481,7 +463,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             cedula: params.getParam(
               'cedula',
-              ParamType.int,
+              ParamType.String,
             ),
             direccionDomicilio: params.getParam(
               'direccionDomicilio',
@@ -497,6 +479,532 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             emailCliente: params.getParam(
               'emailCliente',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TenderoRegisterWidget.routeName,
+          path: TenderoRegisterWidget.routePath,
+          builder: (context, params) => TenderoRegisterWidget(),
+        ),
+        FFRoute(
+          name: HistorialVouchersWidget.routeName,
+          path: HistorialVouchersWidget.routePath,
+          builder: (context, params) => HistorialVouchersWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            viviendaProp: params.getParam(
+              'viviendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClienteProdFullPagoWidget.routeName,
+          path: ClienteProdFullPagoWidget.routePath,
+          builder: (context, params) => ClienteProdFullPagoWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            vivendaProp: params.getParam(
+              'vivendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClienteProdSelectPagoWidget.routeName,
+          path: ClienteProdSelectPagoWidget.routePath,
+          builder: (context, params) => ClienteProdSelectPagoWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            vivendaProp: params.getParam(
+              'vivendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+            calcForTotalPorPagar: params.getParam(
+              'calcForTotalPorPagar',
+              ParamType.double,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistorialSingleVoucherPagoWidget.routeName,
+          path: HistorialSingleVoucherPagoWidget.routePath,
+          asyncParams: {
+            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
+          },
+          builder: (context, params) => HistorialSingleVoucherPagoWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            indexFromHistorial: params.getParam(
+              'indexFromHistorial',
+              ParamType.int,
+            ),
+            totalPagadoFromHistorial: params.getParam(
+              'totalPagadoFromHistorial',
+              ParamType.double,
+            ),
+            transferFromHistorial: params.getParam(
+              'transferFromHistorial',
+              ParamType.bool,
+            ),
+            efectivoFromHistorial: params.getParam(
+              'efectivoFromHistorial',
+              ParamType.bool,
+            ),
+            dtHistorial: params.getParam(
+              'dtHistorial',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            totalPorPagarFromHistorial: params.getParam(
+              'totalPorPagarFromHistorial',
+              ParamType.double,
+            ),
+            totalGeneralFromHistorial: params.getParam(
+              'totalGeneralFromHistorial',
+              ParamType.double,
+            ),
+            idTransaccionPassed: params.getParam(
+              'idTransaccionPassed',
+              ParamType.String,
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            vivendaProp: params.getParam(
+              'vivendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+            historialPorPagarDT: params.getParam<DataTypeHistorialPagoStruct>(
+              'historialPorPagarDT',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            doc: params.getParam<ClientesRecord>(
+              'doc',
+              ParamType.Document,
+              isList: true,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ResumenFiadoClienProdsNewWidget.routeName,
+          path: ResumenFiadoClienProdsNewWidget.routePath,
+          asyncParams: {
+            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
+          },
+          builder: (context, params) => ResumenFiadoClienProdsNewWidget(
+            historialPorPagarDTList:
+                params.getParam<DataTypeHistorialPagoStruct>(
+              'historialPorPagarDTList',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            nombreCliente: params.getParam(
+              'nombreCliente',
+              ParamType.String,
+            ),
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            doc: params.getParam<ClientesRecord>(
+              'doc',
+              ParamType.Document,
+              isList: true,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ResumenFiadoClienTiendaNewWidget.routeName,
+          path: ResumenFiadoClienTiendaNewWidget.routePath,
+          builder: (context, params) => ResumenFiadoClienTiendaNewWidget(
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistorialFullVoucherPagoWidget.routeName,
+          path: HistorialFullVoucherPagoWidget.routePath,
+          asyncParams: {
+            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
+          },
+          builder: (context, params) => HistorialFullVoucherPagoWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            nombre: params.getParam(
+              'nombre',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            vivendaProp: params.getParam(
+              'vivendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+            historialPorPagarDT: params.getParam<DataTypeHistorialPagoStruct>(
+              'historialPorPagarDT',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            doc: params.getParam<ClientesRecord>(
+              'doc',
+              ParamType.Document,
+              isList: true,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TermsOfServiceSubPageWidget.routeName,
+          path: TermsOfServiceSubPageWidget.routePath,
+          builder: (context, params) => TermsOfServiceSubPageWidget(),
+        ),
+        FFRoute(
+          name: TenderoEditInfoWidget.routeName,
+          path: TenderoEditInfoWidget.routePath,
+          builder: (context, params) => TenderoEditInfoWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            tipoCuenta: params.getParam(
+              'tipoCuenta',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SigninConfirmWidget.routeName,
+          path: SigninConfirmWidget.routePath,
+          builder: (context, params) => SigninConfirmWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistorialVouchersClienteWidget.routeName,
+          path: HistorialVouchersClienteWidget.routePath,
+          asyncParams: {
+            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
+          },
+          builder: (context, params) => HistorialVouchersClienteWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            historialPorPagarDTList:
+                params.getParam<DataTypeHistorialPagoStruct>(
+              'historialPorPagarDTList',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            nombreCliente: params.getParam(
+              'nombreCliente',
+              ParamType.String,
+            ),
+            doc: params.getParam<ClientesRecord>(
+              'doc',
+              ParamType.Document,
+              isList: true,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClienteVincWidget.routeName,
+          path: ClienteVincWidget.routePath,
+          builder: (context, params) => ClienteVincWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
               ParamType.String,
             ),
           ),
@@ -686,18 +1194,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
-                    ),
+              ? Container(
+                  color: Color(0xFF286181),
+                  child: Image.asset(
+                    'assets/images/financial.png',
+                    fit: BoxFit.scaleDown,
                   ),
                 )
-              : page;
+              : PushNotificationsHandler(child: page);
 
           final transitionInfo = state.transitionInfo;
           return transitionInfo.hasTransition

@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components_nivel_tendero/check_cuentas_comp/check_cuentas_comp_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/request_manager.dart';
 
@@ -9,10 +10,12 @@ import 'package:flutter/material.dart';
 class HistorialPorPagarModel extends FlutterFlowModel<HistorialPorPagarWidget> {
   ///  Local state fields for this page.
 
-  double sumaTemporalCalculada = 0.0;
+  double totalAPagarCalc = 0.0;
 
   ///  State fields for stateful widgets in this page.
 
+  // Models for checkCuentasComp dynamic component.
+  late FlutterFlowDynamicModels<CheckCuentasCompModel> checkCuentasCompModels;
   // State field(s) for Checkbox widget.
   Map<DataTypeHistorialPagoStruct, bool> checkboxValueMap1 = {};
   List<DataTypeHistorialPagoStruct> get checkboxCheckedItems1 =>
@@ -28,9 +31,6 @@ class HistorialPorPagarModel extends FlutterFlowModel<HistorialPorPagarWidget> {
           .where((e) => e.value)
           .map((e) => e.key)
           .toList();
-
-  // Stores action output result for [Backend Call - Read Document] action in conFaltaPag widget.
-  ClientesRecord? readForSumaCalculada;
 
   /// Query cache managers for this widget.
 
@@ -52,10 +52,15 @@ class HistorialPorPagarModel extends FlutterFlowModel<HistorialPorPagarWidget> {
       _queryNameClienteHistorialPorPagarManager.clearRequest(uniqueKey);
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    checkCuentasCompModels =
+        FlutterFlowDynamicModels(() => CheckCuentasCompModel());
+  }
 
   @override
   void dispose() {
+    checkCuentasCompModels.dispose();
+
     /// Dispose query cache managers for this widget.
 
     clearQueryNameClienteHistorialPorPagarCache();

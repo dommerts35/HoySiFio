@@ -1,13 +1,10 @@
 // Export pages
 export '/nivel_cliente/auth_signing_in/auth_signing_in_widget.dart'
     show AuthSigningInWidget;
-export '/nivel_tendero/lista_prod_clien/lista_prod_clien_widget.dart'
-    show ListaProdClienWidget;
+export '/nivel_tendero/lista_clientes/lista_clientes_widget.dart'
+    show ListaClientesWidget;
 export '/nivel_tendero/cliente_make_info/cliente_make_info_widget.dart'
     show ClienteMakeInfoWidget;
-export '/nivel_cliente/pago_final/pago_final_widget.dart' show PagoFinalWidget;
-export '/nivel_cliente/resumen_fiado_clien/resumen_fiado_clien_widget.dart'
-    show ResumenFiadoClienWidget;
 export '/nivel_tendero/cliente_edit_info/cliente_edit_info_widget.dart'
     show ClienteEditInfoWidget;
 export '/nivel_tendero/cliente_prod_info_edit/cliente_prod_info_edit_widget.dart'
@@ -20,3 +17,29 @@ export '/nivel_tendero/cliente_prod_valor_pago/cliente_prod_valor_pago_widget.da
     show ClienteProdValorPagoWidget;
 export '/nivel_tendero/historial_por_pagar/historial_por_pagar_widget.dart'
     show HistorialPorPagarWidget;
+export '/nivel_cliente/tendero_register/tendero_register_widget.dart'
+    show TenderoRegisterWidget;
+export '/nivel_tendero/historial_vouchers/historial_vouchers_widget.dart'
+    show HistorialVouchersWidget;
+export '/nivel_tendero/cliente_prod_full_pago/cliente_prod_full_pago_widget.dart'
+    show ClienteProdFullPagoWidget;
+export '/nivel_tendero/cliente_prod_select_pago/cliente_prod_select_pago_widget.dart'
+    show ClienteProdSelectPagoWidget;
+export '/nivel_cliente/historial_single_voucher_pago/historial_single_voucher_pago_widget.dart'
+    show HistorialSingleVoucherPagoWidget;
+export '/nivel_cliente/resumen_fiado_clien_prods_new/resumen_fiado_clien_prods_new_widget.dart'
+    show ResumenFiadoClienProdsNewWidget;
+export '/nivel_cliente/resumen_fiado_clien_tienda_new/resumen_fiado_clien_tienda_new_widget.dart'
+    show ResumenFiadoClienTiendaNewWidget;
+export '/nivel_cliente/historial_full_voucher_pago/historial_full_voucher_pago_widget.dart'
+    show HistorialFullVoucherPagoWidget;
+export '/nivel_cliente/terms_of_service_sub_page/terms_of_service_sub_page_widget.dart'
+    show TermsOfServiceSubPageWidget;
+export '/nivel_tendero/tendero_edit_info/tendero_edit_info_widget.dart'
+    show TenderoEditInfoWidget;
+export '/nivel_tendero/signin_confirm/signin_confirm_widget.dart'
+    show SigninConfirmWidget;
+export '/nivel_cliente/historial_vouchers_cliente/historial_vouchers_cliente_widget.dart'
+    show HistorialVouchersClienteWidget;
+export '/nivel_tendero/cliente_vinc/cliente_vinc_widget.dart'
+    show ClienteVincWidget;

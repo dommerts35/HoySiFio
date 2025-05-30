@@ -1,3 +1,30 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionGroup": "tenderos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "tenderos.nombreTienda",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "tenderos.idTendero",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "fcm_tokens",
+      "fieldPath": "fcm_token",
+      "indexes": [
+        {
+          "order": "ASCENDING",
+          "queryScope": "COLLECTION_GROUP"
+        }
+      ]
+    }
+  ]
 }

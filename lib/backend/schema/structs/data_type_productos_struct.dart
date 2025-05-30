@@ -10,9 +10,13 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   DataTypeProductosStruct({
     String? nombreProd,
     double? valorProd,
+    double? cantidad,
+    String? idProd,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombreProd = nombreProd,
         _valorProd = valorProd,
+        _cantidad = cantidad,
+        _idProd = idProd,
         super(firestoreUtilData);
 
   // "nombreProd" field.
@@ -31,10 +35,28 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
 
   bool hasValorProd() => _valorProd != null;
 
+  // "cantidad" field.
+  double? _cantidad;
+  double get cantidad => _cantidad ?? 0.0;
+  set cantidad(double? val) => _cantidad = val;
+
+  void incrementCantidad(double amount) => cantidad = cantidad + amount;
+
+  bool hasCantidad() => _cantidad != null;
+
+  // "idProd" field.
+  String? _idProd;
+  String get idProd => _idProd ?? '';
+  set idProd(String? val) => _idProd = val;
+
+  bool hasIdProd() => _idProd != null;
+
   static DataTypeProductosStruct fromMap(Map<String, dynamic> data) =>
       DataTypeProductosStruct(
         nombreProd: data['nombreProd'] as String?,
         valorProd: castToType<double>(data['valorProd']),
+        cantidad: castToType<double>(data['cantidad']),
+        idProd: data['idProd'] as String?,
       );
 
   static DataTypeProductosStruct? maybeFromMap(dynamic data) => data is Map
@@ -44,6 +66,8 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   Map<String, dynamic> toMap() => {
         'nombreProd': _nombreProd,
         'valorProd': _valorProd,
+        'cantidad': _cantidad,
+        'idProd': _idProd,
       }.withoutNulls;
 
   @override
@@ -55,6 +79,14 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
         'valorProd': serializeParam(
           _valorProd,
           ParamType.double,
+        ),
+        'cantidad': serializeParam(
+          _cantidad,
+          ParamType.double,
+        ),
+        'idProd': serializeParam(
+          _idProd,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -71,6 +103,16 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        cantidad: deserializeParam(
+          data['cantidad'],
+          ParamType.double,
+          false,
+        ),
+        idProd: deserializeParam(
+          data['idProd'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -80,16 +122,21 @@ class DataTypeProductosStruct extends FFFirebaseStruct {
   bool operator ==(Object other) {
     return other is DataTypeProductosStruct &&
         nombreProd == other.nombreProd &&
-        valorProd == other.valorProd;
+        valorProd == other.valorProd &&
+        cantidad == other.cantidad &&
+        idProd == other.idProd;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([nombreProd, valorProd]);
+  int get hashCode =>
+      const ListEquality().hash([nombreProd, valorProd, cantidad, idProd]);
 }
 
 DataTypeProductosStruct createDataTypeProductosStruct({
   String? nombreProd,
   double? valorProd,
+  double? cantidad,
+  String? idProd,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -98,6 +145,8 @@ DataTypeProductosStruct createDataTypeProductosStruct({
     DataTypeProductosStruct(
       nombreProd: nombreProd,
       valorProd: valorProd,
+      cantidad: cantidad,
+      idProd: idProd,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

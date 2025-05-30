@@ -51,6 +51,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _dataTypeTenderos;
     });
+    _safeInit(() {
+      _isHPSelected = prefs.getBool('ff_isHPSelected') ?? _isHPSelected;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -148,11 +151,41 @@ class FFAppState extends ChangeNotifier {
     _esDiaDePago = value;
   }
 
-  /// cuenta
-  int _count = 0;
-  int get count => _count;
-  set count(int value) {
-    _count = value;
+  bool _isHPSelected = false;
+  bool get isHPSelected => _isHPSelected;
+  set isHPSelected(bool value) {
+    _isHPSelected = value;
+    prefs.setBool('ff_isHPSelected', value);
+  }
+
+  bool _isFirstTimeTenderoList = true;
+  bool get isFirstTimeTenderoList => _isFirstTimeTenderoList;
+  set isFirstTimeTenderoList(bool value) {
+    _isFirstTimeTenderoList = value;
+  }
+
+  bool _isFirstTimeInfoEdit = true;
+  bool get isFirstTimeInfoEdit => _isFirstTimeInfoEdit;
+  set isFirstTimeInfoEdit(bool value) {
+    _isFirstTimeInfoEdit = value;
+  }
+
+  bool _isFirstTimeCPP = true;
+  bool get isFirstTimeCPP => _isFirstTimeCPP;
+  set isFirstTimeCPP(bool value) {
+    _isFirstTimeCPP = value;
+  }
+
+  bool _isFirstTimeClienteTiendaList = true;
+  bool get isFirstTimeClienteTiendaList => _isFirstTimeClienteTiendaList;
+  set isFirstTimeClienteTiendaList(bool value) {
+    _isFirstTimeClienteTiendaList = value;
+  }
+
+  bool _isFirstTimeClienteProdList = true;
+  bool get isFirstTimeClienteProdList => _isFirstTimeClienteProdList;
+  set isFirstTimeClienteProdList(bool value) {
+    _isFirstTimeClienteProdList = value;
   }
 }
 

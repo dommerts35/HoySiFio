@@ -58,8 +58,17 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
-
+	<key>NSCameraUsageDescription</key>
+    <string>La aplicación necesita permiso para el acceso a la cámara</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>La aplicación necesita permiso para el acceso a la galería de fotos</string>
+	<key>PermissionGroupNotification</key>
+    <string>La aplicación necesita permiso para el acceso a las notificaciones</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+        <string>remote-notification</string>
+    </array>
 
 
 

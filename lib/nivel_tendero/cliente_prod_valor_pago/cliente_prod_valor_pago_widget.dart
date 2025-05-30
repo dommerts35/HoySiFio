@@ -3,9 +3,11 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'cliente_prod_valor_pago_model.dart';
 export 'cliente_prod_valor_pago_model.dart';
 
@@ -20,7 +22,6 @@ class ClienteProdValorPagoWidget extends StatefulWidget {
     this.dtHistorial,
     this.totalPorPagarFromHistorial,
     this.totalGeneralFromHistorial,
-    this.sumaProductosTemporales,
     this.idTransaccionPassed,
     this.nombre,
     this.telf,
@@ -44,13 +45,12 @@ class ClienteProdValorPagoWidget extends StatefulWidget {
   final DataTypeHistorialPagoStruct? dtHistorial;
   final double? totalPorPagarFromHistorial;
   final double? totalGeneralFromHistorial;
-  final double? sumaProductosTemporales;
   final String? idTransaccionPassed;
   final String? nombre;
   final String? telf;
   final bool? isFiando;
   final String? apellido;
-  final int? cedula;
+  final String? cedula;
   final DocumentReference? tenderoRef;
   final String? direccionDomicilio;
   final bool? viviendaAlq;
@@ -78,6 +78,9 @@ class _ClienteProdValorPagoWidgetState
 
     _model.valorAPTextController ??= TextEditingController();
     _model.valorAPFocusNode ??= FocusNode();
+
+    _model.voucherNumTFTextController ??= TextEditingController();
+    _model.voucherNumTFFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -150,7 +153,7 @@ class _ClienteProdValorPagoWidgetState
                           size: 24.0,
                         ),
                         onPressed: () async {
-                          context.pushNamed(
+                          context.goNamed(
                             HistorialPorPagarWidget.routeName,
                             queryParameters: {
                               'idCliente': serializeParam(
@@ -179,7 +182,7 @@ class _ClienteProdValorPagoWidgetState
                               ),
                               'cedula': serializeParam(
                                 widget.cedula,
-                                ParamType.int,
+                                ParamType.String,
                               ),
                               'direccionDomicilio': serializeParam(
                                 widget.direccionDomicilio,
@@ -207,64 +210,83 @@ class _ClienteProdValorPagoWidgetState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Total: \$${widget.totalGeneralFromHistorial?.toString()}',
+                          'Total: \$${formatNumber(
+                            widget.totalGeneralFromHistorial,
+                            formatType: FormatType.custom,
+                            format: '#0.00',
+                            locale: '',
+                          )}',
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
-                                fontFamily: 'Inter Tight',
+                                font: GoogleFonts.interTight(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
                                 fontSize: 40.0,
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
                               ),
                         ),
                         Text(
                           'Total por pagar: \$${formatNumber(
                             widget.totalPorPagarFromHistorial,
-                            formatType: FormatType.decimal,
-                            decimalType: DecimalType.automatic,
+                            formatType: FormatType.custom,
+                            format: '#0.00',
+                            locale: '',
                           )}',
                           maxLines: 2,
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                         ),
-                        StreamBuilder<ClientesRecord>(
-                          stream: _model.queryNombreCliente(
-                            requestFn: () =>
-                                ClientesRecord.getDocument(widget.idCliente!),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      FlutterFlowTheme.of(context).primary,
+                        Text(
+                          'del cliente: ${clienteProdValorPagoClientesRecord.cliente.nombre}',
+                          maxLines: 2,
+                          style:
+                              FlutterFlowTheme.of(context).labelMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
                                     ),
-                                  ),
-                                ),
-                              );
-                            }
-
-                            final textClientesRecord = snapshot.data!;
-
-                            return Text(
-                              'del cliente: ${textClientesRecord.cliente.nombre}',
-                              maxLines: 2,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Inter',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
-                            );
-                          },
                         ),
                       ],
                     ),
@@ -331,11 +353,24 @@ class _ClienteProdValorPagoWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 28.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
                                                       ),
                                               hintText:
                                                   FFLocalizations.of(context)
@@ -346,9 +381,30 @@ class _ClienteProdValorPagoWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         fontSize: 28.0,
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -399,9 +455,30 @@ class _ClienteProdValorPagoWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Inter',
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   fontSize: 28.0,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                   lineHeight: 3.0,
                                                 ),
                                             maxLength: 8,
@@ -415,8 +492,21 @@ class _ClienteProdValorPagoWidgetState
                                                 .valorAPTextControllerValidator
                                                 .asValidator(context),
                                             inputFormatters: [
+                                              if (!isAndroid && !isiOS)
+                                                TextInputFormatter.withFunction(
+                                                    (oldValue, newValue) {
+                                                  return TextEditingValue(
+                                                    selection:
+                                                        newValue.selection,
+                                                    text: newValue.text
+                                                        .toCapitalization(
+                                                            TextCapitalization
+                                                                .none),
+                                                  );
+                                                }),
                                               FilteringTextInputFormatter.allow(
-                                                  RegExp('^\\d*\\.?\\d{0,2}\$'))
+                                                  RegExp(
+                                                      '^(\\d+[.,]?\\d{0,2})\$'))
                                             ],
                                           ),
                                         ),
@@ -431,7 +521,7 @@ class _ClienteProdValorPagoWidgetState
                                               MainAxisAlignment.spaceAround,
                                           children: [
                                             Column(
-                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -446,8 +536,30 @@ class _ClienteProdValorPagoWidgetState
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ),
@@ -506,13 +618,17 @@ class _ClienteProdValorPagoWidgetState
                                                           }
                                                         }
                                                       },
-                                                      side: BorderSide(
-                                                        width: 2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
+                                                      side: (FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate !=
+                                                              null)
+                                                          ? BorderSide(
+                                                              width: 2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                            )
+                                                          : null,
                                                       activeColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -521,6 +637,198 @@ class _ClienteProdValorPagoWidgetState
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .info,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 118.0,
+                                                  child: Visibility(
+                                                    visible: _model
+                                                            .checkTransferValue ==
+                                                        true,
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 100.0,
+                                                        child: TextFormField(
+                                                          controller: _model
+                                                              .voucherNumTFTextController,
+                                                          focusNode: _model
+                                                              .voucherNumTFFocusNode,
+                                                          autofocus: false,
+                                                          obscureText: false,
+                                                          decoration:
+                                                              InputDecoration(
+                                                            isDense: true,
+                                                            labelStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                            hintText:
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                              't7csek1w' /* Núm. Voucher */,
+                                                            ),
+                                                            hintStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                            enabledBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            focusedBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            errorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            focusedErrorBorder:
+                                                                OutlineInputBorder(
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            filled: true,
+                                                            fillColor: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                          maxLength: 15,
+                                                          maxLengthEnforcement:
+                                                              MaxLengthEnforcement
+                                                                  .enforced,
+                                                          buildCounter: (context,
+                                                                  {required currentLength,
+                                                                  required isFocused,
+                                                                  maxLength}) =>
+                                                              null,
+                                                          cursorColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primaryText,
+                                                          validator: _model
+                                                              .voucherNumTFTextControllerValidator
+                                                              .asValidator(
+                                                                  context),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
@@ -542,8 +850,30 @@ class _ClienteProdValorPagoWidgetState
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                                   ),
                                                 ),
@@ -602,13 +932,17 @@ class _ClienteProdValorPagoWidgetState
                                                           }
                                                         }
                                                       },
-                                                      side: BorderSide(
-                                                        width: 2,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                      ),
+                                                      side: (FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate !=
+                                                              null)
+                                                          ? BorderSide(
+                                                              width: 2,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                            )
+                                                          : null,
                                                       activeColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -660,18 +994,37 @@ class _ClienteProdValorPagoWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          'iisu0mpl' /* Fecha de Pago:  */,
+                                                          'iisu0mpl' /* Fecha de Fiado:  */,
                                                         ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .headlineMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Inter Tight',
-                                                              fontSize: 30.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                            ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .interTight(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize:
+                                                                      30.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineMedium
+                                                                      .fontStyle,
+                                                                ),
                                                       ),
                                                     ),
                                                     Align(
@@ -712,7 +1065,9 @@ class _ClienteProdValorPagoWidgetState
                                                           return Text(
                                                             dateTimeFormat(
                                                               "d/M/y",
-                                                              getCurrentTimestamp,
+                                                              widget
+                                                                  .dtHistorial!
+                                                                  .fechaDeFio!,
                                                               locale: FFLocalizations
                                                                       .of(context)
                                                                   .languageCode,
@@ -721,12 +1076,29 @@ class _ClienteProdValorPagoWidgetState
                                                                     .of(context)
                                                                 .headlineSmall
                                                                 .override(
-                                                                  fontFamily:
-                                                                      'Inter Tight',
+                                                                  font: GoogleFonts
+                                                                      .interTight(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontStyle,
+                                                                  ),
                                                                   fontSize:
                                                                       30.0,
                                                                   letterSpacing:
                                                                       0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .headlineSmall
+                                                                      .fontStyle,
                                                                 ),
                                                           );
                                                         },
@@ -744,11 +1116,57 @@ class _ClienteProdValorPagoWidgetState
                                                           0.0, 50.0, 0.0, 0.0),
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
-                                                      _model.readPagoAfter =
-                                                          await ClientesRecord
-                                                              .getDocumentOnce(
-                                                                  widget
-                                                                      .idCliente!);
+                                                      var _shouldSetState =
+                                                          false;
+                                                      if (_model.valorAPTextController
+                                                                  .text ==
+                                                              '') {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  '¡Alerta!'),
+                                                              content: Text(
+                                                                  'Por favor, ingrese un monto a pagar'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
+                                                      _model.valorConv =
+                                                          await actions
+                                                              .normalizarValorNumerico(
+                                                        _model
+                                                            .valorAPTextController
+                                                            .text,
+                                                      );
+                                                      _shouldSetState = true;
+                                                      _model.totalPorPagarFromHistorialConv =
+                                                          await actions
+                                                              .normalizarValorNumerico(
+                                                        formatNumber(
+                                                          widget
+                                                              .totalPorPagarFromHistorial,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#0.00',
+                                                          locale: '',
+                                                        ),
+                                                      );
+                                                      _shouldSetState = true;
                                                       _model.validarFormPago =
                                                           true;
                                                       if (_model.formKey
@@ -760,109 +1178,139 @@ class _ClienteProdValorPagoWidgetState
                                                         _model.validarFormPago =
                                                             false;
                                                       }
+                                                      _shouldSetState = true;
                                                       if (_model
                                                               .validarFormPago ==
                                                           true) {
-                                                        if (!(((double var1,
-                                                                    double var2) {
-                                                              return var1 <=
-                                                                  var2;
-                                                            }(
-                                                                double.parse(_model
-                                                                    .valorAPTextController
-                                                                    .text),
-                                                                widget
-                                                                    .totalPorPagarFromHistorial!)) &&
-                                                            (double.parse(_model
-                                                                    .valorAPTextController
-                                                                    .text) >
-                                                                0))) {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(
-                                                            SnackBar(
-                                                              content: Text(
-                                                                'No puede pagar de más.',
-                                                                style:
-                                                                    TextStyle(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                ),
-                                                              ),
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      4000),
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondary,
-                                                            ),
+                                                        if (((_model.valorConv!) >
+                                                                (_model
+                                                                    .totalPorPagarFromHistorialConv!)) ||
+                                                            ((double var1) {
+                                                              return var1 <= 0;
+                                                            }(_model
+                                                                .valorConv!))) {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    '¡Alerta!'),
+                                                                content: Text(
+                                                                    'Ingrese un monto válido.'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
                                                           );
                                                         } else {
                                                           if ((_model.checkTransferValue ==
                                                                   false) &&
                                                               (_model.checkEfectivoValue ==
                                                                   false)) {
-                                                            ScaffoldMessenger
-                                                                    .of(context)
-                                                                .showSnackBar(
-                                                              SnackBar(
-                                                                content: Text(
-                                                                  'Ingrese el método de pago.',
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText,
-                                                                  ),
-                                                                ),
-                                                                duration: Duration(
-                                                                    milliseconds:
-                                                                        4000),
-                                                                backgroundColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
-                                                              ),
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      '¡Alerta!'),
+                                                                  content: Text(
+                                                                      'Ingrese el método de pago.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
                                                             );
                                                           } else {
-                                                            if ((widget.totalPorPagarFromHistorial!) -
-                                                                    double.parse(_model
-                                                                        .valorAPTextController
-                                                                        .text) ==
-                                                                0) {
+                                                            if ((_model.checkTransferValue ==
+                                                                    true) &&
+                                                                (_model.voucherNumTFTextController
+                                                                            .text ==
+                                                                        '')) {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        '¡Falta el número del voucher!'),
+                                                                    content: Text(
+                                                                        'Por favor, ingrese el número de voucher.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                              if (_shouldSetState)
+                                                                safeSetState(
+                                                                    () {});
+                                                              return;
+                                                            }
+                                                            if ((_model.totalPorPagarFromHistorialConv!) -
+                                                                    (_model
+                                                                        .valorConv!) ==
+                                                                0.000) {
                                                               _model
                                                                   .updateDtProdHistorialAfterStruct(
                                                                 (e) => e
-                                                                  ..totalPagado = (widget
-                                                                          .totalPorPagarFromHistorial!) -
-                                                                      double.parse(_model
-                                                                          .valorAPTextController
-                                                                          .text)
+                                                                  ..totalPagado =
+                                                                      (_model.totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
                                                                   ..transferencia =
                                                                       _model
                                                                           .checkTransferValue
                                                                   ..efectivo =
                                                                       _model
                                                                           .checkEfectivoValue
-                                                                  ..fechaPago =
-                                                                      getCurrentTimestamp
                                                                   ..productos = widget
                                                                       .dtHistorial!
                                                                       .productos
                                                                       .toList()
-                                                                  ..totalPorPagar = (widget
-                                                                          .totalPorPagarFromHistorial!) -
-                                                                      double.parse(_model
-                                                                          .valorAPTextController
-                                                                          .text)
+                                                                  ..totalPorPagar =
+                                                                      (_model.totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
                                                                   ..totalGeneral =
                                                                       widget
                                                                           .totalGeneralFromHistorial
                                                                   ..idTransaccion =
                                                                       widget
-                                                                          .idTransaccionPassed,
+                                                                          .idTransaccionPassed
+                                                                  ..fechaDeFio = widget
+                                                                      .dtHistorial
+                                                                      ?.fechaDeFio
+                                                                  ..numVoucher =
+                                                                      valueOrDefault<
+                                                                          int>(
+                                                                    int.tryParse(_model
+                                                                        .voucherNumTFTextController
+                                                                        .text),
+                                                                    0,
+                                                                  ),
                                                               );
                                                               safeSetState(
                                                                   () {});
@@ -873,13 +1321,6 @@ class _ClienteProdValorPagoWidgetState
                                                                       createClientesRecordData(
                                                                 cliente:
                                                                     createDataTypeClienteStruct(
-                                                                  total: _model
-                                                                          .readPagoAfter!
-                                                                          .cliente
-                                                                          .total -
-                                                                      double.parse(_model
-                                                                          .valorAPTextController
-                                                                          .text),
                                                                   fieldValues: {
                                                                     'historialPagadosProd':
                                                                         FieldValue
@@ -912,44 +1353,92 @@ class _ClienteProdValorPagoWidgetState
                                                                       false,
                                                                 ),
                                                               ));
+
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                cliente:
+                                                                    createDataTypeClienteStruct(
+                                                                  totalDeudaCompleta: clienteProdValorPagoClientesRecord
+                                                                          .cliente
+                                                                          .totalDeudaCompleta -
+                                                                      (_model
+                                                                          .valorConv!),
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                ),
+                                                              ));
+                                                              _model.tDCNorm =
+                                                                  await actions
+                                                                      .normalizarValorNumerico(
+                                                                formatNumber(
+                                                                  clienteProdValorPagoClientesRecord
+                                                                      .cliente
+                                                                      .totalDeudaCompleta,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                ),
+                                                              );
+                                                              _shouldSetState =
+                                                                  true;
+
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                cliente:
+                                                                    createDataTypeClienteStruct(
+                                                                  totalDeudaCompleta:
+                                                                      _model
+                                                                          .tDCNorm,
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                ),
+                                                              ));
                                                             } else {
-                                                              _model
-                                                                  .nuevoTotal = (widget
-                                                                      .totalPorPagarFromHistorial!) -
-                                                                  double.parse(_model
-                                                                      .valorAPTextController
-                                                                      .text);
-                                                              safeSetState(
-                                                                  () {});
                                                               _model
                                                                   .updateDtProdHistorialAfterStruct(
                                                                 (e) => e
-                                                                  ..totalPagado = (widget
-                                                                          .totalPagadoFromHistorial!) +
-                                                                      double.parse(_model
-                                                                          .valorAPTextController
-                                                                          .text)
+                                                                  ..totalPagado =
+                                                                      (widget.totalPagadoFromHistorial!) +
+                                                                          (_model
+                                                                              .valorConv!)
                                                                   ..transferencia =
                                                                       _model
                                                                           .checkTransferValue
                                                                   ..efectivo =
                                                                       _model
                                                                           .checkEfectivoValue
-                                                                  ..fechaPago =
-                                                                      getCurrentTimestamp
                                                                   ..productos = widget
                                                                       .dtHistorial!
                                                                       .productos
                                                                       .toList()
                                                                   ..totalPorPagar =
-                                                                      _model
-                                                                          .nuevoTotal
+                                                                      (_model.totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
                                                                   ..totalGeneral =
                                                                       widget
                                                                           .totalGeneralFromHistorial
                                                                   ..idTransaccion =
                                                                       widget
-                                                                          .idTransaccionPassed,
+                                                                          .idTransaccionPassed
+                                                                  ..fechaDeFio = widget
+                                                                      .dtHistorial
+                                                                      ?.fechaDeFio
+                                                                  ..numVoucher =
+                                                                      valueOrDefault<
+                                                                          int>(
+                                                                    int.tryParse(_model
+                                                                        .voucherNumTFTextController
+                                                                        .text),
+                                                                    0,
+                                                                  ),
                                                               );
                                                               safeSetState(
                                                                   () {});
@@ -1000,14 +1489,96 @@ class _ClienteProdValorPagoWidgetState
                                                                         true,
                                                                       )
                                                                     ]),
+                                                                    'historialPagadosProd':
+                                                                        FieldValue
+                                                                            .arrayUnion([
+                                                                      getDataTypeHistorialPagoFirestoreData(
+                                                                        updateDataTypeHistorialPagoStruct(
+                                                                          _model
+                                                                              .dtProdHistorialAfter,
+                                                                          clearUnsetFields:
+                                                                              false,
+                                                                        ),
+                                                                        true,
+                                                                      )
+                                                                    ]),
                                                                   },
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                ),
+                                                              ));
+
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                cliente:
+                                                                    createDataTypeClienteStruct(
+                                                                  totalDeudaCompleta: clienteProdValorPagoClientesRecord
+                                                                          .cliente
+                                                                          .totalDeudaCompleta -
+                                                                      (_model
+                                                                          .valorConv!),
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                ),
+                                                              ));
+                                                              _model.tDCNormF =
+                                                                  await actions
+                                                                      .normalizarValorNumerico(
+                                                                formatNumber(
+                                                                  clienteProdValorPagoClientesRecord
+                                                                      .cliente
+                                                                      .totalDeudaCompleta,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                ),
+                                                              );
+                                                              _shouldSetState =
+                                                                  true;
+
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                cliente:
+                                                                    createDataTypeClienteStruct(
+                                                                  totalDeudaCompleta:
+                                                                      _model
+                                                                          .tDCNormF,
                                                                   clearUnsetFields:
                                                                       false,
                                                                 ),
                                                               ));
                                                             }
 
-                                                            context.pushNamed(
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      '¡Pago guardado exitosamente!'),
+                                                                  content: Text(
+                                                                      'El pago ha sido guardado.'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+
+                                                            context.goNamed(
                                                               HistorialPorPagarWidget
                                                                   .routeName,
                                                               queryParameters: {
@@ -1056,7 +1627,8 @@ class _ClienteProdValorPagoWidgetState
                                                                     serializeParam(
                                                                   widget
                                                                       .cedula,
-                                                                  ParamType.int,
+                                                                  ParamType
+                                                                      .String,
                                                                 ),
                                                                 'direccionDomicilio':
                                                                     serializeParam(
@@ -1090,9 +1662,32 @@ class _ClienteProdValorPagoWidgetState
                                                             );
                                                           }
                                                         }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  '¡Alerta!'),
+                                                              content: Text(
+                                                                  'Por favor, ingrese un monto y el método de pago.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
                                                       }
 
-                                                      safeSetState(() {});
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
@@ -1125,12 +1720,29 @@ class _ClienteProdValorPagoWidgetState
                                                                   context)
                                                               .titleSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter Tight',
+                                                                font: GoogleFonts
+                                                                    .interTight(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: Colors
                                                                     .white,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
                                                               ),
                                                       elevation: 0.0,
                                                       borderRadius:

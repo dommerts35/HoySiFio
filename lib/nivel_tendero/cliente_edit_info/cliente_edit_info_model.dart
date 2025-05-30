@@ -4,6 +4,12 @@ import 'cliente_edit_info_widget.dart' show ClienteEditInfoWidget;
 import 'package:flutter/material.dart';
 
 class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
+  ///  Local state fields for this page.
+
+  bool isVivAlq = false;
+
+  bool isVivProp = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -137,9 +143,7 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
     return null;
   }
 
-  // State field(s) for Switch widget.
-  bool? switchValue;
-  // Stores action output result for [Validate Form] action in Button widget.
+  // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
 
   @override

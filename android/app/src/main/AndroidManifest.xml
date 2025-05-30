@@ -2,8 +2,10 @@
     package="com.mycompany.hoysifio"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
-
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
         android:label="HoySiFio"
         tools:replace="android:label"
@@ -55,6 +57,7 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
 
 
 

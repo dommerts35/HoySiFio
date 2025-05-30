@@ -17,7 +17,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     String? apellido,
 
     /// cedula
-    int? cedula,
+    String? cedula,
 
     /// direccion de casa
     String? direccionDomicilio,
@@ -32,7 +32,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     String? emailCliente,
     DocumentReference? idCliente,
     DocumentReference? idTendero,
-    double? total,
     List<DataTypeProductosStruct>? producto,
     List<DataTypeHistorialPagoStruct>? historialPagadosProd,
     List<DataTypeHistorialPagoStruct>? historialPorPagarProd,
@@ -40,6 +39,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     /// hora/dia de ultima actualizacion al datatype
     DateTime? lastUpdate,
     double? totalDeudaCompleta,
+    List<DataTypeVouchersStruct>? dataTypeVouchers,
+    List<DataTypeHistorialPagoStruct>? historialPorPagarSelectedList,
+    String? contrasena,
+    String? pin,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -52,12 +55,15 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _emailCliente = emailCliente,
         _idCliente = idCliente,
         _idTendero = idTendero,
-        _total = total,
         _producto = producto,
         _historialPagadosProd = historialPagadosProd,
         _historialPorPagarProd = historialPorPagarProd,
         _lastUpdate = lastUpdate,
         _totalDeudaCompleta = totalDeudaCompleta,
+        _dataTypeVouchers = dataTypeVouchers,
+        _historialPorPagarSelectedList = historialPorPagarSelectedList,
+        _contrasena = contrasena,
+        _pin = pin,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -89,11 +95,9 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
   bool hasApellido() => _apellido != null;
 
   // "cedula" field.
-  int? _cedula;
-  int get cedula => _cedula ?? 0;
-  set cedula(int? val) => _cedula = val;
-
-  void incrementCedula(int amount) => cedula = cedula + amount;
+  String? _cedula;
+  String get cedula => _cedula ?? '';
+  set cedula(String? val) => _cedula = val;
 
   bool hasCedula() => _cedula != null;
 
@@ -138,15 +142,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
   set idTendero(DocumentReference? val) => _idTendero = val;
 
   bool hasIdTendero() => _idTendero != null;
-
-  // "total" field.
-  double? _total;
-  double get total => _total ?? 0.0;
-  set total(double? val) => _total = val;
-
-  void incrementTotal(double amount) => total = total + amount;
-
-  bool hasTotal() => _total != null;
 
   // "producto" field.
   List<DataTypeProductosStruct>? _producto;
@@ -204,20 +199,61 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasTotalDeudaCompleta() => _totalDeudaCompleta != null;
 
+  // "DataTypeVouchers" field.
+  List<DataTypeVouchersStruct>? _dataTypeVouchers;
+  List<DataTypeVouchersStruct> get dataTypeVouchers =>
+      _dataTypeVouchers ?? const [];
+  set dataTypeVouchers(List<DataTypeVouchersStruct>? val) =>
+      _dataTypeVouchers = val;
+
+  void updateDataTypeVouchers(Function(List<DataTypeVouchersStruct>) updateFn) {
+    updateFn(_dataTypeVouchers ??= []);
+  }
+
+  bool hasDataTypeVouchers() => _dataTypeVouchers != null;
+
+  // "historialPorPagarSelectedList" field.
+  List<DataTypeHistorialPagoStruct>? _historialPorPagarSelectedList;
+  List<DataTypeHistorialPagoStruct> get historialPorPagarSelectedList =>
+      _historialPorPagarSelectedList ?? const [];
+  set historialPorPagarSelectedList(List<DataTypeHistorialPagoStruct>? val) =>
+      _historialPorPagarSelectedList = val;
+
+  void updateHistorialPorPagarSelectedList(
+      Function(List<DataTypeHistorialPagoStruct>) updateFn) {
+    updateFn(_historialPorPagarSelectedList ??= []);
+  }
+
+  bool hasHistorialPorPagarSelectedList() =>
+      _historialPorPagarSelectedList != null;
+
+  // "contrasena" field.
+  String? _contrasena;
+  String get contrasena => _contrasena ?? '';
+  set contrasena(String? val) => _contrasena = val;
+
+  bool hasContrasena() => _contrasena != null;
+
+  // "pin" field.
+  String? _pin;
+  String get pin => _pin ?? '';
+  set pin(String? val) => _pin = val;
+
+  bool hasPin() => _pin != null;
+
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
         nombre: data['nombre'] as String?,
         telf: data['telf'] as String?,
         isFiando: data['isFiando'] as bool?,
         apellido: data['apellido'] as String?,
-        cedula: castToType<int>(data['cedula']),
+        cedula: data['cedula'] as String?,
         direccionDomicilio: data['direccionDomicilio'] as String?,
         viviendaAlq: data['viviendaAlq'] as bool?,
         viviendaPropia: data['viviendaPropia'] as bool?,
         emailCliente: data['emailCliente'] as String?,
         idCliente: data['idCliente'] as DocumentReference?,
         idTendero: data['idTendero'] as DocumentReference?,
-        total: castToType<double>(data['total']),
         producto: getStructList(
           data['producto'],
           DataTypeProductosStruct.fromMap,
@@ -232,6 +268,16 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         lastUpdate: data['lastUpdate'] as DateTime?,
         totalDeudaCompleta: castToType<double>(data['totalDeudaCompleta']),
+        dataTypeVouchers: getStructList(
+          data['DataTypeVouchers'],
+          DataTypeVouchersStruct.fromMap,
+        ),
+        historialPorPagarSelectedList: getStructList(
+          data['historialPorPagarSelectedList'],
+          DataTypeHistorialPagoStruct.fromMap,
+        ),
+        contrasena: data['contrasena'] as String?,
+        pin: data['pin'] as String?,
       );
 
   static DataTypeClienteStruct? maybeFromMap(dynamic data) => data is Map
@@ -250,7 +296,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'emailCliente': _emailCliente,
         'idCliente': _idCliente,
         'idTendero': _idTendero,
-        'total': _total,
         'producto': _producto?.map((e) => e.toMap()).toList(),
         'historialPagadosProd':
             _historialPagadosProd?.map((e) => e.toMap()).toList(),
@@ -258,6 +303,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
             _historialPorPagarProd?.map((e) => e.toMap()).toList(),
         'lastUpdate': _lastUpdate,
         'totalDeudaCompleta': _totalDeudaCompleta,
+        'DataTypeVouchers': _dataTypeVouchers?.map((e) => e.toMap()).toList(),
+        'historialPorPagarSelectedList':
+            _historialPorPagarSelectedList?.map((e) => e.toMap()).toList(),
+        'contrasena': _contrasena,
+        'pin': _pin,
       }.withoutNulls;
 
   @override
@@ -280,7 +330,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         'cedula': serializeParam(
           _cedula,
-          ParamType.int,
+          ParamType.String,
         ),
         'direccionDomicilio': serializeParam(
           _direccionDomicilio,
@@ -306,10 +356,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           _idTendero,
           ParamType.DocumentReference,
         ),
-        'total': serializeParam(
-          _total,
-          ParamType.double,
-        ),
         'producto': serializeParam(
           _producto,
           ParamType.DataStruct,
@@ -332,6 +378,24 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'totalDeudaCompleta': serializeParam(
           _totalDeudaCompleta,
           ParamType.double,
+        ),
+        'DataTypeVouchers': serializeParam(
+          _dataTypeVouchers,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'historialPorPagarSelectedList': serializeParam(
+          _historialPorPagarSelectedList,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'contrasena': serializeParam(
+          _contrasena,
+          ParamType.String,
+        ),
+        'pin': serializeParam(
+          _pin,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -359,7 +423,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         cedula: deserializeParam(
           data['cedula'],
-          ParamType.int,
+          ParamType.String,
           false,
         ),
         direccionDomicilio: deserializeParam(
@@ -394,11 +458,6 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           false,
           collectionNamePath: ['tenderos'],
         ),
-        total: deserializeParam(
-          data['total'],
-          ParamType.double,
-          false,
-        ),
         producto: deserializeStructParam<DataTypeProductosStruct>(
           data['producto'],
           ParamType.DataStruct,
@@ -429,6 +488,29 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.double,
           false,
         ),
+        dataTypeVouchers: deserializeStructParam<DataTypeVouchersStruct>(
+          data['DataTypeVouchers'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: DataTypeVouchersStruct.fromSerializableMap,
+        ),
+        historialPorPagarSelectedList:
+            deserializeStructParam<DataTypeHistorialPagoStruct>(
+          data['historialPorPagarSelectedList'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+        ),
+        contrasena: deserializeParam(
+          data['contrasena'],
+          ParamType.String,
+          false,
+        ),
+        pin: deserializeParam(
+          data['pin'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -449,13 +531,17 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         emailCliente == other.emailCliente &&
         idCliente == other.idCliente &&
         idTendero == other.idTendero &&
-        total == other.total &&
         listEquality.equals(producto, other.producto) &&
         listEquality.equals(historialPagadosProd, other.historialPagadosProd) &&
         listEquality.equals(
             historialPorPagarProd, other.historialPorPagarProd) &&
         lastUpdate == other.lastUpdate &&
-        totalDeudaCompleta == other.totalDeudaCompleta;
+        totalDeudaCompleta == other.totalDeudaCompleta &&
+        listEquality.equals(dataTypeVouchers, other.dataTypeVouchers) &&
+        listEquality.equals(historialPorPagarSelectedList,
+            other.historialPorPagarSelectedList) &&
+        contrasena == other.contrasena &&
+        pin == other.pin;
   }
 
   @override
@@ -471,12 +557,15 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         emailCliente,
         idCliente,
         idTendero,
-        total,
         producto,
         historialPagadosProd,
         historialPorPagarProd,
         lastUpdate,
-        totalDeudaCompleta
+        totalDeudaCompleta,
+        dataTypeVouchers,
+        historialPorPagarSelectedList,
+        contrasena,
+        pin
       ]);
 }
 
@@ -485,16 +574,17 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   String? telf,
   bool? isFiando,
   String? apellido,
-  int? cedula,
+  String? cedula,
   String? direccionDomicilio,
   bool? viviendaAlq,
   bool? viviendaPropia,
   String? emailCliente,
   DocumentReference? idCliente,
   DocumentReference? idTendero,
-  double? total,
   DateTime? lastUpdate,
   double? totalDeudaCompleta,
+  String? contrasena,
+  String? pin,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -512,9 +602,10 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       emailCliente: emailCliente,
       idCliente: idCliente,
       idTendero: idTendero,
-      total: total,
       lastUpdate: lastUpdate,
       totalDeudaCompleta: totalDeudaCompleta,
+      contrasena: contrasena,
+      pin: pin,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

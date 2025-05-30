@@ -36,6 +36,14 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
           int index, Function(DataTypeProductosStruct) updateFn) =>
       productosDefault[index] = updateFn(productosDefault[index]);
 
+  DocumentReference? selfClienteID;
+
+  bool isVivProp = false;
+
+  bool isVivAlq = false;
+
+  String randomized = 'none';
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -47,12 +55,6 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         '21mzdkhm' /* Ingrese los nombres completos ... */,
-      );
-    }
-
-    if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        'wqcqgli1' /* Ingrese los nombres completos ... */,
       );
     }
 
@@ -69,12 +71,6 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     if (val == null || val.isEmpty) {
       return FFLocalizations.of(context).getText(
         'r3mdo8kj' /* Ingrese los apellidos completo... */,
-      );
-    }
-
-    if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        'w9iip6zv' /* Ingrese los apellidos completo... */,
       );
     }
 
@@ -132,6 +128,25 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     return null;
   }
 
+  // State field(s) for email widget.
+  FocusNode? emailFocusNode;
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return FFLocalizations.of(context).getText(
+        'mm05figr' /* Ingrese el email de su cliente */,
+      );
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return FFLocalizations.of(context).getText(
+        'mae9m98y' /* Ingrese el email de su cliente */,
+      );
+    }
+    return null;
+  }
+
   // State field(s) for direccion widget.
   FocusNode? direccionFocusNode;
   TextEditingController? direccionTextController;
@@ -146,33 +161,18 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     return null;
   }
 
-  // State field(s) for email widget.
-  FocusNode? emailFocusNode;
-  TextEditingController? emailTextController;
-  String? Function(BuildContext, String?)? emailTextControllerValidator;
-  String? _emailTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'mm05figr' /* Ingrese el email de su cliente */,
-      );
-    }
-
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'mae9m98y' /* Email no encontrado. */,
-      );
-    }
-    return null;
-  }
-
-  // State field(s) for Switch widget.
-  bool? switchValue;
-  // Stores action output result for [Validate Form] action in enviar widget.
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
+  // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validarMake;
-  // Stores action output result for [Firestore Query - Query a collection] action in enviar widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.
   ClientesRecord? queryValidarCedula;
-  // Stores action output result for [Backend Call - Create Document] action in enviar widget.
-  ClientesRecord? queryMakeCliente;
+  // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.
+  ClientesRecord? queryClienteInOtherTiendas;
+  // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.
+  ClientesRecord? queryForIDCliente;
+  // Stores action output result for [Backend Call - Create Document] action in enviarButton widget.
+  ClientesRecord? createdCliente;
 
   @override
   void initState(BuildContext context) {
@@ -181,8 +181,8 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
         _fullSecondNameTextControllerValidator;
     cedulaTextControllerValidator = _cedulaTextControllerValidator;
     phoneNumberTextControllerValidator = _phoneNumberTextControllerValidator;
-    direccionTextControllerValidator = _direccionTextControllerValidator;
     emailTextControllerValidator = _emailTextControllerValidator;
+    direccionTextControllerValidator = _direccionTextControllerValidator;
   }
 
   @override
@@ -199,10 +199,10 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     phoneNumberFocusNode?.dispose();
     phoneNumberTextController?.dispose();
 
-    direccionFocusNode?.dispose();
-    direccionTextController?.dispose();
-
     emailFocusNode?.dispose();
     emailTextController?.dispose();
+
+    direccionFocusNode?.dispose();
+    direccionTextController?.dispose();
   }
 }

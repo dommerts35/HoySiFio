@@ -1,12 +1,16 @@
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'cliente_make_info_model.dart';
 export 'cliente_make_info_model.dart';
 
@@ -14,10 +18,13 @@ class ClienteMakeInfoWidget extends StatefulWidget {
   const ClienteMakeInfoWidget({
     super.key,
     required this.tenderoRef,
+    this.nombreTienda,
   });
 
   /// Referencia para saber que tendero es
   final DocumentReference? tenderoRef;
+
+  final String? nombreTienda;
 
   static String routeName = 'clienteMakeInfo';
   static String routePath = '/clienteMakeInfo';
@@ -26,10 +33,13 @@ class ClienteMakeInfoWidget extends StatefulWidget {
   State<ClienteMakeInfoWidget> createState() => _ClienteMakeInfoWidgetState();
 }
 
-class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
+class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
+    with TickerProviderStateMixin {
   late ClienteMakeInfoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -48,13 +58,61 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
     _model.phoneNumberTextController ??= TextEditingController();
     _model.phoneNumberFocusNode ??= FocusNode();
     _model.phoneNumberFocusNode!.addListener(() => safeSetState(() {}));
-    _model.direccionTextController ??= TextEditingController();
-    _model.direccionFocusNode ??= FocusNode();
-    _model.direccionFocusNode!.addListener(() => safeSetState(() {}));
     _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
     _model.emailFocusNode!.addListener(() => safeSetState(() {}));
-    _model.switchValue = false;
+    _model.direccionTextController ??= TextEditingController();
+    _model.direccionFocusNode ??= FocusNode();
+    _model.direccionFocusNode!.addListener(() => safeSetState(() {}));
+    animationsMap.addAll({
+      'buttonOnActionTriggerAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.75, 0.75),
+            end: Offset(1.3, 1.3),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.3, 1.3),
+            end: Offset(0.75, 0.75),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.75, 0.75),
+            end: Offset(1.3, 1.3),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.3, 1.3),
+            end: Offset(0.75, 0.75),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -87,17 +145,39 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                   '2ob7wk2n' /* Registrar Nuevo Cliente */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Inter Tight',
+                      font: GoogleFonts.interTight(
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                     ),
               ),
               Text(
                 FFLocalizations.of(context).getText(
                   '6231x968' /* Llene la información del clien... */,
                 ),
+                maxLines: 2,
                 style: FlutterFlowTheme.of(context).labelMedium.override(
-                      fontFamily: 'Inter',
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
                     ),
               ),
             ].divide(SizedBox(height: 4.0)),
@@ -155,12 +235,46 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
+                                  Divider(
+                                    thickness: 2.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ),
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'pyxull98' /* Datos personales */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
                                   TextFormField(
                                     controller: _model.fullNameTextController,
                                     focusNode: _model.fullNameFocusNode,
                                     autofocus: true,
                                     textCapitalization:
                                         TextCapitalization.words,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -170,25 +284,76 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
                                           ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -240,12 +405,34 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
                                         ),
-                                    maxLength: 21,
+                                    maxLength: 35,
                                     maxLengthEnforcement:
-                                        MaxLengthEnforcement.none,
+                                        MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.name,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -253,6 +440,16 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                         .fullNameTextControllerValidator
                                         .asValidator(context),
                                     inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.words),
+                                          );
+                                        }),
                                       FilteringTextInputFormatter.allow(
                                           RegExp('^[A-Za-z\\s]+'))
                                     ],
@@ -264,6 +461,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     autofocus: true,
                                     textCapitalization:
                                         TextCapitalization.words,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -273,25 +471,76 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            fontFamily: 'Inter Tight',
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
                                           ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -343,12 +592,34 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
-                                          fontFamily: 'Inter Tight',
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
                                         ),
-                                    maxLength: 21,
+                                    maxLength: 35,
                                     maxLengthEnforcement:
-                                        MaxLengthEnforcement.none,
+                                        MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.name,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -356,6 +627,16 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                         .fullSecondNameTextControllerValidator
                                         .asValidator(context),
                                     inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.words),
+                                          );
+                                        }),
                                       FilteringTextInputFormatter.allow(
                                           RegExp('^[A-Za-z\\s]+'))
                                     ],
@@ -365,32 +646,88 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     focusNode: _model.cedulaFocusNode,
                                     autofocus: true,
                                     textCapitalization: TextCapitalization.none,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
                                           FFLocalizations.of(context).getText(
-                                        '8jwr8ism' /* Número de cédula */,
+                                        '8jwr8ism' /* Número de cédula/Usuario */,
                                       ),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
                                           ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'xndhbb3x' /* 10 dígitos */,
+                                      ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -442,12 +779,34 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
                                         .override(
-                                          fontFamily: 'Inter',
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
                                         ),
                                     maxLength: 10,
                                     maxLengthEnforcement:
                                         MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.number,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -455,6 +814,16 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                         .cedulaTextControllerValidator
                                         .asValidator(context),
                                     inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.none),
+                                          );
+                                        }),
                                       FilteringTextInputFormatter.allow(
                                           RegExp('[0-9]'))
                                     ],
@@ -465,6 +834,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     focusNode: _model.phoneNumberFocusNode,
                                     autofocus: true,
                                     textCapitalization: TextCapitalization.none,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -474,23 +844,78 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
                                           ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'v5g8l1zm' /* 10 dígitos */,
+                                      ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -542,12 +967,34 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
                                         .override(
-                                          fontFamily: 'Inter',
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
                                         ),
                                     maxLength: 10,
                                     maxLengthEnforcement:
                                         MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
                                     keyboardType: TextInputType.phone,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
@@ -555,111 +1002,26 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                         .phoneNumberTextControllerValidator
                                         .asValidator(context),
                                     inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.none),
+                                          );
+                                        }),
                                       FilteringTextInputFormatter.allow(
                                           RegExp('[0-9]'))
                                     ],
                                   ),
                                   TextFormField(
-                                    controller: _model.direccionTextController,
-                                    focusNode: _model.direccionFocusNode,
-                                    autofocus: true,
-                                    textCapitalization:
-                                        TextCapitalization.words,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '6zpzou76' /* Dirección domiciliaria */,
-                                      ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily: 'Inter',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Inter',
-                                            letterSpacing: 0.0,
-                                          ),
-                                      errorStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Inter',
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 2.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: (_model.direccionFocusNode
-                                                  ?.hasFocus ??
-                                              false)
-                                          ? FlutterFlowTheme.of(context).accent1
-                                          : FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                      contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              16.0, 20.0, 16.0, 20.0),
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyLarge
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          letterSpacing: 0.0,
-                                        ),
-                                    maxLength: 30,
-                                    maxLengthEnforcement:
-                                        MaxLengthEnforcement.none,
-                                    cursorColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    validator: _model
-                                        .direccionTextControllerValidator
-                                        .asValidator(context),
-                                  ),
-                                  TextFormField(
                                     controller: _model.emailTextController,
                                     focusNode: _model.emailFocusNode,
                                     autofocus: true,
-                                    textCapitalization:
-                                        TextCapitalization.words,
+                                    textCapitalization: TextCapitalization.none,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -669,23 +1031,74 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
                                           ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
                                           ),
                                       errorStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
                                             fontSize: 12.0,
                                             letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -737,8 +1150,25 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyLarge
                                         .override(
-                                          fontFamily: 'Inter',
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
                                         ),
                                     keyboardType: TextInputType.emailAddress,
                                     cursorColor:
@@ -746,52 +1176,591 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                                     validator: _model
                                         .emailTextControllerValidator
                                         .asValidator(context),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          'hs9qn08g' /* Vivienda Propia */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                      Switch.adaptive(
-                                        value: _model.switchValue!,
-                                        onChanged: (newValue) async {
-                                          safeSetState(() =>
-                                              _model.switchValue = newValue);
-                                        },
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        activeTrackColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        inactiveTrackColor: Color(0xFFEF9239),
-                                      ),
-                                      Text(
-                                        FFLocalizations.of(context).getText(
-                                          '98x3xwe0' /* Vivienda Alquilada */,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
+                                    inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.none),
+                                          );
+                                        }),
                                     ],
                                   ),
+                                  Divider(
+                                    thickness: 2.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).alternate,
+                                  ),
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'uay5m0ay' /* Datos de domicilio */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                  TextFormField(
+                                    controller: _model.direccionTextController,
+                                    focusNode: _model.direccionFocusNode,
+                                    autofocus: true,
+                                    textCapitalization: TextCapitalization.none,
+                                    textInputAction: TextInputAction.next,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        '6zpzou76' /* Dirección domiciliaria */,
+                                      ),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'r9hfk6jw' /* 100 carácteres */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                      errorStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: (_model.direccionFocusNode
+                                                  ?.hasFocus ??
+                                              false)
+                                          ? FlutterFlowTheme.of(context).accent1
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              16.0, 20.0, 16.0, 20.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyLarge
+                                                  .fontStyle,
+                                        ),
+                                    maxLength: 100,
+                                    maxLengthEnforcement:
+                                        MaxLengthEnforcement.enforced,
+                                    buildCounter: (context,
+                                            {required currentLength,
+                                            required isFocused,
+                                            maxLength}) =>
+                                        null,
+                                    cursorColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    validator: _model
+                                        .direccionTextControllerValidator
+                                        .asValidator(context),
+                                    inputFormatters: [
+                                      if (!isAndroid && !isiOS)
+                                        TextInputFormatter.withFunction(
+                                            (oldValue, newValue) {
+                                          return TextEditingValue(
+                                            selection: newValue.selection,
+                                            text: newValue.text
+                                                .toCapitalization(
+                                                    TextCapitalization.none),
+                                          );
+                                        }),
+                                    ],
+                                  ),
+                                  Text(
+                                    FFLocalizations.of(context).getText(
+                                      'muld53qm' /* Seleccione la vivienda del cli... */,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 10.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                _model.isVivProp = true;
+                                                _model.isVivAlq = false;
+                                                safeSetState(() {});
+                                                if (animationsMap[
+                                                        'buttonOnActionTriggerAnimation1'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'buttonOnActionTriggerAnimation1']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'slqan309' /* Vivienda Propia */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width: 140.0,
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: _model.isVivProp == true
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              showLoadingIndicator: false,
+                                            ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'buttonOnActionTriggerAnimation1']!,
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FFButtonWidget(
+                                              onPressed: () async {
+                                                _model.isVivAlq = true;
+                                                _model.isVivProp = false;
+                                                safeSetState(() {});
+                                                if (animationsMap[
+                                                        'buttonOnActionTriggerAnimation2'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'buttonOnActionTriggerAnimation2']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+                                              },
+                                              text: FFLocalizations.of(context)
+                                                  .getText(
+                                                'jsohxwys' /* Vivienda Alqu. */,
+                                              ),
+                                              options: FFButtonOptions(
+                                                width: 140.0,
+                                                height: 40.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 0.0, 16.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color: _model.isVivAlq == true
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .interTight(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              showLoadingIndicator: false,
+                                            ).animateOnActionTrigger(
+                                              animationsMap[
+                                                  'buttonOnActionTriggerAnimation2']!,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 5.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Theme(
+                                          data: ThemeData(
+                                            checkboxTheme: CheckboxThemeData(
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0),
+                                              ),
+                                            ),
+                                            unselectedWidgetColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                          ),
+                                          child: Checkbox(
+                                            value: _model.checkboxValue ??=
+                                                false,
+                                            onChanged: (newValue) async {
+                                              safeSetState(() => _model
+                                                  .checkboxValue = newValue!);
+                                            },
+                                            side: (FlutterFlowTheme.of(context)
+                                                        .alternate !=
+                                                    null)
+                                                ? BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  )
+                                                : null,
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                          ),
+                                        ),
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'v77bvb5c' /* Al registrarse, el cliente ace... */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await launchURL(
+                                                  'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
+                                            },
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '7kyhdq3c' /* términos de servicio */,
+                                              ),
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .success,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ].divide(SizedBox(width: 3.0)),
+                                    ),
+                                  ),
                                 ]
-                                    .divide(SizedBox(height: 12.0))
+                                    .divide(SizedBox(height: 20.0))
                                     .addToEnd(SizedBox(height: 32.0)),
                               ),
                             ),
@@ -811,102 +1780,217 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                         EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 12.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        var _shouldSetState = false;
+                        if (_model.checkboxValue != true) {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('¡Alerta!'),
+                                content: Text(
+                                    'Por favor, acepte los términos de servicio para continuar.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
                         _model.validarMake = true;
                         if (_model.formKey.currentState == null ||
                             !_model.formKey.currentState!.validate()) {
                           _model.validarMake = false;
                         }
+                        _shouldSetState = true;
                         if (_model.validarMake == true) {
                           _model.queryValidarCedula =
                               await queryClientesRecordOnce(
-                            queryBuilder: (clientesRecord) =>
-                                clientesRecord.where(
-                              'cliente.cedula',
-                              isEqualTo: int.tryParse(
-                                  _model.cedulaTextController.text),
-                            ),
+                            queryBuilder: (clientesRecord) => clientesRecord
+                                .where(
+                                  'cliente.cedula',
+                                  isEqualTo: _model.cedulaTextController.text,
+                                )
+                                .where(
+                                  'cliente.idTendero',
+                                  isEqualTo: widget.tenderoRef,
+                                ),
                             singleRecord: true,
                           ).then((s) => s.firstOrNull);
+                          _shouldSetState = true;
                           if (_model.queryValidarCedula?.cliente != null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Ya existe un cliente con esa cédula.',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                  ),
-                                ),
-                                duration: Duration(milliseconds: 4000),
-                                backgroundColor:
-                                    FlutterFlowTheme.of(context).secondary,
-                              ),
-                            );
-                          } else {
-                            var clientesRecordReference =
-                                ClientesRecord.collection.doc();
-                            await clientesRecordReference
-                                .set(createClientesRecordData(
-                              cliente: createDataTypeClienteStruct(
-                                nombre: _model.fullNameTextController.text,
-                                telf: _model.phoneNumberTextController.text,
-                                apellido:
-                                    _model.fullSecondNameTextController.text,
-                                cedula: int.tryParse(
-                                    _model.cedulaTextController.text),
-                                direccionDomicilio:
-                                    _model.direccionTextController.text,
-                                viviendaAlq: _model.switchValue == true,
-                                viviendaPropia: _model.switchValue == false,
-                                emailCliente: _model.emailTextController.text,
-                                isFiando: false,
-                                idTendero: widget.tenderoRef,
-                                total: 0.0,
-                                clearUnsetFields: false,
-                                create: true,
-                              ),
-                            ));
-                            _model.queryMakeCliente =
-                                ClientesRecord.getDocumentFromData(
-                                    createClientesRecordData(
-                                      cliente: createDataTypeClienteStruct(
-                                        nombre:
-                                            _model.fullNameTextController.text,
-                                        telf: _model
-                                            .phoneNumberTextController.text,
-                                        apellido: _model
-                                            .fullSecondNameTextController.text,
-                                        cedula: int.tryParse(
-                                            _model.cedulaTextController.text),
-                                        direccionDomicilio:
-                                            _model.direccionTextController.text,
-                                        viviendaAlq: _model.switchValue == true,
-                                        viviendaPropia:
-                                            _model.switchValue == false,
-                                        emailCliente:
-                                            _model.emailTextController.text,
-                                        isFiando: false,
-                                        idTendero: widget.tenderoRef,
-                                        total: 0.0,
-                                        clearUnsetFields: false,
-                                        create: true,
-                                      ),
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('¡Alerta!'),
+                                  content: Text(
+                                      'Ya existe un cliente con esa cédula registrado en su tienda.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
                                     ),
-                                    clientesRecordReference);
-
-                            context.pushNamed(
-                              ListaProdClienWidget.routeName,
-                              queryParameters: {
-                                'tenderoRef': serializeParam(
-                                  widget.tenderoRef,
-                                  ParamType.DocumentReference,
-                                ),
-                              }.withoutNulls,
+                                  ],
+                                );
+                              },
                             );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          } else {
+                            _model.queryClienteInOtherTiendas =
+                                await queryClientesRecordOnce(
+                              queryBuilder: (clientesRecord) =>
+                                  clientesRecord.where(
+                                'cliente.cedula',
+                                isEqualTo: _model.cedulaTextController.text,
+                              ),
+                              singleRecord: true,
+                            ).then((s) => s.firstOrNull);
+                            _shouldSetState = true;
+                            if (_model.queryClienteInOtherTiendas?.cliente !=
+                                null) {
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('¡Alerta!'),
+                                    content: Text(
+                                        'Este cliente ya ha sido registrado en otra tienda, por lo que se vincularán sus datos.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              _model.queryForIDCliente =
+                                  await queryClientesRecordOnce(
+                                queryBuilder: (clientesRecord) =>
+                                    clientesRecord.where(
+                                  'cliente.cedula',
+                                  isEqualTo: _model.cedulaTextController.text,
+                                ),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
+                              _shouldSetState = true;
+
+                              context.pushNamed(
+                                ClienteVincWidget.routeName,
+                                queryParameters: {
+                                  'idCliente': serializeParam(
+                                    _model.queryForIDCliente?.reference,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'tenderoRef': serializeParam(
+                                    widget.tenderoRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'nombreTienda': serializeParam(
+                                    widget.nombreTienda,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              _model.randomized = random_data.randomString(
+                                8,
+                                8,
+                                true,
+                                true,
+                                true,
+                              );
+                              safeSetState(() {});
+
+                              var clientesRecordReference =
+                                  ClientesRecord.collection.doc();
+                              await clientesRecordReference
+                                  .set(createClientesRecordData(
+                                cliente: createDataTypeClienteStruct(
+                                  nombre: _model.fullNameTextController.text,
+                                  telf: _model.phoneNumberTextController.text,
+                                  isFiando: false,
+                                  apellido:
+                                      _model.fullSecondNameTextController.text,
+                                  cedula: _model.cedulaTextController.text,
+                                  direccionDomicilio:
+                                      _model.direccionTextController.text,
+                                  viviendaAlq: _model.isVivAlq,
+                                  viviendaPropia: _model.isVivProp,
+                                  emailCliente: _model.emailTextController.text,
+                                  idTendero: widget.tenderoRef,
+                                  totalDeudaCompleta: 0.0,
+                                  clearUnsetFields: false,
+                                  create: true,
+                                ),
+                              ));
+                              _model.createdCliente =
+                                  ClientesRecord.getDocumentFromData(
+                                      createClientesRecordData(
+                                        cliente: createDataTypeClienteStruct(
+                                          nombre: _model
+                                              .fullNameTextController.text,
+                                          telf: _model
+                                              .phoneNumberTextController.text,
+                                          isFiando: false,
+                                          apellido: _model
+                                              .fullSecondNameTextController
+                                              .text,
+                                          cedula:
+                                              _model.cedulaTextController.text,
+                                          direccionDomicilio: _model
+                                              .direccionTextController.text,
+                                          viviendaAlq: _model.isVivAlq,
+                                          viviendaPropia: _model.isVivProp,
+                                          emailCliente:
+                                              _model.emailTextController.text,
+                                          idTendero: widget.tenderoRef,
+                                          totalDeudaCompleta: 0.0,
+                                          clearUnsetFields: false,
+                                          create: true,
+                                        ),
+                                      ),
+                                      clientesRecordReference);
+                              _shouldSetState = true;
+
+                              await _model.createdCliente!.reference
+                                  .update(createClientesRecordData(
+                                cliente: createDataTypeClienteStruct(
+                                  idCliente: _model.createdCliente?.reference,
+                                  clearUnsetFields: false,
+                                ),
+                              ));
+
+                              context.pushNamed(
+                                ListaClientesWidget.routeName,
+                                queryParameters: {
+                                  'tenderoRef': serializeParam(
+                                    widget.tenderoRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'nombreTienda': serializeParam(
+                                    widget.nombreTienda,
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
                           }
+                        } else {
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
                         }
 
-                        safeSetState(() {});
+                        if (_shouldSetState) safeSetState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         '25j9hjhr' /* Enviar */,
@@ -921,9 +2005,22 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget> {
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Inter Tight',
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
                                 ),
                         elevation: 3.0,
                         borderSide: BorderSide(

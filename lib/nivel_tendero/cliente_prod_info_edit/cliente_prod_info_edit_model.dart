@@ -5,6 +5,8 @@ import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
 import 'cliente_prod_info_edit_widget.dart' show ClienteProdInfoEditWidget;
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
+    show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
 class ClienteProdInfoEditModel
@@ -30,20 +32,30 @@ class ClienteProdInfoEditModel
 
   double tempSumProductos = 0.0;
 
+  double? sumaValoresEnDTProd;
+
+  String? valorANormalizar;
+
   ///  State fields for stateful widgets in this page.
 
+  TutorialCoachMark? tenderoICPdeClienteController;
   final formKey = GlobalKey<FormState>();
-  ClientesRecord? clienteProdInfoEditPreviousSnapshot;
-  // Stores action output result for [Backend Call - Read Document] action in clienteProd-InfoEdit widget.
-  ClientesRecord? readOnLoad;
-  // Stores action output result for [Backend Call - Read Document] action in clienteProd-InfoEdit widget.
-  ClientesRecord? readOnChange;
+  // Stores action output result for [Firestore Query - Query a collection] action in clienteProd-InfoEdit widget.
+  ClientesRecord? queryOnLoad;
+  // Stores action output result for [Firestore Query - Query a collection] action in clienteProd-InfoEdit widget.
+  ClientesRecord? queryOnDispose;
   // Model for infoComp component.
   late InfoCompModel infoCompModel;
+  // Stores action output result for [Backend Call - Read Document] action in iconoBorrar widget.
+  ClientesRecord? readForClienteDelete;
   // Stores action output result for [Firestore Query - Query a collection] action in historialPagados widget.
   ClientesRecord? queryHistorialPagado;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in historialPagar widget.
   ClientesRecord? queryHistorialPorPagar;
+  // State field(s) for cantidatTf widget.
+  FocusNode? cantidatTfFocusNode;
+  TextEditingController? cantidatTfTextController;
+  String? Function(BuildContext, String?)? cantidatTfTextControllerValidator;
   // State field(s) for prodTF widget.
   FocusNode? prodTFFocusNode;
   TextEditingController? prodTFTextController;
@@ -52,10 +64,20 @@ class ClienteProdInfoEditModel
   FocusNode? valorTFFocusNode;
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  ClientesRecord? readValidarLimiteAnadir;
-  // Stores action output result for [Backend Call - Read Document] action in Button widget.
-  ClientesRecord? readGuardar;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
+  double? valorConvVTF;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
+  double? valorConvCTF;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ClientesRecord? queryOnAnadir;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
+  double? totalDeudaCompletaNorm;
+  // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
+  ClientesRecord? queryAfterDelete;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  ClientesRecord? queryGuardar;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
+  double? sumaValoresEnDTNorm;
 
   /// Query cache managers for this widget.
 
@@ -81,7 +103,11 @@ class ClienteProdInfoEditModel
 
   @override
   void dispose() {
+    tenderoICPdeClienteController?.finish();
     infoCompModel.dispose();
+    cantidatTfFocusNode?.dispose();
+    cantidatTfTextController?.dispose();
+
     prodTFFocusNode?.dispose();
     prodTFTextController?.dispose();
 

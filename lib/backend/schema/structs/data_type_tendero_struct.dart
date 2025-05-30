@@ -12,11 +12,19 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
     String? pw,
     String? nombreTienda,
     DocumentReference? idTendero,
+    String? pin,
+    String? numCuenta,
+    String? cuentaDeBancoName,
+    String? tipoDeCuenta,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _mail = mail,
         _pw = pw,
         _nombreTienda = nombreTienda,
         _idTendero = idTendero,
+        _pin = pin,
+        _numCuenta = numCuenta,
+        _cuentaDeBancoName = cuentaDeBancoName,
+        _tipoDeCuenta = tipoDeCuenta,
         super(firestoreUtilData);
 
   // "mail" field.
@@ -47,12 +55,44 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
 
   bool hasIdTendero() => _idTendero != null;
 
+  // "pin" field.
+  String? _pin;
+  String get pin => _pin ?? '';
+  set pin(String? val) => _pin = val;
+
+  bool hasPin() => _pin != null;
+
+  // "numCuenta" field.
+  String? _numCuenta;
+  String get numCuenta => _numCuenta ?? '';
+  set numCuenta(String? val) => _numCuenta = val;
+
+  bool hasNumCuenta() => _numCuenta != null;
+
+  // "cuentaDeBancoName" field.
+  String? _cuentaDeBancoName;
+  String get cuentaDeBancoName => _cuentaDeBancoName ?? '';
+  set cuentaDeBancoName(String? val) => _cuentaDeBancoName = val;
+
+  bool hasCuentaDeBancoName() => _cuentaDeBancoName != null;
+
+  // "tipoDeCuenta" field.
+  String? _tipoDeCuenta;
+  String get tipoDeCuenta => _tipoDeCuenta ?? '';
+  set tipoDeCuenta(String? val) => _tipoDeCuenta = val;
+
+  bool hasTipoDeCuenta() => _tipoDeCuenta != null;
+
   static DataTypeTenderoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeTenderoStruct(
         mail: data['mail'] as String?,
         pw: data['pw'] as String?,
         nombreTienda: data['nombreTienda'] as String?,
         idTendero: data['idTendero'] as DocumentReference?,
+        pin: data['pin'] as String?,
+        numCuenta: data['numCuenta'] as String?,
+        cuentaDeBancoName: data['cuentaDeBancoName'] as String?,
+        tipoDeCuenta: data['tipoDeCuenta'] as String?,
       );
 
   static DataTypeTenderoStruct? maybeFromMap(dynamic data) => data is Map
@@ -64,6 +104,10 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         'pw': _pw,
         'nombreTienda': _nombreTienda,
         'idTendero': _idTendero,
+        'pin': _pin,
+        'numCuenta': _numCuenta,
+        'cuentaDeBancoName': _cuentaDeBancoName,
+        'tipoDeCuenta': _tipoDeCuenta,
       }.withoutNulls;
 
   @override
@@ -83,6 +127,22 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         'idTendero': serializeParam(
           _idTendero,
           ParamType.DocumentReference,
+        ),
+        'pin': serializeParam(
+          _pin,
+          ParamType.String,
+        ),
+        'numCuenta': serializeParam(
+          _numCuenta,
+          ParamType.String,
+        ),
+        'cuentaDeBancoName': serializeParam(
+          _cuentaDeBancoName,
+          ParamType.String,
+        ),
+        'tipoDeCuenta': serializeParam(
+          _tipoDeCuenta,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -109,6 +169,26 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
           false,
           collectionNamePath: ['tenderos'],
         ),
+        pin: deserializeParam(
+          data['pin'],
+          ParamType.String,
+          false,
+        ),
+        numCuenta: deserializeParam(
+          data['numCuenta'],
+          ParamType.String,
+          false,
+        ),
+        cuentaDeBancoName: deserializeParam(
+          data['cuentaDeBancoName'],
+          ParamType.String,
+          false,
+        ),
+        tipoDeCuenta: deserializeParam(
+          data['tipoDeCuenta'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -120,12 +200,24 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         mail == other.mail &&
         pw == other.pw &&
         nombreTienda == other.nombreTienda &&
-        idTendero == other.idTendero;
+        idTendero == other.idTendero &&
+        pin == other.pin &&
+        numCuenta == other.numCuenta &&
+        cuentaDeBancoName == other.cuentaDeBancoName &&
+        tipoDeCuenta == other.tipoDeCuenta;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([mail, pw, nombreTienda, idTendero]);
+  int get hashCode => const ListEquality().hash([
+        mail,
+        pw,
+        nombreTienda,
+        idTendero,
+        pin,
+        numCuenta,
+        cuentaDeBancoName,
+        tipoDeCuenta
+      ]);
 }
 
 DataTypeTenderoStruct createDataTypeTenderoStruct({
@@ -133,6 +225,10 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
   String? pw,
   String? nombreTienda,
   DocumentReference? idTendero,
+  String? pin,
+  String? numCuenta,
+  String? cuentaDeBancoName,
+  String? tipoDeCuenta,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -143,6 +239,10 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
       pw: pw,
       nombreTienda: nombreTienda,
       idTendero: idTendero,
+      pin: pin,
+      numCuenta: numCuenta,
+      cuentaDeBancoName: cuentaDeBancoName,
+      tipoDeCuenta: tipoDeCuenta,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

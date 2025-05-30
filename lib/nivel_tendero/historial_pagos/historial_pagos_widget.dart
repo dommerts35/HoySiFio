@@ -1,9 +1,12 @@
 import '/backend/backend.dart';
+import '/components_nivel_tendero/empty_cuentas_pagadas/empty_cuentas_pagadas_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'historial_pagos_model.dart';
 export 'historial_pagos_model.dart';
 
@@ -29,7 +32,7 @@ class HistorialPagosWidget extends StatefulWidget {
   final String? telf;
   final bool? isFiando;
   final String? apellido;
-  final int? cedula;
+  final String? cedula;
   final String? direccionDomicilio;
   final bool? viviendaAlq;
   final bool? viviendaProp;
@@ -138,7 +141,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                         ),
                                         'cedula': serializeParam(
                                           widget.cedula,
-                                          ParamType.int,
+                                          ParamType.String,
                                         ),
                                         'tenderoRef': serializeParam(
                                           widget.idTendero,
@@ -170,16 +173,29 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     24.0, 20.0, 0.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'gxg9u041' /* Historial de productos
-pagados */
-                                    ,
+                                    'gxg9u041' /* Cuentas pagadas */,
                                   ),
                                   maxLines: 2,
                                   style: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        font: GoogleFonts.interTight(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
                                       ),
                                 ),
                               ),
@@ -196,8 +212,21 @@ pagados */
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                             ),
                           ),
@@ -229,13 +258,28 @@ pagados */
                                 final textClientesRecord = snapshot.data!;
 
                                 return Text(
-                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
+                                  'del cliente: ${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
                                         letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
                                       ),
                                 );
                               },
@@ -269,9 +313,14 @@ pagados */
                                       mainHistorialViewClientesRecord
                                           .cliente.historialPagadosProd
                                           .sortedList(
-                                              keyOf: (e) => e.fechaPago!,
+                                              keyOf: (e) => e.fechaDeFio!,
                                               desc: true)
                                           .toList();
+                                  if (listaProdPagadosGroup.isEmpty) {
+                                    return Center(
+                                      child: EmptyCuentasPagadasWidget(),
+                                    );
+                                  }
 
                                   return ListView.separated(
                                     padding: EdgeInsets.fromLTRB(
@@ -314,109 +363,441 @@ pagados */
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              Builder(
-                                                builder: (context) {
-                                                  final singleProd =
-                                                      listaProdPagadosGroupItem
-                                                          .productos
-                                                          .map((e) => e)
-                                                          .toList();
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 15.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'elangz8q' /* Cantidad */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '5azzte22' /* Producto */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        '0qsfqe7k' /* Valor Unitario */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'hy0nw511' /* Valor */,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 18.0)),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 20.0, 0.0, 10.0),
+                                                child: Builder(
+                                                  builder: (context) {
+                                                    final singleProd =
+                                                        listaProdPagadosGroupItem
+                                                            .productos
+                                                            .map((e) => e)
+                                                            .toList()
+                                                            .sortedList(
+                                                                keyOf: (e) =>
+                                                                    listaProdPagadosGroupItem
+                                                                        .fechaDeFio!,
+                                                                desc: true)
+                                                            .toList();
 
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: List.generate(
-                                                        singleProd.length,
-                                                        (singleProdIndex) {
-                                                      final singleProdItem =
-                                                          singleProd[
-                                                              singleProdIndex];
-                                                      return Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    12.0,
-                                                                    16.0,
-                                                                    12.0),
-                                                        child: Row(
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: List.generate(
+                                                          singleProd.length,
+                                                          (singleProdIndex) {
+                                                        final singleProdItem =
+                                                            singleProd[
+                                                                singleProdIndex];
+                                                        return Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  .spaceAround,
                                                           children: [
-                                                            Expanded(
-                                                              flex: 4,
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            12.0,
-                                                                            0.0),
-                                                                child: Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .center,
-                                                                  crossAxisAlignment:
-                                                                      CrossAxisAlignment
-                                                                          .start,
-                                                                  children: [
-                                                                    Text(
-                                                                      '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Inter',
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Expanded(
-                                                              flex: 2,
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          2.0,
+                                                                          0.0,
+                                                                          0.0),
                                                               child: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .end,
                                                                 children: [
+                                                                  SizedBox(
+                                                                    width: 60.0,
+                                                                    child:
+                                                                        Divider(
+                                                                      height:
+                                                                          0.0,
+                                                                      thickness:
+                                                                          0.0,
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                    ),
+                                                                  ),
                                                                   Text(
-                                                                    '\$ ${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.valorProd.toString()}',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .end,
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      listaProdPagadosGroupItem
+                                                                          .productos
+                                                                          .elementAtOrNull(
+                                                                              singleProdIndex)
+                                                                          ?.cantidad
+                                                                          .toString(),
+                                                                      '0',
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .headlineSmall
+                                                                        .titleMedium
                                                                         .override(
-                                                                          fontFamily:
-                                                                              'Inter Tight',
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                          ),
                                                                           letterSpacing:
                                                                               0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
                                                                         ),
                                                                   ),
                                                                 ],
                                                               ),
                                                             ),
-                                                          ],
-                                                        ),
-                                                      );
-                                                    }),
-                                                  );
-                                                },
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: 60.0,
+                                                                  child:
+                                                                      Divider(
+                                                                    height: 0.0,
+                                                                    thickness:
+                                                                        0.0,
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}'
+                                                                      .maybeHandleOverflow(
+                                                                    maxChars: 7,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: 88.0,
+                                                                  child:
+                                                                      Divider(
+                                                                    height: 0.0,
+                                                                    thickness:
+                                                                        0.0,
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '\$ ${formatNumber(
+                                                                    listaProdPagadosGroupItem
+                                                                            .productos
+                                                                            .elementAtOrNull(
+                                                                                singleProdIndex)!
+                                                                            .valorProd /
+                                                                        valueOrDefault<
+                                                                            double>(
+                                                                          listaProdPagadosGroupItem
+                                                                              .productos
+                                                                              .elementAtOrNull(singleProdIndex)
+                                                                              ?.cantidad,
+                                                                          0.0,
+                                                                        ),
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    format:
+                                                                        '#0.00',
+                                                                    locale: '',
+                                                                  )}',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .end,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: 30.0,
+                                                                  child:
+                                                                      Divider(
+                                                                    height: 0.0,
+                                                                    thickness:
+                                                                        0.0,
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                  ),
+                                                                ),
+                                                                Text(
+                                                                  '\$ ${formatNumber(
+                                                                    listaProdPagadosGroupItem
+                                                                        .productos
+                                                                        .elementAtOrNull(
+                                                                            singleProdIndex)
+                                                                        ?.valorProd,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    format:
+                                                                        '#0.00',
+                                                                    locale: '',
+                                                                  )}',
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .end,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ]
+                                                              .addToStart(
+                                                                  SizedBox(
+                                                                      width:
+                                                                          1.0))
+                                                              .addToEnd(
+                                                                  SizedBox(
+                                                                      width:
+                                                                          1.0)),
+                                                        );
+                                                      }).divide(SizedBox(
+                                                          height: 15.0)),
+                                                    );
+                                                  },
+                                                ),
                                               ),
                                               Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -427,38 +808,137 @@ pagados */
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Total general de los productos: \$${listaProdPagadosGroupItem.totalGeneral.toString()}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      'Total precio de productos: \$${formatNumber(
+                                                        listaProdPagadosGroupItem
+                                                            .totalGeneral,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        format: '#0.00',
+                                                        locale: '',
+                                                      )}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     ),
                                                   ),
+                                                  if (listaProdPagadosGroupItem
+                                                          .totalPorPagar >
+                                                      0.0)
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  4.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Total por pagar: \$${formatNumber(
+                                                          listaProdPagadosGroupItem
+                                                              .totalPorPagar,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#0.00',
+                                                          locale: '',
+                                                        )}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Fecha del Pago: ${dateTimeFormat(
-                                                        "d/M/y",
+                                                      'Fecha del fío: ${dateTimeFormat(
+                                                        "d/M/y h:mm a",
                                                         listaProdPagadosGroupItem
-                                                            .fechaPago,
+                                                            .fechaDeFio,
                                                         locale:
                                                             FFLocalizations.of(
                                                                     context)
                                                                 .languageCode,
                                                       )}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            letterSpacing: 0.0,
-                                                          ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     ),
                                                   ),
                                                   Row(
@@ -486,10 +966,27 @@ pagados */
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Inter',
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -529,12 +1026,17 @@ pagados */
                                                                           _model.checkboxValueMap1[listaProdPagadosGroupItem] =
                                                                               newValue!);
                                                                     },
-                                                              side: BorderSide(
-                                                                width: 2,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                              ),
+                                                              side: (FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate !=
+                                                                      null)
+                                                                  ? BorderSide(
+                                                                      width: 2,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                    )
+                                                                  : null,
                                                               activeColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -566,10 +1068,27 @@ pagados */
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
-                                                                    fontFamily:
-                                                                        'Inter',
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
                                                                     letterSpacing:
                                                                         0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
@@ -609,12 +1128,17 @@ pagados */
                                                                           _model.checkboxValueMap2[listaProdPagadosGroupItem] =
                                                                               newValue!);
                                                                     },
-                                                              side: BorderSide(
-                                                                width: 2,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                              ),
+                                                              side: (FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate !=
+                                                                      null)
+                                                                  ? BorderSide(
+                                                                      width: 2,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                    )
+                                                                  : null,
                                                               activeColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -630,10 +1154,61 @@ pagados */
                                                       ),
                                                     ],
                                                   ),
+                                                  if (listaProdPagadosGroupItem
+                                                          .numVoucher >
+                                                      0)
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Número de Voucher: ${listaProdPagadosGroupItem.numVoucher.toString()}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                 ],
                                               ),
                                               if (listaProdPagadosGroupItem
-                                                      .totalPagado <=
+                                                      .totalPorPagar ==
                                                   0.0)
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
@@ -682,13 +1257,112 @@ pagados */
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
-                                                                fontFamily:
-                                                                    'Inter',
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .tertiary,
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (listaProdPagadosGroupItem
+                                                      .totalPorPagar >
+                                                  0.0)
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 0.0),
+                                                  child: Container(
+                                                    width: 90.0,
+                                                    height: 32.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    8.0,
+                                                                    0.0),
+                                                        child: AutoSizeText(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '9qn9zcwa' /* Faltó Pago */,
+                                                          ),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
                                                         ),
                                                       ),
