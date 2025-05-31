@@ -1,6 +1,20 @@
 {
   "indexes": [
     {
+      "collectionGroup": "clientes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "cliente.cedula",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "cliente.contrasena",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "tenderos",
       "queryScope": "COLLECTION",
       "fields": [

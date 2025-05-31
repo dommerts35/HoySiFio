@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -1836,6 +1835,10 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                     validator: _model
                                         .pinTenderoTextControllerValidator
                                         .asValidator(context),
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp('[0-9]'))
+                                    ],
                                   ),
                                 ),
                                 Align(
@@ -2064,18 +2067,6 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .doc(user.uid)
                                                         .update(
                                                             createTenderosRecordData(
-                                                          createdTime:
-                                                              getCurrentTimestamp,
-                                                          displayName: _model
-                                                              .tiendaNombreTenderoTextController
-                                                              .text,
-                                                          email: _model
-                                                              .emailAddressTenderoTextController
-                                                              .text,
-                                                          phoneNumber: _model
-                                                              .phoneNumberTenderoTextController
-                                                              .text,
-                                                          photoUrl: 'NONE',
                                                           tenderos:
                                                               createDataTypeTenderoStruct(
                                                             mail: _model
@@ -2087,6 +2078,8 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                             nombreTienda: _model
                                                                 .tiendaNombreTenderoTextController
                                                                 .text,
+                                                            idTendero:
+                                                                currentUserReference,
                                                             pin: _model
                                                                 .pinTenderoTextController
                                                                 .text,
@@ -2110,22 +2103,27 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 return 'Cuenta sin especificar';
                                                               }
                                                             }(),
-                                                            idTendero:
-                                                                currentUserReference,
                                                             clearUnsetFields:
                                                                 false,
                                                             create: true,
                                                           ),
-                                                          uid: random_data
-                                                              .randomString(
-                                                            10,
-                                                            10,
-                                                            true,
-                                                            true,
-                                                            true,
-                                                          ),
+                                                          createdTime:
+                                                              getCurrentTimestamp,
+                                                          displayName: _model
+                                                              .tiendaNombreTenderoTextController
+                                                              .text,
+                                                          email: _model
+                                                              .emailAddressTenderoTextController
+                                                              .text,
+                                                          photoUrl: 'NONE',
+                                                          phoneNumber: _model
+                                                              .phoneNumberTenderoTextController
+                                                              .text,
                                                           pin: _model
                                                               .pinTenderoTextController
+                                                              .text,
+                                                          uid: _model
+                                                              .emailAddressTenderoTextController
                                                               .text,
                                                         ));
 

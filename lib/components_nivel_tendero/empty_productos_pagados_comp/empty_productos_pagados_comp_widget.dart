@@ -58,6 +58,10 @@ class _EmptyProductosPagadosCompWidgetState
             )
           ],
           borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).primaryText,
+            width: 1.0,
+          ),
         ),
         child: Padding(
           padding: EdgeInsets.all(12.0),

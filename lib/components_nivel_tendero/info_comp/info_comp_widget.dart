@@ -58,7 +58,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 280.0,
-      height: 96.0,
+      height: 100.0,
       child: Stack(
         children: [
           Card(

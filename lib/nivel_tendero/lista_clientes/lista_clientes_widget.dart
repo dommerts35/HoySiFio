@@ -403,8 +403,13 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                           width: 100.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: Color(0xFFF1F4F8),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                              ).image,
+                            ),
                           ),
                           child: StreamBuilder<List<ClientesRecord>>(
                             stream: queryClientesRecord(
@@ -460,7 +465,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                          ClienteProdInfoEditWidget.routeName,
+                                          ClienteInfoEditWidget.routeName,
                                           queryParameters: {
                                             'nombre': serializeParam(
                                               listViewClientesRecord
@@ -527,7 +532,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                               .secondaryBackground,
                                           boxShadow: [
                                             BoxShadow(
-                                              blurRadius: 3.0,
+                                              blurRadius: 5.0,
                                               color: Color(0x20000000),
                                               offset: Offset(
                                                 0.0,
@@ -537,6 +542,11 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                           ],
                                           borderRadius:
                                               BorderRadius.circular(12.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            width: 1.0,
+                                          ),
                                         ),
                                         child: Padding(
                                           padding:
@@ -818,7 +828,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                          ClienteProdInfoEditWidget.routeName,
+                                          ClienteInfoEditWidget.routeName,
                                           queryParameters: {
                                             'nombre': serializeParam(
                                               listViewClientesRecord
@@ -1091,7 +1101,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         context.pushNamed(
-                                          ClienteProdInfoEditWidget.routeName,
+                                          ClienteInfoEditWidget.routeName,
                                           queryParameters: {
                                             'nombre': serializeParam(
                                               listViewClientesRecord

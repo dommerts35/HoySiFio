@@ -42,6 +42,7 @@ dependencies:
   collection: 1.19.0
   csslib: 0.17.3
   dio:
+  easy_debounce: 2.0.1
   email_validator:
   file_picker: 8.1.2
   firebase_auth: 5.3.3

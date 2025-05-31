@@ -186,14 +186,14 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
               child: FlutterFlowIconButton(
-                borderColor: FlutterFlowTheme.of(context).alternate,
+                borderColor: FlutterFlowTheme.of(context).primary,
                 borderRadius: 12.0,
                 borderWidth: 1.0,
                 buttonSize: 40.0,
                 fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                 icon: Icon(
                   Icons.close_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 24.0,
                 ),
                 onPressed: () async {
@@ -433,7 +433,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                             required isFocused,
                                             maxLength}) =>
                                         null,
-                                    keyboardType: TextInputType.name,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -451,7 +450,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           );
                                         }),
                                       FilteringTextInputFormatter.allow(
-                                          RegExp('^[A-Za-z\\s]+'))
+                                          RegExp('[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
                                     ],
                                   ),
                                   TextFormField(
@@ -620,7 +619,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                             required isFocused,
                                             maxLength}) =>
                                         null,
-                                    keyboardType: TextInputType.name,
                                     cursorColor:
                                         FlutterFlowTheme.of(context).primary,
                                     validator: _model
@@ -638,7 +636,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           );
                                         }),
                                       FilteringTextInputFormatter.allow(
-                                          RegExp('^[A-Za-z\\s]+'))
+                                          RegExp('[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
                                     ],
                                   ),
                                   TextFormField(
@@ -1380,6 +1378,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                   .bodyLarge
                                                   .fontStyle,
                                         ),
+                                    maxLines: 2,
                                     maxLength: 100,
                                     maxLengthEnforcement:
                                         MaxLengthEnforcement.enforced,
@@ -1868,16 +1867,24 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                           } else {
                             _model.queryClienteInOtherTiendas =
                                 await queryClientesRecordOnce(
-                              queryBuilder: (clientesRecord) =>
-                                  clientesRecord.where(
-                                'cliente.cedula',
-                                isEqualTo: _model.cedulaTextController.text,
-                              ),
+                              queryBuilder: (clientesRecord) => clientesRecord
+                                  .where(
+                                    'cliente.cedula',
+                                    isEqualTo: _model.cedulaTextController.text,
+                                  )
+                                  .where(
+                                    'cliente.contrasena',
+                                    isNotEqualTo: null,
+                                  ),
                               singleRecord: true,
                             ).then((s) => s.firstOrNull);
                             _shouldSetState = true;
-                            if (_model.queryClienteInOtherTiendas?.cliente !=
-                                null) {
+                            if (_model.queryClienteInOtherTiendas?.cliente
+                                        .contrasena !=
+                                    null &&
+                                _model.queryClienteInOtherTiendas?.cliente
+                                        .contrasena !=
+                                    '') {
                               await showDialog(
                                 context: context,
                                 builder: (alertDialogContext) {
@@ -1924,11 +1931,48 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                 }.withoutNulls,
                               );
                             } else {
+                              _model.clienteSinContrasenaQuery =
+                                  await queryClientesRecordOnce(
+                                queryBuilder: (clientesRecord) => clientesRecord
+                                    .where(
+                                      'cliente.cedula',
+                                      isEqualTo:
+                                          _model.cedulaTextController.text,
+                                    )
+                                    .where(
+                                      'cliente.contrasena',
+                                      isEqualTo: null,
+                                    ),
+                                singleRecord: true,
+                              ).then((s) => s.firstOrNull);
+                              _shouldSetState = true;
+                              if (_model.clienteSinContrasenaQuery?.cliente !=
+                                  null) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('¡Alerta!'),
+                                      content: Text(
+                                          'Este cliente ha sido registrado en otra tienda, pero no ha se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(alertDialogContext),
+                                          child: Text('Ok'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              }
                               _model.randomized = random_data.randomString(
-                                8,
-                                8,
-                                true,
-                                true,
+                                4,
+                                4,
+                                false,
+                                false,
                                 true,
                               );
                               safeSetState(() {});
@@ -1951,6 +1995,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   emailCliente: _model.emailTextController.text,
                                   idTendero: widget.tenderoRef,
                                   totalDeudaCompleta: 0.0,
+                                  secretPass: _model.randomized,
+                                  contrasena: null,
                                   clearUnsetFields: false,
                                   create: true,
                                 ),
@@ -1977,6 +2023,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                               _model.emailTextController.text,
                                           idTendero: widget.tenderoRef,
                                           totalDeudaCompleta: 0.0,
+                                          secretPass: _model.randomized,
+                                          contrasena: null,
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
@@ -1991,6 +2039,41 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   clearUnsetFields: false,
                                 ),
                               ));
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('¡ALERTA!'),
+                                    content: Text(
+                                        'Este cliente se registrará por primera vez en la app. Por favor, muestre o anote el siguiente código de primer inicio de sesión para el cliente.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Siguiente'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text(
+                                        'Código de primer inicio de sesión:'),
+                                    content: Text(
+                                        '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
 
                               context.pushNamed(
                                 ListaClientesWidget.routeName,

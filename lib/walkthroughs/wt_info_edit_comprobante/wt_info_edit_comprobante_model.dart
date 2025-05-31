@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'wt_cliente_prods_voucher_widget.dart' show WtClienteProdsVoucherWidget;
+import 'wt_info_edit_comprobante_widget.dart' show WtInfoEditComprobanteWidget;
 import 'package:flutter/material.dart';
 
-class WtClienteProdsVoucherModel
-    extends FlutterFlowModel<WtClienteProdsVoucherWidget> {
+class WtInfoEditComprobanteModel
+    extends FlutterFlowModel<WtInfoEditComprobanteWidget> {
   @override
   void initState(BuildContext context) {}
 

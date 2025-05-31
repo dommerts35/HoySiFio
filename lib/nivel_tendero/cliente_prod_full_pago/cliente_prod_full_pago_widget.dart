@@ -121,7 +121,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                       child: FlutterFlowIconButton(
-                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderColor: FlutterFlowTheme.of(context).primary,
                         borderRadius: 12.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
@@ -129,12 +129,12 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                         icon: Icon(
                           Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                         onPressed: () async {
                           context.goNamed(
-                            HistorialPorPagarWidget.routeName,
+                            HistorialPorCobrarWidget.routeName,
                             queryParameters: {
                               'idCliente': serializeParam(
                                 widget.idCliente,
@@ -219,7 +219,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                               ),
                         ),
                         Text(
-                          'Total por pagar: \$${formatNumber(
+                          'Total por cobrar: \$${formatNumber(
                             clienteProdFullPagoClientesRecord
                                 .cliente.totalDeudaCompleta,
                             formatType: FormatType.custom,
@@ -1056,7 +1056,9 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                             .voucherNumTFTextController
                                                                             .text)
                                                                     ..totalPorPagar =
-                                                                        0.0,
+                                                                        0.0
+                                                                    ..fechaDeCobro =
+                                                                        getCurrentTimestamp,
                                                                 );
                                                                 safeSetState(
                                                                     () {});
@@ -1121,7 +1123,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                             );
 
                                                             context.goNamed(
-                                                              HistorialPorPagarWidget
+                                                              HistorialPorCobrarWidget
                                                                   .routeName,
                                                               queryParameters: {
                                                                 'idCliente':

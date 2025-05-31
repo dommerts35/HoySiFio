@@ -36,10 +36,11 @@ class HistorialFullVoucherPagoModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for numVoucher widget.
-  FocusNode? numVoucherFocusNode;
-  TextEditingController? numVoucherTextController;
-  String? Function(BuildContext, String?)? numVoucherTextControllerValidator;
+  // State field(s) for numComprobante widget.
+  FocusNode? numComprobanteFocusNode;
+  TextEditingController? numComprobanteTextController;
+  String? Function(BuildContext, String?)?
+      numComprobanteTextControllerValidator;
   // State field(s) for checkElectr widget.
   bool? checkElectrValue;
   // State field(s) for checkBanca widget.
@@ -73,8 +74,8 @@ class HistorialFullVoucherPagoModel
 
   @override
   void dispose() {
-    numVoucherFocusNode?.dispose();
-    numVoucherTextController?.dispose();
+    numComprobanteFocusNode?.dispose();
+    numComprobanteTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

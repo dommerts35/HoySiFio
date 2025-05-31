@@ -2,19 +2,20 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'wt_info_edit_vouchers_model.dart';
-export 'wt_info_edit_vouchers_model.dart';
+import 'wt_cliente_prods_comprobante_model.dart';
+export 'wt_cliente_prods_comprobante_model.dart';
 
-class WtInfoEditVouchersWidget extends StatefulWidget {
-  const WtInfoEditVouchersWidget({super.key});
+class WtClienteProdsComprobanteWidget extends StatefulWidget {
+  const WtClienteProdsComprobanteWidget({super.key});
 
   @override
-  State<WtInfoEditVouchersWidget> createState() =>
-      _WtInfoEditVouchersWidgetState();
+  State<WtClienteProdsComprobanteWidget> createState() =>
+      _WtClienteProdsComprobanteWidgetState();
 }
 
-class _WtInfoEditVouchersWidgetState extends State<WtInfoEditVouchersWidget> {
-  late WtInfoEditVouchersModel _model;
+class _WtClienteProdsComprobanteWidgetState
+    extends State<WtClienteProdsComprobanteWidget> {
+  late WtClienteProdsComprobanteModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -25,7 +26,7 @@ class _WtInfoEditVouchersWidgetState extends State<WtInfoEditVouchersWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WtInfoEditVouchersModel());
+    _model = createModel(context, () => WtClienteProdsComprobanteModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -41,7 +42,7 @@ class _WtInfoEditVouchersWidgetState extends State<WtInfoEditVouchersWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 117.81,
+      height: 109.99,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -55,7 +56,7 @@ class _WtInfoEditVouchersWidgetState extends State<WtInfoEditVouchersWidget> {
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'fkp990z1' /* Vouchers enviados */,
+              '281y2j53' /* Tus comprobantes */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -77,7 +78,7 @@ class _WtInfoEditVouchersWidgetState extends State<WtInfoEditVouchersWidget> {
           ),
           Text(
             FFLocalizations.of(context).getText(
-              '3yffcmed' /* Este botón le ayudará a visual... */,
+              'amru719j' /* Revisa los comprobantes que ha... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

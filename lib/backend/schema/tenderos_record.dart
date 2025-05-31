@@ -55,6 +55,11 @@ class TenderosRecord extends FirestoreRecord {
   String get pin => _pin ?? '';
   bool hasPin() => _pin != null;
 
+  // "clientes" field.
+  DataTypeClienteStruct? _clientes;
+  DataTypeClienteStruct get clientes => _clientes ?? DataTypeClienteStruct();
+  bool hasClientes() => _clientes != null;
+
   void _initializeFields() {
     _tenderos = snapshotData['tenderos'] is DataTypeTenderoStruct
         ? snapshotData['tenderos']
@@ -66,6 +71,9 @@ class TenderosRecord extends FirestoreRecord {
     _phoneNumber = snapshotData['phone_number'] as String?;
     _uid = snapshotData['uid'] as String?;
     _pin = snapshotData['pin'] as String?;
+    _clientes = snapshotData['clientes'] is DataTypeClienteStruct
+        ? snapshotData['clientes']
+        : DataTypeClienteStruct.maybeFromMap(snapshotData['clientes']);
   }
 
   static CollectionReference get collection =>
@@ -111,6 +119,7 @@ Map<String, dynamic> createTenderosRecordData({
   String? phoneNumber,
   String? uid,
   String? pin,
+  DataTypeClienteStruct? clientes,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -122,11 +131,15 @@ Map<String, dynamic> createTenderosRecordData({
       'phone_number': phoneNumber,
       'uid': uid,
       'pin': pin,
+      'clientes': DataTypeClienteStruct().toMap(),
     }.withoutNulls,
   );
 
   // Handle nested data for "tenderos" field.
   addDataTypeTenderoStructData(firestoreData, tenderos, 'tenderos');
+
+  // Handle nested data for "clientes" field.
+  addDataTypeClienteStructData(firestoreData, clientes, 'clientes');
 
   return firestoreData;
 }
@@ -143,7 +156,8 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e1?.createdTime == e2?.createdTime &&
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.uid == e2?.uid &&
-        e1?.pin == e2?.pin;
+        e1?.pin == e2?.pin &&
+        e1?.clientes == e2?.clientes;
   }
 
   @override
@@ -155,7 +169,8 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e?.createdTime,
         e?.phoneNumber,
         e?.uid,
-        e?.pin
+        e?.pin,
+        e?.clientes
       ]);
 
   @override

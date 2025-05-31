@@ -4,13 +4,12 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
-import 'cliente_prod_info_edit_widget.dart' show ClienteProdInfoEditWidget;
+import 'cliente_info_edit_widget.dart' show ClienteInfoEditWidget;
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
     show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
-class ClienteProdInfoEditModel
-    extends FlutterFlowModel<ClienteProdInfoEditWidget> {
+class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   ///  Local state fields for this page.
 
   int tempCount = 0;
@@ -40,9 +39,9 @@ class ClienteProdInfoEditModel
 
   TutorialCoachMark? tenderoICPdeClienteController;
   final formKey = GlobalKey<FormState>();
-  // Stores action output result for [Firestore Query - Query a collection] action in clienteProd-InfoEdit widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in clienteInfoEdit widget.
   ClientesRecord? queryOnLoad;
-  // Stores action output result for [Firestore Query - Query a collection] action in clienteProd-InfoEdit widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in clienteInfoEdit widget.
   ClientesRecord? queryOnDispose;
   // Model for infoComp component.
   late InfoCompModel infoCompModel;
@@ -50,7 +49,7 @@ class ClienteProdInfoEditModel
   ClientesRecord? readForClienteDelete;
   // Stores action output result for [Firestore Query - Query a collection] action in historialPagados widget.
   ClientesRecord? queryHistorialPagado;
-  // Stores action output result for [Firestore Query - Query a collection] action in historialPagar widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in historialCobrar widget.
   ClientesRecord? queryHistorialPorPagar;
   // State field(s) for cantidatTf widget.
   FocusNode? cantidatTfFocusNode;
@@ -74,6 +73,12 @@ class ClienteProdInfoEditModel
   double? totalDeudaCompletaNorm;
   // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
   ClientesRecord? queryAfterDelete;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button_alFio widget.
+  ClientesRecord? queryHistorialPorCobrarAlFio;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button_cobrar widget.
+  ClientesRecord? queryHistorialPorCobrarCobrar;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button_abonar widget.
+  ClientesRecord? queryHistorialPorCobrarAbonar;
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   ClientesRecord? queryGuardar;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.

@@ -140,6 +140,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   FocusNode? viviendaReadFocusNode;
   TextEditingController? viviendaReadTextController;
   String? Function(BuildContext, String?)? viviendaReadTextControllerValidator;
+  // State field(s) for codigoInicioSesionRead widget.
+  FocusNode? codigoInicioSesionReadFocusNode;
+  TextEditingController? codigoInicioSesionReadTextController;
+  String? Function(BuildContext, String?)?
+      codigoInicioSesionReadTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -176,5 +181,8 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
 
     viviendaReadFocusNode?.dispose();
     viviendaReadTextController?.dispose();
+
+    codigoInicioSesionReadFocusNode?.dispose();
+    codigoInicioSesionReadTextController?.dispose();
   }
 }

@@ -141,7 +141,7 @@ class _ClienteProdValorPagoWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                       child: FlutterFlowIconButton(
-                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderColor: FlutterFlowTheme.of(context).primary,
                         borderRadius: 12.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
@@ -149,12 +149,12 @@ class _ClienteProdValorPagoWidgetState
                             FlutterFlowTheme.of(context).secondaryBackground,
                         icon: Icon(
                           Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                         onPressed: () async {
                           context.goNamed(
-                            HistorialPorPagarWidget.routeName,
+                            HistorialPorCobrarWidget.routeName,
                             queryParameters: {
                               'idCliente': serializeParam(
                                 widget.idCliente,
@@ -238,7 +238,7 @@ class _ClienteProdValorPagoWidgetState
                               ),
                         ),
                         Text(
-                          'Total por pagar: \$${formatNumber(
+                          'Total por cobrar: \$${formatNumber(
                             widget.totalPorPagarFromHistorial,
                             formatType: FormatType.custom,
                             format: '#0.00',
@@ -506,7 +506,7 @@ class _ClienteProdValorPagoWidgetState
                                                 }),
                                               FilteringTextInputFormatter.allow(
                                                   RegExp(
-                                                      '^(\\d+[.,]?\\d{0,2})\$'))
+                                                      '^\\d*[,.]?\\d{0,2}\$'))
                                             ],
                                           ),
                                         ),
@@ -1310,7 +1310,9 @@ class _ClienteProdValorPagoWidgetState
                                                                         .voucherNumTFTextController
                                                                         .text),
                                                                     0,
-                                                                  ),
+                                                                  )
+                                                                  ..fechaDeCobro =
+                                                                      getCurrentTimestamp,
                                                               );
                                                               safeSetState(
                                                                   () {});
@@ -1438,7 +1440,9 @@ class _ClienteProdValorPagoWidgetState
                                                                         .voucherNumTFTextController
                                                                         .text),
                                                                     0,
-                                                                  ),
+                                                                  )
+                                                                  ..fechaDeCobro =
+                                                                      getCurrentTimestamp,
                                                               );
                                                               safeSetState(
                                                                   () {});
@@ -1468,6 +1472,14 @@ class _ClienteProdValorPagoWidgetState
                                                                       false,
                                                                 ),
                                                               ));
+                                                              _model
+                                                                  .updateDtProdHistorialAfterStruct(
+                                                                (e) => e
+                                                                  ..numVoucher =
+                                                                      0,
+                                                              );
+                                                              safeSetState(
+                                                                  () {});
 
                                                               await widget
                                                                   .idCliente!
@@ -1579,7 +1591,7 @@ class _ClienteProdValorPagoWidgetState
                                                             );
 
                                                             context.goNamed(
-                                                              HistorialPorPagarWidget
+                                                              HistorialPorCobrarWidget
                                                                   .routeName,
                                                               queryParameters: {
                                                                 'idCliente':

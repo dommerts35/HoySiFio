@@ -22,6 +22,7 @@ class ClienteReadInfoWidget extends StatefulWidget {
     this.viviendaProp,
     required this.emailCliente,
     required this.tenderoRef,
+    this.codigoInicioSesion,
   });
 
   /// fullName
@@ -55,6 +56,7 @@ class ClienteReadInfoWidget extends StatefulWidget {
   final String? emailCliente;
 
   final DocumentReference? tenderoRef;
+  final String? codigoInicioSesion;
 
   static String routeName = 'clienteReadInfo';
   static String routePath = '/clienteReadInfo';
@@ -126,6 +128,13 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
     }());
     _model.viviendaReadFocusNode ??= FocusNode();
 
+    _model.codigoInicioSesionReadTextController ??= TextEditingController(
+        text: valueOrDefault<String>(
+      widget.codigoInicioSesion,
+      'Código de inicio de sesión ya usado.',
+    ));
+    _model.codigoInicioSesionReadFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -158,19 +167,19 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                   child: FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    borderColor: FlutterFlowTheme.of(context).primary,
                     borderRadius: 12.0,
                     borderWidth: 1.0,
                     buttonSize: 40.0,
                     fillColor: FlutterFlowTheme.of(context).secondaryBackground,
                     icon: Icon(
                       Icons.arrow_back,
-                      color: FlutterFlowTheme.of(context).primaryText,
+                      color: FlutterFlowTheme.of(context).primary,
                       size: 24.0,
                     ),
                     onPressed: () async {
                       context.goNamed(
-                        ClienteProdInfoEditWidget.routeName,
+                        ClienteInfoEditWidget.routeName,
                         queryParameters: {
                           'nombre': serializeParam(
                             widget.nombre,
@@ -1244,6 +1253,155 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                           }),
                                       ],
                                     ),
+                                    if (widget.codigoInicioSesion != null &&
+                                        widget.codigoInicioSesion != '')
+                                      TextFormField(
+                                        controller: _model
+                                            .codigoInicioSesionReadTextController,
+                                        focusNode: _model
+                                            .codigoInicioSesionReadFocusNode,
+                                        autofocus: false,
+                                        textCapitalization:
+                                            TextCapitalization.words,
+                                        readOnly: true,
+                                        obscureText: false,
+                                        decoration: InputDecoration(
+                                          labelText: FFLocalizations.of(context)
+                                              .getText(
+                                            'q6t8rtd3' /* Código de Inicio de Sesión */,
+                                          ),
+                                          labelStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelLarge
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelLarge
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelLarge
+                                                        .fontStyle,
+                                              ),
+                                          hintStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .labelMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                          errorStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                          enabledBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedErrorBorder: InputBorder.none,
+                                          contentPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 20.0, 16.0, 20.0),
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyLarge
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontStyle,
+                                            ),
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        validator: _model
+                                            .codigoInicioSesionReadTextControllerValidator
+                                            .asValidator(context),
+                                        inputFormatters: [
+                                          if (!isAndroid && !isiOS)
+                                            TextInputFormatter.withFunction(
+                                                (oldValue, newValue) {
+                                              return TextEditingValue(
+                                                selection: newValue.selection,
+                                                text: newValue.text
+                                                    .toCapitalization(
+                                                        TextCapitalization
+                                                            .words),
+                                              );
+                                            }),
+                                        ],
+                                      ),
                                   ]
                                       .divide(SizedBox(height: 14.0))
                                       .addToEnd(SizedBox(height: 32.0)),

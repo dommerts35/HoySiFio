@@ -4,7 +4,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '/walkthroughs/wt_cliente_prods_list_total/wt_cliente_prods_list_total_widget.dart';
 import '/walkthroughs/wt_cliente_prods_list/wt_cliente_prods_list_widget.dart';
 import '/walkthroughs/wt_cliente_prods_pago_completo/wt_cliente_prods_pago_completo_widget.dart';
-import '/walkthroughs/wt_cliente_prods_voucher/wt_cliente_prods_voucher_widget.dart';
+import '/walkthroughs/wt_cliente_prods_comprobante/wt_cliente_prods_comprobante_widget.dart';
 
 // Focus widget keys for this walkthrough
 final textQhuce88l = GlobalKey();
@@ -71,7 +71,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.top,
-            builder: (context, __) => WtClienteProdsVoucherWidget(),
+            builder: (context, __) => WtClienteProdsComprobanteWidget(),
           ),
         ],
       ),

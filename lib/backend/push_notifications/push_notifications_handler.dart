@@ -140,7 +140,7 @@ final parametersBuilderMap =
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
         },
       ),
-  'clienteProd-InfoEdit': (data) async => ParameterData(
+  'clienteInfoEdit': (data) async => ParameterData(
         allParams: {
           'nombre': getParameter<String>(data, 'nombre'),
           'telf': getParameter<String>(data, 'telf'),
@@ -186,6 +186,8 @@ final parametersBuilderMap =
           'viviendaProp': getParameter<bool>(data, 'viviendaProp'),
           'emailCliente': getParameter<String>(data, 'emailCliente'),
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'codigoInicioSesion':
+              getParameter<String>(data, 'codigoInicioSesion'),
         },
       ),
   'clienteProd-ValorPago': (data) async => ParameterData(
@@ -217,7 +219,7 @@ final parametersBuilderMap =
           'emailCliente': getParameter<String>(data, 'emailCliente'),
         },
       ),
-  'historialPorPagar': (data) async => ParameterData(
+  'historialPorCobrar': (data) async => ParameterData(
         allParams: {
           'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
           'idTendero': getParameter<DocumentReference>(data, 'idTendero'),
@@ -369,6 +371,12 @@ final parametersBuilderMap =
           'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+        },
+      ),
+  'clienteFirstLogin': (data) async => ParameterData(
+        allParams: {
+          'idClienteWithNoPsswrd':
+              getParameter<DocumentReference>(data, 'idClienteWithNoPsswrd'),
         },
       ),
 };

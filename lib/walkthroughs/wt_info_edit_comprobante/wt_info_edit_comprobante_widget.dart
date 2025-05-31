@@ -2,20 +2,20 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'wt_cliente_prods_voucher_model.dart';
-export 'wt_cliente_prods_voucher_model.dart';
+import 'wt_info_edit_comprobante_model.dart';
+export 'wt_info_edit_comprobante_model.dart';
 
-class WtClienteProdsVoucherWidget extends StatefulWidget {
-  const WtClienteProdsVoucherWidget({super.key});
+class WtInfoEditComprobanteWidget extends StatefulWidget {
+  const WtInfoEditComprobanteWidget({super.key});
 
   @override
-  State<WtClienteProdsVoucherWidget> createState() =>
-      _WtClienteProdsVoucherWidgetState();
+  State<WtInfoEditComprobanteWidget> createState() =>
+      _WtInfoEditComprobanteWidgetState();
 }
 
-class _WtClienteProdsVoucherWidgetState
-    extends State<WtClienteProdsVoucherWidget> {
-  late WtClienteProdsVoucherModel _model;
+class _WtInfoEditComprobanteWidgetState
+    extends State<WtInfoEditComprobanteWidget> {
+  late WtInfoEditComprobanteModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +26,7 @@ class _WtClienteProdsVoucherWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WtClienteProdsVoucherModel());
+    _model = createModel(context, () => WtInfoEditComprobanteModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -42,7 +42,7 @@ class _WtClienteProdsVoucherWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 109.99,
+      height: 117.81,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -56,7 +56,7 @@ class _WtClienteProdsVoucherWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              '281y2j53' /* Tus vouchers */,
+              'fkp990z1' /* Comprobantes */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -78,7 +78,7 @@ class _WtClienteProdsVoucherWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'amru719j' /* Revisa los vouchers que has en... */,
+              '3yffcmed' /* Este botón le ayudará a visual... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

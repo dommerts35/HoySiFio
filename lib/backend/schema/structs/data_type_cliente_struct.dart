@@ -43,6 +43,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     List<DataTypeHistorialPagoStruct>? historialPorPagarSelectedList,
     String? contrasena,
     String? pin,
+    String? secretPass,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -64,6 +65,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _historialPorPagarSelectedList = historialPorPagarSelectedList,
         _contrasena = contrasena,
         _pin = pin,
+        _secretPass = secretPass,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -241,6 +243,13 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasPin() => _pin != null;
 
+  // "secret_pass" field.
+  String? _secretPass;
+  String get secretPass => _secretPass ?? '';
+  set secretPass(String? val) => _secretPass = val;
+
+  bool hasSecretPass() => _secretPass != null;
+
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
         nombre: data['nombre'] as String?,
@@ -278,6 +287,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         contrasena: data['contrasena'] as String?,
         pin: data['pin'] as String?,
+        secretPass: data['secret_pass'] as String?,
       );
 
   static DataTypeClienteStruct? maybeFromMap(dynamic data) => data is Map
@@ -308,6 +318,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
             _historialPorPagarSelectedList?.map((e) => e.toMap()).toList(),
         'contrasena': _contrasena,
         'pin': _pin,
+        'secret_pass': _secretPass,
       }.withoutNulls;
 
   @override
@@ -395,6 +406,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         ),
         'pin': serializeParam(
           _pin,
+          ParamType.String,
+        ),
+        'secret_pass': serializeParam(
+          _secretPass,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -511,6 +526,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        secretPass: deserializeParam(
+          data['secret_pass'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -541,7 +561,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         listEquality.equals(historialPorPagarSelectedList,
             other.historialPorPagarSelectedList) &&
         contrasena == other.contrasena &&
-        pin == other.pin;
+        pin == other.pin &&
+        secretPass == other.secretPass;
   }
 
   @override
@@ -565,7 +586,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         dataTypeVouchers,
         historialPorPagarSelectedList,
         contrasena,
-        pin
+        pin,
+        secretPass
       ]);
 }
 
@@ -585,6 +607,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   double? totalDeudaCompleta,
   String? contrasena,
   String? pin,
+  String? secretPass,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -606,6 +629,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       totalDeudaCompleta: totalDeudaCompleta,
       contrasena: contrasena,
       pin: pin,
+      secretPass: secretPass,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

@@ -28,6 +28,8 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
 
   bool isPswrdCliente = true;
 
+  bool isClienteSetWithPss = false;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for tabInicioSesion widget.
@@ -62,6 +64,8 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   FocusNode? ciClienteFocusNode;
   TextEditingController? ciClienteTextController;
   String? Function(BuildContext, String?)? ciClienteTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in ci_Cliente widget.
+  ClientesRecord? queryForClienteWithPswrd;
   // State field(s) for password_Cliente widget.
   FocusNode? passwordClienteFocusNode;
   TextEditingController? passwordClienteTextController;
@@ -73,6 +77,8 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   TextEditingController? pinClienteTextController;
   late bool pinClienteVisibility;
   String? Function(BuildContext, String?)? pinClienteTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
+  ClientesRecord? queryForClienteWithNoPsswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
   List<ClientesRecord>? queryClientePsswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.

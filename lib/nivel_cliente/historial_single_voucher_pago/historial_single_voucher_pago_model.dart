@@ -32,10 +32,11 @@ class HistorialSingleVoucherPagoModel
   FocusNode? valorMAPFocusNode;
   TextEditingController? valorMAPTextController;
   String? Function(BuildContext, String?)? valorMAPTextControllerValidator;
-  // State field(s) for numVoucher widget.
-  FocusNode? numVoucherFocusNode;
-  TextEditingController? numVoucherTextController;
-  String? Function(BuildContext, String?)? numVoucherTextControllerValidator;
+  // State field(s) for numComprobante widget.
+  FocusNode? numComprobanteFocusNode;
+  TextEditingController? numComprobanteTextController;
+  String? Function(BuildContext, String?)?
+      numComprobanteTextControllerValidator;
   // State field(s) for checkElectr widget.
   bool? checkElectrValue;
   // State field(s) for checkBanca widget.
@@ -49,6 +50,8 @@ class HistorialSingleVoucherPagoModel
 
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
   double? valorMAPConv;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
+  double? valorMAPReConv;
 
   /// Query cache managers for this widget.
 
@@ -75,8 +78,8 @@ class HistorialSingleVoucherPagoModel
     valorMAPFocusNode?.dispose();
     valorMAPTextController?.dispose();
 
-    numVoucherFocusNode?.dispose();
-    numVoucherTextController?.dispose();
+    numComprobanteFocusNode?.dispose();
+    numComprobanteTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -89,8 +90,8 @@ class _HistorialSingleVoucherPagoWidgetState
     _model.valorMAPTextController ??= TextEditingController();
     _model.valorMAPFocusNode ??= FocusNode();
 
-    _model.numVoucherTextController ??= TextEditingController();
-    _model.numVoucherFocusNode ??= FocusNode();
+    _model.numComprobanteTextController ??= TextEditingController();
+    _model.numComprobanteFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -151,7 +152,7 @@ class _HistorialSingleVoucherPagoWidgetState
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                       child: FlutterFlowIconButton(
-                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderColor: FlutterFlowTheme.of(context).primary,
                         borderRadius: 12.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
@@ -159,7 +160,7 @@ class _HistorialSingleVoucherPagoWidgetState
                             FlutterFlowTheme.of(context).secondaryBackground,
                         icon: Icon(
                           Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                         onPressed: () async {
@@ -608,7 +609,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                   }),
                                                 FilteringTextInputFormatter
                                                     .allow(RegExp(
-                                                        '^(\\d+[.,]?\\d{0,2})\$'))
+                                                        '^\\d*[,.]?\\d{0,2}\$'))
                                               ],
                                             ),
                                           ),
@@ -617,9 +618,9 @@ class _HistorialSingleVoucherPagoWidgetState
                                             decoration: BoxDecoration(),
                                             child: TextFormField(
                                               controller: _model
-                                                  .numVoucherTextController,
-                                              focusNode:
-                                                  _model.numVoucherFocusNode,
+                                                  .numComprobanteTextController,
+                                              focusNode: _model
+                                                  .numComprobanteFocusNode,
                                               autofocus: false,
                                               textCapitalization:
                                                   TextCapitalization.none,
@@ -629,7 +630,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                 labelText:
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                  's3lslju1' /* Núm. De Voucher */,
+                                                  's3lslju1' /* Núm. De Comprobante */,
                                                 ),
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
@@ -771,7 +772,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               validator: _model
-                                                  .numVoucherTextControllerValidator
+                                                  .numComprobanteTextControllerValidator
                                                   .asValidator(context),
                                               inputFormatters: [
                                                 if (!isAndroid && !isiOS)
@@ -1444,8 +1445,8 @@ Transferencia: */
                                                               },
                                                     text: _model.uploadedFileUrl_uploadDataZ9l !=
                                                                 ''
-                                                        ? '¡Voucher Enviado!'
-                                                        : 'Subir Voucher',
+                                                        ? '¡Comprobante Enviado!'
+                                                        : 'Subir Comprobante',
                                                     options: FFButtonOptions(
                                                       width: 250.0,
                                                       height: 50.0,
@@ -1534,7 +1535,7 @@ Transferencia: */
                                                               title: Text(
                                                                   '¡Alerta!'),
                                                               content: Text(
-                                                                  'Por favor, ingresela imágen del voucher.'),
+                                                                  'Por favor, ingresela imágen del comprobante.'),
                                                               actions: [
                                                                 TextButton(
                                                                   onPressed: () =>
@@ -1551,7 +1552,7 @@ Transferencia: */
                                                           safeSetState(() {});
                                                         return;
                                                       } else {
-                                                        if (_model.numVoucherTextController
+                                                        if (_model.numComprobanteTextController
                                                                     .text ==
                                                                 '') {
                                                           await showDialog(
@@ -1562,7 +1563,7 @@ Transferencia: */
                                                                 title: Text(
                                                                     '¡Alerta!'),
                                                                 content: Text(
-                                                                    'Ingrese el número de voucher.'),
+                                                                    'Ingrese el número de comprobante.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -1588,6 +1589,19 @@ Transferencia: */
                                                           _model
                                                               .valorMAPTextController
                                                               .text,
+                                                        );
+                                                        _shouldSetState = true;
+                                                        _model.valorMAPReConv =
+                                                            await actions
+                                                                .normalizarValorNumerico(
+                                                          formatNumber(
+                                                            _model.valorMAPConv,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#0.00',
+                                                            locale: '',
+                                                          ),
                                                         );
                                                         _shouldSetState = true;
                                                         if ((_model.valorMAPConv! >
@@ -1633,7 +1647,7 @@ Transferencia: */
                                                                 title: Text(
                                                                     '¡Alerta!'),
                                                                 content: Text(
-                                                                    'Ingrese el tipo de transferencia'),
+                                                                    'Ingrese el tipo de transferencia.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -1742,11 +1756,11 @@ Transferencia: */
                                                                       }(),
                                                                       montoAPagar:
                                                                           _model
-                                                                              .valorMAPConv,
+                                                                              .valorMAPReConv,
                                                                       isFullPago:
                                                                           false,
                                                                       numVoucher: int.tryParse(_model
-                                                                          .numVoucherTextController
+                                                                          .numComprobanteTextController
                                                                           .text),
                                                                       clearUnsetFields:
                                                                           false,
@@ -1765,9 +1779,9 @@ Transferencia: */
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
                                                                 title: Text(
-                                                                    'Voucher enviado'),
+                                                                    'Comprobante enviado'),
                                                                 content: Text(
-                                                                    'El voucher ha sido enviado'),
+                                                                    'El comprobante ha sido enviado.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -1779,6 +1793,21 @@ Transferencia: */
                                                                 ],
                                                               );
                                                             },
+                                                          );
+                                                          triggerPushNotification(
+                                                            notificationTitle:
+                                                                '¡Comprobante Recibido!',
+                                                            notificationText:
+                                                                'El cliente ${widget.nombre} ${widget.apellido} le ha enviado un comprobante.',
+                                                            notificationSound:
+                                                                'default',
+                                                            userRefs: [
+                                                              widget
+                                                                  .tenderoRef!
+                                                            ],
+                                                            initialPageName:
+                                                                'authSigningIn',
+                                                            parameterData: {},
                                                           );
 
                                                           context.pushNamed(
@@ -1911,7 +1940,7 @@ Transferencia: */
                                               ].divide(SizedBox(height: 15.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 30.0)),
+                                        ].divide(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ),

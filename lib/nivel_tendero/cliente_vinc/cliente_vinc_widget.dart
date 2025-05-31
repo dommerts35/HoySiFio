@@ -103,7 +103,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                       child: FlutterFlowIconButton(
-                        borderColor: FlutterFlowTheme.of(context).alternate,
+                        borderColor: FlutterFlowTheme.of(context).primary,
                         borderRadius: 12.0,
                         borderWidth: 1.0,
                         buttonSize: 40.0,
@@ -111,7 +111,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                             FlutterFlowTheme.of(context).secondaryBackground,
                         icon: Icon(
                           Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primaryText,
+                          color: FlutterFlowTheme.of(context).primary,
                           size: 24.0,
                         ),
                         onPressed: () async {

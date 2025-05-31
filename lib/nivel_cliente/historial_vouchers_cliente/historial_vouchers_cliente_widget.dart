@@ -81,194 +81,268 @@ class _HistorialVouchersClienteWidgetState
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
                     width: double.infinity,
+                    height: 850.0,
                     constraints: BoxConstraints(
                       maxWidth: 1170.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: Image.asset(
+                          'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                        ).image,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                      border: Border.all(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        width: 1.0,
+                      ),
+                    ),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 8.0, 12.0, 8.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderRadius: 12.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: Icon(
-                                    Icons.arrow_back,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                      ResumenFiadoClienProdsNewWidget.routeName,
-                                      queryParameters: {
-                                        'historialPorPagarDTList':
-                                            serializeParam(
-                                          widget.historialPorPagarDTList,
-                                          ParamType.DataStruct,
-                                          isList: true,
-                                        ),
-                                        'nombreCliente': serializeParam(
-                                          widget.nombreCliente,
-                                          ParamType.String,
-                                        ),
-                                        'idCliente': serializeParam(
-                                          widget.idCliente,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'idTendero': serializeParam(
-                                          widget.idTendero,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'doc': serializeParam(
-                                          widget.doc,
-                                          ParamType.Document,
-                                          isList: true,
-                                        ),
-                                        'cedula': serializeParam(
-                                          widget.cedula,
-                                          ParamType.String,
-                                        ),
-                                        'idTenderoList': serializeParam(
-                                          widget.idTenderoList,
-                                          ParamType.DocumentReference,
-                                          isList: true,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        'doc': widget.doc,
-                                      },
-                                    );
-                                  },
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 20.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ie9wbhiz' /* Historial de vouchers */,
-                                  ),
-                                  maxLines: 2,
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                25.0, 10.0, 0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'x0u8z74p' /* Aquí se mostrarán los vouchers... */,
-                              ),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 8.0, 12.0, 8.0),
+                                  child: FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    borderRadius: 12.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.arrow_back,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
                                     ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        ResumenFiadoClienProdsNewWidget
+                                            .routeName,
+                                        queryParameters: {
+                                          'historialPorPagarDTList':
+                                              serializeParam(
+                                            widget.historialPorPagarDTList,
+                                            ParamType.DataStruct,
+                                            isList: true,
+                                          ),
+                                          'nombreCliente': serializeParam(
+                                            widget.nombreCliente,
+                                            ParamType.String,
+                                          ),
+                                          'idCliente': serializeParam(
+                                            widget.idCliente,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'idTendero': serializeParam(
+                                            widget.idTendero,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'doc': serializeParam(
+                                            widget.doc,
+                                            ParamType.Document,
+                                            isList: true,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'idTenderoList': serializeParam(
+                                            widget.idTenderoList,
+                                            ParamType.DocumentReference,
+                                            isList: true,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'doc': widget.doc,
+                                        },
+                                      );
+                                    },
                                   ),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Text(
+                                      FFLocalizations.of(context).getText(
+                                        'ie9wbhiz' /* Historial de
+ comprobantes */
+                                        ,
+                                      ),
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                25.0, 0.0, 0.0, 0.0),
-                            child: StreamBuilder<ClientesRecord>(
-                              stream: _model.queryNameClienteHistorialPagado(
-                                requestFn: () => ClientesRecord.getDocument(
-                                    widget.idCliente!),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 5.0, 5.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'x0u8z74p' /* Aquí se mostrarán los comproba... */,
                                         ),
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
                                       ),
                                     ),
-                                  );
-                                }
-
-                                final textClientesRecord = snapshot.data!;
-
-                                return Text(
-                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 5.0),
+                                      child: StreamBuilder<ClientesRecord>(
+                                        stream: _model
+                                            .queryNameClienteHistorialPagado(
+                                          requestFn: () =>
+                                              ClientesRecord.getDocument(
+                                                  widget.idCliente!),
                                         ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+
+                                          final textClientesRecord =
+                                              snapshot.data!;
+
+                                          return Text(
+                                            '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
+                                          );
+                                        },
                                       ),
-                                );
-                              },
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                           Align(
@@ -309,12 +383,7 @@ class _HistorialVouchersClienteWidgetState
                                               .toList();
                                       if (listaVouchers.isEmpty) {
                                         return Center(
-                                          child: Container(
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.8,
-                                            child: EmptyVoucherCompWidget(),
-                                          ),
+                                          child: EmptyVoucherCompWidget(),
                                         );
                                       }
 
@@ -367,14 +436,14 @@ class _HistorialVouchersClienteWidgetState
                                                             'Negado'
                                                         ? FlutterFlowTheme.of(
                                                                 context)
-                                                            .primaryText
+                                                            .error
                                                         : FlutterFlowTheme.of(
                                                                 context)
-                                                            .alternate,
+                                                            .primaryText,
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                   ),
-                                                  width: 2.0,
+                                                  width: 1.0,
                                                 ),
                                               ),
                                               child: Column(
@@ -633,7 +702,7 @@ class _HistorialVouchersClienteWidgetState
                                                             .fromSTEB(0.0, 5.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Tipo de Voucher: ${listaVouchersItem.tipoVoucher}',
+                                                      'Tipo de comprobante: ${listaVouchersItem.tipoVoucher}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -679,7 +748,53 @@ class _HistorialVouchersClienteWidgetState
                                                             .fromSTEB(0.0, 5.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      'Num. Voucher: ${listaVouchersItem.numVoucher.toString()}',
+                                                      'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Negado'
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 5.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Estado del Comprobante: ${listaVouchersItem.estadoVoucher}',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -784,7 +899,7 @@ class _HistorialVouchersClienteWidgetState
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '2fyivbzj' /* Voucher de pago de todos los p... */,
+                                                          '2fyivbzj' /* Comprobante de pago de todos l... */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(

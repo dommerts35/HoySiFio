@@ -28,6 +28,8 @@ class SigninConfirmModel extends FlutterFlowModel<SigninConfirmWidget> {
   late bool passwordToConfirmVisibility;
   String? Function(BuildContext, String?)?
       passwordToConfirmTextControllerValidator;
+  // Stores action output result for [Backend Call - Read Document] action in forgotPswrdCont widget.
+  TenderosRecord? tenderoRead;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_tendero widget.
   TenderosRecord? queryConfirm;
 

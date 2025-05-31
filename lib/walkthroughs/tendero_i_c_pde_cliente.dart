@@ -7,7 +7,7 @@ import '/walkthroughs/wt_info_edit_button_delete/wt_info_edit_button_delete_widg
 import '/walkthroughs/wt_info_edit_button_read/wt_info_edit_button_read_widget.dart';
 import '/walkthroughs/wt_info_edit_cuentas/wt_info_edit_cuentas_widget.dart';
 import '/walkthroughs/wt_info_edit_cuentas_historial_row/wt_info_edit_cuentas_historial_row_widget.dart';
-import '/walkthroughs/wt_info_edit_vouchers/wt_info_edit_vouchers_widget.dart';
+import '/walkthroughs/wt_info_edit_comprobante/wt_info_edit_comprobante_widget.dart';
 import '/walkthroughs/wt_info_edit_fiado/wt_info_edit_fiado_widget.dart';
 import '/walkthroughs/wt_info_edit_prods_cantidad/wt_info_edit_prods_cantidad_widget.dart';
 import '/walkthroughs/wt_info_edit_prods_nombre/wt_info_edit_prods_nombre_widget.dart';
@@ -134,7 +134,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => WtInfoEditVouchersWidget(),
+            builder: (context, __) => WtInfoEditComprobanteWidget(),
           ),
         ],
       ),

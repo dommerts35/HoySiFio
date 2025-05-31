@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -844,7 +845,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .bodyLarge
                                                                       .fontStyle,
                                                                 ),
-                                                        maxLength: 8,
+                                                        maxLength: 16,
                                                         maxLengthEnforcement:
                                                             MaxLengthEnforcement
                                                                 .enforced,
@@ -1055,6 +1056,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             .pinTenderoTextControllerValidator
                                                             .asValidator(
                                                                 context),
+                                                        inputFormatters: [
+                                                          FilteringTextInputFormatter
+                                                              .allow(RegExp(
+                                                                  '[0-9]'))
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
@@ -1986,6 +1992,53 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                           .ciClienteTextController,
                                                       focusNode: _model
                                                           .ciClienteFocusNode,
+                                                      onChanged: (_) =>
+                                                          EasyDebounce.debounce(
+                                                        '_model.ciClienteTextController',
+                                                        Duration(
+                                                            milliseconds: 2000),
+                                                        () async {
+                                                          _model.queryForClienteWithPswrd =
+                                                              await queryClientesRecordOnce(
+                                                            queryBuilder:
+                                                                (clientesRecord) =>
+                                                                    clientesRecord
+                                                                        .where(
+                                                                          'cliente.cedula',
+                                                                          isEqualTo: _model
+                                                                              .ciClienteTextController
+                                                                              .text,
+                                                                        )
+                                                                        .where(
+                                                                          'cliente.secret_pass',
+                                                                          isEqualTo:
+                                                                              null,
+                                                                        ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          if (_model
+                                                                      .queryForClienteWithPswrd
+                                                                      ?.cliente
+                                                                      .contrasena !=
+                                                                  null &&
+                                                              _model
+                                                                      .queryForClienteWithPswrd
+                                                                      ?.cliente
+                                                                      .contrasena !=
+                                                                  '') {
+                                                            _model.isClienteSetWithPss =
+                                                                true;
+                                                            safeSetState(() {});
+                                                          } else {
+                                                            _model.isClienteSetWithPss =
+                                                                false;
+                                                            safeSetState(() {});
+                                                          }
+
+                                                          safeSetState(() {});
+                                                        },
+                                                      ),
                                                       autofocus: true,
                                                       autofillHints: [
                                                         AutofillHints.email
@@ -2149,493 +2202,524 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                     ),
                                                   ),
                                                 ),
-                                                if (_model.isPswrdCliente ==
+                                                if (_model
+                                                        .isClienteSetWithPss ==
                                                     true)
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 16.0),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      child: TextFormField(
-                                                        controller: _model
-                                                            .passwordClienteTextController,
-                                                        focusNode: _model
-                                                            .passwordClienteFocusNode,
-                                                        autofocus: false,
-                                                        autofillHints: [
-                                                          AutofillHints.password
-                                                        ],
-                                                        textCapitalization:
-                                                            TextCapitalization
-                                                                .words,
-                                                        textInputAction:
-                                                            TextInputAction
-                                                                .next,
-                                                        obscureText: !_model
-                                                            .passwordClienteVisibility,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'cuupucc0' /* Contraseña */,
-                                                          ),
-                                                          labelStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .inter(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          focusedBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          errorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          focusedErrorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          contentPadding:
-                                                              EdgeInsets.all(
-                                                                  24.0),
-                                                          suffixIcon: InkWell(
-                                                            onTap: () =>
-                                                                safeSetState(
-                                                              () => _model
-                                                                      .passwordClienteVisibility =
-                                                                  !_model
-                                                                      .passwordClienteVisibility,
-                                                            ),
-                                                            focusNode: FocusNode(
-                                                                skipTraversal:
-                                                                    true),
-                                                            child: Icon(
-                                                              _model.passwordClienteVisibility
-                                                                  ? Icons
-                                                                      .visibility_outlined
-                                                                  : Icons
-                                                                      .visibility_off_outlined,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                        maxLength: 8,
-                                                        maxLengthEnforcement:
-                                                            MaxLengthEnforcement
-                                                                .enforced,
-                                                        buildCounter: (context,
-                                                                {required currentLength,
-                                                                required isFocused,
-                                                                maxLength}) =>
-                                                            null,
-                                                        cursorColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        validator: _model
-                                                            .passwordClienteTextControllerValidator
-                                                            .asValidator(
-                                                                context),
-                                                        inputFormatters: [
-                                                          if (!isAndroid &&
-                                                              !isiOS)
-                                                            TextInputFormatter
-                                                                .withFunction(
-                                                                    (oldValue,
-                                                                        newValue) {
-                                                              return TextEditingValue(
-                                                                selection: newValue
-                                                                    .selection,
-                                                                text: newValue
-                                                                    .text
-                                                                    .toCapitalization(
-                                                                        TextCapitalization
-                                                                            .words),
-                                                              );
-                                                            }),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                if (_model.isPINCliente == true)
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 16.0),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      child: TextFormField(
-                                                        controller: _model
-                                                            .pinClienteTextController,
-                                                        focusNode: _model
-                                                            .pinClienteFocusNode,
-                                                        autofocus: false,
-                                                        autofillHints: [
-                                                          AutofillHints.password
-                                                        ],
-                                                        textInputAction:
-                                                            TextInputAction.go,
-                                                        obscureText: !_model
-                                                            .pinClienteVisibility,
-                                                        decoration:
-                                                            InputDecoration(
-                                                          labelText:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                            'hatytthd' /* PIN */,
-                                                          ),
-                                                          labelStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .inter(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                          enabledBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .alternate,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          focusedBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          errorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          focusedErrorBorder:
-                                                              OutlineInputBorder(
-                                                            borderSide:
-                                                                BorderSide(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .error,
-                                                              width: 2.0,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          contentPadding:
-                                                              EdgeInsets.all(
-                                                                  24.0),
-                                                          suffixIcon: InkWell(
-                                                            onTap: () =>
-                                                                safeSetState(
-                                                              () => _model
-                                                                      .pinClienteVisibility =
-                                                                  !_model
-                                                                      .pinClienteVisibility,
-                                                            ),
-                                                            focusNode: FocusNode(
-                                                                skipTraversal:
-                                                                    true),
-                                                            child: Icon(
-                                                              _model.pinClienteVisibility
-                                                                  ? Icons
-                                                                      .visibility_outlined
-                                                                  : Icons
-                                                                      .visibility_off_outlined,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryText,
-                                                              size: 24.0,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                        maxLength: 4,
-                                                        maxLengthEnforcement:
-                                                            MaxLengthEnforcement
-                                                                .enforced,
-                                                        buildCounter: (context,
-                                                                {required currentLength,
-                                                                required isFocused,
-                                                                maxLength}) =>
-                                                            null,
-                                                        keyboardType:
-                                                            TextInputType
-                                                                .number,
-                                                        cursorColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        validator: _model
-                                                            .pinClienteTextControllerValidator
-                                                            .asValidator(
-                                                                context),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 10.0),
-                                                  child: Row(
+                                                  Column(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
                                                     children: [
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              _model.isPswrdCliente =
-                                                                  false;
-                                                              _model.isPINCliente =
-                                                                  true;
-                                                              safeSetState(
-                                                                  () {});
-                                                              safeSetState(() {
-                                                                _model
-                                                                    .passwordClienteTextController
-                                                                    ?.clear();
-                                                              });
-                                                              if (animationsMap[
-                                                                      'buttonOnActionTriggerAnimation3'] !=
-                                                                  null) {
-                                                                await animationsMap[
-                                                                        'buttonOnActionTriggerAnimation3']!
-                                                                    .controller
-                                                                    .forward(
-                                                                        from:
-                                                                            0.0);
-                                                              }
-                                                            },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              'cufstbn1' /* PIN */,
-                                                            ),
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 110.0,
-                                                              height: 30.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
+                                                      if (_model
+                                                              .isPswrdCliente ==
+                                                          true)
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      16.0),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            child:
+                                                                TextFormField(
+                                                              controller: _model
+                                                                  .passwordClienteTextController,
+                                                              focusNode: _model
+                                                                  .passwordClienteFocusNode,
+                                                              autofocus: false,
+                                                              autofillHints: [
+                                                                AutofillHints
+                                                                    .password
+                                                              ],
+                                                              textCapitalization:
+                                                                  TextCapitalization
+                                                                      .words,
+                                                              textInputAction:
+                                                                  TextInputAction
+                                                                      .next,
+                                                              obscureText: !_model
+                                                                  .passwordClienteVisibility,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                labelText:
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                  'cuupucc0' /* Contraseña */,
+                                                                ),
+                                                                labelStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: _model
-                                                                          .isPINCliente ==
-                                                                      true
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                              textStyle:
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                errorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                focusedErrorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                filled: true,
+                                                                fillColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            24.0),
+                                                                suffixIcon:
+                                                                    InkWell(
+                                                                  onTap: () =>
+                                                                      safeSetState(
+                                                                    () => _model
+                                                                            .passwordClienteVisibility =
+                                                                        !_model
+                                                                            .passwordClienteVisibility,
+                                                                  ),
+                                                                  focusNode: FocusNode(
+                                                                      skipTraversal:
+                                                                          true),
+                                                                  child: Icon(
+                                                                    _model.passwordClienteVisibility
+                                                                        ? Icons
+                                                                            .visibility_outlined
+                                                                        : Icons
+                                                                            .visibility_off_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyLarge
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontStyle,
+                                                                  ),
+                                                              maxLength: 16,
+                                                              maxLengthEnforcement:
+                                                                  MaxLengthEnforcement
+                                                                      .enforced,
+                                                              buildCounter: (context,
+                                                                      {required currentLength,
+                                                                      required isFocused,
+                                                                      maxLength}) =>
+                                                                  null,
+                                                              cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
+                                                                      .primary,
+                                                              validator: _model
+                                                                  .passwordClienteTextControllerValidator
+                                                                  .asValidator(
+                                                                      context),
+                                                              inputFormatters: [
+                                                                if (!isAndroid &&
+                                                                    !isiOS)
+                                                                  TextInputFormatter
+                                                                      .withFunction(
+                                                                          (oldValue,
+                                                                              newValue) {
+                                                                    return TextEditingValue(
+                                                                      selection:
+                                                                          newValue
+                                                                              .selection,
+                                                                      text: newValue
+                                                                          .text
+                                                                          .toCapitalization(
+                                                                              TextCapitalization.words),
+                                                                    );
+                                                                  }),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      if (_model.isPINCliente ==
+                                                          true)
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      16.0),
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            child:
+                                                                TextFormField(
+                                                              controller: _model
+                                                                  .pinClienteTextController,
+                                                              focusNode: _model
+                                                                  .pinClienteFocusNode,
+                                                              autofocus: false,
+                                                              autofillHints: [
+                                                                AutofillHints
+                                                                    .password
+                                                              ],
+                                                              textInputAction:
+                                                                  TextInputAction
+                                                                      .go,
+                                                              obscureText: !_model
+                                                                  .pinClienteVisibility,
+                                                              decoration:
+                                                                  InputDecoration(
+                                                                labelText:
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                  'hatytthd' /* PIN */,
+                                                                ),
+                                                                labelStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelLarge
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                                enabledBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .alternate,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                focusedBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                errorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                focusedErrorBorder:
+                                                                    OutlineInputBorder(
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                filled: true,
+                                                                fillColor: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                contentPadding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            24.0),
+                                                                suffixIcon:
+                                                                    InkWell(
+                                                                  onTap: () =>
+                                                                      safeSetState(
+                                                                    () => _model
+                                                                            .pinClienteVisibility =
+                                                                        !_model
+                                                                            .pinClienteVisibility,
+                                                                  ),
+                                                                  focusNode: FocusNode(
+                                                                      skipTraversal:
+                                                                          true),
+                                                                  child: Icon(
+                                                                    _model.pinClienteVisibility
+                                                                        ? Icons
+                                                                            .visibility_outlined
+                                                                        : Icons
+                                                                            .visibility_off_outlined,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    size: 24.0,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyLarge
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontStyle,
+                                                                  ),
+                                                              maxLength: 4,
+                                                              maxLengthEnforcement:
+                                                                  MaxLengthEnforcement
+                                                                      .enforced,
+                                                              buildCounter: (context,
+                                                                      {required currentLength,
+                                                                      required isFocused,
+                                                                      maxLength}) =>
+                                                                  null,
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .number,
+                                                              cursorColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              validator: _model
+                                                                  .pinClienteTextControllerValidator
+                                                                  .asValidator(
+                                                                      context),
+                                                              inputFormatters: [
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        '[0-9]'))
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.isPswrdCliente =
+                                                                        false;
+                                                                    _model.isPINCliente =
+                                                                        true;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    safeSetState(
+                                                                        () {
+                                                                      _model
+                                                                          .passwordClienteTextController
+                                                                          ?.clear();
+                                                                    });
+                                                                    if (animationsMap[
+                                                                            'buttonOnActionTriggerAnimation3'] !=
+                                                                        null) {
+                                                                      await animationsMap[
+                                                                              'buttonOnActionTriggerAnimation3']!
+                                                                          .controller
+                                                                          .forward(
+                                                                              from: 0.0);
+                                                                    }
+                                                                  },
+                                                                  text: FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'cufstbn1' /* PIN */,
+                                                                  ),
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    width:
+                                                                        110.0,
+                                                                    height:
+                                                                        30.0,
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    color: _model.isPINCliente ==
+                                                                            true
+                                                                        ? FlutterFlowTheme.of(context)
+                                                                            .primary
+                                                                        : FlutterFlowTheme.of(context)
+                                                                            .accent1,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -2643,105 +2727,101 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               .titleSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        letterSpacing:
+                                                                    elevation:
+                                                                        3.0,
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  showLoadingIndicator:
+                                                                      false,
+                                                                ).animateOnActionTrigger(
+                                                                  animationsMap[
+                                                                      'buttonOnActionTriggerAnimation3']!,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.isPswrdCliente =
+                                                                        true;
+                                                                    _model.isPINCliente =
+                                                                        false;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    safeSetState(
+                                                                        () {
+                                                                      _model
+                                                                          .pinClienteTextController
+                                                                          ?.clear();
+                                                                    });
+                                                                    if (animationsMap[
+                                                                            'buttonOnActionTriggerAnimation4'] !=
+                                                                        null) {
+                                                                      await animationsMap[
+                                                                              'buttonOnActionTriggerAnimation4']!
+                                                                          .controller
+                                                                          .forward(
+                                                                              from: 0.0);
+                                                                    }
+                                                                  },
+                                                                  text: FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'ttxnj1od' /* Contraseña */,
+                                                                  ),
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    width:
+                                                                        110.0,
+                                                                    height:
+                                                                        30.0,
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
                                                                             0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontStyle,
-                                                                      ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
-                                                            ),
-                                                            showLoadingIndicator:
-                                                                false,
-                                                          ).animateOnActionTrigger(
-                                                            animationsMap[
-                                                                'buttonOnActionTriggerAnimation3']!,
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              _model.isPswrdCliente =
-                                                                  true;
-                                                              _model.isPINCliente =
-                                                                  false;
-                                                              safeSetState(
-                                                                  () {});
-                                                              safeSetState(() {
-                                                                _model
-                                                                    .pinClienteTextController
-                                                                    ?.clear();
-                                                              });
-                                                              if (animationsMap[
-                                                                      'buttonOnActionTriggerAnimation4'] !=
-                                                                  null) {
-                                                                await animationsMap[
-                                                                        'buttonOnActionTriggerAnimation4']!
-                                                                    .controller
-                                                                    .forward(
-                                                                        from:
-                                                                            0.0);
-                                                              }
-                                                            },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              'ttxnj1od' /* Contraseña */,
-                                                            ),
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 110.0,
-                                                              height: 30.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: _model
-                                                                          .isPswrdCliente ==
-                                                                      true
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary
-                                                                  : FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .accent1,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    color: _model.isPswrdCliente ==
+                                                                            true
+                                                                        ? FlutterFlowTheme.of(context)
+                                                                            .primary
+                                                                        : FlutterFlowTheme.of(context)
+                                                                            .accent1,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -2749,40 +2829,32 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               .titleSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontStyle,
-                                                                      ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
+                                                                    elevation:
+                                                                        3.0,
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: Colors
+                                                                          .transparent,
+                                                                      width:
+                                                                          1.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                  ),
+                                                                  showLoadingIndicator:
+                                                                      false,
+                                                                ).animateOnActionTrigger(
+                                                                  animationsMap[
+                                                                      'buttonOnActionTriggerAnimation4']!,
+                                                                ),
+                                                              ],
                                                             ),
-                                                            showLoadingIndicator:
-                                                                false,
-                                                          ).animateOnActionTrigger(
-                                                            animationsMap[
-                                                                'buttonOnActionTriggerAnimation4']!,
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
                                                     ],
                                                   ),
-                                                ),
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
@@ -2793,134 +2865,91 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 16.0),
                                                     child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        var _shouldSetState =
-                                                            false;
-                                                        if ((_model.ciClienteTextController
-                                                                        .text ==
-                                                                    '') ||
-                                                            ((_model.passwordClienteTextController
-                                                                            .text ==
-                                                                        '') &&
-                                                                (_model.pinClienteTextController
-                                                                            .text ==
-                                                                        ''))) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'Ingrese sus datos'),
-                                                                content: Text(
-                                                                    'Por favor, ingrese sus datos para iniciar sesión'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        } else {
-                                                          _model.queryClientePsswrd =
-                                                              await queryClientesRecordOnce(
-                                                            queryBuilder:
-                                                                (clientesRecord) =>
-                                                                    clientesRecord
-                                                                        .where(
-                                                                          'cliente.cedula',
-                                                                          isEqualTo: _model
-                                                                              .ciClienteTextController
-                                                                              .text,
-                                                                        )
-                                                                        .where(
-                                                                          'cliente.contrasena',
-                                                                          isEqualTo: _model
-                                                                              .passwordClienteTextController
-                                                                              .text,
-                                                                        ),
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if ((_model.queryClientePsswrd !=
-                                                                      null &&
-                                                                  (_model.queryClientePsswrd)!
-                                                                      .isNotEmpty) ==
-                                                              true) {
-                                                            for (int loop0Index =
-                                                                    0;
-                                                                loop0Index <
-                                                                    _model
-                                                                        .queryClientePsswrd!
-                                                                        .length;
-                                                                loop0Index++) {
-                                                              final currentLoop0Item =
-                                                                  _model.queryClientePsswrd![
-                                                                      loop0Index];
-                                                              _model.addToIdsTenderos(
-                                                                  currentLoop0Item
-                                                                      .cliente
-                                                                      .idTendero!);
-                                                              safeSetState(
-                                                                  () {});
-                                                            }
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      '¡Bienvenido!'),
-                                                                  content: Text(
-                                                                      'Bienvenido, ${_model.queryClientePsswrd?.firstOrNull?.cliente.nombre} ${_model.queryClientePsswrd?.firstOrNull?.cliente.apellido}'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
+                                                      onPressed: ((_model.ciClienteTextController
+                                                                          .text ==
+                                                                      '') ||
+                                                              (_model.queryForClienteWithPswrd ==
+                                                                  null))
+                                                          ? null
+                                                          : () async {
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              if (_model.ciClienteTextController
+                                                                          .text ==
+                                                                      '') {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          'Ingrese sus datos'),
+                                                                      content: Text(
+                                                                          'Por favor, ingrese sus datos para iniciar sesión'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () =>
                                                                               Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
+                                                                          child:
+                                                                              Text('Ok'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
                                                                 );
-                                                              },
-                                                            );
+                                                                if (_shouldSetState)
+                                                                  safeSetState(
+                                                                      () {});
+                                                                return;
+                                                              } else {
+                                                                if (_model
+                                                                        .isClienteSetWithPss ==
+                                                                    false) {
+                                                                  _model.queryForClienteWithNoPsswrd =
+                                                                      await queryClientesRecordOnce(
+                                                                    queryBuilder: (clientesRecord) =>
+                                                                        clientesRecord
+                                                                            .where(
+                                                                              'cliente.cedula',
+                                                                              isEqualTo: _model.ciClienteTextController.text,
+                                                                            )
+                                                                            .where(
+                                                                              'cliente.contrasena',
+                                                                              isEqualTo: null,
+                                                                            ),
+                                                                    singleRecord:
+                                                                        true,
+                                                                  ).then((s) =>
+                                                                          s.firstOrNull);
+                                                                  _shouldSetState =
+                                                                      true;
 
-                                                            context.pushNamed(
-                                                              ResumenFiadoClienTiendaNewWidget
-                                                                  .routeName,
-                                                              queryParameters: {
-                                                                'cedula':
-                                                                    serializeParam(
-                                                                  _model
-                                                                      .ciClienteTextController
-                                                                      .text,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'idTenderoList':
-                                                                    serializeParam(
-                                                                  _model
-                                                                      .idsTenderos,
-                                                                  ParamType
-                                                                      .DocumentReference,
-                                                                  isList: true,
-                                                                ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          } else {
-                                                            _model.queryClientePIN =
-                                                                await queryClientesRecordOnce(
-                                                              queryBuilder:
-                                                                  (clientesRecord) =>
+                                                                  context
+                                                                      .pushNamed(
+                                                                    ClienteFirstLoginWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'idClienteWithNoPsswrd':
+                                                                          serializeParam(
+                                                                        _model
+                                                                            .queryForClienteWithNoPsswrd
+                                                                            ?.reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                                _model.queryClientePsswrd =
+                                                                    await queryClientesRecordOnce(
+                                                                  queryBuilder: (clientesRecord) =>
                                                                       clientesRecord
                                                                           .where(
                                                                             'cliente.cedula',
@@ -2928,116 +2957,193 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                                 _model.ciClienteTextController.text,
                                                                           )
                                                                           .where(
-                                                                            'cliente.pin',
+                                                                            'cliente.contrasena',
                                                                             isEqualTo:
-                                                                                _model.pinClienteTextController.text,
+                                                                                _model.passwordClienteTextController.text,
                                                                           ),
-                                                            );
-                                                            _shouldSetState =
-                                                                true;
-                                                            if ((_model.queryClientePIN !=
-                                                                        null &&
-                                                                    (_model.queryClientePIN)!
-                                                                        .isNotEmpty) ==
-                                                                true) {
-                                                              for (int loop0Index =
-                                                                      0;
-                                                                  loop0Index <
-                                                                      _model
-                                                                          .queryClientePIN!
-                                                                          .length;
-                                                                  loop0Index++) {
-                                                                final currentLoop0Item =
-                                                                    _model.queryClientePIN![
-                                                                        loop0Index];
-                                                                _model.addToIdsTenderos(
-                                                                    currentLoop0Item
+                                                                );
+                                                                _shouldSetState =
+                                                                    true;
+                                                                if ((_model.queryClientePsswrd !=
+                                                                            null &&
+                                                                        (_model.queryClientePsswrd)!
+                                                                            .isNotEmpty) ==
+                                                                    true) {
+                                                                  for (int loop1Index =
+                                                                          0;
+                                                                      loop1Index <
+                                                                          _model
+                                                                              .queryClientePsswrd!
+                                                                              .length;
+                                                                      loop1Index++) {
+                                                                    final currentLoop1Item =
+                                                                        _model.queryClientePsswrd![
+                                                                            loop1Index];
+                                                                    _model.addToIdsTenderos(currentLoop1Item
                                                                         .cliente
                                                                         .idTendero!);
-                                                                safeSetState(
-                                                                    () {});
-                                                              }
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Bienvenido!'),
-                                                                    content: Text(
-                                                                        'Bienvenido, ${_model.queryClientePIN?.firstOrNull?.cliente.nombre} ${_model.queryClientePIN?.firstOrNull?.cliente.apellido}'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  }
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        title: Text(
+                                                                            '¡Bienvenido!'),
+                                                                        content:
+                                                                            Text('Bienvenido, ${_model.queryClientePsswrd?.firstOrNull?.cliente.nombre} ${_model.queryClientePsswrd?.firstOrNull?.cliente.apellido}'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
                                                                                 Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
+                                                                            child:
+                                                                                Text('Ok'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
                                                                   );
-                                                                },
-                                                              );
 
-                                                              context.pushNamed(
-                                                                ResumenFiadoClienTiendaNewWidget
-                                                                    .routeName,
-                                                                queryParameters:
-                                                                    {
-                                                                  'cedula':
-                                                                      serializeParam(
-                                                                    _model
-                                                                        .ciClienteTextController
-                                                                        .text,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'idTenderoList':
-                                                                      serializeParam(
-                                                                    _model
-                                                                        .idsTenderos,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                    isList:
-                                                                        true,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            } else {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        'Datos incorrectos'),
-                                                                    content: Text(
-                                                                        'No ha sido encontrado el usuario con los datos ingresados'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
+                                                                  context
+                                                                      .pushNamed(
+                                                                    ResumenFiadoClienTiendaNewWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'cedula':
+                                                                          serializeParam(
+                                                                        _model
+                                                                            .ciClienteTextController
+                                                                            .text,
+                                                                        ParamType
+                                                                            .String,
                                                                       ),
-                                                                    ],
+                                                                      'idTenderoList':
+                                                                          serializeParam(
+                                                                        _model
+                                                                            .idsTenderos,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                        isList:
+                                                                            true,
+                                                                      ),
+                                                                    }.withoutNulls,
                                                                   );
-                                                                },
-                                                              );
+                                                                } else {
+                                                                  _model.queryClientePIN =
+                                                                      await queryClientesRecordOnce(
+                                                                    queryBuilder: (clientesRecord) =>
+                                                                        clientesRecord
+                                                                            .where(
+                                                                              'cliente.cedula',
+                                                                              isEqualTo: _model.ciClienteTextController.text,
+                                                                            )
+                                                                            .where(
+                                                                              'cliente.pin',
+                                                                              isEqualTo: _model.pinClienteTextController.text,
+                                                                            ),
+                                                                  );
+                                                                  _shouldSetState =
+                                                                      true;
+                                                                  if ((_model.queryClientePIN !=
+                                                                              null &&
+                                                                          (_model.queryClientePIN)!
+                                                                              .isNotEmpty) ==
+                                                                      true) {
+                                                                    for (int loop2Index =
+                                                                            0;
+                                                                        loop2Index <
+                                                                            _model.queryClientePIN!.length;
+                                                                        loop2Index++) {
+                                                                      final currentLoop2Item =
+                                                                          _model
+                                                                              .queryClientePIN![loop2Index];
+                                                                      _model.addToIdsTenderos(currentLoop2Item
+                                                                          .cliente
+                                                                          .idTendero!);
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    }
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('¡Bienvenido!'),
+                                                                          content:
+                                                                              Text('Bienvenido, ${_model.queryClientePIN?.firstOrNull?.cliente.nombre} ${_model.queryClientePIN?.firstOrNull?.cliente.apellido}'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+
+                                                                    context
+                                                                        .pushNamed(
+                                                                      ResumenFiadoClienTiendaNewWidget
+                                                                          .routeName,
+                                                                      queryParameters:
+                                                                          {
+                                                                        'cedula':
+                                                                            serializeParam(
+                                                                          _model
+                                                                              .ciClienteTextController
+                                                                              .text,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'idTenderoList':
+                                                                            serializeParam(
+                                                                          _model
+                                                                              .idsTenderos,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                          isList:
+                                                                              true,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
+                                                                  } else {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (alertDialogContext) {
+                                                                        return AlertDialog(
+                                                                          title:
+                                                                              Text('Datos incorrectos'),
+                                                                          content:
+                                                                              Text('No ha sido encontrado el usuario con los datos ingresados'),
+                                                                          actions: [
+                                                                            TextButton(
+                                                                              onPressed: () => Navigator.pop(alertDialogContext),
+                                                                              child: Text('Ok'),
+                                                                            ),
+                                                                          ],
+                                                                        );
+                                                                      },
+                                                                    );
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    return;
+                                                                  }
+                                                                }
+                                                              }
+
                                                               if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              return;
-                                                            }
-                                                          }
-                                                        }
-
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                      },
+                                                            },
                                                       text: FFLocalizations.of(
                                                               context)
                                                           .getText(
@@ -3361,6 +3467,8 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                             _model.pinTenderoTextController
                                                 ?.clear();
                                           });
+                                          _model.isClienteSetWithPss = false;
+                                          safeSetState(() {});
                                         },
                                         () async {
                                           safeSetState(() {

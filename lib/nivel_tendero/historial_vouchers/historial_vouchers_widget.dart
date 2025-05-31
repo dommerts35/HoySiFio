@@ -81,304 +81,360 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: SafeArea(
           top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
-                  child: Container(
-                    width: double.infinity,
-                    constraints: BoxConstraints(
-                      maxWidth: 1170.0,
-                    ),
-                    decoration: BoxDecoration(),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 8.0, 12.0, 8.0),
-                                child: FlutterFlowIconButton(
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                  borderRadius: 12.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 40.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: Icon(
-                                    Icons.arrow_back,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () async {
-                                    context.pushNamed(
-                                      ClienteProdInfoEditWidget.routeName,
-                                      queryParameters: {
-                                        'nombre': serializeParam(
-                                          widget.nombre,
-                                          ParamType.String,
-                                        ),
-                                        'telf': serializeParam(
-                                          widget.telf,
-                                          ParamType.String,
-                                        ),
-                                        'isFiando': serializeParam(
-                                          widget.isFiando,
-                                          ParamType.bool,
-                                        ),
-                                        'idCliente': serializeParam(
-                                          widget.idCliente,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'apellido': serializeParam(
-                                          widget.apellido,
-                                          ParamType.String,
-                                        ),
-                                        'cedula': serializeParam(
-                                          widget.cedula,
-                                          ParamType.String,
-                                        ),
-                                        'tenderoRef': serializeParam(
-                                          widget.idTendero,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'direccionDomicilio': serializeParam(
-                                          widget.direccionDomicilio,
-                                          ParamType.String,
-                                        ),
-                                        'viviendaAlq': serializeParam(
-                                          widget.viviendaAlq,
-                                          ParamType.bool,
-                                        ),
-                                        'viviendaProp': serializeParam(
-                                          widget.viviendaProp,
-                                          ParamType.bool,
-                                        ),
-                                        'emailCliente': serializeParam(
-                                          widget.emailCliente,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 20.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ftl0vypt' /* Historial de vouchers */,
-                                  ),
-                                  maxLines: 2,
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        font: GoogleFonts.interTight(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                25.0, 10.0, 0.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'vcw3n8er' /* Aquí se mostrarán los vouchers... */,
-                              ),
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                25.0, 0.0, 0.0, 0.0),
-                            child: StreamBuilder<ClientesRecord>(
-                              stream: _model.queryNameClienteHistorialPagado(
-                                requestFn: () => ClientesRecord.getDocument(
-                                    widget.idCliente!),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                }
-
-                                final textClientesRecord = snapshot.data!;
-
-                                return Text(
-                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                );
-                              },
-                            ),
-                          ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional(0.0, -1.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: 810.0,
+                      constraints: BoxConstraints(
+                        maxWidth: 1170.0,
+                      ),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: Image.asset(
+                            'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                          ).image,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                        border: Border.all(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          width: 1.0,
+                        ),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 6.0, 0.0, 0.0),
-                              child: StreamBuilder<ClientesRecord>(
-                                stream: ClientesRecord.getDocument(
-                                    widget.idCliente!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
+                                  0.0, 10.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 8.0, 12.0, 8.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).primary,
+                                      borderRadius: 12.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 24.0,
                                       ),
-                                    );
-                                  }
-
-                                  final mainHistorialViewClientesRecord =
-                                      snapshot.data!;
-
-                                  return Builder(
-                                    builder: (context) {
-                                      final listaVouchers =
-                                          mainHistorialViewClientesRecord
-                                              .cliente.dataTypeVouchers
-                                              .map((e) => e)
-                                              .toList();
-                                      if (listaVouchers.isEmpty) {
-                                        return Center(
-                                          child: Container(
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.8,
-                                            child: EmptyVoucherCompWidget(),
-                                          ),
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                          ClienteInfoEditWidget.routeName,
+                                          queryParameters: {
+                                            'nombre': serializeParam(
+                                              widget.nombre,
+                                              ParamType.String,
+                                            ),
+                                            'telf': serializeParam(
+                                              widget.telf,
+                                              ParamType.String,
+                                            ),
+                                            'isFiando': serializeParam(
+                                              widget.isFiando,
+                                              ParamType.bool,
+                                            ),
+                                            'idCliente': serializeParam(
+                                              widget.idCliente,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'apellido': serializeParam(
+                                              widget.apellido,
+                                              ParamType.String,
+                                            ),
+                                            'cedula': serializeParam(
+                                              widget.cedula,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoRef': serializeParam(
+                                              widget.idTendero,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'direccionDomicilio':
+                                                serializeParam(
+                                              widget.direccionDomicilio,
+                                              ParamType.String,
+                                            ),
+                                            'viviendaAlq': serializeParam(
+                                              widget.viviendaAlq,
+                                              ParamType.bool,
+                                            ),
+                                            'viviendaProp': serializeParam(
+                                              widget.viviendaProp,
+                                              ParamType.bool,
+                                            ),
+                                            'emailCliente': serializeParam(
+                                              widget.emailCliente,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
                                         );
-                                      }
-
-                                      return ListView.separated(
-                                        padding: EdgeInsets.fromLTRB(
-                                          0,
-                                          12.0,
-                                          0,
-                                          44.0,
+                                      },
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 5.0, 10.0, 5.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'ftl0vypt' /* Historial de 
+comprobantes */
+                                          ,
                                         ),
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount: listaVouchers.length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(height: 12.0),
-                                        itemBuilder:
-                                            (context, listaVouchersIndex) {
-                                          final listaVouchersItem =
-                                              listaVouchers[listaVouchersIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              constraints: BoxConstraints(
-                                                maxWidth: 570.0,
+                                        maxLines: 2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
                                               ),
-                                              decoration: BoxDecoration(
-                                                color: valueOrDefault<Color>(
-                                                  listaVouchersItem
-                                                              .estadoVoucher ==
-                                                          'Negado'
-                                                      ? FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryText
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 0.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Text(
+                                          FFLocalizations.of(context).getText(
+                                            'vcw3n8er' /* Comprobantes enviados del clie... */,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                border: Border.all(
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                        StreamBuilder<ClientesRecord>(
+                                          stream: _model
+                                              .queryNameClienteHistorialPagado(
+                                            requestFn: () =>
+                                                ClientesRecord.getDocument(
+                                                    widget.idCliente!),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            }
+
+                                            final textClientesRecord =
+                                                snapshot.data!;
+
+                                            return Text(
+                                              '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
+                                              textAlign: TextAlign.start,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 5.0, 0.0, 0.0),
+                                child: StreamBuilder<ClientesRecord>(
+                                  stream: ClientesRecord.getDocument(
+                                      widget.idCliente!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+
+                                    final mainHistorialViewClientesRecord =
+                                        snapshot.data!;
+
+                                    return Builder(
+                                      builder: (context) {
+                                        final listaVouchers =
+                                            mainHistorialViewClientesRecord
+                                                .cliente.dataTypeVouchers
+                                                .map((e) => e)
+                                                .toList();
+                                        if (listaVouchers.isEmpty) {
+                                          return Center(
+                                            child: EmptyVoucherCompWidget(),
+                                          );
+                                        }
+
+                                        return ListView.separated(
+                                          padding: EdgeInsets.fromLTRB(
+                                            0,
+                                            12.0,
+                                            0,
+                                            44.0,
+                                          ),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount: listaVouchers.length,
+                                          separatorBuilder: (_, __) =>
+                                              SizedBox(height: 12.0),
+                                          itemBuilder:
+                                              (context, listaVouchersIndex) {
+                                            final listaVouchersItem =
+                                                listaVouchers[
+                                                    listaVouchersIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 570.0,
+                                                ),
+                                                decoration: BoxDecoration(
                                                   color: valueOrDefault<Color>(
                                                     listaVouchersItem
                                                                 .estadoVoucher ==
@@ -388,35 +444,69 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                             .primaryText
                                                         : FlutterFlowTheme.of(
                                                                 context)
-                                                            .alternate,
+                                                            .secondaryBackground,
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                   ),
-                                                  width: 2.0,
-                                                ),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  if (listaVouchersItem
-                                                          .estadoVoucher ==
-                                                      'Negado')
-                                                    Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '2hcmbmsi' /* Voucher Negado */,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  border: Border.all(
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      listaVouchersItem
+                                                                  .estadoVoucher ==
+                                                              'Negado'
+                                                          ? FlutterFlowTheme.of(
                                                                   context)
-                                                              .titleMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .interTight(
+                                                              .error
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    if (listaVouchersItem
+                                                            .estadoVoucher ==
+                                                        'Negado')
+                                                      Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          '2hcmbmsi' /* Voucher Negado */,
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .interTight(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
@@ -426,334 +516,425 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                       .titleMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                        width: 3.0,
                                                       ),
-                                                    ),
-                                                    child: Opacity(
-                                                      opacity: listaVouchersItem
-                                                                  .estadoVoucher ==
-                                                              'Negado'
-                                                          ? 0.5
-                                                          : 1.0,
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          await Navigator.push(
-                                                            context,
-                                                            PageTransition(
-                                                              type:
-                                                                  PageTransitionType
-                                                                      .fade,
-                                                              child:
-                                                                  FlutterFlowExpandedImageView(
-                                                                image: Image
-                                                                    .network(
-                                                                  listaVouchersItem
+                                                    Container(
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 3.0,
+                                                        ),
+                                                      ),
+                                                      child: Opacity(
+                                                        opacity: listaVouchersItem
+                                                                    .estadoVoucher ==
+                                                                'Negado'
+                                                            ? 0.5
+                                                            : 1.0,
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            await Navigator
+                                                                .push(
+                                                              context,
+                                                              PageTransition(
+                                                                type:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                child:
+                                                                    FlutterFlowExpandedImageView(
+                                                                  image: Image
+                                                                      .network(
+                                                                    listaVouchersItem
+                                                                        .imgVoucher,
+                                                                    fit: BoxFit
+                                                                        .contain,
+                                                                  ),
+                                                                  allowRotation:
+                                                                      false,
+                                                                  tag: listaVouchersItem
                                                                       .imgVoucher,
-                                                                  fit: BoxFit
-                                                                      .contain,
+                                                                  useHeroAnimation:
+                                                                      true,
                                                                 ),
-                                                                allowRotation:
-                                                                    false,
-                                                                tag: listaVouchersItem
-                                                                    .imgVoucher,
-                                                                useHeroAnimation:
-                                                                    true,
                                                               ),
-                                                            ),
-                                                          );
-                                                        },
-                                                        child: Hero(
-                                                          tag: listaVouchersItem
-                                                              .imgVoucher,
-                                                          transitionOnUserGestures:
-                                                              true,
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child:
-                                                                Image.network(
-                                                              listaVouchersItem
-                                                                  .imgVoucher,
-                                                              width: 200.0,
-                                                              height: 200.0,
-                                                              fit: BoxFit.cover,
+                                                            );
+                                                          },
+                                                          child: Hero(
+                                                            tag:
+                                                                listaVouchersItem
+                                                                    .imgVoucher,
+                                                            transitionOnUserGestures:
+                                                                true,
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                listaVouchersItem
+                                                                    .imgVoucher,
+                                                                width: 200.0,
+                                                                height: 200.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  if ((listaVouchersItem
-                                                              .estadoVoucher ==
-                                                          'Pendiente') &&
-                                                      (listaVouchersItem
-                                                              .historialPagoParaEliminar !=
-                                                          null))
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
-                                                            listaVouchersItem
-                                                                .historialPagoParaEliminar
-                                                                .totalPorPagar,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          ) : formatNumber(
-                                                            mainHistorialViewClientesRecord
-                                                                .cliente
-                                                                .totalDeudaCompleta,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  if ((listaVouchersItem
-                                                              .estadoVoucher ==
-                                                          'Pendiente') &&
-                                                      (listaVouchersItem
-                                                              .historialPagoParaEliminar !=
-                                                          null))
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
-                                                            listaVouchersItem
-                                                                .montoAPagar,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          ) : formatNumber(
-                                                            mainHistorialViewClientesRecord
-                                                                .cliente
-                                                                .totalDeudaCompleta,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Tipo de Voucher: ${listaVouchersItem.tipoVoucher}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: listaVouchersItem
-                                                                            .estadoVoucher ==
-                                                                        'Negado'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Num. Voucher: ${listaVouchersItem.numVoucher.toString()}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: listaVouchersItem
-                                                                            .estadoVoucher ==
-                                                                        'Negado'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                  if (listaVouchersItem
-                                                          .estadoVoucher ==
-                                                      'Negado')
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
+                                                    if ((listaVouchersItem
+                                                                .estadoVoucher ==
+                                                            'Pendiente') &&
+                                                        (listaVouchersItem
+                                                                .historialPagoParaEliminar !=
+                                                            null))
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
-                                                                    40.0,
+                                                                    0.0,
                                                                     5.0,
-                                                                    40.0,
+                                                                    0.0,
                                                                     0.0),
-                                                        child: AutoSizeText(
-                                                          'Razón de negación: ${listaVouchersItem.razonDenegado}',
+                                                        child: Text(
+                                                          'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
+                                                              listaVouchersItem
+                                                                  .historialPagoParaEliminar
+                                                                  .totalPorPagar,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            ) : formatNumber(
+                                                              mainHistorialViewClientesRecord
+                                                                  .cliente
+                                                                  .totalDeudaCompleta,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    if ((listaVouchersItem
+                                                                .estadoVoucher ==
+                                                            'Pendiente') &&
+                                                        (listaVouchersItem
+                                                                .historialPagoParaEliminar !=
+                                                            null))
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
+                                                              listaVouchersItem
+                                                                  .montoAPagar,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            ) : formatNumber(
+                                                              mainHistorialViewClientesRecord
+                                                                  .cliente
+                                                                  .totalDeudaCompleta,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Tipo de Comprobante: ${listaVouchersItem.tipoVoucher}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Estado: ${listaVouchersItem.estadoVoucher}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    if (listaVouchersItem
+                                                            .estadoVoucher ==
+                                                        'Negado')
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      40.0,
+                                                                      5.0,
+                                                                      40.0,
+                                                                      0.0),
+                                                          child: AutoSizeText(
+                                                            'Razón de negación: ${listaVouchersItem.razonDenegado}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    if (listaVouchersItem
+                                                            .isFullPago ==
+                                                        true)
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getText(
+                                                            '6392c0tu' /* Comprobante de pago de todos l... */,
+                                                          ),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium
@@ -772,7 +953,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                 ),
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryBackground,
+                                                                    .error,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -786,10 +967,26 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                               ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  if (listaVouchersItem
-                                                          .isFullPago ==
-                                                      true)
+                                                    if (listaVouchersItem
+                                                            .estadoVoucher ==
+                                                        'Pendiente')
+                                                      wrapWithModel(
+                                                        model: _model
+                                                            .razonNegadoCModels
+                                                            .getModel(
+                                                          listaVouchersItem
+                                                              .idTransaccion,
+                                                          listaVouchersIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        child:
+                                                            RazonNegadoCWidget(
+                                                          key: Key(
+                                                            'Keyf1p_${listaVouchersItem.idTransaccion}',
+                                                          ),
+                                                        ),
+                                                      ),
                                                     Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
@@ -798,421 +995,121 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                   5.0,
                                                                   0.0,
                                                                   0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '6392c0tu' /* Voucher de pago de todos los p... */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                                  letterSpacing:
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          if (listaVouchersItem
+                                                                  .estadoVoucher ==
+                                                              'Pendiente')
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
                                                                       0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
+                                                                      -0.02),
+                                                              child:
+                                                                  FlutterFlowIconButton(
+                                                                borderColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error,
+                                                                borderRadius:
+                                                                    12.0,
+                                                                borderWidth:
+                                                                    1.0,
+                                                                buttonSize:
+                                                                    40.0,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .do_not_disturb_on,
+                                                                  color: Color(
+                                                                      0xFFE75353),
+                                                                  size: 24.0,
                                                                 ),
-                                                      ),
-                                                    ),
-                                                  if (listaVouchersItem
-                                                          .estadoVoucher ==
-                                                      'Pendiente')
-                                                    wrapWithModel(
-                                                      model: _model
-                                                          .razonNegadoCModels
-                                                          .getModel(
-                                                        listaVouchersItem
-                                                            .idTransaccion,
-                                                        listaVouchersIndex,
-                                                      ),
-                                                      updateCallback: () =>
-                                                          safeSetState(() {}),
-                                                      child: RazonNegadoCWidget(
-                                                        key: Key(
-                                                          'Keyf1p_${listaVouchersItem.idTransaccion}',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: [
-                                                        if (listaVouchersItem
-                                                                .estadoVoucher ==
-                                                            'Pendiente')
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, -0.02),
-                                                            child:
-                                                                FlutterFlowIconButton(
-                                                              borderColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .error,
-                                                              borderRadius:
-                                                                  12.0,
-                                                              borderWidth: 1.0,
-                                                              buttonSize: 40.0,
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .do_not_disturb_on,
-                                                                color: Color(
-                                                                    0xFFE75353),
-                                                                size: 24.0,
-                                                              ),
-                                                              onPressed: (listaVouchersItem
-                                                                          .estadoVoucher ==
-                                                                      'Negado')
-                                                                  ? null
-                                                                  : () async {
-                                                                      final firestoreBatch = FirebaseFirestore
-                                                                          .instance
-                                                                          .batch();
-                                                                      try {
-                                                                        var confirmDialogResponse = await showDialog<bool>(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  title: Text('¿Denegar Pago?'),
-                                                                                  content: Text('Una vez denegado, no se podrá acceder al voucher o guardar la imágen del voucher.'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                      child: Text('Cancelar'),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                      child: Text('Confirmar'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            ) ??
-                                                                            false;
-                                                                        if (confirmDialogResponse) {
-                                                                          if (_model.razonNegadoCModels.getValueAtIndex(
-                                                                                    listaVouchersIndex,
-                                                                                    (m) => m.razonNegadoTextController.text,
-                                                                                  ) ==
-                                                                                  null ||
-                                                                              _model.razonNegadoCModels.getValueAtIndex(
-                                                                                    listaVouchersIndex,
-                                                                                    (m) => m.razonNegadoTextController.text,
-                                                                                  ) ==
-                                                                                  '') {
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  title: Text('¡Alerta!'),
-                                                                                  content: Text('Por favor, ingrese la razón de la negación.'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            );
-                                                                            return;
-                                                                          }
-                                                                          _model.voucherDT =
-                                                                              listaVouchersItem;
-                                                                          _model.voucherHPDT =
-                                                                              listaVouchersItem.historialPagoParaEliminar;
-                                                                          safeSetState(
-                                                                              () {});
-
-                                                                          firestoreBatch.update(
-                                                                              widget.idCliente!,
-                                                                              createClientesRecordData(
-                                                                                cliente: createDataTypeClienteStruct(
-                                                                                  fieldValues: {
-                                                                                    'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                      getDataTypeVouchersFirestoreData(
-                                                                                        updateDataTypeVouchersStruct(
-                                                                                          _model.voucherDT,
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                        true,
-                                                                                      )
-                                                                                    ]),
-                                                                                    'historialPorPagarProd': FieldValue.arrayRemove([
-                                                                                      getDataTypeHistorialPagoFirestoreData(
-                                                                                        updateDataTypeHistorialPagoStruct(
-                                                                                          _model.voucherHPDT,
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                        true,
-                                                                                      )
-                                                                                    ]),
-                                                                                  },
-                                                                                  clearUnsetFields: false,
-                                                                                ),
-                                                                              ));
-                                                                          _model
-                                                                              .updateVoucherDTStruct(
-                                                                            (e) => e
-                                                                              ..estadoVoucher = 'Negado'
-                                                                              ..historialPagoParaEliminar = null
-                                                                              ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
-                                                                                listaVouchersIndex,
-                                                                                (m) => m.razonNegadoTextController.text,
-                                                                              ),
-                                                                          );
-                                                                          _model
-                                                                              .updateVoucherHPDTStruct(
-                                                                            (e) => e
-                                                                              ..isVoucherSent = false,
-                                                                          );
-                                                                          safeSetState(
-                                                                              () {});
-
-                                                                          firestoreBatch.update(
-                                                                              widget.idCliente!,
-                                                                              createClientesRecordData(
-                                                                                cliente: createDataTypeClienteStruct(
-                                                                                  fieldValues: {
-                                                                                    'DataTypeVouchers': FieldValue.arrayUnion([
-                                                                                      getDataTypeVouchersFirestoreData(
-                                                                                        updateDataTypeVouchersStruct(
-                                                                                          _model.voucherDT,
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                        true,
-                                                                                      )
-                                                                                    ]),
-                                                                                    'historialPorPagarProd': FieldValue.arrayUnion([
-                                                                                      getDataTypeHistorialPagoFirestoreData(
-                                                                                        updateDataTypeHistorialPagoStruct(
-                                                                                          _model.voucherHPDT,
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                        true,
-                                                                                      )
-                                                                                    ]),
-                                                                                  },
-                                                                                  clearUnsetFields: false,
-                                                                                ),
-                                                                              ));
-                                                                        } else {
-                                                                          return;
-                                                                        }
-                                                                      } finally {
-                                                                        await firestoreBatch
-                                                                            .commit();
-                                                                      }
-                                                                    },
-                                                            ),
-                                                          ),
-                                                        if (listaVouchersItem
-                                                                .estadoVoucher ==
-                                                            'Pendiente')
-                                                          Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, -0.02),
-                                                            child:
-                                                                FlutterFlowIconButton(
-                                                              borderColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .success,
-                                                              borderRadius:
-                                                                  12.0,
-                                                              borderWidth: 1.0,
-                                                              buttonSize: 40.0,
-                                                              icon: Icon(
-                                                                Icons
-                                                                    .paid_rounded,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .success,
-                                                                size: 24.0,
-                                                              ),
-                                                              onPressed: (listaVouchersItem
-                                                                          .estadoVoucher ==
-                                                                      'Negado')
-                                                                  ? null
-                                                                  : () async {
-                                                                      final firestoreBatch = FirebaseFirestore
-                                                                          .instance
-                                                                          .batch();
-                                                                      try {
-                                                                        var confirmDialogResponse = await showDialog<bool>(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  title: Text('¿Confirmar pago?'),
-                                                                                  content: Text('¿Está seguro de confirmar el pago de esta cuenta?'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                      child: Text('No'),
-                                                                                    ),
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                      child: Text('Si'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            ) ??
-                                                                            false;
-                                                                        if (confirmDialogResponse) {
-                                                                          _model.dtHistorialPagoNew =
-                                                                              DataTypeHistorialPagoStruct(
-                                                                            productos:
-                                                                                listaVouchersItem.historialPagoParaEliminar.productos,
-                                                                            totalPagado:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalPagado,
-                                                                            totalPorPagar:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
-                                                                            transferencia:
-                                                                                listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                            efectivo:
-                                                                                listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                            totalGeneral:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalGeneral,
-                                                                            idTransaccion:
-                                                                                listaVouchersItem.historialPagoParaEliminar.idTransaccion,
-                                                                            fechaDeFio:
-                                                                                listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
-                                                                            numVoucher:
-                                                                                listaVouchersItem.numVoucher,
-                                                                            isVoucherSent:
-                                                                                listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
-                                                                          );
-                                                                          _model.dtHistorialPagoOld =
-                                                                              DataTypeHistorialPagoStruct(
-                                                                            productos:
-                                                                                listaVouchersItem.historialPagoParaEliminar.productos,
-                                                                            totalPagado:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalPagado,
-                                                                            totalPorPagar:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
-                                                                            transferencia:
-                                                                                listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                            efectivo:
-                                                                                listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                            totalGeneral:
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalGeneral,
-                                                                            idTransaccion:
-                                                                                listaVouchersItem.historialPagoParaEliminar.idTransaccion,
-                                                                            fechaDeFio:
-                                                                                listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
-                                                                            numVoucher:
-                                                                                listaVouchersItem.numVoucher,
-                                                                            isVoucherSent:
-                                                                                listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
-                                                                          );
-                                                                          safeSetState(
-                                                                              () {});
-                                                                          _model
-                                                                              .updateDtHistorialPagoNewStruct(
-                                                                            (e) => e
-                                                                              ..transferencia = true
-                                                                              ..efectivo = false,
-                                                                          );
-                                                                          safeSetState(
-                                                                              () {});
-                                                                          _model.tempHistorialList = mainHistorialViewClientesRecord
-                                                                              .cliente
-                                                                              .historialPorPagarProd
-                                                                              .toList()
-                                                                              .cast<DataTypeHistorialPagoStruct>();
-                                                                          safeSetState(
-                                                                              () {});
-                                                                          if (listaVouchersItem.isFullPago ==
-                                                                              true) {
-                                                                            firestoreBatch.update(
-                                                                                widget.idCliente!,
-                                                                                createClientesRecordData(
-                                                                                  cliente: createDataTypeClienteStruct(
-                                                                                    fieldValues: {
-                                                                                      'historialPorPagarProd': FieldValue.delete(),
-                                                                                    },
-                                                                                    clearUnsetFields: false,
-                                                                                  ),
-                                                                                ));
-                                                                            for (int loop1Index = 0;
-                                                                                loop1Index < _model.tempHistorialList.length;
-                                                                                loop1Index++) {
-                                                                              final currentLoop1Item = _model.tempHistorialList[loop1Index];
-                                                                              _model.updateTempHistorialListAtIndex(
-                                                                                loop1Index,
-                                                                                (e) => e
-                                                                                  ..totalPorPagar = 0.0
-                                                                                  ..totalPagado = currentLoop1Item.totalGeneral
-                                                                                  ..transferencia = true
-                                                                                  ..efectivo = false
-                                                                                  ..isVoucherSent = false,
+                                                                onPressed: (listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Negado')
+                                                                    ? null
+                                                                    : () async {
+                                                                        final firestoreBatch = FirebaseFirestore
+                                                                            .instance
+                                                                            .batch();
+                                                                        try {
+                                                                          var confirmDialogResponse = await showDialog<bool>(
+                                                                                context: context,
+                                                                                builder: (alertDialogContext) {
+                                                                                  return AlertDialog(
+                                                                                    title: Text('¿Denegar Pago?'),
+                                                                                    content: Text('Una vez denegado, no se podrá acceder al voucher o guardar la imágen del voucher.'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                        child: Text('Cancelar'),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                        child: Text('Confirmar'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                },
+                                                                              ) ??
+                                                                              false;
+                                                                          if (confirmDialogResponse) {
+                                                                            if (_model.razonNegadoCModels.getValueAtIndex(
+                                                                                      listaVouchersIndex,
+                                                                                      (m) => m.razonNegadoTextController.text,
+                                                                                    ) ==
+                                                                                    null ||
+                                                                                _model.razonNegadoCModels.getValueAtIndex(
+                                                                                      listaVouchersIndex,
+                                                                                      (m) => m.razonNegadoTextController.text,
+                                                                                    ) ==
+                                                                                    '') {
+                                                                              await showDialog(
+                                                                                context: context,
+                                                                                builder: (alertDialogContext) {
+                                                                                  return AlertDialog(
+                                                                                    title: Text('¡Alerta!'),
+                                                                                    content: Text('Por favor, ingrese la razón de la negación.'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                        child: Text('Ok'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                },
                                                                               );
-                                                                              safeSetState(() {});
-
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      fieldValues: {
-                                                                                        'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                          getDataTypeHistorialPagoFirestoreData(
-                                                                                            updateDataTypeHistorialPagoStruct(
-                                                                                              currentLoop1Item,
-                                                                                              clearUnsetFields: false,
-                                                                                            ),
-                                                                                            true,
-                                                                                          )
-                                                                                        ]),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
+                                                                              return;
                                                                             }
+                                                                            _model.voucherDT =
+                                                                                listaVouchersItem;
+                                                                            _model.voucherHPDT =
+                                                                                listaVouchersItem.historialPagoParaEliminar;
+                                                                            safeSetState(() {});
 
                                                                             firestoreBatch.update(
                                                                                 widget.idCliente!,
                                                                                 createClientesRecordData(
                                                                                   cliente: createDataTypeClienteStruct(
-                                                                                    totalDeudaCompleta: 0.0,
                                                                                     fieldValues: {
                                                                                       'DataTypeVouchers': FieldValue.arrayRemove([
                                                                                         getDataTypeVouchersFirestoreData(
                                                                                           updateDataTypeVouchersStruct(
-                                                                                            listaVouchersItem,
+                                                                                            _model.voucherDT,
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                          true,
+                                                                                        )
+                                                                                      ]),
+                                                                                      'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                        getDataTypeHistorialPagoFirestoreData(
+                                                                                          updateDataTypeHistorialPagoStruct(
+                                                                                            _model.voucherHPDT,
                                                                                             clearUnsetFields: false,
                                                                                           ),
                                                                                           true,
@@ -1222,77 +1119,198 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                                     clearUnsetFields: false,
                                                                                   ),
                                                                                 ));
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (alertDialogContext) {
-                                                                                return AlertDialog(
-                                                                                  title: Text('¡Pago completo confirmado!'),
-                                                                                  content: Text('Se ha registrado el pago exitosamente.'),
-                                                                                  actions: [
-                                                                                    TextButton(
-                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                      child: Text('Ok'),
-                                                                                    ),
-                                                                                  ],
-                                                                                );
-                                                                              },
-                                                                            );
-                                                                          } else {
-                                                                            if (listaVouchersItem.montoAPagar ==
-                                                                                listaVouchersItem.historialPagoParaEliminar.totalPorPagar) {
-                                                                              _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
-                                                                              _model.updateDtHistorialPagoNewStruct(
-                                                                                (e) => e
-                                                                                  ..totalPorPagar = 0.0
-                                                                                  ..isVoucherSent = false,
-                                                                              );
-                                                                              safeSetState(() {});
-
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      fieldValues: {
-                                                                                        'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                          getDataTypeHistorialPagoFirestoreData(
-                                                                                            updateDataTypeHistorialPagoStruct(
-                                                                                              _model.dtHistorialPagoNew,
-                                                                                              clearUnsetFields: false,
-                                                                                            ),
-                                                                                            true,
-                                                                                          )
-                                                                                        ]),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
-
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      fieldValues: {
-                                                                                        'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                          _model.tempHistorialList,
-                                                                                        ),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
-                                                                              _model.tDCNormV = await actions.normalizarValorNumerico(
-                                                                                formatNumber(
-                                                                                  mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
-                                                                                  formatType: FormatType.custom,
-                                                                                  format: '#0.00',
-                                                                                  locale: '',
+                                                                            _model.updateVoucherDTStruct(
+                                                                              (e) => e
+                                                                                ..estadoVoucher = 'Negado'
+                                                                                ..historialPagoParaEliminar = null
+                                                                                ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                  listaVouchersIndex,
+                                                                                  (m) => m.razonNegadoTextController.text,
                                                                                 ),
-                                                                              );
+                                                                            );
+                                                                            _model.updateVoucherHPDTStruct(
+                                                                              (e) => e..isVoucherSent = false,
+                                                                            );
+                                                                            safeSetState(() {});
+
+                                                                            firestoreBatch.update(
+                                                                                widget.idCliente!,
+                                                                                createClientesRecordData(
+                                                                                  cliente: createDataTypeClienteStruct(
+                                                                                    fieldValues: {
+                                                                                      'DataTypeVouchers': FieldValue.arrayUnion([
+                                                                                        getDataTypeVouchersFirestoreData(
+                                                                                          updateDataTypeVouchersStruct(
+                                                                                            _model.voucherDT,
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                          true,
+                                                                                        )
+                                                                                      ]),
+                                                                                      'historialPorPagarProd': FieldValue.arrayUnion([
+                                                                                        getDataTypeHistorialPagoFirestoreData(
+                                                                                          updateDataTypeHistorialPagoStruct(
+                                                                                            _model.voucherHPDT,
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                          true,
+                                                                                        )
+                                                                                      ]),
+                                                                                    },
+                                                                                    clearUnsetFields: false,
+                                                                                  ),
+                                                                                ));
+                                                                          } else {
+                                                                            return;
+                                                                          }
+                                                                        } finally {
+                                                                          await firestoreBatch
+                                                                              .commit();
+                                                                        }
+                                                                      },
+                                                              ),
+                                                            ),
+                                                          if (listaVouchersItem
+                                                                  .estadoVoucher ==
+                                                              'Pendiente')
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0,
+                                                                      -0.02),
+                                                              child:
+                                                                  FlutterFlowIconButton(
+                                                                borderColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .success,
+                                                                borderRadius:
+                                                                    12.0,
+                                                                borderWidth:
+                                                                    1.0,
+                                                                buttonSize:
+                                                                    40.0,
+                                                                icon: Icon(
+                                                                  Icons
+                                                                      .paid_rounded,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .success,
+                                                                  size: 24.0,
+                                                                ),
+                                                                onPressed: (listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Negado')
+                                                                    ? null
+                                                                    : () async {
+                                                                        final firestoreBatch = FirebaseFirestore
+                                                                            .instance
+                                                                            .batch();
+                                                                        try {
+                                                                          var confirmDialogResponse = await showDialog<bool>(
+                                                                                context: context,
+                                                                                builder: (alertDialogContext) {
+                                                                                  return AlertDialog(
+                                                                                    title: Text('¿Confirmar pago?'),
+                                                                                    content: Text('¿Está seguro de confirmar el pago de esta cuenta?'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, false),
+                                                                                        child: Text('No'),
+                                                                                      ),
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext, true),
+                                                                                        child: Text('Si'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                },
+                                                                              ) ??
+                                                                              false;
+                                                                          if (confirmDialogResponse) {
+                                                                            _model.dtHistorialPagoNew =
+                                                                                DataTypeHistorialPagoStruct(
+                                                                              productos: listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                              totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                              totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                              transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                              efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                              totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                              idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                              fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                              numVoucher: listaVouchersItem.numVoucher,
+                                                                              isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
+                                                                              fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                            );
+                                                                            _model.dtHistorialPagoOld =
+                                                                                DataTypeHistorialPagoStruct(
+                                                                              productos: listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                              totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                              totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                              transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                              efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                              totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                              idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                              fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                              numVoucher: 0,
+                                                                              isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
+                                                                              fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                            );
+                                                                            safeSetState(() {});
+                                                                            _model.tempHistorialList =
+                                                                                mainHistorialViewClientesRecord.cliente.historialPorPagarProd.toList().cast<DataTypeHistorialPagoStruct>();
+                                                                            safeSetState(() {});
+                                                                            if (listaVouchersItem.isFullPago ==
+                                                                                true) {
+                                                                              firestoreBatch.update(
+                                                                                  widget.idCliente!,
+                                                                                  createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'historialPorPagarProd': FieldValue.delete(),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                              for (int loop1Index = 0; loop1Index < _model.tempHistorialList.length; loop1Index++) {
+                                                                                final currentLoop1Item = _model.tempHistorialList[loop1Index];
+                                                                                _model.updateTempHistorialListAtIndex(
+                                                                                  loop1Index,
+                                                                                  (e) => e
+                                                                                    ..totalPorPagar = 0.0
+                                                                                    ..totalPagado = currentLoop1Item.totalGeneral
+                                                                                    ..transferencia = true
+                                                                                    ..efectivo = false
+                                                                                    ..isVoucherSent = false
+                                                                                    ..fechaDeCobro = getCurrentTimestamp,
+                                                                                );
+                                                                                safeSetState(() {});
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              updateDataTypeHistorialPagoStruct(
+                                                                                                currentLoop1Item,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                              }
 
                                                                               firestoreBatch.update(
                                                                                   widget.idCliente!,
                                                                                   createClientesRecordData(
                                                                                     cliente: createDataTypeClienteStruct(
-                                                                                      totalDeudaCompleta: (_model.tDCNormV!) - listaVouchersItem.montoAPagar,
+                                                                                      totalDeudaCompleta: 0.0,
                                                                                       fieldValues: {
                                                                                         'DataTypeVouchers': FieldValue.arrayRemove([
                                                                                           getDataTypeVouchersFirestoreData(
@@ -1323,140 +1341,249 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                                 },
                                                                               );
                                                                             } else {
-                                                                              _model.updateDtHistorialPagoNewStruct(
-                                                                                (e) => e
-                                                                                  ..incrementTotalPagado(listaVouchersItem.montoAPagar)
-                                                                                  ..incrementTotalPorPagar(-listaVouchersItem.montoAPagar),
-                                                                              );
-                                                                              safeSetState(() {});
-                                                                              _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
-                                                                              safeSetState(() {});
+                                                                              if (listaVouchersItem.montoAPagar == listaVouchersItem.historialPagoParaEliminar.totalPorPagar) {
+                                                                                _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
+                                                                                safeSetState(() {});
+                                                                                _model.updateDtHistorialPagoNewStruct(
+                                                                                  (e) => e
+                                                                                    ..totalPorPagar = 0.0
+                                                                                    ..isVoucherSent = false
+                                                                                    ..transferencia = true
+                                                                                    ..efectivo = false
+                                                                                    ..fechaDeCobro = getCurrentTimestamp,
+                                                                                );
+                                                                                safeSetState(() {});
 
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      fieldValues: {
-                                                                                        'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                          _model.tempHistorialList,
-                                                                                        ),
-                                                                                        'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                          getDataTypeHistorialPagoFirestoreData(
-                                                                                            updateDataTypeHistorialPagoStruct(
-                                                                                              _model.dtHistorialPagoNew,
-                                                                                              clearUnsetFields: false,
-                                                                                            ),
-                                                                                            true,
-                                                                                          )
-                                                                                        ]),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
-                                                                              _model.addToTempHistorialList(_model.dtHistorialPagoNew!);
-                                                                              safeSetState(() {});
-
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      fieldValues: {
-                                                                                        'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                          _model.tempHistorialList,
-                                                                                        ),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
-                                                                              _model.tDCNormVF = await actions.normalizarValorNumerico(
-                                                                                formatNumber(
-                                                                                  mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
-                                                                                  formatType: FormatType.custom,
-                                                                                  format: '#0.00',
-                                                                                  locale: '',
-                                                                                ),
-                                                                              );
-
-                                                                              firestoreBatch.update(
-                                                                                  widget.idCliente!,
-                                                                                  createClientesRecordData(
-                                                                                    cliente: createDataTypeClienteStruct(
-                                                                                      totalDeudaCompleta: (_model.tDCNormVF!) - listaVouchersItem.montoAPagar,
-                                                                                      fieldValues: {
-                                                                                        'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                          getDataTypeVouchersFirestoreData(
-                                                                                            updateDataTypeVouchersStruct(
-                                                                                              listaVouchersItem,
-                                                                                              clearUnsetFields: false,
-                                                                                            ),
-                                                                                            true,
-                                                                                          )
-                                                                                        ]),
-                                                                                      },
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                  ));
-                                                                              await showDialog(
-                                                                                context: context,
-                                                                                builder: (alertDialogContext) {
-                                                                                  return AlertDialog(
-                                                                                    title: Text('¡Pago confirmado!'),
-                                                                                    content: Text('Aún falta por pagar: \$${formatNumber(
-                                                                                      _model.dtHistorialPagoNew?.totalPorPagar,
-                                                                                      formatType: FormatType.custom,
-                                                                                      format: '#0.00',
-                                                                                      locale: '',
-                                                                                    )} de esta cuenta.'),
-                                                                                    actions: [
-                                                                                      TextButton(
-                                                                                        onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                        child: Text('Ok'),
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              updateDataTypeHistorialPagoStruct(
+                                                                                                _model.dtHistorialPagoNew,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
                                                                                       ),
-                                                                                    ],
-                                                                                  );
-                                                                                },
-                                                                              );
+                                                                                    ));
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                            _model.tempHistorialList,
+                                                                                          ),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                                _model.tDCNormV = await actions.normalizarValorNumerico(
+                                                                                  formatNumber(
+                                                                                    mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '#0.00',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                );
+                                                                                _model.tDCNormV2 = await actions.normalizarValorNumerico(
+                                                                                  formatNumber(
+                                                                                    _model.tDCNormV,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '#0.00',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                );
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        totalDeudaCompleta: (_model.tDCNormV2!) - listaVouchersItem.montoAPagar,
+                                                                                        fieldValues: {
+                                                                                          'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                            getDataTypeVouchersFirestoreData(
+                                                                                              updateDataTypeVouchersStruct(
+                                                                                                listaVouchersItem,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                                await showDialog(
+                                                                                  context: context,
+                                                                                  builder: (alertDialogContext) {
+                                                                                    return AlertDialog(
+                                                                                      title: Text('¡Pago completo confirmado!'),
+                                                                                      content: Text('Se ha registrado el pago exitosamente.'),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                          child: Text('Ok'),
+                                                                                        ),
+                                                                                      ],
+                                                                                    );
+                                                                                  },
+                                                                                );
+                                                                              } else {
+                                                                                _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
+                                                                                safeSetState(() {});
+                                                                                _model.updateDtHistorialPagoNewStruct(
+                                                                                  (e) => e
+                                                                                    ..incrementTotalPagado(listaVouchersItem.montoAPagar)
+                                                                                    ..incrementTotalPorPagar(-listaVouchersItem.montoAPagar)
+                                                                                    ..fechaDeCobro = getCurrentTimestamp
+                                                                                    ..transferencia = true
+                                                                                    ..efectivo = false
+                                                                                    ..isVoucherSent = false,
+                                                                                );
+                                                                                safeSetState(() {});
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                            _model.tempHistorialList,
+                                                                                          ),
+                                                                                          'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              updateDataTypeHistorialPagoStruct(
+                                                                                                _model.dtHistorialPagoNew,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                                _model.addToTempHistorialList(_model.dtHistorialPagoNew!);
+                                                                                safeSetState(() {});
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                            _model.tempHistorialList,
+                                                                                          ),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                                _model.tDCNormVF = await actions.normalizarValorNumerico(
+                                                                                  formatNumber(
+                                                                                    mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '#0.00',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                );
+                                                                                _model.tDCNormVF2 = await actions.normalizarValorNumerico(
+                                                                                  formatNumber(
+                                                                                    _model.tDCNormVF,
+                                                                                    formatType: FormatType.custom,
+                                                                                    format: '#0.00',
+                                                                                    locale: '',
+                                                                                  ),
+                                                                                );
+
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        totalDeudaCompleta: (_model.tDCNormVF2!) - listaVouchersItem.montoAPagar,
+                                                                                        fieldValues: {
+                                                                                          'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                            getDataTypeVouchersFirestoreData(
+                                                                                              updateDataTypeVouchersStruct(
+                                                                                                listaVouchersItem,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                                await showDialog(
+                                                                                  context: context,
+                                                                                  builder: (alertDialogContext) {
+                                                                                    return AlertDialog(
+                                                                                      title: Text('¡Pago confirmado!'),
+                                                                                      content: Text('Aún falta por pagar: \$${formatNumber(
+                                                                                        _model.dtHistorialPagoNew?.totalPorPagar,
+                                                                                        formatType: FormatType.custom,
+                                                                                        format: '#0.00',
+                                                                                        locale: '',
+                                                                                      )} de esta cuenta.'),
+                                                                                      actions: [
+                                                                                        TextButton(
+                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                          child: Text('Ok'),
+                                                                                        ),
+                                                                                      ],
+                                                                                    );
+                                                                                  },
+                                                                                );
+                                                                              }
                                                                             }
                                                                           }
+                                                                        } finally {
+                                                                          await firestoreBatch
+                                                                              .commit();
                                                                         }
-                                                                      } finally {
-                                                                        await firestoreBatch
-                                                                            .commit();
-                                                                      }
 
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    },
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      },
+                                                              ),
                                                             ),
-                                                          ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                  ),
-                                                ]
-                                                    .divide(
-                                                        SizedBox(height: 10.0))
-                                                    .addToStart(
-                                                        SizedBox(height: 15.0))
-                                                    .addToEnd(
-                                                        SizedBox(height: 10.0)),
+                                                  ]
+                                                      .divide(SizedBox(
+                                                          height: 10.0))
+                                                      .addToStart(SizedBox(
+                                                          height: 15.0))
+                                                      .addToEnd(SizedBox(
+                                                          height: 10.0)),
+                                                ),
                                               ),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
+                                            );
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

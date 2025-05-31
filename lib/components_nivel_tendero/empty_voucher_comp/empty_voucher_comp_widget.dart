@@ -42,6 +42,7 @@ class _EmptyVoucherCompWidgetState extends State<EmptyVoucherCompWidget> {
     return Padding(
       padding: EdgeInsets.all(12.0),
       child: Container(
+        width: 290.0,
         height: 322.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -56,6 +57,10 @@ class _EmptyVoucherCompWidgetState extends State<EmptyVoucherCompWidget> {
             )
           ],
           borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).primaryText,
+            width: 1.0,
+          ),
         ),
         child: Padding(
           padding: EdgeInsets.all(12.0),

@@ -7,16 +7,16 @@ export '/nivel_tendero/cliente_make_info/cliente_make_info_widget.dart'
     show ClienteMakeInfoWidget;
 export '/nivel_tendero/cliente_edit_info/cliente_edit_info_widget.dart'
     show ClienteEditInfoWidget;
-export '/nivel_tendero/cliente_prod_info_edit/cliente_prod_info_edit_widget.dart'
-    show ClienteProdInfoEditWidget;
+export '/nivel_tendero/cliente_info_edit/cliente_info_edit_widget.dart'
+    show ClienteInfoEditWidget;
 export '/nivel_tendero/historial_pagos/historial_pagos_widget.dart'
     show HistorialPagosWidget;
 export '/nivel_tendero/cliente_read_info/cliente_read_info_widget.dart'
     show ClienteReadInfoWidget;
 export '/nivel_tendero/cliente_prod_valor_pago/cliente_prod_valor_pago_widget.dart'
     show ClienteProdValorPagoWidget;
-export '/nivel_tendero/historial_por_pagar/historial_por_pagar_widget.dart'
-    show HistorialPorPagarWidget;
+export '/nivel_tendero/historial_por_cobrar/historial_por_cobrar_widget.dart'
+    show HistorialPorCobrarWidget;
 export '/nivel_cliente/tendero_register/tendero_register_widget.dart'
     show TenderoRegisterWidget;
 export '/nivel_tendero/historial_vouchers/historial_vouchers_widget.dart'
@@ -43,3 +43,5 @@ export '/nivel_cliente/historial_vouchers_cliente/historial_vouchers_cliente_wid
     show HistorialVouchersClienteWidget;
 export '/nivel_tendero/cliente_vinc/cliente_vinc_widget.dart'
     show ClienteVincWidget;
+export '/nivel_cliente/cliente_first_login/cliente_first_login_widget.dart'
+    show ClienteFirstLoginWidget;

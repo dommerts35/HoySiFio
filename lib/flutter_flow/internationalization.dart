@@ -219,7 +219,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Welcome',
     },
     '4ig0fbfu': {
-      'es': 'Llene el formulario para iniciar sesión como cliente',
+      'es':
+          'Llene el formulario para iniciar sesión como cliente. Si ya ha autenticado su cuenta, recargue la página y espere unos segundos.',
       'en': 'Fill out the form to log in as a customer',
     },
     'ugqry3j4': {
@@ -605,8 +606,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // clienteProd-InfoEdit
+  // clienteInfoEdit
   {
+    'ueww57yk': {
+      'es': 'Datos ',
+      'en': 'Edit client',
+    },
+    'mkwhly44': {
+      'es': 'Edición y visualización',
+      'en': '',
+    },
     'zsfx0k4u': {
       'es': 'Cuentas y Pagos',
       'en': 'Products on Due',
@@ -620,11 +629,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Record',
     },
     'cynop57y': {
-      'es': 'Productos por pagar',
+      'es': 'Productos por cobrar',
       'en': 'Record',
     },
     '6guodlw7': {
-      'es': 'Vouchers',
+      'es': 'Comprobantes',
       'en': '',
     },
     'qkzdh8m8': {
@@ -644,7 +653,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Product',
     },
     '5ghpqato': {
-      'es': 'Ingrese el producto',
+      'es': 'Nombre',
       'en': 'Enter the product',
     },
     'minmxdls': {
@@ -673,6 +682,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pp0mfneo': {
       'es': '| Valor',
+      'en': '',
+    },
+    's0cqjwdf': {
+      'es': '  Al fío ',
+      'en': '',
+    },
+    'wqslsvwh': {
+      'es': 'Cobrar',
+      'en': '',
+    },
+    'ec03w7kf': {
+      'es': 'Abonar',
       'en': '',
     },
     '5bfvmyfh': {
@@ -795,6 +816,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hkcjeory': {
       'es': 'Vivienda',
+      'en': 'E-mail',
+    },
+    'q6t8rtd3': {
+      'es': 'Código de Inicio de Sesión',
       'en': 'E-mail',
     },
     '687r2v4n': {
@@ -953,14 +978,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // historialPorPagar
+  // historialPorCobrar
   {
     'ayphq84c': {
-      'es': 'Cuentas por pagar',
+      'es': 'Cuentas por cobrar',
       'en': 'Record',
     },
     'whsw90kw': {
-      'es': 'Aquí se mostrarán los productos por pagar',
+      'es': 'Aquí se mostrarán los productos por cobrar',
       'en': 'Here the products on credit will be displayed.',
     },
     'ryaqh50n': {
@@ -979,12 +1004,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Valor',
       'en': '',
     },
+    'mj4m89fg': {
+      'es': 'Click para cobrar',
+      'en': 'Payment pending:',
+    },
+    's6fwapco': {
+      'es': 'Añadir Más Productos',
+      'en': '',
+    },
     '5fs0byh5': {
-      'es': 'Pagar productos seleccionados',
+      'es': 'Cobrar productos seleccionados',
       'en': '',
     },
     '318e7au3': {
-      'es': 'Pagar todos los productos',
+      'es': 'Cobrar todos los productos',
       'en': '',
     },
     'xdk9lh0i': {
@@ -1215,11 +1248,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // historialVouchers
   {
     'ftl0vypt': {
-      'es': 'Historial de vouchers',
+      'es': 'Historial de \ncomprobantes',
       'en': 'Record',
     },
     'vcw3n8er': {
-      'es': 'Aquí se mostrarán los vouchers enviados del cliente: ',
+      'es': 'Comprobantes enviados del cliente: ',
       'en': 'Here the products on credit will be displayed.',
     },
     '2hcmbmsi': {
@@ -1227,7 +1260,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '6392c0tu': {
-      'es': 'Voucher de pago de todos los productos',
+      'es': 'Comprobante de pago de todos los productos',
       'en': '',
     },
     'be9xje1k': {
@@ -1380,7 +1413,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '#.##',
     },
     's3lslju1': {
-      'es': 'Núm. De Voucher',
+      'es': 'Núm. De Comprobante',
       'en': 'Amount to Pay',
     },
     'myz8mr51': {
@@ -1479,7 +1512,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'z5pzxl4x': {
-      'es': 'Historial de Vouchers',
+      'es': 'Historial de Comprobantes',
       'en': '',
     },
     's6l5es79': {
@@ -1493,10 +1526,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Resúmen de fiados',
       'en': '',
     },
-    'xsyr01ni': {
-      'es': 'Tus datos ingresados en esta tienda: ',
-      'en': '',
-    },
     '7vtcumfa': {
       'es': 'Home',
       'en': '',
@@ -1505,7 +1534,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // historialFullVoucherPago
   {
     '3y6umwuf': {
-      'es': 'Núm. De Voucher',
+      'es': 'Núm. De Comprobante',
       'en': 'Amount to Pay',
     },
     'esuydnzi': {
@@ -1755,6 +1784,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Contraseña',
       'en': 'Password',
     },
+    'r0gkgcyq': {
+      'es': 'Olvidé mi contraseña. Quiero restablecerla',
+      'en': '',
+    },
     'bndkdjiw': {
       'es': 'Confirmar',
       'en': 'Login',
@@ -1767,11 +1800,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // historialVouchersCliente
   {
     'ie9wbhiz': {
-      'es': 'Historial de vouchers',
+      'es': 'Historial de\n comprobantes',
       'en': 'Record',
     },
     'x0u8z74p': {
-      'es': 'Aquí se mostrarán los vouchers enviados por ti: ',
+      'es': 'Aquí se mostrarán los comprobantes enviados por ti: ',
       'en': 'Here the products on credit will be displayed.',
     },
     'au78gvwy': {
@@ -1779,7 +1812,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '2fyivbzj': {
-      'es': 'Voucher de pago de todos los productos',
+      'es': 'Comprobante de pago de todos los productos',
       'en': '',
     },
     'rf3somm3': {
@@ -1862,6 +1895,187 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
+  // clienteFirstLogin
+  {
+    'vsqiao4w': {
+      'es': 'Hoy',
+      'en': 'Hoy',
+    },
+    '7qe4vujk': {
+      'es': 'Sí',
+      'en': 'Si',
+    },
+    't8kuseze': {
+      'es': 'Fio',
+      'en': 'Fio',
+    },
+    '3wir9x8c': {
+      'es': 'Llene el formulario para registrarse como tendero',
+      'en': 'Fill out the form to log in as a shopkeeper',
+    },
+    'x2qpws0m': {
+      'es': 'Establezca su contraseña',
+      'en': 'Welcome',
+    },
+    's8w7wo89': {
+      'es':
+          'Ingrese el código de primer inicio de sesión proveído por su tendero',
+      'en': '',
+    },
+    '4a35zbe9': {
+      'es': 'Código de primer inicio de sesión',
+      'en': 'Password',
+    },
+    'yt2gerpc': {
+      'es': 'ABC1',
+      'en': '',
+    },
+    '4cthkeev': {
+      'es':
+          'Ingrese su contraseña de mínimo 8 carácteres, máximo 16 carácteres, una mayúscula, una minúscula, un número y un carácter especial.',
+      'en': '',
+    },
+    '954wyj31': {
+      'es': 'Contraseña',
+      'en': 'Password',
+    },
+    'cpumz09x': {
+      'es': 'Contraseña1*',
+      'en': '',
+    },
+    'u2tddc67': {
+      'es': 'Confirme su contraseña',
+      'en': 'Password',
+    },
+    '9m4ziyom': {
+      'es': 'Ingrese su PIN con 4 números',
+      'en': '',
+    },
+    '4s7pmrjg': {
+      'es': 'PIN',
+      'en': 'Password',
+    },
+    'tgqx3x44': {
+      'es': '0000',
+      'en': '',
+    },
+    'qnb91mwg': {
+      'es': 'Iniciar sesión',
+      'en': 'Login',
+    },
+    '2fv5xw97': {
+      'es': 'Ingrese el nombre de su tienda',
+      'en': '',
+    },
+    'aydnerpp': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'kcqoehjz': {
+      'es': 'Ingrese su email',
+      'en': '',
+    },
+    '4rtik6dq': {
+      'es': 'Ingrese un email válido',
+      'en': '',
+    },
+    '7vmeiavf': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'i4wk1v8q': {
+      'es': 'Ingrese su número de teléfono',
+      'en': '',
+    },
+    '44w1kwvc': {
+      'es': 'Ingrese un número de teléfono válido',
+      'en': '',
+    },
+    'hr44q8se': {
+      'es': 'Ingrese un número de teléfono válido',
+      'en': '',
+    },
+    '0zkzr8by': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'tcyu30ue': {
+      'es': 'Ingrese su número de cuenta',
+      'en': '',
+    },
+    'k6h56bnq': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '1vu63bdj': {
+      'es': 'Ingrese su banco',
+      'en': '',
+    },
+    'dfpcv6bd': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    '06rlamw2': {
+      'es': 'Ingrese su contraseña',
+      'en': '',
+    },
+    'jl0qoc3w': {
+      'es': 'Mínimo 8 carácteres',
+      'en': '',
+    },
+    'uaafkw79': {
+      'es': 'Máximo 16 carácteres',
+      'en': '',
+    },
+    'x1veccke': {
+      'es': 'Ingrese una mayúscula, un número y \nun carácter especial.',
+      'en': '',
+    },
+    'jvzbgdbj': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'hw3ytojw': {
+      'es': 'Confirme su contraseña',
+      'en': '',
+    },
+    '5owoirex': {
+      'es': 'Mínimo 8 carácteres',
+      'en': '',
+    },
+    'x0ujj1uc': {
+      'es': 'Máximo 16 carácteres',
+      'en': '',
+    },
+    '8g685mox': {
+      'es': 'Ingrese una mayúscula, un número y \nun carácter especial.',
+      'en': '',
+    },
+    '6w9tbrdf': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'v83h7x56': {
+      'es': 'Ingrese su PIN',
+      'en': '',
+    },
+    'v8ggdksr': {
+      'es': 'Ingrese su PIN',
+      'en': '',
+    },
+    'mxedvuzv': {
+      'es': 'Ingrese su PIN',
+      'en': '',
+    },
+    '69z7qxd2': {
+      'es': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+    },
+    'be1uwwl6': {
+      'es': 'Home',
+      'en': 'Home',
+    },
+  },
   // emptyVoucherComp
   {
     'no53yi3r': {
@@ -1879,7 +2093,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // emptyTiendaComp
   {
     'fyzf4r4w': {
-      'es': 'No has sido registrado en una tienda aún.',
+      'es': 'No has sido registrado aún.',
       'en': '',
     },
   },
@@ -1965,7 +2179,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'n4e9qswy': {
       'es':
-          'Pulsa aquí para registrar un nuevo cliente en tu tienda. Completa sus datos y define si será fiador.',
+          'Pulsa aquí para registrar un nuevo cliente en tu tienda y registrar sus datos',
       'en': '',
     },
   },
@@ -1976,8 +2190,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'bangfnzw': {
-      'es':
-          'Accede a la configuración de tu cuenta y ajusta preferencias según tus necesidades.',
+      'es': 'Accede a la configuración de tu cuenta.',
       'en': '',
     },
   },
@@ -2036,7 +2249,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'p644gald': {
       'es':
-          'Registra nuevos productos fiados. El sistema calcula automáticamente el total',
+          'Registra nuevos productos fiados. El sistema calcula automáticamente el total.',
       'en': '',
     },
   },
@@ -2058,7 +2271,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'jkn46zzn': {
-      'es': 'Seleccionando esta pestaña verá todos sus clientes que no fien.',
+      'es': 'Seleccionando esta pestaña verá todos sus clientes que fien.',
       'en': '',
     },
   },
@@ -2069,8 +2282,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'ljrjeftt': {
-      'es':
-          'Seleccionando esta pestaña verá todos sus clientes que fien actualmente.',
+      'es': 'Seleccionando esta pestaña verá todos sus clientes que no fien.',
       'en': '',
     },
   },
@@ -2115,19 +2327,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'r5weprwa': {
       'es':
-          'Estos botones sirven para acceder a las cuentas pagadas y por pagar del cliente.',
+          'Estos botones sirven para acceder a las cuentas pagadas y por cobrar del cliente.',
       'en': '',
     },
   },
-  // wtInfoEditVouchers
+  // wtInfoEditComprobante
   {
     'fkp990z1': {
-      'es': 'Vouchers enviados',
+      'es': 'Comprobantes',
       'en': '',
     },
     '3yffcmed': {
       'es':
-          'Este botón le ayudará a visualizar los vouchers que hayan sido enviados por el cliente.',
+          'Este botón le ayudará a visualizar los comprobantes que hayan sido enviados por el cliente.',
       'en': '',
     },
   },
@@ -2231,14 +2443,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // wtClienteProdsVoucher
+  // wtClienteProdsComprobante
   {
     '281y2j53': {
-      'es': 'Tus vouchers',
+      'es': 'Tus comprobantes',
       'en': '',
     },
     'amru719j': {
-      'es': 'Revisa los vouchers que has enviado este botón.',
+      'es': 'Revisa los comprobantes que has enviado este botón.',
       'en': '',
     },
   },

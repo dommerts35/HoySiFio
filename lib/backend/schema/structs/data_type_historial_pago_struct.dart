@@ -19,6 +19,7 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
     DateTime? fechaDeFio,
     int? numVoucher,
     bool? isVoucherSent,
+    DateTime? fechaDeCobro,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _productos = productos,
         _totalPagado = totalPagado,
@@ -30,6 +31,7 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         _fechaDeFio = fechaDeFio,
         _numVoucher = numVoucher,
         _isVoucherSent = isVoucherSent,
+        _fechaDeCobro = fechaDeCobro,
         super(firestoreUtilData);
 
   // "productos" field.
@@ -117,6 +119,13 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
 
   bool hasIsVoucherSent() => _isVoucherSent != null;
 
+  // "fechaDeCobro" field.
+  DateTime? _fechaDeCobro;
+  DateTime? get fechaDeCobro => _fechaDeCobro;
+  set fechaDeCobro(DateTime? val) => _fechaDeCobro = val;
+
+  bool hasFechaDeCobro() => _fechaDeCobro != null;
+
   static DataTypeHistorialPagoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeHistorialPagoStruct(
         productos: getStructList(
@@ -132,6 +141,7 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         fechaDeFio: data['fechaDeFio'] as DateTime?,
         numVoucher: castToType<int>(data['numVoucher']),
         isVoucherSent: data['isVoucherSent'] as bool?,
+        fechaDeCobro: data['fechaDeCobro'] as DateTime?,
       );
 
   static DataTypeHistorialPagoStruct? maybeFromMap(dynamic data) => data is Map
@@ -149,6 +159,7 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         'fechaDeFio': _fechaDeFio,
         'numVoucher': _numVoucher,
         'isVoucherSent': _isVoucherSent,
+        'fechaDeCobro': _fechaDeCobro,
       }.withoutNulls;
 
   @override
@@ -193,6 +204,10 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         'isVoucherSent': serializeParam(
           _isVoucherSent,
           ParamType.bool,
+        ),
+        'fechaDeCobro': serializeParam(
+          _fechaDeCobro,
+          ParamType.DateTime,
         ),
       }.withoutNulls;
 
@@ -250,6 +265,11 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        fechaDeCobro: deserializeParam(
+          data['fechaDeCobro'],
+          ParamType.DateTime,
+          false,
+        ),
       );
 
   @override
@@ -268,7 +288,8 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         idTransaccion == other.idTransaccion &&
         fechaDeFio == other.fechaDeFio &&
         numVoucher == other.numVoucher &&
-        isVoucherSent == other.isVoucherSent;
+        isVoucherSent == other.isVoucherSent &&
+        fechaDeCobro == other.fechaDeCobro;
   }
 
   @override
@@ -282,7 +303,8 @@ class DataTypeHistorialPagoStruct extends FFFirebaseStruct {
         idTransaccion,
         fechaDeFio,
         numVoucher,
-        isVoucherSent
+        isVoucherSent,
+        fechaDeCobro
       ]);
 }
 
@@ -296,6 +318,7 @@ DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
   DateTime? fechaDeFio,
   int? numVoucher,
   bool? isVoucherSent,
+  DateTime? fechaDeCobro,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -311,6 +334,7 @@ DataTypeHistorialPagoStruct createDataTypeHistorialPagoStruct({
       fechaDeFio: fechaDeFio,
       numVoucher: numVoucher,
       isVoucherSent: isVoucherSent,
+      fechaDeCobro: fechaDeCobro,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

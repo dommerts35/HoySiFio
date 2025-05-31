@@ -180,9 +180,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ClienteProdInfoEditWidget.routeName,
-          path: ClienteProdInfoEditWidget.routePath,
-          builder: (context, params) => ClienteProdInfoEditWidget(
+          name: ClienteInfoEditWidget.routeName,
+          path: ClienteInfoEditWidget.routePath,
+          builder: (context, params) => ClienteInfoEditWidget(
             nombre: params.getParam(
               'nombre',
               ParamType.String,
@@ -339,6 +339,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               isList: false,
               collectionNamePath: ['tenderos'],
             ),
+            codigoInicioSesion: params.getParam(
+              'codigoInicioSesion',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -430,9 +434,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: HistorialPorPagarWidget.routeName,
-          path: HistorialPorPagarWidget.routePath,
-          builder: (context, params) => HistorialPorPagarWidget(
+          name: HistorialPorCobrarWidget.routeName,
+          path: HistorialPorCobrarWidget.routePath,
+          builder: (context, params) => HistorialPorCobrarWidget(
             idCliente: params.getParam(
               'idCliente',
               ParamType.DocumentReference,
@@ -1006,6 +1010,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             nombreTienda: params.getParam(
               'nombreTienda',
               ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ClienteFirstLoginWidget.routeName,
+          path: ClienteFirstLoginWidget.routePath,
+          builder: (context, params) => ClienteFirstLoginWidget(
+            idClienteWithNoPsswrd: params.getParam(
+              'idClienteWithNoPsswrd',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
             ),
           ),
         )

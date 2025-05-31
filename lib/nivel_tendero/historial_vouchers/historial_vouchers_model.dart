@@ -54,10 +54,14 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
 
   // Models for razonNegadoC dynamic component.
   late FlutterFlowDynamicModels<RazonNegadoCModel> razonNegadoCModels;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoPagar widget.
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormV;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoPagar widget.
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? tDCNormV2;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormVF;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? tDCNormVF2;
 
   /// Query cache managers for this widget.
 

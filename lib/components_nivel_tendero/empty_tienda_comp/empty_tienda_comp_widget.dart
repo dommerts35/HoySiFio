@@ -56,6 +56,10 @@ class _EmptyTiendaCompWidgetState extends State<EmptyTiendaCompWidget> {
             )
           ],
           borderRadius: BorderRadius.circular(8.0),
+          border: Border.all(
+            color: FlutterFlowTheme.of(context).primaryText,
+            width: 1.0,
+          ),
         ),
         child: Padding(
           padding: EdgeInsets.all(12.0),
@@ -74,7 +78,7 @@ class _EmptyTiendaCompWidgetState extends State<EmptyTiendaCompWidget> {
               ),
               Text(
                 FFLocalizations.of(context).getText(
-                  'fyzf4r4w' /* No has sido registrado en una ... */,
+                  'fyzf4r4w' /* No has sido registrado aún. */,
                 ),
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       font: GoogleFonts.interTight(

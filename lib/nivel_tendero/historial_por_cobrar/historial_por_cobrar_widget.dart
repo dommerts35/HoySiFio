@@ -9,11 +9,11 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'historial_por_pagar_model.dart';
-export 'historial_por_pagar_model.dart';
+import 'historial_por_cobrar_model.dart';
+export 'historial_por_cobrar_model.dart';
 
-class HistorialPorPagarWidget extends StatefulWidget {
-  const HistorialPorPagarWidget({
+class HistorialPorCobrarWidget extends StatefulWidget {
+  const HistorialPorCobrarWidget({
     super.key,
     this.idCliente,
     this.idTendero,
@@ -40,23 +40,23 @@ class HistorialPorPagarWidget extends StatefulWidget {
   final bool? viviendaProp;
   final String? emailCliente;
 
-  static String routeName = 'historialPorPagar';
-  static String routePath = '/historialPorPagar';
+  static String routeName = 'historialPorCobrar';
+  static String routePath = '/historialPorCobrar';
 
   @override
-  State<HistorialPorPagarWidget> createState() =>
-      _HistorialPorPagarWidgetState();
+  State<HistorialPorCobrarWidget> createState() =>
+      _HistorialPorCobrarWidgetState();
 }
 
-class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
-  late HistorialPorPagarModel _model;
+class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
+  late HistorialPorCobrarModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HistorialPorPagarModel());
+    _model = createModel(context, () => HistorialPorCobrarModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -105,7 +105,7 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
           );
         }
 
-        final historialPorPagarClientesRecord = snapshot.data!;
+        final historialPorCobrarClientesRecord = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -125,217 +125,292 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                       alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: double.infinity,
+                        height: 800.0,
                         constraints: BoxConstraints(
                           maxWidth: 1170.0,
                         ),
-                        decoration: BoxDecoration(),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: Image.asset(
+                              'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                            ).image,
+                          ),
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 8.0, 12.0, 8.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      borderRadius: 12.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.arrow_back,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        size: 24.0,
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 10.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 8.0, 12.0, 8.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        borderRadius: 12.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        icon: Icon(
+                                          Icons.arrow_back,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            ClienteInfoEditWidget.routeName,
+                                            queryParameters: {
+                                              'nombre': serializeParam(
+                                                widget.nombre,
+                                                ParamType.String,
+                                              ),
+                                              'telf': serializeParam(
+                                                widget.telf,
+                                                ParamType.String,
+                                              ),
+                                              'isFiando': serializeParam(
+                                                widget.isFiando,
+                                                ParamType.bool,
+                                              ),
+                                              'idCliente': serializeParam(
+                                                widget.idCliente,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'apellido': serializeParam(
+                                                widget.apellido,
+                                                ParamType.String,
+                                              ),
+                                              'cedula': serializeParam(
+                                                widget.cedula,
+                                                ParamType.String,
+                                              ),
+                                              'tenderoRef': serializeParam(
+                                                widget.idTendero,
+                                                ParamType.DocumentReference,
+                                              ),
+                                              'direccionDomicilio':
+                                                  serializeParam(
+                                                widget.direccionDomicilio,
+                                                ParamType.String,
+                                              ),
+                                              'viviendaAlq': serializeParam(
+                                                widget.viviendaAlq,
+                                                ParamType.bool,
+                                              ),
+                                              'viviendaProp': serializeParam(
+                                                widget.viviendaProp,
+                                                ParamType.bool,
+                                              ),
+                                              'emailCliente': serializeParam(
+                                                widget.emailCliente,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
                                       ),
-                                      onPressed: () async {
-                                        context.pushNamed(
-                                          ClienteProdInfoEditWidget.routeName,
-                                          queryParameters: {
-                                            'nombre': serializeParam(
-                                              widget.nombre,
-                                              ParamType.String,
-                                            ),
-                                            'telf': serializeParam(
-                                              widget.telf,
-                                              ParamType.String,
-                                            ),
-                                            'isFiando': serializeParam(
-                                              widget.isFiando,
-                                              ParamType.bool,
-                                            ),
-                                            'idCliente': serializeParam(
-                                              widget.idCliente,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'apellido': serializeParam(
-                                              widget.apellido,
-                                              ParamType.String,
-                                            ),
-                                            'cedula': serializeParam(
-                                              widget.cedula,
-                                              ParamType.String,
-                                            ),
-                                            'tenderoRef': serializeParam(
-                                              widget.idTendero,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'direccionDomicilio':
-                                                serializeParam(
-                                              widget.direccionDomicilio,
-                                              ParamType.String,
-                                            ),
-                                            'viviendaAlq': serializeParam(
-                                              widget.viviendaAlq,
-                                              ParamType.bool,
-                                            ),
-                                            'viviendaProp': serializeParam(
-                                              widget.viviendaProp,
-                                              ParamType.bool,
-                                            ),
-                                            'emailCliente': serializeParam(
-                                              widget.emailCliente,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
+                                    ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 5.0, 5.0, 5.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'ayphq84c' /* Cuentas por cobrar */,
+                                          ),
+                                          maxLines: 2,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 20.0, 0.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'ayphq84c' /* Cuentas por pagar */,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 5.0, 5.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'whsw90kw' /* Aquí se mostrarán los producto... */,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
                                       ),
-                                      maxLines: 2,
-                                      style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .override(
-                                            font: GoogleFonts.interTight(
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 5.0),
+                                        child: Text(
+                                          'del cliente: ${historialPorCobrarClientesRecord.cliente.nombre} ${historialPorCobrarClientesRecord.cliente.apellido}',
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 5.0, 5.0, 5.0),
+                                      child: Text(
+                                        'Suma global de las cuentas: \$${formatNumber(
+                                          historialPorCobrarClientesRecord
+                                              .cliente.totalDeudaCompleta,
+                                          formatType: FormatType.custom,
+                                          format: '#0.00',
+                                          locale: '',
+                                        )}',
+                                        textAlign: TextAlign.start,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .titleLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .titleLarge
                                                       .fontStyle,
                                             ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontStyle,
-                                          ),
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 10.0, 0.0, 0.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'whsw90kw' /* Aquí se mostrarán los producto... */,
-                                  ),
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'del cliente: ${historialPorPagarClientesRecord.cliente.nombre} ${historialPorPagarClientesRecord.cliente.apellido}',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 0.0, 0.0),
-                                child: Text(
-                                  'Total de las cuentas: \$${formatNumber(
-                                    historialPorPagarClientesRecord
-                                        .cliente.totalDeudaCompleta,
-                                    formatType: FormatType.custom,
-                                    format: '#0.00',
-                                    locale: '',
-                                  )}',
-                                  textAlign: TextAlign.start,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
                                 ),
                               ),
                               StreamBuilder<ClientesRecord>(
@@ -383,7 +458,7 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                           0,
                                           12.0,
                                           0,
-                                          44.0,
+                                          20.0,
                                         ),
                                         primary: false,
                                         shrinkWrap: true,
@@ -415,8 +490,8 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                                 border: Border.all(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .alternate,
-                                                  width: 2.0,
+                                                      .primaryText,
+                                                  width: 1.0,
                                                 ),
                                               ),
                                               child: Column(
@@ -837,128 +912,51 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                                       );
                                                     },
                                                   ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Total: \$${formatNumber(
-                                                            listaProdPorPagarGroupItem
-                                                                .totalGeneral,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Total por pagar: \$${formatNumber(
-                                                            listaProdPorPagarGroupItem
-                                                                .totalPorPagar,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Fecha del fío: ${dateTimeFormat(
-                                                            "d/M/y h:mm a",
-                                                            listaProdPorPagarGroupItem
-                                                                .fechaDeFio,
-                                                            locale: FFLocalizations
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 5.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Total: \$${formatNumber(
+                                                              listaProdPorPagarGroupItem
+                                                                  .totalGeneral,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            )}',
+                                                            style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .languageCode,
-                                                          )}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -968,261 +966,103 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      if ((listaProdPorPagarGroupItem
-                                                                  .transferencia ==
-                                                              true) ||
-                                                          (listaProdPorPagarGroupItem
-                                                                  .efectivo ==
-                                                              true))
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Transferencia:',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                                Theme(
-                                                                  data:
-                                                                      ThemeData(
-                                                                    checkboxTheme:
-                                                                        CheckboxThemeData(
-                                                                      visualDensity:
-                                                                          VisualDensity
-                                                                              .compact,
-                                                                      materialTapTargetSize:
-                                                                          MaterialTapTargetSize
-                                                                              .shrinkWrap,
-                                                                      shape:
-                                                                          RoundedRectangleBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(4.0),
-                                                                      ),
-                                                                    ),
-                                                                    unselectedWidgetColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                  ),
-                                                                  child:
-                                                                      Checkbox(
-                                                                    value: _model
-                                                                            .checkboxValueMap1[listaProdPorPagarGroupItem] ??=
-                                                                        listaProdPorPagarGroupItem
-                                                                            .transferencia,
-                                                                    onChanged: true
-                                                                        ? null
-                                                                        : (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.checkboxValueMap1[listaProdPorPagarGroupItem] = newValue!);
-                                                                          },
-                                                                    side: (FlutterFlowTheme.of(context).alternate !=
-                                                                            null)
-                                                                        ? BorderSide(
-                                                                            width:
-                                                                                2,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).alternate,
-                                                                          )
-                                                                        : null,
-                                                                    activeColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    checkColor: true
-                                                                        ? null
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Efectivo: ',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                                Theme(
-                                                                  data:
-                                                                      ThemeData(
-                                                                    checkboxTheme:
-                                                                        CheckboxThemeData(
-                                                                      visualDensity:
-                                                                          VisualDensity
-                                                                              .compact,
-                                                                      materialTapTargetSize:
-                                                                          MaterialTapTargetSize
-                                                                              .shrinkWrap,
-                                                                      shape:
-                                                                          RoundedRectangleBorder(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(4.0),
-                                                                      ),
-                                                                    ),
-                                                                    unselectedWidgetColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                  ),
-                                                                  child:
-                                                                      Checkbox(
-                                                                    value: _model
-                                                                            .checkboxValueMap2[listaProdPorPagarGroupItem] ??=
-                                                                        listaProdPorPagarGroupItem
-                                                                            .efectivo,
-                                                                    onChanged: true
-                                                                        ? null
-                                                                        : (newValue) async {
-                                                                            safeSetState(() =>
-                                                                                _model.checkboxValueMap2[listaProdPorPagarGroupItem] = newValue!);
-                                                                          },
-                                                                    side: (FlutterFlowTheme.of(context).alternate !=
-                                                                            null)
-                                                                        ? BorderSide(
-                                                                            width:
-                                                                                2,
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).alternate,
-                                                                          )
-                                                                        : null,
-                                                                    activeColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    checkColor: true
-                                                                        ? null
-                                                                        : FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      if (listaProdPorPagarGroupItem
-                                                              .numVoucher >
-                                                          0)
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Número de Voucher: ${listaProdPorPagarGroupItem.numVoucher.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Total por pagar: \$${formatNumber(
+                                                              listaProdPorPagarGroupItem
+                                                                  .totalPorPagar,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
                                                                           .inter(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
                                                         ),
-                                                    ],
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Fecha del fío: ${dateTimeFormat(
+                                                              "d/M/y h:mm a",
+                                                              listaProdPorPagarGroupItem
+                                                                  .fechaDeFio,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            )}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
                                                   ),
                                                   Row(
                                                     mainAxisSize:
@@ -1426,7 +1266,11 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                                                           8.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    'Click para pagar',
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getText(
+                                                                      'mj4m89fg' /* Click para cobrar */,
+                                                                    ),
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
@@ -1474,13 +1318,116 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                   );
                                 },
                               ),
+                              Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        ClienteInfoEditWidget.routeName,
+                                        queryParameters: {
+                                          'nombre': serializeParam(
+                                            widget.nombre,
+                                            ParamType.String,
+                                          ),
+                                          'telf': serializeParam(
+                                            widget.telf,
+                                            ParamType.String,
+                                          ),
+                                          'isFiando': serializeParam(
+                                            widget.isFiando,
+                                            ParamType.bool,
+                                          ),
+                                          'idCliente': serializeParam(
+                                            widget.idCliente,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'apellido': serializeParam(
+                                            widget.apellido,
+                                            ParamType.String,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'tenderoRef': serializeParam(
+                                            widget.idTendero,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'direccionDomicilio': serializeParam(
+                                            widget.direccionDomicilio,
+                                            ParamType.String,
+                                          ),
+                                          'viviendaAlq': serializeParam(
+                                            widget.viviendaAlq,
+                                            ParamType.bool,
+                                          ),
+                                          'viviendaProp': serializeParam(
+                                            widget.viviendaProp,
+                                            ParamType.bool,
+                                          ),
+                                          'emailCliente': serializeParam(
+                                            widget.emailCliente,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      's6fwapco' /* Añadir Más Productos */,
+                                    ),
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF7ED6CB),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            font: GoogleFonts.interTight(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF039080),
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .success,
+                                        width: 2.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
                     ),
                   ),
-                  if (historialPorPagarClientesRecord
+                  if (historialPorCobrarClientesRecord
                           .cliente.historialPorPagarSelectedList.length >
                       0)
                     Align(
@@ -1489,11 +1436,11 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                         onPressed: () async {
                           for (int loop1Index = 0;
                               loop1Index <
-                                  historialPorPagarClientesRecord.cliente
+                                  historialPorCobrarClientesRecord.cliente
                                       .historialPorPagarSelectedList.length;
                               loop1Index++) {
                             final currentLoop1Item =
-                                historialPorPagarClientesRecord.cliente
+                                historialPorCobrarClientesRecord.cliente
                                     .historialPorPagarSelectedList[loop1Index];
                             _model.totalAPagarCalc = _model.totalAPagarCalc +
                                 currentLoop1Item.totalPorPagar;
@@ -1584,7 +1531,7 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                           }
                         },
                         text: FFLocalizations.of(context).getText(
-                          '5fs0byh5' /* Pagar productos seleccionados */,
+                          '5fs0byh5' /* Cobrar productos seleccionados */,
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
@@ -1618,13 +1565,13 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                         ),
                       ),
                     ),
-                  if (historialPorPagarClientesRecord
+                  if (historialPorCobrarClientesRecord
                           .cliente.historialPorPagarSelectedList.length ==
                       0)
                     Align(
                       alignment: AlignmentDirectional(0.0, 1.0),
                       child: FFButtonWidget(
-                        onPressed: (historialPorPagarClientesRecord
+                        onPressed: (historialPorCobrarClientesRecord
                                     .cliente.historialPorPagarProd.length ==
                                 0)
                             ? null
@@ -1635,7 +1582,7 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
                                           title: Text('¿Pagar \$${formatNumber(
-                                            historialPorPagarClientesRecord
+                                            historialPorCobrarClientesRecord
                                                 .cliente.totalDeudaCompleta,
                                             formatType: FormatType.custom,
                                             format: '#0.00',
@@ -1712,7 +1659,7 @@ class _HistorialPorPagarWidgetState extends State<HistorialPorPagarWidget> {
                                 }
                               },
                         text: FFLocalizations.of(context).getText(
-                          '318e7au3' /* Pagar todos los productos */,
+                          '318e7au3' /* Cobrar todos los productos */,
                         ),
                         options: FFButtonOptions(
                           width: double.infinity,
