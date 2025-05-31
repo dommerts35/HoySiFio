@@ -771,6 +771,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                              ).image,
+                            ),
                           ),
                           child: StreamBuilder<List<ClientesRecord>>(
                             stream: queryClientesRecord(
@@ -1044,6 +1050,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                              ).image,
+                            ),
                           ),
                           child: StreamBuilder<List<ClientesRecord>>(
                             stream: queryClientesRecord(
