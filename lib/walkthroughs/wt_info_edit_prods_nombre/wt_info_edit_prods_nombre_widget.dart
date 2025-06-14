@@ -56,7 +56,7 @@ class _WtInfoEditProdsNombreWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'qhaevea0' /* Nombre */,
+              'qhaevea0' /* Producto */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(

@@ -79,8 +79,8 @@ class _ClienteProdValorPagoWidgetState
     _model.valorAPTextController ??= TextEditingController();
     _model.valorAPFocusNode ??= FocusNode();
 
-    _model.voucherNumTFTextController ??= TextEditingController();
-    _model.voucherNumTFFocusNode ??= FocusNode();
+    _model.comprobanteNumTFTextController ??= TextEditingController();
+    _model.comprobanteNumTFFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -658,9 +658,9 @@ class _ClienteProdValorPagoWidgetState
                                                         width: 100.0,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .voucherNumTFTextController,
+                                                              .comprobanteNumTFTextController,
                                                           focusNode: _model
-                                                              .voucherNumTFFocusNode,
+                                                              .comprobanteNumTFFocusNode,
                                                           autofocus: false,
                                                           obscureText: false,
                                                           decoration:
@@ -695,7 +695,7 @@ class _ClienteProdValorPagoWidgetState
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                              't7csek1w' /* Núm. Voucher */,
+                                                              'pff5beon' /* N#. Comprobante */,
                                                             ),
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
@@ -711,6 +711,8 @@ class _ClienteProdValorPagoWidgetState
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
+                                                                      fontSize:
+                                                                          11.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight: FlutterFlowTheme.of(
@@ -824,7 +826,7 @@ class _ClienteProdValorPagoWidgetState
                                                                       context)
                                                                   .primaryText,
                                                           validator: _model
-                                                              .voucherNumTFTextControllerValidator
+                                                              .comprobanteNumTFTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -1113,7 +1115,7 @@ class _ClienteProdValorPagoWidgetState
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 50.0, 0.0, 0.0),
+                                                          0.0, 10.0, 0.0, 5.0),
                                                   child: FFButtonWidget(
                                                     onPressed: () async {
                                                       var _shouldSetState =
@@ -1239,7 +1241,7 @@ class _ClienteProdValorPagoWidgetState
                                                           } else {
                                                             if ((_model.checkTransferValue ==
                                                                     true) &&
-                                                                (_model.voucherNumTFTextController
+                                                                (_model.comprobanteNumTFTextController
                                                                             .text ==
                                                                         '')) {
                                                               await showDialog(
@@ -1251,7 +1253,7 @@ class _ClienteProdValorPagoWidgetState
                                                                     title: Text(
                                                                         '¡Falta el número del voucher!'),
                                                                     content: Text(
-                                                                        'Por favor, ingrese el número de voucher.'),
+                                                                        'Por favor, ingrese el número de comprobante.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1307,7 +1309,7 @@ class _ClienteProdValorPagoWidgetState
                                                                       valueOrDefault<
                                                                           int>(
                                                                     int.tryParse(_model
-                                                                        .voucherNumTFTextController
+                                                                        .comprobanteNumTFTextController
                                                                         .text),
                                                                     0,
                                                                   )
@@ -1437,7 +1439,7 @@ class _ClienteProdValorPagoWidgetState
                                                                       valueOrDefault<
                                                                           int>(
                                                                     int.tryParse(_model
-                                                                        .voucherNumTFTextController
+                                                                        .comprobanteNumTFTextController
                                                                         .text),
                                                                     0,
                                                                   )
@@ -1588,6 +1590,23 @@ class _ClienteProdValorPagoWidgetState
                                                                   ],
                                                                 );
                                                               },
+                                                            );
+                                                            _model.readTenderoVP =
+                                                                await TenderosRecord
+                                                                    .getDocumentOnce(
+                                                                        widget
+                                                                            .tenderoRef!);
+                                                            _shouldSetState =
+                                                                true;
+                                                            await actions
+                                                                .sendCustomEmailForValorProds(
+                                                              widget
+                                                                  .emailCliente!,
+                                                              widget.nombre!,
+                                                              'Registro de pago de productos fiados de la tienda: ${_model.readTenderoVP?.displayName}',
+                                                              _model
+                                                                  .readTenderoVP!
+                                                                  .displayName,
                                                             );
 
                                                             context.goNamed(

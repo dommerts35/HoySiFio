@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components_nivel_tendero/empty_voucher_comp/empty_voucher_comp_widget.dart';
 import '/components_nivel_tendero/razon_negado_c/razon_negado_c_widget.dart';
@@ -119,77 +120,74 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                   0.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 8.0, 12.0, 8.0),
-                                    child: FlutterFlowIconButton(
-                                      borderColor:
+                                  FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    borderRadius: 12.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.arrow_back,
+                                      color:
                                           FlutterFlowTheme.of(context).primary,
-                                      borderRadius: 12.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.arrow_back,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.pushNamed(
-                                          ClienteInfoEditWidget.routeName,
-                                          queryParameters: {
-                                            'nombre': serializeParam(
-                                              widget.nombre,
-                                              ParamType.String,
-                                            ),
-                                            'telf': serializeParam(
-                                              widget.telf,
-                                              ParamType.String,
-                                            ),
-                                            'isFiando': serializeParam(
-                                              widget.isFiando,
-                                              ParamType.bool,
-                                            ),
-                                            'idCliente': serializeParam(
-                                              widget.idCliente,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'apellido': serializeParam(
-                                              widget.apellido,
-                                              ParamType.String,
-                                            ),
-                                            'cedula': serializeParam(
-                                              widget.cedula,
-                                              ParamType.String,
-                                            ),
-                                            'tenderoRef': serializeParam(
-                                              widget.idTendero,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'direccionDomicilio':
-                                                serializeParam(
-                                              widget.direccionDomicilio,
-                                              ParamType.String,
-                                            ),
-                                            'viviendaAlq': serializeParam(
-                                              widget.viviendaAlq,
-                                              ParamType.bool,
-                                            ),
-                                            'viviendaProp': serializeParam(
-                                              widget.viviendaProp,
-                                              ParamType.bool,
-                                            ),
-                                            'emailCliente': serializeParam(
-                                              widget.emailCliente,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
-                                      },
+                                      size: 24.0,
                                     ),
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                        ClienteInfoEditWidget.routeName,
+                                        queryParameters: {
+                                          'nombre': serializeParam(
+                                            widget.nombre,
+                                            ParamType.String,
+                                          ),
+                                          'telf': serializeParam(
+                                            widget.telf,
+                                            ParamType.String,
+                                          ),
+                                          'isFiando': serializeParam(
+                                            widget.isFiando,
+                                            ParamType.bool,
+                                          ),
+                                          'idCliente': serializeParam(
+                                            widget.idCliente,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'apellido': serializeParam(
+                                            widget.apellido,
+                                            ParamType.String,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'tenderoRef': serializeParam(
+                                            widget.idTendero,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'direccionDomicilio': serializeParam(
+                                            widget.direccionDomicilio,
+                                            ParamType.String,
+                                          ),
+                                          'viviendaAlq': serializeParam(
+                                            widget.viviendaAlq,
+                                            ParamType.bool,
+                                          ),
+                                          'viviendaProp': serializeParam(
+                                            widget.viviendaProp,
+                                            ParamType.bool,
+                                          ),
+                                          'emailCliente': serializeParam(
+                                            widget.emailCliente,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
@@ -237,6 +235,62 @@ comprobantes */
                                             ),
                                       ),
                                     ),
+                                  ),
+                                  FlutterFlowIconButton(
+                                    borderColor:
+                                        FlutterFlowTheme.of(context).error,
+                                    borderRadius: 12.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 40.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.logout,
+                                      color: FlutterFlowTheme.of(context).error,
+                                      size: 24.0,
+                                    ),
+                                    onPressed: () async {
+                                      var confirmDialogResponse =
+                                          await showDialog<bool>(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        '¿Desea cerrar sesión?'),
+                                                    content: Text(
+                                                        'Sus datos ya están guardados.'),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                false),
+                                                        child: Text('Cancelar'),
+                                                      ),
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext,
+                                                                true),
+                                                        child:
+                                                            Text('Confirmar'),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              ) ??
+                                              false;
+                                      if (confirmDialogResponse) {
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await authManager.signOut();
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
+
+                                        context.goNamedAuth(
+                                            AuthSigningInWidget.routeName,
+                                            context.mounted);
+                                      }
+                                    },
                                   ),
                                 ],
                               ),
@@ -484,7 +538,7 @@ comprobantes */
                                                         FFLocalizations.of(
                                                                 context)
                                                             .getText(
-                                                          '2hcmbmsi' /* Voucher Negado */,
+                                                          '2hcmbmsi' /* Comprobante Negado */,
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -919,55 +973,6 @@ comprobantes */
                                                         ),
                                                       ),
                                                     if (listaVouchersItem
-                                                            .isFullPago ==
-                                                        true)
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '6392c0tu' /* Comprobante de pago de todos l... */,
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .error,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    if (listaVouchersItem
                                                             .estadoVoucher ==
                                                         'Pendiente')
                                                       wrapWithModel(
@@ -1034,6 +1039,8 @@ comprobantes */
                                                                         'Negado')
                                                                     ? null
                                                                     : () async {
+                                                                        var _shouldSetState =
+                                                                            false;
                                                                         final firestoreBatch = FirebaseFirestore
                                                                             .instance
                                                                             .batch();
@@ -1084,6 +1091,8 @@ comprobantes */
                                                                                   );
                                                                                 },
                                                                               );
+                                                                              if (_shouldSetState)
+                                                                                safeSetState(() {});
                                                                               return;
                                                                             }
                                                                             _model.voucherDT =
@@ -1091,82 +1100,187 @@ comprobantes */
                                                                             _model.voucherHPDT =
                                                                                 listaVouchersItem.historialPagoParaEliminar;
                                                                             safeSetState(() {});
-
-                                                                            firestoreBatch.update(
-                                                                                widget.idCliente!,
-                                                                                createClientesRecordData(
-                                                                                  cliente: createDataTypeClienteStruct(
-                                                                                    fieldValues: {
-                                                                                      'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                        getDataTypeVouchersFirestoreData(
-                                                                                          updateDataTypeVouchersStruct(
-                                                                                            _model.voucherDT,
-                                                                                            clearUnsetFields: false,
-                                                                                          ),
-                                                                                          true,
-                                                                                        )
-                                                                                      ]),
-                                                                                      'historialPorPagarProd': FieldValue.arrayRemove([
-                                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                                          updateDataTypeHistorialPagoStruct(
-                                                                                            _model.voucherHPDT,
-                                                                                            clearUnsetFields: false,
-                                                                                          ),
-                                                                                          true,
-                                                                                        )
-                                                                                      ]),
-                                                                                    },
-                                                                                    clearUnsetFields: false,
+                                                                            if ((_model.voucherHPDT?.productos != null && (_model.voucherHPDT?.productos)!.isNotEmpty) ==
+                                                                                false) {
+                                                                              firestoreBatch.update(
+                                                                                  widget.idCliente!,
+                                                                                  createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                          getDataTypeVouchersFirestoreData(
+                                                                                            updateDataTypeVouchersStruct(
+                                                                                              _model.voucherDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                        'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                                            updateDataTypeHistorialPagoStruct(
+                                                                                              _model.voucherHPDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                              _model.updateVoucherDTStruct(
+                                                                                (e) => e
+                                                                                  ..estadoVoucher = 'Negado'
+                                                                                  ..historialPagoParaEliminar = null
+                                                                                  ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                    listaVouchersIndex,
+                                                                                    (m) => m.razonNegadoTextController.text,
                                                                                   ),
-                                                                                ));
-                                                                            _model.updateVoucherDTStruct(
-                                                                              (e) => e
-                                                                                ..estadoVoucher = 'Negado'
-                                                                                ..historialPagoParaEliminar = null
-                                                                                ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                              );
+                                                                              safeSetState(() {});
+                                                                              for (int loop1Index = 0; loop1Index < mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length; loop1Index++) {
+                                                                                final currentLoop1Item = mainHistorialViewClientesRecord.cliente.historialPorPagarProd[loop1Index];
+                                                                                _model.addToTempHistorialList(currentLoop1Item);
+                                                                                safeSetState(() {});
+                                                                                _model.updateTempHistorialListAtIndex(
+                                                                                  loop1Index,
+                                                                                  (e) => e..isVoucherSent = false,
+                                                                                );
+                                                                                safeSetState(() {});
+                                                                              }
+
+                                                                              firestoreBatch.update(
+                                                                                  widget.idCliente!,
+                                                                                  createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                          _model.tempHistorialList,
+                                                                                        ),
+                                                                                        'DataTypeVouchers': FieldValue.arrayUnion([
+                                                                                          getDataTypeVouchersFirestoreData(
+                                                                                            updateDataTypeVouchersStruct(
+                                                                                              _model.voucherDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                            } else {
+                                                                              firestoreBatch.update(
+                                                                                  widget.idCliente!,
+                                                                                  createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                          getDataTypeVouchersFirestoreData(
+                                                                                            updateDataTypeVouchersStruct(
+                                                                                              _model.voucherDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                        'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                                            updateDataTypeHistorialPagoStruct(
+                                                                                              _model.voucherHPDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                              _model.updateVoucherDTStruct(
+                                                                                (e) => e
+                                                                                  ..estadoVoucher = 'Negado'
+                                                                                  ..historialPagoParaEliminar = null
+                                                                                  ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                    listaVouchersIndex,
+                                                                                    (m) => m.razonNegadoTextController.text,
+                                                                                  ),
+                                                                              );
+                                                                              _model.updateVoucherHPDTStruct(
+                                                                                (e) => e..isVoucherSent = false,
+                                                                              );
+                                                                              safeSetState(() {});
+
+                                                                              firestoreBatch.update(
+                                                                                  widget.idCliente!,
+                                                                                  createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'DataTypeVouchers': FieldValue.arrayUnion([
+                                                                                          getDataTypeVouchersFirestoreData(
+                                                                                            updateDataTypeVouchersStruct(
+                                                                                              _model.voucherDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                        'historialPorPagarProd': FieldValue.arrayUnion([
+                                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                                            updateDataTypeHistorialPagoStruct(
+                                                                                              _model.voucherHPDT,
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                            }
+
+                                                                            _model.readForTenderoDenyPush =
+                                                                                await TenderosRecord.getDocumentOnce(widget.idTendero!);
+                                                                            _shouldSetState =
+                                                                                true;
+                                                                            for (int loop2Index = 0;
+                                                                                loop2Index < mainHistorialViewClientesRecord.playerIds.length;
+                                                                                loop2Index++) {
+                                                                              final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
+                                                                              await actions.sendNotificationToPlayer(
+                                                                                currentLoop2Item,
+                                                                                '${widget.nombre}: Ha sido denegado un comprobante enviado a la tienda: \"${_model.readForTenderoDenyPush?.displayName}\" debido a: \"${_model.razonNegadoCModels.getValueAtIndex(
                                                                                   listaVouchersIndex,
                                                                                   (m) => m.razonNegadoTextController.text,
-                                                                                ),
+                                                                                )}\". Revise su historial de comprobantes.',
+                                                                              );
+                                                                            }
+                                                                            await actions.sendCustomEmailForDeniedVoucher(
+                                                                              widget.emailCliente!,
+                                                                              widget.nombre!,
+                                                                              'Negado de comprobante enviado a la tienda: ${_model.readForTenderoDenyPush?.displayName}',
+                                                                              _model.readForTenderoDenyPush!.displayName,
+                                                                              _model.razonNegadoCModels.getValueAtIndex(
+                                                                                listaVouchersIndex,
+                                                                                (m) => m.razonNegadoTextController.text,
+                                                                              )!,
                                                                             );
-                                                                            _model.updateVoucherHPDTStruct(
-                                                                              (e) => e..isVoucherSent = false,
-                                                                            );
-                                                                            safeSetState(() {});
-
-                                                                            firestoreBatch.update(
-                                                                                widget.idCliente!,
-                                                                                createClientesRecordData(
-                                                                                  cliente: createDataTypeClienteStruct(
-                                                                                    fieldValues: {
-                                                                                      'DataTypeVouchers': FieldValue.arrayUnion([
-                                                                                        getDataTypeVouchersFirestoreData(
-                                                                                          updateDataTypeVouchersStruct(
-                                                                                            _model.voucherDT,
-                                                                                            clearUnsetFields: false,
-                                                                                          ),
-                                                                                          true,
-                                                                                        )
-                                                                                      ]),
-                                                                                      'historialPorPagarProd': FieldValue.arrayUnion([
-                                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                                          updateDataTypeHistorialPagoStruct(
-                                                                                            _model.voucherHPDT,
-                                                                                            clearUnsetFields: false,
-                                                                                          ),
-                                                                                          true,
-                                                                                        )
-                                                                                      ]),
-                                                                                    },
-                                                                                    clearUnsetFields: false,
-                                                                                  ),
-                                                                                ));
                                                                           } else {
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
                                                                             return;
                                                                           }
                                                                         } finally {
                                                                           await firestoreBatch
                                                                               .commit();
                                                                         }
+
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
                                                                       },
                                                               ),
                                                             ),
@@ -1311,6 +1425,7 @@ comprobantes */
                                                                                   createClientesRecordData(
                                                                                     cliente: createDataTypeClienteStruct(
                                                                                       totalDeudaCompleta: 0.0,
+                                                                                      isFiando: false,
                                                                                       fieldValues: {
                                                                                         'DataTypeVouchers': FieldValue.arrayRemove([
                                                                                           getDataTypeVouchersFirestoreData(
@@ -1543,7 +1658,36 @@ comprobantes */
                                                                                   },
                                                                                 );
                                                                               }
+
+                                                                              if (mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length <= 0) {
+                                                                                firestoreBatch.update(
+                                                                                    widget.idCliente!,
+                                                                                    createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        isFiando: false,
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+                                                                              }
                                                                             }
+
+                                                                            _model.readForTenderoAcceptPush =
+                                                                                await TenderosRecord.getDocumentOnce(widget.idTendero!);
+                                                                            for (int loop2Index = 0;
+                                                                                loop2Index < mainHistorialViewClientesRecord.playerIds.length;
+                                                                                loop2Index++) {
+                                                                              final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
+                                                                              await actions.sendNotificationToPlayer(
+                                                                                currentLoop2Item,
+                                                                                '${widget.nombre}: ¡Ha sido aceptado un comprobante enviado a la tienda: \"${_model.readForTenderoAcceptPush?.displayName}\". Revise su historial de comprobantes!',
+                                                                              );
+                                                                            }
+                                                                            await actions.sendCustomEmailForAcceptedVoucher(
+                                                                              mainHistorialViewClientesRecord.cliente.emailCliente,
+                                                                              widget.nombre!,
+                                                                              'Comprobante aceptado por la tienda: ${_model.readForTenderoAcceptPush?.displayName}',
+                                                                              _model.readForTenderoAcceptPush!.displayName,
+                                                                            );
                                                                           }
                                                                         } finally {
                                                                           await firestoreBatch

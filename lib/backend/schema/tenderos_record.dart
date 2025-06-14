@@ -60,6 +60,11 @@ class TenderosRecord extends FirestoreRecord {
   DataTypeClienteStruct get clientes => _clientes ?? DataTypeClienteStruct();
   bool hasClientes() => _clientes != null;
 
+  // "player_ids" field.
+  List<String>? _playerIds;
+  List<String> get playerIds => _playerIds ?? const [];
+  bool hasPlayerIds() => _playerIds != null;
+
   void _initializeFields() {
     _tenderos = snapshotData['tenderos'] is DataTypeTenderoStruct
         ? snapshotData['tenderos']
@@ -74,6 +79,7 @@ class TenderosRecord extends FirestoreRecord {
     _clientes = snapshotData['clientes'] is DataTypeClienteStruct
         ? snapshotData['clientes']
         : DataTypeClienteStruct.maybeFromMap(snapshotData['clientes']);
+    _playerIds = getDataList(snapshotData['player_ids']);
   }
 
   static CollectionReference get collection =>
@@ -149,6 +155,7 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
 
   @override
   bool equals(TenderosRecord? e1, TenderosRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.tenderos == e2?.tenderos &&
         e1?.email == e2?.email &&
         e1?.displayName == e2?.displayName &&
@@ -157,7 +164,8 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.uid == e2?.uid &&
         e1?.pin == e2?.pin &&
-        e1?.clientes == e2?.clientes;
+        e1?.clientes == e2?.clientes &&
+        listEquality.equals(e1?.playerIds, e2?.playerIds);
   }
 
   @override
@@ -170,7 +178,8 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e?.phoneNumber,
         e?.uid,
         e?.pin,
-        e?.clientes
+        e?.clientes,
+        e?.playerIds
       ]);
 
   @override

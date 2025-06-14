@@ -41,6 +41,10 @@ class HistorialFullVoucherPagoModel
   TextEditingController? numComprobanteTextController;
   String? Function(BuildContext, String?)?
       numComprobanteTextControllerValidator;
+  // State field(s) for nombreBanco widget.
+  FocusNode? nombreBancoFocusNode;
+  TextEditingController? nombreBancoTextController;
+  String? Function(BuildContext, String?)? nombreBancoTextControllerValidator;
   // State field(s) for checkElectr widget.
   bool? checkElectrValue;
   // State field(s) for checkBanca widget.
@@ -51,6 +55,9 @@ class HistorialFullVoucherPagoModel
   FFUploadedFile uploadedLocalFile_uploadDataZ9l2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl_uploadDataZ9l2 = '';
+
+  // Stores action output result for [Backend Call - Read Document] action in botonGuardar widget.
+  TenderosRecord? tenderoReadFull;
 
   /// Query cache managers for this widget.
 
@@ -76,6 +83,9 @@ class HistorialFullVoucherPagoModel
   void dispose() {
     numComprobanteFocusNode?.dispose();
     numComprobanteTextController?.dispose();
+
+    nombreBancoFocusNode?.dispose();
+    nombreBancoTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

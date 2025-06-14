@@ -56,7 +56,7 @@ class _WtClienteTiendaListDataWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'ybs8jzoi' /* Tus datos */,
+              'ybs8jzoi' /* Datos personales */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(

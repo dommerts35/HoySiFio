@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -192,6 +193,56 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                 ),
                           ),
                         ].divide(SizedBox(height: 4.0)),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: FlutterFlowTheme.of(context).error,
+                        borderRadius: 12.0,
+                        borderWidth: 1.0,
+                        buttonSize: 40.0,
+                        fillColor:
+                            FlutterFlowTheme.of(context).secondaryBackground,
+                        icon: Icon(
+                          Icons.logout,
+                          color: FlutterFlowTheme.of(context).error,
+                          size: 24.0,
+                        ),
+                        onPressed: () async {
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text('¿Desea cerrar sesión?'),
+                                    content:
+                                        Text('Sus datos ya están guardados.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: Text('Cancelar'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: Text('Confirmar'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.goNamedAuth(
+                                AuthSigningInWidget.routeName, context.mounted);
+                          }
+                        },
                       ),
                     ),
                   ],
@@ -1730,7 +1781,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                               onPressed: () async {
                                 var _shouldSetState = false;
                                 if ((_model.checkboxListCCValue == false) &&
-                                    (_model.checkboxListCCValue == false)) {
+                                    (_model.checkboxListCAValue == false)) {
                                   await showDialog(
                                     context: context,
                                     builder: (alertDialogContext) {
@@ -1750,7 +1801,31 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                   );
                                   if (_shouldSetState) safeSetState(() {});
                                   return;
+                                } else {
+                                  if ((_model.checkboxListCCValue == true) &&
+                                      (_model.checkboxListCAValue == true)) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text('¡Alerta!'),
+                                          content: Text(
+                                              'Por favor, ingrese solo un tipo de cuenta bancaria.'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
                                 }
+
                                 _model.validacionEdit = true;
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
@@ -1784,7 +1859,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                         return AlertDialog(
                                           title: Text('¡Alerta!'),
                                           content: Text(
-                                              'El nombre de tienda ingresado ya es ocupado por otra tienda.'),
+                                              'El nombre de tienda ingresado ya es usado por otra tienda.'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(

@@ -33,16 +33,19 @@ class ClienteProdSelectPagoModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for checkTransfer widget.
   bool? checkTransferValue;
-  // State field(s) for voucherNumTF widget.
-  FocusNode? voucherNumTFFocusNode;
-  TextEditingController? voucherNumTFTextController;
-  String? Function(BuildContext, String?)? voucherNumTFTextControllerValidator;
+  // State field(s) for comprobanteNumTF widget.
+  FocusNode? comprobanteNumTFFocusNode;
+  TextEditingController? comprobanteNumTFTextController;
+  String? Function(BuildContext, String?)?
+      comprobanteNumTFTextControllerValidator;
   // State field(s) for checkEfectivo widget.
   bool? checkEfectivoValue;
   // Stores action output result for [Validate Form] action in botonPago widget.
   bool? validarFormPago;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
   double? totalDeudaCompletaNewNorm;
+  // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
+  TenderosRecord? tenderoReadSP;
 
   /// Query cache managers for this widget.
 
@@ -66,8 +69,8 @@ class ClienteProdSelectPagoModel
 
   @override
   void dispose() {
-    voucherNumTFFocusNode?.dispose();
-    voucherNumTFTextController?.dispose();
+    comprobanteNumTFFocusNode?.dispose();
+    comprobanteNumTFTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

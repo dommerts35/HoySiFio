@@ -1,3 +1,4 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components_nivel_tendero/check_cuentas_comp/check_cuentas_comp_widget.dart';
 import '/components_nivel_tendero/empty_productos_pagados_comp/empty_productos_pagados_comp_widget.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -125,7 +127,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                       alignment: AlignmentDirectional(0.0, -1.0),
                       child: Container(
                         width: double.infinity,
-                        height: 800.0,
+                        height: 750.0,
                         constraints: BoxConstraints(
                           maxWidth: 1170.0,
                         ),
@@ -137,6 +139,9 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                             ).image,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                            color: FlutterFlowTheme.of(context).primaryText,
+                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -235,7 +240,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 5.0, 5.0, 5.0),
-                                        child: Text(
+                                        child: AutoSizeText(
                                           FFLocalizations.of(context).getText(
                                             'ayphq84c' /* Cuentas por cobrar */,
                                           ),
@@ -255,6 +260,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                           .headlineMedium
                                                           .fontStyle,
                                                 ),
+                                                fontSize: 26.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -266,6 +272,70 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                         .fontStyle,
                                               ),
                                         ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: FlutterFlowIconButton(
+                                        borderColor:
+                                            FlutterFlowTheme.of(context).error,
+                                        borderRadius: 12.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        icon: Icon(
+                                          Icons.logout,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          var confirmDialogResponse =
+                                              await showDialog<bool>(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            '¿Desea cerrar sesión?'),
+                                                        content: Text(
+                                                            'Sus datos ya están guardados.'),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    false),
+                                                            child: Text(
+                                                                'Cancelar'),
+                                                          ),
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext,
+                                                                    true),
+                                                            child: Text(
+                                                                'Confirmar'),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  ) ??
+                                                  false;
+                                          if (confirmDialogResponse) {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            context.goNamedAuth(
+                                                AuthSigningInWidget.routeName,
+                                                context.mounted);
+                                          }
+                                        },
                                       ),
                                     ),
                                   ],
@@ -355,61 +425,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         ),
                                       ),
                                     ],
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 5.0),
-                                      child: Text(
-                                        'Suma global de las cuentas: \$${formatNumber(
-                                          historialPorCobrarClientesRecord
-                                              .cliente.totalDeudaCompleta,
-                                          formatType: FormatType.custom,
-                                          format: '#0.00',
-                                          locale: '',
-                                        )}',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
                                   ),
                                 ),
                               ),
@@ -1422,6 +1437,56 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          borderRadius: BorderRadius.circular(8.0),
+                          border: Border.all(
+                            color: Color(0xFFF06023),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 5.0, 10.0, 5.0),
+                          child: Text(
+                            'Suma global de las cuentas: \$${formatNumber(
+                              historialPorCobrarClientesRecord
+                                  .cliente.totalDeudaCompleta,
+                              formatType: FormatType.custom,
+                              format: '#0.00',
+                              locale: '',
+                            )}',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .fontStyle,
+                                ),
                           ),
                         ),
                       ),

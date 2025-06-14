@@ -55,7 +55,7 @@ class _WtInfoEditCuentasWidgetState extends State<WtInfoEditCuentasWidget> {
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              '1o4fve1y' /* Sección de Historial */,
+              '1o4fve1y' /* Sección de Cuentas */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -77,7 +77,7 @@ class _WtInfoEditCuentasWidgetState extends State<WtInfoEditCuentasWidget> {
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'voco3jm6' /* Esta es la sección de cuentas ... */,
+              'voco3jm6' /* En esta es la sección podrá ve... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

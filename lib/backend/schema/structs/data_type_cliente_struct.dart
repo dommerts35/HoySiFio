@@ -44,6 +44,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     String? contrasena,
     String? pin,
     String? secretPass,
+    bool? isSubscribedToEmails,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -66,6 +67,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _contrasena = contrasena,
         _pin = pin,
         _secretPass = secretPass,
+        _isSubscribedToEmails = isSubscribedToEmails,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -250,6 +252,13 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasSecretPass() => _secretPass != null;
 
+  // "isSubscribedToEmails" field.
+  bool? _isSubscribedToEmails;
+  bool get isSubscribedToEmails => _isSubscribedToEmails ?? false;
+  set isSubscribedToEmails(bool? val) => _isSubscribedToEmails = val;
+
+  bool hasIsSubscribedToEmails() => _isSubscribedToEmails != null;
+
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
         nombre: data['nombre'] as String?,
@@ -288,6 +297,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         contrasena: data['contrasena'] as String?,
         pin: data['pin'] as String?,
         secretPass: data['secret_pass'] as String?,
+        isSubscribedToEmails: data['isSubscribedToEmails'] as bool?,
       );
 
   static DataTypeClienteStruct? maybeFromMap(dynamic data) => data is Map
@@ -319,6 +329,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'contrasena': _contrasena,
         'pin': _pin,
         'secret_pass': _secretPass,
+        'isSubscribedToEmails': _isSubscribedToEmails,
       }.withoutNulls;
 
   @override
@@ -411,6 +422,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'secret_pass': serializeParam(
           _secretPass,
           ParamType.String,
+        ),
+        'isSubscribedToEmails': serializeParam(
+          _isSubscribedToEmails,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -531,6 +546,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        isSubscribedToEmails: deserializeParam(
+          data['isSubscribedToEmails'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -562,7 +582,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
             other.historialPorPagarSelectedList) &&
         contrasena == other.contrasena &&
         pin == other.pin &&
-        secretPass == other.secretPass;
+        secretPass == other.secretPass &&
+        isSubscribedToEmails == other.isSubscribedToEmails;
   }
 
   @override
@@ -587,7 +608,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         historialPorPagarSelectedList,
         contrasena,
         pin,
-        secretPass
+        secretPass,
+        isSubscribedToEmails
       ]);
 }
 
@@ -608,6 +630,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   String? contrasena,
   String? pin,
   String? secretPass,
+  bool? isSubscribedToEmails,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -630,6 +653,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       contrasena: contrasena,
       pin: pin,
       secretPass: secretPass,
+      isSubscribedToEmails: isSubscribedToEmails,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

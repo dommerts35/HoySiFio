@@ -56,7 +56,7 @@ class _WtInfoEditProdsCantidadWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'nb7o3qcp' /* Cuantía */,
+              'nb7o3qcp' /* Cantidad */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -78,7 +78,7 @@ class _WtInfoEditProdsCantidadWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              't2hb2qic' /* Registra la cantidad del produ... */,
+              't2hb2qic' /* Registra el número de producto... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

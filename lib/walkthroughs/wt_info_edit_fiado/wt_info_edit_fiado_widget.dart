@@ -76,7 +76,7 @@ class _WtInfoEditFiadoWidgetState extends State<WtInfoEditFiadoWidget> {
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'j32yvxvd' /* Esta es la sección de fiado, d... */,
+              'j32yvxvd' /* Esta es la sección de producto... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

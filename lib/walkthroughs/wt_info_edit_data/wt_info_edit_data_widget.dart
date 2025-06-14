@@ -54,7 +54,7 @@ class _WtInfoEditDataWidgetState extends State<WtInfoEditDataWidget> {
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'q60frzwr' /* Información */,
+              'q60frzwr' /* Datos */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(

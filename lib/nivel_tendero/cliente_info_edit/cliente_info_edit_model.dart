@@ -73,16 +73,16 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   double? totalDeudaCompletaNorm;
   // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
   ClientesRecord? queryAfterDelete;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button_alFio widget.
-  ClientesRecord? queryHistorialPorCobrarAlFio;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button_cobrar widget.
-  ClientesRecord? queryHistorialPorCobrarCobrar;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button_abonar widget.
-  ClientesRecord? queryHistorialPorCobrarAbonar;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  // Stores action output result for [Firestore Query - Query a collection] action in historialPagadosRep widget.
+  ClientesRecord? queryHistorialPagadoRep;
+  // Stores action output result for [Firestore Query - Query a collection] action in historialCobrarRep widget.
+  ClientesRecord? queryHistorialPorPagarRep;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button_guardarProductosFIados widget.
   ClientesRecord? queryGuardar;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button_guardarProductosFIados widget.
   double? sumaValoresEnDTNorm;
+  // Stores action output result for [Backend Call - Read Document] action in Button_guardarProductosFIados widget.
+  TenderosRecord? tenderoReadForEmailToClientProds;
 
   /// Query cache managers for this widget.
 

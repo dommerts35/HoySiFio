@@ -163,19 +163,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Shopkeeper',
     },
     'fr5mniu6': {
-      'es': 'Bienvenida',
+      'es': 'Bienvenido, tendero',
       'en': 'Welcome',
     },
     'w4y47z9b': {
-      'es': 'Llena el formulario para iniciar sesión como tendero',
+      'es': 'Inicie sesión como tendero.',
       'en': 'Fill out the form to log in as a shopkeeper',
     },
     'u8b9lppk': {
-      'es': 'Email',
+      'es': 'E-mail',
       'en': 'E-mail',
     },
-    'hba1q2ff': {
-      'es': 'Email',
+    'uyfz3omf': {
+      'es': 'E-mail',
       'en': 'E-mail',
     },
     '7di16zo1': {
@@ -186,41 +186,32 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'PIN',
       'en': 'Password',
     },
-    'hqj1aoqw': {
-      'es': 'PIN',
-      'en': '',
-    },
-    'ivpjviq8': {
-      'es': 'Contraseña',
-      'en': '',
-    },
     'i4951keh': {
       'es': 'Iniciar Sesión',
       'en': 'Login',
     },
-    '2xkp6jrl': {
-      'es': 'O inicia sesión como cliente',
-      'en': 'Or log in as a customer',
+    'kd9wdef8': {
+      'es': 'Registrarse como tendero',
+      'en': '',
+    },
+    '0wsprywf': {
+      'es': '¿Olvidó su contraseña?',
+      'en': 'Terms of Service',
     },
     'm7axutse': {
       'es': 'Términos de servicio',
       'en': 'Terms of Service',
-    },
-    'kd9wdef8': {
-      'es': 'Registrarse como tendero',
-      'en': '',
     },
     '4k7ldlkt': {
       'es': 'Cliente',
       'en': 'Customer',
     },
     'e0amswgi': {
-      'es': 'Bienvenido',
+      'es': 'Bienvenido, vecino',
       'en': 'Welcome',
     },
     '4ig0fbfu': {
-      'es':
-          'Llene el formulario para iniciar sesión como cliente. Si ya ha autenticado su cuenta, recargue la página y espere unos segundos.',
+      'es': 'Ingrese su número de cédula para iniciar sesión.',
       'en': 'Fill out the form to log in as a customer',
     },
     'ugqry3j4': {
@@ -235,21 +226,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'PIN',
       'en': 'Password',
     },
-    'cufstbn1': {
-      'es': 'PIN',
-      'en': '',
-    },
-    'ttxnj1od': {
-      'es': 'Contraseña',
-      'en': '',
-    },
     '0te276nf': {
       'es': 'Iniciar Sesión',
       'en': 'Login',
-    },
-    'hjbn5352': {
-      'es': 'O inicia sesión como tendero',
-      'en': 'Or log in as a shopkeeper',
     },
     'mpvcc2oa': {
       'es': 'Términos de Servicio',
@@ -347,6 +326,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '7kyhdq3c': {
       'es': 'términos de servicio',
+      'en': 'Terms of Service',
+    },
+    'xe8600ud': {
+      'es': 'Suscribirse al',
+      'en': '',
+    },
+    'an9t36g2': {
+      'es': 'envío de emails promocionales',
       'en': 'Terms of Service',
     },
     '25j9hjhr': {
@@ -459,7 +446,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Please choose an option from the dropdown',
     },
     '2ob7wk2n': {
-      'es': 'Registrar Nuevo Cliente',
+      'es': 'Registrar Cliente',
       'en': 'Register New Customer',
     },
     '6231x968': {
@@ -512,6 +499,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'wejcayxz': {
       'es': 'Vivienda Alqu.',
       'en': '',
+    },
+    'i5fig3y6': {
+      'es': 'Suscribirse al',
+      'en': '',
+    },
+    'gzdssmll': {
+      'es': 'envío de emails de HoySíFio',
+      'en': 'Terms of Service',
     },
     'od5eqvd7': {
       'es': 'Enviar',
@@ -684,17 +679,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '| Valor',
       'en': '',
     },
-    's0cqjwdf': {
-      'es': '  Al fío ',
-      'en': '',
+    '4d0jxjaw': {
+      'es': 'Productos pagados',
+      'en': 'Record',
     },
-    'wqslsvwh': {
-      'es': 'Cobrar',
-      'en': '',
-    },
-    'ec03w7kf': {
-      'es': 'Abonar',
-      'en': '',
+    'o13lrbou': {
+      'es': 'Productos por cobrar',
+      'en': 'Record',
     },
     '5bfvmyfh': {
       'es': 'Guardar',
@@ -917,8 +908,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Transferencia',
       'en': 'Transfer',
     },
-    't7csek1w': {
-      'es': 'Núm. Voucher',
+    'pff5beon': {
+      'es': 'N#. Comprobante',
       'en': '',
     },
     'yl0zre28': {
@@ -1052,7 +1043,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Welcome',
     },
     '6on9n7sb': {
-      'es': 'Nombre de su tienda',
+      'es': 'Nombre de la tienda',
+      'en': 'E-mail',
+    },
+    '2frd909t': {
+      'es': 'Nombre del dueño de la tienda',
       'en': 'E-mail',
     },
     'sh2p8sks': {
@@ -1060,7 +1055,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'E-mail',
     },
     'ti1o60e4': {
-      'es': ' Número de Teléfono',
+      'es': ' Número de teléfono celular',
       'en': 'E-mail',
     },
     '37ho1aqu': {
@@ -1083,6 +1078,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Nombre del banco',
       'en': '',
     },
+    'jgdo2bed': {
+      'es': 'Propietario de la cuenta bancaria',
+      'en': 'E-mail',
+    },
+    'woow9lb7': {
+      'es': 'Nombre del propietario',
+      'en': '',
+    },
     'k1v65egy': {
       'es': 'Seleccione el tipo de cuenta bancaria',
       'en': '',
@@ -1096,12 +1099,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '4anwojju': {
-      'es': 'Contraseñas',
+      'es': 'Contraseña',
       'en': 'Welcome',
     },
     '18ylqfjm': {
       'es':
-          'Ingrese su contraseña de mínimo 8 carácteres, máximo 16 carácteres, una mayúscula, una minúscula, un número y un carácter especial.',
+          'Ingrese una contraseña que contenga al menos 8 carácteres, una mayúscula, una minúscula y un carácter especial (*.#\$¿)',
       'en': '',
     },
     'edm47hkw': {
@@ -1113,11 +1116,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     's6s89p8t': {
-      'es': 'Confirme su contraseña',
+      'es': 'Confirme la contraseña',
       'en': 'Password',
     },
     're3hmuqz': {
-      'es': 'Ingrese su PIN con 4 números',
+      'es': 'Ingrese un PIN con 4 números',
       'en': '',
     },
     'k459atkr': {
@@ -1180,7 +1183,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Ingrese su banco',
       'en': '',
     },
-    'ct43eelg': {
+    'm5ced2oo': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
@@ -1197,10 +1200,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '8uq4rz19': {
-      'es': 'Ingrese una mayúscula, un número y \nun carácter especial.',
+      'es': 'La contraseña no cumple los requisitos.',
       'en': '',
     },
-    'm5ced2oo': {
+    'ct43eelg': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
@@ -1216,11 +1219,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Máximo 16 carácteres',
       'en': '',
     },
-    '7ik6jc1k': {
-      'es': 'Ingrese una mayúscula, un número y \nun carácter especial.',
+    'sdtv1fgs': {
+      'es': 'La contraseña no cumple los requisitos.',
       'en': '',
     },
-    'fxeqbpob': {
+    '060daqkd': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
@@ -1236,7 +1239,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Ingrese su PIN',
       'en': '',
     },
-    '060daqkd': {
+    'fxeqbpob': {
       'es': 'Please choose an option from the dropdown',
       'en': 'Please choose an option from the dropdown',
     },
@@ -1256,11 +1259,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Here the products on credit will be displayed.',
     },
     '2hcmbmsi': {
-      'es': 'Voucher Negado',
-      'en': '',
-    },
-    '6392c0tu': {
-      'es': 'Comprobante de pago de todos los productos',
+      'es': 'Comprobante Negado',
       'en': '',
     },
     'be9xje1k': {
@@ -1275,7 +1274,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Transfer',
     },
     'eoq05zkm': {
-      'es': 'Núm. Voucher',
+      'es': 'N# comprobante',
       'en': '',
     },
     'z4ldi171': {
@@ -1341,8 +1340,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Transferencia',
       'en': 'Transfer',
     },
-    'g0w44l3d': {
-      'es': 'Núm. Voucher',
+    'tgnvbj7s': {
+      'es': 'N# Comprobante',
       'en': '',
     },
     'drmj1elp': {
@@ -1414,6 +1413,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     's3lslju1': {
       'es': 'Núm. De Comprobante',
+      'en': 'Amount to Pay',
+    },
+    '9rtw9btt': {
+      'es': 'Nombre del banco',
       'en': 'Amount to Pay',
     },
     'myz8mr51': {
@@ -1537,6 +1540,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Núm. De Comprobante',
       'en': 'Amount to Pay',
     },
+    'xo6h7y9a': {
+      'es': 'Nombre del banco',
+      'en': 'Amount to Pay',
+    },
     'esuydnzi': {
       'es': 'Tipo de \nTransferencia:',
       'en': '',
@@ -1606,24 +1613,236 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
-  // termsOfServiceSubPage
+  // termsOfServiceSubPageToAccept
   {
-    '9lxpy19c': {
+    'zlee6hzb': {
       'es': 'HoySíFio',
       'en': '',
     },
-    'o0t612cc': {
+    'xc15e5jc': {
       'es': 'TÉRMINOS Y CONDICIONES DE USO',
       'en': '',
     },
     'yhoelzj3': {
       'es':
-          'Última actualización: 27/03/2025\nBienvenido/a a HoySíFio. Antes de utilizar nuestra aplicación, le pedimos que lea atentamente los siguientes términos y condiciones. Al acceder y utilizar nuestra plataforma, usted acepta cumplir con estos términos.',
+          'Política de Privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
+      'en': '',
+    },
+    '4mrdkh9e': {
+      'es': '\n1. Interpretación y Definiciones',
+      'en': '',
+    },
+    'dnkimw1r': {
+      'es': '\n\n  1.1. Interpretación',
+      'en': '',
+    },
+    'ocllj04h': {
+      'es':
+          '\n      Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
+      'en': '',
+    },
+    't17wf3jq': {
+      'es': '\n\n  1.2. Definiciones',
+      'en': '',
+    },
+    '78dre1hn': {
+      'es': '\n       Para los fines de esta Política de Privacidad:\n',
+      'en': '',
+    },
+    '70c4cdbn': {
+      'es': '\n      1.2.1. Cuenta: \n',
+      'en': '',
+    },
+    'ohojrcg6': {
+      'es':
+          '\n      Significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.',
+      'en': '',
+    },
+    '7vkotv8k': {
+      'es': '\n\n      1.2.2. Afiliado: ',
+      'en': '',
+    },
+    '97rmkbms': {
+      'es':
+          '\n\n     Significa una entidad que controla, es controlada por o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación en el capital u otros valores con derecho a voto para la elección de directivos u otra autoridad administrativa.',
+      'en': '',
+    },
+    'xnpuh3as': {
+      'es': '\n\n     1.2.3. Aplicación: ',
+      'en': '',
+    },
+    'vcgdmooh': {
+      'es':
+          '\n\nSe refiere a HoySíFio, el programa de software proporcionado por la Compañía.',
+      'en': '',
+    },
+    'jdsfbzh6': {
+      'es': '\n\n    1.2.4. Compañía',
+      'en': '',
+    },
+    'f3giz3qu': {
+      'es': ': Se refiere a HoySíFio Org.',
+      'en': '',
+    },
+    'rbbjeyws': {
+      'es': '\n\n\n    1.2.5. País:',
+      'en': '',
+    },
+    'f14rvjgv': {
+      'es': ' Ecuador.',
+      'en': '',
+    },
+    'wwgv3auu': {
+      'es': '\n\n    1.2.6. Dispositivo:',
+      'en': '',
+    },
+    'zwyjjcnj': {
+      'es':
+          '\n\nCualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.',
+      'en': '',
+    },
+    'hyctrrrg': {
+      'es': '\n\n     1.2.7. Datos Personales:',
+      'en': '',
+    },
+    '66llic2g': {
+      'es':
+          '\n\nCualquier información relacionada con un individuo identificado o identificable.',
+      'en': '',
+    },
+    '8oc5xvic': {
+      'es': '\n\n     1.2.8. Servicio',
+      'en': '',
+    },
+    'vxytmwl9': {
+      'es': ': se refiere a la Aplicación.',
+      'en': '',
+    },
+    'x9t4b9kl': {
+      'es': '\n\n     1.2.9. Proveedor de Servicios:',
+      'en': '',
+    },
+    'if1rlapx': {
+      'es':
+          '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.',
+      'en': '',
+    },
+    '83omk0ns': {
+      'es': '\n\n      1.2.10. Datos de Uso: ',
+      'en': '',
+    },
+    'n2n1qc5q': {
+      'es':
+          '\n\nDatos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).',
+      'en': '',
+    },
+    'ykaikxsj': {
+      'es': '\n\n      1.2.11. Usted:',
+      'en': '',
+    },
+    'jnjnepmn': {
+      'es':
+          '\n\nEl individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.',
+      'en': '',
+    },
+    'yqowy0ze': {
+      'es': '\n\n2. Recopilación y Uso de Sus Datos Personales',
+      'en': '',
+    },
+    '8xa9vxlm': {
+      'es': '\n\n   2.1. Tipos de Datos Recopilados',
+      'en': '',
+    },
+    'ab5dwi1n': {
+      'es': '\n\n       2.1.1. Datos Personales:',
+      'en': '',
+    },
+    'zgoe9my9': {
+      'es':
+          '\n\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:',
+      'en': '',
+    },
+    'djnno6au': {
+      'es':
+          '\n\n- Dirección de correo electrónico\n- Nombre y apellido\n- Número de teléfono\n- Dirección, Estado, Provincia, Código Postal, Ciudad',
+      'en': '',
+    },
+    '2gpmu6u8': {
+      'es': '\n\n      2.1.2. Datos de Uso',
+      'en': '',
+    },
+    'lj14mlcb': {
+      'es':
+          '\n\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:',
+      'en': '',
+    },
+    'd86d5r9z': {
+      'es':
+          '\n\n- Dirección IP de Su Dispositivo\n- Tipo y versión del navegador\n- Páginas visitadas dentro del Servicio\n- Fecha y hora de la visita\n- Tiempo dedicado a esas páginas\n- Identificadores únicos de dispositivo y otros datos de diagnóstico. \n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:',
+      'en': '',
+    },
+    'uagcjuhy': {
+      'es':
+          '\n\n- Tipo de dispositivo móvil\n- ID único del dispositivo móvil\n- Sistema operativo del dispositivo\n- Tipo de navegador móvil utilizado ',
+      'en': '',
+    },
+    'ipufsyq6': {
+      'es': '\n\n       2.1.3. Uso de Sus Datos Personales',
+      'en': '',
+    },
+    '69km6spt': {
+      'es':
+          '\n\nLa Compañía puede utilizar los Datos Personales para:\n\n- Proporcionar y mantener el Servicio.\n- Gestionar Su Cuenta.\n- Cumplir con contratos.\n- Contactarlo con actualizaciones o comunicaciones informativas.\n- Ofrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n- Gestionar Sus solicitudes.\n- Otros fines como análisis de datos, mejora del Servicio o marketing.',
+      'en': '',
+    },
+    '84451uvg': {
+      'es': '\n\n       2.1.4. Divulgación de Sus Datos Personales ',
+      'en': '',
+    },
+    'stuzn7l7': {
+      'es':
+          '\n\nPodemos compartir Su información en las siguientes situaciones:\n\n- Con Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\n- En transferencias comerciales (venta de activos, fusiones, etc.).\n\n- Con Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\n- Con Su consentimiento o por requisitos legales.',
+      'en': '',
+    },
+    'tu5an4n4': {
+      'es': '\n\n       2.1.5. Seguridad de Sus Datos ',
+      'en': '',
+    },
+    'g8lsyfzw': {
+      'es':
+          '\n\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro. ',
+      'en': '',
+    },
+    '8ro1gktv': {
+      'es': '\n\n       2.1.6. Privacidad de los Niños',
+      'en': '',
+    },
+    '56e4an2z': {
+      'es':
+          '\n\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos. ',
+      'en': '',
+    },
+    '82gms51k': {
+      'es': '\n\n     2.1.7. Cambios en esta Política',
+      'en': '',
+    },
+    'xj1e24br': {
+      'es':
+          '\n\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente. ',
+      'en': '',
+    },
+    '2j86w237': {
+      'es': '\n\n3. Contáctenos',
+      'en': '',
+    },
+    '0i16hq9c': {
+      'es':
+          '\n\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
       'en': '',
     },
     'xqrxan8c': {
       'es':
-          '1. ACEPTACIÓN DE LOS TÉRMINOS\n Al utilizar HoySíFio, usted acepta estar sujeto a estos términos y condiciones. Si no está de acuerdo con ellos, por favor no utilice la aplicación.\n\n2. DESCRIPCIÓN DEL SERVICIO\n HoySíFio es una plataforma diseñada para gestionar productos fiados entre dueños de tiendas y clientes.\n\n3. REGISTRO Y CUENTA\nPara acceder a ciertas funciones, es posible que deba registrarse y crear una cuenta.\n\n\nUsted es responsable de mantener la confidencialidad de sus credenciales.\n\n\nNos reservamos el derecho de suspender o cancelar cuentas que infrinjan estos términos.\n\n\n4. USO ADECUADO DE LA APLICACIÓN\n Al utilizar nuestra aplicación, usted se compromete a:\nNo usar la plataforma para actividades ilegales o fraudulentas.\n\n\nNo manipular, modificar o distribuir el código de la aplicación sin autorización.\n\n\nNo suplantar a otras personas o proporcionar información falsa.\n\n\n5. PRIVACIDAD Y DATOS PERSONALES\n Nos comprometemos a proteger su privacidad. Para más información, consulte nuestra Política de Privacidad donde explicamos cómo recopilamos, utilizamos y protegemos su información.\n\n\n6. LIMITACIÓN DE RESPONSABILIDAD\n HoySíFio no se hace responsable de:\nPérdidas financieras o daños resultantes del uso de la aplicación.\n\n\nErrores o interrupciones en el servicio.\n\n\nCualquier acción realizada por otros usuarios de la aplicación.\n\n\n7. MODIFICACIONES A LOS TÉRMINOS\n Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a través de la aplicación o en nuestro sitio web. El uso continuado de la plataforma después de los cambios implica la aceptación de los nuevos términos.\n',
+          '1. Interpretación y Definiciones\n\n 1.1. Interpretación\nLas palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.\n\n 1.2. Definiciones\nPara los fines de esta Política de Privacidad:\n\n   1.2.1. Cuenta: significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.\n\n    1.2.2. Afiliado: significa una entidad que controla, es controlada por o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación en el capital u otros valores con derecho a voto para la elección de directivos u otra autoridad administrativa.\n\n   1.2.3. Aplicación: se refiere a HoySíFio, el programa de software proporcionado por la Compañía.\n\n   1.2.4. Compañía (referida como \"la Compañía\", \"Nosotros\", \"Nos\" o \"Nuestro\" en este Acuerdo): se refiere a HoySíFio Org.\n\n   1.2.5. País: Ecuador.\n\n   1.2.6. Dispositivo: cualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.\n\n   1.2.7. Datos Personales: cualquier información relacionada con un individuo identificado o identificable.\n\n   1.2.8. Servicio: se refiere a la Aplicación.\n\n   1.2.9. Proveedor de Servicios: cualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.\n\n   1.2.10. Datos de Uso: datos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).\n\n   1.2.11. Usted: el individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.\n\n2. Recopilación y Uso de Sus Datos Personales\n\n  2.1. Tipos de Datos Recopilados\n\n    2.1.1. Datos Personales\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:\n\nDirección de correo electrónico\n\nNombre y apellido\n\nNúmero de teléfono\n\nDirección, Estado, Provincia, Código Postal, Ciudad\n\n    2.1.2. Datos de Uso\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:\n\nDirección IP de Su Dispositivo\n\nTipo y versión del navegador\n\nPáginas visitadas dentro del Servicio\n\nFecha y hora de la visita\n\nTiempo dedicado a esas páginas\n\nIdentificadores únicos de dispositivo y otros datos de diagnóstico.\n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:\n\nTipo de dispositivo móvil\n\nID único del dispositivo móvil\n\nSistema operativo del dispositivo\n\nTipo de navegador móvil utilizado\n\n   2.1.3. Uso de Sus Datos Personales\nLa Compañía puede utilizar los Datos Personales para:\n\nProporcionar y mantener el Servicio.\n\nGestionar Su Cuenta.\n\nCumplir con contratos.\n\nContactarlo con actualizaciones o comunicaciones informativas.\n\nOfrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n\nGestionar Sus solicitudes.\n\nOtros fines como análisis de datos, mejora del Servicio o marketing.\n\n   2.1.4. Divulgación de Sus Datos Personales\nPodemos compartir Su información en las siguientes situaciones:\n\nCon Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\nEn transferencias comerciales (venta de activos, fusiones, etc.).\n\nCon Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\nCon Su consentimiento o por requisitos legales.\n\n   2.1.5. Seguridad de Sus Datos\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro.\n\n   2.1.6. Privacidad de los Niños\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos.\n\n   2.1.7. Cambios en esta Política\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente.\n\n 3. Contáctenos\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
       'en': '',
     },
     'gn3s5v1p': {
@@ -1910,7 +2129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Fio',
     },
     '3wir9x8c': {
-      'es': 'Llene el formulario para registrarse como tendero',
+      'es': 'Llene el formulario para autenticar su cuenta de cliente',
       'en': 'Fill out the form to log in as a shopkeeper',
     },
     'x2qpws0m': {
@@ -1926,13 +2145,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Código de primer inicio de sesión',
       'en': 'Password',
     },
-    'yt2gerpc': {
-      'es': 'ABC1',
+    's1ziy5xb': {
+      'es': '0000',
       'en': '',
     },
     '4cthkeev': {
       'es':
-          'Ingrese su contraseña de mínimo 8 carácteres, máximo 16 carácteres, una mayúscula, una minúscula, un número y un carácter especial.',
+          'Ingrese una contraseña que contenga al menos 8 carácteres, una mayúscula, una minúscula y un carácter especial (*.#\$¿)',
       'en': '',
     },
     '954wyj31': {
@@ -1960,7 +2179,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'qnb91mwg': {
-      'es': 'Iniciar sesión',
+      'es': 'Autenticar e iniciar sesión',
       'en': 'Login',
     },
     '2fv5xw97': {
@@ -2076,6 +2295,283 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
     },
   },
+  // forgotMyPassword
+  {
+    'sj1iw0b0': {
+      'es': 'Hoy',
+      'en': 'Hoy',
+    },
+    'dba4xfrx': {
+      'es': 'Sí',
+      'en': 'Si',
+    },
+    'xycif7re': {
+      'es': 'Fio',
+      'en': 'Fio',
+    },
+    'hbpb6qxp': {
+      'es': 'Olvidé mi contraseña',
+      'en': 'Welcome',
+    },
+    '23rgzjnt': {
+      'es':
+          'Ingrese su correo electrónico para enviarle un email de cambio de contraseña para su cuenta de tendero.',
+      'en': 'Fill out the form to log in as a shopkeeper',
+    },
+    'z741yg0n': {
+      'es': 'Email',
+      'en': 'E-mail',
+    },
+    'z62zvqy0': {
+      'es': 'Email',
+      'en': 'E-mail',
+    },
+    'u3q4fabm': {
+      'es': 'Reestablecer contraseña',
+      'en': 'Login',
+    },
+    '2ttk5em4': {
+      'es': 'Home',
+      'en': 'Home',
+    },
+  },
+  // termsOfServiceSubPageToView
+  {
+    'zs52rv2i': {
+      'es': 'HoySíFio',
+      'en': '',
+    },
+    'mezgcq5s': {
+      'es': 'TÉRMINOS Y CONDICIONES DE USO',
+      'en': '',
+    },
+    'wz3j9mfy': {
+      'es':
+          'Política de Privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
+      'en': '',
+    },
+    'f55ww7zw': {
+      'es': '\n1. Interpretación y Definiciones',
+      'en': '',
+    },
+    'zu4t561s': {
+      'es': '\n\n  1.1. Interpretación',
+      'en': '',
+    },
+    'tp9cg8a5': {
+      'es':
+          '\n      Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
+      'en': '',
+    },
+    'q4rwiidb': {
+      'es': '\n\n  1.2. Definiciones',
+      'en': '',
+    },
+    'ggk8ua1p': {
+      'es': '\n       Para los fines de esta Política de Privacidad:\n',
+      'en': '',
+    },
+    'd7mnx9vw': {
+      'es': '\n      1.2.1. Cuenta: \n',
+      'en': '',
+    },
+    'bgxf62kf': {
+      'es':
+          '\n      Significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.',
+      'en': '',
+    },
+    '6lj7385v': {
+      'es': '\n\n      1.2.2. Afiliado: ',
+      'en': '',
+    },
+    'ttm73y26': {
+      'es':
+          '\n\n     Significa una entidad que controla, es controlada por o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación en el capital u otros valores con derecho a voto para la elección de directivos u otra autoridad administrativa.',
+      'en': '',
+    },
+    '3ctu2t1e': {
+      'es': '\n\n     1.2.3. Aplicación: ',
+      'en': '',
+    },
+    'flfm0p5y': {
+      'es':
+          '\n\nSe refiere a HoySíFio, el programa de software proporcionado por la Compañía.',
+      'en': '',
+    },
+    'zeacsnc5': {
+      'es': '\n\n    1.2.4. Compañía',
+      'en': '',
+    },
+    'vyax0lx5': {
+      'es': ': Se refiere a HoySíFio Org.',
+      'en': '',
+    },
+    'rk7t90wf': {
+      'es': '\n\n\n    1.2.5. País:',
+      'en': '',
+    },
+    '0an0d6g7': {
+      'es': ' Ecuador.',
+      'en': '',
+    },
+    'egfx2pt5': {
+      'es': '\n\n    1.2.6. Dispositivo:',
+      'en': '',
+    },
+    '66ao0yhy': {
+      'es':
+          '\n\nCualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.',
+      'en': '',
+    },
+    'xixazfu1': {
+      'es': '\n\n     1.2.7. Datos Personales:',
+      'en': '',
+    },
+    '9g1foavh': {
+      'es':
+          '\n\nCualquier información relacionada con un individuo identificado o identificable.',
+      'en': '',
+    },
+    '2kqzdmx2': {
+      'es': '\n\n     1.2.8. Servicio',
+      'en': '',
+    },
+    'tntsmbez': {
+      'es': ': se refiere a la Aplicación.',
+      'en': '',
+    },
+    '1kcte1e8': {
+      'es': '\n\n     1.2.9. Proveedor de Servicios:',
+      'en': '',
+    },
+    'iaw1e703': {
+      'es':
+          '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.',
+      'en': '',
+    },
+    'nljdbsds': {
+      'es': '\n\n      1.2.10. Datos de Uso: ',
+      'en': '',
+    },
+    '3mbvwg91': {
+      'es':
+          '\n\nDatos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).',
+      'en': '',
+    },
+    '6h785yko': {
+      'es': '\n\n      1.2.11. Usted:',
+      'en': '',
+    },
+    'vl6klwoh': {
+      'es':
+          '\n\nEl individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.',
+      'en': '',
+    },
+    'th00i0in': {
+      'es': '\n\n2. Recopilación y Uso de Sus Datos Personales',
+      'en': '',
+    },
+    '9c50zuul': {
+      'es': '\n\n   2.1. Tipos de Datos Recopilados',
+      'en': '',
+    },
+    'pltyveh1': {
+      'es': '\n\n       2.1.1. Datos Personales:',
+      'en': '',
+    },
+    'qkmumao7': {
+      'es':
+          '\n\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:',
+      'en': '',
+    },
+    '5c813of0': {
+      'es':
+          '\n\n- Dirección de correo electrónico\n- Nombre y apellido\n- Número de teléfono\n- Dirección, Estado, Provincia, Código Postal, Ciudad',
+      'en': '',
+    },
+    'jtbgwtw7': {
+      'es': '\n\n      2.1.2. Datos de Uso',
+      'en': '',
+    },
+    'a2hsqtou': {
+      'es':
+          '\n\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:',
+      'en': '',
+    },
+    'jkaek35c': {
+      'es':
+          '\n\n- Dirección IP de Su Dispositivo\n- Tipo y versión del navegador\n- Páginas visitadas dentro del Servicio\n- Fecha y hora de la visita\n- Tiempo dedicado a esas páginas\n- Identificadores únicos de dispositivo y otros datos de diagnóstico. \n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:',
+      'en': '',
+    },
+    'bb2e36h9': {
+      'es':
+          '\n\n- Tipo de dispositivo móvil\n- ID único del dispositivo móvil\n- Sistema operativo del dispositivo\n- Tipo de navegador móvil utilizado ',
+      'en': '',
+    },
+    'ue7erfxq': {
+      'es': '\n\n       2.1.3. Uso de Sus Datos Personales',
+      'en': '',
+    },
+    '7pmz3l47': {
+      'es':
+          '\n\nLa Compañía puede utilizar los Datos Personales para:\n\n- Proporcionar y mantener el Servicio.\n- Gestionar Su Cuenta.\n- Cumplir con contratos.\n- Contactarlo con actualizaciones o comunicaciones informativas.\n- Ofrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n- Gestionar Sus solicitudes.\n- Otros fines como análisis de datos, mejora del Servicio o marketing.',
+      'en': '',
+    },
+    '1zqqyzwk': {
+      'es': '\n\n       2.1.4. Divulgación de Sus Datos Personales ',
+      'en': '',
+    },
+    'qiiyde05': {
+      'es':
+          '\n\nPodemos compartir Su información en las siguientes situaciones:\n\n- Con Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\n- En transferencias comerciales (venta de activos, fusiones, etc.).\n\n- Con Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\n- Con Su consentimiento o por requisitos legales.',
+      'en': '',
+    },
+    'wdblri6i': {
+      'es': '\n\n       2.1.5. Seguridad de Sus Datos ',
+      'en': '',
+    },
+    'm92qs9ff': {
+      'es':
+          '\n\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro. ',
+      'en': '',
+    },
+    'cl2e79qs': {
+      'es': '\n\n       2.1.6. Privacidad de los Niños',
+      'en': '',
+    },
+    '790qalz1': {
+      'es':
+          '\n\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos. ',
+      'en': '',
+    },
+    'ldpk6t64': {
+      'es': '\n\n     2.1.7. Cambios en esta Política',
+      'en': '',
+    },
+    '6x96dcb1': {
+      'es':
+          '\n\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente. ',
+      'en': '',
+    },
+    'v7uokde9': {
+      'es': '\n\n3. Contáctenos',
+      'en': '',
+    },
+    'eo6om6ei': {
+      'es':
+          '\n\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
+      'en': '',
+    },
+    'hk6koe73': {
+      'es':
+          '1. Interpretación y Definiciones\n\n 1.1. Interpretación\nLas palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.\n\n 1.2. Definiciones\nPara los fines de esta Política de Privacidad:\n\n   1.2.1. Cuenta: significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.\n\n    1.2.2. Afiliado: significa una entidad que controla, es controlada por o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación en el capital u otros valores con derecho a voto para la elección de directivos u otra autoridad administrativa.\n\n   1.2.3. Aplicación: se refiere a HoySíFio, el programa de software proporcionado por la Compañía.\n\n   1.2.4. Compañía (referida como \"la Compañía\", \"Nosotros\", \"Nos\" o \"Nuestro\" en este Acuerdo): se refiere a HoySíFio Org.\n\n   1.2.5. País: Ecuador.\n\n   1.2.6. Dispositivo: cualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.\n\n   1.2.7. Datos Personales: cualquier información relacionada con un individuo identificado o identificable.\n\n   1.2.8. Servicio: se refiere a la Aplicación.\n\n   1.2.9. Proveedor de Servicios: cualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.\n\n   1.2.10. Datos de Uso: datos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).\n\n   1.2.11. Usted: el individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.\n\n2. Recopilación y Uso de Sus Datos Personales\n\n  2.1. Tipos de Datos Recopilados\n\n    2.1.1. Datos Personales\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:\n\nDirección de correo electrónico\n\nNombre y apellido\n\nNúmero de teléfono\n\nDirección, Estado, Provincia, Código Postal, Ciudad\n\n    2.1.2. Datos de Uso\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:\n\nDirección IP de Su Dispositivo\n\nTipo y versión del navegador\n\nPáginas visitadas dentro del Servicio\n\nFecha y hora de la visita\n\nTiempo dedicado a esas páginas\n\nIdentificadores únicos de dispositivo y otros datos de diagnóstico.\n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:\n\nTipo de dispositivo móvil\n\nID único del dispositivo móvil\n\nSistema operativo del dispositivo\n\nTipo de navegador móvil utilizado\n\n   2.1.3. Uso de Sus Datos Personales\nLa Compañía puede utilizar los Datos Personales para:\n\nProporcionar y mantener el Servicio.\n\nGestionar Su Cuenta.\n\nCumplir con contratos.\n\nContactarlo con actualizaciones o comunicaciones informativas.\n\nOfrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n\nGestionar Sus solicitudes.\n\nOtros fines como análisis de datos, mejora del Servicio o marketing.\n\n   2.1.4. Divulgación de Sus Datos Personales\nPodemos compartir Su información en las siguientes situaciones:\n\nCon Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\nEn transferencias comerciales (venta de activos, fusiones, etc.).\n\nCon Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\nCon Su consentimiento o por requisitos legales.\n\n   2.1.5. Seguridad de Sus Datos\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro.\n\n   2.1.6. Privacidad de los Niños\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos.\n\n   2.1.7. Cambios en esta Política\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente.\n\n 3. Contáctenos\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
+      'en': '',
+    },
+    'wz5npo30': {
+      'es': 'Home',
+      'en': 'Home',
+    },
+  },
   // emptyVoucherComp
   {
     'no53yi3r': {
@@ -2136,29 +2632,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
   },
-  // wtListaClientesWelcome
-  {
-    '941664r8': {
-      'es': '¡Bienvenido!',
-      'en': '',
-    },
-    '4mlyrfwg': {
-      'es':
-          'Bienvenido a la app HoySíFio. A continuación le mostramos el funcionamiento de la página. \nToque la pantalla para continuar.',
-      'en': '',
-    },
-  },
-  // wtListaClientesForTenderoBarra
-  {
-    'n7x9e50n': {
-      'es': 'Mi Tienda',
-      'en': '',
-    },
-    'u0u406ei': {
-      'es': 'Este es el nombre de tu tienda registrada. ',
-      'en': '',
-    },
-  },
   // wtListaClientesLogOut
   {
     'gwn8ysum': {
@@ -2178,8 +2651,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'n4e9qswy': {
-      'es':
-          'Pulsa aquí para registrar un nuevo cliente en tu tienda y registrar sus datos',
+      'es': 'Pulsa aquí para registrar un nuevo cliente en tu tienda.',
       'en': '',
     },
   },
@@ -2190,14 +2662,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'bangfnzw': {
-      'es': 'Accede a la configuración de tu cuenta.',
+      'es': 'Accede a la configuración de tu cuenta y modifica tus datos.',
       'en': '',
     },
   },
   // wtListaClientesTabListAll
   {
     'uvhxcbwl': {
-      'es': 'Vistas',
+      'es': 'Todos',
       'en': '',
     },
     'rbr2tguc': {
@@ -2208,7 +2680,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // wtInfoEditData
   {
     'q60frzwr': {
-      'es': 'Información',
+      'es': 'Datos',
       'en': '',
     },
     'o816bot3': {
@@ -2220,12 +2692,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // wtInfoEditCuentas
   {
     '1o4fve1y': {
-      'es': 'Sección de Historial',
+      'es': 'Sección de Cuentas',
       'en': '',
     },
     'voco3jm6': {
-      'es':
-          'Esta es la sección de cuentas donde podrá ver el historial del cliente.',
+      'es': 'En esta es la sección podrá ver el historial del cliente.',
       'en': '',
     },
   },
@@ -2236,8 +2707,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'j32yvxvd': {
-      'es':
-          'Esta es la sección de fiado, donde puede añadir los productos que le vaya a fiar su cliente. ',
+      'es': 'Esta es la sección de productos registrados al cliente.',
       'en': '',
     },
   },
@@ -2248,8 +2718,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'p644gald': {
-      'es':
-          'Registra nuevos productos fiados. El sistema calcula automáticamente el total.',
+      'es': 'Registra productos a fiar.',
       'en': '',
     },
   },
@@ -2260,7 +2729,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     '1cgrguqv': {
-      'es': 'Aquí verá el conteo de clientes según la pestaña seleccionada.',
+      'es': 'En esta sección verá la cantidad de clientes actuales.',
       'en': '',
     },
   },
@@ -2322,12 +2791,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // wtInfoEditCuentasHistorialRow
   {
     'fdhfmc90': {
-      'es': 'Historial de cuentas',
+      'es': 'Historial de Cuentas',
       'en': '',
     },
     'r5weprwa': {
-      'es':
-          'Estos botones sirven para acceder a las cuentas pagadas y por cobrar del cliente.',
+      'es': 'Acceda a las cuentas pagadas y por cobrar del cliente.',
       'en': '',
     },
   },
@@ -2339,40 +2807,40 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3yffcmed': {
       'es':
-          'Este botón le ayudará a visualizar los comprobantes que hayan sido enviados por el cliente.',
+          'Visualice los comprobantes que hayan sido enviados por el cliente.',
       'en': '',
     },
   },
   // wtInfoEditProdsCantidad
   {
     'nb7o3qcp': {
-      'es': 'Cuantía',
+      'es': 'Cantidad',
       'en': '',
     },
     't2hb2qic': {
-      'es': 'Registra la cantidad del producto',
+      'es': 'Registra el número de productos.',
       'en': '',
     },
   },
   // wtInfoEditProdsNombre
   {
     'qhaevea0': {
-      'es': 'Nombre',
+      'es': 'Producto',
       'en': '',
     },
     'la16kaf7': {
-      'es': 'Registra el nombre del producto.',
+      'es': 'Registra el nombre del producto a fiar.',
       'en': '',
     },
   },
   // wtInfoEditProdsValor
   {
     '41nglai9': {
-      'es': 'Valor Unitario',
+      'es': 'Valor',
       'en': '',
     },
     'tn5cl4iu': {
-      'es': 'Registra el valor unitario del producto.',
+      'es': 'Registra el precio del producto.',
       'en': '',
     },
   },
@@ -2383,14 +2851,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
     },
     'w3qp5add': {
-      'es': 'Tras ingresar un producto, lo añade con este botón.',
+      'es': 'Tras ingresar los producto, los añade con este botón.',
       'en': '',
     },
   },
   // wtClienteTiendaListData
   {
     'ybs8jzoi': {
-      'es': 'Tus datos',
+      'es': 'Datos personales',
       'en': '',
     },
     'iop3hpvv': {
@@ -2446,11 +2914,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // wtClienteProdsComprobante
   {
     '281y2j53': {
-      'es': 'Tus comprobantes',
+      'es': 'Comprobantes',
       'en': '',
     },
     'amru719j': {
-      'es': 'Revisa los comprobantes que has enviado este botón.',
+      'es': 'Revisa los comprobantes que has enviado con este botón.',
+      'en': '',
+    },
+  },
+  // wtListaClientesInicio
+  {
+    '6glumzuh': {
+      'es': '¡Bienvenido!',
+      'en': '',
+    },
+    'cnc4za3r': {
+      'es':
+          'Este es el tutorial de uso de la App. Para saltarse este tutorial, haga clic en el botón de \"Saltar\" en la parte inferior derecha. Toque la pantalla para continuar',
       'en': '',
     },
   },

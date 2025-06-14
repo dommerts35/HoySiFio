@@ -107,6 +107,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'nombreTienda',
               ParamType.String,
             ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -121,6 +129,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             nombreTienda: params.getParam(
               'nombreTienda',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
               ParamType.String,
             ),
           ),
@@ -904,9 +916,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: TermsOfServiceSubPageWidget.routeName,
-          path: TermsOfServiceSubPageWidget.routePath,
-          builder: (context, params) => TermsOfServiceSubPageWidget(),
+          name: TermsOfServiceSubPageToAcceptWidget.routeName,
+          path: TermsOfServiceSubPageToAcceptWidget.routePath,
+          builder: (context, params) => TermsOfServiceSubPageToAcceptWidget(),
         ),
         FFRoute(
           name: TenderoEditInfoWidget.routeName,
@@ -1011,6 +1023,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'nombreTienda',
               ParamType.String,
             ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            cedulaPassed: params.getParam(
+              'cedulaPassed',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -1024,6 +1044,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['clientes'],
             ),
           ),
+        ),
+        FFRoute(
+          name: ForgotMyPasswordWidget.routeName,
+          path: ForgotMyPasswordWidget.routePath,
+          builder: (context, params) => ForgotMyPasswordWidget(),
+        ),
+        FFRoute(
+          name: TermsOfServiceSubPageToViewWidget.routeName,
+          path: TermsOfServiceSubPageToViewWidget.routePath,
+          builder: (context, params) => TermsOfServiceSubPageToViewWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

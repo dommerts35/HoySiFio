@@ -1,11 +1,11 @@
 import '/backend/backend.dart';
-import '/backend/push_notifications/push_notifications_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -72,6 +72,9 @@ class _HistorialFullVoucherPagoWidgetState
 
     _model.numComprobanteTextController ??= TextEditingController();
     _model.numComprobanteFocusNode ??= FocusNode();
+
+    _model.nombreBancoTextController ??= TextEditingController();
+    _model.nombreBancoFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -381,7 +384,7 @@ class _HistorialFullVoucherPagoWidgetState
                           children: [
                             Container(
                               width: 360.0,
-                              height: 130.1,
+                              height: 60.0,
                               child: TextFormField(
                                 controller: _model.numComprobanteTextController,
                                 focusNode: _model.numComprobanteFocusNode,
@@ -404,7 +407,7 @@ class _HistorialFullVoucherPagoWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        fontSize: 24.0,
+                                        fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
@@ -424,7 +427,7 @@ class _HistorialFullVoucherPagoWidgetState
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        fontSize: 28.0,
+                                        fontSize: 14.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -478,7 +481,7 @@ class _HistorialFullVoucherPagoWidgetState
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      fontSize: 28.0,
+                                      fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -504,7 +507,135 @@ class _HistorialFullVoucherPagoWidgetState
                                       );
                                     }),
                                   FilteringTextInputFormatter.allow(
-                                      RegExp('[a-zA-Z0-9]'))
+                                      RegExp('[0-9]'))
+                                ],
+                              ),
+                            ),
+                            Container(
+                              width: 360.0,
+                              height: 60.1,
+                              decoration: BoxDecoration(),
+                              child: TextFormField(
+                                controller: _model.nombreBancoTextController,
+                                focusNode: _model.nombreBancoFocusNode,
+                                autofocus: false,
+                                textCapitalization: TextCapitalization.none,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  isDense: true,
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'xo6h7y9a' /* Nombre del banco */,
+                                  ),
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .fontStyle,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  filled: true,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.inter(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                      lineHeight: 3.0,
+                                    ),
+                                cursorColor:
+                                    FlutterFlowTheme.of(context).primaryText,
+                                validator: _model
+                                    .nombreBancoTextControllerValidator
+                                    .asValidator(context),
+                                inputFormatters: [
+                                  if (!isAndroid && !isiOS)
+                                    TextInputFormatter.withFunction(
+                                        (oldValue, newValue) {
+                                      return TextEditingValue(
+                                        selection: newValue.selection,
+                                        text: newValue.text.toCapitalization(
+                                            TextCapitalization.none),
+                                      );
+                                    }),
                                 ],
                               ),
                             ),
@@ -1235,6 +1366,7 @@ Transferencia: */
                                                     0.0, 0.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
+                                                    var _shouldSetState = false;
                                                     if (_model.uploadedFileUrl_uploadDataZ9l2 ==
                                                             '') {
                                                       await showDialog(
@@ -1258,6 +1390,8 @@ Transferencia: */
                                                           );
                                                         },
                                                       );
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
                                                       return;
                                                     } else {
                                                       if (_model.numComprobanteTextController
@@ -1284,6 +1418,8 @@ Transferencia: */
                                                             );
                                                           },
                                                         );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
                                                         return;
                                                       }
                                                       _model.urlSupaImg = _model
@@ -1315,6 +1451,8 @@ Transferencia: */
                                                             );
                                                           },
                                                         );
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
                                                         return;
                                                       } else {
                                                         if (((_model.checkElectrValue == true) && (_model.checkBancaValue == true)) ||
@@ -1347,6 +1485,8 @@ Transferencia: */
                                                               );
                                                             },
                                                           );
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
                                                           return;
                                                         }
 
@@ -1406,6 +1546,10 @@ Transferencia: */
                                                                         int.tryParse(_model
                                                                             .numComprobanteTextController
                                                                             .text),
+                                                                    nombreBanco:
+                                                                        _model
+                                                                            .nombreBancoTextController
+                                                                            .text,
                                                                     clearUnsetFields:
                                                                         false,
                                                                   ),
@@ -1438,19 +1582,42 @@ Transferencia: */
                                                             );
                                                           },
                                                         );
-                                                        triggerPushNotification(
-                                                          notificationTitle:
-                                                              '¡Comprobante Recibido!',
-                                                          notificationText:
-                                                              'El cliente ${widget.nombre} ${widget.apellido} le ha enviado un comprobante.',
-                                                          notificationSound:
-                                                              'default',
-                                                          userRefs: [
-                                                            widget.tenderoRef!
-                                                          ],
-                                                          initialPageName:
-                                                              'authSigningIn',
-                                                          parameterData: {},
+                                                        _model.tenderoReadFull =
+                                                            await TenderosRecord
+                                                                .getDocumentOnce(
+                                                                    widget
+                                                                        .tenderoRef!);
+                                                        _shouldSetState = true;
+                                                        for (int loop1Index = 0;
+                                                            loop1Index <
+                                                                _model
+                                                                    .tenderoReadFull!
+                                                                    .playerIds
+                                                                    .length;
+                                                            loop1Index++) {
+                                                          final currentLoop1Item =
+                                                              _model.tenderoReadFull!
+                                                                      .playerIds[
+                                                                  loop1Index];
+                                                          await actions
+                                                              .sendNotificationToPlayer(
+                                                            currentLoop1Item,
+                                                            'Tienda ${_model.tenderoReadFull?.displayName}: ¡El cliente ${widget.nombre} ha enviado un comprobante de pago de todos los productos que fía.',
+                                                          );
+                                                        }
+                                                        await actions
+                                                            .sendCustomEmailForSentVoucherToTendero(
+                                                          _model
+                                                              .tenderoReadFull!
+                                                              .email,
+                                                          _model
+                                                              .tenderoReadFull!
+                                                              .displayName,
+                                                          'El cliente: ${widget.nombre} ha enviado un comprobante a la tienda: ${_model.tenderoReadFull?.displayName}',
+                                                          _model
+                                                              .tenderoReadFull!
+                                                              .displayName,
+                                                          '${widget.nombre} ${widget.apellido}',
                                                         );
 
                                                         context.pushNamed(
@@ -1511,6 +1678,9 @@ Transferencia: */
                                                         );
                                                       }
                                                     }
+
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)

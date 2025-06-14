@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'flutter_flow/flutter_flow_util.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -20,39 +17,25 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
-      _dataTypeClientes = prefs
-              .getStringList('ff_dataTypeClientes')
-              ?.map((x) {
-                try {
-                  return DataTypeClienteStruct.fromSerializableMap(
-                      jsonDecode(x));
-                } catch (e) {
-                  print("Can't decode persisted data type. Error: $e.");
-                  return null;
-                }
-              })
-              .withoutNulls
-              .toList() ??
-          _dataTypeClientes;
+      _isFirstTimeTenderoList =
+          prefs.getBool('ff_isFirstTimeTenderoList') ?? _isFirstTimeTenderoList;
     });
     _safeInit(() {
-      _dataTypeTenderos = prefs
-              .getStringList('ff_dataTypeTenderos')
-              ?.map((x) {
-                try {
-                  return DataTypeTenderoStruct.fromSerializableMap(
-                      jsonDecode(x));
-                } catch (e) {
-                  print("Can't decode persisted data type. Error: $e.");
-                  return null;
-                }
-              })
-              .withoutNulls
-              .toList() ??
-          _dataTypeTenderos;
+      _isFirstTimeInfoEdit =
+          prefs.getBool('ff_isFirstTimeInfoEdit') ?? _isFirstTimeInfoEdit;
     });
     _safeInit(() {
-      _isHPSelected = prefs.getBool('ff_isHPSelected') ?? _isHPSelected;
+      _isFirstTimeCPP = prefs.getBool('ff_isFirstTimeCPP') ?? _isFirstTimeCPP;
+    });
+    _safeInit(() {
+      _isFirstTimeClienteTiendaList =
+          prefs.getBool('ff_isFirstTimeClienteTiendaList') ??
+              _isFirstTimeClienteTiendaList;
+    });
+    _safeInit(() {
+      _isFirstTimeClienteProdList =
+          prefs.getBool('ff_isFirstTimeClienteProdList') ??
+              _isFirstTimeClienteProdList;
     });
   }
 
@@ -63,129 +46,52 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  List<DataTypeClienteStruct> _dataTypeClientes = [];
-  List<DataTypeClienteStruct> get dataTypeClientes => _dataTypeClientes;
-  set dataTypeClientes(List<DataTypeClienteStruct> value) {
-    _dataTypeClientes = value;
-    prefs.setStringList(
-        'ff_dataTypeClientes', value.map((x) => x.serialize()).toList());
-  }
-
-  void addToDataTypeClientes(DataTypeClienteStruct value) {
-    dataTypeClientes.add(value);
-    prefs.setStringList('ff_dataTypeClientes',
-        _dataTypeClientes.map((x) => x.serialize()).toList());
-  }
-
-  void removeFromDataTypeClientes(DataTypeClienteStruct value) {
-    dataTypeClientes.remove(value);
-    prefs.setStringList('ff_dataTypeClientes',
-        _dataTypeClientes.map((x) => x.serialize()).toList());
-  }
-
-  void removeAtIndexFromDataTypeClientes(int index) {
-    dataTypeClientes.removeAt(index);
-    prefs.setStringList('ff_dataTypeClientes',
-        _dataTypeClientes.map((x) => x.serialize()).toList());
-  }
-
-  void updateDataTypeClientesAtIndex(
-    int index,
-    DataTypeClienteStruct Function(DataTypeClienteStruct) updateFn,
-  ) {
-    dataTypeClientes[index] = updateFn(_dataTypeClientes[index]);
-    prefs.setStringList('ff_dataTypeClientes',
-        _dataTypeClientes.map((x) => x.serialize()).toList());
-  }
-
-  void insertAtIndexInDataTypeClientes(int index, DataTypeClienteStruct value) {
-    dataTypeClientes.insert(index, value);
-    prefs.setStringList('ff_dataTypeClientes',
-        _dataTypeClientes.map((x) => x.serialize()).toList());
-  }
-
-  List<DataTypeTenderoStruct> _dataTypeTenderos = [];
-  List<DataTypeTenderoStruct> get dataTypeTenderos => _dataTypeTenderos;
-  set dataTypeTenderos(List<DataTypeTenderoStruct> value) {
-    _dataTypeTenderos = value;
-    prefs.setStringList(
-        'ff_dataTypeTenderos', value.map((x) => x.serialize()).toList());
-  }
-
-  void addToDataTypeTenderos(DataTypeTenderoStruct value) {
-    dataTypeTenderos.add(value);
-    prefs.setStringList('ff_dataTypeTenderos',
-        _dataTypeTenderos.map((x) => x.serialize()).toList());
-  }
-
-  void removeFromDataTypeTenderos(DataTypeTenderoStruct value) {
-    dataTypeTenderos.remove(value);
-    prefs.setStringList('ff_dataTypeTenderos',
-        _dataTypeTenderos.map((x) => x.serialize()).toList());
-  }
-
-  void removeAtIndexFromDataTypeTenderos(int index) {
-    dataTypeTenderos.removeAt(index);
-    prefs.setStringList('ff_dataTypeTenderos',
-        _dataTypeTenderos.map((x) => x.serialize()).toList());
-  }
-
-  void updateDataTypeTenderosAtIndex(
-    int index,
-    DataTypeTenderoStruct Function(DataTypeTenderoStruct) updateFn,
-  ) {
-    dataTypeTenderos[index] = updateFn(_dataTypeTenderos[index]);
-    prefs.setStringList('ff_dataTypeTenderos',
-        _dataTypeTenderos.map((x) => x.serialize()).toList());
-  }
-
-  void insertAtIndexInDataTypeTenderos(int index, DataTypeTenderoStruct value) {
-    dataTypeTenderos.insert(index, value);
-    prefs.setStringList('ff_dataTypeTenderos',
-        _dataTypeTenderos.map((x) => x.serialize()).toList());
-  }
-
-  bool _esDiaDePago = false;
-  bool get esDiaDePago => _esDiaDePago;
-  set esDiaDePago(bool value) {
-    _esDiaDePago = value;
-  }
-
   bool _isHPSelected = false;
   bool get isHPSelected => _isHPSelected;
   set isHPSelected(bool value) {
     _isHPSelected = value;
-    prefs.setBool('ff_isHPSelected', value);
   }
 
   bool _isFirstTimeTenderoList = true;
   bool get isFirstTimeTenderoList => _isFirstTimeTenderoList;
   set isFirstTimeTenderoList(bool value) {
     _isFirstTimeTenderoList = value;
+    prefs.setBool('ff_isFirstTimeTenderoList', value);
   }
 
   bool _isFirstTimeInfoEdit = true;
   bool get isFirstTimeInfoEdit => _isFirstTimeInfoEdit;
   set isFirstTimeInfoEdit(bool value) {
     _isFirstTimeInfoEdit = value;
+    prefs.setBool('ff_isFirstTimeInfoEdit', value);
   }
 
   bool _isFirstTimeCPP = true;
   bool get isFirstTimeCPP => _isFirstTimeCPP;
   set isFirstTimeCPP(bool value) {
     _isFirstTimeCPP = value;
+    prefs.setBool('ff_isFirstTimeCPP', value);
   }
 
   bool _isFirstTimeClienteTiendaList = true;
   bool get isFirstTimeClienteTiendaList => _isFirstTimeClienteTiendaList;
   set isFirstTimeClienteTiendaList(bool value) {
     _isFirstTimeClienteTiendaList = value;
+    prefs.setBool('ff_isFirstTimeClienteTiendaList', value);
   }
 
   bool _isFirstTimeClienteProdList = true;
   bool get isFirstTimeClienteProdList => _isFirstTimeClienteProdList;
   set isFirstTimeClienteProdList(bool value) {
     _isFirstTimeClienteProdList = value;
+    prefs.setBool('ff_isFirstTimeClienteProdList', value);
+  }
+
+  /// token
+  String _playerId = '';
+  String get playerId => _playerId;
+  set playerId(String value) {
+    _playerId = value;
   }
 }
 

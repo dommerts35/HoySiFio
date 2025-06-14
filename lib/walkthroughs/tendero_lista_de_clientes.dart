@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
-import '/walkthroughs/wt_lista_clientes_welcome/wt_lista_clientes_welcome_widget.dart';
-import '/walkthroughs/wt_lista_clientes_for_tendero_barra/wt_lista_clientes_for_tendero_barra_widget.dart';
+import '/walkthroughs/wt_lista_clientes_inicio/wt_lista_clientes_inicio_widget.dart';
 import '/walkthroughs/wt_lista_clientes_for_tendero_barra_num_clientes/wt_lista_clientes_for_tendero_barra_num_clientes_widget.dart';
 import '/walkthroughs/wt_lista_clientes_log_out/wt_lista_clientes_log_out_widget.dart';
 import '/walkthroughs/wt_lista_clientes_add_client/wt_lista_clientes_add_client_widget.dart';
@@ -12,8 +11,7 @@ import '/walkthroughs/wt_lista_clientes_tab_list_fiando/wt_lista_clientes_tab_li
 import '/walkthroughs/wt_lista_clientes_tab_list_sin_fiar/wt_lista_clientes_tab_list_sin_fiar_widget.dart';
 
 // Focus widget keys for this walkthrough
-final row03zsxhnr = GlobalKey();
-final columnMmwga8cw = GlobalKey();
+final dividerHkx67jl9 = GlobalKey();
 final containerIigiurjt = GlobalKey();
 final iconButtonRqsreyzl = GlobalKey();
 final iconButtonX1ydnyk3 = GlobalKey();
@@ -28,7 +26,7 @@ final tabFokde3ki = GlobalKey();
 List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
       /// Step 1
       TargetFocus(
-        keyTarget: row03zsxhnr,
+        keyTarget: dividerHkx67jl9,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
         shape: ShapeLightFocus.RRect,
@@ -36,27 +34,12 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         contents: [
           TargetContent(
             align: ContentAlign.bottom,
-            builder: (context, __) => WtListaClientesWelcomeWidget(),
+            builder: (context, __) => WtListaClientesInicioWidget(),
           ),
         ],
       ),
 
       /// Step 2
-      TargetFocus(
-        keyTarget: columnMmwga8cw,
-        enableOverlayTab: true,
-        alignSkip: Alignment.bottomRight,
-        shape: ShapeLightFocus.RRect,
-        color: Colors.black,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            builder: (context, __) => WtListaClientesForTenderoBarraWidget(),
-          ),
-        ],
-      ),
-
-      /// Step 3
       TargetFocus(
         keyTarget: containerIigiurjt,
         enableOverlayTab: true,
@@ -72,7 +55,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 4
+      /// Step 3
       TargetFocus(
         keyTarget: iconButtonRqsreyzl,
         enableOverlayTab: true,
@@ -87,7 +70,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 5
+      /// Step 4
       TargetFocus(
         keyTarget: iconButtonX1ydnyk3,
         enableOverlayTab: true,
@@ -102,7 +85,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 6
+      /// Step 5
       TargetFocus(
         keyTarget: iconButtonMhshrn88,
         enableOverlayTab: true,
@@ -117,7 +100,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 7
+      /// Step 6
       TargetFocus(
         keyTarget: tabDwsgnflt,
         enableOverlayTab: true,
@@ -132,7 +115,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 8
+      /// Step 7
       TargetFocus(
         keyTarget: tabEb8iw7p0,
         enableOverlayTab: true,
@@ -147,7 +130,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         ],
       ),
 
-      /// Step 9
+      /// Step 8
       TargetFocus(
         keyTarget: tabFokde3ki,
         enableOverlayTab: true,

@@ -56,7 +56,7 @@ class _WtListaClientesTabListAllWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'uvhxcbwl' /* Vistas */,
+              'uvhxcbwl' /* Todos */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(

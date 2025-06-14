@@ -27,10 +27,11 @@ class ClienteProdValorPagoModel
   String? Function(BuildContext, String?)? valorAPTextControllerValidator;
   // State field(s) for checkTransfer widget.
   bool? checkTransferValue;
-  // State field(s) for voucherNumTF widget.
-  FocusNode? voucherNumTFFocusNode;
-  TextEditingController? voucherNumTFTextController;
-  String? Function(BuildContext, String?)? voucherNumTFTextControllerValidator;
+  // State field(s) for comprobanteNumTF widget.
+  FocusNode? comprobanteNumTFFocusNode;
+  TextEditingController? comprobanteNumTFTextController;
+  String? Function(BuildContext, String?)?
+      comprobanteNumTFTextControllerValidator;
   // State field(s) for checkEfectivo widget.
   bool? checkEfectivoValue;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
@@ -43,6 +44,8 @@ class ClienteProdValorPagoModel
   double? tDCNorm;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
   double? tDCNormF;
+  // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
+  TenderosRecord? readTenderoVP;
 
   /// Query cache managers for this widget.
 
@@ -69,8 +72,8 @@ class ClienteProdValorPagoModel
     valorAPFocusNode?.dispose();
     valorAPTextController?.dispose();
 
-    voucherNumTFFocusNode?.dispose();
-    voucherNumTFTextController?.dispose();
+    comprobanteNumTFFocusNode?.dispose();
+    comprobanteNumTFTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

@@ -143,6 +143,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
     return null;
   }
 
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
 

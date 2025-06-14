@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +17,8 @@ class ClienteVincWidget extends StatefulWidget {
     required this.idCliente,
     this.tenderoRef,
     this.nombreTienda,
+    this.tenderoEmail,
+    this.cedulaPassed,
   });
 
   /// idCliente
@@ -23,6 +26,8 @@ class ClienteVincWidget extends StatefulWidget {
 
   final DocumentReference? tenderoRef;
   final String? nombreTienda;
+  final String? tenderoEmail;
+  final String? cedulaPassed;
 
   static String routeName = 'clienteVinc';
   static String routePath = '/clienteVinc';
@@ -41,7 +46,8 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
     super.initState();
     _model = createModel(context, () => ClienteVincModel());
 
-    _model.valorUserTextController ??= TextEditingController();
+    _model.valorUserTextController ??=
+        TextEditingController(text: widget.cedulaPassed);
     _model.valorUserFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -607,108 +613,132 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                               .collection
                                                               .doc();
                                                       await clientesRecordReference
-                                                          .set(
-                                                              createClientesRecordData(
-                                                        cliente:
-                                                            createDataTypeClienteStruct(
-                                                          nombre:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .nombre,
-                                                          telf:
-                                                              clienteVincClientesRecord
-                                                                  .cliente.telf,
-                                                          isFiando: false,
-                                                          apellido:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .apellido,
-                                                          cedula:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .cedula,
-                                                          direccionDomicilio:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .direccionDomicilio,
-                                                          viviendaAlq:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .viviendaAlq,
-                                                          viviendaPropia:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .viviendaPropia,
-                                                          emailCliente:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .emailCliente,
-                                                          idTendero: widget
-                                                              .tenderoRef,
-                                                          totalDeudaCompleta:
-                                                              0.0,
-                                                          contrasena:
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .contrasena,
-                                                          pin:
-                                                              clienteVincClientesRecord
-                                                                  .cliente.pin,
-                                                          clearUnsetFields:
-                                                              false,
-                                                          create: true,
+                                                          .set({
+                                                        ...createClientesRecordData(
+                                                          cliente:
+                                                              createDataTypeClienteStruct(
+                                                            nombre:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .nombre,
+                                                            telf:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .telf,
+                                                            isFiando: false,
+                                                            apellido:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .apellido,
+                                                            cedula:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .cedula,
+                                                            direccionDomicilio:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .direccionDomicilio,
+                                                            viviendaAlq:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaAlq,
+                                                            viviendaPropia:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaPropia,
+                                                            emailCliente:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .emailCliente,
+                                                            idTendero: widget
+                                                                .tenderoRef,
+                                                            totalDeudaCompleta:
+                                                                0.0,
+                                                            contrasena:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .contrasena,
+                                                            pin:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .pin,
+                                                            clearUnsetFields:
+                                                                false,
+                                                            create: true,
+                                                          ),
                                                         ),
-                                                      ));
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'player_ids':
+                                                                clienteVincClientesRecord
+                                                                    .playerIds,
+                                                          },
+                                                        ),
+                                                      });
                                                       _model.makeVincCliente =
                                                           ClientesRecord
-                                                              .getDocumentFromData(
-                                                                  createClientesRecordData(
-                                                                    cliente:
-                                                                        createDataTypeClienteStruct(
-                                                                      nombre: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .nombre,
-                                                                      telf: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .telf,
-                                                                      isFiando:
-                                                                          false,
-                                                                      apellido: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .apellido,
-                                                                      cedula: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .cedula,
-                                                                      direccionDomicilio: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .direccionDomicilio,
-                                                                      viviendaAlq: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .viviendaAlq,
-                                                                      viviendaPropia: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .viviendaPropia,
-                                                                      emailCliente: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .emailCliente,
-                                                                      idTendero:
-                                                                          widget
-                                                                              .tenderoRef,
-                                                                      totalDeudaCompleta:
-                                                                          0.0,
-                                                                      contrasena: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .contrasena,
-                                                                      pin: clienteVincClientesRecord
-                                                                          .cliente
-                                                                          .pin,
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                      create:
-                                                                          true,
-                                                                    ),
-                                                                  ),
-                                                                  clientesRecordReference);
+                                                              .getDocumentFromData({
+                                                        ...createClientesRecordData(
+                                                          cliente:
+                                                              createDataTypeClienteStruct(
+                                                            nombre:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .nombre,
+                                                            telf:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .telf,
+                                                            isFiando: false,
+                                                            apellido:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .apellido,
+                                                            cedula:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .cedula,
+                                                            direccionDomicilio:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .direccionDomicilio,
+                                                            viviendaAlq:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaAlq,
+                                                            viviendaPropia:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaPropia,
+                                                            emailCliente:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .emailCliente,
+                                                            idTendero: widget
+                                                                .tenderoRef,
+                                                            totalDeudaCompleta:
+                                                                0.0,
+                                                            contrasena:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .contrasena,
+                                                            pin:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .pin,
+                                                            clearUnsetFields:
+                                                                false,
+                                                            create: true,
+                                                          ),
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'player_ids':
+                                                                clienteVincClientesRecord
+                                                                    .playerIds,
+                                                          },
+                                                        ),
+                                                      }, clientesRecordReference);
 
                                                       await _model
                                                           .makeVincCliente!
@@ -724,6 +754,32 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                               false,
                                                         ),
                                                       ));
+                                                      for (int loop1Index = 0;
+                                                          loop1Index <
+                                                              clienteVincClientesRecord
+                                                                  .playerIds
+                                                                  .length;
+                                                          loop1Index++) {
+                                                        final currentLoop1Item =
+                                                            clienteVincClientesRecord
+                                                                    .playerIds[
+                                                                loop1Index];
+                                                        await actions
+                                                            .sendNotificationToPlayer(
+                                                          currentLoop1Item,
+                                                          '${clienteVincClientesRecord.cliente.nombre}: ¡Has sido registrado en una nueva tienda: \" ${widget.nombreTienda}\"!',
+                                                        );
+                                                      }
+                                                      await actions
+                                                          .sendCustomEmailForClienteRegister(
+                                                        clienteVincClientesRecord
+                                                            .cliente
+                                                            .emailCliente,
+                                                        clienteVincClientesRecord
+                                                            .cliente.nombre,
+                                                        'Cuenta vinculada a nueva tienda: ${widget.nombreTienda}',
+                                                        widget.nombreTienda!,
+                                                      );
 
                                                       context.pushNamed(
                                                         ListaClientesWidget
@@ -739,6 +795,12 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                               serializeParam(
                                                             widget
                                                                 .nombreTienda,
+                                                            ParamType.String,
+                                                          ),
+                                                          'tenderoEmail':
+                                                              serializeParam(
+                                                            widget
+                                                                .tenderoEmail,
                                                             ParamType.String,
                                                           ),
                                                         }.withoutNulls,

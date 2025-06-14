@@ -13,7 +13,6 @@ import '/walkthroughs/wt_info_edit_prods_cantidad/wt_info_edit_prods_cantidad_wi
 import '/walkthroughs/wt_info_edit_prods_nombre/wt_info_edit_prods_nombre_widget.dart';
 import '/walkthroughs/wt_info_edit_prods_valor/wt_info_edit_prods_valor_widget.dart';
 import '/walkthroughs/wt_info_edit_prods_anadir/wt_info_edit_prods_anadir_widget.dart';
-import '/walkthroughs/wt_info_edit_prods/wt_info_edit_prods_widget.dart';
 
 // Focus widget keys for this walkthrough
 final rowNzxu284f = GlobalKey();
@@ -28,7 +27,6 @@ final textFieldRz0u7lkw = GlobalKey();
 final textFieldNwk9jlpz = GlobalKey();
 final textFieldOejhq5lq = GlobalKey();
 final button88ci7uwn = GlobalKey();
-final columnIkyldudd = GlobalKey();
 
 /// TenderoICPdeCliente
 ///
@@ -210,21 +208,6 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
           TargetContent(
             align: ContentAlign.top,
             builder: (context, __) => WtInfoEditProdsAnadirWidget(),
-          ),
-        ],
-      ),
-
-      /// Step 13
-      TargetFocus(
-        keyTarget: columnIkyldudd,
-        enableOverlayTab: true,
-        alignSkip: Alignment.topRight,
-        shape: ShapeLightFocus.RRect,
-        color: Colors.black,
-        contents: [
-          TargetContent(
-            align: ContentAlign.top,
-            builder: (context, __) => WtInfoEditProdsWidget(),
           ),
         ],
       ),

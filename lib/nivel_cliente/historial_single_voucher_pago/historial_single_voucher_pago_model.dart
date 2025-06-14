@@ -37,6 +37,10 @@ class HistorialSingleVoucherPagoModel
   TextEditingController? numComprobanteTextController;
   String? Function(BuildContext, String?)?
       numComprobanteTextControllerValidator;
+  // State field(s) for banco widget.
+  FocusNode? bancoFocusNode;
+  TextEditingController? bancoTextController;
+  String? Function(BuildContext, String?)? bancoTextControllerValidator;
   // State field(s) for checkElectr widget.
   bool? checkElectrValue;
   // State field(s) for checkBanca widget.
@@ -52,6 +56,8 @@ class HistorialSingleVoucherPagoModel
   double? valorMAPConv;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
   double? valorMAPReConv;
+  // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
+  TenderosRecord? tenderoRead;
 
   /// Query cache managers for this widget.
 
@@ -80,6 +86,9 @@ class HistorialSingleVoucherPagoModel
 
     numComprobanteFocusNode?.dispose();
     numComprobanteTextController?.dispose();
+
+    bancoFocusNode?.dispose();
+    bancoTextController?.dispose();
 
     /// Dispose query cache managers for this widget.
 

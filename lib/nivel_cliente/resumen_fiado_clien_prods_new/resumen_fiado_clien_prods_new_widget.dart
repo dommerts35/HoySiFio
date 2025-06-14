@@ -1147,139 +1147,187 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                 ),
                                                 FFButtonWidget(
                                                   onPressed: () async {
-                                                    if (resumenFiadoClienProdsNewClientesRecord
-                                                            .cliente
-                                                            .historialPorPagarProd
-                                                            .where((e) =>
-                                                                e.isVoucherSent)
-                                                            .toList()
-                                                            .length >
-                                                        0) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                '¡Alerta!'),
-                                                            content: Text(
-                                                                'Ya ha enviado un voucher, por favor espere a que el tendero acepte su voucher.'),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
+                                                    var confirmDialogResponse =
+                                                        await showDialog<bool>(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      '¡Alerta!'),
+                                                                  content: Text(
+                                                                      'Esta por enviar un comprobante de todos los productos, debe pagar: \$${formatNumber(
+                                                                    resumenFiadoClienProdsNewClientesRecord
+                                                                        .cliente
+                                                                        .totalDeudaCompleta,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    format:
+                                                                        '#0.00',
+                                                                    locale: '',
+                                                                  )} en total. ¿Está seguro?'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          false),
+                                                                      child: Text(
+                                                                          'Cancel'),
+                                                                    ),
+                                                                    TextButton(
+                                                                      onPressed: () => Navigator.pop(
+                                                                          alertDialogContext,
+                                                                          true),
+                                                                      child: Text(
+                                                                          'Confirm'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            ) ??
+                                                            false;
+                                                    if (confirmDialogResponse) {
+                                                      if (resumenFiadoClienProdsNewClientesRecord
+                                                              .cliente
+                                                              .historialPorPagarProd
+                                                              .where((e) => e
+                                                                  .isVoucherSent)
+                                                              .toList()
+                                                              .length >
+                                                          0) {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  '¡Alerta!'),
+                                                              content: Text(
+                                                                  'Ya ha enviado un comprobante, por favor espere a que el tendero acepte su comprobante.'),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
+                                                            );
+                                                          },
+                                                        );
+                                                        return;
+                                                      } else {
+                                                        context.pushNamed(
+                                                          HistorialFullVoucherPagoWidget
+                                                              .routeName,
+                                                          queryParameters: {
+                                                            'idCliente':
+                                                                serializeParam(
+                                                              widget.idCliente,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                            ),
+                                                            'nombre':
+                                                                serializeParam(
+                                                              widget
+                                                                  .nombreCliente,
+                                                              ParamType.String,
+                                                            ),
+                                                            'tenderoRef':
+                                                                serializeParam(
+                                                              widget.idTendero,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                            ),
+                                                            'historialPorPagarDT':
+                                                                serializeParam(
+                                                              widget
+                                                                  .historialPorPagarDTList,
+                                                              ParamType
+                                                                  .DataStruct,
+                                                              isList: true,
+                                                            ),
+                                                            'doc':
+                                                                serializeParam(
+                                                              widget.doc,
+                                                              ParamType
+                                                                  .Document,
+                                                              isList: true,
+                                                            ),
+                                                            'idTenderoList':
+                                                                serializeParam(
+                                                              widget
+                                                                  .idTenderoList,
+                                                              ParamType
+                                                                  .DocumentReference,
+                                                              isList: true,
+                                                            ),
+                                                            'telf':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente.telf,
+                                                              ParamType.String,
+                                                            ),
+                                                            'isFiando':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .isFiando,
+                                                              ParamType.bool,
+                                                            ),
+                                                            'apellido':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .apellido,
+                                                              ParamType.String,
+                                                            ),
+                                                            'cedula':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .cedula,
+                                                              ParamType.String,
+                                                            ),
+                                                            'direccionDomicilio':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .direccionDomicilio,
+                                                              ParamType.String,
+                                                            ),
+                                                            'viviendaAlq':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .viviendaAlq,
+                                                              ParamType.bool,
+                                                            ),
+                                                            'vivendaProp':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .viviendaPropia,
+                                                              ParamType.bool,
+                                                            ),
+                                                            'emailCliente':
+                                                                serializeParam(
+                                                              resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .emailCliente,
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            'doc': widget.doc,
+                                                          },
+                                                        );
+                                                      }
                                                     } else {
-                                                      context.pushNamed(
-                                                        HistorialFullVoucherPagoWidget
-                                                            .routeName,
-                                                        queryParameters: {
-                                                          'idCliente':
-                                                              serializeParam(
-                                                            widget.idCliente,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'nombre':
-                                                              serializeParam(
-                                                            widget
-                                                                .nombreCliente,
-                                                            ParamType.String,
-                                                          ),
-                                                          'tenderoRef':
-                                                              serializeParam(
-                                                            widget.idTendero,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                          ),
-                                                          'historialPorPagarDT':
-                                                              serializeParam(
-                                                            widget
-                                                                .historialPorPagarDTList,
-                                                            ParamType
-                                                                .DataStruct,
-                                                            isList: true,
-                                                          ),
-                                                          'doc': serializeParam(
-                                                            widget.doc,
-                                                            ParamType.Document,
-                                                            isList: true,
-                                                          ),
-                                                          'idTenderoList':
-                                                              serializeParam(
-                                                            widget
-                                                                .idTenderoList,
-                                                            ParamType
-                                                                .DocumentReference,
-                                                            isList: true,
-                                                          ),
-                                                          'telf':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente.telf,
-                                                            ParamType.String,
-                                                          ),
-                                                          'isFiando':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .isFiando,
-                                                            ParamType.bool,
-                                                          ),
-                                                          'apellido':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .apellido,
-                                                            ParamType.String,
-                                                          ),
-                                                          'cedula':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente.cedula,
-                                                            ParamType.String,
-                                                          ),
-                                                          'direccionDomicilio':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .direccionDomicilio,
-                                                            ParamType.String,
-                                                          ),
-                                                          'viviendaAlq':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .viviendaAlq,
-                                                            ParamType.bool,
-                                                          ),
-                                                          'vivendaProp':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .viviendaPropia,
-                                                            ParamType.bool,
-                                                          ),
-                                                          'emailCliente':
-                                                              serializeParam(
-                                                            resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .emailCliente,
-                                                            ParamType.String,
-                                                          ),
-                                                        }.withoutNulls,
-                                                        extra: <String,
-                                                            dynamic>{
-                                                          'doc': widget.doc,
-                                                        },
-                                                      );
+                                                      return;
                                                     }
                                                   },
                                                   text: FFLocalizations.of(

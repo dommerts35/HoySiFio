@@ -79,7 +79,7 @@ class _WtListaClientesForTenderoBarraNumClientesWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              '1cgrguqv' /* Aquí verá el conteo de cliente... */,
+              '1cgrguqv' /* En esta sección verá la cantid... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

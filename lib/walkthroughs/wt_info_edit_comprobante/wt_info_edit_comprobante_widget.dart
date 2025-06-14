@@ -78,7 +78,7 @@ class _WtInfoEditComprobanteWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              '3yffcmed' /* Este botón le ayudará a visual... */,
+              '3yffcmed' /* Visualice los comprobantes que... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

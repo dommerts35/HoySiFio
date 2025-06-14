@@ -15,6 +15,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,11 @@ void main() async {
 
   // Solicitar permisos para notificaciones
   OneSignal.Notifications.requestPermission(true);
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Bloquear orientación en portrait (vertical)
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,

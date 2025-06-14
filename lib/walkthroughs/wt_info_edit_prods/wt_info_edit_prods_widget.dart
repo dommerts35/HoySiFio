@@ -40,7 +40,7 @@ class _WtInfoEditProdsWidgetState extends State<WtInfoEditProdsWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 121.2,
+      height: 91.97,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -76,7 +76,7 @@ class _WtInfoEditProdsWidgetState extends State<WtInfoEditProdsWidget> {
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'p644gald' /* Registra nuevos productos fiad... */,
+              'p644gald' /* Registra productos a fiar. */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -116,12 +116,15 @@ final parametersBuilderMap =
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
   'clienteMakeInfo': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
         },
       ),
   'clienteEditInfo': (data) async => ParameterData(
@@ -344,7 +347,7 @@ final parametersBuilderMap =
           'emailCliente': getParameter<String>(data, 'emailCliente'),
         },
       ),
-  'termsOfServiceSubPage': ParameterData.none(),
+  'termsOfServiceSubPageToAccept': ParameterData.none(),
   'tenderoEditInfo': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
@@ -371,6 +374,8 @@ final parametersBuilderMap =
           'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'cedulaPassed': getParameter<String>(data, 'cedulaPassed'),
         },
       ),
   'clienteFirstLogin': (data) async => ParameterData(
@@ -379,6 +384,8 @@ final parametersBuilderMap =
               getParameter<DocumentReference>(data, 'idClienteWithNoPsswrd'),
         },
       ),
+  'forgotMyPassword': ParameterData.none(),
+  'termsOfServiceSubPageToView': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

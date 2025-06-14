@@ -43,6 +43,10 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
     return null;
   }
 
+  // State field(s) for nombre_Tendero widget.
+  FocusNode? nombreTenderoFocusNode;
+  TextEditingController? nombreTenderoTextController;
+  String? Function(BuildContext, String?)? nombreTenderoTextControllerValidator;
   // State field(s) for emailAddress_Tendero widget.
   FocusNode? emailAddressTenderoFocusNode;
   TextEditingController? emailAddressTenderoTextController;
@@ -122,6 +126,11 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
     return null;
   }
 
+  // State field(s) for duenoBanco_tendero widget.
+  FocusNode? duenoBancoTenderoFocusNode;
+  TextEditingController? duenoBancoTenderoTextController;
+  String? Function(BuildContext, String?)?
+      duenoBancoTenderoTextControllerValidator;
   // State field(s) for password_Tendero widget.
   FocusNode? passwordTenderoFocusNode;
   TextEditingController? passwordTenderoTextController;
@@ -150,7 +159,7 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        '8uq4rz19' /* Ingrese una mayúscula, un núme... */,
+        '8uq4rz19' /* La contraseña no cumple los re... */,
       );
     }
     return null;
@@ -184,7 +193,7 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
       return FFLocalizations.of(context).getText(
-        '7ik6jc1k' /* Ingrese una mayúscula, un núme... */,
+        'sdtv1fgs' /* La contraseña no cumple los re... */,
       );
     }
     return null;
@@ -252,6 +261,9 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
     tiendaNombreTenderoFocusNode?.dispose();
     tiendaNombreTenderoTextController?.dispose();
 
+    nombreTenderoFocusNode?.dispose();
+    nombreTenderoTextController?.dispose();
+
     emailAddressTenderoFocusNode?.dispose();
     emailAddressTenderoTextController?.dispose();
 
@@ -263,6 +275,9 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
     bancoTenderoFocusNode?.dispose();
     bancoTenderoTextController?.dispose();
+
+    duenoBancoTenderoFocusNode?.dispose();
+    duenoBancoTenderoTextController?.dispose();
 
     passwordTenderoFocusNode?.dispose();
     passwordTenderoTextController?.dispose();

@@ -17,7 +17,7 @@ export '/nivel_tendero/cliente_prod_valor_pago/cliente_prod_valor_pago_widget.da
     show ClienteProdValorPagoWidget;
 export '/nivel_tendero/historial_por_cobrar/historial_por_cobrar_widget.dart'
     show HistorialPorCobrarWidget;
-export '/nivel_cliente/tendero_register/tendero_register_widget.dart'
+export '/nivel_tendero/tendero_register/tendero_register_widget.dart'
     show TenderoRegisterWidget;
 export '/nivel_tendero/historial_vouchers/historial_vouchers_widget.dart'
     show HistorialVouchersWidget;
@@ -33,8 +33,8 @@ export '/nivel_cliente/resumen_fiado_clien_tienda_new/resumen_fiado_clien_tienda
     show ResumenFiadoClienTiendaNewWidget;
 export '/nivel_cliente/historial_full_voucher_pago/historial_full_voucher_pago_widget.dart'
     show HistorialFullVoucherPagoWidget;
-export '/nivel_cliente/terms_of_service_sub_page/terms_of_service_sub_page_widget.dart'
-    show TermsOfServiceSubPageWidget;
+export '/nivel_cliente/terms_of_service_sub_page_to_accept/terms_of_service_sub_page_to_accept_widget.dart'
+    show TermsOfServiceSubPageToAcceptWidget;
 export '/nivel_tendero/tendero_edit_info/tendero_edit_info_widget.dart'
     show TenderoEditInfoWidget;
 export '/nivel_tendero/signin_confirm/signin_confirm_widget.dart'
@@ -45,3 +45,7 @@ export '/nivel_tendero/cliente_vinc/cliente_vinc_widget.dart'
     show ClienteVincWidget;
 export '/nivel_cliente/cliente_first_login/cliente_first_login_widget.dart'
     show ClienteFirstLoginWidget;
+export '/nivel_cliente/forgot_my_password/forgot_my_password_widget.dart'
+    show ForgotMyPasswordWidget;
+export '/nivel_cliente/terms_of_service_sub_page_to_view/terms_of_service_sub_page_to_view_widget.dart'
+    show TermsOfServiceSubPageToViewWidget;

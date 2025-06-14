@@ -4,7 +4,6 @@ admin.initializeApp();
 
 const kFcmTokensCollection = "fcm_tokens";
 const kPushNotificationsCollection = "ff_push_notifications";
-const kUserPushNotificationsCollection = "ff_user_push_notifications";
 const firestore = admin.firestore();
 
 const kPushNotificationRuntimeOpts = {
@@ -69,28 +68,6 @@ exports.sendPushNotificationsTrigger = functions
       }
 
       await sendPushNotifications(snapshot);
-    } catch (e) {
-      console.log(`Error: ${e}`);
-      await snapshot.ref.update({ status: "failed", error: `${e}` });
-    }
-  });
-
-exports.sendUserPushNotificationsTrigger = functions
-  .runWith(kPushNotificationRuntimeOpts)
-  .firestore.document(`${kUserPushNotificationsCollection}/{id}`)
-  .onCreate(async (snapshot, _) => {
-    try {
-      // Ignore scheduled push notifications on create
-      const scheduledTime = snapshot.data().scheduled_time || "";
-      if (scheduledTime) {
-        return;
-      }
-
-      // Don't let user-triggered notifications to be sent to all users.
-      const userRefsStr = snapshot.data().user_refs || "";
-      if (userRefsStr) {
-        await sendPushNotifications(snapshot);
-      }
     } catch (e) {
       console.log(`Error: ${e}`);
       await snapshot.ref.update({ status: "failed", error: `${e}` });
@@ -235,8 +212,10 @@ exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
 });
 const OneSignal = require("@onesignal/node-onesignal");
 
-const kUserKey = "fo44ixepne2p5p66tunxmmj6l";
-const kAPIKey = "cjt55u4azefhe2eb4o7kxvebm";
+const kUserKey =
+  "os_v2_org_fq526afaqnhexicbcyh3xmuoow3qveoetavu4g4jkjrbfvzgmqb3s4hqiwyxpfkis2l7ox35md2zhr574udqgupsjja7v7pcumyf2da";
+const kAPIKey =
+  "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
 
 const configuration = OneSignal.createConfiguration({
   userKey: kUserKey,

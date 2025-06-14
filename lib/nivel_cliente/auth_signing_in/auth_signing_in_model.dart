@@ -32,6 +32,10 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - getPlayerId] action in authSigningIn widget.
+  String? playerIdResult;
+  // Stores action output result for [Custom Action - getFCMToken] action in authSigningIn widget.
+  String? getFCMTokenResult;
   // State field(s) for tabInicioSesion widget.
   TabController? tabInicioSesionController;
   int get tabInicioSesionCurrentIndex =>
@@ -57,9 +61,17 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   late bool pinTenderoVisibility;
   String? Function(BuildContext, String?)? pinTenderoTextControllerValidator;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_tendero widget.
+  TenderosRecord? queryForNoPassTendero;
+  // Stores action output result for [Firestore Query - Query a collection] action in btn_tendero widget.
+  TenderosRecord? queryForNoPIN;
+  // Stores action output result for [Firestore Query - Query a collection] action in btn_tendero widget.
   TenderosRecord? queryInicioTenderoPin;
+  // Stores action output result for [Backend Call - Read Document] action in btn_tendero widget.
+  TenderosRecord? readForTenderoNotifLogInPsswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_tendero widget.
   TenderosRecord? queryInicioTenderoPswrd;
+  // Stores action output result for [Backend Call - Read Document] action in btn_tendero widget.
+  TenderosRecord? readForTenderoNotifLogInPIN;
   // State field(s) for ci_Cliente widget.
   FocusNode? ciClienteFocusNode;
   TextEditingController? ciClienteTextController;
@@ -81,8 +93,12 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   ClientesRecord? queryForClienteWithNoPsswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
   List<ClientesRecord>? queryClientePsswrd;
+  // Stores action output result for [Backend Call - Read Document] action in btn_cliente widget.
+  ClientesRecord? notifPsswrdReadCliente;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
   List<ClientesRecord>? queryClientePIN;
+  // Stores action output result for [Backend Call - Read Document] action in btn_cliente widget.
+  ClientesRecord? notifPINReadCliente;
 
   @override
   void initState(BuildContext context) {

@@ -56,7 +56,7 @@ class _WtInfoEditProdsValorWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              '41nglai9' /* Valor Unitario */,
+              '41nglai9' /* Valor */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -78,7 +78,7 @@ class _WtInfoEditProdsValorWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'tn5cl4iu' /* Registra el valor unitario del... */,
+              'tn5cl4iu' /* Registra el precio del product... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

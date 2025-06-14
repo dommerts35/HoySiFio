@@ -1,11 +1,15 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/cloud_functions/cloud_functions.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,12 +23,14 @@ class ClienteMakeInfoWidget extends StatefulWidget {
     super.key,
     required this.tenderoRef,
     this.nombreTienda,
+    this.tenderoEmail,
   });
 
   /// Referencia para saber que tendero es
   final DocumentReference? tenderoRef;
 
   final String? nombreTienda;
+  final String? tenderoEmail;
 
   static String routeName = 'clienteMakeInfo';
   static String routePath = '/clienteMakeInfo';
@@ -142,7 +148,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
             children: [
               Text(
                 FFLocalizations.of(context).getText(
-                  '2ob7wk2n' /* Registrar Nuevo Cliente */,
+                  '2ob7wk2n' /* Registrar Cliente */,
                 ),
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       font: GoogleFonts.interTight(
@@ -1615,66 +1621,77 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 5.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Theme(
-                                          data: ThemeData(
-                                            checkboxTheme: CheckboxThemeData(
-                                              visualDensity:
-                                                  VisualDensity.compact,
-                                              materialTapTargetSize:
-                                                  MaterialTapTargetSize
-                                                      .shrinkWrap,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(4.0),
-                                              ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Theme(
+                                        data: ThemeData(
+                                          checkboxTheme: CheckboxThemeData(
+                                            visualDensity:
+                                                VisualDensity.compact,
+                                            materialTapTargetSize:
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
                                             ),
-                                            unselectedWidgetColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .alternate,
                                           ),
-                                          child: Checkbox(
-                                            value: _model.checkboxValue ??=
-                                                false,
-                                            onChanged: (newValue) async {
-                                              safeSetState(() => _model
-                                                  .checkboxValue = newValue!);
-                                            },
-                                            side: (FlutterFlowTheme.of(context)
-                                                        .alternate !=
-                                                    null)
-                                                ? BorderSide(
-                                                    width: 2,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .alternate,
-                                                  )
-                                                : null,
-                                            activeColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            checkColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .info,
-                                          ),
+                                          unselectedWidgetColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
                                         ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'v77bvb5c' /* Al registrarse, el cliente ace... */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
+                                        child: Checkbox(
+                                          value: _model.termsCheckValue ??=
+                                              false,
+                                          onChanged: (newValue) async {
+                                            safeSetState(() => _model
+                                                .termsCheckValue = newValue!);
+                                          },
+                                          side: (FlutterFlowTheme.of(context)
+                                                      .alternate !=
+                                                  null)
+                                              ? BorderSide(
+                                                  width: 2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                )
+                                              : null,
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          checkColor:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          AutoSizeText(
+                                            FFLocalizations.of(context).getText(
+                                              'v77bvb5c' /* Al registrarse, el cliente ace... */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1686,34 +1703,161 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                           .labelMedium
                                                           .fontStyle,
                                                 ),
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                await launchURL(
+                                                    'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
+                                              },
+                                              child: AutoSizeText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  '7kyhdq3c' /* términos de servicio */,
+                                                ),
+                                                textAlign: TextAlign.start,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .success,
+                                                      fontSize: 12.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .fontStyle,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
                                               ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(width: 3.0)),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Theme(
+                                        data: ThemeData(
+                                          checkboxTheme: CheckboxThemeData(
+                                            visualDensity:
+                                                VisualDensity.compact,
+                                            materialTapTargetSize:
+                                                MaterialTapTargetSize
+                                                    .shrinkWrap,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
+                                            ),
+                                          ),
+                                          unselectedWidgetColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
                                         ),
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              await launchURL(
-                                                  'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
-                                            },
+                                        child: Checkbox(
+                                          value: _model.emailSendsCheckValue ??=
+                                              false,
+                                          onChanged: (newValue) async {
+                                            safeSetState(() =>
+                                                _model.emailSendsCheckValue =
+                                                    newValue!);
+                                          },
+                                          side: (FlutterFlowTheme.of(context)
+                                                      .alternate !=
+                                                  null)
+                                              ? BorderSide(
+                                                  width: 2,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                )
+                                              : null,
+                                          activeColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          checkColor:
+                                              FlutterFlowTheme.of(context).info,
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'xe8600ud' /* Suscribirse al */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '7kyhdq3c' /* términos de servicio */,
+                                                'an9t36g2' /* envío de emails promocionales */,
                                               ),
                                               textAlign: TextAlign.start,
                                               style:
@@ -1754,13 +1898,11 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       ),
                                             ),
                                           ),
-                                        ),
-                                      ].divide(SizedBox(width: 3.0)),
-                                    ),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(width: 3.0)),
                                   ),
-                                ]
-                                    .divide(SizedBox(height: 20.0))
-                                    .addToEnd(SizedBox(height: 32.0)),
+                                ].divide(SizedBox(height: 20.0)),
                               ),
                             ),
                           ),
@@ -1780,7 +1922,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     child: FFButtonWidget(
                       onPressed: () async {
                         var _shouldSetState = false;
-                        if (_model.checkboxValue != true) {
+                        if (_model.termsCheckValue != true) {
                           await showDialog(
                             context: context,
                             builder: (alertDialogContext) {
@@ -1913,7 +2055,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                               ).then((s) => s.firstOrNull);
                               _shouldSetState = true;
 
-                              context.pushNamed(
+                              context.goNamed(
                                 ClienteVincWidget.routeName,
                                 queryParameters: {
                                   'idCliente': serializeParam(
@@ -1926,6 +2068,14 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   ),
                                   'nombreTienda': serializeParam(
                                     widget.nombreTienda,
+                                    ParamType.String,
+                                  ),
+                                  'tenderoEmail': serializeParam(
+                                    widget.tenderoEmail,
+                                    ParamType.String,
+                                  ),
+                                  'cedulaPassed': serializeParam(
+                                    _model.cedulaTextController.text,
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
@@ -1997,6 +2147,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   totalDeudaCompleta: 0.0,
                                   secretPass: _model.randomized,
                                   contrasena: null,
+                                  isSubscribedToEmails:
+                                      _model.emailSendsCheckValue,
                                   clearUnsetFields: false,
                                   create: true,
                                 ),
@@ -2025,6 +2177,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           totalDeudaCompleta: 0.0,
                                           secretPass: _model.randomized,
                                           contrasena: null,
+                                          isSubscribedToEmails:
+                                              _model.emailSendsCheckValue,
                                           clearUnsetFields: false,
                                           create: true,
                                         ),
@@ -2045,7 +2199,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   return AlertDialog(
                                     title: Text('¡ALERTA!'),
                                     content: Text(
-                                        'Este cliente se registrará por primera vez en la app. Por favor, muestre o anote el siguiente código de primer inicio de sesión para el cliente.'),
+                                        'Este cliente ha sido registrado por primera vez en la app. Por favor, muetre el siguiente código de primer inicio de sesión al cliente.'),
                                     actions: [
                                       TextButton(
                                         onPressed: () =>
@@ -2061,7 +2215,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                 builder: (alertDialogContext) {
                                   return AlertDialog(
                                     title: Text(
-                                        'Código de primer inicio de sesión:'),
+                                        'Código de primer inicio de sesión del cliente:'),
                                     content: Text(
                                         '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.'),
                                     actions: [
@@ -2074,6 +2228,32 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   );
                                 },
                               );
+                              await makeCloudCall(
+                                'addUser',
+                                {
+                                  'user_id': currentUserUid,
+                                  'tags': {
+                                    'idToken': currentJwtToken,
+                                    'tipodeCuenta': 'Cliente',
+                                    'email': _model.emailTextController.text,
+                                    'isPromos':
+                                        _model.emailSendsCheckValue!.toString(),
+                                  },
+                                  'subscriptions': [
+                                    {
+                                      'type': 'Email',
+                                      'token': _model.emailTextController.text,
+                                    },
+                                  ],
+                                },
+                              );
+
+                              await actions.sendCustomEmailForClienteRegister(
+                                _model.emailTextController.text,
+                                _model.fullNameTextController.text,
+                                'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
+                                widget.nombreTienda!,
+                              );
 
                               context.pushNamed(
                                 ListaClientesWidget.routeName,
@@ -2084,6 +2264,10 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   ),
                                   'nombreTienda': serializeParam(
                                     widget.nombreTienda,
+                                    ParamType.String,
+                                  ),
+                                  'tenderoEmail': serializeParam(
+                                    widget.tenderoEmail,
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,

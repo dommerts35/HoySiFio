@@ -20,6 +20,7 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
     bool? isFullPago,
     String? razonDenegado,
     int? numVoucher,
+    String? nombreBanco,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _imgVoucher = imgVoucher,
         _idTransaccion = idTransaccion,
@@ -32,6 +33,7 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         _isFullPago = isFullPago,
         _razonDenegado = razonDenegado,
         _numVoucher = numVoucher,
+        _nombreBanco = nombreBanco,
         super(firestoreUtilData);
 
   // "imgVoucher" field.
@@ -123,6 +125,13 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
 
   bool hasNumVoucher() => _numVoucher != null;
 
+  // "nombreBanco" field.
+  String? _nombreBanco;
+  String get nombreBanco => _nombreBanco ?? '';
+  set nombreBanco(String? val) => _nombreBanco = val;
+
+  bool hasNombreBanco() => _nombreBanco != null;
+
   static DataTypeVouchersStruct fromMap(Map<String, dynamic> data) =>
       DataTypeVouchersStruct(
         imgVoucher: data['imgVoucher'] as String?,
@@ -140,6 +149,7 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         isFullPago: data['isFullPago'] as bool?,
         razonDenegado: data['razonDenegado'] as String?,
         numVoucher: castToType<int>(data['numVoucher']),
+        nombreBanco: data['nombreBanco'] as String?,
       );
 
   static DataTypeVouchersStruct? maybeFromMap(dynamic data) => data is Map
@@ -158,6 +168,7 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         'isFullPago': _isFullPago,
         'razonDenegado': _razonDenegado,
         'numVoucher': _numVoucher,
+        'nombreBanco': _nombreBanco,
       }.withoutNulls;
 
   @override
@@ -205,6 +216,10 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         'numVoucher': serializeParam(
           _numVoucher,
           ParamType.int,
+        ),
+        'nombreBanco': serializeParam(
+          _nombreBanco,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -268,6 +283,11 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
           ParamType.int,
           false,
         ),
+        nombreBanco: deserializeParam(
+          data['nombreBanco'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -286,7 +306,8 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         montoAPagar == other.montoAPagar &&
         isFullPago == other.isFullPago &&
         razonDenegado == other.razonDenegado &&
-        numVoucher == other.numVoucher;
+        numVoucher == other.numVoucher &&
+        nombreBanco == other.nombreBanco;
   }
 
   @override
@@ -301,7 +322,8 @@ class DataTypeVouchersStruct extends FFFirebaseStruct {
         montoAPagar,
         isFullPago,
         razonDenegado,
-        numVoucher
+        numVoucher,
+        nombreBanco
       ]);
 }
 
@@ -317,6 +339,7 @@ DataTypeVouchersStruct createDataTypeVouchersStruct({
   bool? isFullPago,
   String? razonDenegado,
   int? numVoucher,
+  String? nombreBanco,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -335,6 +358,7 @@ DataTypeVouchersStruct createDataTypeVouchersStruct({
       isFullPago: isFullPago,
       razonDenegado: razonDenegado,
       numVoucher: numVoucher,
+      nombreBanco: nombreBanco,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

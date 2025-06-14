@@ -20,10 +20,16 @@ class ClientesRecord extends FirestoreRecord {
   DataTypeClienteStruct get cliente => _cliente ?? DataTypeClienteStruct();
   bool hasCliente() => _cliente != null;
 
+  // "player_ids" field.
+  List<String>? _playerIds;
+  List<String> get playerIds => _playerIds ?? const [];
+  bool hasPlayerIds() => _playerIds != null;
+
   void _initializeFields() {
     _cliente = snapshotData['cliente'] is DataTypeClienteStruct
         ? snapshotData['cliente']
         : DataTypeClienteStruct.maybeFromMap(snapshotData['cliente']);
+    _playerIds = getDataList(snapshotData['player_ids']);
   }
 
   static CollectionReference get collection =>
@@ -80,11 +86,14 @@ class ClientesRecordDocumentEquality implements Equality<ClientesRecord> {
 
   @override
   bool equals(ClientesRecord? e1, ClientesRecord? e2) {
-    return e1?.cliente == e2?.cliente;
+    const listEquality = ListEquality();
+    return e1?.cliente == e2?.cliente &&
+        listEquality.equals(e1?.playerIds, e2?.playerIds);
   }
 
   @override
-  int hash(ClientesRecord? e) => const ListEquality().hash([e?.cliente]);
+  int hash(ClientesRecord? e) =>
+      const ListEquality().hash([e?.cliente, e?.playerIds]);
 
   @override
   bool isValidKey(Object? o) => o is ClientesRecord;

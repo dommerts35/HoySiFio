@@ -183,7 +183,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ],
+                                    ].divide(SizedBox(width: 1.0)),
                                   ),
                                 ),
                               ),

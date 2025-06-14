@@ -62,8 +62,8 @@ class _ClienteProdSelectPagoWidgetState
     super.initState();
     _model = createModel(context, () => ClienteProdSelectPagoModel());
 
-    _model.voucherNumTFTextController ??= TextEditingController();
-    _model.voucherNumTFFocusNode ??= FocusNode();
+    _model.comprobanteNumTFTextController ??= TextEditingController();
+    _model.comprobanteNumTFFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -458,9 +458,9 @@ class _ClienteProdSelectPagoWidgetState
                                                         width: 100.0,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .voucherNumTFTextController,
+                                                              .comprobanteNumTFTextController,
                                                           focusNode: _model
-                                                              .voucherNumTFFocusNode,
+                                                              .comprobanteNumTFFocusNode,
                                                           autofocus: false,
                                                           obscureText: false,
                                                           decoration:
@@ -495,7 +495,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                              'g0w44l3d' /* Núm. Voucher */,
+                                                              'tgnvbj7s' /* N# Comprobante */,
                                                             ),
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
@@ -511,6 +511,8 @@ class _ClienteProdSelectPagoWidgetState
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
+                                                                      fontSize:
+                                                                          11.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight: FlutterFlowTheme.of(
@@ -624,7 +626,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                       context)
                                                                   .primaryText,
                                                           validator: _model
-                                                              .voucherNumTFTextControllerValidator
+                                                              .comprobanteNumTFTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -964,7 +966,7 @@ class _ClienteProdSelectPagoWidgetState
                                                           } else {
                                                             if ((_model.checkTransferValue ==
                                                                     true) &&
-                                                                (_model.voucherNumTFTextController
+                                                                (_model.comprobanteNumTFTextController
                                                                             .text ==
                                                                         '')) {
                                                               await showDialog(
@@ -976,7 +978,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                     title: Text(
                                                                         '¡Alerta!'),
                                                                     content: Text(
-                                                                        'Por favor, ingrese el número de voucher.'),
+                                                                        'Por favor, ingrese el número del comprobante.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1048,7 +1050,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                             .checkEfectivoValue
                                                                     ..numVoucher =
                                                                         int.tryParse(_model
-                                                                            .voucherNumTFTextController
+                                                                            .comprobanteNumTFTextController
                                                                             .text)
                                                                     ..totalPorPagar =
                                                                         0.0
@@ -1152,6 +1154,23 @@ class _ClienteProdSelectPagoWidgetState
                                                                   ],
                                                                 );
                                                               },
+                                                            );
+                                                            _model.tenderoReadSP =
+                                                                await TenderosRecord
+                                                                    .getDocumentOnce(
+                                                                        widget
+                                                                            .tenderoRef!);
+                                                            _shouldSetState =
+                                                                true;
+                                                            await actions
+                                                                .sendCustomEmailForSelectProds(
+                                                              widget
+                                                                  .emailCliente!,
+                                                              widget.nombre!,
+                                                              'Registro de pago de productos selectos en la tienda: ${_model.tenderoReadSP?.displayName}',
+                                                              _model
+                                                                  .tenderoReadSP!
+                                                                  .displayName,
                                                             );
 
                                                             context.goNamed(

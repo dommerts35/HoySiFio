@@ -237,13 +237,13 @@ class _HistorialVouchersClienteWidgetState
                                     width: 1.0,
                                   ),
                                 ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 0.0),
-                                      child: Text(
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 5.0, 10.0, 5.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      AutoSizeText(
                                         FFLocalizations.of(context).getText(
                                           'x0u8z74p' /* Aquí se mostrarán los comproba... */,
                                         ),
@@ -272,11 +272,7 @@ class _HistorialVouchersClienteWidgetState
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 5.0),
-                                      child: StreamBuilder<ClientesRecord>(
+                                      StreamBuilder<ClientesRecord>(
                                         stream: _model
                                             .queryNameClienteHistorialPagado(
                                           requestFn: () =>
@@ -339,8 +335,8 @@ class _HistorialVouchersClienteWidgetState
                                           );
                                         },
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

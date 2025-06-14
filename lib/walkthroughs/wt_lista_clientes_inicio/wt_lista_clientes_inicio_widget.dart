@@ -2,20 +2,20 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'wt_lista_clientes_welcome_model.dart';
-export 'wt_lista_clientes_welcome_model.dart';
+import 'wt_lista_clientes_inicio_model.dart';
+export 'wt_lista_clientes_inicio_model.dart';
 
-class WtListaClientesWelcomeWidget extends StatefulWidget {
-  const WtListaClientesWelcomeWidget({super.key});
+class WtListaClientesInicioWidget extends StatefulWidget {
+  const WtListaClientesInicioWidget({super.key});
 
   @override
-  State<WtListaClientesWelcomeWidget> createState() =>
-      _WtListaClientesWelcomeWidgetState();
+  State<WtListaClientesInicioWidget> createState() =>
+      _WtListaClientesInicioWidgetState();
 }
 
-class _WtListaClientesWelcomeWidgetState
-    extends State<WtListaClientesWelcomeWidget> {
-  late WtListaClientesWelcomeModel _model;
+class _WtListaClientesInicioWidgetState
+    extends State<WtListaClientesInicioWidget> {
+  late WtListaClientesInicioModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -26,7 +26,7 @@ class _WtListaClientesWelcomeWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WtListaClientesWelcomeModel());
+    _model = createModel(context, () => WtListaClientesInicioModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -42,7 +42,7 @@ class _WtListaClientesWelcomeWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 145.11,
+      height: 161.22,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -56,7 +56,7 @@ class _WtListaClientesWelcomeWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              '941664r8' /* ¡Bienvenido! */,
+              '6glumzuh' /* ¡Bienvenido! */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -76,23 +76,27 @@ class _WtListaClientesWelcomeWidgetState
             thickness: 2.0,
             color: FlutterFlowTheme.of(context).alternate,
           ),
-          Text(
-            FFLocalizations.of(context).getText(
-              '4mlyrfwg' /* Bienvenido a la app HoySíFio. ... */,
-            ),
-            textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  font: GoogleFonts.inter(
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
+            child: Text(
+              FFLocalizations.of(context).getText(
+                'cnc4za3r' /* Este es el tutorial de uso de ... */,
+              ),
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    font: GoogleFonts.inter(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                    ),
+                    letterSpacing: 0.0,
                     fontWeight:
                         FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                     fontStyle:
                         FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                   ),
-                  letterSpacing: 0.0,
-                  fontWeight:
-                      FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                ),
+            ),
           ),
         ],
       ),

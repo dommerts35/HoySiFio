@@ -56,7 +56,7 @@ class _WtInfoEditCuentasHistorialRowWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              'fdhfmc90' /* Historial de cuentas */,
+              'fdhfmc90' /* Historial de Cuentas */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
@@ -78,7 +78,7 @@ class _WtInfoEditCuentasHistorialRowWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'r5weprwa' /* Estos botones sirven para acce... */,
+              'r5weprwa' /* Acceda a las cuentas pagadas y... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

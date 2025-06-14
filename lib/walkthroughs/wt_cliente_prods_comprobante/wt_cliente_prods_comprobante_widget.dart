@@ -56,7 +56,7 @@ class _WtClienteProdsComprobanteWidgetState
         children: [
           Text(
             FFLocalizations.of(context).getText(
-              '281y2j53' /* Tus comprobantes */,
+              '281y2j53' /* Comprobantes */,
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(

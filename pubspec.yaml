@@ -44,6 +44,7 @@ dependencies:
   dio:
   easy_debounce: 2.0.1
   email_validator:
+  equatable: 2.0.5
   file_picker: 8.1.2
   firebase_auth: 5.3.3
   firebase_auth_platform_interface: 7.4.9
@@ -79,6 +80,7 @@ dependencies:
   gotrue: 2.8.4
   hive: 2.2.3
   html: 0.15.4
+  http: 1.2.2
   image_gallery_saver:
   image_picker: 1.1.2
   image_picker_android: 0.8.12+13

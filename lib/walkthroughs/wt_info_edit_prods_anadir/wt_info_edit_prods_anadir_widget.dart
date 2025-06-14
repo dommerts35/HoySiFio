@@ -78,7 +78,7 @@ class _WtInfoEditProdsAnadirWidgetState
           ),
           Text(
             FFLocalizations.of(context).getText(
-              'w3qp5add' /* Tras ingresar un producto, lo ... */,
+              'w3qp5add' /* Tras ingresar los producto, lo... */,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -59,8 +59,8 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
     super.initState();
     _model = createModel(context, () => ClienteProdFullPagoModel());
 
-    _model.voucherNumTFTextController ??= TextEditingController();
-    _model.voucherNumTFFocusNode ??= FocusNode();
+    _model.comprobanteNumTFTextController ??= TextEditingController();
+    _model.comprobanteNumTFFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -457,9 +457,9 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                         width: 100.0,
                                                         child: TextFormField(
                                                           controller: _model
-                                                              .voucherNumTFTextController,
+                                                              .comprobanteNumTFTextController,
                                                           focusNode: _model
-                                                              .voucherNumTFFocusNode,
+                                                              .comprobanteNumTFFocusNode,
                                                           autofocus: false,
                                                           obscureText: false,
                                                           decoration:
@@ -494,7 +494,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                 FFLocalizations.of(
                                                                         context)
                                                                     .getText(
-                                                              'eoq05zkm' /* Núm. Voucher */,
+                                                              'eoq05zkm' /* N# comprobante */,
                                                             ),
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
@@ -510,6 +510,8 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
+                                                                      fontSize:
+                                                                          11.0,
                                                                       letterSpacing:
                                                                           0.0,
                                                                       fontWeight: FlutterFlowTheme.of(
@@ -623,7 +625,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                       context)
                                                                   .primaryText,
                                                           validator: _model
-                                                              .voucherNumTFTextControllerValidator
+                                                              .comprobanteNumTFTextControllerValidator
                                                               .asValidator(
                                                                   context),
                                                         ),
@@ -978,7 +980,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                           } else {
                                                             if ((_model.checkTransferValue ==
                                                                     true) &&
-                                                                (_model.voucherNumTFTextController
+                                                                (_model.comprobanteNumTFTextController
                                                                             .text ==
                                                                         '')) {
                                                               await showDialog(
@@ -988,9 +990,9 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        '¡Falta el número del voucher!'),
+                                                                        '¡Alerta!'),
                                                                     content: Text(
-                                                                        'Por favor, ingrese el número de voucher.'),
+                                                                        'Por favor, ingrese el número de comprobante.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1053,7 +1055,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                             .checkEfectivoValue
                                                                     ..numVoucher =
                                                                         int.tryParse(_model
-                                                                            .voucherNumTFTextController
+                                                                            .comprobanteNumTFTextController
                                                                             .text)
                                                                     ..totalPorPagar =
                                                                         0.0
@@ -1120,6 +1122,23 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                   ],
                                                                 );
                                                               },
+                                                            );
+                                                            _model.tenderoRead =
+                                                                await TenderosRecord
+                                                                    .getDocumentOnce(
+                                                                        widget
+                                                                            .tenderoRef!);
+                                                            _shouldSetState =
+                                                                true;
+                                                            await actions
+                                                                .sendCustomEmailForFullPaidProds(
+                                                              widget
+                                                                  .emailCliente!,
+                                                              widget.nombre!,
+                                                              '¡Pago de todos los productos fiados registrado!',
+                                                              _model
+                                                                  .tenderoRead!
+                                                                  .displayName,
                                                             );
 
                                                             context.goNamed(
