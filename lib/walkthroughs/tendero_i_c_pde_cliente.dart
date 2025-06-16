@@ -37,6 +37,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: rowNzxu284f,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -52,6 +53,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: iconButton84oxlft0,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -67,6 +69,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: iconButtonZwyz2l9o,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -82,6 +85,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: iconButtonXjfzyogm,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -97,6 +101,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: columnF5wlylrs,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -112,6 +117,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: rowL0vfsgti,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -127,6 +133,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: stackSh8miu7t,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -142,6 +149,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: columnNhblu9cp,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -157,6 +165,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: textFieldRz0u7lkw,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -172,6 +181,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: textFieldNwk9jlpz,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -187,6 +197,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: textFieldOejhq5lq,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -202,6 +213,7 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: button88ci7uwn,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
+        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
