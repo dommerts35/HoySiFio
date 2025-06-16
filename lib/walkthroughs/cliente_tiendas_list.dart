@@ -17,7 +17,6 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: columnA8g7q99j,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
-        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
@@ -33,7 +32,6 @@ List<TargetFocus> createWalkthroughTargets(BuildContext context) => [
         keyTarget: listView22ndqvkr,
         enableOverlayTab: true,
         alignSkip: Alignment.bottomRight,
-        textSkip: "Saltar",
         shape: ShapeLightFocus.RRect,
         color: Colors.black,
         contents: [
