@@ -52,9 +52,7 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
           obscureText: false,
           decoration: InputDecoration(
             isDense: true,
-            labelText: FFLocalizations.of(context).getText(
-              't8v8akrb' /* Razón de Negación */,
-            ),
+            labelText: 'Razón de Negación',
             labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
                   font: GoogleFonts.inter(
                     fontWeight:
@@ -67,9 +65,7 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
                       FlutterFlowTheme.of(context).labelMedium.fontWeight,
                   fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                 ),
-            hintText: FFLocalizations.of(context).getText(
-              '2429enbi' /* Ingrese la razón de la negació... */,
-            ),
+            hintText: 'Ingrese la razón de la negación',
             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
                   font: GoogleFonts.inter(
                     fontWeight:

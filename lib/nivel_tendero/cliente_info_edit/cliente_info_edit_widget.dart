@@ -301,9 +301,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             AutoSizeText(
-                              FFLocalizations.of(context).getText(
-                                '8bowq0tq' /* Información del cliente */,
-                              ),
+                              'Información del cliente',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -484,10 +482,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                         .alternate,
                                               ),
                                               Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'ueww57yk' /* Datos  */,
-                                                ),
+                                                'Datos ',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium
@@ -519,10 +514,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                         ),
                                               ),
                                               Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'mkwhly44' /* Edición y visualización */,
-                                                ),
+                                                'Edición y visualización',
                                                 maxLines: 1,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -1078,11 +1070,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'zsfx0k4u' /* Cuentas y Pagos */,
-                                                          ),
+                                                          'Cuentas y Pagos',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineMedium
@@ -1111,11 +1099,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '0knn29rs' /* Historiales de cobranza */,
-                                                          ),
+                                                          'Historiales de cobranza',
                                                           maxLines: 1,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -1302,11 +1286,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               safeSetState(
                                                                   () {});
                                                             },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              '3upxvyh0' /* Productos pagados */,
-                                                            ),
+                                                            text:
+                                                                'Productos pagados',
                                                             options:
                                                                 FFButtonOptions(
                                                               height: 40.0,
@@ -1496,11 +1477,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               safeSetState(
                                                                   () {});
                                                             },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              'cynop57y' /* Productos por cobrar */,
-                                                            ),
+                                                            text:
+                                                                'Productos por cobrar',
                                                             options:
                                                                 FFButtonOptions(
                                                               height: 40.0,
@@ -1694,11 +1672,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     }.withoutNulls,
                                                                   );
                                                                 },
-                                                                text: FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                                  '6guodlw7' /* Comprobantes */,
-                                                                ),
+                                                                text:
+                                                                    'Comprobantes',
                                                                 options:
                                                                     FFButtonOptions(
                                                                   height: 35.0,
@@ -1881,11 +1856,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               .start,
                                                       children: [
                                                         AutoSizeText(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'qkzdh8m8' /* Fiar Productos */,
-                                                          ),
+                                                          'Fiar Productos',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineMedium
@@ -2027,11 +1998,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 InputDecoration(
                                                               isDense: true,
                                                               labelText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                '83pjv5dz' /* Cantidad */,
-                                                              ),
+                                                                  'Cantidad',
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2055,12 +2022,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                              hintText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                'x7hrnybu' /* 0 */,
-                                                              ),
+                                                              hintText: '0',
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2232,11 +2194,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 InputDecoration(
                                                               isDense: true,
                                                               labelText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                'uiip5pgs' /* Producto */,
-                                                              ),
+                                                                  'Producto',
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2261,11 +2219,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             .fontStyle,
                                                                       ),
                                                               hintText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                '5ghpqato' /* Nombre */,
-                                                              ),
+                                                                  'Nombre',
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2431,11 +2385,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 InputDecoration(
                                                               isDense: true,
                                                               labelText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                'minmxdls' /* Valor unitario */,
-                                                              ),
+                                                                  'Valor unitario',
                                                               labelStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2459,12 +2409,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                              hintText:
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                '8qnas4ho' /* #.## */,
-                                                              ),
+                                                              hintText: '#.##',
                                                               hintStyle:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -3063,12 +3008,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                   safeSetState(
                                                                       () {});
                                                               },
-                                                        text:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '28ox95x7' /* Añadir Producto */,
-                                                        ),
+                                                        text: 'Añadir Producto',
                                                         options:
                                                             FFButtonOptions(
                                                           width: 120.0,
@@ -3230,11 +3170,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           .spaceEvenly,
                                                                   children: [
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        '21qsx8ot' /* Canti. */,
-                                                                      ),
+                                                                      'Canti.',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -3253,11 +3189,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           ),
                                                                     ),
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'c9gcltak' /* | Producto */,
-                                                                      ),
+                                                                      '| Producto',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -3276,11 +3208,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           ),
                                                                     ),
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'pfuj7yc5' /* | Valor U. */,
-                                                                      ),
+                                                                      '| Valor U.',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -3299,11 +3227,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           ),
                                                                     ),
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'pp0mfneo' /* | Valor */,
-                                                                      ),
+                                                                      '| Valor',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -3795,11 +3719,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     safeSetState(
                                                                         () {});
                                                                   },
-                                                                  text: FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    '4d0jxjaw' /* Productos pagados */,
-                                                                  ),
+                                                                  text:
+                                                                      'Productos pagados',
                                                                   options:
                                                                       FFButtonOptions(
                                                                     height:
@@ -3995,11 +3916,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     safeSetState(
                                                                         () {});
                                                                   },
-                                                                  text: FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'o13lrbou' /* Productos por cobrar */,
-                                                                  ),
+                                                                  text:
+                                                                      'Productos por cobrar',
                                                                   options:
                                                                       FFButtonOptions(
                                                                     height:
@@ -4357,11 +4275,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 safeSetState(
                                                                     () {});
                                                             },
-                                                            text: FFLocalizations
-                                                                    .of(context)
-                                                                .getText(
-                                                              '5bfvmyfh' /* Guardar */,
-                                                            ),
+                                                            text: 'Guardar',
                                                             options:
                                                                 FFButtonOptions(
                                                               width: double

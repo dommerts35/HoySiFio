@@ -96,9 +96,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 4.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'zlee6hzb' /* HoySíFio */,
-                                      ),
+                                      'HoySíFio',
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
@@ -121,9 +119,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                     ),
                                   ),
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      'xc15e5jc' /* TÉRMINOS Y CONDICIONES DE USO */,
-                                    ),
+                                    'TÉRMINOS Y CONDICIONES DE USO',
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -221,11 +217,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 16.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'yhoelzj3' /* Política de Privacidad
-Última ... */
-                                ,
-                              ),
+                              'Política de Privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -255,11 +247,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '4mrdkh9e' /* 
-1. Interpretación y Definicio... */
-                                      ,
-                                    ),
+                                    text: '\n1. Interpretación y Definiciones',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -285,12 +273,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'dnkimw1r' /* 
-
-  1.1. Interpretación */
-                                      ,
-                                    ),
+                                    text: '\n\n  1.1. Interpretación',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -316,20 +299,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'ocllj04h' /* 
-      Las palabras cuya letra... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n      Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      't17wf3jq' /* 
-
-  1.2. Definiciones */
-                                      ,
-                                    ),
+                                    text: '\n\n  1.2. Definiciones',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -355,20 +330,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '78dre1hn' /* 
-       Para los fines de esta... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n       Para los fines de esta Política de Privacidad:\n',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '70c4cdbn' /* 
-      1.2.1. Cuenta: 
- */
-                                      ,
-                                    ),
+                                    text: '\n      1.2.1. Cuenta: \n',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -394,20 +361,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'ohojrcg6' /* 
-      Significa una cuenta ún... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n      Significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '7vkotv8k' /* 
-
-      1.2.2. Afiliado:  */
-                                      ,
-                                    ),
+                                    text: '\n\n      1.2.2. Afiliado: ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -433,21 +392,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '97rmkbms' /* 
-
-     Significa una entidad q... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n     Significa una entidad que controla, es controlada por o está bajo control común con una parte, donde \"control\" significa la propiedad del 50% o más de las acciones, participación en el capital u otros valores con derecho a voto para la elección de directivos u otra autoridad administrativa.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'xnpuh3as' /* 
-
-     1.2.3. Aplicación:  */
-                                      ,
-                                    ),
+                                    text: '\n\n     1.2.3. Aplicación: ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -473,21 +423,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'vcgdmooh' /* 
-
-Se refiere a HoySíFio, el pr... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nSe refiere a HoySíFio, el programa de software proporcionado por la Compañía.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'jdsfbzh6' /* 
-
-    1.2.4. Compañía */
-                                      ,
-                                    ),
+                                    text: '\n\n    1.2.4. Compañía',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -513,19 +454,11 @@ Se refiere a HoySíFio, el pr... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'f3giz3qu' /* : Se refiere a HoySíFio Org. */,
-                                    ),
+                                    text: ': Se refiere a HoySíFio Org.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'rbbjeyws' /* 
-
-
-    1.2.5. País: */
-                                      ,
-                                    ),
+                                    text: '\n\n\n    1.2.5. País:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -551,18 +484,11 @@ Se refiere a HoySíFio, el pr... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'f14rvjgv' /*  Ecuador. */,
-                                    ),
+                                    text: ' Ecuador.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'wwgv3auu' /* 
-
-    1.2.6. Dispositivo: */
-                                      ,
-                                    ),
+                                    text: '\n\n    1.2.6. Dispositivo:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -588,21 +514,12 @@ Se refiere a HoySíFio, el pr... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'zwyjjcnj' /* 
-
-Cualquier dispositivo que pu... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nCualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'hyctrrrg' /* 
-
-     1.2.7. Datos Personales... */
-                                      ,
-                                    ),
+                                    text: '\n\n     1.2.7. Datos Personales:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -628,21 +545,12 @@ Cualquier dispositivo que pu... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '66llic2g' /* 
-
-Cualquier información relaci... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nCualquier información relacionada con un individuo identificado o identificable.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '8oc5xvic' /* 
-
-     1.2.8. Servicio */
-                                      ,
-                                    ),
+                                    text: '\n\n     1.2.8. Servicio',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -668,18 +576,12 @@ Cualquier información relaci... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'vxytmwl9' /* : se refiere a la Aplicación. */,
-                                    ),
+                                    text: ': se refiere a la Aplicación.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'x9t4b9kl' /* 
-
-     1.2.9. Proveedor de Ser... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n     1.2.9. Proveedor de Servicios:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -705,21 +607,12 @@ Cualquier información relaci... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'if1rlapx' /* 
-
-Cualquier persona natural o ... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '83omk0ns' /* 
-
-      1.2.10. Datos de Uso:  */
-                                      ,
-                                    ),
+                                    text: '\n\n      1.2.10. Datos de Uso: ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -745,21 +638,12 @@ Cualquier persona natural o ... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'n2n1qc5q' /* 
-
-Datos recopilados automática... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nDatos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'ykaikxsj' /* 
-
-      1.2.11. Usted: */
-                                      ,
-                                    ),
+                                    text: '\n\n      1.2.11. Usted:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -785,21 +669,13 @@ Datos recopilados automática... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'jnjnepmn' /* 
-
-El individuo que accede o ut... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nEl individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'yqowy0ze' /* 
-
-2. Recopilación y Uso de Sus... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n2. Recopilación y Uso de Sus Datos Personales',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -825,12 +701,8 @@ El individuo que accede o ut... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '8xa9vxlm' /* 
-
-   2.1. Tipos de Datos Recop... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n   2.1. Tipos de Datos Recopilados',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -856,12 +728,7 @@ El individuo que accede o ut... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'ab5dwi1n' /* 
-
-       2.1.1. Datos Personal... */
-                                      ,
-                                    ),
+                                    text: '\n\n       2.1.1. Datos Personales:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -887,30 +754,17 @@ El individuo que accede o ut... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'zgoe9my9' /* 
-
-Mientras utiliza Nuestro Ser... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'djnno6au' /* 
-
-- Dirección de correo electr... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n- Dirección de correo electrónico\n- Nombre y apellido\n- Número de teléfono\n- Dirección, Estado, Provincia, Código Postal, Ciudad',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '2gpmu6u8' /* 
-
-      2.1.2. Datos de Uso */
-                                      ,
-                                    ),
+                                    text: '\n\n      2.1.2. Datos de Uso',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -936,40 +790,23 @@ Mientras utiliza Nuestro Ser... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'lj14mlcb' /* 
-
-Los Datos de Uso se recopila... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'd86d5r9z' /* 
-
-- Dirección IP de Su Disposi... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n- Dirección IP de Su Dispositivo\n- Tipo y versión del navegador\n- Páginas visitadas dentro del Servicio\n- Fecha y hora de la visita\n- Tiempo dedicado a esas páginas\n- Identificadores únicos de dispositivo y otros datos de diagnóstico. \n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'uagcjuhy' /* 
-
-- Tipo de dispositivo móvil
-... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n- Tipo de dispositivo móvil\n- ID único del dispositivo móvil\n- Sistema operativo del dispositivo\n- Tipo de navegador móvil utilizado ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'ipufsyq6' /* 
-
-       2.1.3. Uso de Sus Dat... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n       2.1.3. Uso de Sus Datos Personales',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -995,21 +832,13 @@ Los Datos de Uso se recopila... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '69km6spt' /* 
-
-La Compañía puede utilizar l... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nLa Compañía puede utilizar los Datos Personales para:\n\n- Proporcionar y mantener el Servicio.\n- Gestionar Su Cuenta.\n- Cumplir con contratos.\n- Contactarlo con actualizaciones o comunicaciones informativas.\n- Ofrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n- Gestionar Sus solicitudes.\n- Otros fines como análisis de datos, mejora del Servicio o marketing.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '84451uvg' /* 
-
-       2.1.4. Divulgación de... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n       2.1.4. Divulgación de Sus Datos Personales ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -1035,21 +864,13 @@ La Compañía puede utilizar l... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'stuzn7l7' /* 
-
-Podemos compartir Su informa... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nPodemos compartir Su información en las siguientes situaciones:\n\n- Con Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\n- En transferencias comerciales (venta de activos, fusiones, etc.).\n\n- Con Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\n- Con Su consentimiento o por requisitos legales.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'tu5an4n4' /* 
-
-       2.1.5. Seguridad de S... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n       2.1.5. Seguridad de Sus Datos ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -1075,21 +896,13 @@ Podemos compartir Su informa... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'g8lsyfzw' /* 
-
-Mientras implementamos medid... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '8ro1gktv' /* 
-
-       2.1.6. Privacidad de ... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n       2.1.6. Privacidad de los Niños',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -1115,21 +928,13 @@ Mientras implementamos medid... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '56e4an2z' /* 
-
-Nuestro Servicio no está dir... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '82gms51k' /* 
-
-     2.1.7. Cambios en esta ... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\n     2.1.7. Cambios en esta Política',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -1155,21 +960,12 @@ Nuestro Servicio no está dir... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'xj1e24br' /* 
-
-Notificaremos actualizacione... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '2j86w237' /* 
-
-3. Contáctenos */
-                                      ,
-                                    ),
+                                    text: '\n\n3. Contáctenos',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -1195,12 +991,8 @@ Notificaremos actualizacione... */
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '0i16hq9c' /* 
-
-Si tiene preguntas sobre est... */
-                                      ,
-                                    ),
+                                    text:
+                                        '\n\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
                                     style: TextStyle(),
                                   )
                                 ],
@@ -1231,9 +1023,7 @@ Si tiene preguntas sobre est... */
                               context
                                   .pushNamed(TenderoRegisterWidget.routeName);
                             },
-                            text: FFLocalizations.of(context).getText(
-                              'gn3s5v1p' /* Aceptar */,
-                            ),
+                            text: 'Aceptar',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 40.0,

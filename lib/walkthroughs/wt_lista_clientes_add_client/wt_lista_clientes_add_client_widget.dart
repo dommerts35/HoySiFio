@@ -55,9 +55,7 @@ class _WtListaClientesAddClientWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '328engru' /* Añadir Clientes */,
-            ),
+            'Añadir Clientes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesAddClientWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'n4e9qswy' /* Pulsa aquí para registrar un n... */,
-            ),
+            'Pulsa aquí para registrar un nuevo cliente en tu tienda.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

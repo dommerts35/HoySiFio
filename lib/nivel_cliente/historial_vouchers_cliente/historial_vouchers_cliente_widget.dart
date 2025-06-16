@@ -186,11 +186,7 @@ class _HistorialVouchersClienteWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 5.0, 5.0, 5.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'ie9wbhiz' /* Historial de
- comprobantes */
-                                        ,
-                                      ),
+                                      'Historial de\n comprobantes',
                                       maxLines: 2,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
@@ -244,9 +240,7 @@ class _HistorialVouchersClienteWidgetState
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       AutoSizeText(
-                                        FFLocalizations.of(context).getText(
-                                          'x0u8z74p' /* Aquí se mostrarán los comproba... */,
-                                        ),
+                                        'Aquí se mostrarán los comprobantes enviados por ti: ',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -452,11 +446,7 @@ class _HistorialVouchersClienteWidgetState
                                                           .estadoVoucher ==
                                                       'Negado')
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'au78gvwy' /* Voucher Negado */,
-                                                      ),
+                                                      'Voucher Negado',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -892,11 +882,7 @@ class _HistorialVouchersClienteWidgetState
                                                                   0.0,
                                                                   0.0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '2fyivbzj' /* Comprobante de pago de todos l... */,
-                                                        ),
+                                                        'Comprobante de pago de todos los productos',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

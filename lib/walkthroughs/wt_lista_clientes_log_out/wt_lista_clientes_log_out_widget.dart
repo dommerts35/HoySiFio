@@ -55,9 +55,7 @@ class _WtListaClientesLogOutWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'gwn8ysum' /* Cerrar sesión */,
-            ),
+            'Cerrar sesión',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesLogOutWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'z0gwhv91' /* Este botón te permite cerrar s... */,
-            ),
+            'Este botón te permite cerrar sesión de forma segura. Tus datos se guardan automáticamente antes de salir.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

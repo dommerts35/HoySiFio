@@ -252,11 +252,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                               .spaceEvenly,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'e8uaqkai' /* Resúmen de fiados */,
-                                                          ),
+                                                          'Resúmen de fiados',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleLarge
@@ -557,9 +553,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                                                                     children: [
                                                                                       Text(
-                                                                                        FFLocalizations.of(context).getText(
-                                                                                          't4i9hhlp' /* Producto */,
-                                                                                        ),
+                                                                                        'Producto',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               font: GoogleFonts.inter(
                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -571,9 +565,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                             ),
                                                                                       ),
                                                                                       Text(
-                                                                                        FFLocalizations.of(context).getText(
-                                                                                          '6s8rrb8b' /* Cantidad */,
-                                                                                        ),
+                                                                                        'Cantidad',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               font: GoogleFonts.inter(
                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -585,9 +577,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                             ),
                                                                                       ),
                                                                                       Text(
-                                                                                        FFLocalizations.of(context).getText(
-                                                                                          'nhsausxh' /* Valor U. */,
-                                                                                        ),
+                                                                                        'Valor U.',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               font: GoogleFonts.inter(
                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -599,9 +589,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                             ),
                                                                                       ),
                                                                                       Text(
-                                                                                        FFLocalizations.of(context).getText(
-                                                                                          'rgj8hn61' /* Valor */,
-                                                                                        ),
+                                                                                        'Valor',
                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                               font: GoogleFonts.inter(
                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1330,11 +1318,8 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                       return;
                                                     }
                                                   },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '54lhpazv' /* Pagar Todo Por Transferencia */,
-                                                  ),
+                                                  text:
+                                                      'Pagar Todo Por Transferencia',
                                                   options: FFButtonOptions(
                                                     width: double.infinity,
                                                     height: 40.0,
@@ -1464,11 +1449,8 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                       },
                                                     );
                                                   },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'z5pzxl4x' /* Historial de Comprobantes */,
-                                                  ),
+                                                  text:
+                                                      'Historial de Comprobantes',
                                                   options: FFButtonOptions(
                                                     width: double.infinity,
                                                     height: 40.0,

@@ -53,9 +53,7 @@ class _WtInfoEditFiadoWidgetState extends State<WtInfoEditFiadoWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '1gtgr1jo' /* Sección de Fiado */,
-            ),
+            'Sección de Fiado',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -75,9 +73,7 @@ class _WtInfoEditFiadoWidgetState extends State<WtInfoEditFiadoWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'j32yvxvd' /* Esta es la sección de producto... */,
-            ),
+            'Esta es la sección de productos registrados al cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

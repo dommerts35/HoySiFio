@@ -84,9 +84,7 @@ class _EmptyProductosPagadosCompWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 10.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'ddi75fbv' /* ¡Hurra! No hay cuentas por pag... */,
-                  ),
+                  '¡Hurra! No hay cuentas por pagar',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.interTight(
                           fontWeight: FlutterFlowTheme.of(context)

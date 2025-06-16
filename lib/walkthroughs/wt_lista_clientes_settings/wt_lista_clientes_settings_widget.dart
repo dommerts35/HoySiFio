@@ -55,9 +55,7 @@ class _WtListaClientesSettingsWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '1oh9t0pv' /* Ajustes */,
-            ),
+            'Ajustes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesSettingsWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'bangfnzw' /* Accede a la configuración de t... */,
-            ),
+            'Accede a la configuración de tu cuenta y modifica tus datos.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

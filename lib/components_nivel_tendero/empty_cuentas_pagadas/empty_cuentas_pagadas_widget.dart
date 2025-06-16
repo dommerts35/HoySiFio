@@ -83,9 +83,7 @@ class _EmptyCuentasPagadasWidgetState extends State<EmptyCuentasPagadasWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 10.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'u1uadq4e' /* El cliente no tiene cuentas. */,
-                  ),
+                  'El cliente no tiene cuentas.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.interTight(
                           fontWeight: FlutterFlowTheme.of(context)

@@ -35,9 +35,7 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _tiendaNombreTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '98xfzc9y' /* Ingrese el nombre de su tienda */,
-      );
+      return 'Ingrese el nombre de su tienda';
     }
 
     return null;
@@ -55,15 +53,11 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _emailAddressTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'asho3i6g' /* Ingrese su email */,
-      );
+      return 'Ingrese su email';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'vnehz31w' /* Ingrese un email válido */,
-      );
+      return 'Ingrese un email válido';
     }
     return null;
   }
@@ -76,20 +70,14 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _phoneNumberTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'yebflwm8' /* Ingrese su número de teléfono */,
-      );
+      return 'Ingrese su número de teléfono';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        '3we2gwdd' /* Ingrese un número de teléfono ... */,
-      );
+      return 'Ingrese un número de teléfono válido';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        'utyhptr0' /* Ingrese un número de teléfono ... */,
-      );
+      return 'Ingrese un número de teléfono válido';
     }
 
     return null;
@@ -103,9 +91,7 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _numCuentaTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '1q8l6fy2' /* Ingrese su número de cuenta */,
-      );
+      return 'Ingrese su número de cuenta';
     }
 
     return null;
@@ -118,9 +104,7 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _bancoTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'deqbuw7o' /* Ingrese su banco */,
-      );
+      return 'Ingrese su banco';
     }
 
     return null;
@@ -140,27 +124,19 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _passwordTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'odn6zglg' /* Ingrese su contraseña */,
-      );
+      return 'Ingrese su contraseña';
     }
 
     if (val.length < 8) {
-      return FFLocalizations.of(context).getText(
-        'foyre2vx' /* Mínimo 8 carácteres */,
-      );
+      return 'Mínimo 8 carácteres';
     }
     if (val.length > 16) {
-      return FFLocalizations.of(context).getText(
-        '22bm8pl8' /* Máximo 16 carácteres */,
-      );
+      return 'Máximo 16 carácteres';
     }
     if (!RegExp(
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        '8uq4rz19' /* La contraseña no cumple los re... */,
-      );
+      return 'La contraseña no cumple los requisitos.';
     }
     return null;
   }
@@ -174,27 +150,19 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _passwordCTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'pced09g6' /* Confirme su contraseña */,
-      );
+      return 'Confirme su contraseña';
     }
 
     if (val.length < 8) {
-      return FFLocalizations.of(context).getText(
-        '33uq53he' /* Mínimo 8 carácteres */,
-      );
+      return 'Mínimo 8 carácteres';
     }
     if (val.length > 16) {
-      return FFLocalizations.of(context).getText(
-        'adbhtuno' /* Máximo 16 carácteres */,
-      );
+      return 'Máximo 16 carácteres';
     }
     if (!RegExp(
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'sdtv1fgs' /* La contraseña no cumple los re... */,
-      );
+      return 'La contraseña no cumple los requisitos.';
     }
     return null;
   }
@@ -207,20 +175,14 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   String? _pinTenderoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'o8n6z504' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
 
     if (val.length < 4) {
-      return FFLocalizations.of(context).getText(
-        'a6oqzg9o' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
     if (val.length > 4) {
-      return FFLocalizations.of(context).getText(
-        '1c9jtff3' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
 
     return null;

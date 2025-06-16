@@ -55,9 +55,7 @@ class _WtInfoEditButtonDeleteWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'mh729s2l' /* Borrar */,
-            ),
+            'Borrar',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditButtonDeleteWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              '6mw3td1q' /* Este es el botón para borrar a... */,
-            ),
+            'Este es el botón para borrar al cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

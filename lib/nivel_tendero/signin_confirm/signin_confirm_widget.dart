@@ -109,9 +109,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 32.0, 0.0, 16.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            '7697j1uc' /* Ajustes */,
-                          ),
+                          'Ajustes',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
@@ -176,9 +174,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 24.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'lk4cuksa' /* Ingrese su contraseña para con... */,
-                                      ),
+                                      'Ingrese su contraseña para continuar a los ajustes',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .displaySmall
@@ -221,10 +217,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                         obscureText:
                                             !_model.passwordToConfirmVisibility,
                                         decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            '7njc4n82' /* Contraseña */,
-                                          ),
+                                          labelText: 'Contraseña',
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
                                               .labelLarge
@@ -367,7 +360,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                               .showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                'Email required!',
+                                                'E-mail requerido',
                                               ),
                                             ),
                                           );
@@ -416,9 +409,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'r0gkgcyq' /* Olvidé mi contraseña. Quiero r... */,
-                                            ),
+                                            'Olvidé mi contraseña. Quiero restablecerla',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -552,10 +543,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                           if (_shouldSetState)
                                             safeSetState(() {});
                                         },
-                                        text:
-                                            FFLocalizations.of(context).getText(
-                                          'bndkdjiw' /* Confirmar */,
-                                        ),
+                                        text: 'Confirmar',
                                         options: FFButtonOptions(
                                           width: 330.0,
                                           height: 52.0,

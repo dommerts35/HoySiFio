@@ -55,9 +55,7 @@ class _WtListaClientesTabListSinFiarWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '5nx69egj' /* Clientes sin fiar */,
-            ),
+            'Clientes sin fiar',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesTabListSinFiarWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'ljrjeftt' /* Seleccionando esta pestaña ver... */,
-            ),
+            'Seleccionando esta pestaña verá todos sus clientes que no fien.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -53,9 +53,7 @@ class _WtInfoEditDataWidgetState extends State<WtInfoEditDataWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'q60frzwr' /* Datos */,
-            ),
+            'Datos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -75,9 +73,7 @@ class _WtInfoEditDataWidgetState extends State<WtInfoEditDataWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'o816bot3' /* Esta es la sección de informac... */,
-            ),
+            'Esta es la sección de información del cliente, puede editar, borrar y visualizar los datos del cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

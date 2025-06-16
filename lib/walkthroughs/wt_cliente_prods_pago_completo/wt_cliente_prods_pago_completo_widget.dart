@@ -55,9 +55,7 @@ class _WtClienteProdsPagoCompletoWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'er4jyqo5' /* Pago completo */,
-            ),
+            'Pago completo',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtClienteProdsPagoCompletoWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'z5dd49e0' /* Haz el pago completo de los fi... */,
-            ),
+            'Haz el pago completo de los fiados con este botón.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

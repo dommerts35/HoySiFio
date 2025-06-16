@@ -54,9 +54,7 @@ class _WtClienteTiendaListWidgetState extends State<WtClienteTiendaListWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '6neqqmen' /* Lista de tiendas */,
-            ),
+            'Lista de tiendas',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -76,9 +74,7 @@ class _WtClienteTiendaListWidgetState extends State<WtClienteTiendaListWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              '4y4ceyjx' /* Esta es la lista de tiendas en... */,
-            ),
+            'Esta es la lista de tiendas en la que has sido registrado, selecciona una para ver detalles.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

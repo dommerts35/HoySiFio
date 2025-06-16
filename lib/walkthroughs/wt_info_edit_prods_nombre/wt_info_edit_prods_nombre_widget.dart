@@ -55,9 +55,7 @@ class _WtInfoEditProdsNombreWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'qhaevea0' /* Producto */,
-            ),
+            'Producto',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditProdsNombreWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'la16kaf7' /* Registra el nombre del product... */,
-            ),
+            'Registra el nombre del producto a fiar.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

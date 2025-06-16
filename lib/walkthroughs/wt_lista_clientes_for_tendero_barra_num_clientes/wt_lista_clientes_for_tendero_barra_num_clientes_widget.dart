@@ -56,9 +56,7 @@ class _WtListaClientesForTenderoBarraNumClientesWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'ffq7cfip' /* Conteo de clientes */,
-            ),
+            'Conteo de clientes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -78,9 +76,7 @@ class _WtListaClientesForTenderoBarraNumClientesWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              '1cgrguqv' /* En esta sección verá la cantid... */,
-            ),
+            'En esta sección verá la cantidad de clientes actuales.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

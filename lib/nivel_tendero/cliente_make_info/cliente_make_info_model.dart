@@ -53,9 +53,7 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? Function(BuildContext, String?)? fullNameTextControllerValidator;
   String? _fullNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '21mzdkhm' /* Ingrese los nombres completos ... */,
-      );
+      return 'Ingrese los nombres completos del cliente.';
     }
 
     return null;
@@ -69,9 +67,7 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? _fullSecondNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'r3mdo8kj' /* Ingrese los apellidos completo... */,
-      );
+      return 'Ingrese los apellidos completos de su cliente';
     }
 
     return null;
@@ -83,20 +79,14 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? Function(BuildContext, String?)? cedulaTextControllerValidator;
   String? _cedulaTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'u3ijjh2x' /* Ingrese el número de cédula de... */,
-      );
+      return 'Ingrese el número de cédula de su cliente';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'eco3r01j' /* El número de cédula es de 10 d... */,
-      );
+      return 'El número de cédula es de 10 dígitos.';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        'h54r93ga' /* El número de cédula es de 10 d... */,
-      );
+      return 'El número de cédula es de 10 dígitos.';
     }
 
     return null;
@@ -109,20 +99,14 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? _phoneNumberTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'inhoc3i3' /* Ingrese el número de teléfono ... */,
-      );
+      return 'Ingrese el número de teléfono de su cliente';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'ombehtbq' /* El número de teléfono es de 10... */,
-      );
+      return 'El número de teléfono es de 10 dígitos.';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        'gik78wpo' /* El número de teléfono es de 10... */,
-      );
+      return 'El número de teléfono es de 10 dígitos.';
     }
 
     return null;
@@ -134,15 +118,11 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? Function(BuildContext, String?)? emailTextControllerValidator;
   String? _emailTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'mm05figr' /* Ingrese el email de su cliente */,
-      );
+      return 'Ingrese el email de su cliente';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'mae9m98y' /* Ingrese el email de su cliente */,
-      );
+      return 'Ingrese el email de su cliente';
     }
     return null;
   }
@@ -153,9 +133,7 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   String? Function(BuildContext, String?)? direccionTextControllerValidator;
   String? _direccionTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'pepfwjpo' /* Ingrese la Dirección domicilia... */,
-      );
+      return 'Ingrese la Dirección domiciliaria de su cliente.';
     }
 
     return null;

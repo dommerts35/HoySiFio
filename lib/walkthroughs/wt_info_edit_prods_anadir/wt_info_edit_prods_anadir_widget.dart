@@ -55,9 +55,7 @@ class _WtInfoEditProdsAnadirWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'y43pmfld' /* Añadir */,
-            ),
+            'Añadir',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditProdsAnadirWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'w3qp5add' /* Tras ingresar los producto, lo... */,
-            ),
+            'Tras ingresar los producto, los añade con este botón.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

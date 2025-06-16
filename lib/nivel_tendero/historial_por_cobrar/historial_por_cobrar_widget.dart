@@ -241,9 +241,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 5.0, 5.0, 5.0),
                                         child: AutoSizeText(
-                                          FFLocalizations.of(context).getText(
-                                            'ayphq84c' /* Cuentas por cobrar */,
-                                          ),
+                                          'Cuentas por cobrar',
                                           maxLines: 2,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -360,9 +358,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 5.0, 5.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'whsw90kw' /* Aquí se mostrarán los producto... */,
-                                          ),
+                                          'Aquí se mostrarán los productos por cobrar',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -560,11 +556,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                               .spaceEvenly,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'ryaqh50n' /* Cantidad */,
-                                                          ),
+                                                          'Cantidad',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium
@@ -594,11 +586,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'kzbxnd35' /* Producto */,
-                                                          ),
+                                                          'Producto',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium
@@ -628,11 +616,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'topgjp12' /* Valor Unitario */,
-                                                          ),
+                                                          'Valor Unitario',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium
@@ -662,11 +646,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                               ),
                                                         ),
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '0kr5qigy' /* Valor */,
-                                                          ),
+                                                          'Valor',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .labelMedium
@@ -1281,11 +1261,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                           8.0,
                                                                           0.0),
                                                                   child: Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'mj4m89fg' /* Click para cobrar */,
-                                                                    ),
+                                                                    'Click para cobrar',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
@@ -1390,9 +1366,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         }.withoutNulls,
                                       );
                                     },
-                                    text: FFLocalizations.of(context).getText(
-                                      's6fwapco' /* Añadir Más Productos */,
-                                    ),
+                                    text: 'Añadir Más Productos',
                                     options: FFButtonOptions(
                                       height: 40.0,
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -1595,9 +1569,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                             );
                           }
                         },
-                        text: FFLocalizations.of(context).getText(
-                          '5fs0byh5' /* Cobrar productos seleccionados */,
-                        ),
+                        text: 'Cobrar productos seleccionados',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 40.0,
@@ -1723,9 +1695,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                   );
                                 }
                               },
-                        text: FFLocalizations.of(context).getText(
-                          '318e7au3' /* Cobrar todos los productos */,
-                        ),
+                        text: 'Cobrar todos los productos',
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 40.0,

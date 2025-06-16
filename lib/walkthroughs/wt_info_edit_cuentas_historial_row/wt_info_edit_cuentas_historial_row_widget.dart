@@ -55,9 +55,7 @@ class _WtInfoEditCuentasHistorialRowWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'fdhfmc90' /* Historial de Cuentas */,
-            ),
+            'Historial de Cuentas',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditCuentasHistorialRowWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'r5weprwa' /* Acceda a las cuentas pagadas y... */,
-            ),
+            'Acceda a las cuentas pagadas y por cobrar del cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

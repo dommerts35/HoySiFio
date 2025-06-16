@@ -251,11 +251,7 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                             AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '29h3bv5a' /* Resúmen de fiados */,
-                                                          ),
+                                                          'Resúmen de fiados',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleLarge

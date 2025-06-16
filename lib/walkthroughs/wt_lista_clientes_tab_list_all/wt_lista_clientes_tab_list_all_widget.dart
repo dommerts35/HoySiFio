@@ -55,9 +55,7 @@ class _WtListaClientesTabListAllWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'uvhxcbwl' /* Todos */,
-            ),
+            'Todos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesTabListAllWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'rbr2tguc' /* Seleccionando esta pestaña ver... */,
-            ),
+            'Seleccionando esta pestaña verá todos sus clientes registrados.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

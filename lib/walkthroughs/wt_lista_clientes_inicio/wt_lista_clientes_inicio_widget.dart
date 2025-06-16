@@ -55,9 +55,7 @@ class _WtListaClientesInicioWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '6glumzuh' /* ¡Bienvenido! */,
-            ),
+            '¡Bienvenido!',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -79,9 +77,7 @@ class _WtListaClientesInicioWidgetState
           Padding(
             padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 2.0, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'cnc4za3r' /* Este es el tutorial de uso de ... */,
-              ),
+              'Este es el tutorial de uso de la App. Para saltarse este tutorial, haga clic en el botón de \"Skip\" en la parte inferior derecha. Toque la pantalla para continuar',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     font: GoogleFonts.inter(

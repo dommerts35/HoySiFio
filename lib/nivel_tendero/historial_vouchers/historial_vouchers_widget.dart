@@ -204,11 +204,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 5.0, 10.0, 5.0),
                                       child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ftl0vypt' /* Historial de 
-comprobantes */
-                                          ,
-                                        ),
+                                        'Historial de \ncomprobantes',
                                         maxLines: 2,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineMedium
@@ -318,9 +314,7 @@ comprobantes */
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
-                                          FFLocalizations.of(context).getText(
-                                            'vcw3n8er' /* Comprobantes enviados del clie... */,
-                                          ),
+                                          'Comprobantes enviados del cliente: ',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .labelMedium
@@ -535,11 +529,7 @@ comprobantes */
                                                             .estadoVoucher ==
                                                         'Negado')
                                                       Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '2hcmbmsi' /* Comprobante Negado */,
-                                                        ),
+                                                        'Comprobante Negado',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)

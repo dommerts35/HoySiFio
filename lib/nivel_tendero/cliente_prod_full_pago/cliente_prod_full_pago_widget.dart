@@ -327,10 +327,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'g5adag4h' /* Transferencia */,
-                                                    ),
+                                                    'Transferencia',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -491,11 +488,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                           .fontStyle,
                                                                     ),
                                                             hintText:
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                              'eoq05zkm' /* N# comprobante */,
-                                                            ),
+                                                                'N# comprobante',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -643,10 +636,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'z4ldi171' /* Efectivo */,
-                                                    ),
+                                                    'Efectivo',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -792,11 +782,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                           AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'm7vv3ngz' /* Fecha de Pago:  */,
-                                                        ),
+                                                        'Fecha de Pago: ',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1255,11 +1241,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                       if (_shouldSetState)
                                                         safeSetState(() {});
                                                     },
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      '05un7mkd' /* Pagar */,
-                                                    ),
+                                                    text: 'Pagar',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: 40.0,

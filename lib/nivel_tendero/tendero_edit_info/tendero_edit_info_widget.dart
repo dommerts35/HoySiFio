@@ -145,9 +145,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            FFLocalizations.of(context).getText(
-                              '8qtb4cee' /* Editar Tendero */,
-                            ),
+                            'Editar Tendero',
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
@@ -169,9 +167,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                 ),
                           ),
                           Text(
-                            FFLocalizations.of(context).getText(
-                              'j3ztdxxg' /* Edite la información de su tie... */,
-                            ),
+                            'Edite la información de su tienda',
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -296,9 +292,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           alignment:
                                               AlignmentDirectional(0.0, 0.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '8dfbjntj' /* Información de la tienda */,
-                                            ),
+                                            'Información de la tienda',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleLarge
                                                 .override(
@@ -343,11 +337,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'z7yka2by' /* Nombre de la Tienda */,
-                                            ),
+                                            labelText: 'Nombre de la Tienda',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .titleMedium
@@ -558,11 +548,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'pkqswaz8' /* Email */,
-                                            ),
+                                            labelText: 'Email',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .titleMedium
@@ -760,9 +746,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           alignment:
                                               AlignmentDirectional(0.0, 0.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'wwljy5nw' /* Datos Bancarios */,
-                                            ),
+                                            'Datos Bancarios',
                                             style: FlutterFlowTheme.of(context)
                                                 .titleLarge
                                                 .override(
@@ -808,10 +792,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'd1dqvnar' /* Núm. De Cuenta Bancaria */,
-                                            ),
+                                                'Núm. De Cuenta Bancaria',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .titleMedium
@@ -840,11 +821,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .titleMedium
                                                           .fontStyle,
                                                 ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'b1mwh2d1' /* 10 carácteres */,
-                                            ),
+                                            hintText: '10 carácteres',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
@@ -1029,11 +1006,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '4lnjrhg1' /* Nombre de banco */,
-                                            ),
+                                            labelText: 'Nombre de banco',
                                             labelStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .titleMedium
@@ -1230,10 +1203,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'nryyrmmj' /* Tipo de Cuenta Bancaria */,
-                                                    ),
+                                                    'Tipo de Cuenta Bancaria',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelLarge
@@ -1303,11 +1273,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                             newValue!);
                                                       },
                                                       title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'szfzzk7s' /* Cuenta Corriente */,
-                                                        ),
+                                                        'Cuenta Corriente',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1399,11 +1365,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                             newValue!);
                                                       },
                                                       title: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'iwdefcyd' /* Cuenta de Ahorros */,
-                                                        ),
+                                                        'Cuenta de Ahorros',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1707,10 +1669,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                               if (_shouldSetState)
                                                 safeSetState(() {});
                                             },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'b4qfhwom' /* Borrar Cuenta */,
-                                            ),
+                                            text: 'Borrar Cuenta',
                                             options: FFButtonOptions(
                                               height: 48.0,
                                               padding: EdgeInsetsDirectional
@@ -1917,9 +1876,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                 }
                                 if (_shouldSetState) safeSetState(() {});
                               },
-                              text: FFLocalizations.of(context).getText(
-                                '7aclimuf' /* Enviar */,
-                              ),
+                              text: 'Enviar',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 48.0,

@@ -188,9 +188,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      '41mtj38q' /* Hoy */,
-                                    ),
+                                    text: 'Hoy',
                                     style: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
@@ -216,9 +214,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'eipxlct2' /* Sí */,
-                                    ),
+                                    text: 'Sí',
                                     style: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .override(
@@ -245,9 +241,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         ),
                                   ),
                                   TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'g16vbvcr' /* Fio */,
-                                    ),
+                                    text: 'Fio',
                                     style: TextStyle(),
                                   )
                                 ],
@@ -304,9 +298,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '6i1n6p4q' /* Bienvenido */,
-                                          ),
+                                          'Bienvenido',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -336,9 +328,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         ),
                                       ),
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'lrruah8w' /* Llene el formulario para regis... */,
-                                        ),
+                                        'Llene el formulario para registrarse como tendero',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -374,9 +364,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'lmfqce75' /* Datos Personales */,
-                                          ),
+                                          'Datos Personales',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -419,11 +407,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '6on9n7sb' /* Nombre de la tienda */,
-                                            ),
+                                            labelText: 'Nombre de la tienda',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -567,10 +551,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '2frd909t' /* Nombre del dueño de la tienda */,
-                                            ),
+                                                'Nombre completo del dueño de la tienda',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -711,11 +692,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'sh2p8sks' /* Email */,
-                                            ),
+                                            labelText: 'Email',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -840,10 +817,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'ti1o60e4' /*  Número de teléfono celular */,
-                                            ),
+                                                ' Número de teléfono celular',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -972,9 +946,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '37ho1aqu' /* Datos Bancarios */,
-                                          ),
+                                          'Datos Bancarios',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -1015,11 +987,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              '9ld5lhde' /* Num. Cuenta Bancaria */,
-                                            ),
+                                            labelText: 'Num. Cuenta Bancaria',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1048,11 +1016,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .labelLarge
                                                               .fontStyle,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'c0oyv9mv' /* 10 carácteres */,
-                                            ),
+                                            hintText: '10 carácteres',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1183,11 +1147,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'q5w6qmde' /* Banco */,
-                                            ),
+                                            labelText: 'Banco',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1216,11 +1176,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .labelLarge
                                                               .fontStyle,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'hztgjc94' /* Nombre del banco */,
-                                            ),
+                                            hintText: 'Nombre del banco',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1351,10 +1307,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'jgdo2bed' /* Propietario de la cuenta banca... */,
-                                            ),
+                                                'Propietario de la cuenta bancaria',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1384,10 +1337,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .fontStyle,
                                                     ),
                                             hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'woow9lb7' /* Nombre del propietario */,
-                                            ),
+                                                'Nombre completo del propietario',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1509,9 +1459,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'k1v65egy' /* Seleccione el tipo de cuenta b... */,
-                                          ),
+                                          'Seleccione el tipo de cuenta bancaria',
                                           style: FlutterFlowTheme.of(context)
                                               .titleSmall
                                               .override(
@@ -1563,11 +1511,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .forward(from: 0.0);
                                                   }
                                                 },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'u6g90ra7' /* Cuenta Corriente */,
-                                                ),
+                                                text: 'Cuenta Corriente',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
                                                   padding: EdgeInsetsDirectional
@@ -1650,11 +1594,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .forward(from: 0.0);
                                                   }
                                                 },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'lubf3qj5' /* Cuenta de Ahorros */,
-                                                ),
+                                                text: 'Cuenta de Ahorros',
                                                 options: FFButtonOptions(
                                                   height: 40.0,
                                                   padding: EdgeInsetsDirectional
@@ -1730,9 +1670,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '4anwojju' /* Contraseña */,
-                                          ),
+                                          'Contraseña',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -1762,9 +1700,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         ),
                                       ),
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          '18ylqfjm' /* Ingrese una contraseña que con... */,
-                                        ),
+                                        'Ingrese una contraseña que contenga al menos 8 carácteres, una mayúscula, una minúscula y un carácter especial (*.#\$¿)',
                                         style: FlutterFlowTheme.of(context)
                                             .labelSmall
                                             .override(
@@ -1804,11 +1740,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText:
                                               !_model.passwordTenderoVisibility,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'edm47hkw' /* Contraseña */,
-                                            ),
+                                            labelText: 'Contraseña',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1837,11 +1769,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .labelLarge
                                                               .fontStyle,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'acn0ws5f' /* Contraseña1* */,
-                                            ),
+                                            hintText: 'Contraseña1*',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -1994,11 +1922,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText: !_model
                                               .passwordCTenderoVisibility,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              's6s89p8t' /* Confirme la contraseña */,
-                                            ),
+                                            labelText: 'Confirme la contraseña',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -2140,9 +2064,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                         alignment:
                                             AlignmentDirectional(0.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            're3hmuqz' /* Ingrese un PIN con 4 números */,
-                                          ),
+                                          'Ingrese un PIN con 4 números',
                                           style: FlutterFlowTheme.of(context)
                                               .labelSmall
                                               .override(
@@ -2184,11 +2106,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           obscureText:
                                               !_model.pinTenderoVisibility,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'k459atkr' /* PIN */,
-                                            ),
+                                            labelText: 'PIN',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -2217,11 +2135,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .labelLarge
                                                               .fontStyle,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'qbi00mto' /* 0000 */,
-                                            ),
+                                            hintText: '0000',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -2572,7 +2486,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .showSnackBar(
                                                               SnackBar(
                                                                 content: Text(
-                                                                  'Passwords don\'t match!',
+                                                                  'Las contraseñas no coinciden',
                                                                 ),
                                                               ),
                                                             );
@@ -2763,10 +2677,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                   },
-                                            text: FFLocalizations.of(context)
-                                                .getText(
-                                              'jf3na20v' /* Registrarse */,
-                                            ),
+                                            text: 'Registrarse',
                                             options: FFButtonOptions(
                                               width: 230.0,
                                               height: 52.0,

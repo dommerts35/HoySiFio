@@ -55,9 +55,7 @@ class _WtClienteTiendaListDataWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'ybs8jzoi' /* Datos personales */,
-            ),
+            'Datos personales',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtClienteTiendaListDataWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'iop3hpvv' /* Aquí se mostrará tus datos ing... */,
-            ),
+            'Aquí se mostrará tus datos ingresados por los tenderos.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

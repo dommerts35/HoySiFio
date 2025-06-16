@@ -344,11 +344,7 @@ class _ClienteProdValorPagoWidgetState
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'd59gff11' /* Valor a Pagar */,
-                                              ),
+                                              labelText: 'Valor a Pagar',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -372,11 +368,7 @@ class _ClienteProdValorPagoWidgetState
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '0luvnqx5' /* #.## */,
-                                              ),
+                                              hintText: '#.##',
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -528,10 +520,7 @@ class _ClienteProdValorPagoWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '9xivha2p' /* Transferencia */,
-                                                    ),
+                                                    'Transferencia',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -692,11 +681,7 @@ class _ClienteProdValorPagoWidgetState
                                                                           .fontStyle,
                                                                     ),
                                                             hintText:
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                              'pff5beon' /* N#. Comprobante */,
-                                                            ),
+                                                                'N#. Comprobante',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -844,10 +829,7 @@ class _ClienteProdValorPagoWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'yl0zre28' /* Efectivo */,
-                                                    ),
+                                                    'Efectivo',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -993,11 +975,7 @@ class _ClienteProdValorPagoWidgetState
                                                           AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'iisu0mpl' /* Fecha de Fiado:  */,
-                                                        ),
+                                                        'Fecha de Fiado: ',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1720,11 +1698,7 @@ class _ClienteProdValorPagoWidgetState
                                                       if (_shouldSetState)
                                                         safeSetState(() {});
                                                     },
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'mztmsqm7' /* Pagar */,
-                                                    ),
+                                                    text: 'Pagar',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: 40.0,

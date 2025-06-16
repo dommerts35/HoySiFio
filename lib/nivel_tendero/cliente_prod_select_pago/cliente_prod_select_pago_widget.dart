@@ -328,10 +328,7 @@ class _ClienteProdSelectPagoWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'ytzpnp3y' /* Transferencia */,
-                                                    ),
+                                                    'Transferencia',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -492,11 +489,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                           .fontStyle,
                                                                     ),
                                                             hintText:
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getText(
-                                                              'tgnvbj7s' /* N# Comprobante */,
-                                                            ),
+                                                                'N# Comprobante',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -644,10 +637,7 @@ class _ClienteProdSelectPagoWidgetState
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 10.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'drmj1elp' /* Efectivo */,
-                                                    ),
+                                                    'Efectivo',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -793,11 +783,7 @@ class _ClienteProdSelectPagoWidgetState
                                                           AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'l0zl3c9n' /* Fecha de Pago:  */,
-                                                        ),
+                                                        'Fecha de Pago: ',
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1287,11 +1273,7 @@ class _ClienteProdSelectPagoWidgetState
                                                       if (_shouldSetState)
                                                         safeSetState(() {});
                                                     },
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'h2bpiwpv' /* Pagar */,
-                                                    ),
+                                                    text: 'Pagar',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: 40.0,

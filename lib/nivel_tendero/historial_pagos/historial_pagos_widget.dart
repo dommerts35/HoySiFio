@@ -194,9 +194,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 5.0, 5.0, 5.0),
                                   child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'gxg9u041' /* Cuentas pagadas */,
-                                    ),
+                                    'Cuentas pagadas',
                                     maxLines: 2,
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
@@ -309,9 +307,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 5.0, 5.0, 0.0),
                                       child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'rhc1o40z' /* Aquí se mostrarán los producto... */,
-                                        ),
+                                        'Aquí se mostrarán los productos pagados ',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -499,11 +495,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'elangz8q' /* Cantidad */,
-                                                      ),
+                                                      'Cantidad',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -534,11 +526,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                               ),
                                                     ),
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '5azzte22' /* Producto */,
-                                                      ),
+                                                      'Producto',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -569,11 +557,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                               ),
                                                     ),
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '0qsfqe7k' /* Valor Unitario */,
-                                                      ),
+                                                      'Valor Unitario',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -604,11 +588,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                               ),
                                                     ),
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'hy0nw511' /* Valor */,
-                                                      ),
+                                                      'Valor',
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -1466,11 +1446,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     8.0,
                                                                     0.0),
                                                         child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'b4tb641b' /* Pagado */,
-                                                          ),
+                                                          'Pagado',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -1547,11 +1523,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     8.0,
                                                                     0.0),
                                                         child: AutoSizeText(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '9qn9zcwa' /* Faltó Pago */,
-                                                          ),
+                                                          'Faltó Pago',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme

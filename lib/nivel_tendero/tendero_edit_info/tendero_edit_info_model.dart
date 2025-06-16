@@ -16,20 +16,14 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   String? _tiendaNameEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '8ppxca5u' /* Ingrese el nombre de su tienda */,
-      );
+      return 'Ingrese el nombre de su tienda';
     }
 
     if (val.length < 2) {
-      return FFLocalizations.of(context).getText(
-        'uousn3ae' /* Ingrese el nombre de su tienda... */,
-      );
+      return 'Ingrese el nombre de su tienda con al menos 2 carácteres';
     }
     if (val.length > 20) {
-      return FFLocalizations.of(context).getText(
-        'i1cpzswy' /* Ingrese el nombre de su tienda... */,
-      );
+      return 'Ingrese el nombre de su tienda con  menos de 20 carácteres';
     }
 
     return null;
@@ -41,21 +35,15 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   String? Function(BuildContext, String?)? emailEditTextControllerValidator;
   String? _emailEditTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'iqrt4e3t' /* Ingrese su email */,
-      );
+      return 'Ingrese su email';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'ckvncbbe' /* Ingrese un email válido */,
-      );
+      return 'Ingrese un email válido';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        '684k8vkd' /* Ingrese un email válido */,
-      );
+      return 'Ingrese un email válido';
     }
     return null;
   }
@@ -67,15 +55,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   String? _numCuentaEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '0cekikur' /* Ingrese su número de cuenta */,
-      );
+      return 'Ingrese su número de cuenta';
     }
 
     if (val.length < 8) {
-      return FFLocalizations.of(context).getText(
-        'sj6sny2n' /* Ingrese su número de cuenta. */,
-      );
+      return 'Ingrese su número de cuenta.';
     }
 
     return null;
@@ -89,15 +73,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   String? _nombreBancoEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'upnf43na' /* Ingrese el nombre de su banco */,
-      );
+      return 'Ingrese el nombre de su banco';
     }
 
     if (val.length < 3) {
-      return FFLocalizations.of(context).getText(
-        '06wzu346' /* Ingrese un banco válido */,
-      );
+      return 'Ingrese un banco válido';
     }
 
     return null;

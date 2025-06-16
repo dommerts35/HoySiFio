@@ -142,9 +142,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'm6no12cg' /* Vincular */,
-                          ),
+                          'Vincular',
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
@@ -170,9 +168,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'ap4t5pfw' /* Si su cliente ha sido registra... */,
-                            ),
+                            'Si su cliente ha sido registrado',
                             maxLines: 2,
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
@@ -197,9 +193,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                           ),
                         ),
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'z1v6nixe' /* en otras tiendas, vincule sus ... */,
-                          ),
+                          'en otras tiendas, vincule sus datos',
                           maxLines: 2,
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
@@ -279,10 +273,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                             decoration: InputDecoration(
                                               isDense: true,
                                               labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'vvpu8emf' /* Usuario/Número de Cédula */,
-                                              ),
+                                                  'Usuario/Número de Cédula',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -306,11 +297,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'nybm5b6n' /* Número de cédula */,
-                                              ),
+                                              hintText: 'Número de cédula',
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -479,11 +466,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                           AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '6i3bouus' /* El cliente está registrado en:... */,
-                                                        ),
+                                                        'El cliente está registrado en: ',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style:
@@ -808,11 +791,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
 
                                                       safeSetState(() {});
                                                     },
-                                                    text: FFLocalizations.of(
-                                                            context)
-                                                        .getText(
-                                                      'ztdzjqfo' /* Vincular Cuenta */,
-                                                    ),
+                                                    text: 'Vincular Cuenta',
                                                     options: FFButtonOptions(
                                                       width: double.infinity,
                                                       height: 40.0,

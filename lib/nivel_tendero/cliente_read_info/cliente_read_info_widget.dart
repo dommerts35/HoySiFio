@@ -311,10 +311,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'sikgq85p' /* Nombres */,
-                                        ),
+                                        labelText: 'Nombres',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -450,10 +447,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '9khzxccs' /* Apellidos */,
-                                        ),
+                                        labelText: 'Apellidos',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -588,10 +582,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '3rzn6i2b' /* Cédula */,
-                                        ),
+                                        labelText: 'Cédula',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -724,10 +715,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'uwtxa5n1' /* Número de teléfono */,
-                                        ),
+                                        labelText: 'Número de teléfono',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -859,10 +847,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '4x9cjlg0' /* Dirección Domiciliaria */,
-                                        ),
+                                        labelText: 'Dirección Domiciliaria',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -993,10 +978,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'm4kcodd7' /* Email */,
-                                        ),
+                                        labelText: 'Email',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1128,10 +1110,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                       readOnly: true,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'hkcjeory' /* Vivienda */,
-                                        ),
+                                        labelText: 'Vivienda',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1266,10 +1245,8 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                         readOnly: true,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'q6t8rtd3' /* Código de Inicio de Sesión */,
-                                          ),
+                                          labelText:
+                                              'Código de Inicio de Sesión',
                                           labelStyle: FlutterFlowTheme.of(
                                                   context)
                                               .labelLarge

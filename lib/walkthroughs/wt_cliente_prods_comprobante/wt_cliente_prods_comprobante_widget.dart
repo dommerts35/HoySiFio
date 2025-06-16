@@ -55,9 +55,7 @@ class _WtClienteProdsComprobanteWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '281y2j53' /* Comprobantes */,
-            ),
+            'Comprobantes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtClienteProdsComprobanteWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'amru719j' /* Revisa los comprobantes que ha... */,
-            ),
+            'Revisa los comprobantes que has enviado con este botón.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

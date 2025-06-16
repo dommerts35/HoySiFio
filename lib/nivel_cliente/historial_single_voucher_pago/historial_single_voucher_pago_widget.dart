@@ -232,9 +232,7 @@ class _HistorialSingleVoucherPagoWidgetState
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             AutoSizeText(
-                              FFLocalizations.of(context).getText(
-                                'ce79facv' /* Información de pago */,
-                              ),
+                              'Información de pago',
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -435,11 +433,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 isDense: true,
-                                                labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'rd415gpe' /* Monto A Pagar */,
-                                                ),
+                                                labelText: 'Monto A Pagar',
                                                 labelStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -464,11 +458,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                   .labelMedium
                                                                   .fontStyle,
                                                         ),
-                                                hintText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'd75is44y' /* #.## */,
-                                                ),
+                                                hintText: '#.##',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMedium
@@ -630,11 +620,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                's3lslju1' /* Núm. De Comprobante */,
-                                              ),
+                                              labelText: 'Núm. De Comprobante',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -797,11 +783,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '9rtw9btt' /* Nombre del banco */,
-                                              ),
+                                              labelText: 'Nombre del banco',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -967,12 +949,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                               MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'myz8mr51' /* Tipo de 
-Transferencia: */
-                                                ,
-                                              ),
+                                              'Tipo de \nTransferencia:',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .headlineMedium
@@ -1018,11 +995,7 @@ Transferencia: */
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'k4rwgplm' /* Electrónico */,
-                                                          ),
+                                                          'Electrónico',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1165,11 +1138,7 @@ Transferencia: */
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '21912box' /* Banca Web */,
-                                                          ),
+                                                          'Banca Web',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1312,11 +1281,7 @@ Transferencia: */
                                                           MainAxisSize.max,
                                                       children: [
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'wt70ujmq' /* Ventanilla */,
-                                                          ),
+                                                          'Ventanilla',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -2062,11 +2027,7 @@ Transferencia: */
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                   },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '90xqpdqy' /* Guardar */,
-                                                  ),
+                                                  text: 'Guardar',
                                                   options: FFButtonOptions(
                                                     width: 160.0,
                                                     height: 50.0,

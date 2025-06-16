@@ -53,9 +53,7 @@ class _WtInfoEditProdsWidgetState extends State<WtInfoEditProdsWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              't0dz1qpx' /* Lista de Productos */,
-            ),
+            'Lista de Productos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -75,9 +73,7 @@ class _WtInfoEditProdsWidgetState extends State<WtInfoEditProdsWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'p644gald' /* Registra productos a fiar. */,
-            ),
+            'Registra productos a fiar.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

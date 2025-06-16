@@ -139,7 +139,7 @@ class FirebaseAuthManager extends AuthManager
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Password reset email sent')),
+      SnackBar(content: Text('E-mail de restauración de contraseña enviado')),
     );
   }
 
@@ -311,10 +311,8 @@ class FirebaseAuthManager extends AuthManager
           : HoySiFioFirebaseUser.fromUserCredential(userCredential);
     } on FirebaseAuthException catch (e) {
       final errorMsg = switch (e.code) {
-        'email-already-in-use' =>
-          'Error: The email is already in use by a different account',
-        'INVALID_LOGIN_CREDENTIALS' =>
-          'Error: The supplied auth credential is incorrect, malformed or has expired',
+        'email-already-in-use' => 'E-Mail ya usado',
+        'INVALID_LOGIN_CREDENTIALS' => 'Credenciales incorrectas',
         _ => 'Error: ${e.message!}',
       };
       ScaffoldMessenger.of(context).hideCurrentSnackBar();

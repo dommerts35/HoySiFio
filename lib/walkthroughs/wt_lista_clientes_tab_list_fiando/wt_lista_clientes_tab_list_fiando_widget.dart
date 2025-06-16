@@ -55,9 +55,7 @@ class _WtListaClientesTabListFiandoWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'r1rhslw5' /* Clientes fiando */,
-            ),
+            'Clientes fiando',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtListaClientesTabListFiandoWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'jkn46zzn' /* Seleccionando esta pestaña ver... */,
-            ),
+            'Seleccionando esta pestaña verá todos sus clientes que fien.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -55,9 +55,7 @@ class _WtClienteProdsListTotalWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              '92if96ja' /* Sección Total Debido */,
-            ),
+            'Sección Total Debido',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtClienteProdsListTotalWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'pncbfiqa' /* Este es el total de los produc... */,
-            ),
+            'Este es el total de los productos que estás fiando actualmente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

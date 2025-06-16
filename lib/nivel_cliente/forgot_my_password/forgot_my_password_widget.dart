@@ -96,9 +96,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: FFLocalizations.of(context).getText(
-                                  'sj1iw0b0' /* Hoy */,
-                                ),
+                                text: 'Hoy',
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
@@ -120,9 +118,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                     ),
                               ),
                               TextSpan(
-                                text: FFLocalizations.of(context).getText(
-                                  'dba4xfrx' /* Sí */,
-                                ),
+                                text: 'Sí',
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
@@ -145,9 +141,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                     ),
                               ),
                               TextSpan(
-                                text: FFLocalizations.of(context).getText(
-                                  'xycif7re' /* Fio */,
-                                ),
+                                text: 'Fio',
                                 style: TextStyle(),
                               )
                             ],
@@ -214,9 +208,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                         ),
                                       ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'hbpb6qxp' /* Olvidé mi contraseña */,
-                                      ),
+                                      'Olvidé mi contraseña',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
@@ -246,9 +238,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 24.0),
                                       child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          '23rgzjnt' /* Ingrese su correo electrónico ... */,
-                                        ),
+                                        'Ingrese su correo electrónico para enviarle un email de cambio de contraseña para su cuenta de tendero.',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
@@ -290,11 +280,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                           textInputAction: TextInputAction.next,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'z741yg0n' /* Email */,
-                                            ),
+                                            labelText: 'Email',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -323,11 +309,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                               .labelLarge
                                                               .fontStyle,
                                                     ),
-                                            hintText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'z62zvqy0' /* Email */,
-                                            ),
+                                            hintText: 'Email',
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
@@ -455,7 +437,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   .showSnackBar(
                                                 SnackBar(
                                                   content: Text(
-                                                    'Email required!',
+                                                    'E-mail requerido',
                                                   ),
                                                 ),
                                               );
@@ -490,10 +472,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                             context.pushNamed(
                                                 AuthSigningInWidget.routeName);
                                           },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'u3q4fabm' /* Reestablecer contraseña */,
-                                          ),
+                                          text: 'Reestablecer contraseña',
                                           options: FFButtonOptions(
                                             width: 230.0,
                                             height: 52.0,

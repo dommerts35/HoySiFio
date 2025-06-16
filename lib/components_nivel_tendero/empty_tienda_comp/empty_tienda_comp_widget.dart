@@ -77,9 +77,7 @@ class _EmptyTiendaCompWidgetState extends State<EmptyTiendaCompWidget> {
                 ),
               ),
               Text(
-                FFLocalizations.of(context).getText(
-                  'fyzf4r4w' /* No has sido registrado aún. */,
-                ),
+                'No has sido registrado aún.',
                 style: FlutterFlowTheme.of(context).titleSmall.override(
                       font: GoogleFonts.interTight(
                         fontWeight:

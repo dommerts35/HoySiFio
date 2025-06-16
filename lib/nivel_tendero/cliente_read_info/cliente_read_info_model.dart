@@ -14,15 +14,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? _fullNameReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '687r2v4n' /* Ingrese los nombres del client... */,
-      );
+      return 'Ingrese los nombres del cliente.';
     }
 
     if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        '8v4is5pg' /* Ingrese el nombre con más de 5... */,
-      );
+      return 'Ingrese el nombre con más de 5 carácteres';
     }
 
     return null;
@@ -36,15 +32,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? _secondNameReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '8xyeg780' /* Ingrese los apellidos del clie... */,
-      );
+      return 'Ingrese los apellidos del cliente.';
     }
 
     if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        '3efsdt5q' /* Ingrese el apellido con más de... */,
-      );
+      return 'Ingrese el apellido con más de 5 carácteres';
     }
 
     return null;
@@ -56,20 +48,14 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? Function(BuildContext, String?)? ceduReadTextControllerValidator;
   String? _ceduReadTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'jgt2mo47' /* Ingrese la cédula del cliente */,
-      );
+      return 'Ingrese la cédula del cliente';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'e2cxain9' /* Ingrese la cédula completa. */,
-      );
+      return 'Ingrese la cédula completa.';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        'qa6nupq8' /* Ingrese la cédula. */,
-      );
+      return 'Ingrese la cédula.';
     }
 
     return null;
@@ -83,20 +69,14 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? _phoneNumberReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'fkdxt2wn' /* Ingrese el número de teléfono ... */,
-      );
+      return 'Ingrese el número de teléfono del cliente.';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'bbwwn6in' /* Ingrese el número de teléfono ... */,
-      );
+      return 'Ingrese el número de teléfono completo';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        '5o7yk9ps' /* Ingrese el número de teléfono. */,
-      );
+      return 'Ingrese el número de teléfono.';
     }
 
     return null;
@@ -109,9 +89,7 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? _direccionReadTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '31ex3eos' /* Ingrese la dirección del clien... */,
-      );
+      return 'Ingrese la dirección del cliente';
     }
 
     return null;
@@ -123,15 +101,11 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   String? Function(BuildContext, String?)? emailReadTextControllerValidator;
   String? _emailReadTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'dc4mgfzk' /* Ingrese el email del cliente */,
-      );
+      return 'Ingrese el email del cliente';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'pvjylei9' /* Ese Email no existe */,
-      );
+      return 'Ese Email no existe';
     }
     return null;
   }

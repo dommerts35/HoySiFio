@@ -83,9 +83,7 @@ class _EmptyClientesListFiandoWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 10.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    '4c19uesj' /* No hay clientes adeudando. */,
-                  ),
+                  'No hay clientes adeudando.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.interTight(
                           fontWeight: FlutterFlowTheme.of(context)

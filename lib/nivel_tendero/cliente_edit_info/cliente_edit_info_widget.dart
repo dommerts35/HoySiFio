@@ -284,9 +284,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        FFLocalizations.of(context).getText(
-                          '7ebe3393' /* Editar Cliente */,
-                        ),
+                        'Editar Cliente',
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
                             .override(
@@ -308,9 +306,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                             ),
                       ),
                       Text(
-                        FFLocalizations.of(context).getText(
-                          'i6ycinm2' /* Edite la información del clien... */,
-                        ),
+                        'Edite la información del cliente',
                         style:
                             FlutterFlowTheme.of(context).labelMedium.override(
                                   font: GoogleFonts.inter(
@@ -384,9 +380,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 5.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'p19en3zt' /* Datos Personales */,
-                                          ),
+                                          'Datos Personales',
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
@@ -425,10 +419,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'nejq1ybj' /* Nombres */,
-                                        ),
+                                        labelText: 'Nombres',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -607,10 +598,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          'xgmb2b5l' /* Apellidos */,
-                                        ),
+                                        labelText: 'Apellidos',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .override(
@@ -790,10 +778,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          's1yfhujq' /* Cédula */,
-                                        ),
+                                        labelText: 'Cédula',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -969,10 +954,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '4w9khhr6' /* Número de teléfono */,
-                                        ),
+                                        labelText: 'Número de teléfono',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1148,10 +1130,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '4556idh7' /* Dirección Domiciliaria */,
-                                        ),
+                                        labelText: 'Dirección Domiciliaria',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1326,10 +1305,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       textInputAction: TextInputAction.next,
                                       obscureText: false,
                                       decoration: InputDecoration(
-                                        labelText:
-                                            FFLocalizations.of(context).getText(
-                                          '7mqbakvu' /* Email */,
-                                        ),
+                                        labelText: 'Email',
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelLarge
                                             .override(
@@ -1504,9 +1480,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 5.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'egg74h4w' /* Seleccione el tipo de vivienda... */,
-                                          ),
+                                          'Seleccione el tipo de vivienda del cliente',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
@@ -1561,11 +1535,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                         .forward(from: 0.0);
                                                   }
                                                 },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  '81wtki5i' /* Vivienda Propia */,
-                                                ),
+                                                text: 'Vivienda Propia',
                                                 options: FFButtonOptions(
                                                   width: 140.0,
                                                   height: 40.0,
@@ -1650,11 +1620,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                         .forward(from: 0.0);
                                                   }
                                                 },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'wejcayxz' /* Vivienda Alqu. */,
-                                                ),
+                                                text: 'Vivienda Alqu.',
                                                 options: FFButtonOptions(
                                                   width: 140.0,
                                                   height: 40.0,
@@ -1812,9 +1778,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                             ),
                                           ),
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              'i5fig3y6' /* Suscribirse al */,
-                                            ),
+                                            'Suscribirse al',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -1848,10 +1812,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'gzdssmll' /* envío de emails de HoySíFio */,
-                                              ),
+                                              'envío de emails de HoySíFio',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -1992,9 +1953,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
 
                         safeSetState(() {});
                       },
-                      text: FFLocalizations.of(context).getText(
-                        'od5eqvd7' /* Enviar */,
-                      ),
+                      text: 'Enviar',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,

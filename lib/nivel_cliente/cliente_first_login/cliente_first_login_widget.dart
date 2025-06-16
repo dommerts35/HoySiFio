@@ -200,10 +200,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                     text: TextSpan(
                                       children: [
                                         TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'vsqiao4w' /* Hoy */,
-                                          ),
+                                          text: 'Hoy',
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
                                               .override(
@@ -231,10 +228,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               ),
                                         ),
                                         TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '7qe4vujk' /* Sí */,
-                                          ),
+                                          text: 'Sí',
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
                                               .override(
@@ -263,10 +257,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               ),
                                         ),
                                         TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            't8kuseze' /* Fio */,
-                                          ),
+                                          text: 'Fio',
                                           style: TextStyle(),
                                         )
                                       ],
@@ -361,10 +352,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               ),
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '3wir9x8c' /* Llene el formulario para auten... */,
-                                              ),
+                                              'Llene el formulario para autenticar su cuenta de cliente',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -406,10 +394,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'x2qpws0m' /* Establezca su contraseña */,
-                                                ),
+                                                'Establezca su contraseña',
                                                 textAlign: TextAlign.start,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -443,10 +428,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               ),
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                's8w7wo89' /* Ingrese el código de primer in... */,
-                                              ),
+                                              'Ingrese el código de primer inicio de sesión proveído por su tendero',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelSmall
@@ -492,11 +474,8 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                 obscureText: !_model
                                                     .codigoFirstLoginClienteVisibility,
                                                 decoration: InputDecoration(
-                                                  labelText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '4a35zbe9' /* Código de primer inicio de ses... */,
-                                                  ),
+                                                  labelText:
+                                                      'Código de primer inicio de sesión',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -525,11 +504,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
-                                                  hintText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    's1ziy5xb' /* 0000 */,
-                                                  ),
+                                                  hintText: '0000',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -690,10 +665,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 5.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '4cthkeev' /* Ingrese una contraseña que con... */,
-                                                ),
+                                                'Ingrese una contraseña que contenga al menos 8 carácteres, una mayúscula, una minúscula y un carácter especial (*.#\$¿)',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
@@ -741,11 +713,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                 obscureText: !_model
                                                     .passwordClienteVisibility,
                                                 decoration: InputDecoration(
-                                                  labelText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '954wyj31' /* Contraseña */,
-                                                  ),
+                                                  labelText: 'Contraseña',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -774,11 +742,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
-                                                  hintText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'cpumz09x' /* Contraseña1* */,
-                                                  ),
+                                                  hintText: 'Contraseña1*',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -951,11 +915,8 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                 obscureText: !_model
                                                     .passwordCClienteVisibility,
                                                 decoration: InputDecoration(
-                                                  labelText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'u2tddc67' /* Confirme su contraseña */,
-                                                  ),
+                                                  labelText:
+                                                      'Confirme su contraseña',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -1116,10 +1077,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '9m4ziyom' /* Ingrese su PIN con 4 números */,
-                                                ),
+                                                'Ingrese su PIN con 4 números',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
@@ -1167,11 +1125,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                 obscureText: !_model
                                                     .pinClienteVisibility,
                                                 decoration: InputDecoration(
-                                                  labelText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '4s7pmrjg' /* PIN */,
-                                                  ),
+                                                  labelText: 'PIN',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -1200,11 +1154,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
-                                                  hintText: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'tgqx3x44' /* 0000 */,
-                                                  ),
+                                                  hintText: '0000',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelLarge
@@ -1528,7 +1478,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                   title: Text(
                                                                       '¡Bienvenido!'),
                                                                   content: Text(
-                                                                      'Estimado: ${clienteFirstLoginClientesRecord.cliente.nombre} . ¡Bienvenido a HoySíFio!${clienteFirstLoginClientesRecord.cliente.apellido}'),
+                                                                      'Estimado: ${clienteFirstLoginClientesRecord.cliente.nombre} . ¡Bienvenido a HoySíFio!'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
@@ -1606,11 +1556,8 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                           if (_shouldSetState)
                                                             safeSetState(() {});
                                                         },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'qnb91mwg' /* Autenticar e iniciar sesión */,
-                                                  ),
+                                                  text:
+                                                      'Autenticar e iniciar sesión',
                                                   options: FFButtonOptions(
                                                     width: 230.0,
                                                     height: 52.0,

@@ -147,9 +147,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                FFLocalizations.of(context).getText(
-                  '2ob7wk2n' /* Registrar Cliente */,
-                ),
+                'Registrar Cliente',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       font: GoogleFonts.interTight(
                         fontWeight: FlutterFlowTheme.of(context)
@@ -168,9 +166,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     ),
               ),
               Text(
-                FFLocalizations.of(context).getText(
-                  '6231x968' /* Llene la información del clien... */,
-                ),
+                'Llene la información del cliente nuevo',
                 maxLines: 2,
                 style: FlutterFlowTheme.of(context).labelMedium.override(
                       font: GoogleFonts.inter(
@@ -247,9 +243,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         FlutterFlowTheme.of(context).alternate,
                                   ),
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      'pyxull98' /* Datos personales */,
-                                    ),
+                                    'Datos personales',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
@@ -283,35 +277,31 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'lhhwa7uq' /* Nombres */,
-                                      ),
+                                      labelText: 'Nombres',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
+                                          .labelLarge
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.inter(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .labelLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .labelLarge
                                                     .fontStyle,
                                           ),
+                                      hintText: 'Nombres del cliente',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -409,26 +399,26 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                               16.0, 20.0, 16.0, 20.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
+                                        .bodyLarge
                                         .override(
-                                          font: GoogleFonts.interTight(
+                                          font: GoogleFonts.inter(
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .bodyLarge
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .bodyLarge
                                                   .fontStyle,
                                         ),
                                     maxLength: 35,
@@ -469,35 +459,31 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'n12i00nx' /* Apellidos */,
-                                      ),
+                                      labelText: 'Apellidos',
                                       labelStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
+                                          .labelLarge
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.inter(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .labelLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .labelLarge
                                                     .fontStyle,
                                           ),
+                                      hintText: 'Apellidos del cliente',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -595,26 +581,26 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                               16.0, 20.0, 16.0, 20.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
+                                        .bodyLarge
                                         .override(
-                                          font: GoogleFonts.interTight(
+                                          font: GoogleFonts.inter(
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                           letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .bodyLarge
                                                   .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .headlineMedium
+                                                  .bodyLarge
                                                   .fontStyle,
                                         ),
                                     maxLength: 35,
@@ -653,10 +639,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '8jwr8ism' /* Número de cédula/Usuario */,
-                                      ),
+                                      labelText: 'Número de cédula/Usuario',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -680,10 +663,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .labelLarge
                                                     .fontStyle,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'xndhbb3x' /* 10 dígitos */,
-                                      ),
+                                      hintText: '10 dígitos',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -841,10 +821,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'wzb88ms0' /* Número de teléfono */,
-                                      ),
+                                      labelText: 'Número de teléfono',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -868,10 +845,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .labelLarge
                                                     .fontStyle,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'v5g8l1zm' /* 10 dígitos */,
-                                      ),
+                                      hintText: '10 dígitos',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1028,10 +1002,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '8kma8106' /* Email */,
-                                      ),
+                                      labelText: 'Email',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -1199,9 +1170,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         FlutterFlowTheme.of(context).alternate,
                                   ),
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      'uay5m0ay' /* Datos de domicilio */,
-                                    ),
+                                    'Datos de domicilio',
                                     style: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .override(
@@ -1234,10 +1203,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '6zpzou76' /* Dirección domiciliaria */,
-                                      ),
+                                      labelText: 'Dirección domiciliaria',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -1261,10 +1227,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .labelLarge
                                                     .fontStyle,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'r9hfk6jw' /* 100 carácteres */,
-                                      ),
+                                      hintText: '100 carácteres',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
@@ -1412,9 +1375,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     ],
                                   ),
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      'muld53qm' /* Seleccione la vivienda del cli... */,
-                                    ),
+                                    'Seleccione la vivienda del cliente es propia o\nalquilada',
                                     textAlign: TextAlign.center,
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -1465,10 +1426,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       .forward(from: 0.0);
                                                 }
                                               },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'slqan309' /* Vivienda Propia */,
-                                              ),
+                                              text: 'Vivienda Propia',
                                               options: FFButtonOptions(
                                                 width: 140.0,
                                                 height: 40.0,
@@ -1550,10 +1508,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       .forward(from: 0.0);
                                                 }
                                               },
-                                              text: FFLocalizations.of(context)
-                                                  .getText(
-                                                'jsohxwys' /* Vivienda Alqu. */,
-                                              ),
+                                              text: 'Vivienda Alqu.',
                                               options: FFButtonOptions(
                                                 width: 140.0,
                                                 height: 40.0,
@@ -1672,9 +1627,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           AutoSizeText(
-                                            FFLocalizations.of(context).getText(
-                                              'v77bvb5c' /* Al registrarse, el cliente ace... */,
-                                            ),
+                                            'Al registrarse, el cliente acepta los',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -1718,10 +1671,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
                                               },
                                               child: AutoSizeText(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '7kyhdq3c' /* términos de servicio */,
-                                                ),
+                                                'términos de servicio',
                                                 textAlign: TextAlign.start,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -1819,9 +1769,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                             CrossAxisAlignment.center,
                                         children: [
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              'xe8600ud' /* Suscribirse al */,
-                                            ),
+                                            'Suscribirse al',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -1855,10 +1803,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'an9t36g2' /* envío de emails promocionales */,
-                                              ),
+                                              'envío de emails promocionales',
                                               textAlign: TextAlign.start,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -2281,9 +2226,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
 
                         if (_shouldSetState) safeSetState(() {});
                       },
-                      text: FFLocalizations.of(context).getText(
-                        '25j9hjhr' /* Enviar */,
-                      ),
+                      text: 'Enviar',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,

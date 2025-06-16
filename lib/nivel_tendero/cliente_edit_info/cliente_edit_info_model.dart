@@ -20,15 +20,11 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? _fullNameEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'r1hnrg1v' /* Ingrese los nombres del client... */,
-      );
+      return 'Ingrese los nombres del cliente.';
     }
 
     if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        'tjc9gmti' /* Ingrese el nombre con más de 5... */,
-      );
+      return 'Ingrese el nombre con más de 5 carácteres';
     }
 
     return null;
@@ -42,15 +38,11 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? _secondNameEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '9twb8r6b' /* Ingrese los apellidos del clie... */,
-      );
+      return 'Ingrese los apellidos del cliente.';
     }
 
     if (val.length < 5) {
-      return FFLocalizations.of(context).getText(
-        '6zmyr1xm' /* Ingrese el apellido con más de... */,
-      );
+      return 'Ingrese el apellido con más de 5 carácteres';
     }
 
     return null;
@@ -63,20 +55,14 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? _cedulaEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'ddf4buvg' /* Ingrese la cédula del cliente */,
-      );
+      return 'Ingrese la cédula del cliente';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'e2zea2kz' /* Ingrese la cédula completa. */,
-      );
+      return 'Ingrese la cédula completa.';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        '727xllyz' /* Ingrese la cédula. */,
-      );
+      return 'Ingrese la cédula.';
     }
 
     return null;
@@ -90,20 +76,14 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? _phoneNumberEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '0uzrchf6' /* Ingrese el número de teléfono ... */,
-      );
+      return 'Ingrese el número de teléfono del cliente.';
     }
 
     if (val.length < 10) {
-      return FFLocalizations.of(context).getText(
-        'rna1wy0y' /* Ingrese el número de teléfono ... */,
-      );
+      return 'Ingrese el número de teléfono completo';
     }
     if (val.length > 10) {
-      return FFLocalizations.of(context).getText(
-        '0pmpwrys' /* Ingrese el número de teléfono. */,
-      );
+      return 'Ingrese el número de teléfono.';
     }
 
     return null;
@@ -116,9 +96,7 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? _direccionEditTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'np5cp5ap' /* Ingrese la dirección del clien... */,
-      );
+      return 'Ingrese la dirección del cliente';
     }
 
     return null;
@@ -130,15 +108,11 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   String? Function(BuildContext, String?)? emailEditTextControllerValidator;
   String? _emailEditTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'bakwnf7j' /* Ingrese el email del cliente */,
-      );
+      return 'Ingrese el email del cliente';
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'fw5j8mgr' /* Ese Email no existe */,
-      );
+      return 'Ese Email no existe';
     }
     return null;
   }

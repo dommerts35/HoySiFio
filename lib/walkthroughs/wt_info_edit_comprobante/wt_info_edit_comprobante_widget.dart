@@ -55,9 +55,7 @@ class _WtInfoEditComprobanteWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'fkp990z1' /* Comprobantes */,
-            ),
+            'Comprobantes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditComprobanteWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              '3yffcmed' /* Visualice los comprobantes que... */,
-            ),
+            'Visualice los comprobantes que hayan sido enviados por el cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -42,27 +42,19 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
   String? _passwordClienteTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        '06rlamw2' /* Ingrese su contraseña */,
-      );
+      return 'Ingrese su contraseña';
     }
 
     if (val.length < 8) {
-      return FFLocalizations.of(context).getText(
-        'jl0qoc3w' /* Mínimo 8 carácteres */,
-      );
+      return 'Mínimo 8 carácteres';
     }
     if (val.length > 16) {
-      return FFLocalizations.of(context).getText(
-        'uaafkw79' /* Máximo 16 carácteres */,
-      );
+      return 'Máximo 16 carácteres';
     }
     if (!RegExp(
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        'x1veccke' /* Ingrese una mayúscula, un núme... */,
-      );
+      return 'Ingrese una mayúscula, un número y \nun carácter especial.';
     }
     return null;
   }
@@ -76,27 +68,19 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
   String? _passwordCClienteTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'hw3ytojw' /* Confirme su contraseña */,
-      );
+      return 'Confirme su contraseña';
     }
 
     if (val.length < 8) {
-      return FFLocalizations.of(context).getText(
-        '5owoirex' /* Mínimo 8 carácteres */,
-      );
+      return 'Mínimo 8 carácteres';
     }
     if (val.length > 16) {
-      return FFLocalizations.of(context).getText(
-        'x0ujj1uc' /* Máximo 16 carácteres */,
-      );
+      return 'Máximo 16 carácteres';
     }
     if (!RegExp(
             '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
         .hasMatch(val)) {
-      return FFLocalizations.of(context).getText(
-        '8g685mox' /* Ingrese una mayúscula, un núme... */,
-      );
+      return 'Ingrese una mayúscula, un número y \nun carácter especial.';
     }
     return null;
   }
@@ -109,20 +93,14 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
   String? _pinClienteTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return FFLocalizations.of(context).getText(
-        'v83h7x56' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
 
     if (val.length < 4) {
-      return FFLocalizations.of(context).getText(
-        'v8ggdksr' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
     if (val.length > 4) {
-      return FFLocalizations.of(context).getText(
-        'mxedvuzv' /* Ingrese su PIN */,
-      );
+      return 'Ingrese su PIN';
     }
 
     return null;

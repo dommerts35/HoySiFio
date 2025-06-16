@@ -55,9 +55,7 @@ class _WtInfoEditButtonReadWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            FFLocalizations.of(context).getText(
-              'x634pf4b' /* Datos Completos */,
-            ),
+            'Datos Completos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -77,9 +75,7 @@ class _WtInfoEditButtonReadWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            FFLocalizations.of(context).getText(
-              'x7fqbwjk' /* Este es el botón para visualiz... */,
-            ),
+            'Este es el botón para visualizar todos los datos del cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(
