@@ -55,7 +55,7 @@ class _WtInfoEditCuentasHistorialRowWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Historial de Cuentas',
+            'Historial de cuentas',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:

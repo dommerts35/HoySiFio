@@ -65,26 +65,6 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
   late bool passwordCClienteVisibility;
   String? Function(BuildContext, String?)?
       passwordCClienteTextControllerValidator;
-  String? _passwordCClienteTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Confirme su contraseña';
-    }
-
-    if (val.length < 8) {
-      return 'Mínimo 8 carácteres';
-    }
-    if (val.length > 16) {
-      return 'Máximo 16 carácteres';
-    }
-    if (!RegExp(
-            '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
-        .hasMatch(val)) {
-      return 'Ingrese una mayúscula, un número y \nun carácter especial.';
-    }
-    return null;
-  }
-
   // State field(s) for pin_Cliente widget.
   FocusNode? pinClienteFocusNode;
   TextEditingController? pinClienteTextController;
@@ -118,8 +98,6 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
     passwordClienteTextControllerValidator =
         _passwordClienteTextControllerValidator;
     passwordCClienteVisibility = false;
-    passwordCClienteTextControllerValidator =
-        _passwordCClienteTextControllerValidator;
     pinClienteVisibility = false;
     pinClienteTextControllerValidator = _pinClienteTextControllerValidator;
   }

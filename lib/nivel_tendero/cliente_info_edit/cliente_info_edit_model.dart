@@ -5,8 +5,6 @@ import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
 import 'cliente_info_edit_widget.dart' show ClienteInfoEditWidget;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
 class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
@@ -37,12 +35,9 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? tenderoICPdeClienteController;
   final formKey = GlobalKey<FormState>();
   // Stores action output result for [Firestore Query - Query a collection] action in clienteInfoEdit widget.
   ClientesRecord? queryOnLoad;
-  // Stores action output result for [Firestore Query - Query a collection] action in clienteInfoEdit widget.
-  ClientesRecord? queryOnDispose;
   // Model for infoComp component.
   late InfoCompModel infoCompModel;
   // Stores action output result for [Backend Call - Read Document] action in iconoBorrar widget.
@@ -63,26 +58,26 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   FocusNode? valorTFFocusNode;
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
-  double? valorConvVTF;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
-  double? valorConvCTF;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  ClientesRecord? queryOnAnadir;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button widget.
-  double? totalDeudaCompletaNorm;
-  // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
-  ClientesRecord? queryAfterDelete;
-  // Stores action output result for [Firestore Query - Query a collection] action in historialPagadosRep widget.
-  ClientesRecord? queryHistorialPagadoRep;
-  // Stores action output result for [Firestore Query - Query a collection] action in historialCobrarRep widget.
-  ClientesRecord? queryHistorialPorPagarRep;
   // Stores action output result for [Firestore Query - Query a collection] action in Button_guardarProductosFIados widget.
   ClientesRecord? queryGuardar;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button_guardarProductosFIados widget.
   double? sumaValoresEnDTNorm;
   // Stores action output result for [Backend Call - Read Document] action in Button_guardarProductosFIados widget.
   TenderosRecord? tenderoReadForEmailToClientProds;
+  // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
+  ClientesRecord? queryAfterDelete;
+  // Stores action output result for [Firestore Query - Query a collection] action in historialPagadosRep widget.
+  ClientesRecord? queryHistorialPagadoRep;
+  // Stores action output result for [Firestore Query - Query a collection] action in historialCobrarRep widget.
+  ClientesRecord? queryHistorialPorPagarRep;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
+  double? valorConvVTF;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
+  double? valorConvCTF;
+  // Stores action output result for [Firestore Query - Query a collection] action in anadirProd_bttn widget.
+  ClientesRecord? queryOnAnadir;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
+  double? totalDeudaCompletaNorm;
 
   /// Query cache managers for this widget.
 
@@ -108,7 +103,6 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
 
   @override
   void dispose() {
-    tenderoICPdeClienteController?.finish();
     infoCompModel.dispose();
     cantidatTfFocusNode?.dispose();
     cantidatTfTextController?.dispose();

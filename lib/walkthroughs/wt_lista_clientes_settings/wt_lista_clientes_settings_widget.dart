@@ -42,7 +42,7 @@ class _WtListaClientesSettingsWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 95.58,
+      height: 103.34,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),

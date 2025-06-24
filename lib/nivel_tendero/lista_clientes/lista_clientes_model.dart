@@ -3,8 +3,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'lista_clientes_widget.dart' show ListaClientesWidget;
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:flutter/material.dart';
 
 class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
@@ -30,7 +28,6 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? tenderoListaDeClientesController;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -43,7 +40,6 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
 
   @override
   void dispose() {
-    tenderoListaDeClientesController?.finish();
     tabBarController?.dispose();
   }
 }

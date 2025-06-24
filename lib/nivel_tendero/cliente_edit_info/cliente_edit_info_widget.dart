@@ -421,29 +421,26 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Nombres',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
+                                            .labelLarge
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.inter(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .labelLarge
                                                         .fontWeight,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .labelLarge
                                                         .fontStyle,
                                               ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontStyle,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
@@ -545,26 +542,26 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                 16.0, 20.0, 16.0, 20.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
+                                          .bodyLarge
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.inter(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .bodyLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .bodyLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                       maxLength: 21,
@@ -600,29 +597,26 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                       decoration: InputDecoration(
                                         labelText: 'Apellidos',
                                         labelStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
+                                            .labelLarge
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.inter(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .labelLarge
                                                         .fontWeight,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .labelLarge
                                                         .fontStyle,
                                               ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .labelLarge
                                                       .fontStyle,
                                             ),
                                         hintStyle: FlutterFlowTheme.of(context)
@@ -725,26 +719,26 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                 16.0, 20.0, 16.0, 20.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
-                                          .headlineMedium
+                                          .bodyLarge
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.inter(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .bodyLarge
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineMedium
+                                                      .bodyLarge
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .headlineMedium
+                                                    .bodyLarge
                                                     .fontStyle,
                                           ),
                                       maxLength: 21,

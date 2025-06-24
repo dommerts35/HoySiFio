@@ -42,7 +42,7 @@ class _WtInfoEditButtonReadWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 102.32,
+      height: 112.23,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -55,7 +55,7 @@ class _WtInfoEditButtonReadWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Datos Completos',
+            'Datos completos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -75,7 +75,7 @@ class _WtInfoEditButtonReadWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Este es el botón para visualizar todos los datos del cliente.',
+            'Este es el botón para visualizar los datos completos del cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

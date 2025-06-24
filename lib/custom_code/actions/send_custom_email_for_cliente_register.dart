@@ -21,30 +21,44 @@ Future<void> sendCustomEmailForClienteRegister(String recipientEmail,
   // 1. Template HTML con variables dinámicas
   final htmlContent = """
   <!DOCTYPE html>
-    <html>
-    <head>
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
-        .button { 
-          background-color: #FF5722; 
-          color: white !important; 
-          padding: 12px 24px; 
-          text-decoration: none; 
-          border-radius: 4px; 
-          display: inline-block;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="header">
-        <h1>¡Hola $recipientName!</h1>
-      </div>
-      <div style="padding: 20px;">
-        <p>Ha sido registrado en una nueva tienda, '$tiendaNombre'</p>
-      </div>
-    </body>
-    </html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro en nueva tienda - HoySíFio</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+    <!-- Header con logo -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
+      <tr>
+        <td align="center" style="padding: 20px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 50%; height: auto; padding: 0 0 0 15px;">
+          <h1 style="color: white; margin: 10px 0 0 0;">¡Has sido registrado en una tienda!</h1>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Cuerpo del mensaje -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; padding: 20px;">
+      <tr>
+        <td style="padding-bottom: 20px;">
+          <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
+          <p style="margin: 0 0 20px 0;">Has sido registrado exitosamente en el sistema de la tienda <strong>$tiendaNombre</strong>.</p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Footer -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
+      <tr>
+        <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
+          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>
   """;
 
   // 2. Configurar petición a OneSignal

@@ -1,0 +1,44 @@
+import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
+import 'page_tutorial_lista_clientes_widget.dart'
+    show PageTutorialListaClientesWidget;
+import 'package:flutter/material.dart';
+import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+
+class PageTutorialListaClientesModel
+    extends FlutterFlowModel<PageTutorialListaClientesWidget> {
+  ///  Local state fields for this page.
+
+  List<DataTypeHistorialPagoStruct> emptyDTHistorialPagoPorPagar = [];
+  void addToEmptyDTHistorialPagoPorPagar(DataTypeHistorialPagoStruct item) =>
+      emptyDTHistorialPagoPorPagar.add(item);
+  void removeFromEmptyDTHistorialPagoPorPagar(
+          DataTypeHistorialPagoStruct item) =>
+      emptyDTHistorialPagoPorPagar.remove(item);
+  void removeAtIndexFromEmptyDTHistorialPagoPorPagar(int index) =>
+      emptyDTHistorialPagoPorPagar.removeAt(index);
+  void insertAtIndexInEmptyDTHistorialPagoPorPagar(
+          int index, DataTypeHistorialPagoStruct item) =>
+      emptyDTHistorialPagoPorPagar.insert(index, item);
+  void updateEmptyDTHistorialPagoPorPagarAtIndex(
+          int index, Function(DataTypeHistorialPagoStruct) updateFn) =>
+      emptyDTHistorialPagoPorPagar[index] =
+          updateFn(emptyDTHistorialPagoPorPagar[index]);
+
+  String? searchQuery;
+
+  ///  State fields for stateful widgets in this page.
+
+  // State field(s) for SwipeableStack widget.
+  late CardSwiperController swipeableStackController;
+
+  @override
+  void initState(BuildContext context) {
+    swipeableStackController = CardSwiperController();
+  }
+
+  @override
+  void dispose() {}
+}

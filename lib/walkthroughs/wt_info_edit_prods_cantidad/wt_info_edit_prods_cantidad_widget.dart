@@ -75,7 +75,7 @@ class _WtInfoEditProdsCantidadWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Registra el número de productos.',
+            'Registre el número de productos.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -83,7 +83,7 @@ class _EmptyVoucherCompWidgetState extends State<EmptyVoucherCompWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 10.0),
                 child: Text(
-                  'No hay vouchers enviados',
+                  'No hay comprobantes.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.interTight(
                           fontWeight: FlutterFlowTheme.of(context)

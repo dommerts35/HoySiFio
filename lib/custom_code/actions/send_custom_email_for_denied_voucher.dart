@@ -25,31 +25,58 @@ Future<void> sendCustomEmailForDeniedVoucher(
   // 1. Template HTML con variables dinámicas
   final htmlContent = """
   <!DOCTYPE html>
-    <html>
-    <head>
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
-        .button { 
-          background-color: #FF5722; 
-          color: white !important; 
-          padding: 12px 24px; 
-          text-decoration: none; 
-          border-radius: 4px; 
-          display: inline-block;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="header">
-        <h1>¡Hola $recipientName!</h1>
-      </div>
-      <div style="padding: 20px;">
-        <p>Se ha negado un comprobante enviado a la tienda: '$nombreTienda'</p>
-        <p>La razón de la negación es: '$razonNegado'</p>
-      </div>
-    </body>
-    </html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprobante Rechazado - HoySíFio</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+    <!-- Header con logo -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
+      <tr>
+        <td align="center" style="padding: 20px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 100%; height: auto; padding: 0 0 0 15px;">
+          <h1 style="color: white; margin: 10px 0 0 0; font-size: 24px;">Comprobante rechazado</h1>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Contenido principal -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+      <tr>
+        <td style="padding: 25px;">
+          <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado $recipientName,</p>
+          <p style="margin: 0 0 20px 0; font-size: 16px;">Lamentamos informarte que el tendero de <strong style="color: #286181;">$nombreTienda</strong> ha rechazado tu comprobante de pago.</p>
+        
+          <!-- Detalles del rechazo -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; background-color: #fff8f8; border-left: 4px solid #e53935; padding: 15px;">
+            <tr>
+              <td>
+                <p style="margin: 5px 0; font-weight: bold; color: #e53935;">Motivo del rechazo:</p>
+                <p style="margin: 5px 0 15px 0; font-style: italic;">"$razonNegado"</p>
+              </td>
+            </tr>
+          </table>
+
+          <p style="margin: 20px 0 10px 0; font-size: 15px;">
+            Por favor, verifique la información y envíe un comprobante válido.
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Footer -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
+      <tr>
+        <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
+          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>
   """;
 
   // 2. Configurar petición a OneSignal

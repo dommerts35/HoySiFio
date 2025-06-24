@@ -41,7 +41,7 @@ class _WtInfoEditCuentasWidgetState extends State<WtInfoEditCuentasWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: 276.6,
-      height: 103.41,
+      height: 107.81,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
         borderRadius: BorderRadius.circular(8.0),
@@ -54,7 +54,7 @@ class _WtInfoEditCuentasWidgetState extends State<WtInfoEditCuentasWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Sección de Cuentas',
+            'Sección de cuentas',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -74,7 +74,7 @@ class _WtInfoEditCuentasWidgetState extends State<WtInfoEditCuentasWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'En esta es la sección podrá ver el historial del cliente.',
+            'En esta sección podrá ver los historiales del cliente.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

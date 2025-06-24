@@ -1,18 +1,11 @@
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/walkthroughs/cliente_prods_list.dart';
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'resumen_fiado_clien_prods_new_model.dart';
 export 'resumen_fiado_clien_prods_new_model.dart';
 
@@ -45,42 +38,15 @@ class ResumenFiadoClienProdsNewWidget extends StatefulWidget {
 }
 
 class _ResumenFiadoClienProdsNewWidgetState
-    extends State<ResumenFiadoClienProdsNewWidget>
-    with TickerProviderStateMixin {
+    extends State<ResumenFiadoClienProdsNewWidget> {
   late ResumenFiadoClienProdsNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ResumenFiadoClienProdsNewModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().isFirstTimeClienteProdList == true) {
-        safeSetState(() =>
-            _model.clienteProdsListController = createPageWalkthrough(context));
-        _model.clienteProdsListController?.show(context: context);
-      }
-    });
-
-    animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          FadeEffect(
-            curve: Curves.easeIn,
-            delay: 540.0.ms,
-            duration: 490.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -94,8 +60,6 @@ class _ResumenFiadoClienProdsNewWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return StreamBuilder<ClientesRecord>(
       stream: ClientesRecord.getDocument(widget.idCliente!),
       builder: (context, snapshot) {
@@ -392,10 +356,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                       .titleLarge
                                                                       .fontStyle,
                                                                 ),
-                                                          ).addWalkthrough(
-                                                            textQhuce88l,
-                                                            _model
-                                                                .clienteProdsListController,
                                                           ),
                                                         ),
                                                       ]
@@ -1124,10 +1084,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                             }).divide(SizedBox(
                                                                 height: 15.0)),
                                                           ),
-                                                        ).addWalkthrough(
-                                                          columnS2lj1071,
-                                                          _model
-                                                              .clienteProdsListController,
                                                         );
                                                       },
                                                     ),
@@ -1391,10 +1347,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                ).addWalkthrough(
-                                                  buttonEj5u1ff9,
-                                                  _model
-                                                      .clienteProdsListController,
                                                 ),
                                                 FFButtonWidget(
                                                   onPressed: () async {
@@ -1500,10 +1452,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
-                                                ).addWalkthrough(
-                                                  buttonK9i80zuf,
-                                                  _model
-                                                      .clienteProdsListController,
                                                 ),
                                               ].divide(SizedBox(height: 15.0)),
                                             ),
@@ -1523,26 +1471,9 @@ class _ResumenFiadoClienProdsNewWidgetState
                 ),
               ],
             ),
-          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
+          ),
         );
       },
     );
   }
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          safeSetState(() => _model.clienteProdsListController = null);
-          FFAppState().isFirstTimeClienteProdList = false;
-          safeSetState(() {});
-        },
-        onSkip: () {
-          () async {
-            FFAppState().isFirstTimeClienteProdList = false;
-            safeSetState(() {});
-          }();
-          return true;
-        },
-      );
 }

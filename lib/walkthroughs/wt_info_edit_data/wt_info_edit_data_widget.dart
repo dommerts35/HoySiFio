@@ -53,7 +53,7 @@ class _WtInfoEditDataWidgetState extends State<WtInfoEditDataWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Datos',
+            'Credenciales',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:

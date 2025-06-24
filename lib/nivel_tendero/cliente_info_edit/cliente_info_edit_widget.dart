@@ -5,12 +5,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/walkthroughs/tendero_i_c_pde_cliente.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +84,62 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().isFirstTimeInfoEdit == true) {
+        FFAppState().isFirstTimeInfoEdit = false;
+        safeSetState(() {});
+
+        context.goNamed(
+          PageTutorialinfoProdWidget.routeName,
+          queryParameters: {
+            'tenderoRef': serializeParam(
+              widget.tenderoRef,
+              ParamType.DocumentReference,
+            ),
+            'nombreCliente': serializeParam(
+              widget.nombre,
+              ParamType.String,
+            ),
+            'telf': serializeParam(
+              widget.telf,
+              ParamType.String,
+            ),
+            'isFiando': serializeParam(
+              widget.isFiando,
+              ParamType.bool,
+            ),
+            'idCliente': serializeParam(
+              widget.idCliente,
+              ParamType.DocumentReference,
+            ),
+            'apellido': serializeParam(
+              widget.apellido,
+              ParamType.String,
+            ),
+            'cedula': serializeParam(
+              widget.cedula,
+              ParamType.String,
+            ),
+            'direccionDomicilio': serializeParam(
+              widget.direccionDomicilio,
+              ParamType.String,
+            ),
+            'viviendaAlq': serializeParam(
+              widget.viviendaAlq,
+              ParamType.bool,
+            ),
+            'viviendaProp': serializeParam(
+              widget.viviendaProp,
+              ParamType.bool,
+            ),
+            'emailCliente': serializeParam(
+              widget.emailCliente,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+        );
+
+        return;
+      }
       _model.dtProdItem = [];
       safeSetState(() {});
       _model.queryOnLoad = await queryClientesRecordOnce(
@@ -146,11 +199,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
           clearUnsetFields: false,
         ),
       ));
-      if (FFAppState().isFirstTimeInfoEdit == true) {
-        safeSetState(() => _model.tenderoICPdeClienteController =
-            createPageWalkthrough(context));
-        _model.tenderoICPdeClienteController?.show(context: context);
-      }
     });
 
     _model.cantidatTfTextController ??= TextEditingController();
@@ -167,40 +215,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
 
   @override
   void dispose() {
-    // On page dispose action.
-    () async {
-      _model.queryOnDispose = await queryClientesRecordOnce(
-        queryBuilder: (clientesRecord) => clientesRecord
-            .where(
-              'cliente.idCliente',
-              isEqualTo: widget.idCliente,
-            )
-            .where(
-              'cliente.idTendero',
-              isEqualTo: widget.tenderoRef,
-            ),
-        singleRecord: true,
-      ).then((s) => s.firstOrNull);
-      if ((_model.queryOnDispose?.cliente.historialPorPagarProd != null &&
-              (_model.queryOnDispose?.cliente.historialPorPagarProd)!
-                  .isNotEmpty) ==
-          true) {
-        await widget.idCliente!.update(createClientesRecordData(
-          cliente: createDataTypeClienteStruct(
-            isFiando: true,
-            clearUnsetFields: false,
-          ),
-        ));
-      } else {
-        await widget.idCliente!.update(createClientesRecordData(
-          cliente: createDataTypeClienteStruct(
-            isFiando: false,
-            clearUnsetFields: false,
-          ),
-        ));
-      }
-    }();
-
     _model.dispose();
 
     super.dispose();
@@ -326,13 +340,26 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Text(
-                                  '${widget.nombre} ',
-                                  maxLines: 1,
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 3.0, 0.0),
+                                  child: Text(
+                                    '${widget.nombre}',
+                                    maxLines: 1,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .labelMedium
@@ -342,14 +369,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                   .labelMedium
                                                   .fontStyle,
                                         ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .fontStyle,
-                                      ),
+                                  ),
                                 ),
                                 Text(
                                   valueOrDefault<String>(
@@ -712,10 +732,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               }.withoutNulls,
                                                             );
                                                           },
-                                                        ).addWalkthrough(
-                                                          iconButton84oxlft0,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                       Align(
@@ -906,10 +922,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               safeSetState(
                                                                   () {});
                                                           },
-                                                        ).addWalkthrough(
-                                                          iconButtonZwyz2l9o,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                       Align(
@@ -1036,20 +1048,12 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               }.withoutNulls,
                                                             );
                                                           },
-                                                        ).addWalkthrough(
-                                                          iconButtonXjfzyogm,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                     ].divide(
                                                         SizedBox(height: 5.0)),
                                                   ),
                                                 ],
-                                              ).addWalkthrough(
-                                                rowNzxu284f,
-                                                _model
-                                                    .tenderoICPdeClienteController,
                                               ),
                                               Divider(
                                                 thickness: 2.0,
@@ -1555,10 +1559,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                           ),
                                                         ),
                                                       ],
-                                                    ).addWalkthrough(
-                                                      rowL0vfsgti,
-                                                      _model
-                                                          .tenderoICPdeClienteController,
                                                     ),
                                                   ),
                                                   Padding(
@@ -1805,10 +1805,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 ),
                                                               ),
                                                             ],
-                                                          ).addWalkthrough(
-                                                            stackSh8miu7t,
-                                                            _model
-                                                                .tenderoICPdeClienteController,
                                                           ),
                                                         ),
                                                       ].addToStart(SizedBox(
@@ -1816,10 +1812,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                     ),
                                                   ),
                                                 ],
-                                              ).addWalkthrough(
-                                                columnF5wlylrs,
-                                                _model
-                                                    .tenderoICPdeClienteController,
                                               ),
                                             ],
                                           ),
@@ -2171,10 +2163,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       '^\\d*[,.]?\\d{0,2}\$'))
                                                             ],
                                                           ),
-                                                        ).addWalkthrough(
-                                                          textFieldRz0u7lkw,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                       Expanded(
@@ -2362,10 +2350,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 }),
                                                             ],
                                                           ),
-                                                        ).addWalkthrough(
-                                                          textFieldNwk9jlpz,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                       Expanded(
@@ -2557,10 +2541,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       '^\\d*[,.]?\\d{0,2}\$'))
                                                             ],
                                                           ),
-                                                        ).addWalkthrough(
-                                                          textFieldOejhq5lq,
-                                                          _model
-                                                              .tenderoICPdeClienteController,
                                                         ),
                                                       ),
                                                     ].divide(
@@ -2654,221 +2634,28 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                         );
                                                       },
                                                     ),
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              1.0, 0.0),
-                                                      child: FFButtonWidget(
-                                                        onPressed: () {
-                                                          if ((clienteInfoEditClientesRecord
-                                                                      .cliente
-                                                                      .viviendaPropia ==
-                                                                  true) &&
-                                                              (clienteInfoEditClientesRecord
-                                                                      .cliente
-                                                                      .totalDeudaCompleta >=
-                                                                  20.0)) {
-                                                            return true;
-                                                          } else if ((clienteInfoEditClientesRecord
-                                                                      .cliente
-                                                                      .viviendaAlq ==
-                                                                  true) &&
-                                                              (clienteInfoEditClientesRecord
-                                                                      .cliente
-                                                                      .totalDeudaCompleta >=
-                                                                  10.0)) {
-                                                            return true;
-                                                          } else {
-                                                            return false;
-                                                          }
-                                                        }()
-                                                            ? null
-                                                            : () async {
-                                                                var _shouldSetState =
-                                                                    false;
-                                                                _model.valorConvVTF =
-                                                                    await actions
-                                                                        .normalizarValorNumerico(
-                                                                  _model
-                                                                      .valorTFTextController
-                                                                      .text,
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-                                                                _model.valorConvCTF =
-                                                                    await actions
-                                                                        .normalizarValorNumerico(
-                                                                  _model
-                                                                      .cantidatTfTextController
-                                                                      .text,
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-                                                                if ((_model.cantidatTfTextController.text !=
-                                                                            '') &&
-                                                                    (_model.valorTFTextController.text !=
-                                                                            '')) {
-                                                                  if (widget
-                                                                          .viviendaProp ==
-                                                                      true) {
-                                                                    if ((_model.totalDeudaCompleta +
-                                                                            ((_model.valorConvVTF!) *
-                                                                                (_model.valorConvCTF!))) >
-                                                                        20.0) {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (alertDialogContext) {
-                                                                          return AlertDialog(
-                                                                            title:
-                                                                                Text('¡Alerta!'),
-                                                                            content:
-                                                                                Text('El cliente ha superado el límite de crédito. No se aumentará más productos.'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
-                                                                      );
-                                                                      if (_shouldSetState)
-                                                                        safeSetState(
-                                                                            () {});
-                                                                      return;
-                                                                    } else {
-                                                                      await Future.delayed(const Duration(
-                                                                          milliseconds:
-                                                                              300));
-
-                                                                      await widget
-                                                                          .idCliente!
-                                                                          .update(
-                                                                              createClientesRecordData(
-                                                                        cliente:
-                                                                            createDataTypeClienteStruct(
-                                                                          fieldValues: {
-                                                                            'producto':
-                                                                                FieldValue.arrayUnion([
-                                                                              getDataTypeProductosFirestoreData(
-                                                                                createDataTypeProductosStruct(
-                                                                                  nombreProd: _model.prodTFTextController.text,
-                                                                                  valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
-                                                                                  cantidad: _model.valorConvCTF,
-                                                                                  idProd: random_data.randomString(
-                                                                                    6,
-                                                                                    6,
-                                                                                    true,
-                                                                                    true,
-                                                                                    true,
-                                                                                  ),
-                                                                                  clearUnsetFields: false,
-                                                                                ),
-                                                                                true,
-                                                                              )
-                                                                            ]),
-                                                                          },
-                                                                          clearUnsetFields:
-                                                                              false,
-                                                                        ),
-                                                                      ));
-                                                                      safeSetState(
-                                                                          () {
-                                                                        _model
-                                                                            .cantidatTfTextController
-                                                                            ?.clear();
-                                                                        _model
-                                                                            .valorTFTextController
-                                                                            ?.clear();
-                                                                        _model
-                                                                            .prodTFTextController
-                                                                            ?.clear();
-                                                                      });
-                                                                    }
-                                                                  } else {
-                                                                    if ((_model.totalDeudaCompleta +
-                                                                            ((_model.valorConvVTF!) *
-                                                                                (_model.valorConvCTF!))) >
-                                                                        10.0) {
-                                                                      await showDialog(
-                                                                        context:
-                                                                            context,
-                                                                        builder:
-                                                                            (alertDialogContext) {
-                                                                          return AlertDialog(
-                                                                            title:
-                                                                                Text('¡Alerta!'),
-                                                                            content:
-                                                                                Text('El cliente ha superado el límite de crédito. No se aumentará más productos.'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          );
-                                                                        },
-                                                                      );
-                                                                      if (_shouldSetState)
-                                                                        safeSetState(
-                                                                            () {});
-                                                                      return;
-                                                                    } else {
-                                                                      await Future.delayed(const Duration(
-                                                                          milliseconds:
-                                                                              300));
-
-                                                                      await widget
-                                                                          .idCliente!
-                                                                          .update(
-                                                                              createClientesRecordData(
-                                                                        cliente:
-                                                                            createDataTypeClienteStruct(
-                                                                          fieldValues: {
-                                                                            'producto':
-                                                                                FieldValue.arrayUnion([
-                                                                              getDataTypeProductosFirestoreData(
-                                                                                createDataTypeProductosStruct(
-                                                                                  nombreProd: _model.prodTFTextController.text,
-                                                                                  valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
-                                                                                  cantidad: _model.valorConvCTF,
-                                                                                  idProd: random_data.randomString(
-                                                                                    6,
-                                                                                    6,
-                                                                                    true,
-                                                                                    true,
-                                                                                    true,
-                                                                                  ),
-                                                                                  clearUnsetFields: false,
-                                                                                ),
-                                                                                true,
-                                                                              )
-                                                                            ]),
-                                                                          },
-                                                                          clearUnsetFields:
-                                                                              false,
-                                                                        ),
-                                                                      ));
-                                                                      safeSetState(
-                                                                          () {
-                                                                        _model
-                                                                            .cantidatTfTextController
-                                                                            ?.clear();
-                                                                        _model
-                                                                            .valorTFTextController
-                                                                            ?.clear();
-                                                                        _model
-                                                                            .prodTFTextController
-                                                                            ?.clear();
-                                                                      });
-                                                                    }
-                                                                  }
-
-                                                                  _model.queryOnAnadir =
-                                                                      await queryClientesRecordOnce(
-                                                                    queryBuilder: (clientesRecord) =>
+                                                    Expanded(
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                1.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      12.0,
+                                                                      16.0,
+                                                                      12.0),
+                                                          child: FFButtonWidget(
+                                                            onPressed:
+                                                                () async {
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              _model.queryGuardar =
+                                                                  await queryClientesRecordOnce(
+                                                                queryBuilder:
+                                                                    (clientesRecord) =>
                                                                         clientesRecord
                                                                             .where(
                                                                               'cliente.idCliente',
@@ -2878,218 +2665,314 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               'cliente.idTendero',
                                                                               isEqualTo: widget.tenderoRef,
                                                                             ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.tempCount =
-                                                                      0;
-                                                                  _model.tempSumHistorial =
-                                                                      0.0;
-                                                                  _model.tempSumProductos =
-                                                                      0.0;
-                                                                  _model.totalDeudaCompleta =
-                                                                      0.0;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  if ((_model.queryOnAnadir?.cliente.producto !=
-                                                                              null &&
-                                                                          (_model.queryOnAnadir?.cliente.producto)!
-                                                                              .isNotEmpty) ==
-                                                                      true) {
-                                                                    while (_model
-                                                                            .tempCount <
-                                                                        _model
-                                                                            .queryOnAnadir!
-                                                                            .cliente
-                                                                            .producto
-                                                                            .length) {
-                                                                      _model
-                                                                          .tempSumProductos = _model
-                                                                              .tempSumProductos +
-                                                                          _model
-                                                                              .queryOnAnadir!
-                                                                              .cliente
-                                                                              .producto
-                                                                              .elementAtOrNull(_model.tempCount)!
-                                                                              .valorProd;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                      _model.tempCount =
-                                                                          _model.tempCount +
-                                                                              1;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    }
-                                                                  }
-                                                                  _model.tempCount =
-                                                                      0;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  if ((_model.queryOnAnadir?.cliente.historialPorPagarProd !=
-                                                                              null &&
-                                                                          (_model.queryOnAnadir?.cliente.historialPorPagarProd)!
-                                                                              .isNotEmpty) ==
-                                                                      true) {
-                                                                    while (_model
-                                                                            .tempCount <
-                                                                        _model
-                                                                            .queryOnAnadir!
-                                                                            .cliente
-                                                                            .historialPorPagarProd
-                                                                            .length) {
-                                                                      _model
-                                                                          .tempSumHistorial = _model
-                                                                              .tempSumHistorial +
-                                                                          _model
-                                                                              .queryOnAnadir!
-                                                                              .cliente
-                                                                              .historialPorPagarProd
-                                                                              .elementAtOrNull(_model.tempCount)!
-                                                                              .totalPorPagar;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                      _model.tempCount =
-                                                                          _model.tempCount +
-                                                                              1;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                    }
-                                                                  }
-                                                                  _model
-                                                                      .totalDeudaCompleta = _model
-                                                                          .tempSumHistorial +
-                                                                      _model
-                                                                          .tempSumProductos;
-                                                                  _model.valorANormalizar =
-                                                                      formatNumber(
-                                                                    _model
-                                                                        .totalDeudaCompleta,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .custom,
-                                                                    format:
-                                                                        '#0.00',
-                                                                    locale: '',
-                                                                  );
-                                                                  safeSetState(
-                                                                      () {});
-                                                                  _model.totalDeudaCompletaNorm =
-                                                                      await actions
-                                                                          .normalizarValorNumerico(
-                                                                    _model
-                                                                        .valorANormalizar!,
-                                                                  );
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  _model.totalDeudaCompleta =
-                                                                      _model
-                                                                          .totalDeudaCompletaNorm!;
-                                                                  safeSetState(
-                                                                      () {});
-
-                                                                  await widget
-                                                                      .idCliente!
-                                                                      .update(
-                                                                          createClientesRecordData(
-                                                                    cliente:
-                                                                        createDataTypeClienteStruct(
-                                                                      totalDeudaCompleta:
-                                                                          _model
-                                                                              .totalDeudaCompletaNorm,
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                    ),
-                                                                  ));
-                                                                }
+                                                                singleRecord:
+                                                                    true,
+                                                              ).then((s) => s
+                                                                      .firstOrNull);
+                                                              _shouldSetState =
+                                                                  true;
+                                                              if ((_model.queryGuardar?.cliente
+                                                                              .producto !=
+                                                                          null &&
+                                                                      (_model
+                                                                              .queryGuardar
+                                                                              ?.cliente
+                                                                              .producto)!
+                                                                          .isNotEmpty) ==
+                                                                  false) {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (alertDialogContext) {
+                                                                    return AlertDialog(
+                                                                      title: Text(
+                                                                          '¡Alerta!'),
+                                                                      content: Text(
+                                                                          'No ha sido ingresado ningún producto.'),
+                                                                      actions: [
+                                                                        TextButton(
+                                                                          onPressed: () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                          child:
+                                                                              Text('Ok'),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                );
                                                                 if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                              },
-                                                        text: 'Añadir Producto',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          width: 120.0,
-                                                          height: 30.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      16.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .success,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .interTight(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                          elevation: 0.0,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          disabledColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent2,
-                                                          disabledTextColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryText,
+                                                                return;
+                                                              } else {
+                                                                _model.tempCount =
+                                                                    0;
+                                                                _model.sumaValoresEnDTProd =
+                                                                    0.0;
+                                                                safeSetState(
+                                                                    () {});
+                                                                while (_model
+                                                                        .tempCount <
+                                                                    _model
+                                                                        .queryGuardar!
+                                                                        .cliente
+                                                                        .producto
+                                                                        .length) {
+                                                                  _model.addToDtProdItem(
+                                                                      DataTypeProductosStruct(
+                                                                    nombreProd: (_model
+                                                                            .queryGuardar
+                                                                            ?.cliente
+                                                                            .producto
+                                                                            .elementAtOrNull(_model.tempCount))
+                                                                        ?.nombreProd,
+                                                                    valorProd: (_model
+                                                                            .queryGuardar
+                                                                            ?.cliente
+                                                                            .producto
+                                                                            .elementAtOrNull(_model.tempCount))
+                                                                        ?.valorProd,
+                                                                    cantidad: (_model
+                                                                            .queryGuardar
+                                                                            ?.cliente
+                                                                            .producto
+                                                                            .elementAtOrNull(_model.tempCount))
+                                                                        ?.cantidad,
+                                                                  ));
+                                                                  _model.tempCount =
+                                                                      _model.tempCount +
+                                                                          1;
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
+                                                              }
+
+                                                              _model.tempCount =
+                                                                  0;
+                                                              safeSetState(
+                                                                  () {});
+                                                              while (_model
+                                                                      .tempCount <
+                                                                  _model
+                                                                      .dtProdItem
+                                                                      .length) {
+                                                                _model
+                                                                    .sumaValoresEnDTProd = _model
+                                                                        .sumaValoresEnDTProd! +
+                                                                    _model
+                                                                        .dtProdItem
+                                                                        .elementAtOrNull(
+                                                                            _model.tempCount)!
+                                                                        .valorProd;
+                                                                _model.tempCount =
+                                                                    _model.tempCount +
+                                                                        1;
+                                                                safeSetState(
+                                                                    () {});
+                                                              }
+                                                              _model.valorANormalizar =
+                                                                  formatNumber(
+                                                                _model
+                                                                    .sumaValoresEnDTProd,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '#0.00',
+                                                                locale: '',
+                                                              );
+                                                              safeSetState(
+                                                                  () {});
+                                                              _model.sumaValoresEnDTNorm =
+                                                                  await actions
+                                                                      .normalizarValorNumerico(
+                                                                _model
+                                                                    .valorANormalizar!,
+                                                              );
+                                                              _shouldSetState =
+                                                                  true;
+                                                              _model.sumaValoresEnDTProd =
+                                                                  _model
+                                                                      .sumaValoresEnDTNorm;
+                                                              safeSetState(
+                                                                  () {});
+
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                cliente:
+                                                                    createDataTypeClienteStruct(
+                                                                  fieldValues: {
+                                                                    'historialPorPagarProd':
+                                                                        FieldValue
+                                                                            .arrayUnion([
+                                                                      getDataTypeHistorialPagoFirestoreData(
+                                                                        updateDataTypeHistorialPagoStruct(
+                                                                          DataTypeHistorialPagoStruct(
+                                                                            productos:
+                                                                                _model.dtProdItem,
+                                                                            totalPagado:
+                                                                                0.0,
+                                                                            totalGeneral:
+                                                                                _model.sumaValoresEnDTProd,
+                                                                            totalPorPagar:
+                                                                                _model.sumaValoresEnDTProd,
+                                                                            transferencia:
+                                                                                false,
+                                                                            efectivo:
+                                                                                false,
+                                                                            idTransaccion:
+                                                                                valueOrDefault<String>(
+                                                                              random_data.randomString(
+                                                                                5,
+                                                                                5,
+                                                                                true,
+                                                                                true,
+                                                                                true,
+                                                                              ),
+                                                                              'id000',
+                                                                            ),
+                                                                            fechaDeFio:
+                                                                                getCurrentTimestamp,
+                                                                          ),
+                                                                          clearUnsetFields:
+                                                                              false,
+                                                                        ),
+                                                                        true,
+                                                                      )
+                                                                    ]),
+                                                                    'producto':
+                                                                        FieldValue
+                                                                            .delete(),
+                                                                  },
+                                                                  clearUnsetFields:
+                                                                      false,
+                                                                ),
+                                                              ));
+                                                              _model.dtProdItem =
+                                                                  [];
+                                                              _model.tempSumProductos =
+                                                                  0.0;
+                                                              safeSetState(
+                                                                  () {});
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        '¡Productos guardados!'),
+                                                                    content: Text(
+                                                                        'Los productos añadidos han sido guardados correctamente.'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed:
+                                                                            () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                        child: Text(
+                                                                            'Ok'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              );
+                                                              _model.tenderoReadForEmailToClientProds =
+                                                                  await TenderosRecord
+                                                                      .getDocumentOnce(
+                                                                          widget
+                                                                              .tenderoRef!);
+                                                              _shouldSetState =
+                                                                  true;
+                                                              for (int loop1Index =
+                                                                      0;
+                                                                  loop1Index <
+                                                                      clienteInfoEditClientesRecord
+                                                                          .playerIds
+                                                                          .length;
+                                                                  loop1Index++) {
+                                                                final currentLoop1Item =
+                                                                    clienteInfoEditClientesRecord
+                                                                            .playerIds[
+                                                                        loop1Index];
+                                                                await actions
+                                                                    .sendNotificationToPlayer(
+                                                                  currentLoop1Item,
+                                                                  '¡Se han agregado productos adeudados a tu cuenta en la tienda: ${_model.tenderoReadForEmailToClientProds?.displayName}',
+                                                                );
+                                                              }
+                                                              if (_shouldSetState)
+                                                                safeSetState(
+                                                                    () {});
+                                                            },
+                                                            text: 'Guardar',
+                                                            options:
+                                                                FFButtonOptions(
+                                                              width: 180.0,
+                                                              height: 30.0,
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              iconPadding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              textStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: Colors
+                                                                            .white,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                              elevation: 3.0,
+                                                              borderSide:
+                                                                  BorderSide(
+                                                                color: Colors
+                                                                    .transparent,
+                                                                width: 1.0,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                          ),
                                                         ),
-                                                      ).addWalkthrough(
-                                                        button88ci7uwn,
-                                                        _model
-                                                            .tenderoICPdeClienteController,
                                                       ),
                                                     ),
                                                   ],
                                                 ),
                                               ),
                                             ].divide(SizedBox(height: 10.0)),
-                                          ).addWalkthrough(
-                                            columnNhblu9cp,
-                                            _model
-                                                .tenderoICPdeClienteController,
                                           ),
                                           Container(
                                             decoration: BoxDecoration(
@@ -3139,12 +3022,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                             topRight:
                                                                 Radius.circular(
                                                                     8.0),
-                                                          ),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                            width: 0.1,
                                                           ),
                                                         ),
                                                         child:
@@ -3324,7 +3201,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                 ClipRRect(
                                                                               borderRadius: BorderRadius.circular(0.0),
                                                                               child: Image.asset(
-                                                                                'assets/images/imagen_2025-06-02_142512236.png',
+                                                                                'assets/images/imagen_2025-06-18_135131020.png',
                                                                               ),
                                                                             ),
                                                                           );
@@ -3578,14 +3455,27 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xD539D2C0),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    8.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    8.0),
+                                                            topLeft:
+                                                                Radius.circular(
                                                                     0.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    0.0),
+                                                          ),
+                                                        ),
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -3593,713 +3483,142 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               MainAxisAlignment
                                                                   .spaceEvenly,
                                                           children: [
-                                                            if ((_model.queryGuardar?.cliente
-                                                                            .producto !=
-                                                                        null &&
-                                                                    (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto)!
-                                                                        .isNotEmpty) ==
-                                                                true)
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    _model.queryHistorialPagadoRep =
-                                                                        await queryClientesRecordOnce(
-                                                                      queryBuilder: (clientesRecord) => clientesRecord
-                                                                          .where(
-                                                                            'cliente.cedula',
-                                                                            isEqualTo:
-                                                                                widget.cedula,
-                                                                          )
-                                                                          .where(
-                                                                            'cliente.idTendero',
-                                                                            isEqualTo:
-                                                                                widget.tenderoRef,
-                                                                          ),
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ).then((s) =>
-                                                                            s.firstOrNull);
-
-                                                                    context
-                                                                        .goNamed(
-                                                                      HistorialPagosWidget
-                                                                          .routeName,
-                                                                      queryParameters:
-                                                                          {
-                                                                        'idCliente':
-                                                                            serializeParam(
-                                                                          _model
-                                                                              .queryHistorialPagadoRep
-                                                                              ?.reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'idTendero':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .tenderoRef,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'nombre':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .nombre,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'telf':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .telf,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'isFiando':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .isFiando,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'apellido':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .apellido,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'cedula':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .cedula,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'direccionDomicilio':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .direccionDomicilio,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'viviendaAlq':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaAlq,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'viviendaProp':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaProp,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'emailCliente':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .emailCliente,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  },
-                                                                  text:
-                                                                      'Productos pagados',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.interTight(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              2.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    elevation:
-                                                                        0.0,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    hoverColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    hoverBorderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    hoverTextColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            if ((_model.queryGuardar?.cliente
-                                                                            .producto !=
-                                                                        null &&
-                                                                    (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto)!
-                                                                        .isNotEmpty) ==
-                                                                true)
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    _model.queryHistorialPorPagarRep =
-                                                                        await queryClientesRecordOnce(
-                                                                      queryBuilder: (clientesRecord) => clientesRecord
-                                                                          .where(
-                                                                            'cliente.cedula',
-                                                                            isEqualTo:
-                                                                                widget.cedula,
-                                                                          )
-                                                                          .where(
-                                                                            'cliente.idTendero',
-                                                                            isEqualTo:
-                                                                                widget.tenderoRef,
-                                                                          ),
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ).then((s) =>
-                                                                            s.firstOrNull);
-
-                                                                    context
-                                                                        .goNamed(
-                                                                      HistorialPorCobrarWidget
-                                                                          .routeName,
-                                                                      queryParameters:
-                                                                          {
-                                                                        'idCliente':
-                                                                            serializeParam(
-                                                                          _model
-                                                                              .queryHistorialPorPagarRep
-                                                                              ?.reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'idTendero':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .tenderoRef,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'nombre':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .nombre,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'telf':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .telf,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'isFiando':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .isFiando,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'apellido':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .apellido,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'cedula':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .cedula,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'direccionDomicilio':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .direccionDomicilio,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'viviendaAlq':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaAlq,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'viviendaProp':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaProp,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'emailCliente':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .emailCliente,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  },
-                                                                  text:
-                                                                      'Productos por cobrar',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.interTight(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              2.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    elevation:
-                                                                        0.0,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    hoverColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    hoverBorderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    hoverTextColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth: 700.0,
-                                                          maxHeight: 65.0,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      12.0,
-                                                                      16.0,
-                                                                      12.0),
-                                                          child: FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              var _shouldSetState =
-                                                                  false;
-                                                              _model.queryGuardar =
-                                                                  await queryClientesRecordOnce(
-                                                                queryBuilder:
-                                                                    (clientesRecord) =>
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.queryHistorialPagadoRep =
+                                                                      await queryClientesRecordOnce(
+                                                                    queryBuilder: (clientesRecord) =>
                                                                         clientesRecord
                                                                             .where(
-                                                                              'cliente.idCliente',
-                                                                              isEqualTo: widget.idCliente,
+                                                                              'cliente.cedula',
+                                                                              isEqualTo: widget.cedula,
                                                                             )
                                                                             .where(
                                                                               'cliente.idTendero',
                                                                               isEqualTo: widget.tenderoRef,
                                                                             ),
-                                                                singleRecord:
-                                                                    true,
-                                                              ).then((s) => s
-                                                                      .firstOrNull);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              if ((_model.queryGuardar?.cliente
-                                                                              .producto !=
-                                                                          null &&
-                                                                      (_model
-                                                                              .queryGuardar
-                                                                              ?.cliente
-                                                                              .producto)!
-                                                                          .isNotEmpty) ==
-                                                                  false) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Alerta!'),
-                                                                      content: Text(
-                                                                          'No ha sido ingresado ningún producto.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                          child:
-                                                                              Text('Ok'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              } else {
-                                                                _model.tempCount =
-                                                                    0;
-                                                                _model.sumaValoresEnDTProd =
-                                                                    0.0;
-                                                                safeSetState(
-                                                                    () {});
-                                                                while (_model
-                                                                        .tempCount <
-                                                                    _model
-                                                                        .queryGuardar!
-                                                                        .cliente
-                                                                        .producto
-                                                                        .length) {
-                                                                  _model.addToDtProdItem(
-                                                                      DataTypeProductosStruct(
-                                                                    nombreProd: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.nombreProd,
-                                                                    valorProd: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.valorProd,
-                                                                    cantidad: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.cantidad,
-                                                                  ));
-                                                                  _model.tempCount =
-                                                                      _model.tempCount +
-                                                                          1;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                }
-                                                              }
-
-                                                              _model.tempCount =
-                                                                  0;
-                                                              safeSetState(
-                                                                  () {});
-                                                              while (_model
-                                                                      .tempCount <
-                                                                  _model
-                                                                      .dtProdItem
-                                                                      .length) {
-                                                                _model
-                                                                    .sumaValoresEnDTProd = _model
-                                                                        .sumaValoresEnDTProd! +
-                                                                    _model
-                                                                        .dtProdItem
-                                                                        .elementAtOrNull(
-                                                                            _model.tempCount)!
-                                                                        .valorProd;
-                                                                _model.tempCount =
-                                                                    _model.tempCount +
-                                                                        1;
-                                                                safeSetState(
-                                                                    () {});
-                                                              }
-                                                              _model.valorANormalizar =
-                                                                  formatNumber(
-                                                                _model
-                                                                    .sumaValoresEnDTProd,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              );
-                                                              safeSetState(
-                                                                  () {});
-                                                              _model.sumaValoresEnDTNorm =
-                                                                  await actions
-                                                                      .normalizarValorNumerico(
-                                                                _model
-                                                                    .valorANormalizar!,
-                                                              );
-                                                              _shouldSetState =
-                                                                  true;
-                                                              _model.sumaValoresEnDTProd =
-                                                                  _model
-                                                                      .sumaValoresEnDTNorm;
-                                                              safeSetState(
-                                                                  () {});
-
-                                                              await widget
-                                                                  .idCliente!
-                                                                  .update(
-                                                                      createClientesRecordData(
-                                                                cliente:
-                                                                    createDataTypeClienteStruct(
-                                                                  fieldValues: {
-                                                                    'historialPorPagarProd':
-                                                                        FieldValue
-                                                                            .arrayUnion([
-                                                                      getDataTypeHistorialPagoFirestoreData(
-                                                                        updateDataTypeHistorialPagoStruct(
-                                                                          DataTypeHistorialPagoStruct(
-                                                                            productos:
-                                                                                _model.dtProdItem,
-                                                                            totalPagado:
-                                                                                0.0,
-                                                                            totalGeneral:
-                                                                                _model.sumaValoresEnDTProd,
-                                                                            totalPorPagar:
-                                                                                _model.sumaValoresEnDTProd,
-                                                                            transferencia:
-                                                                                false,
-                                                                            efectivo:
-                                                                                false,
-                                                                            idTransaccion:
-                                                                                valueOrDefault<String>(
-                                                                              random_data.randomString(
-                                                                                5,
-                                                                                5,
-                                                                                true,
-                                                                                true,
-                                                                                true,
-                                                                              ),
-                                                                              'id000',
-                                                                            ),
-                                                                            fechaDeFio:
-                                                                                getCurrentTimestamp,
-                                                                          ),
-                                                                          clearUnsetFields:
-                                                                              false,
-                                                                        ),
+                                                                    singleRecord:
                                                                         true,
-                                                                      )
-                                                                    ]),
-                                                                    'producto':
-                                                                        FieldValue
-                                                                            .delete(),
-                                                                  },
-                                                                  clearUnsetFields:
-                                                                      false,
-                                                                ),
-                                                              ));
-                                                              _model.dtProdItem =
-                                                                  [];
-                                                              _model.tempSumProductos =
-                                                                  0.0;
-                                                              safeSetState(
-                                                                  () {});
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Productos guardados!'),
-                                                                    content: Text(
-                                                                        'Los productos añadidos han sido guardados correctamente.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
+                                                                  ).then((s) =>
+                                                                          s.firstOrNull);
+
+                                                                  context
+                                                                      .goNamed(
+                                                                    HistorialPagosWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'idCliente':
+                                                                          serializeParam(
+                                                                        _model
+                                                                            .queryHistorialPagadoRep
+                                                                            ?.reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
                                                                       ),
-                                                                    ],
+                                                                      'idTendero':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .tenderoRef,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'nombre':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .nombre,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'telf':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .telf,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'isFiando':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .isFiando,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'apellido':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .apellido,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'cedula':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .cedula,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'direccionDomicilio':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .direccionDomicilio,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'viviendaAlq':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaAlq,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'viviendaProp':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaProp,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'emailCliente':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .emailCliente,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                    }.withoutNulls,
                                                                   );
+
+                                                                  safeSetState(
+                                                                      () {});
                                                                 },
-                                                              );
-                                                              for (int loop1Index =
-                                                                      0;
-                                                                  loop1Index <
-                                                                      clienteInfoEditClientesRecord
-                                                                          .playerIds
-                                                                          .length;
-                                                                  loop1Index++) {
-                                                                final currentLoop1Item =
-                                                                    clienteInfoEditClientesRecord
-                                                                            .playerIds[
-                                                                        loop1Index];
-                                                                await actions
-                                                                    .sendNotificationToPlayer(
-                                                                  currentLoop1Item,
-                                                                  '¡Se ha aumentado un productos fiado en tu historial!',
-                                                                );
-                                                              }
-                                                              _model.tenderoReadForEmailToClientProds =
-                                                                  await TenderosRecord
-                                                                      .getDocumentOnce(
-                                                                          widget
-                                                                              .tenderoRef!);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              await actions
-                                                                  .sendCustomEmailForAddedProds(
-                                                                widget
-                                                                    .emailCliente!,
-                                                                widget.nombre!,
-                                                                'Productos a fiar registrados de la tienda: ${_model.tenderoReadForEmailToClientProds?.displayName}',
-                                                                _model
-                                                                    .tenderoReadForEmailToClientProds!
-                                                                    .displayName,
-                                                              );
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                            },
-                                                            text: 'Guardar',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: double
-                                                                  .infinity,
-                                                              height: 48.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
+                                                                text:
+                                                                    'Productos pagados',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          24.0,
+                                                                          16.0,
                                                                           0.0,
-                                                                          24.0,
+                                                                          16.0,
                                                                           0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
+                                                                  iconPadding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  textStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
                                                                       .override(
@@ -4312,8 +3631,10 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .titleSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: Colors
-                                                                            .white,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        fontSize:
+                                                                            2.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
@@ -4323,23 +3644,253 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             .titleSmall
                                                                             .fontStyle,
                                                                       ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            0.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  hoverColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  hoverBorderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                  hoverTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                ),
                                                               ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
                                                             ),
-                                                          ),
+                                                            Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  _model.queryHistorialPorPagarRep =
+                                                                      await queryClientesRecordOnce(
+                                                                    queryBuilder: (clientesRecord) =>
+                                                                        clientesRecord
+                                                                            .where(
+                                                                              'cliente.cedula',
+                                                                              isEqualTo: widget.cedula,
+                                                                            )
+                                                                            .where(
+                                                                              'cliente.idTendero',
+                                                                              isEqualTo: widget.tenderoRef,
+                                                                            ),
+                                                                    singleRecord:
+                                                                        true,
+                                                                  ).then((s) =>
+                                                                          s.firstOrNull);
+
+                                                                  context
+                                                                      .goNamed(
+                                                                    HistorialPorCobrarWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'idCliente':
+                                                                          serializeParam(
+                                                                        _model
+                                                                            .queryHistorialPorPagarRep
+                                                                            ?.reference,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'idTendero':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .tenderoRef,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'nombre':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .nombre,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'telf':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .telf,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'isFiando':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .isFiando,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'apellido':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .apellido,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'cedula':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .cedula,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'direccionDomicilio':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .direccionDomicilio,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'viviendaAlq':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaAlq,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'viviendaProp':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaProp,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'emailCliente':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .emailCliente,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                text:
+                                                                    'Productos por cobrar',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  height: 40.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                        fontSize:
+                                                                            2.0,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            0.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  hoverColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  hoverBorderSide:
+                                                                      BorderSide(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
+                                                                  hoverTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
-                                                    ].addToEnd(
-                                                        SizedBox(height: 10.0)),
+                                                    ],
                                                   ),
                                                 ),
                                               ],
@@ -4355,6 +3906,323 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 5.0, 16.0, 12.0),
+                        child: FFButtonWidget(
+                          onPressed: () {
+                            if ((clienteInfoEditClientesRecord
+                                        .cliente.viviendaPropia ==
+                                    true) &&
+                                (clienteInfoEditClientesRecord
+                                        .cliente.totalDeudaCompleta >=
+                                    20.0)) {
+                              return true;
+                            } else if ((clienteInfoEditClientesRecord
+                                        .cliente.viviendaAlq ==
+                                    true) &&
+                                (clienteInfoEditClientesRecord
+                                        .cliente.totalDeudaCompleta >=
+                                    10.0)) {
+                              return true;
+                            } else {
+                              return false;
+                            }
+                          }()
+                              ? null
+                              : () async {
+                                  var _shouldSetState = false;
+                                  _model.valorConvVTF =
+                                      await actions.normalizarValorNumerico(
+                                    _model.valorTFTextController.text,
+                                  );
+                                  _shouldSetState = true;
+                                  _model.valorConvCTF =
+                                      await actions.normalizarValorNumerico(
+                                    _model.cantidatTfTextController.text,
+                                  );
+                                  _shouldSetState = true;
+                                  if ((_model.cantidatTfTextController
+                                                  .text !=
+                                              '') &&
+                                      (_model.valorTFTextController.text !=
+                                              '')) {
+                                    if (widget.viviendaProp == true) {
+                                      if ((_model.totalDeudaCompleta +
+                                              ((_model.valorConvVTF!) *
+                                                  (_model.valorConvCTF!))) >
+                                          20.0) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('¡Alerta!'),
+                                              content: Text(
+                                                  'El cliente ha superado el límite de crédito. No se aumentará más productos.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      } else {
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 300));
+
+                                        await widget.idCliente!
+                                            .update(createClientesRecordData(
+                                          cliente: createDataTypeClienteStruct(
+                                            fieldValues: {
+                                              'producto':
+                                                  FieldValue.arrayUnion([
+                                                getDataTypeProductosFirestoreData(
+                                                  createDataTypeProductosStruct(
+                                                    nombreProd: _model
+                                                        .prodTFTextController
+                                                        .text,
+                                                    valorProd: (_model
+                                                            .valorConvVTF!) *
+                                                        (_model.valorConvCTF!),
+                                                    cantidad:
+                                                        _model.valorConvCTF,
+                                                    idProd: random_data
+                                                        .randomString(
+                                                      6,
+                                                      6,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                    ),
+                                                    clearUnsetFields: false,
+                                                  ),
+                                                  true,
+                                                )
+                                              ]),
+                                            },
+                                            clearUnsetFields: false,
+                                          ),
+                                        ));
+                                        safeSetState(() {
+                                          _model.cantidatTfTextController
+                                              ?.clear();
+                                          _model.valorTFTextController?.clear();
+                                          _model.prodTFTextController?.clear();
+                                        });
+                                      }
+                                    } else {
+                                      if ((_model.totalDeudaCompleta +
+                                              ((_model.valorConvVTF!) *
+                                                  (_model.valorConvCTF!))) >
+                                          10.0) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('¡Alerta!'),
+                                              content: Text(
+                                                  'El cliente ha superado el límite de crédito. No se aumentará más productos.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      } else {
+                                        await Future.delayed(
+                                            const Duration(milliseconds: 300));
+
+                                        await widget.idCliente!
+                                            .update(createClientesRecordData(
+                                          cliente: createDataTypeClienteStruct(
+                                            fieldValues: {
+                                              'producto':
+                                                  FieldValue.arrayUnion([
+                                                getDataTypeProductosFirestoreData(
+                                                  createDataTypeProductosStruct(
+                                                    nombreProd: _model
+                                                        .prodTFTextController
+                                                        .text,
+                                                    valorProd: (_model
+                                                            .valorConvVTF!) *
+                                                        (_model.valorConvCTF!),
+                                                    cantidad:
+                                                        _model.valorConvCTF,
+                                                    idProd: random_data
+                                                        .randomString(
+                                                      6,
+                                                      6,
+                                                      true,
+                                                      true,
+                                                      true,
+                                                    ),
+                                                    clearUnsetFields: false,
+                                                  ),
+                                                  true,
+                                                )
+                                              ]),
+                                            },
+                                            clearUnsetFields: false,
+                                          ),
+                                        ));
+                                        safeSetState(() {
+                                          _model.cantidatTfTextController
+                                              ?.clear();
+                                          _model.valorTFTextController?.clear();
+                                          _model.prodTFTextController?.clear();
+                                        });
+                                      }
+                                    }
+
+                                    _model.queryOnAnadir =
+                                        await queryClientesRecordOnce(
+                                      queryBuilder: (clientesRecord) =>
+                                          clientesRecord
+                                              .where(
+                                                'cliente.idCliente',
+                                                isEqualTo: widget.idCliente,
+                                              )
+                                              .where(
+                                                'cliente.idTendero',
+                                                isEqualTo: widget.tenderoRef,
+                                              ),
+                                      singleRecord: true,
+                                    ).then((s) => s.firstOrNull);
+                                    _shouldSetState = true;
+                                    _model.tempCount = 0;
+                                    _model.tempSumHistorial = 0.0;
+                                    _model.tempSumProductos = 0.0;
+                                    _model.totalDeudaCompleta = 0.0;
+                                    safeSetState(() {});
+                                    if ((_model.queryOnAnadir?.cliente
+                                                    .producto !=
+                                                null &&
+                                            (_model.queryOnAnadir?.cliente
+                                                    .producto)!
+                                                .isNotEmpty) ==
+                                        true) {
+                                      while (_model.tempCount <
+                                          _model.queryOnAnadir!.cliente.producto
+                                              .length) {
+                                        _model.tempSumProductos =
+                                            _model.tempSumProductos +
+                                                _model.queryOnAnadir!.cliente
+                                                    .producto
+                                                    .elementAtOrNull(
+                                                        _model.tempCount)!
+                                                    .valorProd;
+                                        safeSetState(() {});
+                                        _model.tempCount = _model.tempCount + 1;
+                                        safeSetState(() {});
+                                      }
+                                    }
+                                    _model.tempCount = 0;
+                                    safeSetState(() {});
+                                    if ((_model.queryOnAnadir?.cliente
+                                                    .historialPorPagarProd !=
+                                                null &&
+                                            (_model.queryOnAnadir?.cliente
+                                                    .historialPorPagarProd)!
+                                                .isNotEmpty) ==
+                                        true) {
+                                      while (_model.tempCount <
+                                          _model.queryOnAnadir!.cliente
+                                              .historialPorPagarProd.length) {
+                                        _model.tempSumHistorial =
+                                            _model.tempSumHistorial +
+                                                _model.queryOnAnadir!.cliente
+                                                    .historialPorPagarProd
+                                                    .elementAtOrNull(
+                                                        _model.tempCount)!
+                                                    .totalPorPagar;
+                                        safeSetState(() {});
+                                        _model.tempCount = _model.tempCount + 1;
+                                        safeSetState(() {});
+                                      }
+                                    }
+                                    _model.totalDeudaCompleta =
+                                        _model.tempSumHistorial +
+                                            _model.tempSumProductos;
+                                    _model.valorANormalizar = formatNumber(
+                                      _model.totalDeudaCompleta,
+                                      formatType: FormatType.custom,
+                                      format: '#0.00',
+                                      locale: '',
+                                    );
+                                    safeSetState(() {});
+                                    _model.totalDeudaCompletaNorm =
+                                        await actions.normalizarValorNumerico(
+                                      _model.valorANormalizar!,
+                                    );
+                                    _shouldSetState = true;
+                                    _model.totalDeudaCompleta =
+                                        _model.totalDeudaCompletaNorm!;
+                                    safeSetState(() {});
+
+                                    await widget.idCliente!
+                                        .update(createClientesRecordData(
+                                      cliente: createDataTypeClienteStruct(
+                                        totalDeudaCompleta:
+                                            _model.totalDeudaCompletaNorm,
+                                        clearUnsetFields: false,
+                                      ),
+                                    ));
+                                  }
+                                  if (_shouldSetState) safeSetState(() {});
+                                },
+                          text: 'Añadir Producto',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 30.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).success,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context).info,
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(8.0),
+                            disabledColor: FlutterFlowTheme.of(context).accent2,
+                            disabledTextColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -4365,21 +4233,4 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
       },
     );
   }
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          safeSetState(() => _model.tenderoICPdeClienteController = null);
-          FFAppState().isFirstTimeInfoEdit = false;
-          safeSetState(() {});
-        },
-        onSkip: () {
-          () async {
-            FFAppState().isFirstTimeInfoEdit = false;
-            safeSetState(() {});
-          }();
-          return true;
-        },
-      );
 }

@@ -54,7 +54,7 @@ class _WtClienteTiendaListWidgetState extends State<WtClienteTiendaListWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Lista de tiendas',
+            'Lista de registro',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:

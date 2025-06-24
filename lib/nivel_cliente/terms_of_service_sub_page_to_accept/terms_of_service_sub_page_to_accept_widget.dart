@@ -119,7 +119,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                     ),
                                   ),
                                   Text(
-                                    'TÉRMINOS Y CONDICIONES DE USO',
+                                    'POLÍTICA DE PRIVACIDAD',
                                     style: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .override(
@@ -217,7 +217,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 16.0),
                             child: Text(
-                              'Política de Privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta Política de Privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
+                              'Política de privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta política de privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -247,7 +247,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                               text: TextSpan(
                                 children: [
                                   TextSpan(
-                                    text: '\n1. Interpretación y Definiciones',
+                                    text: '\n1. Interpretación y definiciones',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -300,7 +300,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n      Las palabras cuya letra inicial está en mayúscula tienen significados definidos bajo las siguientes condiciones. Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
+                                        '\n      Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -331,7 +331,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n       Para los fines de esta Política de Privacidad:\n',
+                                        '\n       Para los fines de esta política de privacidad:\n',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -362,7 +362,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n      Significa una cuenta única creada para que Usted acceda a Nuestro Servicio o partes de Nuestro Servicio.',
+                                        '\n      Significa una cuenta única creada para que usted acceda a nuestro servicio o partes de nuestro dervicio.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -424,7 +424,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nSe refiere a HoySíFio, el programa de software proporcionado por la Compañía.',
+                                        '\n\nSe refiere a HoySíFio, el programa de software proporcionado por la compañía.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -515,11 +515,11 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nCualquier dispositivo que pueda acceder al Servicio, como una computadora, un teléfono móvil o una tableta digital.',
+                                        '\n\nCualquier dispositivo que pueda acceder al servicio, como una computadora, un teléfono móvil o una tableta digital.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: '\n\n     1.2.7. Datos Personales:',
+                                    text: '\n\n     1.2.7. Datos personales:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -576,12 +576,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: ': se refiere a la Aplicación.',
+                                    text: ': se refiere a la aplicación.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n     1.2.9. Proveedor de Servicios:',
+                                        '\n\n     1.2.9. Proveedor de servicios:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -608,11 +608,11 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la Compañía. Se refiere a empresas o individuos terceros empleados por la Compañía para facilitar el Servicio, proporcionarlo en nombre de la Compañía, realizar servicios relacionados con el Servicio o ayudar a la Compañía a analizar cómo se utiliza el Servicio.',
+                                        '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la compañía. Se refiere a empresas o individuos terceros empleados por la compañía para facilitar el servicio, proporcionarlo en nombre de la compañía, realizar servicios relacionados con el servicio o ayudar a la compañía a analizar cómo se utiliza el servicio proveído.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
-                                    text: '\n\n      1.2.10. Datos de Uso: ',
+                                    text: '\n\n      1.2.10. Datos de uso: ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -639,7 +639,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nDatos recopilados automáticamente, generados por el uso del Servicio o por la infraestructura del Servicio mismo (por ejemplo, la duración de una visita a una página).',
+                                        '\n\nDatos recopilados automáticamente, generados por el uso del servicio o por la infraestructura del servicio mismo (por ejemplo, la duración de una visita a una página).',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -670,12 +670,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nEl individuo que accede o utiliza el Servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el Servicio, según corresponda.',
+                                        '\n\nEl individuo que accede o utiliza el servicio, o la empresa u otra entidad legal en nombre de la cual dicho individuo accede o utiliza el servicio, según corresponda.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n2. Recopilación y Uso de Sus Datos Personales',
+                                        '\n\n2. Recopilación y uso de datos personales',
                                     style: FlutterFlowTheme.of(context)
                                         .titleMedium
                                         .override(
@@ -702,7 +702,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n   2.1. Tipos de Datos Recopilados',
+                                        '\n\n   2.1. Tipos de datos recopilados',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -728,43 +728,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                         ),
                                   ),
                                   TextSpan(
-                                    text: '\n\n       2.1.1. Datos Personales:',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          font: GoogleFonts.interTight(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        '\n\nMientras utiliza Nuestro Servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:',
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        '\n\n- Dirección de correo electrónico\n- Nombre y apellido\n- Número de teléfono\n- Dirección, Estado, Provincia, Código Postal, Ciudad',
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: '\n\n      2.1.2. Datos de Uso',
+                                    text: '\n\n       2.1.1. Datos personales:',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -791,12 +755,48 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nLos Datos de Uso se recopilan automáticamente al utilizar el Servicio e incluyen:',
+                                        '\n\nMientras utiliza nuestro servicio, podemos pedirle que nos proporcione cierta información personalmente identificable que puede ser utilizada para contactarlo o identificarlo. Esta información puede incluir, pero no limitarse a:',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n- Dirección IP de Su Dispositivo\n- Tipo y versión del navegador\n- Páginas visitadas dentro del Servicio\n- Fecha y hora de la visita\n- Tiempo dedicado a esas páginas\n- Identificadores únicos de dispositivo y otros datos de diagnóstico. \n\nSi accede al Servicio a través de un dispositivo móvil, también podemos recopilar información como:',
+                                        '\n\n- Dirección de correo electrónico\n- Nombre y apellido\n- Número de teléfono\n- Dirección, estado, provincia, código postal, ciudad',
+                                    style: TextStyle(),
+                                  ),
+                                  TextSpan(
+                                    text: '\n\n      2.1.2. Datos de uso',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        '\n\nLos datos de uso se recopilan automáticamente al utilizar el servicio e incluyen:',
+                                    style: TextStyle(),
+                                  ),
+                                  TextSpan(
+                                    text:
+                                        '\n\n- Dirección IP de su dispositivo\n- Tipo y versión del navegador\n- Páginas visitadas dentro del servicio\n- Fecha y hora de la visita\n- Tiempo dedicado a esas páginas\n- Identificadores únicos de dispositivo y otros datos de diagnóstico. \n\nSi accede al servicio a través de un dispositivo móvil, también podemos recopilar información como:',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -806,7 +806,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n       2.1.3. Uso de Sus Datos Personales',
+                                        '\n\n       2.1.3. Uso de sus datos personales',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -833,12 +833,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nLa Compañía puede utilizar los Datos Personales para:\n\n- Proporcionar y mantener el Servicio.\n- Gestionar Su Cuenta.\n- Cumplir con contratos.\n- Contactarlo con actualizaciones o comunicaciones informativas.\n- Ofrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n- Gestionar Sus solicitudes.\n- Otros fines como análisis de datos, mejora del Servicio o marketing.',
+                                        '\n\nLa compañía puede utilizar los datos personales para:\n\n- Proporcionar y mantener el servicio.\n- Gestionar su cuenta.\n- Cumplir con contratos.\n- Contactarlo con actualizaciones o comunicaciones informativas.\n- Ofrecer noticias, ofertas especiales o información sobre otros bienes/servicios similares.\n- Gestionar sus solicitudes.\n- Otros fines como análisis de datos, mejora del servicio o marketing.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n       2.1.4. Divulgación de Sus Datos Personales ',
+                                        '\n\n       2.1.4. Divulgación de sus datos personales ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -865,12 +865,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nPodemos compartir Su información en las siguientes situaciones:\n\n- Con Proveedores de Servicios para monitorear y analizar el uso del Servicio.\n\n- En transferencias comerciales (venta de activos, fusiones, etc.).\n\n- Con Afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\n- Con Su consentimiento o por requisitos legales.',
+                                        '\n\nPodemos compartir su información en las siguientes situaciones:\n\n- Con proveedores de servicios para monitorear y analizar el uso del servicio.\n\n- En transferencias comerciales (venta de activos, fusiones, etc.).\n\n- Con afiliados, socios comerciales u otros usuarios (si interactúa en áreas públicas).\n\n- Con su consentimiento o por requisitos legales.',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n       2.1.5. Seguridad de Sus Datos ',
+                                        '\n\n       2.1.5. Seguridad de sus datos ',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -897,12 +897,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nMientras implementamos medidas comerciales aceptables para proteger Sus Datos Personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro. ',
+                                        '\n\nMientras implementamos medidas comerciales aceptables para proteger sus datos personales, ningún método de transmisión o almacenamiento electrónico es 100% seguro. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n       2.1.6. Privacidad de los Niños',
+                                        '\n\n       2.1.6. Privacidad de los niños',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -929,12 +929,12 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nNuestro Servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado Datos Personales sin consentimiento parental, contáctenos para eliminarlos. ',
+                                        '\n\nNuestro servicio no está dirigido a menores de 13 años. Si descubre que un menor nos ha proporcionado datos personales sin consentimiento parental, contáctenos para eliminarlos. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\n     2.1.7. Cambios en esta Política',
+                                        '\n\n     2.1.7. Cambios en esta política',
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -961,7 +961,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"Última actualización\". Se recomienda revisarla periódicamente. ',
+                                        '\n\nNotificaremos actualizaciones publicando la nueva política en esta página y actualizando la fecha de \"última actualización\". Se recomienda revisarla periódicamente. ',
                                     style: TextStyle(),
                                   ),
                                   TextSpan(
@@ -992,7 +992,7 @@ class _TermsOfServiceSubPageToAcceptWidgetState
                                   ),
                                   TextSpan(
                                     text:
-                                        '\n\nSi tiene preguntas sobre esta Política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
+                                        '\n\nSi tiene preguntas sobre esta política, puede contactarnos:\n\nPor correo electrónico: hoysifioapp@outlook.com',
                                     style: TextStyle(),
                                   )
                                 ],

@@ -488,7 +488,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                           .fontStyle,
                                                                     ),
                                                             hintText:
-                                                                'N# comprobante',
+                                                                'N# Comprobante',
                                                             hintStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)

@@ -49,3 +49,11 @@ export '/nivel_cliente/forgot_my_password/forgot_my_password_widget.dart'
     show ForgotMyPasswordWidget;
 export '/nivel_cliente/terms_of_service_sub_page_to_view/terms_of_service_sub_page_to_view_widget.dart'
     show TermsOfServiceSubPageToViewWidget;
+export '/nivel_cliente/tendero_first_login/tendero_first_login_widget.dart'
+    show TenderoFirstLoginWidget;
+export '/tutoriales/page_tutorial_lista_clientes/page_tutorial_lista_clientes_widget.dart'
+    show PageTutorialListaClientesWidget;
+export '/tutoriales/page_tutorialinfo_prod/page_tutorialinfo_prod_widget.dart'
+    show PageTutorialinfoProdWidget;
+export '/tutoriales/page_tutorial_for_cliente/page_tutorial_for_cliente_widget.dart'
+    show PageTutorialForClienteWidget;

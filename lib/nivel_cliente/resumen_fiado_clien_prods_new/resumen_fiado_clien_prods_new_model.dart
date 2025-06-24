@@ -2,8 +2,6 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'resumen_fiado_clien_prods_new_widget.dart'
     show ResumenFiadoClienProdsNewWidget;
 import 'package:flutter/material.dart';
@@ -37,7 +35,6 @@ class ResumenFiadoClienProdsNewModel
 
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? clienteProdsListController;
   // State field(s) for Checkbox widget.
   Map<DataTypeHistorialPagoStruct, bool> checkboxValueMap1 = {};
   List<DataTypeHistorialPagoStruct> get checkboxCheckedItems1 =>
@@ -58,7 +55,5 @@ class ResumenFiadoClienProdsNewModel
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    clienteProdsListController?.finish();
-  }
+  void dispose() {}
 }

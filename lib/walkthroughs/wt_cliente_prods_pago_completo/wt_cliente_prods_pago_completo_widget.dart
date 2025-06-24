@@ -75,7 +75,7 @@ class _WtClienteProdsPagoCompletoWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Haz el pago completo de los fiados con este botón.',
+            'Envíe un comprobante de pago de todos los productos con este botón.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

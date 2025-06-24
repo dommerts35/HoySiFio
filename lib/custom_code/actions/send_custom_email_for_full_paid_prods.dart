@@ -21,30 +21,46 @@ Future<void> sendCustomEmailForFullPaidProds(String recipientEmail,
   // 1. Template HTML con variables dinámicas
   final htmlContent = """
   <!DOCTYPE html>
-    <html>
-    <head>
-      <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        .header { background-color: #4CAF50; color: white; padding: 20px; text-align: center; }
-        .button { 
-          background-color: #FF5722; 
-          color: white !important; 
-          padding: 12px 24px; 
-          text-decoration: none; 
-          border-radius: 4px; 
-          display: inline-block;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="header">
-        <h1>¡Hola $recipientName!</h1>
-      </div>
-      <div style="padding: 20px;">
-        <p>Se ha registrado un pago de todos los productos que fiaba actualmente en la tienda: '$nombreTienda'</p>
-      </div>
-    </body>
-    </html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmación de Pago - HoySíFio</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4;">
+    <!-- Header con logo -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
+      <tr>
+        <td align="center" style="padding: 20px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 50%; height: auto; padding: 0 0 0 15px;">
+          <h1 style="color: white; margin: 10px 0 0 0; font-size: 24px;">¡Pago registrado exitosamente!</h1>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Contenido principal -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 30px auto; background-color: white; border-radius: 8px; overflow: hidden;">
+      <tr>
+        <td style="padding: 25px;">
+          <p style="margin: 0 0 16px 0;">¡Hola, $recipientName!</p>
+          <p style="margin: 0 0 16px 0;">Se ha registrado un pago completo de todos los productos adeudados en la tienda: <strong>$nombreTienda</strong>.</p>
+          <p style="margin: 16px 0; color: #777; font-style: italic;">El tendero ha sido notificado y revisará el comprobante de pago pronto.</p>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Footer -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
+      <tr>
+        <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
+          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>
+
   """;
 
   // 2. Configurar petición a OneSignal

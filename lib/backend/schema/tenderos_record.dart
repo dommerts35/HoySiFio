@@ -65,6 +65,16 @@ class TenderosRecord extends FirestoreRecord {
   List<String> get playerIds => _playerIds ?? const [];
   bool hasPlayerIds() => _playerIds != null;
 
+  // "otp" field.
+  String? _otp;
+  String get otp => _otp ?? '';
+  bool hasOtp() => _otp != null;
+
+  // "isAuth" field.
+  bool? _isAuth;
+  bool get isAuth => _isAuth ?? false;
+  bool hasIsAuth() => _isAuth != null;
+
   void _initializeFields() {
     _tenderos = snapshotData['tenderos'] is DataTypeTenderoStruct
         ? snapshotData['tenderos']
@@ -80,6 +90,8 @@ class TenderosRecord extends FirestoreRecord {
         ? snapshotData['clientes']
         : DataTypeClienteStruct.maybeFromMap(snapshotData['clientes']);
     _playerIds = getDataList(snapshotData['player_ids']);
+    _otp = snapshotData['otp'] as String?;
+    _isAuth = snapshotData['isAuth'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -126,6 +138,8 @@ Map<String, dynamic> createTenderosRecordData({
   String? uid,
   String? pin,
   DataTypeClienteStruct? clientes,
+  String? otp,
+  bool? isAuth,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -138,6 +152,8 @@ Map<String, dynamic> createTenderosRecordData({
       'uid': uid,
       'pin': pin,
       'clientes': DataTypeClienteStruct().toMap(),
+      'otp': otp,
+      'isAuth': isAuth,
     }.withoutNulls,
   );
 
@@ -165,7 +181,9 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e1?.uid == e2?.uid &&
         e1?.pin == e2?.pin &&
         e1?.clientes == e2?.clientes &&
-        listEquality.equals(e1?.playerIds, e2?.playerIds);
+        listEquality.equals(e1?.playerIds, e2?.playerIds) &&
+        e1?.otp == e2?.otp &&
+        e1?.isAuth == e2?.isAuth;
   }
 
   @override
@@ -179,7 +197,9 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e?.uid,
         e?.pin,
         e?.clientes,
-        e?.playerIds
+        e?.playerIds,
+        e?.otp,
+        e?.isAuth
       ]);
 
   @override

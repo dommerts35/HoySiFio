@@ -24,6 +24,8 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
   bool isCuentaCorriente = false;
 
+  String? tempOtp;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -45,6 +47,15 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   FocusNode? nombreTenderoFocusNode;
   TextEditingController? nombreTenderoTextController;
   String? Function(BuildContext, String?)? nombreTenderoTextControllerValidator;
+  String? _nombreTenderoTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese el nombre del propietario de la tienda';
+    }
+
+    return null;
+  }
+
   // State field(s) for emailAddress_Tendero widget.
   FocusNode? emailAddressTenderoFocusNode;
   TextEditingController? emailAddressTenderoTextController;
@@ -59,6 +70,25 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return 'Ingrese un email válido';
     }
+    return null;
+  }
+
+  // State field(s) for ci_Tendero widget.
+  FocusNode? ciTenderoFocusNode;
+  TextEditingController? ciTenderoTextController;
+  String? Function(BuildContext, String?)? ciTenderoTextControllerValidator;
+  String? _ciTenderoTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese su número de cédula';
+    }
+
+    if (val.length < 10) {
+      return 'Ingrese un número de cédula válido';
+    }
+    if (val.length > 10) {
+      return 'Ingrese un número de cédula válido';
+    }
+
     return null;
   }
 
@@ -115,6 +145,15 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   TextEditingController? duenoBancoTenderoTextController;
   String? Function(BuildContext, String?)?
       duenoBancoTenderoTextControllerValidator;
+  String? _duenoBancoTenderoTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese el nombre del titular de la cuenta bancaria';
+    }
+
+    return null;
+  }
+
   // State field(s) for password_Tendero widget.
   FocusNode? passwordTenderoFocusNode;
   TextEditingController? passwordTenderoTextController;
@@ -153,17 +192,6 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
       return 'Confirme su contraseña';
     }
 
-    if (val.length < 8) {
-      return 'Mínimo 8 carácteres';
-    }
-    if (val.length > 16) {
-      return 'Máximo 16 carácteres';
-    }
-    if (!RegExp(
-            '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
-        .hasMatch(val)) {
-      return 'La contraseña no cumple los requisitos.';
-    }
     return null;
   }
 
@@ -201,13 +229,18 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   void initState(BuildContext context) {
     tiendaNombreTenderoTextControllerValidator =
         _tiendaNombreTenderoTextControllerValidator;
+    nombreTenderoTextControllerValidator =
+        _nombreTenderoTextControllerValidator;
     emailAddressTenderoTextControllerValidator =
         _emailAddressTenderoTextControllerValidator;
+    ciTenderoTextControllerValidator = _ciTenderoTextControllerValidator;
     phoneNumberTenderoTextControllerValidator =
         _phoneNumberTenderoTextControllerValidator;
     numCuentaTenderoTextControllerValidator =
         _numCuentaTenderoTextControllerValidator;
     bancoTenderoTextControllerValidator = _bancoTenderoTextControllerValidator;
+    duenoBancoTenderoTextControllerValidator =
+        _duenoBancoTenderoTextControllerValidator;
     passwordTenderoVisibility = false;
     passwordTenderoTextControllerValidator =
         _passwordTenderoTextControllerValidator;
@@ -228,6 +261,9 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
     emailAddressTenderoFocusNode?.dispose();
     emailAddressTenderoTextController?.dispose();
+
+    ciTenderoFocusNode?.dispose();
+    ciTenderoTextController?.dispose();
 
     phoneNumberTenderoFocusNode?.dispose();
     phoneNumberTenderoTextController?.dispose();

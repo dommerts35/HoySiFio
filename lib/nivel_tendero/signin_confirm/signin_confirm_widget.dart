@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -355,21 +354,10 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                             await TenderosRecord
                                                 .getDocumentOnce(
                                                     widget.tenderoRef!);
-                                        if (_model.tenderoRead!.email.isEmpty) {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'E-mail requerido',
-                                              ),
-                                            ),
-                                          );
-                                          return;
-                                        }
-                                        await authManager.resetPassword(
-                                          email: _model.tenderoRead!.email,
-                                          context: context,
-                                        );
+
+                                        context.pushNamed(
+                                            ForgotMyPasswordWidget.routeName);
+
                                         await showDialog(
                                           context: context,
                                           builder: (alertDialogContext) {
@@ -409,7 +397,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 5.0),
                                           child: Text(
-                                            'Olvidé mi contraseña. Quiero restablecerla',
+                                            'Olvidé mi contraseña. Quiero restablecerla.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

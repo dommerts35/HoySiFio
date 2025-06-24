@@ -18,6 +18,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
     String? tipoDeCuenta,
     String? nombreTendero,
     String? nombreTitularBanco,
+    String? ciTendero,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _mail = mail,
         _pw = pw,
@@ -29,6 +30,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         _tipoDeCuenta = tipoDeCuenta,
         _nombreTendero = nombreTendero,
         _nombreTitularBanco = nombreTitularBanco,
+        _ciTendero = ciTendero,
         super(firestoreUtilData);
 
   // "mail" field.
@@ -101,6 +103,13 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
 
   bool hasNombreTitularBanco() => _nombreTitularBanco != null;
 
+  // "ciTendero" field.
+  String? _ciTendero;
+  String get ciTendero => _ciTendero ?? '';
+  set ciTendero(String? val) => _ciTendero = val;
+
+  bool hasCiTendero() => _ciTendero != null;
+
   static DataTypeTenderoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeTenderoStruct(
         mail: data['mail'] as String?,
@@ -113,6 +122,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         tipoDeCuenta: data['tipoDeCuenta'] as String?,
         nombreTendero: data['nombreTendero'] as String?,
         nombreTitularBanco: data['nombreTitularBanco'] as String?,
+        ciTendero: data['ciTendero'] as String?,
       );
 
   static DataTypeTenderoStruct? maybeFromMap(dynamic data) => data is Map
@@ -130,6 +140,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         'tipoDeCuenta': _tipoDeCuenta,
         'nombreTendero': _nombreTendero,
         'nombreTitularBanco': _nombreTitularBanco,
+        'ciTendero': _ciTendero,
       }.withoutNulls;
 
   @override
@@ -172,6 +183,10 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         ),
         'nombreTitularBanco': serializeParam(
           _nombreTitularBanco,
+          ParamType.String,
+        ),
+        'ciTendero': serializeParam(
+          _ciTendero,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -229,6 +244,11 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        ciTendero: deserializeParam(
+          data['ciTendero'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -246,7 +266,8 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         cuentaDeBancoName == other.cuentaDeBancoName &&
         tipoDeCuenta == other.tipoDeCuenta &&
         nombreTendero == other.nombreTendero &&
-        nombreTitularBanco == other.nombreTitularBanco;
+        nombreTitularBanco == other.nombreTitularBanco &&
+        ciTendero == other.ciTendero;
   }
 
   @override
@@ -260,7 +281,8 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         cuentaDeBancoName,
         tipoDeCuenta,
         nombreTendero,
-        nombreTitularBanco
+        nombreTitularBanco,
+        ciTendero
       ]);
 }
 
@@ -275,6 +297,7 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
   String? tipoDeCuenta,
   String? nombreTendero,
   String? nombreTitularBanco,
+  String? ciTendero,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -291,6 +314,7 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
       tipoDeCuenta: tipoDeCuenta,
       nombreTendero: nombreTendero,
       nombreTitularBanco: nombreTitularBanco,
+      ciTendero: ciTendero,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

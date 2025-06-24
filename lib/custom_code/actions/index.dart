@@ -14,8 +14,6 @@ export 'send_custom_email_for_cliente_register.dart'
     show sendCustomEmailForClienteRegister;
 export 'send_custom_email_for_cliente_login.dart'
     show sendCustomEmailForClienteLogin;
-export 'send_custom_email_for_added_prods.dart'
-    show sendCustomEmailForAddedProds;
 export 'send_custom_email_for_full_paid_prods.dart'
     show sendCustomEmailForFullPaidProds;
 export 'send_custom_email_for_select_prods.dart'
@@ -29,3 +27,4 @@ export 'send_custom_email_for_denied_voucher.dart'
 export 'send_custom_email_for_sent_voucher_to_tendero.dart'
     show sendCustomEmailForSentVoucherToTendero;
 export 'send_custom_verification_email.dart' show sendCustomVerificationEmail;
+export 'send_custom_psw_reset.dart' show sendCustomPswReset;

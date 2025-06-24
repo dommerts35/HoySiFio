@@ -55,7 +55,7 @@ class _WtInfoEditComprobanteWidgetState
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Comprobantes',
+            'Lista de comprobantes',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -63,6 +63,7 @@ class _WtInfoEditComprobanteWidgetState
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
+                  fontSize: 25.0,
                   letterSpacing: 0.0,
                   fontWeight:
                       FlutterFlowTheme.of(context).headlineMedium.fontWeight,

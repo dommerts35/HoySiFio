@@ -22,8 +22,22 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     if (val.length < 2) {
       return 'Ingrese el nombre de su tienda con al menos 2 carácteres';
     }
-    if (val.length > 20) {
-      return 'Ingrese el nombre de su tienda con  menos de 20 carácteres';
+    if (val.length > 30) {
+      return 'Ingrese el nombre de su tienda con  menos de 30 carácteres';
+    }
+
+    return null;
+  }
+
+  // State field(s) for tenderoNameEdit widget.
+  FocusNode? tenderoNameEditFocusNode;
+  TextEditingController? tenderoNameEditTextController;
+  String? Function(BuildContext, String?)?
+      tenderoNameEditTextControllerValidator;
+  String? _tenderoNameEditTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese su nombre';
     }
 
     return null;
@@ -38,13 +52,48 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
       return 'Ingrese su email';
     }
 
-    if (val.length < 10) {
-      return 'Ingrese un email válido';
-    }
-
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
       return 'Ingrese un email válido';
     }
+    return null;
+  }
+
+  // State field(s) for ciEdit widget.
+  FocusNode? ciEditFocusNode;
+  TextEditingController? ciEditTextController;
+  String? Function(BuildContext, String?)? ciEditTextControllerValidator;
+  String? _ciEditTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese su cédula';
+    }
+
+    if (val.length < 10) {
+      return 'Ingrese una cédula válida';
+    }
+    if (val.length > 10) {
+      return 'Ingrese una cédula válida';
+    }
+
+    return null;
+  }
+
+  // State field(s) for numTelfEdit widget.
+  FocusNode? numTelfEditFocusNode;
+  TextEditingController? numTelfEditTextController;
+  String? Function(BuildContext, String?)? numTelfEditTextControllerValidator;
+  String? _numTelfEditTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese su número de teléfono';
+    }
+
+    if (val.length < 10) {
+      return 'Ingrese un número válido';
+    }
+    if (val.length > 10) {
+      return 'Ingrese un número válido';
+    }
+
     return null;
   }
 
@@ -56,10 +105,6 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Ingrese su número de cuenta';
-    }
-
-    if (val.length < 8) {
-      return 'Ingrese su número de cuenta.';
     }
 
     return null;
@@ -76,8 +121,18 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
       return 'Ingrese el nombre de su banco';
     }
 
-    if (val.length < 3) {
-      return 'Ingrese un banco válido';
+    return null;
+  }
+
+  // State field(s) for nombreTitularBancoEdit widget.
+  FocusNode? nombreTitularBancoEditFocusNode;
+  TextEditingController? nombreTitularBancoEditTextController;
+  String? Function(BuildContext, String?)?
+      nombreTitularBancoEditTextControllerValidator;
+  String? _nombreTitularBancoEditTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese el nombre del titular de la cuenta bancaria';
     }
 
     return null;
@@ -102,11 +157,17 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   void initState(BuildContext context) {
     tiendaNameEditTextControllerValidator =
         _tiendaNameEditTextControllerValidator;
+    tenderoNameEditTextControllerValidator =
+        _tenderoNameEditTextControllerValidator;
     emailEditTextControllerValidator = _emailEditTextControllerValidator;
+    ciEditTextControllerValidator = _ciEditTextControllerValidator;
+    numTelfEditTextControllerValidator = _numTelfEditTextControllerValidator;
     numCuentaEditTextControllerValidator =
         _numCuentaEditTextControllerValidator;
     nombreBancoEditTextControllerValidator =
         _nombreBancoEditTextControllerValidator;
+    nombreTitularBancoEditTextControllerValidator =
+        _nombreTitularBancoEditTextControllerValidator;
   }
 
   @override
@@ -114,13 +175,25 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     tiendaNameEditFocusNode?.dispose();
     tiendaNameEditTextController?.dispose();
 
+    tenderoNameEditFocusNode?.dispose();
+    tenderoNameEditTextController?.dispose();
+
     emailEditFocusNode?.dispose();
     emailEditTextController?.dispose();
+
+    ciEditFocusNode?.dispose();
+    ciEditTextController?.dispose();
+
+    numTelfEditFocusNode?.dispose();
+    numTelfEditTextController?.dispose();
 
     numCuentaEditFocusNode?.dispose();
     numCuentaEditTextController?.dispose();
 
     nombreBancoEditFocusNode?.dispose();
     nombreBancoEditTextController?.dispose();
+
+    nombreTitularBancoEditFocusNode?.dispose();
+    nombreTitularBancoEditTextController?.dispose();
   }
 }

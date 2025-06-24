@@ -1,17 +1,13 @@
 import '/backend/backend.dart';
 import '/components_nivel_tendero/empty_tienda_comp/empty_tienda_comp_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/walkthroughs/cliente_tiendas_list.dart';
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'resumen_fiado_clien_tienda_new_model.dart';
@@ -36,13 +32,10 @@ class ResumenFiadoClienTiendaNewWidget extends StatefulWidget {
 }
 
 class _ResumenFiadoClienTiendaNewWidgetState
-    extends State<ResumenFiadoClienTiendaNewWidget>
-    with TickerProviderStateMixin {
+    extends State<ResumenFiadoClienTiendaNewWidget> {
   late ResumenFiadoClienTiendaNewModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -72,25 +65,24 @@ class _ResumenFiadoClienTiendaNewWidgetState
         safeSetState(() {});
       }
       if (FFAppState().isFirstTimeClienteTiendaList == true) {
-        safeSetState(() => _model.clienteTiendasListController =
-            createPageWalkthrough(context));
-        _model.clienteTiendasListController?.show(context: context);
-      }
-    });
+        FFAppState().isFirstTimeClienteTiendaList = false;
+        safeSetState(() {});
 
-    animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          FadeEffect(
-            curve: Curves.easeIn,
-            delay: 540.0.ms,
-            duration: 490.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
+        context.pushNamed(
+          PageTutorialForClienteWidget.routeName,
+          queryParameters: {
+            'cedula': serializeParam(
+              widget.cedula,
+              ParamType.String,
+            ),
+            'idTenderoList': serializeParam(
+              widget.idTenderoList,
+              ParamType.DocumentReference,
+              isList: true,
+            ),
+          }.withoutNulls,
+        );
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -292,15 +284,34 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                         alignment:
                                                             AlignmentDirectional(
                                                                 0.0, 0.0),
-                                                        child: Text(
-                                                          'Nombre: ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.nombre} ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.apellido}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: AutoSizeText(
+                                                            'Nombre: ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.nombre} ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.apellido}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyLarge
@@ -310,17 +321,7 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                       .bodyLarge
                                                                       .fontStyle,
                                                                 ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLarge
-                                                                    .fontStyle,
-                                                              ),
+                                                          ),
                                                         ),
                                                       ),
                                                       Align(
@@ -400,10 +401,6 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                             height: 5.0))
                                                         .addToEnd(SizedBox(
                                                             height: 10.0)),
-                                                  ).addWalkthrough(
-                                                    columnA8g7q99j,
-                                                    _model
-                                                        .clienteTiendasListController,
                                                   ),
                                                 ),
                                                 Builder(
@@ -568,6 +565,8 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                             isEqualTo:
                                                                                 widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
                                                                           ),
+                                                                          singleRecord:
+                                                                              true,
                                                                         ),
                                                                         builder:
                                                                             (context,
@@ -590,9 +589,18 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                           List<TenderosRecord>
                                                                               textTenderosRecordList =
                                                                               snapshot.data!;
+                                                                          // Return an empty Container when the item does not exist.
+                                                                          if (snapshot
+                                                                              .data!
+                                                                              .isEmpty) {
+                                                                            return Container();
+                                                                          }
+                                                                          final textTenderosRecord = textTenderosRecordList.isNotEmpty
+                                                                              ? textTenderosRecordList.first
+                                                                              : null;
 
                                                                           return Text(
-                                                                            'Tienda: ${_model.nombresTiendas.elementAtOrNull(tiendaChildIndex)}',
+                                                                            'Tienda: ${textTenderosRecord?.displayName}',
                                                                             style: FlutterFlowTheme.of(context).titleLarge.override(
                                                                                   font: GoogleFonts.interTight(
                                                                                     fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
@@ -644,10 +652,6 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                           ),
                                                         );
                                                       },
-                                                    ).addWalkthrough(
-                                                      listView22ndqvkr,
-                                                      _model
-                                                          .clienteTiendasListController,
                                                     );
                                                   },
                                                 ),
@@ -669,26 +673,9 @@ class _ResumenFiadoClienTiendaNewWidgetState
                 ),
               ],
             ),
-          ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
+          ),
         );
       },
     );
   }
-
-  TutorialCoachMark createPageWalkthrough(BuildContext context) =>
-      TutorialCoachMark(
-        targets: createWalkthroughTargets(context),
-        onFinish: () async {
-          safeSetState(() => _model.clienteTiendasListController = null);
-          FFAppState().isFirstTimeClienteTiendaList = false;
-          safeSetState(() {});
-        },
-        onSkip: () {
-          () async {
-            FFAppState().isFirstTimeClienteTiendaList = false;
-            safeSetState(() {});
-          }();
-          return true;
-        },
-      );
 }

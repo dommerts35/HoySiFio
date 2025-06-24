@@ -9,37 +9,91 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_functions/cloud_functions.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-Future<void> sendCustomVerificationEmail() async {
-  try {
-    // 1. Obtener usuario actual
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null || user.email == null) {
-      throw Exception('Usuario no autenticado o sin email');
-    }
+Future<void> sendCustomVerificationEmail(String recipientEmail,
+    String recipientName, String emailSubject, String otp) async {
+  final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
+  final String oneSignalRestApiKey =
+      "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
 
-    // 2. Llamar a la Cloud Function
-    final functions = FirebaseFunctions.instance;
-    final callable = functions.httpsCallable(
-      'sendCustomVerificationEmail',
-      options: HttpsCallableOptions(
-        timeout: const Duration(seconds: 10),
-      ),
-    );
+  // 1. Template HTML con variables dinámicas
+  final htmlContent = """
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica tu cuenta - HoySíFio</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+    <!-- Header con logo -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
+      <tr>
+        <td align="center" style="padding: 20px;">
+          <h1 style="color: white; margin: 0;">¡Bienvenido, $recipientName!</h1>
+        </td>
+      </tr>
+    </table>
 
-    // 3. Ejecutar la llamada
-    final response = await callable.call({
-      'email': user.email,
-      'displayName': user.displayName ?? 'Usuario',
-    });
+    <!-- Cuerpo del mensaje -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; padding: 20px;">
+      <tr>
+        <td style="padding-bottom: 20px;">
+          <p style="margin: 0 0 15px 0;">¡Bienvenido, tendero! Se ha detectado su registro en la App <strong>HoySíFio</strong>. Para completar la verificación de su cuenta, inicie sesión con su usuario y contraseña e ingrese el siguiente código de verificación:</p>
+        
+          <!-- Código OTP destacado -->
+          <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; text-align: center;">
+            <tr>
+              <td style="background-color: #f8f8f8; border: 2px dashed #FF5722; padding: 15px; font-size: 24px; font-weight: bold; color: #FF5722;">
+                $otp
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <!-- Footer -->
+    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
+      <tr>
+        <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
+          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 5px 0 0 0;">Si no solicitó este código, ignore este mensaje.</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>
+  """;
 
-    debugPrint('Email enviado: ${response.data}');
-  } catch (e) {
-    debugPrint('Error en sendCustomVerificationEmail: $e');
-    rethrow;
+  // 2. Configurar petición a OneSignal
+  final response = await http.post(
+    Uri.parse('https://onesignal.com/api/v1/notifications'),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Key $oneSignalRestApiKey',
+    },
+    body: jsonEncode({
+      'app_id': oneSignalAppId,
+      'email_subject': emailSubject,
+      'email_body': htmlContent,
+      'email_from_name': 'HoySíFio', // Personalizable
+      'email_from_address': 'hoysifioapp@hoysifio.org',
+      'include_email_tokens': [recipientEmail],
+    }),
+  );
+
+  // 3. Manejar errores
+  if (response.statusCode != 200) {
+    throw Exception('''
+      Error al enviar email: 
+      Status: ${response.statusCode}
+      Respuesta: ${response.body}
+    ''');
   }
 }
+// End custom action code
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

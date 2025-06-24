@@ -63,6 +63,7 @@ dependencies:
   firebase_storage_web: 3.10.5
   flutter_animate: 4.5.0
   flutter_cache_manager: 3.4.1
+  flutter_card_swiper: 6.0.0
   flutter_local_notifications:
   flutter_native_splash: 2.4.1
   flutter_plugin_android_lifecycle: 2.0.20
@@ -130,7 +131,6 @@ dependencies:
   supabase: 2.3.0
   supabase_flutter: 2.6.0
   timeago: 3.6.1
-  tutorial_coach_mark: 1.2.11
   universal_html:
   universal_io: 2.2.2
   url_launcher: 6.3.0

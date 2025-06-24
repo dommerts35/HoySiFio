@@ -1,8 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart'
-    show TutorialCoachMark;
 import 'resumen_fiado_clien_tienda_new_widget.dart'
     show ResumenFiadoClienTiendaNewWidget;
 import 'package:flutter/material.dart';
@@ -31,7 +29,6 @@ class ResumenFiadoClienTiendaNewModel
 
   ///  State fields for stateful widgets in this page.
 
-  TutorialCoachMark? clienteTiendasListController;
   // Stores action output result for [Firestore Query - Query a collection] action in resumenFiadoClienTiendaNew widget.
   List<ClientesRecord>? queryOnLoadClientes;
   // Stores action output result for [Backend Call - Read Document] action in resumenFiadoClienTiendaNew widget.
@@ -41,7 +38,5 @@ class ResumenFiadoClienTiendaNewModel
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    clienteTiendasListController?.finish();
-  }
+  void dispose() {}
 }

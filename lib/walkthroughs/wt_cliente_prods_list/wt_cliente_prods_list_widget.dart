@@ -54,7 +54,7 @@ class _WtClienteProdsListWidgetState extends State<WtClienteProdsListWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Lista de Productos',
+            'Productos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.interTight(
                     fontWeight:
@@ -74,7 +74,7 @@ class _WtClienteProdsListWidgetState extends State<WtClienteProdsListWidget> {
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Esta es la lista de productos que se fian actualmente.',
+            'Esta es la lista de productos adeudados actualmente',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

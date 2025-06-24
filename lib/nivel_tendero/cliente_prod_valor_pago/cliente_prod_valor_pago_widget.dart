@@ -333,7 +333,7 @@ class _ClienteProdValorPagoWidgetState
                                           CrossAxisAlignment.center,
                                       children: [
                                         Container(
-                                          height: 150.0,
+                                          height: 96.59,
                                           child: TextFormField(
                                             controller:
                                                 _model.valorAPTextController,
@@ -347,55 +347,60 @@ class _ClienteProdValorPagoWidgetState
                                               labelText: 'Valor a Pagar',
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium
+                                                      .labelLarge
                                                       .override(
                                                         font: GoogleFonts.inter(
                                                           fontWeight:
-                                                              FontWeight.w600,
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelMedium
+                                                                  .labelLarge
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 28.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .labelLarge
                                                                 .fontStyle,
                                                       ),
                                               hintText: '#.##',
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium
+                                                      .labelLarge
                                                       .override(
                                                         font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelMedium
+                                                                  .labelLarge
                                                                   .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .labelMedium
+                                                                  .labelLarge
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 28.0,
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .labelLarge
                                                                 .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .labelMedium
+                                                                .labelLarge
                                                                 .fontStyle,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
@@ -459,7 +464,7 @@ class _ClienteProdValorPagoWidgetState
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  fontSize: 28.0,
+                                                  fontSize: 14.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(

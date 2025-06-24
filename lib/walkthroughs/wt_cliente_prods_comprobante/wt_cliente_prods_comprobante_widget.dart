@@ -75,7 +75,7 @@ class _WtClienteProdsComprobanteWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Revisa los comprobantes que has enviado con este botón.',
+            'Revisa el historial de comprobantes que has enviado con este botón.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -75,7 +75,7 @@ class _WtInfoEditProdsNombreWidgetState
             color: FlutterFlowTheme.of(context).alternate,
           ),
           Text(
-            'Registra el nombre del producto a fiar.',
+            'Registre el nombre del producto a fiar.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   font: GoogleFonts.inter(

@@ -166,7 +166,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     ),
               ),
               Text(
-                'Llene la información del cliente nuevo',
+                'Llene la información del nuevo cliente',
                 maxLines: 2,
                 style: FlutterFlowTheme.of(context).labelMedium.override(
                       font: GoogleFonts.inter(
@@ -1002,7 +1002,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      labelText: 'Email',
+                                      labelText: 'E-mail',
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(

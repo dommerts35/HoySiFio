@@ -193,7 +193,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                           ),
                         ),
                         Text(
-                          'en otras tiendas, vincule sus datos',
+                          'en otras tiendas, se vinculará sus datos.',
                           maxLines: 2,
                           style:
                               FlutterFlowTheme.of(context).labelMedium.override(
@@ -760,7 +760,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                             .emailCliente,
                                                         clienteVincClientesRecord
                                                             .cliente.nombre,
-                                                        'Cuenta vinculada a nueva tienda: ${widget.nombreTienda}',
+                                                        'Cuenta vinculada en nueva tienda: ${widget.nombreTienda}',
                                                         widget.nombreTienda!,
                                                       );
 
