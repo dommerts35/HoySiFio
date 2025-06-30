@@ -51,9 +51,15 @@ export '/nivel_cliente/terms_of_service_sub_page_to_view/terms_of_service_sub_pa
     show TermsOfServiceSubPageToViewWidget;
 export '/nivel_cliente/tendero_first_login/tendero_first_login_widget.dart'
     show TenderoFirstLoginWidget;
-export '/tutoriales/page_tutorial_lista_clientes/page_tutorial_lista_clientes_widget.dart'
-    show PageTutorialListaClientesWidget;
-export '/tutoriales/page_tutorialinfo_prod/page_tutorialinfo_prod_widget.dart'
-    show PageTutorialinfoProdWidget;
-export '/tutoriales/page_tutorial_for_cliente/page_tutorial_for_cliente_widget.dart'
-    show PageTutorialForClienteWidget;
+export '/tutoriales/page_tutorial_lista_clientes_f_t/page_tutorial_lista_clientes_f_t_widget.dart'
+    show PageTutorialListaClientesFTWidget;
+export '/tutoriales/page_tutorialinfo_prod_f_t/page_tutorialinfo_prod_f_t_widget.dart'
+    show PageTutorialinfoProdFTWidget;
+export '/tutoriales/page_tutorial_for_cliente_f_t/page_tutorial_for_cliente_f_t_widget.dart'
+    show PageTutorialForClienteFTWidget;
+export '/nivel_tendero/tendero_ayuda/tendero_ayuda_widget.dart'
+    show TenderoAyudaWidget;
+export '/tutoriales/page_tutorialinfo_prod_from_help/page_tutorialinfo_prod_from_help_widget.dart'
+    show PageTutorialinfoProdFromHelpWidget;
+export '/tutoriales/page_tutorial_lista_clientes_from_help/page_tutorial_lista_clientes_from_help_widget.dart'
+    show PageTutorialListaClientesFromHelpWidget;

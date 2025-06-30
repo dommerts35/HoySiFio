@@ -292,7 +292,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                     ),
                                                   ),
                                                 Text(
-                                                  'Bienvenido tendero',
+                                                  'Bienvenido',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1986,7 +1986,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                     ),
                                                   ),
                                                 Text(
-                                                  'Bienvenido vecino',
+                                                  'Bienvenido',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -2056,67 +2056,79 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         ),
                                                   ),
                                                 ),
-                                                if (() {
-                                                  if (_model.ciClienteTextController
-                                                              .text ==
-                                                          '') {
-                                                    return false;
-                                                  } else if (_model
-                                                          .queryForClienteWithPswrd
-                                                          ?.reference !=
-                                                      null) {
-                                                    return true;
-                                                  } else {
-                                                    return false;
-                                                  }
-                                                }())
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0),
-                                                      child: Text(
-                                                        _model.queryForClienteWithPswrd
-                                                                    ?.reference ==
-                                                                null
-                                                            ? 'Cliente no encontrado'
-                                                            : 'Cliente encontrado',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: _model
-                                                                              .queryForClienteWithPswrd
-                                                                              ?.reference ==
-                                                                          null
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondary,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 10.0),
+                                                    child: StreamBuilder<
+                                                        List<ClientesRecord>>(
+                                                      stream:
+                                                          queryClientesRecord(
+                                                        queryBuilder:
+                                                            (clientesRecord) =>
+                                                                clientesRecord
+                                                                    .where(
+                                                                      'cliente.cedula',
+                                                                      isEqualTo: _model
+                                                                          .ciClienteTextController
+                                                                          .text,
+                                                                    )
+                                                                    .where(
+                                                                      'cliente.secret_pass',
+                                                                      isEqualTo:
+                                                                          null,
+                                                                    ),
+                                                        singleRecord: true,
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 40.0,
+                                                              height: 40.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ClientesRecord>
+                                                            textClientesRecordList =
+                                                            snapshot.data!;
+                                                        final textClientesRecord =
+                                                            textClientesRecordList
+                                                                    .isNotEmpty
+                                                                ? textClientesRecordList
+                                                                    .first
+                                                                : null;
+
+                                                        return Text(
+                                                          (textClientesRecord !=
+                                                                      null) ==
+                                                                  true
+                                                              ? 'Cliente encontrado'
+                                                              : 'Cliente no encontrado',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2126,9 +2138,31 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
+                                                                color: textClientesRecord
+                                                                            ?.reference ==
+                                                                        null
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .error
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondary,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
+                                                ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -2180,6 +2214,21 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             safeSetState(() {});
                                                           } else {
                                                             _model.isClienteSetWithPss =
+                                                                false;
+                                                            safeSetState(() {});
+                                                          }
+
+                                                          if ((_model.ciClienteTextController
+                                                                          .text !=
+                                                                      '') &&
+                                                              (_model.queryForClienteWithPswrd
+                                                                      ?.reference ==
+                                                                  null)) {
+                                                            _model.isQueryUnsuccesful =
+                                                                true;
+                                                            safeSetState(() {});
+                                                          } else {
+                                                            _model.isQueryUnsuccesful =
                                                                 false;
                                                             safeSetState(() {});
                                                           }

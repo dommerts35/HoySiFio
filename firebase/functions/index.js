@@ -209,6 +209,7 @@ function getCharForIndex(charIdx) {
 exports.onUserDeleted = functions.auth.user().onDelete(async (user) => {
   let firestore = admin.firestore();
   let userRef = firestore.doc("tenderos/" + user.uid);
+  await firestore.collection("tenderos").doc(user.uid).delete();
 });
 const OneSignal = require("@onesignal/node-onesignal");
 

@@ -144,10 +144,6 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   bool? checkboxListCAValue;
   // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
   int? count;
-  // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
-  List<ClientesRecord>? queryToDelete1;
-  // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
-  List<ClientesRecord>? queryToDelete2;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
   // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.

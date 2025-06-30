@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -82,8 +83,10 @@ class _EmptyClientesListNoFiandoWidgetState
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 10.0),
-                child: Text(
-                  'No hay clientes sin adeudar.',
+                child: AutoSizeText(
+                  'No hay clientes sin fiar productos.',
+                  textAlign: TextAlign.center,
+                  minFontSize: 10.0,
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.interTight(
                           fontWeight: FlutterFlowTheme.of(context)
@@ -92,7 +95,7 @@ class _EmptyClientesListNoFiandoWidgetState
                           fontStyle:
                               FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         ),
-                        fontSize: 20.0,
+                        fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight:
                             FlutterFlowTheme.of(context).titleSmall.fontWeight,

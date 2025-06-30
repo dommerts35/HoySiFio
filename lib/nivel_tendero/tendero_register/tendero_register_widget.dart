@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
@@ -2854,16 +2855,21 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                             GoRouter.of(context)
                                                                 .clearRedirectLocation();
 
-                                                            await actions
-                                                                .sendCustomVerificationEmail(
-                                                              _model
-                                                                  .emailAddressTenderoTextController
-                                                                  .text,
-                                                              _model
-                                                                  .nombreTenderoTextController
-                                                                  .text,
-                                                              '¡Verificación de cuenta!',
-                                                              _model.tempOtp!,
+                                                            unawaited(
+                                                              () async {
+                                                                await actions
+                                                                    .sendCustomVerificationEmail(
+                                                                  _model
+                                                                      .emailAddressTenderoTextController
+                                                                      .text,
+                                                                  _model
+                                                                      .nombreTenderoTextController
+                                                                      .text,
+                                                                  '¡Verificación de cuenta!',
+                                                                  _model
+                                                                      .tempOtp!,
+                                                                );
+                                                              }(),
                                                             );
                                                             await showDialog(
                                                               context: context,

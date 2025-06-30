@@ -30,6 +30,8 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
 
   bool isClienteSetWithPss = false;
 
+  bool? isQueryUnsuccesful;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Custom Action - getPlayerId] action in authSigningIn widget.

@@ -89,7 +89,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
         safeSetState(() {});
 
         context.goNamed(
-          PageTutorialinfoProdWidget.routeName,
+          PageTutorialinfoProdFTWidget.routeName,
           queryParameters: {
             'tenderoRef': serializeParam(
               widget.tenderoRef,
@@ -2384,6 +2384,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .labelMedium
                                                                               .fontStyle,
                                                                         ),
+                                                                        fontSize:
+                                                                            13.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
@@ -2408,6 +2410,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .labelMedium
                                                                               .fontStyle,
                                                                         ),
+                                                                        fontSize:
+                                                                            13.0,
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)

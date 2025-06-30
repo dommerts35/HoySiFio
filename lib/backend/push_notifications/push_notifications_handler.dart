@@ -392,7 +392,7 @@ final parametersBuilderMap =
               getParameter<DocumentReference>(data, 'idTenderoNoAuth'),
         },
       ),
-  'pageTutorialListaClientes': (data) async => ParameterData(
+  'pageTutorialListaClientesFT': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
@@ -400,7 +400,7 @@ final parametersBuilderMap =
           'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
-  'pageTutorialinfoProd': (data) async => ParameterData(
+  'pageTutorialinfoProdFT': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreCliente': getParameter<String>(data, 'nombreCliente'),
@@ -416,9 +416,33 @@ final parametersBuilderMap =
           'emailCliente': getParameter<String>(data, 'emailCliente'),
         },
       ),
-  'pageTutorialForCliente': (data) async => ParameterData(
+  'pageTutorialForClienteFT': (data) async => ParameterData(
         allParams: {
           'cedula': getParameter<String>(data, 'cedula'),
+        },
+      ),
+  'tenderoAyuda': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'pageTutorialinfoProdFromHelp': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'pageTutorialListaClientesFromHelp': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
 };

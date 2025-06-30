@@ -56,7 +56,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
         safeSetState(() {});
 
         context.pushNamed(
-          PageTutorialListaClientesWidget.routeName,
+          PageTutorialListaClientesFTWidget.routeName,
           queryParameters: {
             'tenderoRef': serializeParam(
               widget.tenderoRef,
@@ -1370,26 +1370,43 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Opacity(
-                    opacity: 0.0,
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                      child: FlutterFlowIconButton(
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 50.0,
-                        hoverColor: Colors.white,
-                        hoverIconColor: FlutterFlowTheme.of(context).primary,
-                        icon: Icon(
-                          Icons.cloud_circle,
-                          color: Colors.white,
-                          size: 30.0,
-                        ),
-                        onPressed: () {
-                          print('iconVinculate pressed ...');
-                        },
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                    child: FlutterFlowIconButton(
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 50.0,
+                      hoverColor: Colors.white,
+                      hoverIconColor: FlutterFlowTheme.of(context).primary,
+                      icon: Icon(
+                        Icons.help,
+                        color: Colors.white,
+                        size: 30.0,
                       ),
+                      onPressed: () async {
+                        context.pushNamed(
+                          TenderoAyudaWidget.routeName,
+                          queryParameters: {
+                            'tenderoRef': serializeParam(
+                              widget.tenderoRef,
+                              ParamType.DocumentReference,
+                            ),
+                            'nombreTienda': serializeParam(
+                              widget.nombreTienda,
+                              ParamType.String,
+                            ),
+                            'tenderoEmail': serializeParam(
+                              widget.tenderoEmail,
+                              ParamType.String,
+                            ),
+                            'nombreTendero': serializeParam(
+                              widget.nombreTendero,
+                              ParamType.String,
+                            ),
+                          }.withoutNulls,
+                        );
+                      },
                     ),
                   ),
                   Padding(

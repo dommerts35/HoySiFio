@@ -114,1271 +114,1281 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
             FocusScope.of(context).unfocus();
             FocusManager.instance.primaryFocus?.unfocus();
           },
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            body: SafeArea(
-              top: true,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Expanded(
-                    child: Align(
-                      alignment: AlignmentDirectional(0.0, -1.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 750.0,
-                        constraints: BoxConstraints(
-                          maxWidth: 1170.0,
-                        ),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.asset(
-                              'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
-                            ).image,
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              body: SafeArea(
+                top: true,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: AlignmentDirectional(0.0, -1.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 750.0,
+                          constraints: BoxConstraints(
+                            maxWidth: 1170.0,
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primaryText,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: Image.asset(
+                                'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                              ).image,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
                           ),
-                        ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 8.0, 12.0, 8.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        borderRadius: 12.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 40.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        icon: Icon(
-                                          Icons.arrow_back,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () async {
-                                          context.pushNamed(
-                                            ClienteInfoEditWidget.routeName,
-                                            queryParameters: {
-                                              'nombre': serializeParam(
-                                                widget.nombre,
-                                                ParamType.String,
-                                              ),
-                                              'telf': serializeParam(
-                                                widget.telf,
-                                                ParamType.String,
-                                              ),
-                                              'isFiando': serializeParam(
-                                                widget.isFiando,
-                                                ParamType.bool,
-                                              ),
-                                              'idCliente': serializeParam(
-                                                widget.idCliente,
-                                                ParamType.DocumentReference,
-                                              ),
-                                              'apellido': serializeParam(
-                                                widget.apellido,
-                                                ParamType.String,
-                                              ),
-                                              'cedula': serializeParam(
-                                                widget.cedula,
-                                                ParamType.String,
-                                              ),
-                                              'tenderoRef': serializeParam(
-                                                widget.idTendero,
-                                                ParamType.DocumentReference,
-                                              ),
-                                              'direccionDomicilio':
-                                                  serializeParam(
-                                                widget.direccionDomicilio,
-                                                ParamType.String,
-                                              ),
-                                              'viviendaAlq': serializeParam(
-                                                widget.viviendaAlq,
-                                                ParamType.bool,
-                                              ),
-                                              'viviendaProp': serializeParam(
-                                                widget.viviendaProp,
-                                                ParamType.bool,
-                                              ),
-                                              'emailCliente': serializeParam(
-                                                widget.emailCliente,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
-                                        child: AutoSizeText(
-                                          'Cuentas por cobrar',
-                                          maxLines: 2,
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                font: GoogleFonts.interTight(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                                fontSize: 26.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: FlutterFlowIconButton(
-                                        borderColor:
-                                            FlutterFlowTheme.of(context).error,
-                                        borderRadius: 12.0,
-                                        borderWidth: 1.0,
-                                        buttonSize: 40.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        icon: Icon(
-                                          Icons.logout,
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () async {
-                                          var confirmDialogResponse =
-                                              await showDialog<bool>(
-                                                    context: context,
-                                                    builder:
-                                                        (alertDialogContext) {
-                                                      return AlertDialog(
-                                                        title: Text(
-                                                            '¿Desea cerrar sesión?'),
-                                                        content: Text(
-                                                            'Sus datos ya están guardados.'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    false),
-                                                            child: Text(
-                                                                'Cancelar'),
-                                                          ),
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext,
-                                                                    true),
-                                                            child: Text(
-                                                                'Confirmar'),
-                                                          ),
-                                                        ],
-                                                      );
-                                                    },
-                                                  ) ??
-                                                  false;
-                                          if (confirmDialogResponse) {
-                                            GoRouter.of(context)
-                                                .prepareAuthEvent();
-                                            await authManager.signOut();
-                                            GoRouter.of(context)
-                                                .clearRedirectLocation();
-
-                                            context.goNamedAuth(
-                                                AuthSigningInWidget.routeName,
-                                                context.mounted);
-                                          }
-                                        },
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    border: Border.all(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
-                                  ),
-                                  child: Column(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 0.0),
-                                        child: Text(
-                                          'Aquí se mostrarán los productos por cobrar',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
+                                            12.0, 8.0, 12.0, 8.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          borderRadius: 12.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: Icon(
+                                            Icons.arrow_back,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              ClienteInfoEditWidget.routeName,
+                                              queryParameters: {
+                                                'nombre': serializeParam(
+                                                  widget.nombre,
+                                                  ParamType.String,
+                                                ),
+                                                'telf': serializeParam(
+                                                  widget.telf,
+                                                  ParamType.String,
+                                                ),
+                                                'isFiando': serializeParam(
+                                                  widget.isFiando,
+                                                  ParamType.bool,
+                                                ),
+                                                'idCliente': serializeParam(
+                                                  widget.idCliente,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'apellido': serializeParam(
+                                                  widget.apellido,
+                                                  ParamType.String,
+                                                ),
+                                                'cedula': serializeParam(
+                                                  widget.cedula,
+                                                  ParamType.String,
+                                                ),
+                                                'tenderoRef': serializeParam(
+                                                  widget.idTendero,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'direccionDomicilio':
+                                                    serializeParam(
+                                                  widget.direccionDomicilio,
+                                                  ParamType.String,
+                                                ),
+                                                'viviendaAlq': serializeParam(
+                                                  widget.viviendaAlq,
+                                                  ParamType.bool,
+                                                ),
+                                                'viviendaProp': serializeParam(
+                                                  widget.viviendaProp,
+                                                  ParamType.bool,
+                                                ),
+                                                'emailCliente': serializeParam(
+                                                  widget.emailCliente,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 5.0, 5.0, 5.0),
+                                          child: AutoSizeText(
+                                            'Cuentas por cobrar',
+                                            maxLines: 2,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineMedium
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 26.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMedium
+                                                          .headlineMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMedium
+                                                          .headlineMedium
                                                           .fontStyle,
                                                 ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
+                                          ),
                                         ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 5.0),
-                                        child: Text(
-                                          'del cliente: ${historialPorCobrarClientesRecord.cliente.nombre} ${historialPorCobrarClientesRecord.cliente.apellido}',
-                                          textAlign: TextAlign.start,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: FlutterFlowIconButton(
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                          borderRadius: 12.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: Icon(
+                                            Icons.logout,
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            var confirmDialogResponse =
+                                                await showDialog<bool>(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              '¿Desea cerrar sesión?'),
+                                                          content: Text(
+                                                              'Sus datos ya están guardados.'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      false),
+                                                              child: Text(
+                                                                  'Cancelar'),
+                                                            ),
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext,
+                                                                      true),
+                                                              child: Text(
+                                                                  'Confirmar'),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ) ??
+                                                    false;
+                                            if (confirmDialogResponse) {
+                                              GoRouter.of(context)
+                                                  .prepareAuthEvent();
+                                              await authManager.signOut();
+                                              GoRouter.of(context)
+                                                  .clearRedirectLocation();
+
+                                              context.goNamedAuth(
+                                                  AuthSigningInWidget.routeName,
+                                                  context.mounted);
+                                            }
+                                          },
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                              StreamBuilder<ClientesRecord>(
-                                stream: ClientesRecord.getDocument(
-                                    widget.idCliente!),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 5.0, 5.0, 0.0),
+                                          child: Text(
+                                            'Aquí se mostrarán los productos por cobrar',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  }
-
-                                  final mainHistorialViewClientesRecord =
-                                      snapshot.data!;
-
-                                  return Builder(
-                                    builder: (context) {
-                                      final listaProdPorPagarGroup =
-                                          mainHistorialViewClientesRecord
-                                              .cliente.historialPorPagarProd
-                                              .sortedList(
-                                                  keyOf: (e) => e.idTransaccion,
-                                                  desc: true)
-                                              .toList();
-                                      if (listaProdPorPagarGroup.isEmpty) {
-                                        return Center(
-                                          child:
-                                              EmptyProductosPagadosCompWidget(),
-                                        );
-                                      }
-
-                                      return ListView.separated(
-                                        padding: EdgeInsets.fromLTRB(
-                                          0,
-                                          12.0,
-                                          0,
-                                          20.0,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 5.0),
+                                          child: Text(
+                                            'del cliente: ${historialPorCobrarClientesRecord.cliente.nombre} ${historialPorCobrarClientesRecord.cliente.apellido}',
+                                            textAlign: TextAlign.start,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
                                         ),
-                                        primary: false,
-                                        shrinkWrap: true,
-                                        scrollDirection: Axis.vertical,
-                                        itemCount:
-                                            listaProdPorPagarGroup.length,
-                                        separatorBuilder: (_, __) =>
-                                            SizedBox(height: 12.0),
-                                        itemBuilder: (context,
-                                            listaProdPorPagarGroupIndex) {
-                                          final listaProdPorPagarGroupItem =
-                                              listaProdPorPagarGroup[
-                                                  listaProdPorPagarGroupIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            child: Container(
-                                              width: double.infinity,
-                                              constraints: BoxConstraints(
-                                                maxWidth: 570.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                border: Border.all(
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                StreamBuilder<ClientesRecord>(
+                                  stream: ClientesRecord.getDocument(
+                                      widget.idCliente!),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+
+                                    final mainHistorialViewClientesRecord =
+                                        snapshot.data!;
+
+                                    return Builder(
+                                      builder: (context) {
+                                        final listaProdPorPagarGroup =
+                                            mainHistorialViewClientesRecord
+                                                .cliente.historialPorPagarProd
+                                                .sortedList(
+                                                    keyOf: (e) =>
+                                                        e.idTransaccion,
+                                                    desc: true)
+                                                .toList();
+                                        if (listaProdPorPagarGroup.isEmpty) {
+                                          return Center(
+                                            child:
+                                                EmptyProductosPagadosCompWidget(),
+                                          );
+                                        }
+
+                                        return ListView.separated(
+                                          padding: EdgeInsets.fromLTRB(
+                                            0,
+                                            12.0,
+                                            0,
+                                            20.0,
+                                          ),
+                                          primary: false,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              listaProdPorPagarGroup.length,
+                                          separatorBuilder: (_, __) =>
+                                              SizedBox(height: 12.0),
+                                          itemBuilder: (context,
+                                              listaProdPorPagarGroupIndex) {
+                                            final listaProdPorPagarGroupItem =
+                                                listaProdPorPagarGroup[
+                                                    listaProdPorPagarGroupIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              child: Container(
+                                                width: double.infinity,
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 570.0,
+                                                ),
+                                                decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
-                                                  width: 1.0,
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    width: 1.0,
+                                                  ),
                                                 ),
-                                              ),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            1.0, 0.0),
-                                                    child: Padding(
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              1.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    10.0,
+                                                                    20.0,
+                                                                    0.0),
+                                                        child: wrapWithModel(
+                                                          model: _model
+                                                              .checkCuentasCompModels
+                                                              .getModel(
+                                                            listaProdPorPagarGroupItem
+                                                                .idTransaccion,
+                                                            listaProdPorPagarGroupIndex,
+                                                          ),
+                                                          updateCallback: () =>
+                                                              safeSetState(
+                                                                  () {}),
+                                                          child:
+                                                              CheckCuentasCompWidget(
+                                                            key: Key(
+                                                              'Keyzem_${listaProdPorPagarGroupItem.idTransaccion}',
+                                                            ),
+                                                            indexFromhPP:
+                                                                listaProdPorPagarGroupIndex,
+                                                            idCliente: widget
+                                                                .idCliente,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
-                                                                  10.0,
-                                                                  20.0,
+                                                                  15.0,
+                                                                  0.0,
                                                                   0.0),
-                                                      child: wrapWithModel(
-                                                        model: _model
-                                                            .checkCuentasCompModels
-                                                            .getModel(
-                                                          listaProdPorPagarGroupItem
-                                                              .idTransaccion,
-                                                          listaProdPorPagarGroupIndex,
-                                                        ),
-                                                        updateCallback: () =>
-                                                            safeSetState(() {}),
-                                                        child:
-                                                            CheckCuentasCompWidget(
-                                                          key: Key(
-                                                            'Keyzem_${listaProdPorPagarGroupItem.idTransaccion}',
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Text(
+                                                            'Cantidad',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
                                                           ),
-                                                          indexFromhPP:
-                                                              listaProdPorPagarGroupIndex,
-                                                          idCliente:
-                                                              widget.idCliente,
-                                                        ),
+                                                          Text(
+                                                            'Producto',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            'Valor Unitario',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                          Text(
+                                                            'Valor',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 15.0,
-                                                                0.0, 0.0),
-                                                    child: Row(
+                                                    Builder(
+                                                      builder: (context) {
+                                                        final singleProd =
+                                                            listaProdPorPagarGroupItem
+                                                                .productos
+                                                                .map((e) => e
+                                                                    .nombreProd)
+                                                                .toList();
+
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: List.generate(
+                                                              singleProd.length,
+                                                              (singleProdIndex) {
+                                                            final singleProdItem =
+                                                                singleProd[
+                                                                    singleProdIndex];
+                                                            return Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          12.0,
+                                                                          0.0,
+                                                                          12.0),
+                                                              child: Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceEvenly,
+                                                                children: [
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width:
+                                                                            60.0,
+                                                                        child:
+                                                                            Divider(
+                                                                          height:
+                                                                              0.0,
+                                                                          thickness:
+                                                                              0.0,
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.cantidad.toString()}',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.interTight(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width:
+                                                                            60.0,
+                                                                        child:
+                                                                            Divider(
+                                                                          height:
+                                                                              0.0,
+                                                                          thickness:
+                                                                              0.0,
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        valueOrDefault<
+                                                                            String>(
+                                                                          '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
+                                                                          'prod',
+                                                                        ).maybeHandleOverflow(
+                                                                          maxChars:
+                                                                              8,
+                                                                          replacement:
+                                                                              '…',
+                                                                        ),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.interTight(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width:
+                                                                            88.0,
+                                                                        child:
+                                                                            Divider(
+                                                                          height:
+                                                                              0.0,
+                                                                          thickness:
+                                                                              0.0,
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        '\$${formatNumber(
+                                                                          listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.valorProd /
+                                                                              listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.cantidad,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        )}',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.interTight(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      SizedBox(
+                                                                        width:
+                                                                            30.0,
+                                                                        child:
+                                                                            Divider(
+                                                                          height:
+                                                                              0.0,
+                                                                          thickness:
+                                                                              0.0,
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                        ),
+                                                                      ),
+                                                                      Text(
+                                                                        '\$ ${formatNumber(
+                                                                          listaProdPorPagarGroupItem
+                                                                              .productos
+                                                                              .elementAtOrNull(singleProdIndex)
+                                                                              ?.valorProd,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        )}',
+                                                                        textAlign:
+                                                                            TextAlign.end,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.interTight(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Total: \$${formatNumber(
+                                                                listaProdPorPagarGroupItem
+                                                                    .totalGeneral,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '#0.00',
+                                                                locale: '',
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Total por pagar: \$${formatNumber(
+                                                                listaProdPorPagarGroupItem
+                                                                    .totalPorPagar,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '#0.00',
+                                                                locale: '',
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Fecha del fío: ${dateTimeFormat(
+                                                                "d/M/y h:mm a",
+                                                                listaProdPorPagarGroupItem
+                                                                    .fechaDeFio,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Row(
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceEvenly,
                                                       children: [
-                                                        Text(
-                                                          'Cantidad',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Producto',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Valor Unitario',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        Text(
-                                                          'Valor',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Builder(
-                                                    builder: (context) {
-                                                      final singleProd =
-                                                          listaProdPorPagarGroupItem
-                                                              .productos
-                                                              .map((e) =>
-                                                                  e.nombreProd)
-                                                              .toList();
-
-                                                      return Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: List.generate(
-                                                            singleProd.length,
-                                                            (singleProdIndex) {
-                                                          final singleProdItem =
-                                                              singleProd[
-                                                                  singleProdIndex];
-                                                          return Padding(
+                                                        if (listaProdPorPagarGroupItem
+                                                                .totalPagado <
+                                                            listaProdPorPagarGroupItem
+                                                                .totalGeneral)
+                                                          Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
-                                                                        12.0,
-                                                                        0.0,
-                                                                        12.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceEvenly,
-                                                              children: [
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      width:
-                                                                          60.0,
-                                                                      child:
-                                                                          Divider(
-                                                                        height:
-                                                                            0.0,
-                                                                        thickness:
-                                                                            0.0,
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.cantidad.toString()}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.interTight(
-                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                            ),
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      width:
-                                                                          60.0,
-                                                                      child:
-                                                                          Divider(
-                                                                        height:
-                                                                            0.0,
-                                                                        thickness:
-                                                                            0.0,
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                        '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
-                                                                        'prod',
-                                                                      ).maybeHandleOverflow(
-                                                                        maxChars:
-                                                                            8,
-                                                                        replacement:
-                                                                            '…',
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.interTight(
-                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                            ),
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      width:
-                                                                          88.0,
-                                                                      child:
-                                                                          Divider(
-                                                                        height:
-                                                                            0.0,
-                                                                        thickness:
-                                                                            0.0,
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      '\$${formatNumber(
-                                                                        listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.valorProd /
-                                                                            listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.cantidad,
-                                                                        formatType:
-                                                                            FormatType.custom,
-                                                                        format:
-                                                                            '#0.00',
-                                                                        locale:
-                                                                            '',
-                                                                      )}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.interTight(
-                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                            ),
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                                Column(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  children: [
-                                                                    SizedBox(
-                                                                      width:
-                                                                          30.0,
-                                                                      child:
-                                                                          Divider(
-                                                                        height:
-                                                                            0.0,
-                                                                        thickness:
-                                                                            0.0,
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      '\$ ${formatNumber(
-                                                                        listaProdPorPagarGroupItem
-                                                                            .productos
-                                                                            .elementAtOrNull(singleProdIndex)
-                                                                            ?.valorProd,
-                                                                        formatType:
-                                                                            FormatType.custom,
-                                                                        format:
-                                                                            '#0.00',
-                                                                        locale:
-                                                                            '',
-                                                                      )}',
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .end,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.interTight(
-                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                            ),
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                          ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          );
-                                                        }),
-                                                      );
-                                                    },
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 5.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Total: \$${formatNumber(
-                                                              listaProdPorPagarGroupItem
-                                                                  .totalGeneral,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '#0.00',
-                                                              locale: '',
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Total por pagar: \$${formatNumber(
-                                                              listaProdPorPagarGroupItem
-                                                                  .totalPorPagar,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '#0.00',
-                                                              locale: '',
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Fecha del fío: ${dateTimeFormat(
-                                                              "d/M/y h:mm a",
-                                                              listaProdPorPagarGroupItem
-                                                                  .fechaDeFio,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
-                                                    children: [
-                                                      if (listaProdPorPagarGroupItem
-                                                              .totalPagado <
-                                                          listaProdPorPagarGroupItem
-                                                              .totalGeneral)
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              context.pushNamed(
-                                                                ClienteProdValorPagoWidget
-                                                                    .routeName,
-                                                                queryParameters:
-                                                                    {
-                                                                  'idCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .idCliente,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'indexFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupIndex,
-                                                                    ParamType
-                                                                        .int,
-                                                                  ),
-                                                                  'totalPagadoFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .totalPagado,
-                                                                    ParamType
-                                                                        .double,
-                                                                  ),
-                                                                  'transferFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .transferencia,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'efectivoFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .efectivo,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'dtHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem,
-                                                                    ParamType
-                                                                        .DataStruct,
-                                                                  ),
-                                                                  'totalPorPagarFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .totalPorPagar,
-                                                                    ParamType
-                                                                        .double,
-                                                                  ),
-                                                                  'totalGeneralFromHistorial':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .totalGeneral,
-                                                                    ParamType
-                                                                        .double,
-                                                                  ),
-                                                                  'idTransaccionPassed':
-                                                                      serializeParam(
-                                                                    listaProdPorPagarGroupItem
-                                                                        .idTransaccion,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'nombre':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .nombre,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'telf':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .telf,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'isFiando':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .isFiando,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'apellido':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .apellido,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'cedula':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .cedula,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'tenderoRef':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .idTendero,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'direccionDomicilio':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .direccionDomicilio,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'viviendaAlq':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .viviendaAlq,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'vivendaProp':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .viviendaProp,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'emailCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .emailCliente,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            },
-                                                            child: Container(
-                                                              width: 180.0,
-                                                              height: 32.0,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  width: 2.0,
-                                                                ),
-                                                              ),
-                                                              child: Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
+                                                                        4.0,
                                                                         0.0,
                                                                         0.0),
-                                                                child: Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          8.0,
-                                                                          0.0,
-                                                                          8.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Click para cobrar',
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .center,
-                                                                    style: FlutterFlowTheme.of(
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context
+                                                                    .pushNamed(
+                                                                  ClienteProdValorPagoWidget
+                                                                      .routeName,
+                                                                  queryParameters:
+                                                                      {
+                                                                    'idCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .idCliente,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'indexFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupIndex,
+                                                                      ParamType
+                                                                          .int,
+                                                                    ),
+                                                                    'totalPagadoFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .totalPagado,
+                                                                      ParamType
+                                                                          .double,
+                                                                    ),
+                                                                    'transferFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .transferencia,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'efectivoFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .efectivo,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'dtHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem,
+                                                                      ParamType
+                                                                          .DataStruct,
+                                                                    ),
+                                                                    'totalPorPagarFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .totalPorPagar,
+                                                                      ParamType
+                                                                          .double,
+                                                                    ),
+                                                                    'totalGeneralFromHistorial':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .totalGeneral,
+                                                                      ParamType
+                                                                          .double,
+                                                                    ),
+                                                                    'idTransaccionPassed':
+                                                                        serializeParam(
+                                                                      listaProdPorPagarGroupItem
+                                                                          .idTransaccion,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'nombre':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .nombre,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'telf':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .telf,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'isFiando':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .isFiando,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'apellido':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .apellido,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'cedula':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .cedula,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'tenderoRef':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .idTendero,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'direccionDomicilio':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .direccionDomicilio,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'viviendaAlq':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .viviendaAlq,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'vivendaProp':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .viviendaProp,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'emailCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .emailCliente,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+                                                              },
+                                                              child: Container(
+                                                                width: 180.0,
+                                                                height: 32.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
+                                                                        .primary,
+                                                                    width: 2.0,
+                                                                  ),
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            8.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Click para cobrar',
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .center,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                             fontStyle:
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                    ],
-                                                  ),
-                                                ]
-                                                    .divide(
-                                                        SizedBox(height: 5.0))
-                                                    .addToEnd(
-                                                        SizedBox(height: 10.0)),
+                                                      ],
+                                                    ),
+                                                  ]
+                                                      .divide(
+                                                          SizedBox(height: 5.0))
+                                                      .addToEnd(SizedBox(
+                                                          height: 10.0)),
+                                                ),
                                               ),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 10.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                          ClienteInfoEditWidget.routeName,
+                                          queryParameters: {
+                                            'nombre': serializeParam(
+                                              widget.nombre,
+                                              ParamType.String,
                                             ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 10.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      context.pushNamed(
-                                        ClienteInfoEditWidget.routeName,
-                                        queryParameters: {
-                                          'nombre': serializeParam(
-                                            widget.nombre,
-                                            ParamType.String,
-                                          ),
-                                          'telf': serializeParam(
-                                            widget.telf,
-                                            ParamType.String,
-                                          ),
-                                          'isFiando': serializeParam(
-                                            widget.isFiando,
-                                            ParamType.bool,
-                                          ),
-                                          'idCliente': serializeParam(
-                                            widget.idCliente,
-                                            ParamType.DocumentReference,
-                                          ),
-                                          'apellido': serializeParam(
-                                            widget.apellido,
-                                            ParamType.String,
-                                          ),
-                                          'cedula': serializeParam(
-                                            widget.cedula,
-                                            ParamType.String,
-                                          ),
-                                          'tenderoRef': serializeParam(
-                                            widget.idTendero,
-                                            ParamType.DocumentReference,
-                                          ),
-                                          'direccionDomicilio': serializeParam(
-                                            widget.direccionDomicilio,
-                                            ParamType.String,
-                                          ),
-                                          'viviendaAlq': serializeParam(
-                                            widget.viviendaAlq,
-                                            ParamType.bool,
-                                          ),
-                                          'viviendaProp': serializeParam(
-                                            widget.viviendaProp,
-                                            ParamType.bool,
-                                          ),
-                                          'emailCliente': serializeParam(
-                                            widget.emailCliente,
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
-                                    },
-                                    text: 'Añadir Más Productos',
-                                    options: FFButtonOptions(
-                                      height: 40.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF7ED6CB),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            font: GoogleFonts.interTight(
+                                            'telf': serializeParam(
+                                              widget.telf,
+                                              ParamType.String,
+                                            ),
+                                            'isFiando': serializeParam(
+                                              widget.isFiando,
+                                              ParamType.bool,
+                                            ),
+                                            'idCliente': serializeParam(
+                                              widget.idCliente,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'apellido': serializeParam(
+                                              widget.apellido,
+                                              ParamType.String,
+                                            ),
+                                            'cedula': serializeParam(
+                                              widget.cedula,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoRef': serializeParam(
+                                              widget.idTendero,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'direccionDomicilio':
+                                                serializeParam(
+                                              widget.direccionDomicilio,
+                                              ParamType.String,
+                                            ),
+                                            'viviendaAlq': serializeParam(
+                                              widget.viviendaAlq,
+                                              ParamType.bool,
+                                            ),
+                                            'viviendaProp': serializeParam(
+                                              widget.viviendaProp,
+                                              ParamType.bool,
+                                            ),
+                                            'emailCliente': serializeParam(
+                                              widget.emailCliente,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      text: 'Añadir Más Productos',
+                                      options: FFButtonOptions(
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF7ED6CB),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.interTight(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF039080),
+                                              letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .titleSmall
@@ -1388,208 +1398,319 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                       .titleSmall
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF039080),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 0.0,
-                                      borderSide: BorderSide(
-                                        color: FlutterFlowTheme.of(context)
-                                            .success,
-                                        width: 2.0,
+                                        elevation: 0.0,
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .success,
+                                          width: 2.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                      borderRadius: BorderRadius.circular(8.0),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: Color(0xFFF06023),
+                    Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 10.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            borderRadius: BorderRadius.circular(8.0),
+                            border: Border.all(
+                              color: Color(0xFFF06023),
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 5.0, 10.0, 5.0),
-                          child: Text(
-                            'Suma global de las cuentas: \$${formatNumber(
-                              historialPorCobrarClientesRecord
-                                  .cliente.totalDeudaCompleta,
-                              formatType: FormatType.custom,
-                              format: '#0.00',
-                              locale: '',
-                            )}',
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .titleLarge
-                                .override(
-                                  font: GoogleFonts.interTight(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 5.0, 10.0, 5.0),
+                            child: Text(
+                              'Suma global de las cuentas: \$${formatNumber(
+                                historialPorCobrarClientesRecord
+                                    .cliente.totalDeudaCompleta,
+                                formatType: FormatType.custom,
+                                format: '#0.00',
+                                locale: '',
+                              )}',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleLarge
+                                        .fontStyle,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (historialPorCobrarClientesRecord
+                            .cliente.historialPorPagarSelectedList.length >
+                        0)
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            for (int loop1Index = 0;
+                                loop1Index <
+                                    historialPorCobrarClientesRecord.cliente
+                                        .historialPorPagarSelectedList.length;
+                                loop1Index++) {
+                              final currentLoop1Item =
+                                  historialPorCobrarClientesRecord.cliente
+                                          .historialPorPagarSelectedList[
+                                      loop1Index];
+                              _model.totalAPagarCalc = _model.totalAPagarCalc +
+                                  currentLoop1Item.totalPorPagar;
+                              safeSetState(() {});
+                            }
+                            var confirmDialogResponse = await showDialog<bool>(
+                                  context: context,
+                                  builder: (alertDialogContext) {
+                                    return AlertDialog(
+                                      title: Text('¿Pagar \$${formatNumber(
+                                        _model.totalAPagarCalc,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      )} ?'),
+                                      content: Text(
+                                          'Al aceptar, se confirmarán todos los pagos seleccionados del cliente.'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, false),
+                                          child: Text('Cancelar'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () => Navigator.pop(
+                                              alertDialogContext, true),
+                                          child: Text('Aceptar'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ) ??
+                                false;
+                            if (confirmDialogResponse) {
+                              context.pushNamed(
+                                ClienteProdSelectPagoWidget.routeName,
+                                queryParameters: {
+                                  'idCliente': serializeParam(
+                                    widget.idCliente,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'nombre': serializeParam(
+                                    widget.nombre,
+                                    ParamType.String,
+                                  ),
+                                  'telf': serializeParam(
+                                    widget.telf,
+                                    ParamType.String,
+                                  ),
+                                  'isFiando': serializeParam(
+                                    widget.isFiando,
+                                    ParamType.bool,
+                                  ),
+                                  'apellido': serializeParam(
+                                    widget.apellido,
+                                    ParamType.String,
+                                  ),
+                                  'cedula': serializeParam(
+                                    widget.cedula,
+                                    ParamType.String,
+                                  ),
+                                  'tenderoRef': serializeParam(
+                                    widget.idTendero,
+                                    ParamType.DocumentReference,
+                                  ),
+                                  'direccionDomicilio': serializeParam(
+                                    widget.direccionDomicilio,
+                                    ParamType.String,
+                                  ),
+                                  'viviendaAlq': serializeParam(
+                                    widget.viviendaAlq,
+                                    ParamType.bool,
+                                  ),
+                                  'vivendaProp': serializeParam(
+                                    widget.viviendaProp,
+                                    ParamType.bool,
+                                  ),
+                                  'emailCliente': serializeParam(
+                                    widget.emailCliente,
+                                    ParamType.String,
+                                  ),
+                                  'calcForTotalPorPagar': serializeParam(
+                                    _model.totalAPagarCalc,
+                                    ParamType.double,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
+                          },
+                          text: 'Cobrar productos seleccionados',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
                                         .fontStyle,
                                   ),
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
-                                      .titleLarge
+                                      .titleSmall
                                       .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
-                                      .titleLarge
+                                      .titleSmall
                                       .fontStyle,
                                 ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(0.0),
                           ),
                         ),
                       ),
-                    ),
-                  ),
-                  if (historialPorCobrarClientesRecord
-                          .cliente.historialPorPagarSelectedList.length >
-                      0)
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          for (int loop1Index = 0;
-                              loop1Index <
-                                  historialPorCobrarClientesRecord.cliente
-                                      .historialPorPagarSelectedList.length;
-                              loop1Index++) {
-                            final currentLoop1Item =
-                                historialPorCobrarClientesRecord.cliente
-                                    .historialPorPagarSelectedList[loop1Index];
-                            _model.totalAPagarCalc = _model.totalAPagarCalc +
-                                currentLoop1Item.totalPorPagar;
-                            safeSetState(() {});
-                          }
-                          var confirmDialogResponse = await showDialog<bool>(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('¿Pagar \$${formatNumber(
-                                      _model.totalAPagarCalc,
-                                      formatType: FormatType.custom,
-                                      format: '#0.00',
-                                      locale: '',
-                                    )} ?'),
-                                    content: Text(
-                                        'Al aceptar, se confirmarán todos los pagos seleccionados del cliente.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, false),
-                                        child: Text('Cancelar'),
-                                      ),
-                                      TextButton(
-                                        onPressed: () => Navigator.pop(
-                                            alertDialogContext, true),
-                                        child: Text('Aceptar'),
-                                      ),
-                                    ],
-                                  );
+                    if (historialPorCobrarClientesRecord
+                            .cliente.historialPorPagarSelectedList.length ==
+                        0)
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 1.0),
+                        child: FFButtonWidget(
+                          onPressed: (historialPorCobrarClientesRecord
+                                      .cliente.historialPorPagarProd.length ==
+                                  0)
+                              ? null
+                              : () async {
+                                  var confirmDialogResponse = await showDialog<
+                                          bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title:
+                                                Text('¿Pagar \$${formatNumber(
+                                              historialPorCobrarClientesRecord
+                                                  .cliente.totalDeudaCompleta,
+                                              formatType: FormatType.custom,
+                                              format: '#0.00',
+                                              locale: '',
+                                            )} en total?'),
+                                            content: Text(
+                                                'Al aceptar, se confirmarán todos los pagos del cliente.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancelar'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Aceptar'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                                  if (confirmDialogResponse) {
+                                    context.pushNamed(
+                                      ClienteProdFullPagoWidget.routeName,
+                                      queryParameters: {
+                                        'idCliente': serializeParam(
+                                          widget.idCliente,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'nombre': serializeParam(
+                                          widget.nombre,
+                                          ParamType.String,
+                                        ),
+                                        'telf': serializeParam(
+                                          widget.telf,
+                                          ParamType.String,
+                                        ),
+                                        'isFiando': serializeParam(
+                                          widget.isFiando,
+                                          ParamType.bool,
+                                        ),
+                                        'apellido': serializeParam(
+                                          widget.apellido,
+                                          ParamType.String,
+                                        ),
+                                        'cedula': serializeParam(
+                                          widget.cedula,
+                                          ParamType.String,
+                                        ),
+                                        'tenderoRef': serializeParam(
+                                          widget.idTendero,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'direccionDomicilio': serializeParam(
+                                          widget.direccionDomicilio,
+                                          ParamType.String,
+                                        ),
+                                        'viviendaAlq': serializeParam(
+                                          widget.viviendaAlq,
+                                          ParamType.bool,
+                                        ),
+                                        'vivendaProp': serializeParam(
+                                          widget.viviendaProp,
+                                          ParamType.bool,
+                                        ),
+                                        'emailCliente': serializeParam(
+                                          widget.emailCliente,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  }
                                 },
-                              ) ??
-                              false;
-                          if (confirmDialogResponse) {
-                            context.pushNamed(
-                              ClienteProdSelectPagoWidget.routeName,
-                              queryParameters: {
-                                'idCliente': serializeParam(
-                                  widget.idCliente,
-                                  ParamType.DocumentReference,
-                                ),
-                                'nombre': serializeParam(
-                                  widget.nombre,
-                                  ParamType.String,
-                                ),
-                                'telf': serializeParam(
-                                  widget.telf,
-                                  ParamType.String,
-                                ),
-                                'isFiando': serializeParam(
-                                  widget.isFiando,
-                                  ParamType.bool,
-                                ),
-                                'apellido': serializeParam(
-                                  widget.apellido,
-                                  ParamType.String,
-                                ),
-                                'cedula': serializeParam(
-                                  widget.cedula,
-                                  ParamType.String,
-                                ),
-                                'tenderoRef': serializeParam(
-                                  widget.idTendero,
-                                  ParamType.DocumentReference,
-                                ),
-                                'direccionDomicilio': serializeParam(
-                                  widget.direccionDomicilio,
-                                  ParamType.String,
-                                ),
-                                'viviendaAlq': serializeParam(
-                                  widget.viviendaAlq,
-                                  ParamType.bool,
-                                ),
-                                'vivendaProp': serializeParam(
-                                  widget.viviendaProp,
-                                  ParamType.bool,
-                                ),
-                                'emailCliente': serializeParam(
-                                  widget.emailCliente,
-                                  ParamType.String,
-                                ),
-                                'calcForTotalPorPagar': serializeParam(
-                                  _model.totalAPagarCalc,
-                                  ParamType.double,
-                                ),
-                              }.withoutNulls,
-                            );
-                          }
-                        },
-                        text: 'Cobrar productos seleccionados',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
+                          text: 'Cobrar todos los productos',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 40.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).tertiary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.interTight(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -1597,139 +1718,23 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(0.0),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 0.0,
+                            borderRadius: BorderRadius.circular(0.0),
+                            disabledColor: Color(0xA542271C),
+                          ),
                         ),
                       ),
-                    ),
-                  if (historialPorCobrarClientesRecord
-                          .cliente.historialPorPagarSelectedList.length ==
-                      0)
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 1.0),
-                      child: FFButtonWidget(
-                        onPressed: (historialPorCobrarClientesRecord
-                                    .cliente.historialPorPagarProd.length ==
-                                0)
-                            ? null
-                            : () async {
-                                var confirmDialogResponse = await showDialog<
-                                        bool>(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('¿Pagar \$${formatNumber(
-                                            historialPorCobrarClientesRecord
-                                                .cliente.totalDeudaCompleta,
-                                            formatType: FormatType.custom,
-                                            format: '#0.00',
-                                            locale: '',
-                                          )} en total?'),
-                                          content: Text(
-                                              'Al aceptar, se confirmarán todos los pagos del cliente.'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, false),
-                                              child: Text('Cancelar'),
-                                            ),
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext, true),
-                                              child: Text('Aceptar'),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    ) ??
-                                    false;
-                                if (confirmDialogResponse) {
-                                  context.pushNamed(
-                                    ClienteProdFullPagoWidget.routeName,
-                                    queryParameters: {
-                                      'idCliente': serializeParam(
-                                        widget.idCliente,
-                                        ParamType.DocumentReference,
-                                      ),
-                                      'nombre': serializeParam(
-                                        widget.nombre,
-                                        ParamType.String,
-                                      ),
-                                      'telf': serializeParam(
-                                        widget.telf,
-                                        ParamType.String,
-                                      ),
-                                      'isFiando': serializeParam(
-                                        widget.isFiando,
-                                        ParamType.bool,
-                                      ),
-                                      'apellido': serializeParam(
-                                        widget.apellido,
-                                        ParamType.String,
-                                      ),
-                                      'cedula': serializeParam(
-                                        widget.cedula,
-                                        ParamType.String,
-                                      ),
-                                      'tenderoRef': serializeParam(
-                                        widget.idTendero,
-                                        ParamType.DocumentReference,
-                                      ),
-                                      'direccionDomicilio': serializeParam(
-                                        widget.direccionDomicilio,
-                                        ParamType.String,
-                                      ),
-                                      'viviendaAlq': serializeParam(
-                                        widget.viviendaAlq,
-                                        ParamType.bool,
-                                      ),
-                                      'vivendaProp': serializeParam(
-                                        widget.viviendaProp,
-                                        ParamType.bool,
-                                      ),
-                                      'emailCliente': serializeParam(
-                                        widget.emailCliente,
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                }
-                              },
-                        text: 'Cobrar todos los productos',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).tertiary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(0.0),
-                          disabledColor: Color(0xA542271C),
-                        ),
-                      ),
-                    ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
