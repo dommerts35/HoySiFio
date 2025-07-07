@@ -746,7 +746,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                         40.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Vouchers: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
+                                                              'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelMedium

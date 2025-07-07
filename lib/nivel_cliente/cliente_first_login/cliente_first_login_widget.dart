@@ -1468,9 +1468,9 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        '¡Bienvenido!'),
+                                                                        '¡Bienvenido a HoySíFio!'),
                                                                     content: Text(
-                                                                        'Estimado: ${clienteFirstLoginClientesRecord.cliente.nombre} . ¡Bienvenido a HoySíFio!'),
+                                                                        '¡Hola, ${clienteFirstLoginClientesRecord.cliente.nombre}! Estamos encantados de que formes parte de nuestra red de clientes. 😊'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:

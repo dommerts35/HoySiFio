@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -764,21 +765,31 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                               clienteVincClientesRecord
                                                                       .playerIds[
                                                                   loop1Index];
-                                                          await actions
-                                                              .sendNotificationToPlayer(
-                                                            currentLoop1Item,
-                                                            '${clienteVincClientesRecord.cliente.nombre}: ¡Has sido registrado en una nueva tienda: \" ${widget.nombreTienda}\"!',
+                                                          unawaited(
+                                                            () async {
+                                                              await actions
+                                                                  .sendNotificationToPlayer(
+                                                                currentLoop1Item,
+                                                                '${clienteVincClientesRecord.cliente.nombre}: ¡Has sido registrado en una nueva tienda: \" ${widget.nombreTienda}\"!',
+                                                              );
+                                                            }(),
                                                           );
                                                         }
-                                                        await actions
-                                                            .sendCustomEmailForClienteRegister(
-                                                          clienteVincClientesRecord
-                                                              .cliente
-                                                              .emailCliente,
-                                                          clienteVincClientesRecord
-                                                              .cliente.nombre,
-                                                          'Cuenta vinculada en nueva tienda: ${widget.nombreTienda}',
-                                                          widget.nombreTienda!,
+                                                        unawaited(
+                                                          () async {
+                                                            await actions
+                                                                .sendCustomEmailForClienteRegister(
+                                                              clienteVincClientesRecord
+                                                                  .cliente
+                                                                  .emailCliente,
+                                                              clienteVincClientesRecord
+                                                                  .cliente
+                                                                  .nombre,
+                                                              'Cuenta vinculada en nueva tienda: ${widget.nombreTienda}',
+                                                              widget
+                                                                  .nombreTienda!,
+                                                            );
+                                                          }(),
                                                         );
 
                                                         context.pushNamed(

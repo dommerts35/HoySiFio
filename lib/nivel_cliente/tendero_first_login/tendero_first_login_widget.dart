@@ -296,7 +296,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                 alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Text(
-                                                  'Bienvenido, ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}',
+                                                  'Bienvenido ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -330,7 +330,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                 ),
                                               ),
                                               Text(
-                                                'Ingrese el código proveído en su e-mail para autenticar su cuenta de tendero.',
+                                                'Ingrese el código enviado a su e-mail para autenticar su cuenta.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
@@ -669,6 +669,27 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                       ),
                                                                     });
                                                                   }
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (alertDialogContext) {
+                                                                      return AlertDialog(
+                                                                        title: Text(
+                                                                            '¡Bienvenido a HoySíFio!'),
+                                                                        content:
+                                                                            Text('¡Hola, ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}! Estamos encantados de que formes parte de nuestra red de tenderos. 😊'),
+                                                                        actions: [
+                                                                          TextButton(
+                                                                            onPressed: () =>
+                                                                                Navigator.pop(alertDialogContext),
+                                                                            child:
+                                                                                Text('Continuar'),
+                                                                          ),
+                                                                        ],
+                                                                      );
+                                                                    },
+                                                                  );
 
                                                                   context
                                                                       .goNamed(

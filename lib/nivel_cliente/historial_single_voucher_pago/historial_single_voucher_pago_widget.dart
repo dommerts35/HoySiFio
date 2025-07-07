@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
@@ -246,6 +247,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                             .headlineMedium
                                             .fontStyle,
                                       ),
+                                      fontSize: 26.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .headlineMedium
@@ -257,6 +259,7 @@ class _HistorialSingleVoucherPagoWidgetState
                               ),
                               AutoSizeText(
                                 'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.numCuenta}',
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -280,6 +283,7 @@ class _HistorialSingleVoucherPagoWidgetState
                               ),
                               AutoSizeText(
                                 'Titular de la cuenta: ${infoColTenderosRecord.tenderos.nombreTitularBanco}',
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -301,8 +305,9 @@ class _HistorialSingleVoucherPagoWidgetState
                                           .fontStyle,
                                     ),
                               ),
-                              Text(
+                              AutoSizeText(
                                 infoColTenderosRecord.tenderos.tipoDeCuenta,
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
@@ -325,6 +330,7 @@ class _HistorialSingleVoucherPagoWidgetState
                               ),
                               AutoSizeText(
                                 'Banco: ${infoColTenderosRecord.tenderos.cuentaDeBancoName}',
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -348,6 +354,7 @@ class _HistorialSingleVoucherPagoWidgetState
                               ),
                               AutoSizeText(
                                 'Tienda: ${infoColTenderosRecord.tenderos.nombreTienda}',
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -376,6 +383,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                   format: '#0.00',
                                   locale: '',
                                 )}',
+                                minFontSize: 10.0,
                                 style: FlutterFlowTheme.of(context)
                                     .labelMedium
                                     .override(
@@ -465,7 +473,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                       .override(
                                                         font: GoogleFonts.inter(
                                                           fontWeight:
-                                                              FontWeight.w600,
+                                                              FontWeight.normal,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -475,7 +483,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
-                                                            FontWeight.w600,
+                                                            FontWeight.normal,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -652,7 +660,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                               decoration: InputDecoration(
                                                 isDense: true,
                                                 labelText:
-                                                    'Núm. De Comprobante',
+                                                    'Núm. de comprobante',
                                                 labelStyle: FlutterFlowTheme.of(
                                                         context)
                                                     .labelMedium
@@ -1969,7 +1977,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                 title: Text(
                                                                     'Comprobante enviado'),
                                                                 content: Text(
-                                                                    'El comprobante ha sido enviado.'),
+                                                                    'El comprobante ha sido enviado exitosamente.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -2001,41 +2009,52 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                 _model.tenderoRead!
                                                                         .playerIds[
                                                                     loop1Index];
-                                                            await actions
-                                                                .sendNotificationToPlayer(
-                                                              currentLoop1Item,
-                                                              'Tienda ${_model.tenderoRead?.displayName}: ¡El cliente ${widget.nombre} te ha enviado un comprobante!',
+                                                            unawaited(
+                                                              () async {
+                                                                await actions
+                                                                    .sendNotificationToPlayer(
+                                                                  currentLoop1Item,
+                                                                  'Tienda ${_model.tenderoRead?.displayName}: ¡El cliente ${widget.nombre} te ha enviado un comprobante!',
+                                                                );
+                                                              }(),
                                                             );
                                                           }
-                                                          await actions
-                                                              .sendCustomEmailForSentVoucherToTendero(
-                                                            _model.tenderoRead!
-                                                                .email,
-                                                            _model.tenderoRead!
-                                                                .displayName,
-                                                            'El cliente: ${widget.nombre} le ha enviado un comprobante a la tienda: ${_model.tenderoRead?.displayName}',
-                                                            _model.tenderoRead!
-                                                                .displayName,
-                                                            '${widget.nombre} ${widget.apellido}',
-                                                            _model
-                                                                .valorMAPTextController
-                                                                .text,
-                                                            () {
-                                                              if (_model
-                                                                      .checkElectrValue ==
-                                                                  true) {
-                                                                return 'Electrónico';
-                                                              } else if (_model
-                                                                      .checkBancaValue ==
-                                                                  true) {
-                                                                return 'Banca Web';
-                                                              } else if (_model
-                                                                      .checkVentValue ==
-                                                                  true) {
-                                                                return 'Ventanilla';
-                                                              } else {
-                                                                return 'No establecido';
-                                                              }
+                                                          unawaited(
+                                                            () async {
+                                                              await actions
+                                                                  .sendCustomEmailForSentVoucherToTendero(
+                                                                _model
+                                                                    .tenderoRead!
+                                                                    .email,
+                                                                _model
+                                                                    .tenderoRead!
+                                                                    .displayName,
+                                                                'El cliente: ${widget.nombre} le ha enviado un comprobante a la tienda: ${_model.tenderoRead?.displayName}',
+                                                                _model
+                                                                    .tenderoRead!
+                                                                    .displayName,
+                                                                '${widget.nombre} ${widget.apellido}',
+                                                                _model
+                                                                    .valorMAPTextController
+                                                                    .text,
+                                                                () {
+                                                                  if (_model
+                                                                          .checkElectrValue ==
+                                                                      true) {
+                                                                    return 'Electrónico';
+                                                                  } else if (_model
+                                                                          .checkBancaValue ==
+                                                                      true) {
+                                                                    return 'Banca Web';
+                                                                  } else if (_model
+                                                                          .checkVentValue ==
+                                                                      true) {
+                                                                    return 'Ventanilla';
+                                                                  } else {
+                                                                    return 'No establecido';
+                                                                  }
+                                                                }(),
+                                                              );
                                                             }(),
                                                           );
 

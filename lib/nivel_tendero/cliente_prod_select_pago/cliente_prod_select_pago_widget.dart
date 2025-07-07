@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -1130,7 +1131,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                     title: Text(
                                                                         '¡Pago  guardado exitosamente!'),
                                                                     content: Text(
-                                                                        'El pago ha sido guardado.'),
+                                                                        'El pago ha sido registrado.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1150,15 +1151,20 @@ class _ClienteProdSelectPagoWidgetState
                                                                               .tenderoRef!);
                                                               _shouldSetState =
                                                                   true;
-                                                              await actions
-                                                                  .sendCustomEmailForSelectProds(
-                                                                widget
-                                                                    .emailCliente!,
-                                                                widget.nombre!,
-                                                                'Registro de pago de productos selectos en la tienda: ${_model.tenderoReadSP?.displayName}',
-                                                                _model
-                                                                    .tenderoReadSP!
-                                                                    .displayName,
+                                                              unawaited(
+                                                                () async {
+                                                                  await actions
+                                                                      .sendCustomEmailForSelectProds(
+                                                                    widget
+                                                                        .emailCliente!,
+                                                                    widget
+                                                                        .nombre!,
+                                                                    'Registro de pago de productos selectos en la tienda: ${_model.tenderoReadSP?.displayName}',
+                                                                    _model
+                                                                        .tenderoReadSP!
+                                                                        .displayName,
+                                                                  );
+                                                                }(),
                                                               );
 
                                                               context.goNamed(

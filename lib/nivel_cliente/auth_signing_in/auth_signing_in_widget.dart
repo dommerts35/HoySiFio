@@ -1074,7 +1074,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 (alertDialogContext) {
                                                               return AlertDialog(
                                                                 title: Text(
-                                                                    'Datos ingresados incorrectos'),
+                                                                    'Datos incorrectos'),
                                                                 content: Text(
                                                                     'Los datos ingresados son inválidos.'),
                                                                 actions: [
@@ -1119,8 +1119,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .queryForNoPassTendero
                                                                   ?.isAuth ==
                                                               false) {
-                                                            context
-                                                                .pushNamedAuth(
+                                                            context.goNamedAuth(
                                                               TenderoFirstLoginWidget
                                                                   .routeName,
                                                               context.mounted,
@@ -1204,7 +1203,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        'Datos ingresados incorrectos'),
+                                                                        'Datos incorrectos'),
                                                                     content: Text(
                                                                         'Los datos ingresados son inválidos.'),
                                                                     actions: [
@@ -1319,7 +1318,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        '¡Bienvenido!'),
+                                                                        '¡Bienvenido! 😊'),
                                                                     content: Text(
                                                                         'Ha iniciado sesión en la tienda: ${_model.queryInicioTenderoPin?.tenderos.nombreTienda}'),
                                                                     actions: [
@@ -1328,7 +1327,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             () =>
                                                                                 Navigator.pop(alertDialogContext),
                                                                         child: Text(
-                                                                            'Ok'),
+                                                                            'Continuar'),
                                                                       ),
                                                                     ],
                                                                   );
@@ -1382,21 +1381,29 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .queryInicioTenderoPin!
                                                                           .playerIds[
                                                                       loop1Index];
-                                                                  await actions
-                                                                      .sendNotificationToPlayer(
-                                                                    currentLoop1Item,
-                                                                    '¡Se ha iniciado sesión como tendero en su tienda: ${_model.readForTenderoNotifLogInPsswrd?.displayName}!',
+                                                                  unawaited(
+                                                                    () async {
+                                                                      await actions
+                                                                          .sendNotificationToPlayer(
+                                                                        currentLoop1Item,
+                                                                        '¡Se ha iniciado sesión como tendero en su tienda: ${_model.readForTenderoNotifLogInPsswrd?.displayName}!',
+                                                                      );
+                                                                    }(),
                                                                   );
                                                                 }
-                                                                await actions
-                                                                    .sendCustomEmailForTenderoLogin(
-                                                                  _model
-                                                                      .emailAddressTenderoTextController
-                                                                      .text,
-                                                                  _model
-                                                                      .readForTenderoNotifLogInPsswrd!
-                                                                      .displayName,
-                                                                  'Inicio de Sesion',
+                                                                unawaited(
+                                                                  () async {
+                                                                    await actions
+                                                                        .sendCustomEmailForTenderoLogin(
+                                                                      _model
+                                                                          .emailAddressTenderoTextController
+                                                                          .text,
+                                                                      _model
+                                                                          .readForTenderoNotifLogInPsswrd!
+                                                                          .displayName,
+                                                                      'Inicio de Sesion',
+                                                                    );
+                                                                  }(),
                                                                 );
                                                               }
 
@@ -1451,7 +1458,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        'Datos ingresados incorrectos'),
+                                                                        'Datos incorrectos'),
                                                                     content: Text(
                                                                         'Los datos ingresados son inválidos'),
                                                                     actions: [
@@ -1546,7 +1553,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             () =>
                                                                                 Navigator.pop(alertDialogContext),
                                                                         child: Text(
-                                                                            'Ok'),
+                                                                            'Continuar'),
                                                                       ),
                                                                     ],
                                                                   );
@@ -1600,12 +1607,19 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .queryInicioTenderoPswrd!
                                                                           .playerIds[
                                                                       loop2Index];
-                                                                  await actions
-                                                                      .sendNotificationToPlayer(
-                                                                    currentLoop2Item,
-                                                                    '¡Se ha iniciado sesión en su tienda: ${_model.readForTenderoNotifLogInPIN?.displayName} !',
+                                                                  unawaited(
+                                                                    () async {
+                                                                      await actions
+                                                                          .sendNotificationToPlayer(
+                                                                        currentLoop2Item,
+                                                                        '¡Se ha iniciado sesión en su tienda: ${_model.readForTenderoNotifLogInPIN?.displayName} !',
+                                                                      );
+                                                                    }(),
                                                                   );
                                                                 }
+                                                                unawaited(
+                                                                  () async {}(),
+                                                                );
                                                               }
 
                                                               context
@@ -1659,7 +1673,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        'Datos ingresados incorrectos'),
+                                                                        'Datos incorrectos'),
                                                                     content: Text(
                                                                         'Los datos ingresados son inválidos.'),
                                                                     actions: [
@@ -1682,7 +1696,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   (alertDialogContext) {
                                                                 return AlertDialog(
                                                                   title: Text(
-                                                                      'Datos ingresados incorrectos'),
+                                                                      'Datos incorrectos'),
                                                                   content: Text(
                                                                       'Los datos ingresados son inválidos'),
                                                                   actions: [
@@ -2056,79 +2070,115 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         ),
                                                   ),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 10.0),
-                                                    child: StreamBuilder<
-                                                        List<ClientesRecord>>(
-                                                      stream:
-                                                          queryClientesRecord(
-                                                        queryBuilder:
-                                                            (clientesRecord) =>
-                                                                clientesRecord
-                                                                    .where(
-                                                                      'cliente.cedula',
-                                                                      isEqualTo: _model
-                                                                          .ciClienteTextController
-                                                                          .text,
-                                                                    )
-                                                                    .where(
-                                                                      'cliente.secret_pass',
-                                                                      isEqualTo:
-                                                                          null,
-                                                                    ),
-                                                        singleRecord: true,
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 40.0,
-                                                              height: 40.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
+                                                if (_model
+                                                        .queryForClienteWithPswrd
+                                                        ?.reference !=
+                                                    null)
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: StreamBuilder<
+                                                          List<ClientesRecord>>(
+                                                        stream:
+                                                            queryClientesRecord(
+                                                          queryBuilder:
+                                                              (clientesRecord) =>
+                                                                  clientesRecord
+                                                                      .where(
+                                                                        'cliente.cedula',
+                                                                        isEqualTo: _model
+                                                                            .ciClienteTextController
+                                                                            .text,
+                                                                      )
+                                                                      .where(
+                                                                        'cliente.secret_pass',
+                                                                        isEqualTo:
+                                                                            null,
+                                                                      ),
+                                                          singleRecord: true,
+                                                        ),
+                                                        builder: (context,
+                                                            snapshot) {
+                                                          // Customize what your widget looks like when it's loading.
+                                                          if (!snapshot
+                                                              .hasData) {
+                                                            return Center(
+                                                              child: SizedBox(
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                child:
+                                                                    CircularProgressIndicator(
+                                                                  valueColor:
+                                                                      AlwaysStoppedAnimation<
+                                                                          Color>(
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primary,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          );
-                                                        }
-                                                        List<ClientesRecord>
-                                                            textClientesRecordList =
-                                                            snapshot.data!;
-                                                        final textClientesRecord =
-                                                            textClientesRecordList
-                                                                    .isNotEmpty
-                                                                ? textClientesRecordList
-                                                                    .first
-                                                                : null;
+                                                            );
+                                                          }
+                                                          List<ClientesRecord>
+                                                              textClientesRecordList =
+                                                              snapshot.data!;
+                                                          final textClientesRecord =
+                                                              textClientesRecordList
+                                                                      .isNotEmpty
+                                                                  ? textClientesRecordList
+                                                                      .first
+                                                                  : null;
 
-                                                        return Text(
-                                                          (textClientesRecord !=
+                                                          return Text(
+                                                            () {
+                                                              if ((textClientesRecord !=
                                                                       null) ==
-                                                                  true
-                                                              ? 'Cliente encontrado'
-                                                              : 'Cliente no encontrado',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
+                                                                  false) {
+                                                                return 'Cliente no encontrado';
+                                                              } else if ((textClientesRecord !=
+                                                                      null) ==
+                                                                  true) {
+                                                                return 'Cliente encontrado';
+                                                              } else {
+                                                                return '';
+                                                              }
+                                                            }(),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: textClientesRecord
+                                                                              ?.reference ==
+                                                                          null
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondary,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2138,31 +2188,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: textClientesRecord
-                                                                            ?.reference ==
-                                                                        null
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .error
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondary,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        );
-                                                      },
+                                                          );
+                                                        },
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
@@ -2968,7 +2998,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 title: Text(
                                                                     'Datos incorrectos'),
                                                                 content: Text(
-                                                                    'Los datos ingresados son incorrectos.'),
+                                                                    'Los datos ingresados son inválidos.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -3111,11 +3141,15 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         .notifPsswrdReadCliente!
                                                                         .playerIds[
                                                                     loop2Index];
-                                                                await actions
-                                                                    .sendNotificationToPlayer(
-                                                                  currentLoop2Item
-                                                                      .toString(),
-                                                                  '¡Hola, ${_model.notifPsswrdReadCliente?.cliente.nombre}, ha iniciado sesión como cliente!',
+                                                                unawaited(
+                                                                  () async {
+                                                                    await actions
+                                                                        .sendNotificationToPlayer(
+                                                                      currentLoop2Item
+                                                                          .toString(),
+                                                                      '¡Hola, ${_model.notifPsswrdReadCliente?.cliente.nombre}, ha iniciado sesión como cliente!',
+                                                                    );
+                                                                  }(),
                                                                 );
                                                               }
                                                             }

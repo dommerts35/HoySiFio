@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -1663,16 +1664,24 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                               _model.readForTenderoAcceptPush = await TenderosRecord.getDocumentOnce(widget.idTendero!);
                                                                               for (int loop2Index = 0; loop2Index < mainHistorialViewClientesRecord.playerIds.length; loop2Index++) {
                                                                                 final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
-                                                                                await actions.sendNotificationToPlayer(
-                                                                                  currentLoop2Item,
-                                                                                  '${widget.nombre}: ¡Ha sido aceptado un comprobante enviado a la tienda: \"${_model.readForTenderoAcceptPush?.displayName}\". Revise su historial de comprobantes!',
+                                                                                unawaited(
+                                                                                  () async {
+                                                                                    await actions.sendNotificationToPlayer(
+                                                                                      currentLoop2Item,
+                                                                                      '${widget.nombre}: ¡Ha sido aceptado un comprobante enviado a la tienda: \"${_model.readForTenderoAcceptPush?.displayName}\". Revise su historial de comprobantes!',
+                                                                                    );
+                                                                                  }(),
                                                                                 );
                                                                               }
-                                                                              await actions.sendCustomEmailForAcceptedVoucher(
-                                                                                mainHistorialViewClientesRecord.cliente.emailCliente,
-                                                                                widget.nombre!,
-                                                                                'Comprobante aceptado por la tienda: ${_model.readForTenderoAcceptPush?.displayName}',
-                                                                                _model.readForTenderoAcceptPush!.displayName,
+                                                                              unawaited(
+                                                                                () async {
+                                                                                  await actions.sendCustomEmailForAcceptedVoucher(
+                                                                                    mainHistorialViewClientesRecord.cliente.emailCliente,
+                                                                                    widget.nombre!,
+                                                                                    'Comprobante aceptado por la tienda: ${_model.readForTenderoAcceptPush?.displayName}',
+                                                                                    _model.readForTenderoAcceptPush!.displayName,
+                                                                                  );
+                                                                                }(),
                                                                               );
                                                                             }
                                                                           } finally {

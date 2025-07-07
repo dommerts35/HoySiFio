@@ -143,6 +143,8 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   bool? termsCheckValue;
   // State field(s) for emailSendsCheck widget.
   bool? emailSendsCheckValue;
+  // Stores action output result for [Backend Call - Read Document] action in enviarButton widget.
+  TenderosRecord? tenderoRead;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validarMake;
   // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -1127,7 +1128,7 @@ class _ClienteProdValorPagoWidgetState
                                                                 title: Text(
                                                                     '¡Alerta!'),
                                                                 content: Text(
-                                                                    'Por favor, ingrese un monto a pagar'),
+                                                                    'Por favor, ingrese un monto a pagar.'),
                                                                 actions: [
                                                                   TextButton(
                                                                     onPressed: () =>
@@ -1250,7 +1251,7 @@ class _ClienteProdValorPagoWidgetState
                                                                       (alertDialogContext) {
                                                                     return AlertDialog(
                                                                       title: Text(
-                                                                          '¡Falta el número del voucher!'),
+                                                                          '¡Falta el número del comprobante!'),
                                                                       content: Text(
                                                                           'Por favor, ingrese el número de comprobante.'),
                                                                       actions: [
@@ -1572,14 +1573,14 @@ class _ClienteProdValorPagoWidgetState
                                                                     title: Text(
                                                                         '¡Pago guardado exitosamente!'),
                                                                     content: Text(
-                                                                        'El pago ha sido guardado.'),
+                                                                        'El pago ha sido registrado.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
                                                                             () =>
                                                                                 Navigator.pop(alertDialogContext),
                                                                         child: Text(
-                                                                            'Ok'),
+                                                                            'Continuar'),
                                                                       ),
                                                                     ],
                                                                   );
@@ -1592,15 +1593,20 @@ class _ClienteProdValorPagoWidgetState
                                                                               .tenderoRef!);
                                                               _shouldSetState =
                                                                   true;
-                                                              await actions
-                                                                  .sendCustomEmailForValorProds(
-                                                                widget
-                                                                    .emailCliente!,
-                                                                widget.nombre!,
-                                                                'Registro de pago de productos fiados de la tienda: ${_model.readTenderoVP?.displayName}',
-                                                                _model
-                                                                    .readTenderoVP!
-                                                                    .displayName,
+                                                              unawaited(
+                                                                () async {
+                                                                  await actions
+                                                                      .sendCustomEmailForValorProds(
+                                                                    widget
+                                                                        .emailCliente!,
+                                                                    widget
+                                                                        .nombre!,
+                                                                    'Registro de pago de productos fiados de la tienda: ${_model.readTenderoVP?.displayName}',
+                                                                    _model
+                                                                        .readTenderoVP!
+                                                                        .displayName,
+                                                                  );
+                                                                }(),
                                                               );
 
                                                               context.goNamed(

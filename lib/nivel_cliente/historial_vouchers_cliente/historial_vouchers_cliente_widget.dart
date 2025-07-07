@@ -110,6 +110,8 @@ class _HistorialVouchersClienteWidgetState
                                   0.0, 10.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -173,27 +175,44 @@ class _HistorialVouchersClienteWidgetState
                                       },
                                     ),
                                   ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 90.0, 0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        width: 1.0,
+                                            .secondaryBackground,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          width: 1.0,
+                                        ),
                                       ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 5.0, 5.0, 5.0),
-                                      child: Text(
-                                        'Historial de\n comprobantes',
-                                        maxLines: 2,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              font: GoogleFonts.interTight(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 5.0, 5.0, 5.0),
+                                        child: Text(
+                                          'Historial de\n comprobantes',
+                                          textAlign: TextAlign.center,
+                                          maxLines: 2,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium
@@ -203,16 +222,7 @@ class _HistorialVouchersClienteWidgetState
                                                         .headlineMedium
                                                         .fontStyle,
                                               ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontStyle,
-                                            ),
+                                        ),
                                       ),
                                     ),
                                   ),

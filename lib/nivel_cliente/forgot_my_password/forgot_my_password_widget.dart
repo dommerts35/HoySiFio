@@ -526,7 +526,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                             (alertDialogContext) {
                                                           return AlertDialog(
                                                             title: Text(
-                                                                'El correo ha sido enviado.'),
+                                                                'Correo enviado.'),
                                                             content: Text(
                                                                 'Por favor, revise su correo electrónico para visualizar su código de e-mail.'),
                                                             actions: [

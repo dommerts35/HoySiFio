@@ -2509,7 +2509,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                            maxLength: 8,
+                                                            maxLength: 5,
                                                             keyboardType:
                                                                 const TextInputType
                                                                     .numberWithOptions(
@@ -3286,11 +3286,12 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                               color: Colors.transparent,
                                                                                             ),
                                                                                           ),
-                                                                                          Text(
+                                                                                          AutoSizeText(
                                                                                             vistaMainItem.nombreProd.maybeHandleOverflow(
-                                                                                              maxChars: 8,
+                                                                                              maxChars: 10,
                                                                                               replacement: '…',
                                                                                             ),
+                                                                                            minFontSize: 10.0,
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   font: GoogleFonts.inter(
                                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,

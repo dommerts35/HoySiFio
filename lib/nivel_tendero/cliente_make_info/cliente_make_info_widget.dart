@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
@@ -1901,6 +1902,10 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                       child: FFButtonWidget(
                         onPressed: () async {
                           var _shouldSetState = false;
+                          _model.tenderoRead =
+                              await TenderosRecord.getDocumentOnce(
+                                  widget.tenderoRef!);
+                          _shouldSetState = true;
                           if (_model.termsCheckValue != true) {
                             await showDialog(
                               context: context,
@@ -1931,6 +1936,42 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   title: Text('¡Alerta!'),
                                   content: Text(
                                       'Por favor, ingrese el tipo de vivienda de su cliente.'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                            if (_shouldSetState) safeSetState(() {});
+                            return;
+                          }
+                          if ((_model.emailTextController.text ==
+                                  widget.tenderoEmail) ||
+                              (_model.tenderoRead?.phoneNumber ==
+                                  _model.phoneNumberTextController.text) ||
+                              (_model.tenderoRead?.tenderos.ciTendero ==
+                                  _model.cedulaTextController.text) ||
+                              (_model.tenderoRead?.tenderos.nombreTendero ==
+                                  _model.fullNameTextController.text) ||
+                              (_model.tenderoRead?.tenderos.nombreTendero ==
+                                  '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}') ||
+                              (_model.tenderoRead?.tenderos
+                                      .nombreTitularBanco ==
+                                  _model.fullNameTextController.text) ||
+                              (_model.tenderoRead?.tenderos
+                                      .nombreTitularBanco ==
+                                  '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}')) {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('¡Alerta!'),
+                                  content: Text(
+                                      'No puede ingresar sus propios datos de tendero para registrar un cliente.'),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -2085,7 +2126,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       return AlertDialog(
                                         title: Text('¡Alerta!'),
                                         content: Text(
-                                            'Este cliente ha sido registrado en otra tienda, pero no ha se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
+                                            'Este cliente ha sido registrado en otra tienda, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -2179,9 +2220,9 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: Text('¡ALERTA!'),
+                                      title: Text('¡Enhorabuena!'),
                                       content: Text(
-                                          'Este cliente ha sido registrado por primera vez en la app. Por favor, muetre el siguiente código de primer inicio de sesión al cliente.'),
+                                          'El cliente ha sido registrado. Por favor, muestre el siguiente código de primer inicio de sesión al cliente.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -2204,7 +2245,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                          child: Text('Continuar'),
                                         ),
                                       ],
                                     );
@@ -2231,11 +2272,16 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   },
                                 );
 
-                                await actions.sendCustomEmailForClienteRegister(
-                                  _model.emailTextController.text,
-                                  _model.fullNameTextController.text,
-                                  'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
-                                  widget.nombreTienda!,
+                                unawaited(
+                                  () async {
+                                    await actions
+                                        .sendCustomEmailForClienteRegister(
+                                      _model.emailTextController.text,
+                                      _model.fullNameTextController.text,
+                                      'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
+                                      widget.nombreTienda!,
+                                    );
+                                  }(),
                                 );
 
                                 context.pushNamed(

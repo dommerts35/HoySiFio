@@ -41,7 +41,7 @@ Future<void> sendCustomVerificationEmail(String recipientEmail,
     <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; padding: 20px;">
       <tr>
         <td style="padding-bottom: 20px;">
-          <p style="margin: 0 0 15px 0;">¡Bienvenido, tendero! Se ha detectado su registro en la App <strong>HoySíFio</strong>. Para completar la verificación de su cuenta, inicie sesión con su usuario y contraseña e ingrese el siguiente código de verificación:</p>
+          <p style="margin: 0 0 15px 0;">¡Bienvenido, tendero! Ha sido registrado como tendero en la App <strong>HoySíFio</strong>. Para completar la verificación de su cuenta, inicie sesión con su usuario y contraseña e ingrese el siguiente código de verificación:</p>
         
           <!-- Código OTP destacado -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; text-align: center;">

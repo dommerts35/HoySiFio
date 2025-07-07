@@ -556,58 +556,60 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                         alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
-                                                                        child: StreamBuilder<
-                                                                            List<TenderosRecord>>(
-                                                                          stream:
-                                                                              queryTenderosRecord(
-                                                                            queryBuilder: (tenderosRecord) =>
-                                                                                tenderosRecord.where(
-                                                                              'tenderos.idTendero',
-                                                                              isEqualTo: widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              10.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              StreamBuilder<List<TenderosRecord>>(
+                                                                            stream:
+                                                                                queryTenderosRecord(
+                                                                              queryBuilder: (tenderosRecord) => tenderosRecord.where(
+                                                                                'tenderos.idTendero',
+                                                                                isEqualTo: widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
+                                                                              ),
+                                                                              singleRecord: true,
                                                                             ),
-                                                                            singleRecord:
-                                                                                true,
-                                                                          ),
-                                                                          builder:
-                                                                              (context, snapshot) {
-                                                                            // Customize what your widget looks like when it's loading.
-                                                                            if (!snapshot.hasData) {
-                                                                              return Center(
-                                                                                child: SizedBox(
-                                                                                  width: 50.0,
-                                                                                  height: 50.0,
-                                                                                  child: CircularProgressIndicator(
-                                                                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                      FlutterFlowTheme.of(context).primary,
+                                                                            builder:
+                                                                                (context, snapshot) {
+                                                                              // Customize what your widget looks like when it's loading.
+                                                                              if (!snapshot.hasData) {
+                                                                                return Center(
+                                                                                  child: SizedBox(
+                                                                                    width: 50.0,
+                                                                                    height: 50.0,
+                                                                                    child: CircularProgressIndicator(
+                                                                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                        FlutterFlowTheme.of(context).primary,
+                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                              );
-                                                                            }
-                                                                            List<TenderosRecord>
-                                                                                textTenderosRecordList =
-                                                                                snapshot.data!;
-                                                                            // Return an empty Container when the item does not exist.
-                                                                            if (snapshot.data!.isEmpty) {
-                                                                              return Container();
-                                                                            }
-                                                                            final textTenderosRecord = textTenderosRecordList.isNotEmpty
-                                                                                ? textTenderosRecordList.first
-                                                                                : null;
+                                                                                );
+                                                                              }
+                                                                              List<TenderosRecord> textTenderosRecordList = snapshot.data!;
+                                                                              // Return an empty Container when the item does not exist.
+                                                                              if (snapshot.data!.isEmpty) {
+                                                                                return Container();
+                                                                              }
+                                                                              final textTenderosRecord = textTenderosRecordList.isNotEmpty ? textTenderosRecordList.first : null;
 
-                                                                            return Text(
-                                                                              'Tienda: ${textTenderosRecord?.displayName}',
-                                                                              style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                    font: GoogleFonts.interTight(
+                                                                              return Text(
+                                                                                'Tienda: ${textTenderosRecord?.displayName}',
+                                                                                style: FlutterFlowTheme.of(context).titleLarge.override(
+                                                                                      font: GoogleFonts.interTight(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                      ),
+                                                                                      letterSpacing: 0.0,
                                                                                       fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
                                                                                       fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
                                                                                     ),
-                                                                                    letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                                                                                  ),
-                                                                            );
-                                                                          },
+                                                                              );
+                                                                            },
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                       Align(

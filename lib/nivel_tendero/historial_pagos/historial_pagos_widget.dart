@@ -1379,7 +1379,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         0.0,
                                                                         0.0),
                                                             child: Text(
-                                                              'Número de Voucher: ${listaProdPagadosGroupItem.numVoucher.toString()}',
+                                                              'Número de comprobantes: ${listaProdPagadosGroupItem.numVoucher.toString()}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelMedium

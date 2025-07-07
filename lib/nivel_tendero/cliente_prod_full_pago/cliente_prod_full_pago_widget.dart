@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -1102,7 +1103,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                     title: Text(
                                                                         '¡Pago completo guardado exitosamente!'),
                                                                     content: Text(
-                                                                        'El pago ha sido guardado.'),
+                                                                        'El pago ha sido registrado.'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:
@@ -1122,15 +1123,20 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                               .tenderoRef!);
                                                               _shouldSetState =
                                                                   true;
-                                                              await actions
-                                                                  .sendCustomEmailForFullPaidProds(
-                                                                widget
-                                                                    .emailCliente!,
-                                                                widget.nombre!,
-                                                                '¡Pago de todos los productos fiados registrado!',
-                                                                _model
-                                                                    .tenderoRead!
-                                                                    .displayName,
+                                                              unawaited(
+                                                                () async {
+                                                                  await actions
+                                                                      .sendCustomEmailForFullPaidProds(
+                                                                    widget
+                                                                        .emailCliente!,
+                                                                    widget
+                                                                        .nombre!,
+                                                                    '¡Pago de todos los productos fiados registrado!',
+                                                                    _model
+                                                                        .tenderoRead!
+                                                                        .displayName,
+                                                                  );
+                                                                }(),
                                                               );
 
                                                               context.goNamed(

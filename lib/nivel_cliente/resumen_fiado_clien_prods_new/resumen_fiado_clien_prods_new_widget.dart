@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'resumen_fiado_clien_prods_new_model.dart';
@@ -257,48 +258,62 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                             alignment:
                                                                 AlignmentDirectional(
                                                                     0.0, 0.0),
-                                                            child: StreamBuilder<
-                                                                TenderosRecord>(
-                                                              stream: TenderosRecord
-                                                                  .getDocument(
-                                                                      widget
-                                                                          .idTendero!),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          50.0,
-                                                                      height:
-                                                                          50.0,
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                              child: StreamBuilder<
+                                                                  TenderosRecord>(
+                                                                stream: TenderosRecord
+                                                                    .getDocument(
+                                                                        widget
+                                                                            .idTendero!),
+                                                                builder: (context,
+                                                                    snapshot) {
+                                                                  // Customize what your widget looks like when it's loading.
+                                                                  if (!snapshot
+                                                                      .hasData) {
+                                                                    return Center(
                                                                       child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
+                                                                          SizedBox(
+                                                                        width:
+                                                                            50.0,
+                                                                        height:
+                                                                            50.0,
+                                                                        child:
+                                                                            CircularProgressIndicator(
+                                                                          valueColor:
+                                                                              AlwaysStoppedAnimation<Color>(
+                                                                            FlutterFlowTheme.of(context).primary,
+                                                                          ),
                                                                         ),
                                                                       ),
-                                                                    ),
-                                                                  );
-                                                                }
+                                                                    );
+                                                                  }
 
-                                                                final textTenderosRecord =
-                                                                    snapshot
-                                                                        .data!;
+                                                                  final textTenderosRecord =
+                                                                      snapshot
+                                                                          .data!;
 
-                                                                return Text(
-                                                                  'Tienda: ${textTenderosRecord.tenderos.nombreTienda}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleLarge
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
+                                                                  return Text(
+                                                                    'Tienda: ${textTenderosRecord.tenderos.nombreTienda}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleLarge
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleLarge
                                                                               .fontWeight,
@@ -306,17 +321,9 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                               .titleLarge
                                                                               .fontStyle,
                                                                         ),
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .titleLarge
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleLarge
-                                                                            .fontStyle,
-                                                                      ),
-                                                                );
-                                                              },
+                                                                  );
+                                                                },
+                                                              ),
                                                             ),
                                                           ),
                                                           Align(
@@ -590,14 +597,15 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                           color: Colors.transparent,
                                                                                                         ),
                                                                                                       ),
-                                                                                                      Text(
+                                                                                                      AutoSizeText(
                                                                                                         valueOrDefault<String>(
                                                                                                           productosChildItem.nombreProd,
                                                                                                           'p',
                                                                                                         ).maybeHandleOverflow(
-                                                                                                          maxChars: 8,
+                                                                                                          maxChars: 10,
                                                                                                           replacement: '…',
                                                                                                         ),
+                                                                                                        minFontSize: 10.0,
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               font: GoogleFonts.inter(
                                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
