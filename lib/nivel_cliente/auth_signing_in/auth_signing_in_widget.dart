@@ -979,7 +979,6 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 : 'Contraseña',
                                                             options:
                                                                 FFButtonOptions(
-                                                              width: 110.0,
                                                               height: 30.0,
                                                               padding:
                                                                   EdgeInsetsDirectional
@@ -3159,9 +3158,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   (alertDialogContext) {
                                                                 return AlertDialog(
                                                                   title: Text(
-                                                                      '¡Bienvenido!'),
+                                                                      '¡Inicio de sesión exitoso!'),
                                                                   content: Text(
-                                                                      'Bienvenido, ${_model.queryClientePsswrd?.firstOrNull?.cliente.nombre} ${_model.queryClientePsswrd?.firstOrNull?.cliente.apellido}'),
+                                                                      '!Bienvenido, ${_model.queryClientePsswrd?.firstOrNull?.cliente.nombre} ${_model.queryClientePsswrd?.firstOrNull?.cliente.apellido}¡'),
                                                                   actions: [
                                                                     TextButton(
                                                                       onPressed:
@@ -3298,9 +3297,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     (alertDialogContext) {
                                                                   return AlertDialog(
                                                                     title: Text(
-                                                                        '¡Bienvenido!'),
+                                                                        '¡Inicio de sesión exitoso!'),
                                                                     content: Text(
-                                                                        'Bienvenido, ${_model.queryClientePIN?.firstOrNull?.cliente.nombre} ${_model.queryClientePIN?.firstOrNull?.cliente.apellido}'),
+                                                                        '¡Bienvenido, ${_model.queryClientePIN?.firstOrNull?.cliente.nombre} ${_model.queryClientePIN?.firstOrNull?.cliente.apellido}!'),
                                                                     actions: [
                                                                       TextButton(
                                                                         onPressed:

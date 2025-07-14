@@ -3481,154 +3481,177 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     0.0),
                                                           ),
                                                         ),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0, 0.0),
-                                                              child:
-                                                                  FFButtonWidget(
-                                                                onPressed:
-                                                                    () async {
-                                                                  _model.queryHistorialPagadoRep =
-                                                                      await queryClientesRecordOnce(
-                                                                    queryBuilder: (clientesRecord) =>
-                                                                        clientesRecord
-                                                                            .where(
-                                                                              'cliente.cedula',
-                                                                              isEqualTo: widget.cedula,
-                                                                            )
-                                                                            .where(
-                                                                              'cliente.idTendero',
-                                                                              isEqualTo: widget.tenderoRef,
-                                                                            ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceEvenly,
+                                                            children: [
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child:
+                                                                    FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.queryHistorialPagadoRep =
+                                                                        await queryClientesRecordOnce(
+                                                                      queryBuilder: (clientesRecord) => clientesRecord
+                                                                          .where(
+                                                                            'cliente.cedula',
+                                                                            isEqualTo:
+                                                                                widget.cedula,
+                                                                          )
+                                                                          .where(
+                                                                            'cliente.idTendero',
+                                                                            isEqualTo:
+                                                                                widget.tenderoRef,
+                                                                          ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
 
-                                                                  context
-                                                                      .goNamed(
-                                                                    HistorialPagosWidget
-                                                                        .routeName,
-                                                                    queryParameters:
-                                                                        {
-                                                                      'idCliente':
-                                                                          serializeParam(
-                                                                        _model
-                                                                            .queryHistorialPagadoRep
-                                                                            ?.reference,
-                                                                        ParamType
-                                                                            .DocumentReference,
-                                                                      ),
-                                                                      'idTendero':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .tenderoRef,
-                                                                        ParamType
-                                                                            .DocumentReference,
-                                                                      ),
-                                                                      'nombre':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .nombre,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'telf':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .telf,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'isFiando':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .isFiando,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'apellido':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .apellido,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'cedula':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .cedula,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'direccionDomicilio':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .direccionDomicilio,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'viviendaAlq':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .viviendaAlq,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'viviendaProp':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .viviendaProp,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'emailCliente':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .emailCliente,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                  );
+                                                                    context
+                                                                        .goNamed(
+                                                                      HistorialPagosWidget
+                                                                          .routeName,
+                                                                      queryParameters:
+                                                                          {
+                                                                        'idCliente':
+                                                                            serializeParam(
+                                                                          _model
+                                                                              .queryHistorialPagadoRep
+                                                                              ?.reference,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'idTendero':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .tenderoRef,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'nombre':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .nombre,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'telf':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .telf,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'isFiando':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .isFiando,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'apellido':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .apellido,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'cedula':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .cedula,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'direccionDomicilio':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .direccionDomicilio,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'viviendaAlq':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .viviendaAlq,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'viviendaProp':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .viviendaProp,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'emailCliente':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .emailCliente,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
 
-                                                                  safeSetState(
-                                                                      () {});
-                                                                },
-                                                                text:
-                                                                    'Productos pagados',
-                                                                options:
-                                                                    FFButtonOptions(
-                                                                  height: 40.0,
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                                  iconPadding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  textStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  text:
+                                                                      'Productos pagados',
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    height:
+                                                                        40.0,
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          fontSize:
+                                                                              2.0,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -3636,201 +3659,187 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .titleSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        fontSize:
-                                                                            2.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontStyle,
-                                                                      ),
-                                                                  elevation:
-                                                                      0.0,
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            0.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            0.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            0.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            0.0),
-                                                                  ),
-                                                                  hoverColor:
-                                                                      FlutterFlowTheme.of(
+                                                                    elevation:
+                                                                        0.0,
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primary,
-                                                                  hoverBorderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                  hoverTextColor:
-                                                                      FlutterFlowTheme.of(
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    hoverColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    hoverBorderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .info,
+                                                                          .primary,
+                                                                    ),
+                                                                    hoverTextColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      0.0, 0.0),
-                                                              child:
-                                                                  FFButtonWidget(
-                                                                onPressed:
-                                                                    () async {
-                                                                  _model.queryHistorialPorPagarRep =
-                                                                      await queryClientesRecordOnce(
-                                                                    queryBuilder: (clientesRecord) =>
-                                                                        clientesRecord
-                                                                            .where(
-                                                                              'cliente.cedula',
-                                                                              isEqualTo: widget.cedula,
-                                                                            )
-                                                                            .where(
-                                                                              'cliente.idTendero',
-                                                                              isEqualTo: widget.tenderoRef,
-                                                                            ),
-                                                                    singleRecord:
-                                                                        true,
-                                                                  ).then((s) =>
-                                                                          s.firstOrNull);
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child:
+                                                                    FFButtonWidget(
+                                                                  onPressed:
+                                                                      () async {
+                                                                    _model.queryHistorialPorPagarRep =
+                                                                        await queryClientesRecordOnce(
+                                                                      queryBuilder: (clientesRecord) => clientesRecord
+                                                                          .where(
+                                                                            'cliente.cedula',
+                                                                            isEqualTo:
+                                                                                widget.cedula,
+                                                                          )
+                                                                          .where(
+                                                                            'cliente.idTendero',
+                                                                            isEqualTo:
+                                                                                widget.tenderoRef,
+                                                                          ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
 
-                                                                  context
-                                                                      .goNamed(
-                                                                    HistorialPorCobrarWidget
-                                                                        .routeName,
-                                                                    queryParameters:
-                                                                        {
-                                                                      'idCliente':
-                                                                          serializeParam(
-                                                                        _model
-                                                                            .queryHistorialPorPagarRep
-                                                                            ?.reference,
-                                                                        ParamType
-                                                                            .DocumentReference,
-                                                                      ),
-                                                                      'idTendero':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .tenderoRef,
-                                                                        ParamType
-                                                                            .DocumentReference,
-                                                                      ),
-                                                                      'nombre':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .nombre,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'telf':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .telf,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'isFiando':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .isFiando,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'apellido':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .apellido,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'cedula':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .cedula,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'direccionDomicilio':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .direccionDomicilio,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                      'viviendaAlq':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .viviendaAlq,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'viviendaProp':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .viviendaProp,
-                                                                        ParamType
-                                                                            .bool,
-                                                                      ),
-                                                                      'emailCliente':
-                                                                          serializeParam(
-                                                                        widget
-                                                                            .emailCliente,
-                                                                        ParamType
-                                                                            .String,
-                                                                      ),
-                                                                    }.withoutNulls,
-                                                                  );
+                                                                    context
+                                                                        .goNamed(
+                                                                      HistorialPorCobrarWidget
+                                                                          .routeName,
+                                                                      queryParameters:
+                                                                          {
+                                                                        'idCliente':
+                                                                            serializeParam(
+                                                                          _model
+                                                                              .queryHistorialPorPagarRep
+                                                                              ?.reference,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'idTendero':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .tenderoRef,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'nombre':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .nombre,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'telf':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .telf,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'isFiando':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .isFiando,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'apellido':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .apellido,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'cedula':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .cedula,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'direccionDomicilio':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .direccionDomicilio,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'viviendaAlq':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .viviendaAlq,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'viviendaProp':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .viviendaProp,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'emailCliente':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .emailCliente,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                    );
 
-                                                                  safeSetState(
-                                                                      () {});
-                                                                },
-                                                                text:
-                                                                    'Productos por cobrar',
-                                                                options:
-                                                                    FFButtonOptions(
-                                                                  height: 40.0,
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          16.0,
-                                                                          0.0),
-                                                                  iconPadding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                                  textStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  },
+                                                                  text:
+                                                                      'Productos por cobrar',
+                                                                  options:
+                                                                      FFButtonOptions(
+                                                                    height:
+                                                                        40.0,
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            16.0,
+                                                                            0.0),
+                                                                    iconPadding:
+                                                                        EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                    textStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.interTight(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          fontSize:
+                                                                              2.0,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -3838,61 +3847,34 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .titleSmall
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                        fontSize:
-                                                                            2.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .titleSmall
-                                                                            .fontStyle,
-                                                                      ),
-                                                                  elevation:
-                                                                      0.0,
-                                                                  borderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            0.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            0.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            0.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            0.0),
-                                                                  ),
-                                                                  hoverColor:
-                                                                      FlutterFlowTheme.of(
+                                                                    elevation:
+                                                                        0.0,
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .primary,
-                                                                  hoverBorderSide:
-                                                                      BorderSide(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                  hoverTextColor:
-                                                                      FlutterFlowTheme.of(
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    hoverColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    hoverBorderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .info,
+                                                                          .primary,
+                                                                    ),
+                                                                    hoverTextColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                  ),
                                                                 ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],

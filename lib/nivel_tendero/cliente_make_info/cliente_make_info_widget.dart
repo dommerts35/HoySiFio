@@ -2054,7 +2054,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                     return AlertDialog(
                                       title: Text('¡Alerta!'),
                                       content: Text(
-                                          'Este cliente ya ha sido registrado en otra tienda, por lo que se vincularán sus datos.'),
+                                          'Este cliente ya ha sido registrado anteriormente en otra tienda, por lo que se vincularán sus datos.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -2126,7 +2126,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       return AlertDialog(
                                         title: Text('¡Alerta!'),
                                         content: Text(
-                                            'Este cliente ha sido registrado en otra tienda, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
+                                            'Este cliente ha sido registrado anteriormente, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
                                         actions: [
                                           TextButton(
                                             onPressed: () => Navigator.pop(
@@ -2220,9 +2220,9 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   context: context,
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
-                                      title: Text('¡Enhorabuena!'),
+                                      title: Text('¡Enhorabuena! 😊'),
                                       content: Text(
-                                          'El cliente ha sido registrado. Por favor, muestre el siguiente código de primer inicio de sesión al cliente.'),
+                                          'El cliente ha sido registrado. Por favor, muestre el siguiente código de autenticación al cliente.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -2238,14 +2238,14 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                   builder: (alertDialogContext) {
                                     return AlertDialog(
                                       title: Text(
-                                          'Código de primer inicio de sesión del cliente:'),
+                                          'Código de autenticación del cliente:'),
                                       content: Text(
                                           '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.'),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: Text('Continuar'),
+                                          child: Text('Entendido'),
                                         ),
                                       ],
                                     );

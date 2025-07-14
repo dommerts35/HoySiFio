@@ -202,7 +202,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                     FFButtonWidget(
                                       onPressed: () async {
                                         context.pushNamed(
-                                          PageTutorialListaClientesFromHelpWidget
+                                          PageTutorialListaClientesHelpWidget
                                               .routeName,
                                           queryParameters: {
                                             'tenderoRef': serializeParam(
@@ -267,23 +267,23 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                     FFButtonWidget(
                                       onPressed: () async {
                                         context.pushNamed(
-                                          PageTutorialinfoProdFromHelpWidget
+                                          PageTutorialinfoProdHelpWidget
                                               .routeName,
                                           queryParameters: {
                                             'tenderoRef': serializeParam(
                                               widget.tenderoRef,
                                               ParamType.DocumentReference,
                                             ),
-                                            'nombreTienda': serializeParam(
-                                              widget.nombreTienda,
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
                                               ParamType.String,
                                             ),
                                             'tenderoEmail': serializeParam(
                                               widget.tenderoEmail,
                                               ParamType.String,
                                             ),
-                                            'nombreTendero': serializeParam(
-                                              widget.nombreTendero,
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
                                               ParamType.String,
                                             ),
                                           }.withoutNulls,

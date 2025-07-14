@@ -9,11 +9,11 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'page_tutorial_lista_clientes_f_t_model.dart';
-export 'page_tutorial_lista_clientes_f_t_model.dart';
+import 'page_tutorial_lista_clientes_help_model.dart';
+export 'page_tutorial_lista_clientes_help_model.dart';
 
-class PageTutorialListaClientesFTWidget extends StatefulWidget {
-  const PageTutorialListaClientesFTWidget({
+class PageTutorialListaClientesHelpWidget extends StatefulWidget {
+  const PageTutorialListaClientesHelpWidget({
     super.key,
     this.tenderoRef,
     String? nombreTienda,
@@ -28,18 +28,18 @@ class PageTutorialListaClientesFTWidget extends StatefulWidget {
   final String? tenderoEmail;
   final String? nombreTendero;
 
-  static String routeName = 'pageTutorialListaClientesFT';
-  static String routePath = '/pageTutorialListaClientesFT';
+  static String routeName = 'pageTutorialListaClientesHelp';
+  static String routePath = '/pageTutorialListaClientesHelp';
 
   @override
-  State<PageTutorialListaClientesFTWidget> createState() =>
-      _PageTutorialListaClientesFTWidgetState();
+  State<PageTutorialListaClientesHelpWidget> createState() =>
+      _PageTutorialListaClientesHelpWidgetState();
 }
 
-class _PageTutorialListaClientesFTWidgetState
-    extends State<PageTutorialListaClientesFTWidget>
+class _PageTutorialListaClientesHelpWidgetState
+    extends State<PageTutorialListaClientesHelpWidget>
     with TickerProviderStateMixin {
-  late PageTutorialListaClientesFTModel _model;
+  late PageTutorialListaClientesHelpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -48,7 +48,7 @@ class _PageTutorialListaClientesFTWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PageTutorialListaClientesFTModel());
+    _model = createModel(context, () => PageTutorialListaClientesHelpModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -853,7 +853,7 @@ class _PageTutorialListaClientesFTWidgetState
                                         FFButtonWidget(
                                           onPressed: () async {
                                             context.goNamed(
-                                              ListaClientesWidget.routeName,
+                                              TenderoAyudaWidget.routeName,
                                               queryParameters: {
                                                 'tenderoRef': serializeParam(
                                                   widget.tenderoRef,
@@ -972,7 +972,7 @@ class _PageTutorialListaClientesFTWidgetState
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.goNamed(
-                          ListaClientesWidget.routeName,
+                          TenderoAyudaWidget.routeName,
                           queryParameters: {
                             'tenderoRef': serializeParam(
                               widget.tenderoRef,

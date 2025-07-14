@@ -2628,12 +2628,16 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         return;
                                                       }
                                                       _shouldSetState = true;
-                                                      _model.validationEmail =
-                                                          await actions
-                                                              .validateEmail(
-                                                        _model
-                                                            .emailAddressTenderoTextController
-                                                            .text,
+                                                      unawaited(
+                                                        () async {
+                                                          _model.validationEmail =
+                                                              await actions
+                                                                  .validateEmail(
+                                                            _model
+                                                                .emailAddressTenderoTextController
+                                                                .text,
+                                                          );
+                                                        }(),
                                                       );
                                                       _shouldSetState = true;
                                                       if ((_model.isCuentaDeAhorros ==

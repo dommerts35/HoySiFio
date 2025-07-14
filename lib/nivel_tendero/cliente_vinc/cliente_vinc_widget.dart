@@ -124,19 +124,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            context.goNamed(
-                              ClienteMakeInfoWidget.routeName,
-                              queryParameters: {
-                                'tenderoRef': serializeParam(
-                                  widget.tenderoRef,
-                                  ParamType.DocumentReference,
-                                ),
-                                'nombreTienda': serializeParam(
-                                  '',
-                                  ParamType.String,
-                                ),
-                              }.withoutNulls,
-                            );
+                            context.pop();
                           },
                         ),
                       ),

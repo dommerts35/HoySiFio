@@ -5,7 +5,6 @@ import '/index.dart';
 import 'page_tutorialinfo_prod_f_t_widget.dart'
     show PageTutorialinfoProdFTWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
 class PageTutorialinfoProdFTModel
     extends FlutterFlowModel<PageTutorialinfoProdFTWidget> {
@@ -31,13 +30,17 @@ class PageTutorialinfoProdFTModel
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for SwipeableStack widget.
-  late CardSwiperController swipeableStackController;
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
 
   @override
-  void initState(BuildContext context) {
-    swipeableStackController = CardSwiperController();
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {}

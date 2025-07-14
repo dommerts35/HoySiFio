@@ -192,7 +192,7 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                           ),
                                         ],
                                       ),
-                                    ].divide(SizedBox(width: 1.0)),
+                                    ].divide(SizedBox(width: 10.0)),
                                   ),
                                 ),
                               ),

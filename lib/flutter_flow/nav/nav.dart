@@ -1068,9 +1068,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: PageTutorialListaClientesFTWidget.routeName,
-          path: PageTutorialListaClientesFTWidget.routePath,
-          builder: (context, params) => PageTutorialListaClientesFTWidget(
+          name: TenderoAyudaWidget.routeName,
+          path: TenderoAyudaWidget.routePath,
+          builder: (context, params) => TenderoAyudaWidget(
             tenderoRef: params.getParam(
               'tenderoRef',
               ParamType.DocumentReference,
@@ -1088,6 +1088,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             nombreTendero: params.getParam(
               'nombreTendero',
               ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: PageTutorialForClienteFTWidget.routeName,
+          path: PageTutorialForClienteFTWidget.routePath,
+          builder: (context, params) => PageTutorialForClienteFTWidget(
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
             ),
           ),
         ),
@@ -1146,25 +1162,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: PageTutorialForClienteFTWidget.routeName,
-          path: PageTutorialForClienteFTWidget.routePath,
-          builder: (context, params) => PageTutorialForClienteFTWidget(
-            cedula: params.getParam(
-              'cedula',
-              ParamType.String,
-            ),
-            idTenderoList: params.getParam<DocumentReference>(
-              'idTenderoList',
-              ParamType.DocumentReference,
-              isList: true,
-              collectionNamePath: ['tenderos'],
-            ),
-          ),
-        ),
-        FFRoute(
-          name: TenderoAyudaWidget.routeName,
-          path: TenderoAyudaWidget.routePath,
-          builder: (context, params) => TenderoAyudaWidget(
+          name: PageTutorialListaClientesFTWidget.routeName,
+          path: PageTutorialListaClientesFTWidget.routePath,
+          builder: (context, params) => PageTutorialListaClientesFTWidget(
             tenderoRef: params.getParam(
               'tenderoRef',
               ParamType.DocumentReference,
@@ -1186,9 +1186,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: PageTutorialinfoProdFromHelpWidget.routeName,
-          path: PageTutorialinfoProdFromHelpWidget.routePath,
-          builder: (context, params) => PageTutorialinfoProdFromHelpWidget(
+          name: PageTutorialListaClientesHelpWidget.routeName,
+          path: PageTutorialListaClientesHelpWidget.routePath,
+          builder: (context, params) => PageTutorialListaClientesHelpWidget(
             tenderoRef: params.getParam(
               'tenderoRef',
               ParamType.DocumentReference,
@@ -1210,25 +1210,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: PageTutorialListaClientesFromHelpWidget.routeName,
-          path: PageTutorialListaClientesFromHelpWidget.routePath,
-          builder: (context, params) => PageTutorialListaClientesFromHelpWidget(
+          name: PageTutorialinfoProdHelpWidget.routeName,
+          path: PageTutorialinfoProdHelpWidget.routePath,
+          builder: (context, params) => PageTutorialinfoProdHelpWidget(
             tenderoRef: params.getParam(
               'tenderoRef',
               ParamType.DocumentReference,
               isList: false,
               collectionNamePath: ['tenderos'],
             ),
-            nombreTienda: params.getParam(
-              'nombreTienda',
+            nombreTendero: params.getParam(
+              'nombreTendero',
               ParamType.String,
             ),
             tenderoEmail: params.getParam(
               'tenderoEmail',
               ParamType.String,
             ),
-            nombreTendero: params.getParam(
-              'nombreTendero',
+            nombreTienda: params.getParam(
+              'nombreTienda',
               ParamType.String,
             ),
           ),

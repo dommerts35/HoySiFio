@@ -2,13 +2,12 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'page_tutorialinfo_prod_from_help_widget.dart'
-    show PageTutorialinfoProdFromHelpWidget;
+import 'page_tutorial_lista_clientes_help_widget.dart'
+    show PageTutorialListaClientesHelpWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 
-class PageTutorialinfoProdFromHelpModel
-    extends FlutterFlowModel<PageTutorialinfoProdFromHelpWidget> {
+class PageTutorialListaClientesHelpModel
+    extends FlutterFlowModel<PageTutorialListaClientesHelpWidget> {
   ///  Local state fields for this page.
 
   List<DataTypeHistorialPagoStruct> emptyDTHistorialPagoPorPagar = [];
@@ -31,13 +30,17 @@ class PageTutorialinfoProdFromHelpModel
 
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for SwipeableStack widget.
-  late CardSwiperController swipeableStackController;
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
 
   @override
-  void initState(BuildContext context) {
-    swipeableStackController = CardSwiperController();
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {}
