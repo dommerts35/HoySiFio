@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/cloud_functions/cloud_functions.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -25,6 +26,7 @@ class ClienteMakeInfoWidget extends StatefulWidget {
     required this.tenderoRef,
     this.nombreTienda,
     this.tenderoEmail,
+    this.nombreTendero,
   });
 
   /// Referencia para saber que tendero es
@@ -32,6 +34,7 @@ class ClienteMakeInfoWidget extends StatefulWidget {
 
   final String? nombreTienda;
   final String? tenderoEmail;
+  final String? nombreTendero;
 
   static String routeName = 'clienteMakeInfo';
   static String routePath = '/clienteMakeInfo';
@@ -152,7 +155,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                 Text(
                   'Registrar Cliente',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        font: GoogleFonts.interTight(
+                        font: GoogleFonts.readexPro(
                           fontWeight: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .fontWeight,
@@ -253,7 +256,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.readexPro(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
@@ -1194,7 +1197,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.readexPro(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
@@ -1469,39 +1472,37 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                           : FlutterFlowTheme.of(
                                                                   context)
                                                               .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .interTight(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                            ),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
                                                   elevation: 3.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -1553,39 +1554,37 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       : FlutterFlowTheme.of(
                                                               context)
                                                           .primary,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .interTight(
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                            ),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                          ),
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
                                                   elevation: 3.0,
                                                   borderSide: BorderSide(
                                                     color: Colors.transparent,
@@ -1658,7 +1657,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             AutoSizeText(
-                                              'Al registrarse, el cliente acepta los',
+                                              'Al registrarse, el cliente acepta las',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -1703,7 +1702,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
                                                 },
                                                 child: AutoSizeText(
-                                                  'términos de servicio',
+                                                  'políticas de privacidad',
                                                   textAlign: TextAlign.start,
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -1896,138 +1895,137 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                       maxWidth: 770.0,
                     ),
                     decoration: BoxDecoration(),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 12.0, 16.0, 12.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          var _shouldSetState = false;
-                          _model.tenderoRead =
-                              await TenderosRecord.getDocumentOnce(
-                                  widget.tenderoRef!);
-                          _shouldSetState = true;
-                          if (_model.termsCheckValue != true) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('¡Alerta!'),
-                                  content: Text(
-                                      'Por favor, acepte los términos de servicio para continuar.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
-                          if ((_model.isVivProp == false) &&
-                              (_model.isVivAlq == false)) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('¡Alerta!'),
-                                  content: Text(
-                                      'Por favor, ingrese el tipo de vivienda de su cliente.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
-                          if ((_model.emailTextController.text ==
-                                  widget.tenderoEmail) ||
-                              (_model.tenderoRead?.phoneNumber ==
-                                  _model.phoneNumberTextController.text) ||
-                              (_model.tenderoRead?.tenderos.ciTendero ==
-                                  _model.cedulaTextController.text) ||
-                              (_model.tenderoRead?.tenderos.nombreTendero ==
-                                  _model.fullNameTextController.text) ||
-                              (_model.tenderoRead?.tenderos.nombreTendero ==
-                                  '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}') ||
-                              (_model.tenderoRead?.tenderos
-                                      .nombreTitularBanco ==
-                                  _model.fullNameTextController.text) ||
-                              (_model.tenderoRead?.tenderos
-                                      .nombreTitularBanco ==
-                                  '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}')) {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('¡Alerta!'),
-                                  content: Text(
-                                      'No puede ingresar sus propios datos de tendero para registrar un cliente.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
-                          _model.validarMake = true;
-                          if (_model.formKey.currentState == null ||
-                              !_model.formKey.currentState!.validate()) {
-                            _model.validarMake = false;
-                          }
-                          _shouldSetState = true;
-                          if (_model.validarMake == true) {
-                            _model.queryValidarCedula =
-                                await queryClientesRecordOnce(
-                              queryBuilder: (clientesRecord) => clientesRecord
-                                  .where(
-                                    'cliente.cedula',
-                                    isEqualTo: _model.cedulaTextController.text,
-                                  )
-                                  .where(
-                                    'cliente.idTendero',
-                                    isEqualTo: widget.tenderoRef,
-                                  ),
-                              singleRecord: true,
-                            ).then((s) => s.firstOrNull);
+                    child: Builder(
+                      builder: (context) => Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 12.0, 16.0, 12.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            var _shouldSetState = false;
+                            _model.tenderoRead =
+                                await TenderosRecord.getDocumentOnce(
+                                    widget.tenderoRef!);
                             _shouldSetState = true;
-                            if (_model.queryValidarCedula?.cliente != null) {
+                            if (_model.termsCheckValue != true) {
                               await showDialog(
                                 context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: Text('¡Alerta!'),
-                                    content: Text(
-                                        'Ya existe un cliente con esa cédula registrado en su tienda.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: Text('Ok'),
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 200.0,
+                                        child: DialogBtnWidget(
+                                          titulo: '¡Alerta!',
+                                          mensaje:
+                                              'Por favor, acepte los términos de servicio para continuar.',
+                                        ),
                                       ),
-                                    ],
+                                    ),
                                   );
                                 },
                               );
+
                               if (_shouldSetState) safeSetState(() {});
                               return;
-                            } else {
-                              _model.queryClienteInOtherTiendas =
+                            }
+                            if ((_model.isVivProp == false) &&
+                                (_model.isVivAlq == false)) {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 200.0,
+                                        child: DialogBtnWidget(
+                                          titulo: '¡Alerta!',
+                                          mensaje:
+                                              'Ingrese el tipo de vivienda de su cliente.',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+                            if ((_model.emailTextController.text ==
+                                    widget.tenderoEmail) ||
+                                (_model.tenderoRead?.phoneNumber ==
+                                    _model.phoneNumberTextController.text) ||
+                                (_model.tenderoRead?.tenderos.ciTendero ==
+                                    _model.cedulaTextController.text) ||
+                                (_model.tenderoRead?.tenderos.nombreTendero ==
+                                    _model.fullNameTextController.text) ||
+                                (_model.tenderoRead?.tenderos.nombreTendero ==
+                                    '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}') ||
+                                (_model.tenderoRead?.tenderos
+                                        .nombreTitularBanco ==
+                                    _model.fullNameTextController.text) ||
+                                (_model.tenderoRead?.tenderos
+                                        .nombreTitularBanco ==
+                                    '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}')) {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 200.0,
+                                        child: DialogBtnWidget(
+                                          titulo: '¡Alerta!',
+                                          mensaje:
+                                              'No puede ingresar sus propios datos de tendero para registrar un cliente.',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
+                            _model.validarMake = true;
+                            if (_model.formKey.currentState == null ||
+                                !_model.formKey.currentState!.validate()) {
+                              _model.validarMake = false;
+                            }
+                            _shouldSetState = true;
+                            if (_model.validarMake == true) {
+                              _model.queryValidarCedula =
                                   await queryClientesRecordOnce(
                                 queryBuilder: (clientesRecord) => clientesRecord
                                     .where(
@@ -2036,73 +2034,46 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           _model.cedulaTextController.text,
                                     )
                                     .where(
-                                      'cliente.contrasena',
-                                      isNotEqualTo: null,
+                                      'cliente.idTendero',
+                                      isEqualTo: widget.tenderoRef,
                                     ),
                                 singleRecord: true,
                               ).then((s) => s.firstOrNull);
                               _shouldSetState = true;
-                              if (_model.queryClienteInOtherTiendas?.cliente
-                                          .contrasena !=
-                                      null &&
-                                  _model.queryClienteInOtherTiendas?.cliente
-                                          .contrasena !=
-                                      '') {
+                              if (_model.queryValidarCedula?.cliente != null) {
                                 await showDialog(
                                   context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('¡Alerta!'),
-                                      content: Text(
-                                          'Este cliente ya ha sido registrado anteriormente en otra tienda, por lo que se vincularán sus datos.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: Container(
+                                          height: 200.0,
+                                          child: DialogBtnWidget(
+                                            titulo: '¡Alerta!',
+                                            mensaje:
+                                                'Ya existe un cliente con esa cédula registrado en su tienda.',
+                                          ),
                                         ),
-                                      ],
+                                      ),
                                     );
                                   },
                                 );
-                                _model.queryForIDCliente =
-                                    await queryClientesRecordOnce(
-                                  queryBuilder: (clientesRecord) =>
-                                      clientesRecord.where(
-                                    'cliente.cedula',
-                                    isEqualTo: _model.cedulaTextController.text,
-                                  ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _shouldSetState = true;
 
-                                context.goNamed(
-                                  ClienteVincWidget.routeName,
-                                  queryParameters: {
-                                    'idCliente': serializeParam(
-                                      _model.queryForIDCliente?.reference,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'tenderoRef': serializeParam(
-                                      widget.tenderoRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'nombreTienda': serializeParam(
-                                      widget.nombreTienda,
-                                      ParamType.String,
-                                    ),
-                                    'tenderoEmail': serializeParam(
-                                      widget.tenderoEmail,
-                                      ParamType.String,
-                                    ),
-                                    'cedulaPassed': serializeParam(
-                                      _model.cedulaTextController.text,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
                               } else {
-                                _model.clienteSinContrasenaQuery =
+                                _model.queryClienteInOtherTiendas =
                                     await queryClientesRecordOnce(
                                   queryBuilder: (clientesRecord) =>
                                       clientesRecord
@@ -2113,224 +2084,356 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           )
                                           .where(
                                             'cliente.contrasena',
-                                            isEqualTo: null,
+                                            isNotEqualTo: null,
                                           ),
                                   singleRecord: true,
                                 ).then((s) => s.firstOrNull);
                                 _shouldSetState = true;
-                                if (_model.clienteSinContrasenaQuery?.cliente !=
-                                    null) {
+                                if (_model.queryClienteInOtherTiendas?.cliente
+                                            .contrasena !=
+                                        null &&
+                                    _model.queryClienteInOtherTiendas?.cliente
+                                            .contrasena !=
+                                        '') {
                                   await showDialog(
                                     context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('¡Alerta!'),
-                                        content: Text(
-                                            'Este cliente ha sido registrado anteriormente, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Container(
+                                            height: 200.0,
+                                            child: DialogBtnWidget(
+                                              titulo: '¡Alerta!',
+                                              mensaje:
+                                                  'El cliente añadido es un usuario regular de HoySíFio, por lo que se vincularán sus datos.',
+                                            ),
                                           ),
-                                        ],
+                                        ),
                                       );
                                     },
                                   );
-                                  if (_shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-                                _model.randomized = random_data.randomString(
-                                  4,
-                                  4,
-                                  false,
-                                  false,
-                                  true,
-                                );
-                                safeSetState(() {});
 
-                                var clientesRecordReference =
-                                    ClientesRecord.collection.doc();
-                                await clientesRecordReference
-                                    .set(createClientesRecordData(
-                                  cliente: createDataTypeClienteStruct(
-                                    nombre: _model.fullNameTextController.text,
-                                    telf: _model.phoneNumberTextController.text,
-                                    isFiando: false,
-                                    apellido: _model
-                                        .fullSecondNameTextController.text,
-                                    cedula: _model.cedulaTextController.text,
-                                    direccionDomicilio:
-                                        _model.direccionTextController.text,
-                                    viviendaAlq: _model.isVivAlq,
-                                    viviendaPropia: _model.isVivProp,
-                                    emailCliente:
-                                        _model.emailTextController.text,
-                                    idTendero: widget.tenderoRef,
-                                    totalDeudaCompleta: 0.0,
-                                    secretPass: _model.randomized,
-                                    contrasena: null,
-                                    isSubscribedToEmails:
-                                        _model.emailSendsCheckValue,
-                                    clearUnsetFields: false,
-                                    create: true,
-                                  ),
-                                ));
-                                _model.createdCliente =
-                                    ClientesRecord.getDocumentFromData(
-                                        createClientesRecordData(
-                                          cliente: createDataTypeClienteStruct(
-                                            nombre: _model
-                                                .fullNameTextController.text,
-                                            telf: _model
-                                                .phoneNumberTextController.text,
-                                            isFiando: false,
-                                            apellido: _model
-                                                .fullSecondNameTextController
-                                                .text,
-                                            cedula: _model
-                                                .cedulaTextController.text,
-                                            direccionDomicilio: _model
-                                                .direccionTextController.text,
-                                            viviendaAlq: _model.isVivAlq,
-                                            viviendaPropia: _model.isVivProp,
-                                            emailCliente:
-                                                _model.emailTextController.text,
-                                            idTendero: widget.tenderoRef,
-                                            totalDeudaCompleta: 0.0,
-                                            secretPass: _model.randomized,
-                                            contrasena: null,
-                                            isSubscribedToEmails:
-                                                _model.emailSendsCheckValue,
-                                            clearUnsetFields: false,
-                                            create: true,
+                                  _model.queryForIDCliente =
+                                      await queryClientesRecordOnce(
+                                    queryBuilder: (clientesRecord) =>
+                                        clientesRecord.where(
+                                      'cliente.cedula',
+                                      isEqualTo:
+                                          _model.cedulaTextController.text,
+                                    ),
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+
+                                  context.goNamed(
+                                    ClienteVincWidget.routeName,
+                                    queryParameters: {
+                                      'idCliente': serializeParam(
+                                        _model.queryForIDCliente?.reference,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'tenderoRef': serializeParam(
+                                        widget.tenderoRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'nombreTienda': serializeParam(
+                                        widget.nombreTienda,
+                                        ParamType.String,
+                                      ),
+                                      'tenderoEmail': serializeParam(
+                                        widget.tenderoEmail,
+                                        ParamType.String,
+                                      ),
+                                      'cedulaPassed': serializeParam(
+                                        _model.cedulaTextController.text,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                } else {
+                                  _model.clienteSinContrasenaQuery =
+                                      await queryClientesRecordOnce(
+                                    queryBuilder: (clientesRecord) =>
+                                        clientesRecord
+                                            .where(
+                                              'cliente.cedula',
+                                              isEqualTo: _model
+                                                  .cedulaTextController.text,
+                                            )
+                                            .where(
+                                              'cliente.contrasena',
+                                              isEqualTo: null,
+                                            ),
+                                    singleRecord: true,
+                                  ).then((s) => s.firstOrNull);
+                                  _shouldSetState = true;
+                                  if (_model
+                                          .clienteSinContrasenaQuery?.cliente !=
+                                      null) {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: Container(
+                                              height: 200.0,
+                                              child: DialogBtnWidget(
+                                                titulo: '¡Alerta!',
+                                                mensaje:
+                                                    'Este cliente ha sido registrado anteriormente, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.',
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
+                                  }
+                                  _model.randomized = random_data.randomString(
+                                    4,
+                                    4,
+                                    false,
+                                    false,
+                                    true,
+                                  );
+                                  safeSetState(() {});
+
+                                  var clientesRecordReference =
+                                      ClientesRecord.collection.doc();
+                                  await clientesRecordReference
+                                      .set(createClientesRecordData(
+                                    cliente: createDataTypeClienteStruct(
+                                      nombre:
+                                          _model.fullNameTextController.text,
+                                      telf:
+                                          _model.phoneNumberTextController.text,
+                                      isFiando: false,
+                                      apellido: _model
+                                          .fullSecondNameTextController.text,
+                                      cedula: _model.cedulaTextController.text,
+                                      direccionDomicilio:
+                                          _model.direccionTextController.text,
+                                      viviendaAlq: _model.isVivAlq,
+                                      viviendaPropia: _model.isVivProp,
+                                      emailCliente:
+                                          _model.emailTextController.text,
+                                      idTendero: widget.tenderoRef,
+                                      totalDeudaCompleta: 0.0,
+                                      secretPass: _model.randomized,
+                                      contrasena: null,
+                                      isSubscribedToEmails:
+                                          _model.emailSendsCheckValue,
+                                      clearUnsetFields: false,
+                                      create: true,
+                                    ),
+                                  ));
+                                  _model.createdCliente =
+                                      ClientesRecord.getDocumentFromData(
+                                          createClientesRecordData(
+                                            cliente:
+                                                createDataTypeClienteStruct(
+                                              nombre: _model
+                                                  .fullNameTextController.text,
+                                              telf: _model
+                                                  .phoneNumberTextController
+                                                  .text,
+                                              isFiando: false,
+                                              apellido: _model
+                                                  .fullSecondNameTextController
+                                                  .text,
+                                              cedula: _model
+                                                  .cedulaTextController.text,
+                                              direccionDomicilio: _model
+                                                  .direccionTextController.text,
+                                              viviendaAlq: _model.isVivAlq,
+                                              viviendaPropia: _model.isVivProp,
+                                              emailCliente: _model
+                                                  .emailTextController.text,
+                                              idTendero: widget.tenderoRef,
+                                              totalDeudaCompleta: 0.0,
+                                              secretPass: _model.randomized,
+                                              contrasena: null,
+                                              isSubscribedToEmails:
+                                                  _model.emailSendsCheckValue,
+                                              clearUnsetFields: false,
+                                              create: true,
+                                            ),
+                                          ),
+                                          clientesRecordReference);
+                                  _shouldSetState = true;
+
+                                  await _model.createdCliente!.reference
+                                      .update(createClientesRecordData(
+                                    cliente: createDataTypeClienteStruct(
+                                      idCliente:
+                                          _model.createdCliente?.reference,
+                                      clearUnsetFields: false,
+                                    ),
+                                  ));
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Container(
+                                            height: 200.0,
+                                            child: DialogBtnWidget(
+                                              titulo: '¡Enhorabuena! 😊',
+                                              mensaje:
+                                                  'El cliente ha sido registrado. Por favor, muestre el siguiente código de autenticación al cliente.',
+                                            ),
                                           ),
                                         ),
-                                        clientesRecordReference);
-                                _shouldSetState = true;
-
-                                await _model.createdCliente!.reference
-                                    .update(createClientesRecordData(
-                                  cliente: createDataTypeClienteStruct(
-                                    idCliente: _model.createdCliente?.reference,
-                                    clearUnsetFields: false,
-                                  ),
-                                ));
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('¡Enhorabuena! 😊'),
-                                      content: Text(
-                                          'El cliente ha sido registrado. Por favor, muestre el siguiente código de autenticación al cliente.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Siguiente'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          'Código de autenticación del cliente:'),
-                                      content: Text(
-                                          '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Entendido'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                                await makeCloudCall(
-                                  'addUser',
-                                  {
-                                    'user_id': currentUserUid,
-                                    'tags': {
-                                      'idToken': currentJwtToken,
-                                      'tipodeCuenta': 'Cliente',
-                                      'email': _model.emailTextController.text,
-                                      'isPromos': _model.emailSendsCheckValue!
-                                          .toString(),
+                                      );
                                     },
-                                    'subscriptions': [
-                                      {
-                                        'type': 'Email',
-                                        'token':
+                                  );
+
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Container(
+                                            height: 300.0,
+                                            child: DialogBtnWidget(
+                                              titulo:
+                                                  'Código de autenticación del cliente',
+                                              mensaje:
+                                                  '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
+
+                                  await makeCloudCall(
+                                    'addUser',
+                                    {
+                                      'user_id': currentUserUid,
+                                      'tags': {
+                                        'idToken': currentJwtToken,
+                                        'tipodeCuenta': 'Cliente',
+                                        'email':
                                             _model.emailTextController.text,
+                                        'isPromos': _model.emailSendsCheckValue!
+                                            .toString(),
                                       },
-                                    ],
-                                  },
-                                );
+                                      'subscriptions': [
+                                        {
+                                          'type': 'Email',
+                                          'token':
+                                              _model.emailTextController.text,
+                                        },
+                                      ],
+                                    },
+                                  );
 
-                                unawaited(
-                                  () async {
-                                    await actions
-                                        .sendCustomEmailForClienteRegister(
-                                      _model.emailTextController.text,
-                                      _model.fullNameTextController.text,
-                                      'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
-                                      widget.nombreTienda!,
-                                    );
-                                  }(),
-                                );
+                                  unawaited(
+                                    () async {
+                                      await actions
+                                          .sendCustomEmailForClienteRegister(
+                                        _model.emailTextController.text,
+                                        _model.fullNameTextController.text,
+                                        'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
+                                        widget.nombreTienda!,
+                                      );
+                                    }(),
+                                  );
 
-                                context.pushNamed(
-                                  ListaClientesWidget.routeName,
-                                  queryParameters: {
-                                    'tenderoRef': serializeParam(
-                                      widget.tenderoRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'nombreTienda': serializeParam(
-                                      widget.nombreTienda,
-                                      ParamType.String,
-                                    ),
-                                    'tenderoEmail': serializeParam(
-                                      widget.tenderoEmail,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
+                                  context.pushNamed(
+                                    ListaClientesWidget.routeName,
+                                    queryParameters: {
+                                      'tenderoRef': serializeParam(
+                                        widget.tenderoRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'nombreTienda': serializeParam(
+                                        widget.nombreTienda,
+                                        ParamType.String,
+                                      ),
+                                      'tenderoEmail': serializeParam(
+                                        widget.tenderoEmail,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
                               }
+                            } else {
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
                             }
-                          } else {
-                            if (_shouldSetState) safeSetState(() {});
-                            return;
-                          }
 
-                          if (_shouldSetState) safeSetState(() {});
-                        },
-                        text: 'Enviar',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.interTight(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
+                            if (_shouldSetState) safeSetState(() {});
+                          },
+                          text: 'Enviar',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 48.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.inter(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -2338,12 +2441,22 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),

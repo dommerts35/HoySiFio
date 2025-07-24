@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -26,6 +27,7 @@ class ClienteProdFullPagoWidget extends StatefulWidget {
     this.viviendaAlq,
     this.vivendaProp,
     this.emailCliente,
+    this.totalPassed,
   });
 
   /// idCliente
@@ -41,6 +43,7 @@ class ClienteProdFullPagoWidget extends StatefulWidget {
   final bool? viviendaAlq;
   final bool? vivendaProp;
   final String? emailCliente;
+  final String? totalPassed;
 
   static String routeName = 'clienteProd-FullPago';
   static String routePath = '/clienteProdFullPago';
@@ -183,6 +186,10 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                   widget.emailCliente,
                                   ParamType.String,
                                 ),
+                                'totalPassed': serializeParam(
+                                  widget.totalPassed,
+                                  ParamType.String,
+                                ),
                               }.withoutNulls,
                             );
                           },
@@ -203,7 +210,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  font: GoogleFonts.interTight(
+                                  font: GoogleFonts.readexPro(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .fontWeight,
@@ -791,7 +798,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -863,7 +870,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                   .headlineSmall
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .interTight(
+                                                                        .readexPro(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .headlineSmall
@@ -897,162 +904,159 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                   alignment:
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 50.0,
-                                                                0.0, 0.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        var _shouldSetState =
-                                                            false;
-                                                        final firestoreBatch =
-                                                            FirebaseFirestore
-                                                                .instance
-                                                                .batch();
-                                                        try {
-                                                          _model.totalDeudaCompletaConv =
-                                                              await actions
-                                                                  .normalizarValorNumerico(
-                                                            formatNumber(
-                                                              clienteProdFullPagoClientesRecord
-                                                                  .cliente
-                                                                  .totalDeudaCompleta,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '#0.00',
-                                                              locale: '',
-                                                            ),
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          _model.validarFormPago =
-                                                              true;
-                                                          if (_model.formKey
-                                                                      .currentState ==
-                                                                  null ||
-                                                              !_model.formKey
-                                                                  .currentState!
-                                                                  .validate()) {
+                                                  child: Builder(
+                                                    builder: (context) =>
+                                                        Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  50.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          var _shouldSetState =
+                                                              false;
+                                                          final firestoreBatch =
+                                                              FirebaseFirestore
+                                                                  .instance
+                                                                  .batch();
+                                                          try {
+                                                            _model.totalDeudaCompletaConv =
+                                                                await actions
+                                                                    .normalizarValorNumerico(
+                                                              formatNumber(
+                                                                clienteProdFullPagoClientesRecord
+                                                                    .cliente
+                                                                    .totalDeudaCompleta,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '#0.00',
+                                                                locale: '',
+                                                              ),
+                                                            );
+                                                            _shouldSetState =
+                                                                true;
                                                             _model.validarFormPago =
-                                                                false;
-                                                          }
-                                                          _shouldSetState =
-                                                              true;
-                                                          if (_model
-                                                                  .validarFormPago ==
-                                                              true) {
-                                                            if ((_model.checkTransferValue ==
-                                                                    false) &&
-                                                                (_model.checkEfectivoValue ==
-                                                                    false)) {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Alerta!'),
-                                                                    content: Text(
-                                                                        'Ingrese el método de pago.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              );
-                                                            } else {
+                                                                true;
+                                                            if (_model.formKey
+                                                                        .currentState ==
+                                                                    null ||
+                                                                !_model.formKey
+                                                                    .currentState!
+                                                                    .validate()) {
+                                                              _model.validarFormPago =
+                                                                  false;
+                                                            }
+                                                            _shouldSetState =
+                                                                true;
+                                                            if (_model
+                                                                    .validarFormPago ==
+                                                                true) {
                                                               if ((_model.checkTransferValue ==
-                                                                      true) &&
-                                                                  (_model.comprobanteNumTFTextController
-                                                                              .text ==
-                                                                          '')) {
+                                                                      false) &&
+                                                                  (_model.checkEfectivoValue ==
+                                                                      false)) {
                                                                 await showDialog(
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Alerta!'),
-                                                                      content: Text(
-                                                                          'Por favor, ingrese el número de comprobante.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
                                                                           child:
-                                                                              Text('Ok'),
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Alerta!',
+                                                                            mensaje:
+                                                                                'Ingrese el método de pago.',
+                                                                          ),
                                                                         ),
-                                                                      ],
+                                                                      ),
                                                                     );
                                                                   },
                                                                 );
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
                                                               } else {
-                                                                _model.dtProdHistorialListAfter =
-                                                                    clienteProdFullPagoClientesRecord
-                                                                        .cliente
-                                                                        .historialPorPagarProd
-                                                                        .toList()
-                                                                        .cast<
-                                                                            DataTypeHistorialPagoStruct>();
-                                                                safeSetState(
-                                                                    () {});
-
-                                                                firestoreBatch
-                                                                    .update(
-                                                                        widget
-                                                                            .idCliente!,
-                                                                        createClientesRecordData(
-                                                                          cliente:
-                                                                              createDataTypeClienteStruct(
-                                                                            fieldValues: {
-                                                                              'historialPorPagarProd': FieldValue.delete(),
-                                                                            },
-                                                                            clearUnsetFields:
-                                                                                false,
+                                                                if ((_model.checkTransferValue ==
+                                                                        true) &&
+                                                                    (_model.comprobanteNumTFTextController.text ==
+                                                                            '')) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Alerta!',
+                                                                              mensaje: ' ingrese el número de comprobante.',
+                                                                            ),
                                                                           ),
-                                                                        ));
-                                                                for (int loop1Index =
-                                                                        0;
-                                                                    loop1Index <
-                                                                        _model
-                                                                            .dtProdHistorialListAfter
-                                                                            .length;
-                                                                    loop1Index++) {
-                                                                  final currentLoop1Item =
-                                                                      _model.dtProdHistorialListAfter[
-                                                                          loop1Index];
-                                                                  _model
-                                                                      .updateDtProdHistorialListAfterAtIndex(
-                                                                    loop1Index,
-                                                                    (e) => e
-                                                                      ..transferencia =
-                                                                          _model
-                                                                              .checkTransferValue
-                                                                      ..efectivo =
-                                                                          _model
-                                                                              .checkEfectivoValue
-                                                                      ..numVoucher = int.tryParse(_model
-                                                                          .comprobanteNumTFTextController
-                                                                          .text)
-                                                                      ..totalPorPagar =
-                                                                          0.0
-                                                                      ..fechaDeCobro =
-                                                                          getCurrentTimestamp,
+                                                                        ),
+                                                                      );
+                                                                    },
                                                                   );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                } else {
+                                                                  _model.dtProdHistorialListAfter = clienteProdFullPagoClientesRecord
+                                                                      .cliente
+                                                                      .historialPorPagarProd
+                                                                      .toList()
+                                                                      .cast<
+                                                                          DataTypeHistorialPagoStruct>();
                                                                   safeSetState(
                                                                       () {});
 
@@ -1064,226 +1068,336 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                             cliente:
                                                                                 createDataTypeClienteStruct(
                                                                               fieldValues: {
-                                                                                'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                  getDataTypeHistorialPagoFirestoreData(
-                                                                                    updateDataTypeHistorialPagoStruct(
-                                                                                      currentLoop1Item,
-                                                                                      clearUnsetFields: false,
-                                                                                    ),
-                                                                                    true,
-                                                                                  )
-                                                                                ]),
+                                                                                'historialPorPagarProd': FieldValue.delete(),
                                                                               },
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                          ));
+                                                                  for (int loop1Index =
+                                                                          0;
+                                                                      loop1Index <
+                                                                          _model
+                                                                              .dtProdHistorialListAfter
+                                                                              .length;
+                                                                      loop1Index++) {
+                                                                    final currentLoop1Item =
+                                                                        _model.dtProdHistorialListAfter[
+                                                                            loop1Index];
+                                                                    _model
+                                                                        .updateDtProdHistorialListAfterAtIndex(
+                                                                      loop1Index,
+                                                                      (e) => e
+                                                                        ..transferencia =
+                                                                            _model.checkTransferValue
+                                                                        ..efectivo =
+                                                                            _model.checkEfectivoValue
+                                                                        ..numVoucher = int.tryParse(_model
+                                                                            .comprobanteNumTFTextController
+                                                                            .text)
+                                                                        ..totalPorPagar =
+                                                                            0.0
+                                                                        ..fechaDeCobro =
+                                                                            getCurrentTimestamp,
+                                                                    );
+                                                                    safeSetState(
+                                                                        () {});
+
+                                                                    firestoreBatch
+                                                                        .update(
+                                                                            widget.idCliente!,
+                                                                            createClientesRecordData(
+                                                                              cliente: createDataTypeClienteStruct(
+                                                                                fieldValues: {
+                                                                                  'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                    getDataTypeHistorialPagoFirestoreData(
+                                                                                      updateDataTypeHistorialPagoStruct(
+                                                                                        currentLoop1Item,
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                      true,
+                                                                                    )
+                                                                                  ]),
+                                                                                },
+                                                                                clearUnsetFields: false,
+                                                                              ),
+                                                                            ));
+                                                                  }
+
+                                                                  firestoreBatch
+                                                                      .update(
+                                                                          widget
+                                                                              .idCliente!,
+                                                                          createClientesRecordData(
+                                                                            cliente:
+                                                                                createDataTypeClienteStruct(
+                                                                              totalDeudaCompleta: 0.0,
                                                                               clearUnsetFields: false,
                                                                             ),
                                                                           ));
                                                                 }
 
-                                                                firestoreBatch
-                                                                    .update(
-                                                                        widget
-                                                                            .idCliente!,
-                                                                        createClientesRecordData(
-                                                                          cliente:
-                                                                              createDataTypeClienteStruct(
-                                                                            totalDeudaCompleta:
-                                                                                0.0,
-                                                                            clearUnsetFields:
-                                                                                false,
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
+                                                                          child:
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Pago completo guardado exitosamente!',
+                                                                            mensaje:
+                                                                                'El pago ha sido registrado.',
                                                                           ),
-                                                                        ));
-                                                              }
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
 
+                                                                _model.tenderoRead =
+                                                                    await TenderosRecord
+                                                                        .getDocumentOnce(
+                                                                            widget.tenderoRef!);
+                                                                _shouldSetState =
+                                                                    true;
+                                                                for (int loop1Index =
+                                                                        0;
+                                                                    loop1Index <
+                                                                        clienteProdFullPagoClientesRecord
+                                                                            .playerIds
+                                                                            .length;
+                                                                    loop1Index++) {
+                                                                  final currentLoop1Item =
+                                                                      clienteProdFullPagoClientesRecord
+                                                                              .playerIds[
+                                                                          loop1Index];
+                                                                  unawaited(
+                                                                    () async {
+                                                                      await actions
+                                                                          .sendNotificationToPlayer(
+                                                                        currentLoop1Item,
+                                                                        '${clienteProdFullPagoClientesRecord.cliente.nombre}: ¡Se ha registrado un pago completo de los todos productos que fiados actualmente en la tienda: ${_model.tenderoRead?.displayName}!',
+                                                                      );
+                                                                    }(),
+                                                                  );
+                                                                }
+                                                                unawaited(
+                                                                  () async {}(),
+                                                                );
+
+                                                                context.goNamed(
+                                                                  ClienteInfoEditWidget
+                                                                      .routeName,
+                                                                  queryParameters:
+                                                                      {
+                                                                    'nombre':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .nombre,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'telf':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .telf,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'isFiando':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .isFiando,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'idCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .idCliente,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'apellido':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .apellido,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'cedula':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .cedula,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'tenderoRef':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .tenderoRef,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'direccionDomicilio':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .direccionDomicilio,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'viviendaAlq':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .viviendaAlq,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'viviendaProp':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .vivendaProp,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'emailCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .emailCliente,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+                                                              }
+                                                            } else {
                                                               await showDialog(
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Pago completo guardado exitosamente!'),
-                                                                    content: Text(
-                                                                        'El pago ha sido registrado.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        FocusScope.of(dialogContext)
+                                                                            .unfocus();
+                                                                        FocusManager
+                                                                            .instance
+                                                                            .primaryFocus
+                                                                            ?.unfocus();
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            200.0,
+                                                                        child:
+                                                                            DialogBtnWidget(
+                                                                          titulo:
+                                                                              '¡Alerta!',
+                                                                          mensaje:
+                                                                              'Ingrese el método de pago.',
+                                                                        ),
                                                                       ),
-                                                                    ],
+                                                                    ),
                                                                   );
                                                                 },
                                                               );
-                                                              _model.tenderoRead =
-                                                                  await TenderosRecord
-                                                                      .getDocumentOnce(
-                                                                          widget
-                                                                              .tenderoRef!);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              unawaited(
-                                                                () async {
-                                                                  await actions
-                                                                      .sendCustomEmailForFullPaidProds(
-                                                                    widget
-                                                                        .emailCliente!,
-                                                                    widget
-                                                                        .nombre!,
-                                                                    '¡Pago de todos los productos fiados registrado!',
-                                                                    _model
-                                                                        .tenderoRead!
-                                                                        .displayName,
-                                                                  );
-                                                                }(),
-                                                              );
-
-                                                              context.goNamed(
-                                                                HistorialPorCobrarWidget
-                                                                    .routeName,
-                                                                queryParameters:
-                                                                    {
-                                                                  'idCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .idCliente,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'idTendero':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .tenderoRef,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'nombre':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .nombre,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'telf':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .telf,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'isFiando':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .isFiando,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'apellido':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .apellido,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'cedula':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .cedula,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'direccionDomicilio':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .direccionDomicilio,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'viviendaAlq':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .viviendaAlq,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'viviendaProp':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .vivendaProp,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'emailCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .emailCliente,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
                                                             }
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      '¡Alerta!'),
-                                                                  content: Text(
-                                                                      'Por favor, ingrese el método de pago.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
+                                                          } finally {
+                                                            await firestoreBatch
+                                                                .commit();
                                                           }
-                                                        } finally {
-                                                          await firestoreBatch
-                                                              .commit();
-                                                        }
 
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                      },
-                                                      text: 'Pagar',
-                                                      options: FFButtonOptions(
-                                                        width: double.infinity,
-                                                        height: 40.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .interTight(
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                        },
+                                                        text: 'Pagar',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 40.0,
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: Colors
+                                                                        .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1293,23 +1407,12 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget> {
                                                                         .titleSmall
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Colors
-                                                                      .white,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                                ),
-                                                        elevation: 0.0,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

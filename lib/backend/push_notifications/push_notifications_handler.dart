@@ -125,6 +125,7 @@ final parametersBuilderMap =
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
           'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
   'clienteEditInfo': (data) async => ParameterData(
@@ -220,6 +221,7 @@ final parametersBuilderMap =
           'viviendaAlq': getParameter<bool>(data, 'viviendaAlq'),
           'vivendaProp': getParameter<bool>(data, 'vivendaProp'),
           'emailCliente': getParameter<String>(data, 'emailCliente'),
+          'totalPassed': getParameter<String>(data, 'totalPassed'),
         },
       ),
   'historialPorCobrar': (data) async => ParameterData(
@@ -236,6 +238,7 @@ final parametersBuilderMap =
           'viviendaAlq': getParameter<bool>(data, 'viviendaAlq'),
           'viviendaProp': getParameter<bool>(data, 'viviendaProp'),
           'emailCliente': getParameter<String>(data, 'emailCliente'),
+          'totalPassed': getParameter<String>(data, 'totalPassed'),
         },
       ),
   'tenderoRegister': ParameterData.none(),
@@ -269,6 +272,7 @@ final parametersBuilderMap =
           'viviendaAlq': getParameter<bool>(data, 'viviendaAlq'),
           'vivendaProp': getParameter<bool>(data, 'vivendaProp'),
           'emailCliente': getParameter<String>(data, 'emailCliente'),
+          'totalPassed': getParameter<String>(data, 'totalPassed'),
         },
       ),
   'clienteProd-SelectPago': (data) async => ParameterData(
@@ -287,6 +291,7 @@ final parametersBuilderMap =
           'emailCliente': getParameter<String>(data, 'emailCliente'),
           'calcForTotalPorPagar':
               getParameter<double>(data, 'calcForTotalPorPagar'),
+          'totalPassed': getParameter<String>(data, 'totalPassed'),
         },
       ),
   'historialSingleVoucherPago': (data) async => ParameterData(
@@ -352,7 +357,6 @@ final parametersBuilderMap =
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
-          'tipoCuenta': getParameter<String>(data, 'tipoCuenta'),
         },
       ),
   'signinConfirm': (data) async => ParameterData(
@@ -443,6 +447,20 @@ final parametersBuilderMap =
           'nombreTendero': getParameter<String>(data, 'nombreTendero'),
           'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+        },
+      ),
+  'tenderoBankSec': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+        },
+      ),
+  'historialPagosCliente': (data) async => ParameterData(
+        allParams: {
+          'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
+          'idTendero': getParameter<DocumentReference>(data, 'idTendero'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+          'cedula': getParameter<String>(data, 'cedula'),
         },
       ),
 };

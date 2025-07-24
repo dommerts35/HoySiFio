@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -118,7 +119,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .displaySmall
                                 .override(
-                                  font: GoogleFonts.interTight(
+                                  font: GoogleFonts.readexPro(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .fontWeight,
@@ -184,7 +185,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.readexPro(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .displaySmall
@@ -425,124 +426,176 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                     ),
                                     Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 16.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            var _shouldSetState = false;
-                                            if (_model.passwordToConfirmTextController
-                                                        .text ==
-                                                    '') {
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text('¡Alerta!'),
-                                                    content: Text(
-                                                        'Por favor, ingrese su contraseña.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: Text('Ok'),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                              if (_shouldSetState)
-                                                safeSetState(() {});
-                                              return;
-                                            } else {
-                                              _model.queryConfirm =
-                                                  await queryTenderosRecordOnce(
-                                                queryBuilder:
-                                                    (tenderosRecord) =>
-                                                        tenderosRecord
-                                                            .where(
-                                                              'tenderos.idTendero',
-                                                              isEqualTo: widget
-                                                                  .tenderoRef,
-                                                            )
-                                                            .where(
-                                                              'tenderos.pw',
-                                                              isEqualTo: _model
-                                                                  .passwordToConfirmTextController
-                                                                  .text,
-                                                            ),
-                                                singleRecord: true,
-                                              ).then((s) => s.firstOrNull);
-                                              _shouldSetState = true;
-                                              if ((_model.queryConfirm !=
-                                                      null) ==
-                                                  true) {
-                                                context.pushNamed(
-                                                  TenderoEditInfoWidget
-                                                      .routeName,
-                                                  queryParameters: {
-                                                    'tenderoRef':
-                                                        serializeParam(
-                                                      widget.tenderoRef,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                    'nombreTienda':
-                                                        serializeParam(
-                                                      widget.nombreTienda,
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              } else {
+                                      child: Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 16.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              var _shouldSetState = false;
+                                              if (_model.passwordToConfirmTextController
+                                                          .text ==
+                                                      '') {
                                                 await showDialog(
                                                   context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          'Credenciales incorrectas'),
-                                                      content: Text(
-                                                          'La contraseña es incorrecta.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text('Ok'),
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child: Container(
+                                                          height: 200.0,
+                                                          child:
+                                                              DialogBtnWidget(
+                                                            titulo: '¡Alerta!',
+                                                            mensaje:
+                                                                'Ingrese su contraseña.',
+                                                          ),
                                                         ),
-                                                      ],
+                                                      ),
                                                     );
                                                   },
                                                 );
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              } else {
+                                                _model.queryConfirm =
+                                                    await queryTenderosRecordOnce(
+                                                  queryBuilder:
+                                                      (tenderosRecord) =>
+                                                          tenderosRecord
+                                                              .where(
+                                                                'tenderos.idTendero',
+                                                                isEqualTo: widget
+                                                                    .tenderoRef,
+                                                              )
+                                                              .where(
+                                                                'tenderos.pw',
+                                                                isEqualTo: _model
+                                                                    .passwordToConfirmTextController
+                                                                    .text,
+                                                              ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+                                                _shouldSetState = true;
+                                                if ((_model.queryConfirm !=
+                                                        null) ==
+                                                    true) {
+                                                  context.pushNamed(
+                                                    TenderoEditInfoWidget
+                                                        .routeName,
+                                                    queryParameters: {
+                                                      'tenderoRef':
+                                                          serializeParam(
+                                                        widget.tenderoRef,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'nombreTienda':
+                                                          serializeParam(
+                                                        widget.nombreTienda,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Container(
+                                                            height: 200.0,
+                                                            child:
+                                                                DialogBtnWidget(
+                                                              titulo:
+                                                                  '¡Credenciales incorrectas!',
+                                                              mensaje:
+                                                                  'La contraseña es inválida.',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                }
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
                                               }
 
                                               if (_shouldSetState)
                                                 safeSetState(() {});
-                                              return;
-                                            }
-
-                                            if (_shouldSetState)
-                                              safeSetState(() {});
-                                          },
-                                          text: 'Confirmar',
-                                          options: FFButtonOptions(
-                                            width: 330.0,
-                                            height: 52.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                            textStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .headlineLarge
-                                                .override(
-                                                  font: GoogleFonts.interTight(
+                                            },
+                                            text: 'Confirmar',
+                                            options: FFButtonOptions(
+                                              width: 330.0,
+                                              height: 52.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              textStyle: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineLarge
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineLarge
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -554,25 +607,14 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                                             .headlineLarge
                                                             .fontStyle,
                                                   ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLarge
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineLarge
-                                                          .fontStyle,
-                                                ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Colors.transparent,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
                                           ),
                                         ),
                                       ),

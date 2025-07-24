@@ -42,12 +42,14 @@ class HistorialSingleVoucherPagoModel
   FocusNode? bancoFocusNode;
   TextEditingController? bancoTextController;
   String? Function(BuildContext, String?)? bancoTextControllerValidator;
-  // State field(s) for checkElectr widget.
-  bool? checkElectrValue;
-  // State field(s) for checkBanca widget.
-  bool? checkBancaValue;
   // State field(s) for checkVent widget.
   bool? checkVentValue;
+  // State field(s) for checkMovil widget.
+  bool? checkMovilValue;
+  // State field(s) for checkBanca widget.
+  bool? checkBancaValue;
+  // State field(s) for checkElectr widget.
+  bool? checkElectrValue;
   bool isDataUploading_uploadDataZ9l = false;
   FFUploadedFile uploadedLocalFile_uploadDataZ9l =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -59,6 +61,14 @@ class HistorialSingleVoucherPagoModel
   double? valorMAPReConv;
   // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
   TenderosRecord? tenderoRead;
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
 
   /// Query cache managers for this widget.
 

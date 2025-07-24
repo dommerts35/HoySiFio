@@ -32,6 +32,7 @@ Future<void> sendCustomVerificationEmail(String recipientEmail,
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
       <tr>
         <td align="center" style="padding: 20px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 100%; height: auto; padding: 0 0 0 15px;">
           <h1 style="color: white; margin: 0;">¡Bienvenido, $recipientName!</h1>
         </td>
       </tr>
@@ -58,9 +59,9 @@ Future<void> sendCustomVerificationEmail(String recipientEmail,
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
-          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">© 2025 HoySíFio. Todos los derechos reservados.</p>
           <p style="margin: 5px 0 0 0;">Si no solicitó este código, ignore este mensaje.</p>
-          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder.</p>
         </td>
       </tr>
     </table>

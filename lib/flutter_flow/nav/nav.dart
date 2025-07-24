@@ -135,6 +135,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'tenderoEmail',
               ParamType.String,
             ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -443,6 +447,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'emailCliente',
               ParamType.String,
             ),
+            totalPassed: params.getParam(
+              'totalPassed',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -495,6 +503,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             emailCliente: params.getParam(
               'emailCliente',
+              ParamType.String,
+            ),
+            totalPassed: params.getParam(
+              'totalPassed',
               ParamType.String,
             ),
           ),
@@ -610,6 +622,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'emailCliente',
               ParamType.String,
             ),
+            totalPassed: params.getParam(
+              'totalPassed',
+              ParamType.String,
+            ),
           ),
         ),
         FFRoute(
@@ -667,6 +683,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             calcForTotalPorPagar: params.getParam(
               'calcForTotalPorPagar',
               ParamType.double,
+            ),
+            totalPassed: params.getParam(
+              'totalPassed',
+              ParamType.String,
             ),
           ),
         ),
@@ -932,10 +952,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             nombreTienda: params.getParam(
               'nombreTienda',
-              ParamType.String,
-            ),
-            tipoCuenta: params.getParam(
-              'tipoCuenta',
               ParamType.String,
             ),
           ),
@@ -1230,6 +1246,68 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             nombreTienda: params.getParam(
               'nombreTienda',
               ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TenderoBankSecWidget.routeName,
+          path: TenderoBankSecWidget.routePath,
+          builder: (context, params) => TenderoBankSecWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: HistorialPagosClienteWidget.routeName,
+          path: HistorialPagosClienteWidget.routePath,
+          asyncParams: {
+            'doc': getDocList(['clientes'], ClientesRecord.fromSnapshot),
+          },
+          builder: (context, params) => HistorialPagosClienteWidget(
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            idTendero: params.getParam(
+              'idTendero',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            historialPagosDTList: params.getParam<DataTypeHistorialPagoStruct>(
+              'historialPagosDTList',
+              ParamType.DataStruct,
+              isList: true,
+              structBuilder: DataTypeHistorialPagoStruct.fromSerializableMap,
+            ),
+            nombreCliente: params.getParam(
+              'nombreCliente',
+              ParamType.String,
+            ),
+            doc: params.getParam<ClientesRecord>(
+              'doc',
+              ParamType.Document,
+              isList: true,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            idTenderoList: params.getParam<DocumentReference>(
+              'idTenderoList',
+              ParamType.DocumentReference,
+              isList: true,
+              collectionNamePath: ['tenderos'],
             ),
           ),
         )

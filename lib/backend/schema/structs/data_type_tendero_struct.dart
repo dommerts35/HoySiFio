@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class DataTypeTenderoStruct extends FFFirebaseStruct {
@@ -19,6 +20,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
     String? nombreTendero,
     String? nombreTitularBanco,
     String? ciTendero,
+    DataTypeCuentaSecundariaStruct? cuentaSecTendero,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _mail = mail,
         _pw = pw,
@@ -31,6 +33,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         _nombreTendero = nombreTendero,
         _nombreTitularBanco = nombreTitularBanco,
         _ciTendero = ciTendero,
+        _cuentaSecTendero = cuentaSecTendero,
         super(firestoreUtilData);
 
   // "mail" field.
@@ -110,6 +113,20 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
 
   bool hasCiTendero() => _ciTendero != null;
 
+  // "cuentaSecTendero" field.
+  DataTypeCuentaSecundariaStruct? _cuentaSecTendero;
+  DataTypeCuentaSecundariaStruct get cuentaSecTendero =>
+      _cuentaSecTendero ?? DataTypeCuentaSecundariaStruct();
+  set cuentaSecTendero(DataTypeCuentaSecundariaStruct? val) =>
+      _cuentaSecTendero = val;
+
+  void updateCuentaSecTendero(
+      Function(DataTypeCuentaSecundariaStruct) updateFn) {
+    updateFn(_cuentaSecTendero ??= DataTypeCuentaSecundariaStruct());
+  }
+
+  bool hasCuentaSecTendero() => _cuentaSecTendero != null;
+
   static DataTypeTenderoStruct fromMap(Map<String, dynamic> data) =>
       DataTypeTenderoStruct(
         mail: data['mail'] as String?,
@@ -123,6 +140,11 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         nombreTendero: data['nombreTendero'] as String?,
         nombreTitularBanco: data['nombreTitularBanco'] as String?,
         ciTendero: data['ciTendero'] as String?,
+        cuentaSecTendero:
+            data['cuentaSecTendero'] is DataTypeCuentaSecundariaStruct
+                ? data['cuentaSecTendero']
+                : DataTypeCuentaSecundariaStruct.maybeFromMap(
+                    data['cuentaSecTendero']),
       );
 
   static DataTypeTenderoStruct? maybeFromMap(dynamic data) => data is Map
@@ -141,6 +163,7 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         'nombreTendero': _nombreTendero,
         'nombreTitularBanco': _nombreTitularBanco,
         'ciTendero': _ciTendero,
+        'cuentaSecTendero': _cuentaSecTendero?.toMap(),
       }.withoutNulls;
 
   @override
@@ -188,6 +211,10 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         'ciTendero': serializeParam(
           _ciTendero,
           ParamType.String,
+        ),
+        'cuentaSecTendero': serializeParam(
+          _cuentaSecTendero,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -249,6 +276,12 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        cuentaSecTendero: deserializeStructParam(
+          data['cuentaSecTendero'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: DataTypeCuentaSecundariaStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -267,7 +300,8 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         tipoDeCuenta == other.tipoDeCuenta &&
         nombreTendero == other.nombreTendero &&
         nombreTitularBanco == other.nombreTitularBanco &&
-        ciTendero == other.ciTendero;
+        ciTendero == other.ciTendero &&
+        cuentaSecTendero == other.cuentaSecTendero;
   }
 
   @override
@@ -282,7 +316,8 @@ class DataTypeTenderoStruct extends FFFirebaseStruct {
         tipoDeCuenta,
         nombreTendero,
         nombreTitularBanco,
-        ciTendero
+        ciTendero,
+        cuentaSecTendero
       ]);
 }
 
@@ -298,6 +333,7 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
   String? nombreTendero,
   String? nombreTitularBanco,
   String? ciTendero,
+  DataTypeCuentaSecundariaStruct? cuentaSecTendero,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -315,6 +351,8 @@ DataTypeTenderoStruct createDataTypeTenderoStruct({
       nombreTendero: nombreTendero,
       nombreTitularBanco: nombreTitularBanco,
       ciTendero: ciTendero,
+      cuentaSecTendero: cuentaSecTendero ??
+          (clearUnsetFields ? DataTypeCuentaSecundariaStruct() : null),
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -371,6 +409,16 @@ Map<String, dynamic> getDataTypeTenderoFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(dataTypeTendero.toMap());
+
+  // Handle nested data for "cuentaSecTendero" field.
+  addDataTypeCuentaSecundariaStructData(
+    firestoreData,
+    dataTypeTendero.hasCuentaSecTendero()
+        ? dataTypeTendero.cuentaSecTendero
+        : null,
+    'cuentaSecTendero',
+    forFieldValue,
+  );
 
   // Add any Firestore field values
   dataTypeTendero.firestoreUtilData.fieldValues

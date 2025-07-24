@@ -118,7 +118,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                       'Tutoriales',
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                font: GoogleFonts.interTight(
+                                font: GoogleFonts.readexPro(
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .fontWeight,
@@ -238,7 +238,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.inter(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -304,7 +304,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.inter(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall

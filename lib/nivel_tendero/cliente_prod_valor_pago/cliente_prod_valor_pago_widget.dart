@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -34,6 +35,7 @@ class ClienteProdValorPagoWidget extends StatefulWidget {
     this.viviendaAlq,
     this.vivendaProp,
     this.emailCliente,
+    this.totalPassed,
   });
 
   /// idCliente
@@ -57,6 +59,7 @@ class ClienteProdValorPagoWidget extends StatefulWidget {
   final bool? viviendaAlq;
   final bool? vivendaProp;
   final String? emailCliente;
+  final String? totalPassed;
 
   static String routeName = 'clienteProd-ValorPago';
   static String routePath = '/clienteProdValorPago';
@@ -203,6 +206,10 @@ class _ClienteProdValorPagoWidgetState
                                   widget.emailCliente,
                                   ParamType.String,
                                 ),
+                                'totalPassed': serializeParam(
+                                  widget.totalPassed,
+                                  ParamType.String,
+                                ),
                               }.withoutNulls,
                             );
                           },
@@ -222,7 +229,7 @@ class _ClienteProdValorPagoWidgetState
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  font: GoogleFonts.interTight(
+                                  font: GoogleFonts.readexPro(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .headlineMedium
                                         .fontWeight,
@@ -519,7 +526,7 @@ class _ClienteProdValorPagoWidgetState
                                                   }),
                                                 FilteringTextInputFormatter
                                                     .allow(RegExp(
-                                                        '^\\d*[,.]?\\d{0,2}\$'))
+                                                        '^(0|[1-9]\\d*)([,.]\\d{0,2})?\$'))
                                               ],
                                             ),
                                           ),
@@ -1000,7 +1007,7 @@ class _ClienteProdValorPagoWidgetState
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -1074,7 +1081,7 @@ class _ClienteProdValorPagoWidgetState
                                                                   .headlineSmall
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .interTight(
+                                                                        .readexPro(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .headlineSmall
@@ -1108,649 +1115,821 @@ class _ClienteProdValorPagoWidgetState
                                                   alignment:
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 10.0,
-                                                                0.0, 5.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        var _shouldSetState =
-                                                            false;
-                                                        if (_model.valorAPTextController
-                                                                    .text ==
-                                                                '') {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    '¡Alerta!'),
-                                                                content: Text(
-                                                                    'Por favor, ingrese un monto a pagar.'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        }
-                                                        _model.valorConv =
-                                                            await actions
-                                                                .normalizarValorNumerico(
-                                                          _model
-                                                              .valorAPTextController
-                                                              .text,
-                                                        );
-                                                        _shouldSetState = true;
-                                                        _model.totalPorPagarFromHistorialConv =
-                                                            await actions
-                                                                .normalizarValorNumerico(
-                                                          formatNumber(
-                                                            widget
-                                                                .totalPorPagarFromHistorial,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          ),
-                                                        );
-                                                        _shouldSetState = true;
-                                                        _model.validarFormPago =
-                                                            true;
-                                                        if (_model.formKey
-                                                                    .currentState ==
-                                                                null ||
-                                                            !_model.formKey
-                                                                .currentState!
-                                                                .validate()) {
-                                                          _model.validarFormPago =
+                                                  child: Builder(
+                                                    builder: (context) =>
+                                                        Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  5.0),
+                                                      child: FFButtonWidget(
+                                                        onPressed: () async {
+                                                          var _shouldSetState =
                                                               false;
-                                                        }
-                                                        _shouldSetState = true;
-                                                        if (_model
-                                                                .validarFormPago ==
-                                                            true) {
-                                                          if (((_model.valorConv!) >
-                                                                  (_model
-                                                                      .totalPorPagarFromHistorialConv!)) ||
-                                                              ((double var1) {
-                                                                return var1 <=
-                                                                    0;
-                                                              }(_model
-                                                                  .valorConv!))) {
+                                                          if (_model.valorAPTextController
+                                                                      .text ==
+                                                                  '') {
                                                             await showDialog(
                                                               context: context,
                                                               builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: Text(
-                                                                      '¡Alerta!'),
-                                                                  content: Text(
-                                                                      'Ingrese un monto válido.'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: Text(
-                                                                          'Ok'),
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          200.0,
+                                                                      child:
+                                                                          DialogBtnWidget(
+                                                                        titulo:
+                                                                            '¡Alerta!',
+                                                                        mensaje:
+                                                                            'Ingrese un monto a pagar.',
+                                                                      ),
                                                                     ),
-                                                                  ],
+                                                                  ),
                                                                 );
                                                               },
                                                             );
-                                                          } else {
-                                                            if ((_model.checkTransferValue ==
-                                                                    false) &&
-                                                                (_model.checkEfectivoValue ==
-                                                                    false)) {
+
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          }
+                                                          _model.valorConv =
+                                                              await actions
+                                                                  .normalizarValorNumerico(
+                                                            _model
+                                                                .valorAPTextController
+                                                                .text,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.totalPorPagarFromHistorialConv =
+                                                              await actions
+                                                                  .normalizarValorNumerico(
+                                                            formatNumber(
+                                                              widget
+                                                                  .totalPorPagarFromHistorial,
+                                                              formatType:
+                                                                  FormatType
+                                                                      .custom,
+                                                              format: '#0.00',
+                                                              locale: '',
+                                                            ),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          _model.validarFormPago =
+                                                              true;
+                                                          if (_model.formKey
+                                                                      .currentState ==
+                                                                  null ||
+                                                              !_model.formKey
+                                                                  .currentState!
+                                                                  .validate()) {
+                                                            _model.validarFormPago =
+                                                                false;
+                                                          }
+                                                          _shouldSetState =
+                                                              true;
+                                                          if (_model
+                                                                  .validarFormPago ==
+                                                              true) {
+                                                            if (((_model.valorConv!) >
+                                                                    (_model
+                                                                        .totalPorPagarFromHistorialConv!)) ||
+                                                                ((double var1) {
+                                                                  return var1 <=
+                                                                      0;
+                                                                }(_model
+                                                                    .valorConv!))) {
                                                               await showDialog(
                                                                 context:
                                                                     context,
                                                                 builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Alerta!'),
-                                                                    content: Text(
-                                                                        'Ingrese el método de pago.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        FocusScope.of(dialogContext)
+                                                                            .unfocus();
+                                                                        FocusManager
+                                                                            .instance
+                                                                            .primaryFocus
+                                                                            ?.unfocus();
+                                                                      },
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            200.0,
+                                                                        child:
+                                                                            DialogBtnWidget(
+                                                                          titulo:
+                                                                              '¡Alerta!',
+                                                                          mensaje:
+                                                                              'Ingrese un monto válido.',
+                                                                        ),
                                                                       ),
-                                                                    ],
+                                                                    ),
                                                                   );
                                                                 },
                                                               );
                                                             } else {
                                                               if ((_model.checkTransferValue ==
-                                                                      true) &&
-                                                                  (_model.comprobanteNumTFTextController
-                                                                              .text ==
-                                                                          '')) {
+                                                                      false) &&
+                                                                  (_model.checkEfectivoValue ==
+                                                                      false)) {
                                                                 await showDialog(
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Falta el número del comprobante!'),
-                                                                      content: Text(
-                                                                          'Por favor, ingrese el número de comprobante.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
                                                                           child:
-                                                                              Text('Ok'),
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Alerta!',
+                                                                            mensaje:
+                                                                                'Ingrese el método de pago.',
+                                                                          ),
                                                                         ),
-                                                                      ],
+                                                                      ),
                                                                     );
                                                                   },
                                                                 );
-                                                                if (_shouldSetState)
+                                                              } else {
+                                                                if ((_model.checkTransferValue ==
+                                                                        true) &&
+                                                                    (_model.comprobanteNumTFTextController.text ==
+                                                                            '')) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Falta el número del comprobante!',
+                                                                              mensaje: 'Ingrese el número de comprobante.',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                                if ((_model.totalPorPagarFromHistorialConv!) -
+                                                                        (_model
+                                                                            .valorConv!) ==
+                                                                    0.000) {
+                                                                  _model
+                                                                      .updateDtProdHistorialAfterStruct(
+                                                                    (e) => e
+                                                                      ..totalPagado = (_model
+                                                                              .totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
+                                                                      ..transferencia =
+                                                                          _model
+                                                                              .checkTransferValue
+                                                                      ..efectivo =
+                                                                          _model
+                                                                              .checkEfectivoValue
+                                                                      ..productos = widget
+                                                                          .dtHistorial!
+                                                                          .productos
+                                                                          .toList()
+                                                                      ..totalPorPagar = (_model
+                                                                              .totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
+                                                                      ..totalGeneral =
+                                                                          widget
+                                                                              .totalGeneralFromHistorial
+                                                                      ..idTransaccion =
+                                                                          widget
+                                                                              .idTransaccionPassed
+                                                                      ..fechaDeFio = widget
+                                                                          .dtHistorial
+                                                                          ?.fechaDeFio
+                                                                      ..numVoucher =
+                                                                          valueOrDefault<
+                                                                              int>(
+                                                                        int.tryParse(_model
+                                                                            .comprobanteNumTFTextController
+                                                                            .text),
+                                                                        0,
+                                                                      )
+                                                                      ..fechaDeCobro =
+                                                                          getCurrentTimestamp,
+                                                                  );
                                                                   safeSetState(
                                                                       () {});
-                                                                return;
-                                                              }
-                                                              if ((_model.totalPorPagarFromHistorialConv!) -
-                                                                      (_model
-                                                                          .valorConv!) ==
-                                                                  0.000) {
-                                                                _model
-                                                                    .updateDtProdHistorialAfterStruct(
-                                                                  (e) => e
-                                                                    ..totalPagado = (_model
-                                                                            .totalPorPagarFromHistorialConv!) -
-                                                                        (_model
-                                                                            .valorConv!)
-                                                                    ..transferencia =
-                                                                        _model
-                                                                            .checkTransferValue
-                                                                    ..efectivo =
-                                                                        _model
-                                                                            .checkEfectivoValue
-                                                                    ..productos = widget
-                                                                        .dtHistorial!
-                                                                        .productos
-                                                                        .toList()
-                                                                    ..totalPorPagar = (_model
-                                                                            .totalPorPagarFromHistorialConv!) -
-                                                                        (_model
-                                                                            .valorConv!)
-                                                                    ..totalGeneral =
-                                                                        widget
-                                                                            .totalGeneralFromHistorial
-                                                                    ..idTransaccion =
-                                                                        widget
-                                                                            .idTransaccionPassed
-                                                                    ..fechaDeFio = widget
-                                                                        .dtHistorial
-                                                                        ?.fechaDeFio
-                                                                    ..numVoucher =
-                                                                        valueOrDefault<
-                                                                            int>(
-                                                                      int.tryParse(_model
-                                                                          .comprobanteNumTFTextController
-                                                                          .text),
-                                                                      0,
-                                                                    )
-                                                                    ..fechaDeCobro =
-                                                                        getCurrentTimestamp,
-                                                                );
-                                                                safeSetState(
-                                                                    () {});
 
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    fieldValues: {
-                                                                      'historialPagadosProd':
-                                                                          FieldValue
-                                                                              .arrayUnion([
-                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                          updateDataTypeHistorialPagoStruct(
-                                                                            _model.dtProdHistorialAfter,
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                          true,
-                                                                        )
-                                                                      ]),
-                                                                      'historialPorPagarProd':
-                                                                          FieldValue
-                                                                              .arrayRemove([
-                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                          updateDataTypeHistorialPagoStruct(
-                                                                            widget.dtHistorial,
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                          true,
-                                                                        )
-                                                                      ]),
-                                                                    },
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      fieldValues: {
+                                                                        'historialPagadosProd':
+                                                                            FieldValue.arrayUnion([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              _model.dtProdHistorialAfter,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                        'historialPorPagarProd':
+                                                                            FieldValue.arrayRemove([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              widget.dtHistorial,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                      },
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
 
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    totalDeudaCompleta: clienteProdValorPagoClientesRecord
-                                                                            .cliente
-                                                                            .totalDeudaCompleta -
-                                                                        (_model
-                                                                            .valorConv!),
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-                                                                _model.tDCNorm =
-                                                                    await actions
-                                                                        .normalizarValorNumerico(
-                                                                  formatNumber(
-                                                                    clienteProdValorPagoClientesRecord
-                                                                        .cliente
-                                                                        .totalDeudaCompleta,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .custom,
-                                                                    format:
-                                                                        '#0.00',
-                                                                    locale: '',
-                                                                  ),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    totalDeudaCompleta:
-                                                                        _model
-                                                                            .tDCNorm,
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-                                                              } else {
-                                                                _model
-                                                                    .updateDtProdHistorialAfterStruct(
-                                                                  (e) => e
-                                                                    ..totalPagado = (widget
-                                                                            .totalPagadoFromHistorial!) +
-                                                                        (_model
-                                                                            .valorConv!)
-                                                                    ..transferencia =
-                                                                        _model
-                                                                            .checkTransferValue
-                                                                    ..efectivo =
-                                                                        _model
-                                                                            .checkEfectivoValue
-                                                                    ..productos = widget
-                                                                        .dtHistorial!
-                                                                        .productos
-                                                                        .toList()
-                                                                    ..totalPorPagar = (_model
-                                                                            .totalPorPagarFromHistorialConv!) -
-                                                                        (_model
-                                                                            .valorConv!)
-                                                                    ..totalGeneral =
-                                                                        widget
-                                                                            .totalGeneralFromHistorial
-                                                                    ..idTransaccion =
-                                                                        widget
-                                                                            .idTransaccionPassed
-                                                                    ..fechaDeFio = widget
-                                                                        .dtHistorial
-                                                                        ?.fechaDeFio
-                                                                    ..numVoucher =
-                                                                        valueOrDefault<
-                                                                            int>(
-                                                                      int.tryParse(_model
-                                                                          .comprobanteNumTFTextController
-                                                                          .text),
-                                                                      0,
-                                                                    )
-                                                                    ..fechaDeCobro =
-                                                                        getCurrentTimestamp,
-                                                                );
-                                                                safeSetState(
-                                                                    () {});
-
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    fieldValues: {
-                                                                      'historialPorPagarProd':
-                                                                          FieldValue
-                                                                              .arrayRemove([
-                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                          updateDataTypeHistorialPagoStruct(
-                                                                            widget.dtHistorial,
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                          true,
-                                                                        )
-                                                                      ]),
-                                                                    },
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-                                                                _model
-                                                                    .updateDtProdHistorialAfterStruct(
-                                                                  (e) => e
-                                                                    ..numVoucher =
-                                                                        0,
-                                                                );
-                                                                safeSetState(
-                                                                    () {});
-
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    fieldValues: {
-                                                                      'historialPorPagarProd':
-                                                                          FieldValue
-                                                                              .arrayUnion([
-                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                          updateDataTypeHistorialPagoStruct(
-                                                                            _model.dtProdHistorialAfter,
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                          true,
-                                                                        )
-                                                                      ]),
-                                                                      'historialPagadosProd':
-                                                                          FieldValue
-                                                                              .arrayUnion([
-                                                                        getDataTypeHistorialPagoFirestoreData(
-                                                                          updateDataTypeHistorialPagoStruct(
-                                                                            _model.dtProdHistorialAfter,
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                          true,
-                                                                        )
-                                                                      ]),
-                                                                    },
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    totalDeudaCompleta: clienteProdValorPagoClientesRecord
-                                                                            .cliente
-                                                                            .totalDeudaCompleta -
-                                                                        (_model
-                                                                            .valorConv!),
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-                                                                _model.tDCNormF =
-                                                                    await actions
-                                                                        .normalizarValorNumerico(
-                                                                  formatNumber(
-                                                                    clienteProdValorPagoClientesRecord
-                                                                        .cliente
-                                                                        .totalDeudaCompleta,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .custom,
-                                                                    format:
-                                                                        '#0.00',
-                                                                    locale: '',
-                                                                  ),
-                                                                );
-                                                                _shouldSetState =
-                                                                    true;
-
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .update(
-                                                                        createClientesRecordData(
-                                                                  cliente:
-                                                                      createDataTypeClienteStruct(
-                                                                    totalDeudaCompleta:
-                                                                        _model
-                                                                            .tDCNormF,
-                                                                    clearUnsetFields:
-                                                                        false,
-                                                                  ),
-                                                                ));
-                                                              }
-
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Pago guardado exitosamente!'),
-                                                                    content: Text(
-                                                                        'El pago ha sido registrado.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Continuar'),
-                                                                      ),
-                                                                    ],
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      totalDeudaCompleta: clienteProdValorPagoClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta -
+                                                                          (_model
+                                                                              .valorConv!),
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                                  _model.tDCNorm =
+                                                                      await actions
+                                                                          .normalizarValorNumerico(
+                                                                    formatNumber(
+                                                                      clienteProdValorPagoClientesRecord
+                                                                          .cliente
+                                                                          .totalDeudaCompleta,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .custom,
+                                                                      format:
+                                                                          '#0.00',
+                                                                      locale:
+                                                                          '',
+                                                                    ),
                                                                   );
-                                                                },
-                                                              );
-                                                              _model.readTenderoVP =
-                                                                  await TenderosRecord
-                                                                      .getDocumentOnce(
+                                                                  _shouldSetState =
+                                                                      true;
+
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      totalDeudaCompleta:
+                                                                          _model
+                                                                              .tDCNorm,
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                                } else {
+                                                                  _model
+                                                                      .updateDtProdHistorialAfterStruct(
+                                                                    (e) => e
+                                                                      ..totalPagado = (widget
+                                                                              .totalPagadoFromHistorial!) +
+                                                                          (_model
+                                                                              .valorConv!)
+                                                                      ..transferencia =
+                                                                          _model
+                                                                              .checkTransferValue
+                                                                      ..efectivo =
+                                                                          _model
+                                                                              .checkEfectivoValue
+                                                                      ..productos = widget
+                                                                          .dtHistorial!
+                                                                          .productos
+                                                                          .toList()
+                                                                      ..totalPorPagar = (_model
+                                                                              .totalPorPagarFromHistorialConv!) -
+                                                                          (_model
+                                                                              .valorConv!)
+                                                                      ..totalGeneral =
                                                                           widget
-                                                                              .tenderoRef!);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              unawaited(
-                                                                () async {
-                                                                  await actions
-                                                                      .sendCustomEmailForValorProds(
-                                                                    widget
-                                                                        .emailCliente!,
-                                                                    widget
-                                                                        .nombre!,
-                                                                    'Registro de pago de productos fiados de la tienda: ${_model.readTenderoVP?.displayName}',
-                                                                    _model
-                                                                        .readTenderoVP!
-                                                                        .displayName,
+                                                                              .totalGeneralFromHistorial
+                                                                      ..idTransaccion =
+                                                                          widget
+                                                                              .idTransaccionPassed
+                                                                      ..fechaDeFio = widget
+                                                                          .dtHistorial
+                                                                          ?.fechaDeFio
+                                                                      ..numVoucher =
+                                                                          valueOrDefault<
+                                                                              int>(
+                                                                        int.tryParse(_model
+                                                                            .comprobanteNumTFTextController
+                                                                            .text),
+                                                                        0,
+                                                                      )
+                                                                      ..fechaDeCobro =
+                                                                          getCurrentTimestamp,
                                                                   );
-                                                                }(),
-                                                              );
+                                                                  safeSetState(
+                                                                      () {});
 
-                                                              context.goNamed(
-                                                                HistorialPorCobrarWidget
-                                                                    .routeName,
-                                                                queryParameters:
-                                                                    {
-                                                                  'idCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .idCliente,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'idTendero':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .tenderoRef,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                  ),
-                                                                  'nombre':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .nombre,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'telf':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .telf,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'isFiando':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .isFiando,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'apellido':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .apellido,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'cedula':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .cedula,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'direccionDomicilio':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .direccionDomicilio,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'viviendaAlq':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .viviendaAlq,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'viviendaProp':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .vivendaProp,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                  'emailCliente':
-                                                                      serializeParam(
-                                                                    widget
-                                                                        .emailCliente,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      fieldValues: {
+                                                                        'historialPorPagarProd':
+                                                                            FieldValue.arrayRemove([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              widget.dtHistorial,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                      },
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                                  _model
+                                                                      .updateDtProdHistorialAfterStruct(
+                                                                    (e) => e
+                                                                      ..numVoucher =
+                                                                          0,
+                                                                  );
+                                                                  safeSetState(
+                                                                      () {});
+
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      fieldValues: {
+                                                                        'historialPorPagarProd':
+                                                                            FieldValue.arrayUnion([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              _model.dtProdHistorialAfter,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                        'historialPagadosProd':
+                                                                            FieldValue.arrayUnion([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              _model.dtProdHistorialAfter,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                      },
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      totalDeudaCompleta: clienteProdValorPagoClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta -
+                                                                          (_model
+                                                                              .valorConv!),
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                                  _model.tDCNormF =
+                                                                      await actions
+                                                                          .normalizarValorNumerico(
+                                                                    formatNumber(
+                                                                      clienteProdValorPagoClientesRecord
+                                                                          .cliente
+                                                                          .totalDeudaCompleta,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .custom,
+                                                                      format:
+                                                                          '#0.00',
+                                                                      locale:
+                                                                          '',
+                                                                    ),
+                                                                  );
+                                                                  _shouldSetState =
+                                                                      true;
+
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .update(
+                                                                          createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      totalDeudaCompleta:
+                                                                          _model
+                                                                              .tDCNormF,
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                                }
+
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
+                                                                          child:
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Pago guardado exitosamente!',
+                                                                            mensaje:
+                                                                                'El pago ha sido registrado.',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+
+                                                                _model.readTenderoVP =
+                                                                    await TenderosRecord
+                                                                        .getDocumentOnce(
+                                                                            widget.tenderoRef!);
+                                                                _shouldSetState =
+                                                                    true;
+                                                                for (int loop1Index =
+                                                                        0;
+                                                                    loop1Index <
+                                                                        clienteProdValorPagoClientesRecord
+                                                                            .playerIds
+                                                                            .length;
+                                                                    loop1Index++) {
+                                                                  final currentLoop1Item =
+                                                                      clienteProdValorPagoClientesRecord
+                                                                              .playerIds[
+                                                                          loop1Index];
+                                                                  unawaited(
+                                                                    () async {
+                                                                      await actions
+                                                                          .sendNotificationToPlayer(
+                                                                        currentLoop1Item,
+                                                                        '${clienteProdValorPagoClientesRecord.cliente.nombre}: ¡Se ha registrado un pago en tus cuentas de la tienda: ${_model.readTenderoVP?.displayName}!',
+                                                                      );
+                                                                    }(),
+                                                                  );
+                                                                }
+                                                                unawaited(
+                                                                  () async {
+                                                                    await actions
+                                                                        .sendCustomEmailForValorProds(
+                                                                      widget
+                                                                          .emailCliente!,
+                                                                      widget
+                                                                          .nombre!,
+                                                                      'Registro de pago de productos fiados de la tienda: ${_model.readTenderoVP?.displayName}',
+                                                                      _model
+                                                                          .readTenderoVP!
+                                                                          .displayName,
+                                                                    );
+                                                                  }(),
+                                                                );
+
+                                                                context.goNamed(
+                                                                  ClienteInfoEditWidget
+                                                                      .routeName,
+                                                                  queryParameters:
+                                                                      {
+                                                                    'nombre':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .nombre,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'telf':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .telf,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'isFiando':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .isFiando,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'idCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .idCliente,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'apellido':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .apellido,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'cedula':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .cedula,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'tenderoRef':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .tenderoRef,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                    ),
+                                                                    'direccionDomicilio':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .direccionDomicilio,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'viviendaAlq':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .viviendaAlq,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'viviendaProp':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .vivendaProp,
+                                                                      ParamType
+                                                                          .bool,
+                                                                    ),
+                                                                    'emailCliente':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .emailCliente,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+                                                              }
                                                             }
-                                                          }
-                                                        } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    '¡Alerta!'),
-                                                                content: Text(
-                                                                    'Por favor, ingrese un monto y el método de pago.'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          200.0,
+                                                                      child:
+                                                                          DialogBtnWidget(
+                                                                        titulo:
+                                                                            '¡Alerta!',
+                                                                        mensaje:
+                                                                            'Ingrese un monto y el método de pago.',
+                                                                      ),
+                                                                    ),
                                                                   ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                        }
+                                                                );
+                                                              },
+                                                            );
+                                                          }
 
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                      },
-                                                      text: 'Pagar',
-                                                      options: FFButtonOptions(
-                                                        width: double.infinity,
-                                                        height: 40.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .interTight(
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                        },
+                                                        text: 'Pagar',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          width:
+                                                              double.infinity,
+                                                          height: 40.0,
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: Colors
+                                                                        .white,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1760,23 +1939,12 @@ class _ClienteProdValorPagoWidgetState
                                                                         .titleSmall
                                                                         .fontStyle,
                                                                   ),
-                                                                  color: Colors
-                                                                      .white,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                                ),
-                                                        elevation: 0.0,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

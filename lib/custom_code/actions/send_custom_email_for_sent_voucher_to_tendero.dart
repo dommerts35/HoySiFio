@@ -56,7 +56,7 @@ Future<void> sendCustomEmailForSentVoucherToTendero(
             <tr>
               <td>
                 <p style="margin: 5px 0; font-weight: bold; color: #286181;">Monto del comprobante:</p>
-                <p style="margin: 5px 0;">$montoComprobante</p>
+                <p style="margin: 5px 0;">&#36;$montoComprobante</p>
                 <p style="margin: 15px 0 5px 0; font-weight: bold; color: #286181;">Método de pago:</p>
                 <p style="margin: 5px 0;">$metodoPago</p>
               </td>
@@ -64,7 +64,7 @@ Future<void> sendCustomEmailForSentVoucherToTendero(
           </table>
 
           <p style="margin: 20px 0 10px 0; font-size: 15px;">
-            Por favor revise el comprobante en tu cuenta y confirma si es válido.
+            Por favor revise el comprobante en su cuenta y confirme si es válido.
           </p>
         </td>
       </tr>
@@ -74,8 +74,8 @@ Future<void> sendCustomEmailForSentVoucherToTendero(
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
-          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
-          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+          <p style="margin: 0;">© 2025 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder.</p>
         </td>
       </tr>
     </table>

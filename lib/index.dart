@@ -63,3 +63,7 @@ export '/tutoriales/page_tutorial_lista_clientes_help/page_tutorial_lista_client
     show PageTutorialListaClientesHelpWidget;
 export '/tutoriales/page_tutorialinfo_prod_help/page_tutorialinfo_prod_help_widget.dart'
     show PageTutorialinfoProdHelpWidget;
+export '/nivel_tendero/tendero_bank_sec/tendero_bank_sec_widget.dart'
+    show TenderoBankSecWidget;
+export '/nivel_cliente/historial_pagos_cliente/historial_pagos_cliente_widget.dart'
+    show HistorialPagosClienteWidget;

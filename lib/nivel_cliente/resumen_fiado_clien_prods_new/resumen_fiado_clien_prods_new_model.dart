@@ -35,6 +35,8 @@ class ResumenFiadoClienProdsNewModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // State field(s) for Checkbox widget.
   Map<DataTypeHistorialPagoStruct, bool> checkboxValueMap1 = {};
   List<DataTypeHistorialPagoStruct> get checkboxCheckedItems1 =>
@@ -50,6 +52,9 @@ class ResumenFiadoClienProdsNewModel
           .where((e) => e.value)
           .map((e) => e.key)
           .toList();
+
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in pagarTodoCliente widget.
+  bool? isPagarTodo;
 
   @override
   void initState(BuildContext context) {}

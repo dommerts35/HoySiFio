@@ -1,10 +1,13 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/info_comp/info_comp_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
@@ -199,6 +202,14 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
           clearUnsetFields: false,
         ),
       ));
+      if (_model.queryOnLoad?.cliente.historialPorPagarProd.length == 0) {
+        await widget.idCliente!.update(createClientesRecordData(
+          cliente: createDataTypeClienteStruct(
+            isFiando: false,
+            clearUnsetFields: false,
+          ),
+        ));
+      }
     });
 
     _model.cantidatTfTextController ??= TextEditingController();
@@ -274,7 +285,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 12.0, 8.0),
+                              0.0, 8.0, 0.0, 8.0),
                           child: FlutterFlowIconButton(
                             borderColor: FlutterFlowTheme.of(context).primary,
                             borderRadius: 12.0,
@@ -319,7 +330,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
-                                    font: GoogleFonts.interTight(
+                                    font: GoogleFonts.readexPro(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .fontWeight,
@@ -403,49 +414,65 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                             ),
                           ],
                         ),
-                        FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).error,
-                          borderRadius: 12.0,
-                          borderWidth: 1.0,
-                          buttonSize: 40.0,
-                          icon: Icon(
-                            Icons.logout,
-                            color: FlutterFlowTheme.of(context).error,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            var confirmDialogResponse = await showDialog<bool>(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('¿Desea cerrar sesión?'),
-                                      content:
-                                          Text('Sus datos ya están guardados.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, false),
-                                          child: Text('Cancelar'),
+                        Builder(
+                          builder: (context) => FlutterFlowIconButton(
+                            borderColor: FlutterFlowTheme.of(context).error,
+                            borderRadius: 12.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            icon: Icon(
+                              Icons.logout,
+                              color: Color(0xFFE75353),
+                              size: 24.0,
+                            ),
+                            onPressed: () async {
+                              var _shouldSetState = false;
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 300.0,
+                                        child: DialogTwoBtnsWidget(
+                                          titulo: '¿Desea cerrar sesión?',
+                                          mensaje:
+                                              'Sus datos se guardarán automáticamente.',
                                         ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, true),
-                                          child: Text('Confirmar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ) ??
-                                false;
-                            if (confirmDialogResponse) {
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) =>
+                                  safeSetState(() => _model.isLogoff = value));
 
-                              context.goNamedAuth(AuthSigningInWidget.routeName,
-                                  context.mounted);
-                            }
-                          },
+                              _shouldSetState = true;
+                              if (_model.isLogoff!) {
+                                GoRouter.of(context).prepareAuthEvent();
+                                await authManager.signOut();
+                                GoRouter.of(context).clearRedirectLocation();
+
+                                context.goNamedAuth(
+                                    AuthSigningInWidget.routeName,
+                                    context.mounted);
+                              } else {
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              }
+
+                              if (_shouldSetState) safeSetState(() {});
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -503,35 +530,35 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                               ),
                                               Text(
                                                 'Datos ',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .headlineMedium
+                                                    .override(
+                                                      font:
+                                                          GoogleFonts.readexPro(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .headlineMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontStyle,
+                                                    ),
                                               ),
                                               Text(
                                                 'Edición y visualización',
@@ -738,190 +765,239 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                         alignment:
                                                             AlignmentDirectional(
                                                                 0.0, -0.02),
-                                                        child:
-                                                            FlutterFlowIconButton(
-                                                          borderColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .error,
-                                                          borderRadius: 12.0,
-                                                          borderWidth: 1.0,
-                                                          buttonSize: 40.0,
-                                                          hoverColor:
-                                                              Color(0xFFE75353),
-                                                          hoverIconColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .info,
-                                                          hoverBorderColor:
-                                                              Color(0xFFE75353),
-                                                          icon: Icon(
-                                                            Icons.delete,
-                                                            color: Color(
+                                                        child: Builder(
+                                                          builder: (context) =>
+                                                              FlutterFlowIconButton(
+                                                            borderColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error,
+                                                            borderRadius: 12.0,
+                                                            borderWidth: 1.0,
+                                                            buttonSize: 40.0,
+                                                            hoverColor: Color(
                                                                 0xFFE75353),
-                                                            size: 24.0,
-                                                          ),
-                                                          onPressed: () async {
-                                                            var _shouldSetState =
-                                                                false;
-                                                            var confirmDialogResponse =
-                                                                await showDialog<
-                                                                        bool>(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return AlertDialog(
-                                                                          title:
-                                                                              Text('¿Eliminar cliente?'),
-                                                                          content:
-                                                                              Text('Esta acción no se puede deshacer.'),
-                                                                          actions: [
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                              child: Text('Cancelar'),
-                                                                            ),
-                                                                            TextButton(
-                                                                              onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                              child: Text('Eliminar'),
-                                                                            ),
-                                                                          ],
-                                                                        );
+                                                            hoverIconColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                            hoverBorderColor:
+                                                                Color(
+                                                                    0xFFE75353),
+                                                            icon: Icon(
+                                                              Icons.delete,
+                                                              color: Color(
+                                                                  0xFFE75353),
+                                                              size: 24.0,
+                                                            ),
+                                                            onPressed:
+                                                                () async {
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        FocusScope.of(dialogContext)
+                                                                            .unfocus();
+                                                                        FocusManager
+                                                                            .instance
+                                                                            .primaryFocus
+                                                                            ?.unfocus();
                                                                       },
-                                                                    ) ??
-                                                                    false;
-                                                            if (confirmDialogResponse) {
-                                                              _model.readForClienteDelete =
-                                                                  await ClientesRecord
-                                                                      .getDocumentOnce(
-                                                                          widget
-                                                                              .idCliente!);
+                                                                      child:
+                                                                          Container(
+                                                                        height:
+                                                                            400.0,
+                                                                        child:
+                                                                            DialogTwoBtnsWidget(
+                                                                          titulo:
+                                                                              '¿Está seguro que desea eliminar este cliente?',
+                                                                          mensaje:
+                                                                              'Esta acción es permanente y no se podrá recuperar los datos del cliente.',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  safeSetState(() =>
+                                                                      _model.isDeleting =
+                                                                          value));
+
                                                               _shouldSetState =
                                                                   true;
-                                                              if ((_model.readForClienteDelete?.cliente
-                                                                              .historialPorPagarProd !=
-                                                                          null &&
-                                                                      (_model
-                                                                              .readForClienteDelete
-                                                                              ?.cliente
-                                                                              .historialPorPagarProd)!
-                                                                          .isNotEmpty) ==
-                                                                  true) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          'No puede borrar al cliente'),
-                                                                      content: Text(
-                                                                          'Su cliente aun le adeuda cuentas'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                          child:
-                                                                              Text('Ok'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              }
                                                               if (_model
-                                                                      .readForClienteDelete!
-                                                                      .cliente
-                                                                      .totalDeudaCompleta >
-                                                                  0.0) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Este cliente no puede ser eliminado!'),
-                                                                      content: Text(
-                                                                          'El cliente aún tiene deudas pendientes'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
+                                                                  .isDeleting!) {
+                                                                _model.readForClienteDelete =
+                                                                    await ClientesRecord
+                                                                        .getDocumentOnce(
+                                                                            widget.idCliente!);
+                                                                _shouldSetState =
+                                                                    true;
+                                                                if ((_model.readForClienteDelete?.cliente.historialPorPagarProd !=
+                                                                            null &&
+                                                                        (_model.readForClienteDelete?.cliente.historialPorPagarProd)!
+                                                                            .isNotEmpty) ==
+                                                                    true) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
                                                                           child:
-                                                                              Text('Ok'),
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Alerta!',
+                                                                              mensaje: 'El cliente tiene deudas pendientes, por lo tanto, sus datos no podrán ser eliminados.',
+                                                                            ),
+                                                                          ),
                                                                         ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                              } else {
-                                                                await widget
-                                                                    .idCliente!
-                                                                    .delete();
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .clearSnackBars();
-                                                                ScaffoldMessenger.of(
-                                                                        context)
-                                                                    .showSnackBar(
-                                                                  SnackBar(
-                                                                    content:
-                                                                        Text(
-                                                                      'El cliente ha sido eliminado.',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleMedium
-                                                                          .override(
-                                                                            font:
-                                                                                GoogleFonts.interTight(
+                                                                      );
+                                                                    },
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                                if (_model
+                                                                        .readForClienteDelete!
+                                                                        .cliente
+                                                                        .totalDeudaCompleta >
+                                                                    0.0) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Este cliente no puede ser eliminado!',
+                                                                              mensaje: 'El cliente aún tiene deudas pendientes',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+                                                                } else {
+                                                                  await widget
+                                                                      .idCliente!
+                                                                      .delete();
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .clearSnackBars();
+                                                                  ScaffoldMessenger.of(
+                                                                          context)
+                                                                      .showSnackBar(
+                                                                    SnackBar(
+                                                                      content:
+                                                                          Text(
+                                                                        'El cliente ha sido eliminado.',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.readexPro(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              color: FlutterFlowTheme.of(context).primaryText,
+                                                                              letterSpacing: 0.0,
                                                                               fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                             ),
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            letterSpacing:
-                                                                                0.0,
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                          ),
+                                                                      ),
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              2000),
+                                                                      backgroundColor:
+                                                                          FlutterFlowTheme.of(context)
+                                                                              .secondary,
                                                                     ),
-                                                                    duration: Duration(
-                                                                        milliseconds:
-                                                                            2000),
-                                                                    backgroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondary,
-                                                                  ),
-                                                                );
+                                                                  );
 
-                                                                context
-                                                                    .pushNamed(
-                                                                  ListaClientesWidget
-                                                                      .routeName,
-                                                                  queryParameters:
-                                                                      {
-                                                                    'tenderoRef':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .tenderoRef,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
+                                                                  context
+                                                                      .pushNamed(
+                                                                    ListaClientesWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'tenderoRef':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .tenderoRef,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                }
                                                               }
-                                                            }
-                                                            if (_shouldSetState)
-                                                              safeSetState(
-                                                                  () {});
-                                                          },
+                                                              if (_shouldSetState)
+                                                                safeSetState(
+                                                                    () {});
+                                                            },
+                                                          ),
                                                         ),
                                                       ),
                                                       Align(
@@ -1080,7 +1156,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -1294,7 +1370,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 'Productos pagados',
                                                             options:
                                                                 FFButtonOptions(
-                                                              height: 40.0,
+                                                              height: 35.0,
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -1318,7 +1394,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .interTight(
+                                                                            .inter(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -1475,6 +1551,23 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     ParamType
                                                                         .String,
                                                                   ),
+                                                                  'totalPassed':
+                                                                      serializeParam(
+                                                                    formatNumber(
+                                                                      clienteInfoEditClientesRecord
+                                                                          .cliente
+                                                                          .totalDeudaCompleta,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .custom,
+                                                                      format:
+                                                                          '#0.00',
+                                                                      locale:
+                                                                          '',
+                                                                    ),
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
                                                                 }.withoutNulls,
                                                               );
 
@@ -1485,7 +1578,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 'Productos por cobrar',
                                                             options:
                                                                 FFButtonOptions(
-                                                              height: 40.0,
+                                                              height: 35.0,
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
@@ -1509,7 +1602,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .interTight(
+                                                                            .inter(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -1574,7 +1667,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               .center,
                                                       children: [
                                                         Container(
-                                                          width: 130.0,
+                                                          width: 180.0,
                                                           height: 40.0,
                                                           decoration:
                                                               BoxDecoration(
@@ -1673,7 +1766,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                   );
                                                                 },
                                                                 text:
-                                                                    'Comprobantes',
+                                                                    'Comprobantes bancarios',
                                                                 options:
                                                                     FFButtonOptions(
                                                                   height: 35.0,
@@ -1697,7 +1790,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .titleSmall
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .interTight(
+                                                                            .inter(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .titleSmall
                                                                               .fontWeight,
@@ -1749,8 +1842,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.93,
-                                                                        -1.72),
+                                                                        1.05,
+                                                                        -1.42),
                                                                 child:
                                                                     Container(
                                                                   width: 20.0,
@@ -1854,7 +1947,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               .headlineMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineMedium
@@ -1954,11 +2047,16 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                               ),
                                               Container(
                                                 decoration: BoxDecoration(
-                                                  color: Color(0xD939D2C0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
                                                   border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .accent1,
                                                     width: 1.0,
                                                   ),
                                                 ),
@@ -2044,7 +2142,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     BorderSide(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                   width: 1.0,
                                                                 ),
                                                                 borderRadius:
@@ -2126,7 +2224,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                            maxLength: 3,
+                                                            maxLength: 4,
                                                             maxLengthEnforcement:
                                                                 MaxLengthEnforcement
                                                                     .enforced,
@@ -2160,7 +2258,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 }),
                                                               FilteringTextInputFormatter
                                                                   .allow(RegExp(
-                                                                      '^\\d*[,.]?\\d{0,2}\$'))
+                                                                      '^(0|[1-9]\\d*)([,.]\\d{0,2})?\$'))
                                                             ],
                                                           ),
                                                         ),
@@ -2237,7 +2335,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     BorderSide(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                   width: 1.0,
                                                                 ),
                                                                 borderRadius:
@@ -2427,7 +2525,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     BorderSide(
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .alternate,
+                                                                      .primaryText,
                                                                   width: 1.0,
                                                                 ),
                                                                 borderRadius:
@@ -2542,7 +2640,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                 }),
                                                               FilteringTextInputFormatter
                                                                   .allow(RegExp(
-                                                                      '^\\d*[,.]?\\d{0,2}\$'))
+                                                                      '^(0|[1-9]\\d*)([,.]\\d{0,2})?\$'))
                                                             ],
                                                           ),
                                                         ),
@@ -2555,7 +2653,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                               Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        0.0, 0.0, 0.0, 5.0),
+                                                        0.0, 0.0, 0.0, 12.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -2639,317 +2737,379 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                       },
                                                     ),
                                                     Expanded(
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      12.0,
-                                                                      16.0,
-                                                                      12.0),
-                                                          child: FFButtonWidget(
-                                                            onPressed:
-                                                                () async {
-                                                              var _shouldSetState =
-                                                                  false;
-                                                              _model.queryGuardar =
-                                                                  await queryClientesRecordOnce(
-                                                                queryBuilder:
-                                                                    (clientesRecord) =>
-                                                                        clientesRecord
-                                                                            .where(
-                                                                              'cliente.idCliente',
-                                                                              isEqualTo: widget.idCliente,
-                                                                            )
-                                                                            .where(
-                                                                              'cliente.idTendero',
-                                                                              isEqualTo: widget.tenderoRef,
-                                                                            ),
-                                                                singleRecord:
-                                                                    true,
-                                                              ).then((s) => s
-                                                                      .firstOrNull);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              if ((_model.queryGuardar?.cliente
-                                                                              .producto !=
-                                                                          null &&
-                                                                      (_model
-                                                                              .queryGuardar
-                                                                              ?.cliente
-                                                                              .producto)!
-                                                                          .isNotEmpty) ==
-                                                                  false) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Alerta!'),
-                                                                      content: Text(
-                                                                          'No ha sido ingresado ningún producto.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                          child:
-                                                                              Text('Ok'),
-                                                                        ),
-                                                                      ],
-                                                                    );
-                                                                  },
-                                                                );
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              } else {
-                                                                _model.tempCount =
-                                                                    0;
-                                                                _model.sumaValoresEnDTProd =
-                                                                    0.0;
-                                                                safeSetState(
-                                                                    () {});
-                                                                while (_model
-                                                                        .tempCount <
-                                                                    _model
-                                                                        .queryGuardar!
+                                                      child: Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    16.0,
+                                                                    0.0),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () {
+                                                            if ((clienteInfoEditClientesRecord
                                                                         .cliente
-                                                                        .producto
-                                                                        .length) {
-                                                                  _model.addToDtProdItem(
-                                                                      DataTypeProductosStruct(
-                                                                    nombreProd: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.nombreProd,
-                                                                    valorProd: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.valorProd,
-                                                                    cantidad: (_model
-                                                                            .queryGuardar
-                                                                            ?.cliente
-                                                                            .producto
-                                                                            .elementAtOrNull(_model.tempCount))
-                                                                        ?.cantidad,
-                                                                  ));
-                                                                  _model.tempCount =
-                                                                      _model.tempCount +
-                                                                          1;
-                                                                  safeSetState(
-                                                                      () {});
-                                                                }
-                                                              }
-
-                                                              _model.tempCount =
-                                                                  0;
-                                                              safeSetState(
-                                                                  () {});
-                                                              while (_model
-                                                                      .tempCount <
-                                                                  _model
-                                                                      .dtProdItem
-                                                                      .length) {
-                                                                _model
-                                                                    .sumaValoresEnDTProd = _model
-                                                                        .sumaValoresEnDTProd! +
+                                                                        .viviendaPropia ==
+                                                                    true) &&
+                                                                (clienteInfoEditClientesRecord
+                                                                        .cliente
+                                                                        .totalDeudaCompleta >=
+                                                                    20.0)) {
+                                                              return true;
+                                                            } else if ((clienteInfoEditClientesRecord
+                                                                        .cliente
+                                                                        .viviendaAlq ==
+                                                                    true) &&
+                                                                (clienteInfoEditClientesRecord
+                                                                        .cliente
+                                                                        .totalDeudaCompleta >=
+                                                                    10.0)) {
+                                                              return true;
+                                                            } else {
+                                                              return false;
+                                                            }
+                                                          }()
+                                                              ? null
+                                                              : () async {
+                                                                  var _shouldSetState =
+                                                                      false;
+                                                                  _model.valorConvVTF =
+                                                                      await actions
+                                                                          .normalizarValorNumerico(
                                                                     _model
-                                                                        .dtProdItem
-                                                                        .elementAtOrNull(
-                                                                            _model.tempCount)!
-                                                                        .valorProd;
-                                                                _model.tempCount =
-                                                                    _model.tempCount +
-                                                                        1;
-                                                                safeSetState(
-                                                                    () {});
-                                                              }
-                                                              _model.valorANormalizar =
-                                                                  formatNumber(
-                                                                _model
-                                                                    .sumaValoresEnDTProd,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              );
-                                                              safeSetState(
-                                                                  () {});
-                                                              _model.sumaValoresEnDTNorm =
-                                                                  await actions
-                                                                      .normalizarValorNumerico(
-                                                                _model
-                                                                    .valorANormalizar!,
-                                                              );
-                                                              _shouldSetState =
-                                                                  true;
-                                                              _model.sumaValoresEnDTProd =
-                                                                  _model
-                                                                      .sumaValoresEnDTNorm;
-                                                              safeSetState(
-                                                                  () {});
-
-                                                              await widget
-                                                                  .idCliente!
-                                                                  .update(
-                                                                      createClientesRecordData(
-                                                                cliente:
-                                                                    createDataTypeClienteStruct(
-                                                                  fieldValues: {
-                                                                    'historialPorPagarProd':
-                                                                        FieldValue
-                                                                            .arrayUnion([
-                                                                      getDataTypeHistorialPagoFirestoreData(
-                                                                        updateDataTypeHistorialPagoStruct(
-                                                                          DataTypeHistorialPagoStruct(
-                                                                            productos:
-                                                                                _model.dtProdItem,
-                                                                            totalPagado:
-                                                                                0.0,
-                                                                            totalGeneral:
-                                                                                _model.sumaValoresEnDTProd,
-                                                                            totalPorPagar:
-                                                                                _model.sumaValoresEnDTProd,
-                                                                            transferencia:
-                                                                                false,
-                                                                            efectivo:
-                                                                                false,
-                                                                            idTransaccion:
-                                                                                valueOrDefault<String>(
-                                                                              random_data.randomString(
-                                                                                5,
-                                                                                5,
-                                                                                true,
-                                                                                true,
-                                                                                true,
-                                                                              ),
-                                                                              'id000',
-                                                                            ),
-                                                                            fechaDeFio:
-                                                                                getCurrentTimestamp,
-                                                                          ),
-                                                                          clearUnsetFields:
-                                                                              false,
-                                                                        ),
-                                                                        true,
-                                                                      )
-                                                                    ]),
-                                                                    'producto':
-                                                                        FieldValue
-                                                                            .delete(),
-                                                                  },
-                                                                  clearUnsetFields:
-                                                                      false,
-                                                                ),
-                                                              ));
-                                                              _model.dtProdItem =
-                                                                  [];
-                                                              _model.tempSumProductos =
-                                                                  0.0;
-                                                              safeSetState(
-                                                                  () {});
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Productos guardados!'),
-                                                                    content: Text(
-                                                                        'Los productos añadidos han sido guardados correctamente.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
+                                                                        .valorTFTextController
+                                                                        .text,
                                                                   );
+                                                                  _shouldSetState =
+                                                                      true;
+                                                                  _model.valorConvCTF =
+                                                                      await actions
+                                                                          .normalizarValorNumerico(
+                                                                    _model
+                                                                        .cantidatTfTextController
+                                                                        .text,
+                                                                  );
+                                                                  _shouldSetState =
+                                                                      true;
+                                                                  if ((_model.cantidatTfTextController.text !=
+                                                                              '') &&
+                                                                      (_model.valorTFTextController.text !=
+                                                                              '')) {
+                                                                    if (widget
+                                                                            .viviendaProp ==
+                                                                        true) {
+                                                                      if ((_model.totalDeudaCompleta +
+                                                                              ((_model.valorConvVTF!) * (_model.valorConvCTF!))) >
+                                                                          20.0) {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return AlertDialog(
+                                                                              title: Text('¡Alerta!'),
+                                                                              content: Text('El cliente ha superado el límite de crédito. No se aumentará más productos.'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      } else {
+                                                                        await Future
+                                                                            .delayed(
+                                                                          Duration(
+                                                                            milliseconds:
+                                                                                300,
+                                                                          ),
+                                                                        );
+
+                                                                        await widget
+                                                                            .idCliente!
+                                                                            .update(createClientesRecordData(
+                                                                          cliente:
+                                                                              createDataTypeClienteStruct(
+                                                                            fieldValues: {
+                                                                              'producto': FieldValue.arrayUnion([
+                                                                                getDataTypeProductosFirestoreData(
+                                                                                  createDataTypeProductosStruct(
+                                                                                    nombreProd: _model.prodTFTextController.text,
+                                                                                    valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
+                                                                                    cantidad: _model.valorConvCTF,
+                                                                                    idProd: random_data.randomString(
+                                                                                      6,
+                                                                                      6,
+                                                                                      true,
+                                                                                      true,
+                                                                                      true,
+                                                                                    ),
+                                                                                    clearUnsetFields: false,
+                                                                                  ),
+                                                                                  true,
+                                                                                )
+                                                                              ]),
+                                                                            },
+                                                                            clearUnsetFields:
+                                                                                false,
+                                                                          ),
+                                                                        ));
+                                                                        safeSetState(
+                                                                            () {
+                                                                          _model
+                                                                              .cantidatTfTextController
+                                                                              ?.clear();
+                                                                          _model
+                                                                              .valorTFTextController
+                                                                              ?.clear();
+                                                                          _model
+                                                                              .prodTFTextController
+                                                                              ?.clear();
+                                                                        });
+                                                                      }
+                                                                    } else {
+                                                                      if ((_model.totalDeudaCompleta +
+                                                                              ((_model.valorConvVTF!) * (_model.valorConvCTF!))) >
+                                                                          10.0) {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return AlertDialog(
+                                                                              title: Text('¡Alerta!'),
+                                                                              content: Text('El cliente ha superado el límite de crédito. No se aumentará más productos.'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      } else {
+                                                                        await Future
+                                                                            .delayed(
+                                                                          Duration(
+                                                                            milliseconds:
+                                                                                300,
+                                                                          ),
+                                                                        );
+
+                                                                        await widget
+                                                                            .idCliente!
+                                                                            .update(createClientesRecordData(
+                                                                          cliente:
+                                                                              createDataTypeClienteStruct(
+                                                                            fieldValues: {
+                                                                              'producto': FieldValue.arrayUnion([
+                                                                                getDataTypeProductosFirestoreData(
+                                                                                  createDataTypeProductosStruct(
+                                                                                    nombreProd: _model.prodTFTextController.text,
+                                                                                    valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
+                                                                                    cantidad: _model.valorConvCTF,
+                                                                                    idProd: random_data.randomString(
+                                                                                      6,
+                                                                                      6,
+                                                                                      true,
+                                                                                      true,
+                                                                                      true,
+                                                                                    ),
+                                                                                    clearUnsetFields: false,
+                                                                                  ),
+                                                                                  true,
+                                                                                )
+                                                                              ]),
+                                                                            },
+                                                                            clearUnsetFields:
+                                                                                false,
+                                                                          ),
+                                                                        ));
+                                                                        safeSetState(
+                                                                            () {
+                                                                          _model
+                                                                              .cantidatTfTextController
+                                                                              ?.clear();
+                                                                          _model
+                                                                              .valorTFTextController
+                                                                              ?.clear();
+                                                                          _model
+                                                                              .prodTFTextController
+                                                                              ?.clear();
+                                                                        });
+                                                                      }
+                                                                    }
+
+                                                                    _model.queryOnAnadir =
+                                                                        await queryClientesRecordOnce(
+                                                                      queryBuilder: (clientesRecord) => clientesRecord
+                                                                          .where(
+                                                                            'cliente.idCliente',
+                                                                            isEqualTo:
+                                                                                widget.idCliente,
+                                                                          )
+                                                                          .where(
+                                                                            'cliente.idTendero',
+                                                                            isEqualTo:
+                                                                                widget.tenderoRef,
+                                                                          ),
+                                                                      singleRecord:
+                                                                          true,
+                                                                    ).then((s) =>
+                                                                            s.firstOrNull);
+                                                                    _shouldSetState =
+                                                                        true;
+                                                                    _model.tempCount =
+                                                                        0;
+                                                                    _model.tempSumHistorial =
+                                                                        0.0;
+                                                                    _model.tempSumProductos =
+                                                                        0.0;
+                                                                    _model.totalDeudaCompleta =
+                                                                        0.0;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    if ((_model.queryOnAnadir?.cliente.producto !=
+                                                                                null &&
+                                                                            (_model.queryOnAnadir?.cliente.producto)!.isNotEmpty) ==
+                                                                        true) {
+                                                                      while (_model
+                                                                              .tempCount <
+                                                                          _model
+                                                                              .queryOnAnadir!
+                                                                              .cliente
+                                                                              .producto
+                                                                              .length) {
+                                                                        _model
+                                                                            .tempSumProductos = _model
+                                                                                .tempSumProductos +
+                                                                            _model.queryOnAnadir!.cliente.producto.elementAtOrNull(_model.tempCount)!.valorProd;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                        _model.tempCount =
+                                                                            _model.tempCount +
+                                                                                1;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      }
+                                                                    }
+                                                                    _model.tempCount =
+                                                                        0;
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    if ((_model.queryOnAnadir?.cliente.historialPorPagarProd !=
+                                                                                null &&
+                                                                            (_model.queryOnAnadir?.cliente.historialPorPagarProd)!.isNotEmpty) ==
+                                                                        true) {
+                                                                      while (_model
+                                                                              .tempCount <
+                                                                          _model
+                                                                              .queryOnAnadir!
+                                                                              .cliente
+                                                                              .historialPorPagarProd
+                                                                              .length) {
+                                                                        _model
+                                                                            .tempSumHistorial = _model
+                                                                                .tempSumHistorial +
+                                                                            _model.queryOnAnadir!.cliente.historialPorPagarProd.elementAtOrNull(_model.tempCount)!.totalPorPagar;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                        _model.tempCount =
+                                                                            _model.tempCount +
+                                                                                1;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      }
+                                                                    }
+                                                                    _model
+                                                                        .totalDeudaCompleta = _model
+                                                                            .tempSumHistorial +
+                                                                        _model
+                                                                            .tempSumProductos;
+                                                                    _model.valorANormalizar =
+                                                                        formatNumber(
+                                                                      _model
+                                                                          .totalDeudaCompleta,
+                                                                      formatType:
+                                                                          FormatType
+                                                                              .custom,
+                                                                      format:
+                                                                          '#0.00',
+                                                                      locale:
+                                                                          '',
+                                                                    );
+                                                                    safeSetState(
+                                                                        () {});
+                                                                    _model.totalDeudaCompletaNorm =
+                                                                        await actions
+                                                                            .normalizarValorNumerico(
+                                                                      _model
+                                                                          .valorANormalizar!,
+                                                                    );
+                                                                    _shouldSetState =
+                                                                        true;
+                                                                    _model.totalDeudaCompleta =
+                                                                        _model
+                                                                            .totalDeudaCompletaNorm!;
+                                                                    safeSetState(
+                                                                        () {});
+
+                                                                    await widget
+                                                                        .idCliente!
+                                                                        .update(
+                                                                            createClientesRecordData(
+                                                                      cliente:
+                                                                          createDataTypeClienteStruct(
+                                                                        totalDeudaCompleta:
+                                                                            _model.totalDeudaCompletaNorm,
+                                                                        clearUnsetFields:
+                                                                            false,
+                                                                      ),
+                                                                    ));
+                                                                  }
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
                                                                 },
-                                                              );
-                                                              _model.tenderoReadForEmailToClientProds =
-                                                                  await TenderosRecord
-                                                                      .getDocumentOnce(
-                                                                          widget
-                                                                              .tenderoRef!);
-                                                              _shouldSetState =
-                                                                  true;
-                                                              for (int loop1Index =
-                                                                      0;
-                                                                  loop1Index <
-                                                                      clienteInfoEditClientesRecord
-                                                                          .playerIds
-                                                                          .length;
-                                                                  loop1Index++) {
-                                                                final currentLoop1Item =
-                                                                    clienteInfoEditClientesRecord
-                                                                            .playerIds[
-                                                                        loop1Index];
-                                                                await actions
-                                                                    .sendNotificationToPlayer(
-                                                                  currentLoop1Item,
-                                                                  '¡Se han agregado productos adeudados a tu cuenta en la tienda: ${_model.tenderoReadForEmailToClientProds?.displayName}',
-                                                                );
-                                                              }
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                            },
-                                                            text: 'Guardar',
-                                                            options:
-                                                                FFButtonOptions(
-                                                              width: 180.0,
-                                                              height: 30.0,
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              iconPadding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              textStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .interTight(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                        color: Colors
-                                                                            .white,
-                                                                        letterSpacing:
-                                                                            0.0,
+                                                          text:
+                                                              'Añadir Producto',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 25.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        0.0,
+                                                                        16.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: Color(
+                                                                0xFF02CE7C),
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .inter(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -2957,18 +3117,41 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             .titleSmall
                                                                             .fontStyle,
                                                                       ),
-                                                              elevation: 3.0,
-                                                              borderSide:
-                                                                  BorderSide(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                width: 1.0,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8.0),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
+                                                                    ),
+                                                            elevation: 0.0,
+                                                            borderSide:
+                                                                BorderSide(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .success,
                                                             ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            disabledColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent2,
+                                                            disabledTextColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                           ),
                                                         ),
                                                       ),
@@ -2992,9 +3175,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                color: Color(0xFF0197B8),
                                                 width: 1.0,
                                               ),
                                             ),
@@ -3016,10 +3197,10 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                               BorderRadius.only(
                                                             bottomLeft:
                                                                 Radius.circular(
-                                                                    0.0),
+                                                                    8.0),
                                                             bottomRight:
                                                                 Radius.circular(
-                                                                    0.0),
+                                                                    8.0),
                                                             topLeft:
                                                                 Radius.circular(
                                                                     8.0),
@@ -3030,6 +3211,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                         ),
                                                         child:
                                                             SingleChildScrollView(
+                                                          primary: false,
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -3316,7 +3498,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                             ),
                                                                                           ),
                                                                                           Text(
-                                                                                            '\$ ${formatNumber(
+                                                                                            '\$${formatNumber(
                                                                                               vistaMainItem.valorProd / vistaMainItem.cantidad,
                                                                                               formatType: FormatType.custom,
                                                                                               format: '#0.00',
@@ -3346,7 +3528,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                             ),
                                                                                           ),
                                                                                           Text(
-                                                                                            '\$ ${formatNumber(
+                                                                                            '\$${formatNumber(
                                                                                               vistaMainItem.valorProd,
                                                                                               formatType: FormatType.custom,
                                                                                               format: '#0.00',
@@ -3460,423 +3642,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xD539D2C0),
-                                                          borderRadius:
-                                                              BorderRadius.only(
-                                                            bottomLeft:
-                                                                Radius.circular(
-                                                                    8.0),
-                                                            bottomRight:
-                                                                Radius.circular(
-                                                                    8.0),
-                                                            topLeft:
-                                                                Radius.circular(
-                                                                    0.0),
-                                                            topRight:
-                                                                Radius.circular(
-                                                                    0.0),
-                                                          ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .spaceEvenly,
-                                                            children: [
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    _model.queryHistorialPagadoRep =
-                                                                        await queryClientesRecordOnce(
-                                                                      queryBuilder: (clientesRecord) => clientesRecord
-                                                                          .where(
-                                                                            'cliente.cedula',
-                                                                            isEqualTo:
-                                                                                widget.cedula,
-                                                                          )
-                                                                          .where(
-                                                                            'cliente.idTendero',
-                                                                            isEqualTo:
-                                                                                widget.tenderoRef,
-                                                                          ),
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ).then((s) =>
-                                                                            s.firstOrNull);
-
-                                                                    context
-                                                                        .goNamed(
-                                                                      HistorialPagosWidget
-                                                                          .routeName,
-                                                                      queryParameters:
-                                                                          {
-                                                                        'idCliente':
-                                                                            serializeParam(
-                                                                          _model
-                                                                              .queryHistorialPagadoRep
-                                                                              ?.reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'idTendero':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .tenderoRef,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'nombre':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .nombre,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'telf':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .telf,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'isFiando':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .isFiando,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'apellido':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .apellido,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'cedula':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .cedula,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'direccionDomicilio':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .direccionDomicilio,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'viviendaAlq':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaAlq,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'viviendaProp':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaProp,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'emailCliente':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .emailCliente,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  },
-                                                                  text:
-                                                                      'Productos pagados',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.interTight(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              2.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    elevation:
-                                                                        0.0,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    hoverColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    hoverBorderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    hoverTextColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed:
-                                                                      () async {
-                                                                    _model.queryHistorialPorPagarRep =
-                                                                        await queryClientesRecordOnce(
-                                                                      queryBuilder: (clientesRecord) => clientesRecord
-                                                                          .where(
-                                                                            'cliente.cedula',
-                                                                            isEqualTo:
-                                                                                widget.cedula,
-                                                                          )
-                                                                          .where(
-                                                                            'cliente.idTendero',
-                                                                            isEqualTo:
-                                                                                widget.tenderoRef,
-                                                                          ),
-                                                                      singleRecord:
-                                                                          true,
-                                                                    ).then((s) =>
-                                                                            s.firstOrNull);
-
-                                                                    context
-                                                                        .goNamed(
-                                                                      HistorialPorCobrarWidget
-                                                                          .routeName,
-                                                                      queryParameters:
-                                                                          {
-                                                                        'idCliente':
-                                                                            serializeParam(
-                                                                          _model
-                                                                              .queryHistorialPorPagarRep
-                                                                              ?.reference,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'idTendero':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .tenderoRef,
-                                                                          ParamType
-                                                                              .DocumentReference,
-                                                                        ),
-                                                                        'nombre':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .nombre,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'telf':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .telf,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'isFiando':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .isFiando,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'apellido':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .apellido,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'cedula':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .cedula,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'direccionDomicilio':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .direccionDomicilio,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                        'viviendaAlq':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaAlq,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'viviendaProp':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .viviendaProp,
-                                                                          ParamType
-                                                                              .bool,
-                                                                        ),
-                                                                        'emailCliente':
-                                                                            serializeParam(
-                                                                          widget
-                                                                              .emailCliente,
-                                                                          ParamType
-                                                                              .String,
-                                                                        ),
-                                                                      }.withoutNulls,
-                                                                    );
-
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  },
-                                                                  text:
-                                                                      'Productos por cobrar',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    height:
-                                                                        40.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.interTight(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).titleSmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primary,
-                                                                          fontSize:
-                                                                              2.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .titleSmall
-                                                                              .fontStyle,
-                                                                        ),
-                                                                    elevation:
-                                                                        0.0,
-                                                                    borderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    hoverColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                    hoverBorderSide:
-                                                                        BorderSide(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
-                                                                    ),
-                                                                    hoverTextColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
                                                     ],
                                                   ),
                                                 ),
@@ -3894,320 +3659,286 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 5.0, 16.0, 12.0),
-                        child: FFButtonWidget(
-                          onPressed: () {
-                            if ((clienteInfoEditClientesRecord
-                                        .cliente.viviendaPropia ==
-                                    true) &&
-                                (clienteInfoEditClientesRecord
-                                        .cliente.totalDeudaCompleta >=
-                                    20.0)) {
-                              return true;
-                            } else if ((clienteInfoEditClientesRecord
-                                        .cliente.viviendaAlq ==
-                                    true) &&
-                                (clienteInfoEditClientesRecord
-                                        .cliente.totalDeudaCompleta >=
-                                    10.0)) {
-                              return true;
-                            } else {
-                              return false;
-                            }
-                          }()
-                              ? null
-                              : () async {
-                                  var _shouldSetState = false;
-                                  _model.valorConvVTF =
-                                      await actions.normalizarValorNumerico(
-                                    _model.valorTFTextController.text,
-                                  );
-                                  _shouldSetState = true;
-                                  _model.valorConvCTF =
-                                      await actions.normalizarValorNumerico(
-                                    _model.cantidatTfTextController.text,
-                                  );
-                                  _shouldSetState = true;
-                                  if ((_model.cantidatTfTextController
-                                                  .text !=
-                                              '') &&
-                                      (_model.valorTFTextController.text !=
-                                              '')) {
-                                    if (widget.viviendaProp == true) {
-                                      if ((_model.totalDeudaCompleta +
-                                              ((_model.valorConvVTF!) *
-                                                  (_model.valorConvCTF!))) >
-                                          20.0) {
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 5.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Builder(
+                                builder: (context) => Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      _model.queryGuardar =
+                                          await queryClientesRecordOnce(
+                                        queryBuilder: (clientesRecord) =>
+                                            clientesRecord
+                                                .where(
+                                                  'cliente.idCliente',
+                                                  isEqualTo: widget.idCliente,
+                                                )
+                                                .where(
+                                                  'cliente.idTendero',
+                                                  isEqualTo: widget.tenderoRef,
+                                                ),
+                                        singleRecord: true,
+                                      ).then((s) => s.firstOrNull);
+                                      _shouldSetState = true;
+                                      if ((_model.queryGuardar?.cliente
+                                                      .producto !=
+                                                  null &&
+                                              (_model.queryGuardar?.cliente
+                                                      .producto)!
+                                                  .isNotEmpty) ==
+                                          false) {
                                         await showDialog(
                                           context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('¡Alerta!'),
-                                              content: Text(
-                                                  'El cliente ha superado el límite de crédito. No se aumentará más productos.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      } else {
-                                        await Future.delayed(
-                                            const Duration(milliseconds: 300));
-
-                                        await widget.idCliente!
-                                            .update(createClientesRecordData(
-                                          cliente: createDataTypeClienteStruct(
-                                            fieldValues: {
-                                              'producto':
-                                                  FieldValue.arrayUnion([
-                                                getDataTypeProductosFirestoreData(
-                                                  createDataTypeProductosStruct(
-                                                    nombreProd: _model
-                                                        .prodTFTextController
-                                                        .text,
-                                                    valorProd: (_model
-                                                            .valorConvVTF!) *
-                                                        (_model.valorConvCTF!),
-                                                    cantidad:
-                                                        _model.valorConvCTF,
-                                                    idProd: random_data
-                                                        .randomString(
-                                                      6,
-                                                      6,
-                                                      true,
-                                                      true,
-                                                      true,
-                                                    ),
-                                                    clearUnsetFields: false,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Container(
+                                                  height: 200.0,
+                                                  child: DialogBtnWidget(
+                                                    titulo: '¡Alerta!',
+                                                    mensaje:
+                                                        'No ha sido ingresado ningún producto.',
                                                   ),
-                                                  true,
-                                                )
-                                              ]),
-                                            },
-                                            clearUnsetFields: false,
-                                          ),
-                                        ));
-                                        safeSetState(() {
-                                          _model.cantidatTfTextController
-                                              ?.clear();
-                                          _model.valorTFTextController?.clear();
-                                          _model.prodTFTextController?.clear();
-                                        });
-                                      }
-                                    } else {
-                                      if ((_model.totalDeudaCompleta +
-                                              ((_model.valorConvVTF!) *
-                                                  (_model.valorConvCTF!))) >
-                                          10.0) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('¡Alerta!'),
-                                              content: Text(
-                                                  'El cliente ha superado el límite de crédito. No se aumentará más productos.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
                                                 ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      } else {
-                                        await Future.delayed(
-                                            const Duration(milliseconds: 300));
-
-                                        await widget.idCliente!
-                                            .update(createClientesRecordData(
-                                          cliente: createDataTypeClienteStruct(
-                                            fieldValues: {
-                                              'producto':
-                                                  FieldValue.arrayUnion([
-                                                getDataTypeProductosFirestoreData(
-                                                  createDataTypeProductosStruct(
-                                                    nombreProd: _model
-                                                        .prodTFTextController
-                                                        .text,
-                                                    valorProd: (_model
-                                                            .valorConvVTF!) *
-                                                        (_model.valorConvCTF!),
-                                                    cantidad:
-                                                        _model.valorConvCTF,
-                                                    idProd: random_data
-                                                        .randomString(
-                                                      6,
-                                                      6,
-                                                      true,
-                                                      true,
-                                                      true,
-                                                    ),
-                                                    clearUnsetFields: false,
-                                                  ),
-                                                  true,
-                                                )
-                                              ]),
-                                            },
-                                            clearUnsetFields: false,
-                                          ),
-                                        ));
-                                        safeSetState(() {
-                                          _model.cantidatTfTextController
-                                              ?.clear();
-                                          _model.valorTFTextController?.clear();
-                                          _model.prodTFTextController?.clear();
-                                        });
-                                      }
-                                    }
-
-                                    _model.queryOnAnadir =
-                                        await queryClientesRecordOnce(
-                                      queryBuilder: (clientesRecord) =>
-                                          clientesRecord
-                                              .where(
-                                                'cliente.idCliente',
-                                                isEqualTo: widget.idCliente,
-                                              )
-                                              .where(
-                                                'cliente.idTendero',
-                                                isEqualTo: widget.tenderoRef,
                                               ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _shouldSetState = true;
-                                    _model.tempCount = 0;
-                                    _model.tempSumHistorial = 0.0;
-                                    _model.tempSumProductos = 0.0;
-                                    _model.totalDeudaCompleta = 0.0;
-                                    safeSetState(() {});
-                                    if ((_model.queryOnAnadir?.cliente
-                                                    .producto !=
-                                                null &&
-                                            (_model.queryOnAnadir?.cliente
-                                                    .producto)!
-                                                .isNotEmpty) ==
-                                        true) {
+                                            );
+                                          },
+                                        );
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      } else {
+                                        _model.tempCount = 0;
+                                        _model.sumaValoresEnDTProd = 0.0;
+                                        safeSetState(() {});
+                                        while (_model.tempCount <
+                                            _model.queryGuardar!.cliente
+                                                .producto.length) {
+                                          _model.addToDtProdItem(
+                                              DataTypeProductosStruct(
+                                            nombreProd: (_model.queryGuardar
+                                                    ?.cliente.producto
+                                                    .elementAtOrNull(
+                                                        _model.tempCount))
+                                                ?.nombreProd,
+                                            valorProd: (_model.queryGuardar
+                                                    ?.cliente.producto
+                                                    .elementAtOrNull(
+                                                        _model.tempCount))
+                                                ?.valorProd,
+                                            cantidad: (_model.queryGuardar
+                                                    ?.cliente.producto
+                                                    .elementAtOrNull(
+                                                        _model.tempCount))
+                                                ?.cantidad,
+                                          ));
+                                          _model.tempCount =
+                                              _model.tempCount + 1;
+                                          safeSetState(() {});
+                                        }
+                                      }
+
+                                      _model.tempCount = 0;
+                                      safeSetState(() {});
                                       while (_model.tempCount <
-                                          _model.queryOnAnadir!.cliente.producto
-                                              .length) {
-                                        _model.tempSumProductos =
-                                            _model.tempSumProductos +
-                                                _model.queryOnAnadir!.cliente
-                                                    .producto
+                                          _model.dtProdItem.length) {
+                                        _model.sumaValoresEnDTProd =
+                                            _model.sumaValoresEnDTProd! +
+                                                _model.dtProdItem
                                                     .elementAtOrNull(
                                                         _model.tempCount)!
                                                     .valorProd;
-                                        safeSetState(() {});
                                         _model.tempCount = _model.tempCount + 1;
                                         safeSetState(() {});
                                       }
-                                    }
-                                    _model.tempCount = 0;
-                                    safeSetState(() {});
-                                    if ((_model.queryOnAnadir?.cliente
-                                                    .historialPorPagarProd !=
-                                                null &&
-                                            (_model.queryOnAnadir?.cliente
-                                                    .historialPorPagarProd)!
-                                                .isNotEmpty) ==
-                                        true) {
-                                      while (_model.tempCount <
-                                          _model.queryOnAnadir!.cliente
-                                              .historialPorPagarProd.length) {
-                                        _model.tempSumHistorial =
-                                            _model.tempSumHistorial +
-                                                _model.queryOnAnadir!.cliente
-                                                    .historialPorPagarProd
-                                                    .elementAtOrNull(
-                                                        _model.tempCount)!
-                                                    .totalPorPagar;
-                                        safeSetState(() {});
-                                        _model.tempCount = _model.tempCount + 1;
-                                        safeSetState(() {});
-                                      }
-                                    }
-                                    _model.totalDeudaCompleta =
-                                        _model.tempSumHistorial +
-                                            _model.tempSumProductos;
-                                    _model.valorANormalizar = formatNumber(
-                                      _model.totalDeudaCompleta,
-                                      formatType: FormatType.custom,
-                                      format: '#0.00',
-                                      locale: '',
-                                    );
-                                    safeSetState(() {});
-                                    _model.totalDeudaCompletaNorm =
-                                        await actions.normalizarValorNumerico(
-                                      _model.valorANormalizar!,
-                                    );
-                                    _shouldSetState = true;
-                                    _model.totalDeudaCompleta =
-                                        _model.totalDeudaCompletaNorm!;
-                                    safeSetState(() {});
+                                      _model.valorANormalizar = formatNumber(
+                                        _model.sumaValoresEnDTProd,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      );
+                                      safeSetState(() {});
+                                      _model.sumaValoresEnDTNorm =
+                                          await actions.normalizarValorNumerico(
+                                        _model.valorANormalizar!,
+                                      );
+                                      _shouldSetState = true;
+                                      _model.sumaValoresEnDTProd =
+                                          _model.sumaValoresEnDTNorm;
+                                      safeSetState(() {});
 
-                                    await widget.idCliente!
-                                        .update(createClientesRecordData(
-                                      cliente: createDataTypeClienteStruct(
-                                        totalDeudaCompleta:
-                                            _model.totalDeudaCompletaNorm,
-                                        clearUnsetFields: false,
+                                      await widget.idCliente!
+                                          .update(createClientesRecordData(
+                                        cliente: createDataTypeClienteStruct(
+                                          isFiando: true,
+                                          fieldValues: {
+                                            'historialPorPagarProd':
+                                                FieldValue.arrayUnion([
+                                              getDataTypeHistorialPagoFirestoreData(
+                                                updateDataTypeHistorialPagoStruct(
+                                                  DataTypeHistorialPagoStruct(
+                                                    productos:
+                                                        _model.dtProdItem,
+                                                    totalPagado: 0.0,
+                                                    totalGeneral: _model
+                                                        .sumaValoresEnDTProd,
+                                                    totalPorPagar: _model
+                                                        .sumaValoresEnDTProd,
+                                                    transferencia: false,
+                                                    efectivo: false,
+                                                    idTransaccion:
+                                                        valueOrDefault<String>(
+                                                      random_data.randomString(
+                                                        5,
+                                                        5,
+                                                        true,
+                                                        true,
+                                                        true,
+                                                      ),
+                                                      'id000',
+                                                    ),
+                                                    fechaDeFio:
+                                                        getCurrentTimestamp,
+                                                  ),
+                                                  clearUnsetFields: false,
+                                                ),
+                                                true,
+                                              )
+                                            ]),
+                                            'producto': FieldValue.delete(),
+                                          },
+                                          clearUnsetFields: false,
+                                        ),
+                                      ));
+                                      _model.dtProdItem = [];
+                                      _model.tempSumProductos = 0.0;
+                                      safeSetState(() {});
+                                      await showDialog(
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(dialogContext)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Container(
+                                                height: 200.0,
+                                                child: DialogBtnWidget(
+                                                  titulo:
+                                                      '¡Productos guardados!',
+                                                  mensaje:
+                                                      'Los productos añadidos han sido guardados correctamente.',
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+
+                                      _model.tenderoReadForEmailToClientProds =
+                                          await TenderosRecord.getDocumentOnce(
+                                              widget.tenderoRef!);
+                                      _shouldSetState = true;
+                                      for (int loop1Index = 0;
+                                          loop1Index <
+                                              clienteInfoEditClientesRecord
+                                                  .playerIds.length;
+                                          loop1Index++) {
+                                        final currentLoop1Item =
+                                            clienteInfoEditClientesRecord
+                                                .playerIds[loop1Index];
+                                        unawaited(
+                                          () async {
+                                            await actions
+                                                .sendNotificationToPlayer(
+                                              currentLoop1Item,
+                                              '${widget.nombre}: ¡Se han agregado productos adeudados a tu cuenta en la tienda: ${_model.tenderoReadForEmailToClientProds?.displayName}!',
+                                            );
+                                          }(),
+                                        );
+                                      }
+                                      if (_shouldSetState) safeSetState(() {});
+                                    },
+                                    text: 'Guardar',
+                                    options: FFButtonOptions(
+                                      height: 30.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF2482FF),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            font: GoogleFonts.inter(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 0.0,
+                                      borderSide: BorderSide(
+                                        color: Color(0x4C03369F),
+                                        width: 1.0,
                                       ),
-                                    ));
-                                  }
-                                  if (_shouldSetState) safeSetState(() {});
-                                },
-                          text: 'Añadir Producto',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 30.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).success,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  font: GoogleFonts.interTight(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                    ),
                                   ),
-                                  color: FlutterFlowTheme.of(context).info,
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
                                 ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
-                            disabledColor: FlutterFlowTheme.of(context).accent2,
-                            disabledTextColor:
-                                FlutterFlowTheme.of(context).primaryText,
-                          ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],

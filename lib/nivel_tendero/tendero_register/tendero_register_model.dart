@@ -26,6 +26,12 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
   String? tempOtp;
 
+  bool isCuentaSec = false;
+
+  bool isCuentaCorrienteSec = false;
+
+  bool isCuentaDeAhorrosSec = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -154,6 +160,21 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
     return null;
   }
 
+  // State field(s) for NumCuentaSec_tendero widget.
+  FocusNode? numCuentaSecTenderoFocusNode;
+  TextEditingController? numCuentaSecTenderoTextController;
+  String? Function(BuildContext, String?)?
+      numCuentaSecTenderoTextControllerValidator;
+  // State field(s) for BancoSec_tendero widget.
+  FocusNode? bancoSecTenderoFocusNode;
+  TextEditingController? bancoSecTenderoTextController;
+  String? Function(BuildContext, String?)?
+      bancoSecTenderoTextControllerValidator;
+  // State field(s) for duenoBancoSec_tendero widget.
+  FocusNode? duenoBancoSecTenderoFocusNode;
+  TextEditingController? duenoBancoSecTenderoTextController;
+  String? Function(BuildContext, String?)?
+      duenoBancoSecTenderoTextControllerValidator;
   // State field(s) for password_Tendero widget.
   FocusNode? passwordTenderoFocusNode;
   TextEditingController? passwordTenderoTextController;
@@ -218,12 +239,12 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
   // Stores action output result for [Validate Form] action in btn_tenderoReg widget.
   bool? validarReg;
-  // Stores action output result for [Custom Action - validateEmail] action in btn_tenderoReg widget.
-  bool? validationEmail;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_tenderoReg widget.
   TenderosRecord? queryForMail;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_tenderoReg widget.
   TenderosRecord? queryForNombreTienda;
+  // Stores action output result for [Firestore Query - Query a collection] action in btn_tenderoReg widget.
+  TenderosRecord? queryForPhoneNumber;
 
   @override
   void initState(BuildContext context) {
@@ -276,6 +297,15 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
     duenoBancoTenderoFocusNode?.dispose();
     duenoBancoTenderoTextController?.dispose();
+
+    numCuentaSecTenderoFocusNode?.dispose();
+    numCuentaSecTenderoTextController?.dispose();
+
+    bancoSecTenderoFocusNode?.dispose();
+    bancoSecTenderoTextController?.dispose();
+
+    duenoBancoSecTenderoFocusNode?.dispose();
+    duenoBancoSecTenderoTextController?.dispose();
 
     passwordTenderoFocusNode?.dispose();
     passwordTenderoTextController?.dispose();

@@ -174,7 +174,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -203,30 +203,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Te damos la bienvenida a esta guía rápida para aprender a usar la aplicación. Si prefieres saltarte el tutorial, haz clic en el botón \"Saltar\" en la parte inferior derecha. Desliza a la derecha para continuar.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -241,7 +241,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -270,30 +270,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Aquí puedes ver cuántos clientes has registrado hasta ahora.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -301,7 +301,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/imagen_2025-06-18_114359625.png',
+                                              'assets/images/imagen_2025-07-16_195037501.png',
                                               width: 250.0,
                                               fit: BoxFit.cover,
                                             ),
@@ -317,7 +317,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -346,30 +346,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             '¿Ves este ícono? Tócalo cuando quieras salir de tu cuenta. Lo encontrarás en varias pantallas de la app.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -377,7 +377,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/imagen_2025-06-18_115716984.png',
+                                              'assets/images/imagen_2025-07-21_145441276.png',
                                               width: 250.0,
                                               fit: BoxFit.cover,
                                             ),
@@ -393,7 +393,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -422,30 +422,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Podrás filtrar todos los clientes registrados, los clientes fiando y los clientes sin fiar a través de la siguiente barra.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -453,13 +453,13 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/imagen_2025-06-18_115204519.png',
-                                              width: 250.0,
+                                              'assets/images/imagen_2025-07-16_195125165.png',
+                                              width: 280.0,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
                                         ]
-                                            .divide(SizedBox(height: 5.0))
+                                            .divide(SizedBox(height: 10.0))
                                             .addToStart(SizedBox(height: 5.0))
                                             .addToEnd(SizedBox(height: 5.0)),
                                       ),
@@ -496,7 +496,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -525,30 +525,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Aquí se mostrarán todos tus clientes registrados. Como acabas de crear tu cuenta, aún no tienes ninguno. ¡Empieza agregando tu primer cliente!',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -556,7 +556,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/imagen_2025-06-18_120944518.png',
+                                              'assets/images/imagen_2025-07-21_145538914.png',
                                               height: 160.0,
                                               fit: BoxFit.cover,
                                             ),
@@ -572,7 +572,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -601,30 +601,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Usa este botón para añadir un nuevo cliente a tu tienda. Al presionarlo, podrás ingresar los datos necesarios para el registro.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -632,8 +632,8 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/assetMake.png',
-                                              height: 100.0,
+                                              'assets/images/imagen_2025-07-16_195314894.png',
+                                              width: 250.0,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -648,7 +648,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -677,30 +677,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             'Accede a esta sección para configurar las opciones de tu tienda y actualizar tus datos.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -708,8 +708,8 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/assetAjustes.png',
-                                              height: 100.0,
+                                              'assets/images/imagen_2025-07-16_195406580.png',
+                                              width: 250.0,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -724,7 +724,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -753,30 +753,30 @@ class _PageTutorialListaClientesHelpWidgetState
                                             '¿Tienes dudas? Toca este botón para ver los tutoriales nuevamente y aprender a usar cada función de la app.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
-                                                .bodyLarge
+                                                .bodyMedium
                                                 .override(
                                                   font: GoogleFonts.inter(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .bodyLarge
+                                                            .bodyMedium
                                                             .fontStyle,
                                                   ),
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyLarge
+                                                          .bodyMedium
                                                           .fontStyle,
                                                 ),
                                           ),
@@ -784,8 +784,8 @@ class _PageTutorialListaClientesHelpWidgetState
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/assetAyuda.png',
-                                              height: 100.0,
+                                              'assets/images/imagen_2025-07-16_195438063.png',
+                                              width: 250.0,
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -827,7 +827,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
-                                                font: GoogleFonts.interTight(
+                                                font: GoogleFonts.readexPro(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -885,36 +885,36 @@ class _PageTutorialListaClientesHelpWidgetState
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
-                                                .secondary,
-                                            textStyle: FlutterFlowTheme.of(
-                                                    context)
-                                                .titleSmall
-                                                .override(
-                                                  font: GoogleFonts.interTight(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Colors.white,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontStyle,
-                                                ),
+                                                .tertiary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
                                             elevation: 0.0,
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
@@ -968,7 +968,7 @@ class _PageTutorialListaClientesHelpWidgetState
                   alignment: AlignmentDirectional(1.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 10.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.goNamed(
@@ -1004,7 +1004,7 @@ class _PageTutorialListaClientesHelpWidgetState
                         color: FlutterFlowTheme.of(context).tertiary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.interTight(
+                                  font: GoogleFonts.inter(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // State field(s) for Checkbox widget.
   Map<DataTypeHistorialPagoStruct, bool> checkboxValueMap1 = {};
   List<DataTypeHistorialPagoStruct> get checkboxCheckedItems1 =>

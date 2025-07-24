@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -186,7 +187,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -216,7 +217,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -250,7 +251,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.readexPro(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .displaySmall
@@ -312,7 +313,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .interTight(
+                                                            .readexPro(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -389,7 +390,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .interTight(
+                                                            .readexPro(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1310,276 +1311,355 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 2.0),
-                                                  child: FFButtonWidget(
-                                                    onPressed: ((_model.codigoFirstLoginClienteTextController
-                                                                        .text ==
-                                                                    '') ||
-                                                            (_model
-                                                                        .passwordCClienteTextController
-                                                                        .text ==
-                                                                    '') ||
-                                                            (_model.passwordClienteTextController
-                                                                        .text ==
-                                                                    '') ||
-                                                            (_model.pinClienteTextController
-                                                                        .text ==
-                                                                    ''))
-                                                        ? null
-                                                        : () async {
-                                                            var _shouldSetState =
-                                                                false;
-                                                            _model.validarFirstLoginCliente =
-                                                                true;
-                                                            if (_model.formKey
-                                                                        .currentState ==
-                                                                    null ||
-                                                                !_model.formKey
-                                                                    .currentState!
-                                                                    .validate()) {
-                                                              safeSetState(() =>
-                                                                  _model.validarFirstLoginCliente =
-                                                                      false);
-                                                              return;
-                                                            }
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_model
-                                                                    .codigoFirstLoginClienteTextController
-                                                                    .text !=
-                                                                clienteFirstLoginClientesRecord
-                                                                    .cliente
-                                                                    .secretPass) {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Alerta!'),
-                                                                    content: Text(
-                                                                        'Código inválido.'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              );
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                              return;
-                                                            } else {
+                                                child: Builder(
+                                                  builder: (context) => Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 2.0),
+                                                    child: FFButtonWidget(
+                                                      onPressed: ((_model.codigoFirstLoginClienteTextController
+                                                                          .text ==
+                                                                      '') ||
+                                                              (_model
+                                                                          .passwordCClienteTextController
+                                                                          .text ==
+                                                                      '') ||
+                                                              (_model.passwordClienteTextController
+                                                                          .text ==
+                                                                      '') ||
+                                                              (_model.pinClienteTextController
+                                                                          .text ==
+                                                                      ''))
+                                                          ? null
+                                                          : () async {
+                                                              var _shouldSetState =
+                                                                  false;
+                                                              _model.validarFirstLoginCliente =
+                                                                  true;
+                                                              if (_model.formKey
+                                                                          .currentState ==
+                                                                      null ||
+                                                                  !_model
+                                                                      .formKey
+                                                                      .currentState!
+                                                                      .validate()) {
+                                                                safeSetState(() =>
+                                                                    _model.validarFirstLoginCliente =
+                                                                        false);
+                                                                return;
+                                                              }
+                                                              _shouldSetState =
+                                                                  true;
                                                               if (_model
-                                                                      .passwordClienteTextController
+                                                                      .codigoFirstLoginClienteTextController
                                                                       .text !=
-                                                                  _model
-                                                                      .passwordCClienteTextController
-                                                                      .text) {
+                                                                  clienteFirstLoginClientesRecord
+                                                                      .cliente
+                                                                      .secretPass) {
                                                                 await showDialog(
                                                                   context:
                                                                       context,
                                                                   builder:
-                                                                      (alertDialogContext) {
-                                                                    return AlertDialog(
-                                                                      title: Text(
-                                                                          '¡Alerta!'),
-                                                                      content: Text(
-                                                                          'Las contraseñas ingresadas no coinciden.'),
-                                                                      actions: [
-                                                                        TextButton(
-                                                                          onPressed: () =>
-                                                                              Navigator.pop(alertDialogContext),
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
                                                                           child:
-                                                                              Text('Ok'),
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Alerta!',
+                                                                            mensaje:
+                                                                                'El código ingresado es inválido.',
+                                                                          ),
                                                                         ),
-                                                                      ],
+                                                                      ),
                                                                     );
                                                                   },
                                                                 );
+
+                                                                if (_shouldSetState)
+                                                                  safeSetState(
+                                                                      () {});
+                                                                return;
+                                                              } else {
+                                                                if (_model
+                                                                        .passwordClienteTextController
+                                                                        .text !=
+                                                                    _model
+                                                                        .passwordCClienteTextController
+                                                                        .text) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Alerta!',
+                                                                              mensaje: 'Las contraseñas ingresadas no coinciden.',
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    },
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                              }
+
+                                                              if (_model
+                                                                      .validarFirstLoginCliente ==
+                                                                  true) {
+                                                                await widget
+                                                                    .idClienteWithNoPsswrd!
+                                                                    .update(
+                                                                        createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    contrasena: _model
+                                                                        .passwordClienteTextController
+                                                                        .text,
+                                                                    pin: _model
+                                                                        .pinClienteTextController
+                                                                        .text,
+                                                                    fieldValues: {
+                                                                      'secret_pass':
+                                                                          FieldValue
+                                                                              .delete(),
+                                                                    },
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
+                                                                if (!(clienteFirstLoginClientesRecord
+                                                                        .playerIds
+                                                                        .contains(FFAppState()
+                                                                            .playerId) ||
+                                                                    (FFAppState().playerId ==
+                                                                            ''))) {
+                                                                  await clienteFirstLoginClientesRecord
+                                                                      .reference
+                                                                      .update({
+                                                                    ...mapToFirestore(
+                                                                      {
+                                                                        'player_ids':
+                                                                            FieldValue.arrayUnion([
+                                                                          FFAppState()
+                                                                              .playerId
+                                                                        ]),
+                                                                      },
+                                                                    ),
+                                                                  });
+                                                                }
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              200.0,
+                                                                          child:
+                                                                              DialogBtnWidget(
+                                                                            titulo:
+                                                                                '¡Bienvenido a HoySíFio!',
+                                                                            mensaje:
+                                                                                '¡Hola, ${clienteFirstLoginClientesRecord.cliente.nombre}! Estamos encantados de que formes parte de nuestra red de clientes. 😊',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                );
+
+                                                                _model.queryForIdsTenderos =
+                                                                    await queryClientesRecordOnce(
+                                                                  queryBuilder:
+                                                                      (clientesRecord) =>
+                                                                          clientesRecord
+                                                                              .where(
+                                                                    'cliente.cedula',
+                                                                    isEqualTo: clienteFirstLoginClientesRecord
+                                                                        .cliente
+                                                                        .cedula,
+                                                                  ),
+                                                                );
+                                                                _shouldSetState =
+                                                                    true;
+                                                                for (int loop1Index =
+                                                                        0;
+                                                                    loop1Index <
+                                                                        _model
+                                                                            .queryForIdsTenderos!
+                                                                            .length;
+                                                                    loop1Index++) {
+                                                                  final currentLoop1Item =
+                                                                      _model.queryForIdsTenderos![
+                                                                          loop1Index];
+                                                                  _model.addToIdsTenderos(
+                                                                      currentLoop1Item
+                                                                          .cliente
+                                                                          .idTendero!);
+                                                                  safeSetState(
+                                                                      () {});
+                                                                }
+
+                                                                context.goNamed(
+                                                                  ResumenFiadoClienTiendaNewWidget
+                                                                      .routeName,
+                                                                  queryParameters:
+                                                                      {
+                                                                    'cedula':
+                                                                        serializeParam(
+                                                                      clienteFirstLoginClientesRecord
+                                                                          .cliente
+                                                                          .cedula,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                    'idTenderoList':
+                                                                        serializeParam(
+                                                                      _model
+                                                                          .idsTenderos,
+                                                                      ParamType
+                                                                          .DocumentReference,
+                                                                      isList:
+                                                                          true,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+                                                              } else {
                                                                 if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
                                                                 return;
                                                               }
-                                                            }
 
-                                                            if (_model
-                                                                    .validarFirstLoginCliente ==
-                                                                true) {
-                                                              await widget
-                                                                  .idClienteWithNoPsswrd!
-                                                                  .update(
-                                                                      createClientesRecordData(
-                                                                cliente:
-                                                                    createDataTypeClienteStruct(
-                                                                  contrasena: _model
-                                                                      .passwordClienteTextController
-                                                                      .text,
-                                                                  pin: _model
-                                                                      .pinClienteTextController
-                                                                      .text,
-                                                                  fieldValues: {
-                                                                    'secret_pass':
-                                                                        FieldValue
-                                                                            .delete(),
-                                                                  },
-                                                                  clearUnsetFields:
-                                                                      false,
-                                                                ),
-                                                              ));
-                                                              if (!(clienteFirstLoginClientesRecord
-                                                                      .playerIds
-                                                                      .contains(
-                                                                          FFAppState()
-                                                                              .playerId) ||
-                                                                  (FFAppState()
-                                                                              .playerId ==
-                                                                          ''))) {
-                                                                await clienteFirstLoginClientesRecord
-                                                                    .reference
-                                                                    .update({
-                                                                  ...mapToFirestore(
-                                                                    {
-                                                                      'player_ids':
-                                                                          FieldValue
-                                                                              .arrayUnion([
-                                                                        FFAppState()
-                                                                            .playerId
-                                                                      ]),
-                                                                    },
-                                                                  ),
-                                                                });
-                                                              }
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (alertDialogContext) {
-                                                                  return AlertDialog(
-                                                                    title: Text(
-                                                                        '¡Bienvenido a HoySíFio!'),
-                                                                    content: Text(
-                                                                        '¡Hola, ${clienteFirstLoginClientesRecord.cliente.nombre}! Estamos encantados de que formes parte de nuestra red de clientes. 😊'),
-                                                                    actions: [
-                                                                      TextButton(
-                                                                        onPressed:
-                                                                            () =>
-                                                                                Navigator.pop(alertDialogContext),
-                                                                        child: Text(
-                                                                            'Ok'),
-                                                                      ),
-                                                                    ],
-                                                                  );
-                                                                },
-                                                              );
-                                                              _model.queryForIdsTenderos =
-                                                                  await queryClientesRecordOnce(
-                                                                queryBuilder:
-                                                                    (clientesRecord) =>
-                                                                        clientesRecord
-                                                                            .where(
-                                                                  'cliente.cedula',
-                                                                  isEqualTo:
-                                                                      clienteFirstLoginClientesRecord
-                                                                          .cliente
-                                                                          .cedula,
-                                                                ),
-                                                              );
-                                                              _shouldSetState =
-                                                                  true;
-                                                              for (int loop1Index =
-                                                                      0;
-                                                                  loop1Index <
-                                                                      _model
-                                                                          .queryForIdsTenderos!
-                                                                          .length;
-                                                                  loop1Index++) {
-                                                                final currentLoop1Item =
-                                                                    _model.queryForIdsTenderos![
-                                                                        loop1Index];
-                                                                _model.addToIdsTenderos(
-                                                                    currentLoop1Item
-                                                                        .cliente
-                                                                        .idTendero!);
-                                                                safeSetState(
-                                                                    () {});
-                                                              }
-
-                                                              context.goNamed(
-                                                                ResumenFiadoClienTiendaNewWidget
-                                                                    .routeName,
-                                                                queryParameters:
-                                                                    {
-                                                                  'cedula':
-                                                                      serializeParam(
-                                                                    clienteFirstLoginClientesRecord
-                                                                        .cliente
-                                                                        .cedula,
-                                                                    ParamType
-                                                                        .String,
-                                                                  ),
-                                                                  'idTenderoList':
-                                                                      serializeParam(
-                                                                    _model
-                                                                        .idsTenderos,
-                                                                    ParamType
-                                                                        .DocumentReference,
-                                                                    isList:
-                                                                        true,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            } else {
                                                               if (_shouldSetState)
                                                                 safeSetState(
                                                                     () {});
-                                                              return;
-                                                            }
-
-                                                            if (_shouldSetState)
-                                                              safeSetState(
-                                                                  () {});
-                                                          },
-                                                    text: 'Continuar',
-                                                    options: FFButtonOptions(
-                                                      width: 230.0,
-                                                      height: 52.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .interTight(
+                                                            },
+                                                      text: 'Continuar',
+                                                      options: FFButtonOptions(
+                                                        width: 230.0,
+                                                        height: 52.0,
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -1589,37 +1669,24 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                                       .titleSmall
                                                                       .fontStyle,
                                                                 ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .fontStyle,
-                                                              ),
-                                                      elevation: 3.0,
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Colors.transparent,
-                                                        width: 1.0,
+                                                        elevation: 3.0,
+                                                        borderSide: BorderSide(
+                                                          color: Colors
+                                                              .transparent,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                        disabledColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent2,
+                                                        disabledTextColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              12.0),
-                                                      disabledColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent2,
-                                                      disabledTextColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
                                                     ),
                                                   ),
                                                 ),

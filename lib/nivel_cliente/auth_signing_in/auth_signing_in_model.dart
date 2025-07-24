@@ -78,8 +78,6 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   FocusNode? ciClienteFocusNode;
   TextEditingController? ciClienteTextController;
   String? Function(BuildContext, String?)? ciClienteTextControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in ci_Cliente widget.
-  ClientesRecord? queryForClienteWithPswrd;
   // State field(s) for password_Cliente widget.
   FocusNode? passwordClienteFocusNode;
   TextEditingController? passwordClienteTextController;
@@ -91,6 +89,8 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
   TextEditingController? pinClienteTextController;
   late bool pinClienteVisibility;
   String? Function(BuildContext, String?)? pinClienteTextControllerValidator;
+  // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
+  ClientesRecord? queryForClienteWithPswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.
   ClientesRecord? queryForClienteWithNoPsswrd;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_cliente widget.

@@ -53,10 +53,16 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // Models for razonNegadoC dynamic component.
   late FlutterFlowDynamicModels<RazonNegadoCModel> razonNegadoCModels;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconoDeny widget.
+  bool? isDeny;
   // Stores action output result for [Backend Call - Read Document] action in iconoDeny widget.
   TenderosRecord? readForTenderoDenyPush;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconoConfirmarComprobante widget.
+  bool? isConfirmar;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormV;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.

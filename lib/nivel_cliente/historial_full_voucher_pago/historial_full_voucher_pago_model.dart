@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
@@ -45,12 +46,14 @@ class HistorialFullVoucherPagoModel
   FocusNode? nombreBancoFocusNode;
   TextEditingController? nombreBancoTextController;
   String? Function(BuildContext, String?)? nombreBancoTextControllerValidator;
-  // State field(s) for checkElectr widget.
-  bool? checkElectrValue;
-  // State field(s) for checkBanca widget.
-  bool? checkBancaValue;
   // State field(s) for checkVent widget.
   bool? checkVentValue;
+  // State field(s) for checkMovil widget.
+  bool? checkMovilValue;
+  // State field(s) for checkBanca widget.
+  bool? checkBancaValue;
+  // State field(s) for checkElectr widget.
+  bool? checkElectrValue;
   bool isDataUploading_uploadDataZ9l2 = false;
   FFUploadedFile uploadedLocalFile_uploadDataZ9l2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -58,6 +61,14 @@ class HistorialFullVoucherPagoModel
 
   // Stores action output result for [Backend Call - Read Document] action in botonGuardar widget.
   TenderosRecord? tenderoReadFull;
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
 
   /// Query cache managers for this widget.
 

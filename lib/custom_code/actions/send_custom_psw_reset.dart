@@ -13,7 +13,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 Future<void> sendCustomPswReset(String recipientEmail, String recipientName,
-    String emailSubject, String otp) async {
+    String emailSubject, String otp, String tipoCuenta) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -42,7 +42,7 @@ Future<void> sendCustomPswReset(String recipientEmail, String recipientName,
     <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; padding: 20px;">
       <tr>
         <td style="padding-bottom: 20px;">
-          <p style="margin: 0 0 15px 0;">¡Hola, $recipientName! Se ha recibido una solicitud para restablecer la contraseña de tu cuenta en <strong>HoySíFio</strong>. Utiliza el siguiente código para continuar:</p>
+          <p style="margin: 0 0 15px 0;">¡Hola, $recipientName! Se ha recibido una solicitud para restablecer la contraseña de tu cuenta de $tipoCuenta en <strong>HoySíFio</strong>. Utiliza el siguiente código para continuar:</p>
       
           <!-- Código OTP destacado -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; text-align: center;">
@@ -62,7 +62,7 @@ Future<void> sendCustomPswReset(String recipientEmail, String recipientName,
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
-          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">© 2025 HoySíFio. Todos los derechos reservados.</p>
           <p style="margin: 0;">Este es un mensaje automatizado, por favor, no responder.</p>
         </td>
       </tr>

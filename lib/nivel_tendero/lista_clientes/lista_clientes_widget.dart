@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/empty_clientes_list/empty_clientes_list_widget.dart';
 import '/components_nivel_tendero/empty_clientes_list_fiando/empty_clientes_list_fiando_widget.dart';
 import '/components_nivel_tendero/empty_clientes_list_no_fiando/empty_clientes_list_no_fiando_widget.dart';
@@ -118,48 +119,63 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  FlutterFlowIconButton(
-                    borderColor: Colors.transparent,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 50.0,
-                    icon: Icon(
-                      Icons.logout,
-                      color: Colors.white,
-                      size: 30.0,
-                    ),
-                    onPressed: () async {
-                      var confirmDialogResponse = await showDialog<bool>(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('¿Desea cerrar sesión?'),
-                                content: Text('Sus datos ya están guardados.'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(
-                                        alertDialogContext, false),
-                                    child: Text('Cancelar'),
+                  Builder(
+                    builder: (context) => FlutterFlowIconButton(
+                      borderColor: Color(0xFFFF0000),
+                      borderRadius: 8.0,
+                      borderWidth: 2.0,
+                      buttonSize: 50.0,
+                      icon: Icon(
+                        Icons.logout,
+                        color: Color(0xFFFF0000),
+                        size: 30.0,
+                      ),
+                      onPressed: () async {
+                        var _shouldSetState = false;
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(dialogContext).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Container(
+                                  height: 300.0,
+                                  child: DialogTwoBtnsWidget(
+                                    titulo: '¿Desea cerrar sesión?',
+                                    mensaje:
+                                        'Sus datos se guardarán automáticamente.',
                                   ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext, true),
-                                    child: Text('Confirmar'),
-                                  ),
-                                ],
-                              );
-                            },
-                          ) ??
-                          false;
-                      if (confirmDialogResponse) {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) =>
+                            safeSetState(() => _model.isLogoff = value));
 
-                        context.goNamedAuth(
-                            AuthSigningInWidget.routeName, context.mounted);
-                      }
-                    },
+                        _shouldSetState = true;
+                        if (_model.isLogoff!) {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          context.goNamedAuth(
+                              AuthSigningInWidget.routeName, context.mounted);
+                        } else {
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
+
+                        if (_shouldSetState) safeSetState(() {});
+                      },
+                    ),
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -357,7 +373,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                           unselectedLabelColor: Color(0xB3FFFFFF),
                           labelStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
-                                    font: GoogleFonts.interTight(
+                                    font: GoogleFonts.readexPro(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .fontWeight,
@@ -748,7 +764,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          40.0,
+                                                                          30.0,
                                                                           0.0),
                                                               child: Text(
                                                                 'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
@@ -1455,7 +1471,11 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                 ParamType.String,
                               ),
                               'tenderoEmail': serializeParam(
-                                widget.tenderoEmail,
+                                currentUserEmail,
+                                ParamType.String,
+                              ),
+                              'nombreTendero': serializeParam(
+                                currentUserDocument?.tenderos.nombreTendero,
                                 ParamType.String,
                               ),
                             }.withoutNulls,

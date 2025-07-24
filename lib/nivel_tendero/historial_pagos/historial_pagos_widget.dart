@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/empty_cuentas_pagadas/empty_cuentas_pagadas_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -112,6 +113,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                           children: [
                             Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -202,7 +204,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .headlineMedium
                                           .override(
-                                            font: GoogleFonts.interTight(
+                                            font: GoogleFonts.readexPro(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
@@ -227,64 +229,83 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                     ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor:
-                                        FlutterFlowTheme.of(context).error,
-                                    borderRadius: 12.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    icon: Icon(
-                                      Icons.logout,
-                                      color: FlutterFlowTheme.of(context).error,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
-                                      var confirmDialogResponse =
-                                          await showDialog<bool>(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(
-                                                        '¿Desea cerrar sesión?'),
-                                                    content: Text(
-                                                        'Sus datos ya están guardados.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                false),
-                                                        child: Text('Cancelar'),
-                                                      ),
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext,
-                                                                true),
-                                                        child:
-                                                            Text('Confirmar'),
-                                                      ),
-                                                    ],
-                                                  );
+                                Builder(
+                                  builder: (context) => Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: FlutterFlowIconButton(
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).error,
+                                      borderRadius: 12.0,
+                                      borderWidth: 1.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.logout,
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        var _shouldSetState = false;
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
                                                 },
-                                              ) ??
-                                              false;
-                                      if (confirmDialogResponse) {
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        await authManager.signOut();
-                                        GoRouter.of(context)
-                                            .clearRedirectLocation();
+                                                child: Container(
+                                                  height: 200.0,
+                                                  child: DialogTwoBtnsWidget(
+                                                    titulo:
+                                                        '¿Desea cerrar sesión?',
+                                                    mensaje:
+                                                        'Sus datos se guardarán automáticamente.',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.isLogoff = value));
 
-                                        context.goNamedAuth(
-                                            AuthSigningInWidget.routeName,
-                                            context.mounted);
-                                      }
-                                    },
+                                        _shouldSetState = true;
+                                        if (_model.isLogoff!) {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await authManager.signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          context.goNamedAuth(
+                                              AuthSigningInWidget.routeName,
+                                              context.mounted);
+                                        } else {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                      },
+                                    ),
                                   ),
                                 ),
                               ],
@@ -710,7 +731,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           .titleMedium
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.interTight(
+                                                                                GoogleFonts.readexPro(
                                                                               fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                             ),
@@ -755,7 +776,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .titleMedium
                                                                         .override(
                                                                           font:
-                                                                              GoogleFonts.interTight(
+                                                                              GoogleFonts.readexPro(
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                             fontStyle:
@@ -816,7 +837,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .titleMedium
                                                                         .override(
                                                                           font:
-                                                                              GoogleFonts.interTight(
+                                                                              GoogleFonts.readexPro(
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                             fontStyle:
@@ -874,7 +895,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .titleMedium
                                                                         .override(
                                                                           font:
-                                                                              GoogleFonts.interTight(
+                                                                              GoogleFonts.readexPro(
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                             fontStyle:

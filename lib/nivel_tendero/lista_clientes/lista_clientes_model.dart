@@ -35,6 +35,9 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconBack widget.
+  bool? isLogoff;
+
   @override
   void initState(BuildContext context) {}
 

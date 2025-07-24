@@ -51,6 +51,11 @@ class HistorialVouchersClienteModel
     updateFn(voucherHPDT ??= DataTypeHistorialPagoStruct());
   }
 
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
+
   /// Query cache managers for this widget.
 
   final _queryNameClienteHistorialPagadoManager =

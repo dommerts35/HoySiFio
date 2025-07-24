@@ -84,7 +84,7 @@ class _EmptyClientesListWidgetState extends State<EmptyClientesListWidget> {
                 child: Text(
                   'No hay clientes registrados.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.interTight(
+                        font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

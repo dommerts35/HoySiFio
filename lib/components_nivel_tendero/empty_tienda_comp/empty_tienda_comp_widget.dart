@@ -79,7 +79,7 @@ class _EmptyTiendaCompWidgetState extends State<EmptyTiendaCompWidget> {
               Text(
                 'No has sido registrado aún.',
                 style: FlutterFlowTheme.of(context).titleSmall.override(
-                      font: GoogleFonts.interTight(
+                      font: GoogleFonts.inter(
                         fontWeight:
                             FlutterFlowTheme.of(context).titleSmall.fontWeight,
                         fontStyle:

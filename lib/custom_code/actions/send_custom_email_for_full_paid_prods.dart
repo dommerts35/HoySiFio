@@ -54,7 +54,7 @@ Future<void> sendCustomEmailForFullPaidProds(String recipientEmail,
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
           <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
-          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder.</p>
         </td>
       </tr>
     </table>

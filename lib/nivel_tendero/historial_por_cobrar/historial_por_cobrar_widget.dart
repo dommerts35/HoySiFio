@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/check_cuentas_comp/check_cuentas_comp_widget.dart';
 import '/components_nivel_tendero/empty_productos_pagados_comp/empty_productos_pagados_comp_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -28,6 +29,7 @@ class HistorialPorCobrarWidget extends StatefulWidget {
     this.viviendaAlq,
     this.viviendaProp,
     this.emailCliente,
+    this.totalPassed,
   });
 
   final DocumentReference? idCliente;
@@ -41,6 +43,7 @@ class HistorialPorCobrarWidget extends StatefulWidget {
   final bool? viviendaAlq;
   final bool? viviendaProp;
   final String? emailCliente;
+  final String? totalPassed;
 
   static String routeName = 'historialPorCobrar';
   static String routePath = '/historialPorCobrar';
@@ -85,9 +88,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<ClientesRecord>(
-      stream: _model.queryNameClienteHistorialPorPagar(
-        requestFn: () => ClientesRecord.getDocument(widget.idCliente!),
-      ),
+      stream: ClientesRecord.getDocument(widget.idCliente!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -158,7 +159,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 8.0, 12.0, 8.0),
+                                            0.0, 0.0, 5.0, 0.0),
                                         child: FlutterFlowIconButton(
                                           borderColor:
                                               FlutterFlowTheme.of(context)
@@ -247,10 +248,11 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                           child: AutoSizeText(
                                             'Cuentas por cobrar',
                                             maxLines: 2,
+                                            minFontSize: 20.0,
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
                                                 .override(
-                                                  font: GoogleFonts.interTight(
+                                                  font: GoogleFonts.readexPro(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -278,73 +280,98 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: FlutterFlowIconButton(
-                                          borderColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .error,
-                                          borderRadius: 12.0,
-                                          borderWidth: 1.0,
-                                          buttonSize: 40.0,
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          icon: Icon(
-                                            Icons.logout,
-                                            color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            size: 24.0,
-                                          ),
-                                          onPressed: () async {
-                                            var confirmDialogResponse =
-                                                await showDialog<bool>(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              '¿Desea cerrar sesión?'),
-                                                          content: Text(
-                                                              'Sus datos ya están guardados.'),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      false),
-                                                              child: Text(
-                                                                  'Cancelar'),
-                                                            ),
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext,
-                                                                      true),
-                                                              child: Text(
-                                                                  'Confirmar'),
-                                                            ),
-                                                          ],
-                                                        );
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 0.0, 0.0, 0.0),
+                                          child: FlutterFlowIconButton(
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .error,
+                                            borderRadius: 12.0,
+                                            borderWidth: 1.0,
+                                            buttonSize: 40.0,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            icon: Icon(
+                                              Icons.logout,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 24.0,
+                                            ),
+                                            onPressed: () async {
+                                              var _shouldSetState = false;
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
                                                       },
-                                                    ) ??
-                                                    false;
-                                            if (confirmDialogResponse) {
-                                              GoRouter.of(context)
-                                                  .prepareAuthEvent();
-                                              await authManager.signOut();
-                                              GoRouter.of(context)
-                                                  .clearRedirectLocation();
+                                                      child: Container(
+                                                        height: 200.0,
+                                                        child:
+                                                            DialogTwoBtnsWidget(
+                                                          titulo:
+                                                              '¿Desea cerrar sesión?',
+                                                          mensaje:
+                                                              'Sus datos se guardarán automáticamente.',
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ).then((value) => safeSetState(
+                                                  () =>
+                                                      _model.isLogoff = value));
 
-                                              context.goNamedAuth(
-                                                  AuthSigningInWidget.routeName,
-                                                  context.mounted);
-                                            }
-                                          },
+                                              _shouldSetState = true;
+                                              if (_model.isLogoff!) {
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
+                                                await authManager.signOut();
+                                                GoRouter.of(context)
+                                                    .clearRedirectLocation();
+
+                                                context.goNamedAuth(
+                                                    AuthSigningInWidget
+                                                        .routeName,
+                                                    context.mounted);
+                                              } else {
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                            },
+                                          ),
                                         ),
                                       ),
-                                    ],
+                                    ]
+                                        .addToStart(SizedBox(width: 5.0))
+                                        .addToEnd(SizedBox(width: 5.0)),
                                   ),
                                 ),
                                 Align(
@@ -756,7 +783,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
-                                                                              font: GoogleFonts.interTight(
+                                                                              font: GoogleFonts.readexPro(
                                                                                 fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                               ),
@@ -799,7 +826,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
-                                                                              font: GoogleFonts.interTight(
+                                                                              font: GoogleFonts.readexPro(
                                                                                 fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                               ),
@@ -842,7 +869,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
-                                                                              font: GoogleFonts.interTight(
+                                                                              font: GoogleFonts.readexPro(
                                                                                 fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                               ),
@@ -889,7 +916,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
-                                                                              font: GoogleFonts.interTight(
+                                                                              font: GoogleFonts.readexPro(
                                                                                 fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
                                                                                 fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
                                                                               ),
@@ -1226,6 +1253,13 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                       ParamType
                                                                           .String,
                                                                     ),
+                                                                    'totalPassed':
+                                                                        serializeParam(
+                                                                      widget
+                                                                          .totalPassed,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
                                                                   }.withoutNulls,
                                                                 );
                                                               },
@@ -1373,11 +1407,12 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: Color(0xFF7ED6CB),
+                                        color: FlutterFlowTheme.of(context)
+                                            .success,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.interTight(
+                                              font: GoogleFonts.inter(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -1387,7 +1422,9 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                         .titleSmall
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF039080),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
@@ -1433,18 +1470,12 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 5.0),
                             child: Text(
-                              'Suma global de las cuentas: \$${formatNumber(
-                                historialPorCobrarClientesRecord
-                                    .cliente.totalDeudaCompleta,
-                                formatType: FormatType.custom,
-                                format: '#0.00',
-                                locale: '',
-                              )}',
+                              'Suma global de las cuentas: \$${widget.totalPassed}',
                               textAlign: TextAlign.center,
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(
-                                    font: GoogleFonts.interTight(
+                                    font: GoogleFonts.readexPro(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .fontWeight,
@@ -1471,118 +1502,142 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                         0)
                       Align(
                         alignment: AlignmentDirectional(0.0, 1.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            for (int loop1Index = 0;
-                                loop1Index <
+                        child: Builder(
+                          builder: (context) => FFButtonWidget(
+                            onPressed: () async {
+                              for (int loop1Index = 0;
+                                  loop1Index <
+                                      historialPorCobrarClientesRecord.cliente
+                                          .historialPorPagarSelectedList.length;
+                                  loop1Index++) {
+                                final currentLoop1Item =
                                     historialPorCobrarClientesRecord.cliente
-                                        .historialPorPagarSelectedList.length;
-                                loop1Index++) {
-                              final currentLoop1Item =
-                                  historialPorCobrarClientesRecord.cliente
-                                          .historialPorPagarSelectedList[
-                                      loop1Index];
-                              _model.totalAPagarCalc = _model.totalAPagarCalc +
-                                  currentLoop1Item.totalPorPagar;
+                                            .historialPorPagarSelectedList[
+                                        loop1Index];
+                                _model.totalAPagarCalc =
+                                    _model.totalAPagarCalc +
+                                        currentLoop1Item.totalPorPagar;
+                                safeSetState(() {});
+                              }
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 600.0,
+                                        child: DialogTwoBtnsWidget(
+                                          titulo:
+                                              '¿Cobrar los productos fiados seleccionados por un total de \$${formatNumber(
+                                            _model.totalAPagarCalc,
+                                            formatType: FormatType.custom,
+                                            format: '#0.00',
+                                            locale: '',
+                                          )} ?',
+                                          mensaje:
+                                              'Al aceptar, se registrarán los productos seleccionados como pagados.',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(
+                                  () => _model.isSelecPago = value));
+
+                              if (_model.isSelecPago!) {
+                                context.pushNamed(
+                                  ClienteProdSelectPagoWidget.routeName,
+                                  queryParameters: {
+                                    'idCliente': serializeParam(
+                                      widget.idCliente,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'nombre': serializeParam(
+                                      widget.nombre,
+                                      ParamType.String,
+                                    ),
+                                    'telf': serializeParam(
+                                      widget.telf,
+                                      ParamType.String,
+                                    ),
+                                    'isFiando': serializeParam(
+                                      widget.isFiando,
+                                      ParamType.bool,
+                                    ),
+                                    'apellido': serializeParam(
+                                      widget.apellido,
+                                      ParamType.String,
+                                    ),
+                                    'cedula': serializeParam(
+                                      widget.cedula,
+                                      ParamType.String,
+                                    ),
+                                    'tenderoRef': serializeParam(
+                                      widget.idTendero,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'direccionDomicilio': serializeParam(
+                                      widget.direccionDomicilio,
+                                      ParamType.String,
+                                    ),
+                                    'viviendaAlq': serializeParam(
+                                      widget.viviendaAlq,
+                                      ParamType.bool,
+                                    ),
+                                    'vivendaProp': serializeParam(
+                                      widget.viviendaProp,
+                                      ParamType.bool,
+                                    ),
+                                    'emailCliente': serializeParam(
+                                      widget.emailCliente,
+                                      ParamType.String,
+                                    ),
+                                    'calcForTotalPorPagar': serializeParam(
+                                      _model.totalAPagarCalc,
+                                      ParamType.double,
+                                    ),
+                                    'totalPassed': serializeParam(
+                                      widget.totalPassed,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+
                               safeSetState(() {});
-                            }
-                            var confirmDialogResponse = await showDialog<bool>(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('¿Pagar \$${formatNumber(
-                                        _model.totalAPagarCalc,
-                                        formatType: FormatType.custom,
-                                        format: '#0.00',
-                                        locale: '',
-                                      )} ?'),
-                                      content: Text(
-                                          'Al aceptar, se confirmarán todos los pagos seleccionados del cliente.'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, false),
-                                          child: Text('Cancelar'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(
-                                              alertDialogContext, true),
-                                          child: Text('Aceptar'),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                ) ??
-                                false;
-                            if (confirmDialogResponse) {
-                              context.pushNamed(
-                                ClienteProdSelectPagoWidget.routeName,
-                                queryParameters: {
-                                  'idCliente': serializeParam(
-                                    widget.idCliente,
-                                    ParamType.DocumentReference,
-                                  ),
-                                  'nombre': serializeParam(
-                                    widget.nombre,
-                                    ParamType.String,
-                                  ),
-                                  'telf': serializeParam(
-                                    widget.telf,
-                                    ParamType.String,
-                                  ),
-                                  'isFiando': serializeParam(
-                                    widget.isFiando,
-                                    ParamType.bool,
-                                  ),
-                                  'apellido': serializeParam(
-                                    widget.apellido,
-                                    ParamType.String,
-                                  ),
-                                  'cedula': serializeParam(
-                                    widget.cedula,
-                                    ParamType.String,
-                                  ),
-                                  'tenderoRef': serializeParam(
-                                    widget.idTendero,
-                                    ParamType.DocumentReference,
-                                  ),
-                                  'direccionDomicilio': serializeParam(
-                                    widget.direccionDomicilio,
-                                    ParamType.String,
-                                  ),
-                                  'viviendaAlq': serializeParam(
-                                    widget.viviendaAlq,
-                                    ParamType.bool,
-                                  ),
-                                  'vivendaProp': serializeParam(
-                                    widget.viviendaProp,
-                                    ParamType.bool,
-                                  ),
-                                  'emailCliente': serializeParam(
-                                    widget.emailCliente,
-                                    ParamType.String,
-                                  ),
-                                  'calcForTotalPorPagar': serializeParam(
-                                    _model.totalAPagarCalc,
-                                    ParamType.double,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            }
-                          },
-                          text: 'Cobrar productos seleccionados',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  font: GoogleFonts.interTight(
+                            },
+                            text: 'Cobrar productos seleccionados',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -1590,17 +1645,9 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(0.0),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
                           ),
                         ),
                       ),
@@ -1609,108 +1656,133 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                         0)
                       Align(
                         alignment: AlignmentDirectional(0.0, 1.0),
-                        child: FFButtonWidget(
-                          onPressed: (historialPorCobrarClientesRecord
-                                      .cliente.historialPorPagarProd.length ==
-                                  0)
-                              ? null
-                              : () async {
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title:
-                                                Text('¿Pagar \$${formatNumber(
-                                              historialPorCobrarClientesRecord
-                                                  .cliente.totalDeudaCompleta,
-                                              formatType: FormatType.custom,
-                                              format: '#0.00',
-                                              locale: '',
-                                            )} en total?'),
-                                            content: Text(
-                                                'Al aceptar, se confirmarán todos los pagos del cliente.'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: Text('Cancelar'),
+                        child: Builder(
+                          builder: (context) => FFButtonWidget(
+                            onPressed: (historialPorCobrarClientesRecord
+                                        .cliente.historialPorPagarProd.length ==
+                                    0)
+                                ? null
+                                : () async {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: Container(
+                                              height: 600.0,
+                                              child: DialogTwoBtnsWidget(
+                                                titulo:
+                                                    '¿Cobrar todos los productos fiados por un total de \$${formatNumber(
+                                                  historialPorCobrarClientesRecord
+                                                      .cliente
+                                                      .totalDeudaCompleta,
+                                                  formatType: FormatType.custom,
+                                                  format: '#0.00',
+                                                  locale: '',
+                                                )} ?',
+                                                mensaje:
+                                                    'Al aceptar, se registrarán todos los productos fiados como pagados.',
                                               ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: Text('Aceptar'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                                  if (confirmDialogResponse) {
-                                    context.pushNamed(
-                                      ClienteProdFullPagoWidget.routeName,
-                                      queryParameters: {
-                                        'idCliente': serializeParam(
-                                          widget.idCliente,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'nombre': serializeParam(
-                                          widget.nombre,
-                                          ParamType.String,
-                                        ),
-                                        'telf': serializeParam(
-                                          widget.telf,
-                                          ParamType.String,
-                                        ),
-                                        'isFiando': serializeParam(
-                                          widget.isFiando,
-                                          ParamType.bool,
-                                        ),
-                                        'apellido': serializeParam(
-                                          widget.apellido,
-                                          ParamType.String,
-                                        ),
-                                        'cedula': serializeParam(
-                                          widget.cedula,
-                                          ParamType.String,
-                                        ),
-                                        'tenderoRef': serializeParam(
-                                          widget.idTendero,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'direccionDomicilio': serializeParam(
-                                          widget.direccionDomicilio,
-                                          ParamType.String,
-                                        ),
-                                        'viviendaAlq': serializeParam(
-                                          widget.viviendaAlq,
-                                          ParamType.bool,
-                                        ),
-                                        'vivendaProp': serializeParam(
-                                          widget.viviendaProp,
-                                          ParamType.bool,
-                                        ),
-                                        'emailCliente': serializeParam(
-                                          widget.emailCliente,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  }
-                                },
-                          text: 'Cobrar todos los productos',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).tertiary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  font: GoogleFonts.interTight(
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(
+                                        () => _model.isFullPago = value));
+
+                                    if (_model.isFullPago!) {
+                                      context.pushNamed(
+                                        ClienteProdFullPagoWidget.routeName,
+                                        queryParameters: {
+                                          'idCliente': serializeParam(
+                                            widget.idCliente,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'nombre': serializeParam(
+                                            widget.nombre,
+                                            ParamType.String,
+                                          ),
+                                          'telf': serializeParam(
+                                            widget.telf,
+                                            ParamType.String,
+                                          ),
+                                          'isFiando': serializeParam(
+                                            widget.isFiando,
+                                            ParamType.bool,
+                                          ),
+                                          'apellido': serializeParam(
+                                            widget.apellido,
+                                            ParamType.String,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'tenderoRef': serializeParam(
+                                            widget.idTendero,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'direccionDomicilio': serializeParam(
+                                            widget.direccionDomicilio,
+                                            ParamType.String,
+                                          ),
+                                          'viviendaAlq': serializeParam(
+                                            widget.viviendaAlq,
+                                            ParamType.bool,
+                                          ),
+                                          'vivendaProp': serializeParam(
+                                            widget.viviendaProp,
+                                            ParamType.bool,
+                                          ),
+                                          'emailCliente': serializeParam(
+                                            widget.emailCliente,
+                                            ParamType.String,
+                                          ),
+                                          'totalPassed': serializeParam(
+                                            widget.totalPassed,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    }
+
+                                    safeSetState(() {});
+                                  },
+                            text: 'Cobrar todos los productos',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).tertiary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -1718,18 +1790,10 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(0.0),
-                            disabledColor: Color(0xA542271C),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(0.0),
+                              disabledColor: Color(0xA542271C),
+                            ),
                           ),
                         ),
                       ),

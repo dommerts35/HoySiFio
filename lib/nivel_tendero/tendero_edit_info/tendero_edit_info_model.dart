@@ -43,21 +43,6 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     return null;
   }
 
-  // State field(s) for emailEdit widget.
-  FocusNode? emailEditFocusNode;
-  TextEditingController? emailEditTextController;
-  String? Function(BuildContext, String?)? emailEditTextControllerValidator;
-  String? _emailEditTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Ingrese su email';
-    }
-
-    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Ingrese un email válido';
-    }
-    return null;
-  }
-
   // State field(s) for ciEdit widget.
   FocusNode? ciEditFocusNode;
   TextEditingController? ciEditTextController;
@@ -142,12 +127,43 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   bool? checkboxListCCValue;
   // State field(s) for CheckboxListCA widget.
   bool? checkboxListCAValue;
+  // State field(s) for numCuentaEditSec widget.
+  FocusNode? numCuentaEditSecFocusNode;
+  TextEditingController? numCuentaEditSecTextController;
+  String? Function(BuildContext, String?)?
+      numCuentaEditSecTextControllerValidator;
+  // State field(s) for nombreBancoEditSec widget.
+  FocusNode? nombreBancoEditSecFocusNode;
+  TextEditingController? nombreBancoEditSecTextController;
+  String? Function(BuildContext, String?)?
+      nombreBancoEditSecTextControllerValidator;
+  // State field(s) for nombreTitularBancoEditSec widget.
+  FocusNode? nombreTitularBancoEditSecFocusNode;
+  TextEditingController? nombreTitularBancoEditSecTextController;
+  String? Function(BuildContext, String?)?
+      nombreTitularBancoEditSecTextControllerValidator;
+  // State field(s) for CCSec widget.
+  bool? cCSecValue;
+  // State field(s) for CASec widget.
+  bool? cASecValue;
+  // State field(s) for pinEdit widget.
+  FocusNode? pinEditFocusNode;
+  TextEditingController? pinEditTextController;
+  String? Function(BuildContext, String?)? pinEditTextControllerValidator;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
+  bool? isBorrar;
   // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
   int? count;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
+  bool? isCountUp;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
+  bool? isCountDown;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
   // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.
   TenderosRecord? queryForComparisonNameTienda;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
 
   @override
   void initState(BuildContext context) {
@@ -155,7 +171,6 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
         _tiendaNameEditTextControllerValidator;
     tenderoNameEditTextControllerValidator =
         _tenderoNameEditTextControllerValidator;
-    emailEditTextControllerValidator = _emailEditTextControllerValidator;
     ciEditTextControllerValidator = _ciEditTextControllerValidator;
     numTelfEditTextControllerValidator = _numTelfEditTextControllerValidator;
     numCuentaEditTextControllerValidator =
@@ -174,9 +189,6 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     tenderoNameEditFocusNode?.dispose();
     tenderoNameEditTextController?.dispose();
 
-    emailEditFocusNode?.dispose();
-    emailEditTextController?.dispose();
-
     ciEditFocusNode?.dispose();
     ciEditTextController?.dispose();
 
@@ -191,5 +203,17 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
 
     nombreTitularBancoEditFocusNode?.dispose();
     nombreTitularBancoEditTextController?.dispose();
+
+    numCuentaEditSecFocusNode?.dispose();
+    numCuentaEditSecTextController?.dispose();
+
+    nombreBancoEditSecFocusNode?.dispose();
+    nombreBancoEditSecTextController?.dispose();
+
+    nombreTitularBancoEditSecFocusNode?.dispose();
+    nombreTitularBancoEditSecTextController?.dispose();
+
+    pinEditFocusNode?.dispose();
+    pinEditTextController?.dispose();
   }
 }

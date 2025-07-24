@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/components_nivel_tendero/info_comp/info_comp_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import '/flutter_flow/request_manager.dart';
 
 import '/index.dart';
@@ -40,6 +41,8 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   ClientesRecord? queryOnLoad;
   // Model for infoComp component.
   late InfoCompModel infoCompModel;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconoBorrar widget.
+  bool? isDeleting;
   // Stores action output result for [Backend Call - Read Document] action in iconoBorrar widget.
   ClientesRecord? readForClienteDelete;
   // Stores action output result for [Firestore Query - Query a collection] action in historialPagados widget.
@@ -58,18 +61,6 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   FocusNode? valorTFFocusNode;
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button_guardarProductosFIados widget.
-  ClientesRecord? queryGuardar;
-  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button_guardarProductosFIados widget.
-  double? sumaValoresEnDTNorm;
-  // Stores action output result for [Backend Call - Read Document] action in Button_guardarProductosFIados widget.
-  TenderosRecord? tenderoReadForEmailToClientProds;
-  // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
-  ClientesRecord? queryAfterDelete;
-  // Stores action output result for [Firestore Query - Query a collection] action in historialPagadosRep widget.
-  ClientesRecord? queryHistorialPagadoRep;
-  // Stores action output result for [Firestore Query - Query a collection] action in historialCobrarRep widget.
-  ClientesRecord? queryHistorialPorPagarRep;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
   double? valorConvVTF;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
@@ -78,6 +69,16 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   ClientesRecord? queryOnAnadir;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
   double? totalDeudaCompletaNorm;
+  // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
+  ClientesRecord? queryAfterDelete;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button_guardarProductosFIados widget.
+  ClientesRecord? queryGuardar;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in Button_guardarProductosFIados widget.
+  double? sumaValoresEnDTNorm;
+  // Stores action output result for [Backend Call - Read Document] action in Button_guardarProductosFIados widget.
+  TenderosRecord? tenderoReadForEmailToClientProds;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
 
   /// Query cache managers for this widget.
 

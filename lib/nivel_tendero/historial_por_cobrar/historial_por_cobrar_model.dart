@@ -1,8 +1,5 @@
-import '/backend/backend.dart';
 import '/components_nivel_tendero/check_cuentas_comp/check_cuentas_comp_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/request_manager.dart';
-
 import '/index.dart';
 import 'historial_por_cobrar_widget.dart' show HistorialPorCobrarWidget;
 import 'package:flutter/material.dart';
@@ -15,27 +12,14 @@ class HistorialPorCobrarModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // Models for checkCuentasComp dynamic component.
   late FlutterFlowDynamicModels<CheckCuentasCompModel> checkCuentasCompModels;
-
-  /// Query cache managers for this widget.
-
-  final _queryNameClienteHistorialPorPagarManager =
-      StreamRequestManager<ClientesRecord>();
-  Stream<ClientesRecord> queryNameClienteHistorialPorPagar({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<ClientesRecord> Function() requestFn,
-  }) =>
-      _queryNameClienteHistorialPorPagarManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearQueryNameClienteHistorialPorPagarCache() =>
-      _queryNameClienteHistorialPorPagarManager.clear();
-  void clearQueryNameClienteHistorialPorPagarCacheKey(String? uniqueKey) =>
-      _queryNameClienteHistorialPorPagarManager.clearRequest(uniqueKey);
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button_cobroSelec widget.
+  bool? isSelecPago;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button_cobroTotal widget.
+  bool? isFullPago;
 
   @override
   void initState(BuildContext context) {
@@ -46,9 +30,5 @@ class HistorialPorCobrarModel
   @override
   void dispose() {
     checkCuentasCompModels.dispose();
-
-    /// Dispose query cache managers for this widget.
-
-    clearQueryNameClienteHistorialPorPagarCache();
   }
 }

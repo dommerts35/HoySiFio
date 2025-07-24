@@ -246,7 +246,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
-                                font: GoogleFonts.interTight(
+                                font: GoogleFonts.readexPro(
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .fontWeight,
@@ -322,7 +322,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .headlineMedium
                                               .override(
-                                                font: GoogleFonts.interTight(
+                                                font: GoogleFonts.readexPro(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -469,7 +469,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .headlineMedium
                                               .override(
-                                                font: GoogleFonts.interTight(
+                                                font: GoogleFonts.readexPro(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)

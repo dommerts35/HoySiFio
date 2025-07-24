@@ -70,7 +70,7 @@ Future<void> sendCustomEmailForDeniedVoucher(
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
-          <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
+          <p style="margin: 0;">© 2025 HoySíFio. Todos los derechos reservados.</p>
           <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
         </td>
       </tr>

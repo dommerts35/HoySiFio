@@ -84,11 +84,11 @@ class _EmptyClientesListNoFiandoWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 10.0),
                 child: AutoSizeText(
-                  'No hay clientes sin fiar productos.',
+                  'No hay clientes sin deudas.',
                   textAlign: TextAlign.center,
                   minFontSize: 10.0,
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.interTight(
+                        font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

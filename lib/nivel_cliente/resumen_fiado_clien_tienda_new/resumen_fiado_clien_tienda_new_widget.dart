@@ -1,10 +1,13 @@
 import '/backend/backend.dart';
+import '/components/dialog_two_btns_widget.dart';
+import '/components_cliente/cliente_config/cliente_config_widget.dart';
+import '/components_cliente/cliente_data_from_tienda_list/cliente_data_from_tienda_list_widget.dart';
 import '/components_nivel_tendero/empty_tienda_comp/empty_tienda_comp_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -127,548 +130,743 @@ class _ResumenFiadoClienTiendaNewWidgetState
         List<ClientesRecord> resumenFiadoClienTiendaNewClientesRecordList =
             snapshot.data!;
 
-        return WillPopScope(
-          onWillPop: () async => false,
-          child: Scaffold(
-            key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            appBar: AppBar(
+        return GestureDetector(
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: WillPopScope(
+            onWillPop: () async => false,
+            child: Scaffold(
+              key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-              automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                buttonSize: 46.0,
-                icon: Icon(
-                  Icons.arrow_back_rounded,
-                  color: FlutterFlowTheme.of(context).secondaryText,
-                  size: 25.0,
+              body: Container(
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primary,
                 ),
-                onPressed: () async {
-                  context.goNamed(AuthSigningInWidget.routeName);
-                },
-              ),
-              actions: [],
-              centerTitle: false,
-              elevation: 0.0,
-            ),
-            body: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.0, -1.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 16.0, 16.0, 0.0),
+                            child: Wrap(
+                              spacing: 16.0,
+                              runSpacing: 16.0,
+                              alignment: WrapAlignment.start,
+                              crossAxisAlignment: WrapCrossAlignment.start,
+                              direction: Axis.horizontal,
+                              runAlignment: WrapAlignment.start,
+                              verticalDirection: VerticalDirection.down,
+                              clipBehavior: Clip.none,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 16.0, 16.0, 24.0),
-                                  child: Wrap(
-                                    spacing: 16.0,
-                                    runSpacing: 16.0,
-                                    alignment: WrapAlignment.start,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    direction: Axis.horizontal,
-                                    runAlignment: WrapAlignment.start,
-                                    verticalDirection: VerticalDirection.down,
-                                    clipBehavior: Clip.none,
-                                    children: [
-                                      SafeArea(
-                                        child: Container(
-                                          width: double.infinity,
-                                          constraints: BoxConstraints(
-                                            maxWidth: 430.0,
+                                SafeArea(
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 630.0,
+                                    constraints: BoxConstraints(
+                                      maxWidth: 430.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: Image.asset(
+                                          'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
+                                        ).image,
+                                      ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
                                           ),
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: Image.asset(
-                                                'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
-                                              ).image,
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                blurRadius: 4.0,
-                                                color: Color(0x33000000),
-                                                offset: Offset(
-                                                  0.0,
-                                                  2.0,
-                                                ),
-                                              )
-                                            ],
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 16.0, 16.0, 24.0),
-                                            child: SingleChildScrollView(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        width: 1.0,
-                                                      ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 16.0, 16.0, 24.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FlutterFlowIconButton(
+                                                    borderColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .error,
+                                                    borderRadius: 12.0,
+                                                    borderWidth: 1.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    icon: Icon(
+                                                      Icons.logout,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      size: 24.0,
                                                     ),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Text(
-                                                            'Resúmen de fiados',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleLarge
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .interTight(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleLarge
-                                                                      .fontStyle,
+                                                    onPressed: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Container(
+                                                                height: 300.0,
+                                                                child:
+                                                                    DialogTwoBtnsWidget(
+                                                                  titulo:
+                                                                      '¿Desea cerrar sesión?',
+                                                                  mensaje:
+                                                                      'Sus datos se guardarán automáticamente.',
                                                                 ),
-                                                          ),
-                                                        ),
-                                                        Divider(
-                                                          height: 10.0,
-                                                          thickness: 2.0,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: AutoSizeText(
-                                                              'Nombre: ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.nombre} ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.apellido}',
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() =>
+                                                              _model.isLogoff =
+                                                                  value));
+
+                                                      _shouldSetState = true;
+                                                      if (_model.isLogoff!) {
+                                                        context.goNamed(
+                                                            AuthSigningInWidget
+                                                                .routeName);
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          safeSetState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                    },
+                                                  ),
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      width: 1.0,
+                                                    ),
+                                                  ),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Text(
+                                                              'Lista de tiendas',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .bodyLarge
+                                                                  .titleLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .readexPro(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyLarge
+                                                                          .titleLarge
                                                                           .fontWeight,
                                                                       fontStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyLarge
+                                                                          .titleLarge
                                                                           .fontStyle,
                                                                     ),
                                                                     letterSpacing:
                                                                         0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyLarge
+                                                                        .titleLarge
                                                                         .fontWeight,
                                                                     fontStyle: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .bodyLarge
+                                                                        .titleLarge
                                                                         .fontStyle,
                                                                   ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Text(
-                                                            'Cédula: ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.cedula}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Text(
-                                                            'Teléfono: ${resumenFiadoClienTiendaNewClientesRecordList.firstOrNull?.cliente.telf}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ]
-                                                          .divide(SizedBox(
-                                                              height: 5.0))
-                                                          .addToStart(SizedBox(
-                                                              height: 5.0))
-                                                          .addToEnd(SizedBox(
-                                                              height: 10.0)),
-                                                    ),
+                                                        ]
+                                                            .addToStart(
+                                                                SizedBox(
+                                                                    width: 5.0))
+                                                            .addToEnd(SizedBox(
+                                                                width: 5.0)),
+                                                      ),
+                                                    ]
+                                                        .addToStart(SizedBox(
+                                                            height: 5.0))
+                                                        .addToEnd(SizedBox(
+                                                            height: 5.0)),
                                                   ),
-                                                  Builder(
-                                                    builder: (context) {
-                                                      final tiendaChild =
-                                                          resumenFiadoClienTiendaNewClientesRecordList
-                                                              .map((e) => e)
-                                                              .toList();
-                                                      if (tiendaChild.isEmpty) {
-                                                        return Center(
-                                                          child:
-                                                              EmptyTiendaCompWidget(),
-                                                        );
-                                                      }
+                                                ),
+                                              ]
+                                                  .divide(SizedBox(width: 5.0))
+                                                  .addToEnd(
+                                                      SizedBox(width: 40.0)),
+                                            ),
+                                            Builder(
+                                              builder: (context) {
+                                                final tiendaChild =
+                                                    resumenFiadoClienTiendaNewClientesRecordList
+                                                        .map((e) => e)
+                                                        .toList();
+                                                if (tiendaChild.isEmpty) {
+                                                  return Center(
+                                                    child:
+                                                        EmptyTiendaCompWidget(),
+                                                  );
+                                                }
 
-                                                      return ListView.separated(
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        shrinkWrap: true,
-                                                        scrollDirection:
-                                                            Axis.vertical,
-                                                        itemCount:
-                                                            tiendaChild.length,
-                                                        separatorBuilder:
-                                                            (_, __) => SizedBox(
-                                                                height: 15.0),
-                                                        itemBuilder: (context,
-                                                            tiendaChildIndex) {
-                                                          final tiendaChildItem =
-                                                              tiendaChild[
-                                                                  tiendaChildIndex];
-                                                          return InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              if (tiendaChildItem
+                                                return ListView.separated(
+                                                  padding: EdgeInsets.zero,
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.vertical,
+                                                  itemCount: tiendaChild.length,
+                                                  separatorBuilder: (_, __) =>
+                                                      SizedBox(height: 15.0),
+                                                  itemBuilder: (context,
+                                                      tiendaChildIndex) {
+                                                    final tiendaChildItem =
+                                                        tiendaChild[
+                                                            tiendaChildIndex];
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        if (tiendaChildItem
+                                                                .cliente
+                                                                .historialPorPagarProd
+                                                                .length !=
+                                                            0) {
+                                                          context.pushNamed(
+                                                            ResumenFiadoClienProdsNewWidget
+                                                                .routeName,
+                                                            queryParameters: {
+                                                              'nombreCliente':
+                                                                  serializeParam(
+                                                                tiendaChildItem
+                                                                    .cliente
+                                                                    .nombre,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'idCliente':
+                                                                  serializeParam(
+                                                                tiendaChildItem
+                                                                    .reference,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                              'idTendero':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .idTenderoList
+                                                                    ?.elementAtOrNull(
+                                                                        tiendaChildIndex),
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                              'cedula':
+                                                                  serializeParam(
+                                                                widget.cedula,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'idTenderoList':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .idTenderoList,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                                isList: true,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+                                                        }
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          maxWidth: 430.0,
+                                                        ),
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: tiendaChildItem
                                                                       .cliente
-                                                                      .historialPorPagarProd
-                                                                      .length !=
-                                                                  0) {
-                                                                context
-                                                                    .pushNamed(
-                                                                  ResumenFiadoClienProdsNewWidget
-                                                                      .routeName,
-                                                                  queryParameters:
-                                                                      {
-                                                                    'nombreCliente':
-                                                                        serializeParam(
-                                                                      tiendaChildItem
-                                                                          .cliente
-                                                                          .nombre,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'idCliente':
-                                                                        serializeParam(
-                                                                      tiendaChildItem
-                                                                          .reference,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                    'idTendero':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idTenderoList
-                                                                          ?.elementAtOrNull(
-                                                                              tiendaChildIndex),
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                    'cedula':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .cedula,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'idTenderoList':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idTenderoList,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                      isList:
-                                                                          true,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              }
-                                                            },
-                                                            child: Container(
-                                                              width: double
-                                                                  .infinity,
-                                                              constraints:
-                                                                  BoxConstraints(
-                                                                maxWidth: 430.0,
-                                                              ),
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                boxShadow: [
-                                                                  BoxShadow(
-                                                                    blurRadius:
-                                                                        4.0,
-                                                                    color: Color(
-                                                                        0x33000000),
-                                                                    offset:
-                                                                        Offset(
-                                                                      0.0,
-                                                                      2.0,
-                                                                    ),
-                                                                  )
-                                                                ],
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            12.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: FlutterFlowTheme.of(
+                                                                      .totalDeudaCompleta >
+                                                                  0.0
+                                                              ? FlutterFlowTheme
+                                                                      .of(
                                                                           context)
-                                                                      .primaryText,
-                                                                ),
+                                                                  .error
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .success,
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              blurRadius: 4.0,
+                                                              color: Color(
+                                                                  0x33000000),
+                                                              offset: Offset(
+                                                                0.0,
+                                                                2.0,
                                                               ),
-                                                              child: Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        16.0,
-                                                                        16.0,
-                                                                        24.0),
-                                                                child:
-                                                                    SingleChildScrollView(
-                                                                  child: Column(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    crossAxisAlignment:
-                                                                        CrossAxisAlignment
-                                                                            .start,
-                                                                    children: [
-                                                                      Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              10.0,
-                                                                              0.0,
-                                                                              10.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              StreamBuilder<List<TenderosRecord>>(
-                                                                            stream:
-                                                                                queryTenderosRecord(
-                                                                              queryBuilder: (tenderosRecord) => tenderosRecord.where(
-                                                                                'tenderos.idTendero',
-                                                                                isEqualTo: widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
+                                                            )
+                                                          ],
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      12.0),
+                                                          border: Border.all(
+                                                            color: tiendaChildItem
+                                                                        .cliente
+                                                                        .totalDeudaCompleta >
+                                                                    0.0
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .error
+                                                                : FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .success,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      24.0),
+                                                          child:
+                                                              SingleChildScrollView(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
+                                                                      child: StreamBuilder<
+                                                                          List<
+                                                                              TenderosRecord>>(
+                                                                        stream:
+                                                                            queryTenderosRecord(
+                                                                          queryBuilder: (tenderosRecord) =>
+                                                                              tenderosRecord.where(
+                                                                            'tenderos.idTendero',
+                                                                            isEqualTo:
+                                                                                widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
+                                                                          ),
+                                                                          singleRecord:
+                                                                              true,
+                                                                        ),
+                                                                        builder:
+                                                                            (context,
+                                                                                snapshot) {
+                                                                          // Customize what your widget looks like when it's loading.
+                                                                          if (!snapshot
+                                                                              .hasData) {
+                                                                            return Center(
+                                                                              child: SizedBox(
+                                                                                width: 50.0,
+                                                                                height: 50.0,
+                                                                                child: CircularProgressIndicator(
+                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                    FlutterFlowTheme.of(context).primary,
+                                                                                  ),
+                                                                                ),
                                                                               ),
-                                                                              singleRecord: true,
+                                                                            );
+                                                                          }
+                                                                          List<TenderosRecord>
+                                                                              textTenderosRecordList =
+                                                                              snapshot.data!;
+                                                                          // Return an empty Container when the item does not exist.
+                                                                          if (snapshot
+                                                                              .data!
+                                                                              .isEmpty) {
+                                                                            return Container();
+                                                                          }
+                                                                          final textTenderosRecord = textTenderosRecordList.isNotEmpty
+                                                                              ? textTenderosRecordList.first
+                                                                              : null;
+
+                                                                          return Text(
+                                                                            'Tienda: ${textTenderosRecord?.displayName}',
+                                                                            style: FlutterFlowTheme.of(context).titleLarge.override(
+                                                                                  font: GoogleFonts.readexPro(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                  ),
+                                                                                  color: FlutterFlowTheme.of(context).alternate,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                                                                                ),
+                                                                          );
+                                                                        },
+                                                                      ),
+                                                                    ),
+                                                                    StreamBuilder<
+                                                                        List<
+                                                                            TenderosRecord>>(
+                                                                      stream:
+                                                                          queryTenderosRecord(
+                                                                        queryBuilder:
+                                                                            (tenderosRecord) =>
+                                                                                tenderosRecord.where(
+                                                                          'tenderos.idTendero',
+                                                                          isEqualTo: widget
+                                                                              .idTenderoList
+                                                                              ?.elementAtOrNull(tiendaChildIndex),
+                                                                        ),
+                                                                        singleRecord:
+                                                                            true,
+                                                                      ),
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 50.0,
+                                                                              height: 50.0,
+                                                                              child: CircularProgressIndicator(
+                                                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                  FlutterFlowTheme.of(context).primary,
+                                                                                ),
+                                                                              ),
                                                                             ),
-                                                                            builder:
-                                                                                (context, snapshot) {
-                                                                              // Customize what your widget looks like when it's loading.
-                                                                              if (!snapshot.hasData) {
-                                                                                return Center(
-                                                                                  child: SizedBox(
-                                                                                    width: 50.0,
-                                                                                    height: 50.0,
-                                                                                    child: CircularProgressIndicator(
-                                                                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                        FlutterFlowTheme.of(context).primary,
+                                                                          );
+                                                                        }
+                                                                        List<TenderosRecord>
+                                                                            infoIconTenderosRecordList =
+                                                                            snapshot.data!;
+                                                                        // Return an empty Container when the item does not exist.
+                                                                        if (snapshot
+                                                                            .data!
+                                                                            .isEmpty) {
+                                                                          return Container();
+                                                                        }
+                                                                        final infoIconTenderosRecord = infoIconTenderosRecordList.isNotEmpty
+                                                                            ? infoIconTenderosRecordList.first
+                                                                            : null;
+
+                                                                        return FlutterFlowIconButton(
+                                                                          borderRadius:
+                                                                              8.0,
+                                                                          buttonSize:
+                                                                              40.0,
+                                                                          icon:
+                                                                              Icon(
+                                                                            Icons.info_outline,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            size:
+                                                                                24.0,
+                                                                          ),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            await showModalBottomSheet(
+                                                                              isScrollControlled: true,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                return GestureDetector(
+                                                                                  onTap: () {
+                                                                                    FocusScope.of(context).unfocus();
+                                                                                    FocusManager.instance.primaryFocus?.unfocus();
+                                                                                  },
+                                                                                  child: Padding(
+                                                                                    padding: MediaQuery.viewInsetsOf(context),
+                                                                                    child: Container(
+                                                                                      height: 400.0,
+                                                                                      child: ClienteDataFromTiendaListWidget(
+                                                                                        nombreCliente: tiendaChildItem.cliente.nombre,
+                                                                                        telefonoCliente: tiendaChildItem.cliente.telf,
+                                                                                        cedulaCliente: tiendaChildItem.cliente.cedula,
+                                                                                        direccionCliente: tiendaChildItem.cliente.direccionDomicilio,
+                                                                                        isViviendaPropia: tiendaChildItem.cliente.viviendaPropia,
+                                                                                        isViviendaAlq: tiendaChildItem.cliente.viviendaAlq,
+                                                                                        emailCliente: tiendaChildItem.cliente.emailCliente,
+                                                                                        tiendaNombre: infoIconTenderosRecord?.displayName,
+                                                                                        apellidoCliente: tiendaChildItem.cliente.apellido,
                                                                                       ),
                                                                                     ),
                                                                                   ),
                                                                                 );
-                                                                              }
-                                                                              List<TenderosRecord> textTenderosRecordList = snapshot.data!;
-                                                                              // Return an empty Container when the item does not exist.
-                                                                              if (snapshot.data!.isEmpty) {
-                                                                                return Container();
-                                                                              }
-                                                                              final textTenderosRecord = textTenderosRecordList.isNotEmpty ? textTenderosRecordList.first : null;
-
-                                                                              return Text(
-                                                                                'Tienda: ${textTenderosRecord?.displayName}',
-                                                                                style: FlutterFlowTheme.of(context).titleLarge.override(
-                                                                                      font: GoogleFonts.interTight(
-                                                                                        fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                                                                                      ),
-                                                                                      letterSpacing: 0.0,
-                                                                                      fontWeight: FlutterFlowTheme.of(context).titleLarge.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                                                                                    ),
-                                                                              );
-                                                                            },
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                safeSetState(() {}));
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                  ].addToStart(
+                                                                      SizedBox(
+                                                                          width:
+                                                                              40.0)),
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    tiendaChildItem.cliente.historialPorPagarProd.length <=
+                                                                            0
+                                                                        ? '¡Hurra! No hay deudas pendientes en esta tienda.'
+                                                                        : 'Total a pagar de los productos: \$${formatNumber(
+                                                                            tiendaChildItem.cliente.totalDeudaCompleta,
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            format:
+                                                                                '#0.00',
+                                                                            locale:
+                                                                                '',
+                                                                          )}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.inter(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                           ),
-                                                                        ),
-                                                                      ),
-                                                                      Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Text(
-                                                                          tiendaChildItem.cliente.historialPorPagarProd.length <= 0
-                                                                              ? '¡Hurra! No hay deudas pendientes en esta tienda.'
-                                                                              : 'Total a pagar de los productos: \$${formatNumber(
-                                                                                  tiendaChildItem.cliente.totalDeudaCompleta,
-                                                                                  formatType: FormatType.custom,
-                                                                                  format: '#0.00',
-                                                                                  locale: '',
-                                                                                )}',
-                                                                          style: FlutterFlowTheme.of(context)
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
                                                                               .bodyLarge
-                                                                              .override(
-                                                                                font: GoogleFonts.inter(
-                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                                ),
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                              ),
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodyLarge
+                                                                              .fontStyle,
                                                                         ),
-                                                                      ),
-                                                                    ].divide(SizedBox(
-                                                                        height:
-                                                                            15.0)),
                                                                   ),
                                                                 ),
-                                                              ),
+                                                              ].divide(SizedBox(
+                                                                  height:
+                                                                      15.0)),
                                                             ),
-                                                          );
-                                                        },
-                                                      );
-                                                    },
-                                                  ),
-                                                ].divide(
-                                                    SizedBox(height: 15.0)),
-                                              ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
                                             ),
-                                          ),
+                                          ].divide(SizedBox(height: 15.0)),
                                         ),
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                          Align(
+                            alignment: AlignmentDirectional(1.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 20.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Colors.transparent,
+                                    context: context,
+                                    builder: (context) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(context).unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: Container(
+                                            height: 300.0,
+                                            child: ClienteConfigWidget(
+                                              pinCliente:
+                                                  resumenFiadoClienTiendaNewClientesRecordList
+                                                      .firstOrNull
+                                                      ?.cliente
+                                                      .pin,
+                                              emailCliente:
+                                                  resumenFiadoClienTiendaNewClientesRecordList
+                                                      .firstOrNull
+                                                      ?.cliente
+                                                      .emailCliente,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+                                },
+                                text: 'Cambiar PIN',
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      16.0, 0.0, 16.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: Colors.white,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  hoverColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  hoverBorderSide: BorderSide(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
+                                  hoverTextColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

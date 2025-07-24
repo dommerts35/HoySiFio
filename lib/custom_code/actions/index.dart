@@ -27,3 +27,4 @@ export 'send_custom_email_for_sent_voucher_to_tendero.dart'
     show sendCustomEmailForSentVoucherToTendero;
 export 'send_custom_verification_email.dart' show sendCustomVerificationEmail;
 export 'send_custom_psw_reset.dart' show sendCustomPswReset;
+export 'enter_immersive_mode.dart' show enterImmersiveMode;

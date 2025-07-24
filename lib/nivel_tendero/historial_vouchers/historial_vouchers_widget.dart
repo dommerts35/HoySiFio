@@ -1,5 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/empty_voucher_comp/empty_voucher_comp_widget.dart';
 import '/components_nivel_tendero/razon_negado_c/razon_negado_c_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
@@ -214,7 +216,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium
                                               .override(
-                                                font: GoogleFonts.interTight(
+                                                font: GoogleFonts.readexPro(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -239,65 +241,80 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                         ),
                                       ),
                                     ),
-                                    FlutterFlowIconButton(
-                                      borderColor:
-                                          FlutterFlowTheme.of(context).error,
-                                      borderRadius: 12.0,
-                                      borderWidth: 1.0,
-                                      buttonSize: 40.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.logout,
-                                        color:
+                                    Builder(
+                                      builder: (context) =>
+                                          FlutterFlowIconButton(
+                                        borderColor:
                                             FlutterFlowTheme.of(context).error,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        var confirmDialogResponse =
-                                            await showDialog<bool>(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          '¿Desea cerrar sesión?'),
-                                                      content: Text(
-                                                          'Sus datos ya están guardados.'),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  false),
-                                                          child:
-                                                              Text('Cancelar'),
-                                                        ),
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext,
-                                                                  true),
-                                                          child:
-                                                              Text('Confirmar'),
-                                                        ),
-                                                      ],
-                                                    );
+                                        borderRadius: 12.0,
+                                        borderWidth: 1.0,
+                                        buttonSize: 40.0,
+                                        fillColor: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        icon: Icon(
+                                          Icons.logout,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          var _shouldSetState = false;
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
                                                   },
-                                                ) ??
-                                                false;
-                                        if (confirmDialogResponse) {
-                                          GoRouter.of(context)
-                                              .prepareAuthEvent();
-                                          await authManager.signOut();
-                                          GoRouter.of(context)
-                                              .clearRedirectLocation();
+                                                  child: Container(
+                                                    height: 300.0,
+                                                    child: DialogTwoBtnsWidget(
+                                                      titulo:
+                                                          '¿Desea cerrar sesión?',
+                                                      mensaje:
+                                                          'Sus datos se guardarán automáticamente.',
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => safeSetState(
+                                              () => _model.isLogoff = value));
 
-                                          context.goNamedAuth(
-                                              AuthSigningInWidget.routeName,
-                                              context.mounted);
-                                        }
-                                      },
+                                          _shouldSetState = true;
+                                          if (_model.isLogoff!) {
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            context.goNamedAuth(
+                                                AuthSigningInWidget.routeName,
+                                                context.mounted);
+                                          } else {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                        },
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -551,7 +568,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                               .titleMedium
                                                               .override(
                                                                 font: GoogleFonts
-                                                                    .interTight(
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
@@ -1019,263 +1036,294 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                     AlignmentDirectional(
                                                                         0.0,
                                                                         -0.02),
-                                                                child:
-                                                                    FlutterFlowIconButton(
-                                                                  borderColor:
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .error,
-                                                                  borderRadius:
-                                                                      12.0,
-                                                                  borderWidth:
-                                                                      1.0,
-                                                                  buttonSize:
-                                                                      40.0,
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .do_not_disturb_on,
-                                                                    color: Color(
-                                                                        0xFFE75353),
-                                                                    size: 24.0,
-                                                                  ),
-                                                                  onPressed: (listaVouchersItem
-                                                                              .estadoVoucher ==
-                                                                          'Negado')
-                                                                      ? null
-                                                                      : () async {
-                                                                          var _shouldSetState =
-                                                                              false;
-                                                                          final firestoreBatch = FirebaseFirestore
-                                                                              .instance
-                                                                              .batch();
-                                                                          try {
-                                                                            var confirmDialogResponse = await showDialog<bool>(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return AlertDialog(
-                                                                                      title: Text('¿Denegar Pago?'),
-                                                                                      content: Text('Una vez denegado, no se podrá acceder al voucher o guardar la imágen del voucher.'),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                          child: Text('Cancelar'),
-                                                                                        ),
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                          child: Text('Confirmar'),
-                                                                                        ),
-                                                                                      ],
-                                                                                    );
-                                                                                  },
-                                                                                ) ??
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          FlutterFlowIconButton(
+                                                                    borderColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                    borderRadius:
+                                                                        12.0,
+                                                                    borderWidth:
+                                                                        1.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .do_not_disturb_on,
+                                                                      color: Color(
+                                                                          0xFFE75353),
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed: (listaVouchersItem.estadoVoucher ==
+                                                                            'Negado')
+                                                                        ? null
+                                                                        : () async {
+                                                                            var _shouldSetState =
                                                                                 false;
-                                                                            if (confirmDialogResponse) {
-                                                                              if (_model.razonNegadoCModels.getValueAtIndex(
-                                                                                        listaVouchersIndex,
-                                                                                        (m) => m.razonNegadoTextController.text,
-                                                                                      ) ==
-                                                                                      null ||
-                                                                                  _model.razonNegadoCModels.getValueAtIndex(
-                                                                                        listaVouchersIndex,
-                                                                                        (m) => m.razonNegadoTextController.text,
-                                                                                      ) ==
-                                                                                      '') {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return AlertDialog(
-                                                                                      title: Text('¡Alerta!'),
-                                                                                      content: Text('Por favor, ingrese la razón de la negación.'),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
+                                                                            final firestoreBatch =
+                                                                                FirebaseFirestore.instance.batch();
+                                                                            try {
+                                                                              await showDialog(
+                                                                                context: context,
+                                                                                builder: (dialogContext) {
+                                                                                  return Dialog(
+                                                                                    elevation: 0,
+                                                                                    insetPadding: EdgeInsets.zero,
+                                                                                    backgroundColor: Colors.transparent,
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    child: GestureDetector(
+                                                                                      onTap: () {
+                                                                                        FocusScope.of(dialogContext).unfocus();
+                                                                                        FocusManager.instance.primaryFocus?.unfocus();
+                                                                                      },
+                                                                                      child: Container(
+                                                                                        height: 200.0,
+                                                                                        child: DialogTwoBtnsWidget(
+                                                                                          titulo: '¿Denegar pago?',
+                                                                                          mensaje: 'El cliente será notificado de esta acción.',
                                                                                         ),
-                                                                                      ],
-                                                                                    );
-                                                                                  },
-                                                                                );
-                                                                                if (_shouldSetState) safeSetState(() {});
-                                                                                return;
-                                                                              }
-                                                                              _model.voucherDT = listaVouchersItem;
-                                                                              _model.voucherHPDT = listaVouchersItem.historialPagoParaEliminar;
-                                                                              safeSetState(() {});
-                                                                              if ((_model.voucherHPDT?.productos != null && (_model.voucherHPDT?.productos)!.isNotEmpty) == false) {
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                            getDataTypeVouchersFirestoreData(
-                                                                                              updateDataTypeVouchersStruct(
-                                                                                                _model.voucherDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
-                                                                                            getDataTypeHistorialPagoFirestoreData(
-                                                                                              updateDataTypeHistorialPagoStruct(
-                                                                                                _model.voucherHPDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
                                                                                       ),
-                                                                                    ));
-                                                                                _model.updateVoucherDTStruct(
-                                                                                  (e) => e
-                                                                                    ..estadoVoucher = 'Negado'
-                                                                                    ..historialPagoParaEliminar = null
-                                                                                    ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
-                                                                                      listaVouchersIndex,
-                                                                                      (m) => m.razonNegadoTextController.text,
                                                                                     ),
-                                                                                );
+                                                                                  );
+                                                                                },
+                                                                              ).then((value) => safeSetState(() => _model.isDeny = value));
+
+                                                                              _shouldSetState = true;
+                                                                              if (_model.isDeny!) {
+                                                                                if (_model.razonNegadoCModels.getValueAtIndex(
+                                                                                          listaVouchersIndex,
+                                                                                          (m) => m.razonNegadoTextController.text,
+                                                                                        ) ==
+                                                                                        null ||
+                                                                                    _model.razonNegadoCModels.getValueAtIndex(
+                                                                                          listaVouchersIndex,
+                                                                                          (m) => m.razonNegadoTextController.text,
+                                                                                        ) ==
+                                                                                        '') {
+                                                                                  await showDialog(
+                                                                                    context: context,
+                                                                                    builder: (alertDialogContext) {
+                                                                                      return AlertDialog(
+                                                                                        title: Text('¡Alerta!'),
+                                                                                        content: Text('Por favor, ingrese la razón de la negación.'),
+                                                                                        actions: [
+                                                                                          TextButton(
+                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                            child: Text('Ok'),
+                                                                                          ),
+                                                                                        ],
+                                                                                      );
+                                                                                    },
+                                                                                  );
+                                                                                  await showDialog(
+                                                                                    context: context,
+                                                                                    builder: (dialogContext) {
+                                                                                      return Dialog(
+                                                                                        elevation: 0,
+                                                                                        insetPadding: EdgeInsets.zero,
+                                                                                        backgroundColor: Colors.transparent,
+                                                                                        alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                        child: GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Container(
+                                                                                            height: 200.0,
+                                                                                            child: DialogBtnWidget(
+                                                                                              titulo: '¡Alerta!',
+                                                                                              mensaje: 'Ingrese la razón de la negación.',
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
+                                                                                    },
+                                                                                  );
+
+                                                                                  if (_shouldSetState) safeSetState(() {});
+                                                                                  return;
+                                                                                }
+                                                                                _model.voucherDT = listaVouchersItem;
+                                                                                _model.voucherHPDT = listaVouchersItem.historialPagoParaEliminar;
                                                                                 safeSetState(() {});
-                                                                                for (int loop1Index = 0; loop1Index < mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length; loop1Index++) {
-                                                                                  final currentLoop1Item = mainHistorialViewClientesRecord.cliente.historialPorPagarProd[loop1Index];
-                                                                                  _model.addToTempHistorialList(currentLoop1Item);
+                                                                                if ((_model.voucherHPDT?.productos != null && (_model.voucherHPDT?.productos)!.isNotEmpty) == false) {
+                                                                                  firestoreBatch.update(
+                                                                                      widget.idCliente!,
+                                                                                      createClientesRecordData(
+                                                                                        cliente: createDataTypeClienteStruct(
+                                                                                          fieldValues: {
+                                                                                            'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                              getDataTypeVouchersFirestoreData(
+                                                                                                updateDataTypeVouchersStruct(
+                                                                                                  _model.voucherDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                            'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                              getDataTypeHistorialPagoFirestoreData(
+                                                                                                updateDataTypeHistorialPagoStruct(
+                                                                                                  _model.voucherHPDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                          },
+                                                                                          clearUnsetFields: false,
+                                                                                        ),
+                                                                                      ));
+                                                                                  _model.updateVoucherDTStruct(
+                                                                                    (e) => e
+                                                                                      ..estadoVoucher = 'Negado'
+                                                                                      ..historialPagoParaEliminar = null
+                                                                                      ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                        listaVouchersIndex,
+                                                                                        (m) => m.razonNegadoTextController.text,
+                                                                                      ),
+                                                                                  );
                                                                                   safeSetState(() {});
-                                                                                  _model.updateTempHistorialListAtIndex(
-                                                                                    loop1Index,
+                                                                                  for (int loop1Index = 0; loop1Index < mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length; loop1Index++) {
+                                                                                    final currentLoop1Item = mainHistorialViewClientesRecord.cliente.historialPorPagarProd[loop1Index];
+                                                                                    _model.addToTempHistorialList(currentLoop1Item);
+                                                                                    safeSetState(() {});
+                                                                                    _model.updateTempHistorialListAtIndex(
+                                                                                      loop1Index,
+                                                                                      (e) => e..isVoucherSent = false,
+                                                                                    );
+                                                                                    safeSetState(() {});
+                                                                                  }
+
+                                                                                  firestoreBatch.update(
+                                                                                      widget.idCliente!,
+                                                                                      createClientesRecordData(
+                                                                                        cliente: createDataTypeClienteStruct(
+                                                                                          fieldValues: {
+                                                                                            'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                              _model.tempHistorialList,
+                                                                                            ),
+                                                                                            'DataTypeVouchers': FieldValue.arrayUnion([
+                                                                                              getDataTypeVouchersFirestoreData(
+                                                                                                updateDataTypeVouchersStruct(
+                                                                                                  _model.voucherDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                          },
+                                                                                          clearUnsetFields: false,
+                                                                                        ),
+                                                                                      ));
+                                                                                } else {
+                                                                                  firestoreBatch.update(
+                                                                                      widget.idCliente!,
+                                                                                      createClientesRecordData(
+                                                                                        cliente: createDataTypeClienteStruct(
+                                                                                          fieldValues: {
+                                                                                            'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                              getDataTypeVouchersFirestoreData(
+                                                                                                updateDataTypeVouchersStruct(
+                                                                                                  _model.voucherDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                            'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                              getDataTypeHistorialPagoFirestoreData(
+                                                                                                updateDataTypeHistorialPagoStruct(
+                                                                                                  _model.voucherHPDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                          },
+                                                                                          clearUnsetFields: false,
+                                                                                        ),
+                                                                                      ));
+                                                                                  _model.updateVoucherDTStruct(
+                                                                                    (e) => e
+                                                                                      ..estadoVoucher = 'Negado'
+                                                                                      ..historialPagoParaEliminar = null
+                                                                                      ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                        listaVouchersIndex,
+                                                                                        (m) => m.razonNegadoTextController.text,
+                                                                                      ),
+                                                                                  );
+                                                                                  _model.updateVoucherHPDTStruct(
                                                                                     (e) => e..isVoucherSent = false,
                                                                                   );
                                                                                   safeSetState(() {});
+
+                                                                                  firestoreBatch.update(
+                                                                                      widget.idCliente!,
+                                                                                      createClientesRecordData(
+                                                                                        cliente: createDataTypeClienteStruct(
+                                                                                          fieldValues: {
+                                                                                            'DataTypeVouchers': FieldValue.arrayUnion([
+                                                                                              getDataTypeVouchersFirestoreData(
+                                                                                                updateDataTypeVouchersStruct(
+                                                                                                  _model.voucherDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                            'historialPorPagarProd': FieldValue.arrayUnion([
+                                                                                              getDataTypeHistorialPagoFirestoreData(
+                                                                                                updateDataTypeHistorialPagoStruct(
+                                                                                                  _model.voucherHPDT,
+                                                                                                  clearUnsetFields: false,
+                                                                                                ),
+                                                                                                true,
+                                                                                              )
+                                                                                            ]),
+                                                                                          },
+                                                                                          clearUnsetFields: false,
+                                                                                        ),
+                                                                                      ));
                                                                                 }
 
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                            _model.tempHistorialList,
-                                                                                          ),
-                                                                                          'DataTypeVouchers': FieldValue.arrayUnion([
-                                                                                            getDataTypeVouchersFirestoreData(
-                                                                                              updateDataTypeVouchersStruct(
-                                                                                                _model.voucherDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
-                                                                                      ),
-                                                                                    ));
-                                                                              } else {
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                            getDataTypeVouchersFirestoreData(
-                                                                                              updateDataTypeVouchersStruct(
-                                                                                                _model.voucherDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
-                                                                                            getDataTypeHistorialPagoFirestoreData(
-                                                                                              updateDataTypeHistorialPagoStruct(
-                                                                                                _model.voucherHPDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
-                                                                                      ),
-                                                                                    ));
-                                                                                _model.updateVoucherDTStruct(
-                                                                                  (e) => e
-                                                                                    ..estadoVoucher = 'Negado'
-                                                                                    ..historialPagoParaEliminar = null
-                                                                                    ..razonDenegado = _model.razonNegadoCModels.getValueAtIndex(
+                                                                                _model.readForTenderoDenyPush = await TenderosRecord.getDocumentOnce(widget.idTendero!);
+                                                                                _shouldSetState = true;
+                                                                                for (int loop2Index = 0; loop2Index < mainHistorialViewClientesRecord.playerIds.length; loop2Index++) {
+                                                                                  final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
+                                                                                  await actions.sendNotificationToPlayer(
+                                                                                    currentLoop2Item,
+                                                                                    '${widget.nombre}: Ha sido denegado un comprobante enviado a la tienda: \"${_model.readForTenderoDenyPush?.displayName}\" debido a: \"${_model.razonNegadoCModels.getValueAtIndex(
                                                                                       listaVouchersIndex,
                                                                                       (m) => m.razonNegadoTextController.text,
-                                                                                    ),
-                                                                                );
-                                                                                _model.updateVoucherHPDTStruct(
-                                                                                  (e) => e..isVoucherSent = false,
-                                                                                );
-                                                                                safeSetState(() {});
-
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'DataTypeVouchers': FieldValue.arrayUnion([
-                                                                                            getDataTypeVouchersFirestoreData(
-                                                                                              updateDataTypeVouchersStruct(
-                                                                                                _model.voucherDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                          'historialPorPagarProd': FieldValue.arrayUnion([
-                                                                                            getDataTypeHistorialPagoFirestoreData(
-                                                                                              updateDataTypeHistorialPagoStruct(
-                                                                                                _model.voucherHPDT,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
-                                                                                      ),
-                                                                                    ));
-                                                                              }
-
-                                                                              _model.readForTenderoDenyPush = await TenderosRecord.getDocumentOnce(widget.idTendero!);
-                                                                              _shouldSetState = true;
-                                                                              for (int loop2Index = 0; loop2Index < mainHistorialViewClientesRecord.playerIds.length; loop2Index++) {
-                                                                                final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
-                                                                                await actions.sendNotificationToPlayer(
-                                                                                  currentLoop2Item,
-                                                                                  '${widget.nombre}: Ha sido denegado un comprobante enviado a la tienda: \"${_model.readForTenderoDenyPush?.displayName}\" debido a: \"${_model.razonNegadoCModels.getValueAtIndex(
+                                                                                    )}\". Revise su historial de comprobantes.',
+                                                                                  );
+                                                                                }
+                                                                                await actions.sendCustomEmailForDeniedVoucher(
+                                                                                  widget.emailCliente!,
+                                                                                  widget.nombre!,
+                                                                                  'Negado de comprobante enviado a la tienda: ${_model.readForTenderoDenyPush?.displayName}',
+                                                                                  _model.readForTenderoDenyPush!.displayName,
+                                                                                  _model.razonNegadoCModels.getValueAtIndex(
                                                                                     listaVouchersIndex,
                                                                                     (m) => m.razonNegadoTextController.text,
-                                                                                  )}\". Revise su historial de comprobantes.',
+                                                                                  )!,
                                                                                 );
+                                                                              } else {
+                                                                                if (_shouldSetState) safeSetState(() {});
+                                                                                return;
                                                                               }
-                                                                              await actions.sendCustomEmailForDeniedVoucher(
-                                                                                widget.emailCliente!,
-                                                                                widget.nombre!,
-                                                                                'Negado de comprobante enviado a la tienda: ${_model.readForTenderoDenyPush?.displayName}',
-                                                                                _model.readForTenderoDenyPush!.displayName,
-                                                                                _model.razonNegadoCModels.getValueAtIndex(
-                                                                                  listaVouchersIndex,
-                                                                                  (m) => m.razonNegadoTextController.text,
-                                                                                )!,
-                                                                              );
-                                                                            } else {
-                                                                              if (_shouldSetState)
-                                                                                safeSetState(() {});
-                                                                              return;
+                                                                            } finally {
+                                                                              await firestoreBatch.commit();
                                                                             }
-                                                                          } finally {
-                                                                            await firestoreBatch.commit();
-                                                                          }
 
-                                                                          if (_shouldSetState)
-                                                                            safeSetState(() {});
-                                                                        },
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
+                                                                          },
+                                                                  ),
                                                                 ),
                                                               ),
                                                             if (listaVouchersItem
@@ -1286,232 +1334,144 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                     AlignmentDirectional(
                                                                         0.0,
                                                                         -0.02),
-                                                                child:
-                                                                    FlutterFlowIconButton(
-                                                                  borderColor:
-                                                                      FlutterFlowTheme.of(
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          FlutterFlowIconButton(
+                                                                    borderColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .success,
+                                                                    borderRadius:
+                                                                        12.0,
+                                                                    borderWidth:
+                                                                        1.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .paid_rounded,
+                                                                      color: FlutterFlowTheme.of(
                                                                               context)
                                                                           .success,
-                                                                  borderRadius:
-                                                                      12.0,
-                                                                  borderWidth:
-                                                                      1.0,
-                                                                  buttonSize:
-                                                                      40.0,
-                                                                  icon: Icon(
-                                                                    Icons
-                                                                        .paid_rounded,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .success,
-                                                                    size: 24.0,
-                                                                  ),
-                                                                  onPressed: (listaVouchersItem
-                                                                              .estadoVoucher ==
-                                                                          'Negado')
-                                                                      ? null
-                                                                      : () async {
-                                                                          final firestoreBatch = FirebaseFirestore
-                                                                              .instance
-                                                                              .batch();
-                                                                          try {
-                                                                            var confirmDialogResponse = await showDialog<bool>(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return AlertDialog(
-                                                                                      title: Text('¿Confirmar pago?'),
-                                                                                      content: Text('¿Está seguro de confirmar el pago de esta cuenta?'),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext, false),
-                                                                                          child: Text('No'),
-                                                                                        ),
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext, true),
-                                                                                          child: Text('Si'),
-                                                                                        ),
-                                                                                      ],
-                                                                                    );
-                                                                                  },
-                                                                                ) ??
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed: (listaVouchersItem.estadoVoucher ==
+                                                                            'Negado')
+                                                                        ? null
+                                                                        : () async {
+                                                                            var _shouldSetState =
                                                                                 false;
-                                                                            if (confirmDialogResponse) {
-                                                                              _model.dtHistorialPagoNew = DataTypeHistorialPagoStruct(
-                                                                                productos: listaVouchersItem.historialPagoParaEliminar.productos,
-                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
-                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
-                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
-                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
-                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
-                                                                                numVoucher: listaVouchersItem.numVoucher,
-                                                                                isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
-                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
-                                                                              );
-                                                                              _model.dtHistorialPagoOld = DataTypeHistorialPagoStruct(
-                                                                                productos: listaVouchersItem.historialPagoParaEliminar.productos,
-                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
-                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
-                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
-                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
-                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
-                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
-                                                                                numVoucher: 0,
-                                                                                isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
-                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
-                                                                              );
-                                                                              safeSetState(() {});
-                                                                              _model.tempHistorialList = mainHistorialViewClientesRecord.cliente.historialPorPagarProd.toList().cast<DataTypeHistorialPagoStruct>();
-                                                                              safeSetState(() {});
-                                                                              if (listaVouchersItem.isFullPago == true) {
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'historialPorPagarProd': FieldValue.delete(),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
+                                                                            final firestoreBatch =
+                                                                                FirebaseFirestore.instance.batch();
+                                                                            try {
+                                                                              await showDialog(
+                                                                                context: context,
+                                                                                builder: (dialogContext) {
+                                                                                  return Dialog(
+                                                                                    elevation: 0,
+                                                                                    insetPadding: EdgeInsets.zero,
+                                                                                    backgroundColor: Colors.transparent,
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    child: GestureDetector(
+                                                                                      onTap: () {
+                                                                                        FocusScope.of(dialogContext).unfocus();
+                                                                                        FocusManager.instance.primaryFocus?.unfocus();
+                                                                                      },
+                                                                                      child: Container(
+                                                                                        height: 300.0,
+                                                                                        child: DialogTwoBtnsWidget(
+                                                                                          titulo: '¿Confirmar pago?',
+                                                                                          mensaje: '¿Está seguro de confirmar el pago de este comprobante?',
+                                                                                        ),
                                                                                       ),
-                                                                                    ));
-                                                                                for (int loop1Index = 0; loop1Index < _model.tempHistorialList.length; loop1Index++) {
-                                                                                  final currentLoop1Item = _model.tempHistorialList[loop1Index];
-                                                                                  _model.updateTempHistorialListAtIndex(
-                                                                                    loop1Index,
-                                                                                    (e) => e
-                                                                                      ..totalPorPagar = 0.0
-                                                                                      ..totalPagado = currentLoop1Item.totalGeneral
-                                                                                      ..transferencia = true
-                                                                                      ..efectivo = false
-                                                                                      ..isVoucherSent = false
-                                                                                      ..fechaDeCobro = getCurrentTimestamp,
+                                                                                    ),
                                                                                   );
-                                                                                  safeSetState(() {});
+                                                                                },
+                                                                              ).then((value) => safeSetState(() => _model.isConfirmar = value));
 
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          fieldValues: {
-                                                                                            'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                              getDataTypeHistorialPagoFirestoreData(
-                                                                                                updateDataTypeHistorialPagoStruct(
-                                                                                                  currentLoop1Item,
-                                                                                                  clearUnsetFields: false,
-                                                                                                ),
-                                                                                                true,
-                                                                                              )
-                                                                                            ]),
-                                                                                          },
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                }
-
-                                                                                firestoreBatch.update(
-                                                                                    widget.idCliente!,
-                                                                                    createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        totalDeudaCompleta: 0.0,
-                                                                                        isFiando: false,
-                                                                                        fieldValues: {
-                                                                                          'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                            getDataTypeVouchersFirestoreData(
-                                                                                              updateDataTypeVouchersStruct(
-                                                                                                listaVouchersItem,
-                                                                                                clearUnsetFields: false,
-                                                                                              ),
-                                                                                              true,
-                                                                                            )
-                                                                                          ]),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
-                                                                                      ),
-                                                                                    ));
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (alertDialogContext) {
-                                                                                    return AlertDialog(
-                                                                                      title: Text('¡Pago completo confirmado!'),
-                                                                                      content: Text('Se ha registrado el pago exitosamente.'),
-                                                                                      actions: [
-                                                                                        TextButton(
-                                                                                          onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                          child: Text('Ok'),
-                                                                                        ),
-                                                                                      ],
-                                                                                    );
-                                                                                  },
+                                                                              _shouldSetState = true;
+                                                                              if (_model.isConfirmar!) {
+                                                                                _model.dtHistorialPagoNew = DataTypeHistorialPagoStruct(
+                                                                                  productos: listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                  totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                  totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                  transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                  efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                  totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                  idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                  fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                  numVoucher: listaVouchersItem.numVoucher,
+                                                                                  isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
+                                                                                  fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
                                                                                 );
-                                                                              } else {
-                                                                                if (listaVouchersItem.montoAPagar == listaVouchersItem.historialPagoParaEliminar.totalPorPagar) {
-                                                                                  _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
-                                                                                  safeSetState(() {});
-                                                                                  _model.updateDtHistorialPagoNewStruct(
-                                                                                    (e) => e
-                                                                                      ..totalPorPagar = 0.0
-                                                                                      ..isVoucherSent = false
-                                                                                      ..transferencia = true
-                                                                                      ..efectivo = false
-                                                                                      ..fechaDeCobro = getCurrentTimestamp,
-                                                                                  );
-                                                                                  safeSetState(() {});
-
+                                                                                _model.dtHistorialPagoOld = DataTypeHistorialPagoStruct(
+                                                                                  productos: listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                  totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                  totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                  transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                  efectivo: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                  totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                  idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                  fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                  numVoucher: 0,
+                                                                                  isVoucherSent: listaVouchersItem.historialPagoParaEliminar.isVoucherSent,
+                                                                                  fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                                );
+                                                                                safeSetState(() {});
+                                                                                _model.tempHistorialList = mainHistorialViewClientesRecord.cliente.historialPorPagarProd.toList().cast<DataTypeHistorialPagoStruct>();
+                                                                                safeSetState(() {});
+                                                                                if (listaVouchersItem.isFullPago == true) {
                                                                                   firestoreBatch.update(
                                                                                       widget.idCliente!,
                                                                                       createClientesRecordData(
                                                                                         cliente: createDataTypeClienteStruct(
                                                                                           fieldValues: {
-                                                                                            'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                              getDataTypeHistorialPagoFirestoreData(
-                                                                                                updateDataTypeHistorialPagoStruct(
-                                                                                                  _model.dtHistorialPagoNew,
-                                                                                                  clearUnsetFields: false,
-                                                                                                ),
-                                                                                                true,
-                                                                                              )
-                                                                                            ]),
+                                                                                            'historialPorPagarProd': FieldValue.delete(),
                                                                                           },
                                                                                           clearUnsetFields: false,
                                                                                         ),
                                                                                       ));
+                                                                                  for (int loop1Index = 0; loop1Index < _model.tempHistorialList.length; loop1Index++) {
+                                                                                    final currentLoop1Item = _model.tempHistorialList[loop1Index];
+                                                                                    _model.updateTempHistorialListAtIndex(
+                                                                                      loop1Index,
+                                                                                      (e) => e
+                                                                                        ..totalPorPagar = 0.0
+                                                                                        ..totalPagado = currentLoop1Item.totalGeneral
+                                                                                        ..transferencia = true
+                                                                                        ..efectivo = false
+                                                                                        ..isVoucherSent = false
+                                                                                        ..fechaDeCobro = getCurrentTimestamp,
+                                                                                    );
+                                                                                    safeSetState(() {});
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            fieldValues: {
+                                                                                              'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                                getDataTypeHistorialPagoFirestoreData(
+                                                                                                  updateDataTypeHistorialPagoStruct(
+                                                                                                    currentLoop1Item,
+                                                                                                    clearUnsetFields: false,
+                                                                                                  ),
+                                                                                                  true,
+                                                                                                )
+                                                                                              ]),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                  }
 
                                                                                   firestoreBatch.update(
                                                                                       widget.idCliente!,
                                                                                       createClientesRecordData(
                                                                                         cliente: createDataTypeClienteStruct(
-                                                                                          fieldValues: {
-                                                                                            'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                              _model.tempHistorialList,
-                                                                                            ),
-                                                                                          },
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                  _model.tDCNormV = await actions.normalizarValorNumerico(
-                                                                                    formatNumber(
-                                                                                      mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
-                                                                                      formatType: FormatType.custom,
-                                                                                      format: '#0.00',
-                                                                                      locale: '',
-                                                                                    ),
-                                                                                  );
-                                                                                  _model.tDCNormV2 = await actions.normalizarValorNumerico(
-                                                                                    formatNumber(
-                                                                                      _model.tDCNormV,
-                                                                                      formatType: FormatType.custom,
-                                                                                      format: '#0.00',
-                                                                                      locale: '',
-                                                                                    ),
-                                                                                  );
-
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          totalDeudaCompleta: (_model.tDCNormV2!) - listaVouchersItem.montoAPagar,
+                                                                                          totalDeudaCompleta: 0.0,
+                                                                                          isFiando: false,
                                                                                           fieldValues: {
                                                                                             'DataTypeVouchers': FieldValue.arrayRemove([
                                                                                               getDataTypeVouchersFirestoreData(
@@ -1528,169 +1488,301 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                                                                                       ));
                                                                                   await showDialog(
                                                                                     context: context,
-                                                                                    builder: (alertDialogContext) {
-                                                                                      return AlertDialog(
-                                                                                        title: Text('¡Pago completo confirmado!'),
-                                                                                        content: Text('Se ha registrado el pago exitosamente.'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
+                                                                                    builder: (dialogContext) {
+                                                                                      return Dialog(
+                                                                                        elevation: 0,
+                                                                                        insetPadding: EdgeInsets.zero,
+                                                                                        backgroundColor: Colors.transparent,
+                                                                                        alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                        child: GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Container(
+                                                                                            height: 200.0,
+                                                                                            child: DialogBtnWidget(
+                                                                                              titulo: '¡Pago completo confirmado!',
+                                                                                              mensaje: 'Se ha registrado el pago exitosamente.',
+                                                                                            ),
                                                                                           ),
-                                                                                        ],
+                                                                                        ),
                                                                                       );
                                                                                     },
                                                                                   );
                                                                                 } else {
-                                                                                  _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
-                                                                                  safeSetState(() {});
-                                                                                  _model.updateDtHistorialPagoNewStruct(
-                                                                                    (e) => e
-                                                                                      ..incrementTotalPagado(listaVouchersItem.montoAPagar)
-                                                                                      ..incrementTotalPorPagar(-listaVouchersItem.montoAPagar)
-                                                                                      ..fechaDeCobro = getCurrentTimestamp
-                                                                                      ..transferencia = true
-                                                                                      ..efectivo = false
-                                                                                      ..isVoucherSent = false,
-                                                                                  );
-                                                                                  safeSetState(() {});
+                                                                                  if (listaVouchersItem.montoAPagar == listaVouchersItem.historialPagoParaEliminar.totalPorPagar) {
+                                                                                    _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
+                                                                                    safeSetState(() {});
+                                                                                    _model.updateDtHistorialPagoNewStruct(
+                                                                                      (e) => e
+                                                                                        ..totalPorPagar = 0.0
+                                                                                        ..isVoucherSent = false
+                                                                                        ..transferencia = true
+                                                                                        ..efectivo = false
+                                                                                        ..fechaDeCobro = getCurrentTimestamp,
+                                                                                    );
+                                                                                    safeSetState(() {});
 
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          fieldValues: {
-                                                                                            'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                              _model.tempHistorialList,
-                                                                                            ),
-                                                                                            'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                              getDataTypeHistorialPagoFirestoreData(
-                                                                                                updateDataTypeHistorialPagoStruct(
-                                                                                                  _model.dtHistorialPagoNew,
-                                                                                                  clearUnsetFields: false,
-                                                                                                ),
-                                                                                                true,
-                                                                                              )
-                                                                                            ]),
-                                                                                          },
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                  _model.addToTempHistorialList(_model.dtHistorialPagoNew!);
-                                                                                  safeSetState(() {});
-
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          fieldValues: {
-                                                                                            'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                              _model.tempHistorialList,
-                                                                                            ),
-                                                                                          },
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                  _model.tDCNormVF = await actions.normalizarValorNumerico(
-                                                                                    formatNumber(
-                                                                                      mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
-                                                                                      formatType: FormatType.custom,
-                                                                                      format: '#0.00',
-                                                                                      locale: '',
-                                                                                    ),
-                                                                                  );
-                                                                                  _model.tDCNormVF2 = await actions.normalizarValorNumerico(
-                                                                                    formatNumber(
-                                                                                      _model.tDCNormVF,
-                                                                                      formatType: FormatType.custom,
-                                                                                      format: '#0.00',
-                                                                                      locale: '',
-                                                                                    ),
-                                                                                  );
-
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          totalDeudaCompleta: (_model.tDCNormVF2!) - listaVouchersItem.montoAPagar,
-                                                                                          fieldValues: {
-                                                                                            'DataTypeVouchers': FieldValue.arrayRemove([
-                                                                                              getDataTypeVouchersFirestoreData(
-                                                                                                updateDataTypeVouchersStruct(
-                                                                                                  listaVouchersItem,
-                                                                                                  clearUnsetFields: false,
-                                                                                                ),
-                                                                                                true,
-                                                                                              )
-                                                                                            ]),
-                                                                                          },
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                  await showDialog(
-                                                                                    context: context,
-                                                                                    builder: (alertDialogContext) {
-                                                                                      return AlertDialog(
-                                                                                        title: Text('¡Pago confirmado!'),
-                                                                                        content: Text('Aún falta por pagar: \$${formatNumber(
-                                                                                          _model.dtHistorialPagoNew?.totalPorPagar,
-                                                                                          formatType: FormatType.custom,
-                                                                                          format: '#0.00',
-                                                                                          locale: '',
-                                                                                        )} de esta cuenta.'),
-                                                                                        actions: [
-                                                                                          TextButton(
-                                                                                            onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                            child: Text('Ok'),
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            fieldValues: {
+                                                                                              'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                                getDataTypeHistorialPagoFirestoreData(
+                                                                                                  updateDataTypeHistorialPagoStruct(
+                                                                                                    _model.dtHistorialPagoNew,
+                                                                                                    clearUnsetFields: false,
+                                                                                                  ),
+                                                                                                  true,
+                                                                                                )
+                                                                                              ]),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
                                                                                           ),
-                                                                                        ],
+                                                                                        ));
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            fieldValues: {
+                                                                                              'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                                _model.tempHistorialList,
+                                                                                              ),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                    _model.tDCNormV = await actions.normalizarValorNumerico(
+                                                                                      formatNumber(
+                                                                                        mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
+                                                                                        formatType: FormatType.custom,
+                                                                                        format: '#0.00',
+                                                                                        locale: '',
+                                                                                      ),
+                                                                                    );
+                                                                                    _shouldSetState = true;
+                                                                                    _model.tDCNormV2 = await actions.normalizarValorNumerico(
+                                                                                      formatNumber(
+                                                                                        _model.tDCNormV,
+                                                                                        formatType: FormatType.custom,
+                                                                                        format: '#0.00',
+                                                                                        locale: '',
+                                                                                      ),
+                                                                                    );
+                                                                                    _shouldSetState = true;
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            totalDeudaCompleta: (_model.tDCNormV2!) - listaVouchersItem.montoAPagar,
+                                                                                            fieldValues: {
+                                                                                              'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                                getDataTypeVouchersFirestoreData(
+                                                                                                  updateDataTypeVouchersStruct(
+                                                                                                    listaVouchersItem,
+                                                                                                    clearUnsetFields: false,
+                                                                                                  ),
+                                                                                                  true,
+                                                                                                )
+                                                                                              ]),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                    await showDialog(
+                                                                                      context: context,
+                                                                                      builder: (dialogContext) {
+                                                                                        return Dialog(
+                                                                                          elevation: 0,
+                                                                                          insetPadding: EdgeInsets.zero,
+                                                                                          backgroundColor: Colors.transparent,
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                          child: GestureDetector(
+                                                                                            onTap: () {
+                                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                                            },
+                                                                                            child: Container(
+                                                                                              height: 200.0,
+                                                                                              child: DialogBtnWidget(
+                                                                                                titulo: '¡Pago completo confirmado!',
+                                                                                                mensaje: 'Se ha registrado el pago exitosamente.',
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    );
+                                                                                  } else {
+                                                                                    _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
+                                                                                    safeSetState(() {});
+                                                                                    _model.updateDtHistorialPagoNewStruct(
+                                                                                      (e) => e
+                                                                                        ..incrementTotalPagado(listaVouchersItem.montoAPagar)
+                                                                                        ..incrementTotalPorPagar(-listaVouchersItem.montoAPagar)
+                                                                                        ..fechaDeCobro = getCurrentTimestamp
+                                                                                        ..transferencia = true
+                                                                                        ..efectivo = false
+                                                                                        ..isVoucherSent = false,
+                                                                                    );
+                                                                                    safeSetState(() {});
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            fieldValues: {
+                                                                                              'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                                _model.tempHistorialList,
+                                                                                              ),
+                                                                                              'historialPagadosProd': FieldValue.arrayUnion([
+                                                                                                getDataTypeHistorialPagoFirestoreData(
+                                                                                                  updateDataTypeHistorialPagoStruct(
+                                                                                                    _model.dtHistorialPagoNew,
+                                                                                                    clearUnsetFields: false,
+                                                                                                  ),
+                                                                                                  true,
+                                                                                                )
+                                                                                              ]),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                    _model.addToTempHistorialList(_model.dtHistorialPagoNew!);
+                                                                                    safeSetState(() {});
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            fieldValues: {
+                                                                                              'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
+                                                                                                _model.tempHistorialList,
+                                                                                              ),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                    _model.tDCNormVF = await actions.normalizarValorNumerico(
+                                                                                      formatNumber(
+                                                                                        mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
+                                                                                        formatType: FormatType.custom,
+                                                                                        format: '#0.00',
+                                                                                        locale: '',
+                                                                                      ),
+                                                                                    );
+                                                                                    _shouldSetState = true;
+                                                                                    _model.tDCNormVF2 = await actions.normalizarValorNumerico(
+                                                                                      formatNumber(
+                                                                                        _model.tDCNormVF,
+                                                                                        formatType: FormatType.custom,
+                                                                                        format: '#0.00',
+                                                                                        locale: '',
+                                                                                      ),
+                                                                                    );
+                                                                                    _shouldSetState = true;
+
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            totalDeudaCompleta: (_model.tDCNormVF2!) - listaVouchersItem.montoAPagar,
+                                                                                            fieldValues: {
+                                                                                              'DataTypeVouchers': FieldValue.arrayRemove([
+                                                                                                getDataTypeVouchersFirestoreData(
+                                                                                                  updateDataTypeVouchersStruct(
+                                                                                                    listaVouchersItem,
+                                                                                                    clearUnsetFields: false,
+                                                                                                  ),
+                                                                                                  true,
+                                                                                                )
+                                                                                              ]),
+                                                                                            },
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                    await showDialog(
+                                                                                      context: context,
+                                                                                      builder: (dialogContext) {
+                                                                                        return Dialog(
+                                                                                          elevation: 0,
+                                                                                          insetPadding: EdgeInsets.zero,
+                                                                                          backgroundColor: Colors.transparent,
+                                                                                          alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                          child: GestureDetector(
+                                                                                            onTap: () {
+                                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                                            },
+                                                                                            child: Container(
+                                                                                              height: 200.0,
+                                                                                              child: DialogBtnWidget(
+                                                                                                titulo: '¡Pago confirmado!',
+                                                                                                mensaje: 'Aún falta por pagar: \$${formatNumber(
+                                                                                                  _model.dtHistorialPagoNew?.totalPorPagar,
+                                                                                                  formatType: FormatType.custom,
+                                                                                                  format: '#0.00',
+                                                                                                  locale: '',
+                                                                                                )} de esta cuenta.',
+                                                                                              ),
+                                                                                            ),
+                                                                                          ),
+                                                                                        );
+                                                                                      },
+                                                                                    );
+                                                                                  }
+
+                                                                                  if (mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length <= 0) {
+                                                                                    firestoreBatch.update(
+                                                                                        widget.idCliente!,
+                                                                                        createClientesRecordData(
+                                                                                          cliente: createDataTypeClienteStruct(
+                                                                                            isFiando: false,
+                                                                                            clearUnsetFields: false,
+                                                                                          ),
+                                                                                        ));
+                                                                                  }
+                                                                                }
+
+                                                                                _model.readForTenderoAcceptPush = await TenderosRecord.getDocumentOnce(widget.idTendero!);
+                                                                                _shouldSetState = true;
+                                                                                for (int loop1Index = 0; loop1Index < mainHistorialViewClientesRecord.playerIds.length; loop1Index++) {
+                                                                                  final currentLoop1Item = mainHistorialViewClientesRecord.playerIds[loop1Index];
+                                                                                  unawaited(
+                                                                                    () async {
+                                                                                      await actions.sendNotificationToPlayer(
+                                                                                        currentLoop1Item,
+                                                                                        '${widget.nombre}: ¡Ha sido aceptado un comprobante enviado a la tienda: \"${_model.readForTenderoAcceptPush?.displayName}\". Revise su historial de comprobantes!',
                                                                                       );
-                                                                                    },
+                                                                                    }(),
                                                                                   );
                                                                                 }
-
-                                                                                if (mainHistorialViewClientesRecord.cliente.historialPorPagarProd.length <= 0) {
-                                                                                  firestoreBatch.update(
-                                                                                      widget.idCliente!,
-                                                                                      createClientesRecordData(
-                                                                                        cliente: createDataTypeClienteStruct(
-                                                                                          isFiando: false,
-                                                                                          clearUnsetFields: false,
-                                                                                        ),
-                                                                                      ));
-                                                                                }
-                                                                              }
-
-                                                                              _model.readForTenderoAcceptPush = await TenderosRecord.getDocumentOnce(widget.idTendero!);
-                                                                              for (int loop2Index = 0; loop2Index < mainHistorialViewClientesRecord.playerIds.length; loop2Index++) {
-                                                                                final currentLoop2Item = mainHistorialViewClientesRecord.playerIds[loop2Index];
                                                                                 unawaited(
                                                                                   () async {
-                                                                                    await actions.sendNotificationToPlayer(
-                                                                                      currentLoop2Item,
-                                                                                      '${widget.nombre}: ¡Ha sido aceptado un comprobante enviado a la tienda: \"${_model.readForTenderoAcceptPush?.displayName}\". Revise su historial de comprobantes!',
+                                                                                    await actions.sendCustomEmailForAcceptedVoucher(
+                                                                                      mainHistorialViewClientesRecord.cliente.emailCliente,
+                                                                                      widget.nombre!,
+                                                                                      'Comprobante aceptado por la tienda: ${_model.readForTenderoAcceptPush?.displayName}',
+                                                                                      _model.readForTenderoAcceptPush!.displayName,
                                                                                     );
                                                                                   }(),
                                                                                 );
+                                                                              } else {
+                                                                                if (_shouldSetState) safeSetState(() {});
+                                                                                return;
                                                                               }
-                                                                              unawaited(
-                                                                                () async {
-                                                                                  await actions.sendCustomEmailForAcceptedVoucher(
-                                                                                    mainHistorialViewClientesRecord.cliente.emailCliente,
-                                                                                    widget.nombre!,
-                                                                                    'Comprobante aceptado por la tienda: ${_model.readForTenderoAcceptPush?.displayName}',
-                                                                                    _model.readForTenderoAcceptPush!.displayName,
-                                                                                  );
-                                                                                }(),
-                                                                              );
+                                                                            } finally {
+                                                                              await firestoreBatch.commit();
                                                                             }
-                                                                          } finally {
-                                                                            await firestoreBatch.commit();
-                                                                          }
 
-                                                                          safeSetState(
-                                                                              () {});
-                                                                        },
+                                                                            if (_shouldSetState)
+                                                                              safeSetState(() {});
+                                                                          },
+                                                                  ),
                                                                 ),
                                                               ),
                                                           ],

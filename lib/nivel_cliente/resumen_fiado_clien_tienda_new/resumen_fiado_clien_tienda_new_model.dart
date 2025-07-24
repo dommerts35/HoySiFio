@@ -33,6 +33,8 @@ class ResumenFiadoClienTiendaNewModel
   List<ClientesRecord>? queryOnLoadClientes;
   // Stores action output result for [Backend Call - Read Document] action in resumenFiadoClienTiendaNew widget.
   TenderosRecord? readCountTendero;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
 
   @override
   void initState(BuildContext context) {}
