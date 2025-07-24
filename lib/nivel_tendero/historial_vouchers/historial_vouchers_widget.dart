@@ -109,7 +109,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget> {
                               'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
                             ).image,
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(0.0),
                           border: Border.all(
                             color: FlutterFlowTheme.of(context).primaryText,
                             width: 1.0,

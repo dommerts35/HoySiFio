@@ -1,8 +1,5 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
-import '/flutter_flow/request_manager.dart';
-
 import '/index.dart';
 import 'historial_single_voucher_pago_widget.dart'
     show HistorialSingleVoucherPagoWidget;
@@ -70,23 +67,6 @@ class HistorialSingleVoucherPagoModel
       ? pageViewController!.page!.round()
       : 0;
 
-  /// Query cache managers for this widget.
-
-  final _queryNombreClienteManager = StreamRequestManager<ClientesRecord>();
-  Stream<ClientesRecord> queryNombreCliente({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<ClientesRecord> Function() requestFn,
-  }) =>
-      _queryNombreClienteManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearQueryNombreClienteCache() => _queryNombreClienteManager.clear();
-  void clearQueryNombreClienteCacheKey(String? uniqueKey) =>
-      _queryNombreClienteManager.clearRequest(uniqueKey);
-
   @override
   void initState(BuildContext context) {}
 
@@ -100,9 +80,5 @@ class HistorialSingleVoucherPagoModel
 
     bancoFocusNode?.dispose();
     bancoTextController?.dispose();
-
-    /// Dispose query cache managers for this widget.
-
-    clearQueryNombreClienteCache();
   }
 }

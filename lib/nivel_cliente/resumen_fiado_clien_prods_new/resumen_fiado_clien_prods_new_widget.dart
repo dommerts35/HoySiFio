@@ -1516,7 +1516,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                   .toList()
                                                                   .length >
                                                               0
-                                                          ? Color(0xFF543324)
+                                                          ? Color(0xFFB25C34)
                                                           : FlutterFlowTheme.of(
                                                                   context)
                                                               .tertiary,

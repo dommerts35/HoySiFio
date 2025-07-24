@@ -2661,80 +2661,45 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                       MainAxisAlignment
                                                           .spaceEvenly,
                                                   children: [
-                                                    StreamBuilder<
-                                                        ClientesRecord>(
-                                                      stream: ClientesRecord
-                                                          .getDocument(widget
-                                                              .idCliente!),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  CircularProgressIndicator(
-                                                                valueColor:
-                                                                    AlwaysStoppedAnimation<
-                                                                        Color>(
+                                                    Text(
+                                                      'Total actual: \$${formatNumber(
+                                                        _model.tempSumProductos,
+                                                        formatType:
+                                                            FormatType.custom,
+                                                        format: '#0.00',
+                                                        locale: '',
+                                                      )}'
+                                                          .maybeHandleOverflow(
+                                                        maxChars: 33,
+                                                        replacement: '…',
+                                                      ),
+                                                      maxLines: 1,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyLarge
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .inter(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
                                                                   FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        }
-
-                                                        final textClientesRecord =
-                                                            snapshot.data!;
-
-                                                        return Text(
-                                                          'Total actual: \$${formatNumber(
-                                                            _model
-                                                                .tempSumProductos,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}'
-                                                              .maybeHandleOverflow(
-                                                            maxChars: 33,
-                                                            replacement: '…',
-                                                          ),
-                                                          maxLines: 1,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyLarge
                                                                       .fontStyle,
-                                                                ),
-                                                                color: Color(
-                                                                    0xFFF22833),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
+                                                            ),
+                                                            color: Color(
+                                                                0xFFF22833),
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyLarge
                                                                     .fontStyle,
-                                                              ),
-                                                        );
-                                                      },
+                                                          ),
                                                     ),
                                                     Expanded(
                                                       child: Padding(
