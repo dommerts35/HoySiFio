@@ -43,8 +43,8 @@ Future<void> sendCustomEmailForClienteRegister(String recipientEmail,
       <tr>
         <td style="padding-bottom: 20px;">
           <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
-          <p style="margin: 0 0 20px 0;">Has sido registrado exitosamente en el sistema de la tienda <strong>$tiendaNombre</strong>.</p>
-          <p style="margin: 0 0 15px 0;">Para acceder a tu cuenta de cliente en HoySíFio, dirígete a la sección de inicio de sesión para clientes e ingresa tu número de cédula. No necesitas una contraseña en este paso. Luego, solicita al tendero que te registró que te proporcione tu código de cliente. Con este código, podrás crear una contraseña y activar tu cuenta.</p>
+          <p style="margin: 0 0 20px 0;">Ha sido registrado exitosamente en el sistema de la tienda: <strong>$tiendaNombre</strong>.</p>
+          <p style="margin: 0 0 15px 0;">Para acceder a su cuenta de cliente en HoySíFio, dirígete a la sección de inicio de sesión para clientes e ingrese su número de cédula. No necesitas ingresar una contraseña o PIN en este paso. Luego, solicita al tendero que te registró que te proporcione tu código de cliente. Con este código, podrá crear una contraseña y activar su cuenta.</p>
         </td>
       </tr>
     </table>

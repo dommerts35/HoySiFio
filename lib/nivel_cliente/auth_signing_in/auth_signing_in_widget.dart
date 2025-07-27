@@ -1463,7 +1463,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         await actions
                                                                             .sendNotificationToPlayer(
                                                                           currentLoop1Item,
-                                                                          '${_model.readForTenderoNotifLogInPsswrd?.tenderos.nombreTendero}: ¡Se ha iniciado sesión como tendero en la tienda: ${_model.readForTenderoNotifLogInPsswrd?.displayName}!',
+                                                                          '${_model.readForTenderoNotifLogInPsswrd?.tenderos.nombreTendero}: ¡Ha iniciado sesión en la tienda: ${_model.readForTenderoNotifLogInPsswrd?.displayName}!',
                                                                         );
                                                                       }(),
                                                                     );
@@ -1477,8 +1477,13 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             .text,
                                                                         _model
                                                                             .readForTenderoNotifLogInPsswrd!
-                                                                            .displayName,
+                                                                            .tenderos
+                                                                            .nombreTendero,
                                                                         'Inicio de Sesion',
+                                                                        _model
+                                                                            .readForTenderoNotifLogInPsswrd!
+                                                                            .tenderos
+                                                                            .nombreTienda,
                                                                       );
                                                                     }(),
                                                                   );
@@ -1731,7 +1736,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         await actions
                                                                             .sendNotificationToPlayer(
                                                                           currentLoop1Item,
-                                                                          '${_model.readForTenderoNotifLogInPIN?.tenderos.nombreTendero}: ¡Se ha iniciado sesión en su tienda: ${_model.readForTenderoNotifLogInPIN?.displayName}!',
+                                                                          '${_model.readForTenderoNotifLogInPIN?.tenderos.nombreTendero}: ¡Ha iniciado sesión en la tienda: ${_model.readForTenderoNotifLogInPIN?.displayName}!',
                                                                         );
                                                                       }(),
                                                                     );
@@ -1745,8 +1750,12 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             .text,
                                                                         _model
                                                                             .readForTenderoNotifLogInPIN!
-                                                                            .displayName,
+                                                                            .tenderos
+                                                                            .nombreTendero,
                                                                         'Inicio de Sesion',
+                                                                        _model
+                                                                            .readForTenderoNotifLogInPIN!
+                                                                            .displayName,
                                                                       );
                                                                     }(),
                                                                   );
@@ -1794,6 +1803,20 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .String,
                                                                     ),
                                                                   }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              0),
+                                                                    ),
+                                                                  },
                                                                 );
                                                               } else {
                                                                 await showDialog(

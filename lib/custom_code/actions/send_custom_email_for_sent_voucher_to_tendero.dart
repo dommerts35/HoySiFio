@@ -49,7 +49,7 @@ Future<void> sendCustomEmailForSentVoucherToTendero(
       <tr>
         <td style="padding: 25px;">
           <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado tendero,</p>
-          <p style="margin: 0 0 20px 0; font-size: 16px;">El cliente <strong style="color: #286181;">$nombreCliente</strong> ha enviado un comprobante de pago a tu tienda <strong>$nombreTienda</strong>.</p>
+          <p style="margin: 0 0 20px 0; font-size: 16px;">El cliente <strong style="color: #286181;">$nombreCliente</strong> ha enviado un comprobante de pago a su tienda <strong>$nombreTienda</strong>.</p>
         
           <!-- Detalles del comprobante -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; background-color: #f8f8f8; border-left: 4px solid #4CAF50; padding: 15px;">

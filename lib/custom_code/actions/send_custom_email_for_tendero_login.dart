@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> sendCustomEmailForTenderoLogin(
-    String recipientEmail, String recipientName, String emailSubject) async {
+Future<void> sendCustomEmailForTenderoLogin(String recipientEmail,
+    String recipientName, String emailSubject, String nombreTienda) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -42,7 +42,7 @@ Future<void> sendCustomEmailForTenderoLogin(
       <tr>
         <td style="padding-bottom: 20px;">
           <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
-          <p style="margin: 0 0 15px 0;">Se ha detectado un inicio de sesión en tu cuenta de tendero de <strong>HoySíFio</strong>. ¿Has sido tú?</p>
+          <p style="margin: 0 0 15px 0;">Se ha detectado un inicio de sesión en su cuenta de la tienda <strong>$nombreTienda</strong>. ¿Ha sido usted?</p>
         </td>
       </tr>
     </table>
@@ -52,7 +52,7 @@ Future<void> sendCustomEmailForTenderoLogin(
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
           <p style="margin: 0;">© 2023 HoySíFio. Todos los derechos reservados.</p>
-          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder</p>
+          <p style="margin: 0;">Este es un mensaje automatizado, por favor no responder.</p>
         </td>
       </tr>
     </table>

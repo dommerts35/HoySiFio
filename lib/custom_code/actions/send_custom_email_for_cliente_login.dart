@@ -42,7 +42,7 @@ Future<void> sendCustomEmailForClienteLogin(
       <tr>
         <td style="padding-bottom: 20px;">
           <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
-          <p style="margin: 0 0 15px 0;">Se ha detectado un inicio de sesión en tu cuenta de cliente de <strong>HoySíFio</strong>. ¿Has sido tú?</p>
+          <p style="margin: 0 0 15px 0;">Se ha detectado un inicio de sesión en su cuenta de cliente de <strong>HoySíFio</strong>. ¿Ha sido usted?</p>
         </td>
       </tr>
     </table>

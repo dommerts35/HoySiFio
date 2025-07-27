@@ -43,10 +43,10 @@ Future<void> sendCustomEmailForAcceptedVoucher(String recipientEmail,
       <tr>
         <td style="padding: 25px;">
           <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado, $recipientName</p>
-          <p style="margin: 0 0 20px 0; font-size: 16px;">El tendero de <strong style="color: #286181;">$nombreTienda</strong> ha aceptado uno de tus comprobantes de pago enviados.</p>
+          <p style="margin: 0 0 20px 0; font-size: 16px;">El tendero de la tienda: <strong style="color: #286181;">$nombreTienda</strong> ha aceptado uno de tus comprobantes de pago enviados.</p>
 
           <p style="margin: 20px 0 10px 0; font-size: 14px; color: #4CAF50; font-weight: bold;">
-            ✔️ Tu deuda ha sido actualizada correctamente
+            ✔️ Su deuda ha sido actualizada correctamente
           </p>
         </td>
       </tr>

@@ -47,7 +47,7 @@ Future<void> sendCustomEmailForDeniedVoucher(
       <tr>
         <td style="padding: 25px;">
           <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado $recipientName,</p>
-          <p style="margin: 0 0 20px 0; font-size: 16px;">Lamentamos informarte que el tendero de <strong style="color: #286181;">$nombreTienda</strong> ha rechazado tu comprobante de pago.</p>
+          <p style="margin: 0 0 20px 0; font-size: 16px;">Lamentamos informarte que el tendero de la tienda: <strong style="color: #286181;">$nombreTienda</strong> ha rechazado su comprobante de pago.</p>
         
           <!-- Detalles del rechazo -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; background-color: #fff8f8; border-left: 4px solid #e53935; padding: 15px;">
