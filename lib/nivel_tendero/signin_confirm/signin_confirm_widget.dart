@@ -389,34 +389,34 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .titleSmall
                                                       .override(
                                                         font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .titleSmall
                                                                   .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .titleSmall
                                                                   .fontStyle,
                                                         ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .success,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .titleSmall
                                                                 .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .titleSmall
                                                                 .fontStyle,
                                                       ),
                                             ),
@@ -568,7 +568,7 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                               if (_shouldSetState)
                                                 safeSetState(() {});
                                             },
-                                            text: 'Confirmar',
+                                            text: 'Continuar',
                                             options: FFButtonOptions(
                                               width: 330.0,
                                               height: 52.0,
@@ -581,30 +581,33 @@ class _SigninConfirmWidgetState extends State<SigninConfirmWidget> {
                                                       .tertiary,
                                               textStyle: FlutterFlowTheme.of(
                                                       context)
-                                                  .headlineLarge
+                                                  .headlineMedium
                                                   .override(
                                                     font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .headlineLarge
+                                                              .headlineMedium
                                                               .fontWeight,
                                                       fontStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .headlineLarge
+                                                              .headlineMedium
                                                               .fontStyle,
                                                     ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryBackground,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .headlineLarge
+                                                            .headlineMedium
                                                             .fontWeight,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .headlineLarge
+                                                            .headlineMedium
                                                             .fontStyle,
                                                   ),
                                               elevation: 3.0,

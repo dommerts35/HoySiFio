@@ -117,7 +117,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
               automaticallyImplyLeading: false,
               title: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Builder(
                     builder: (context) => FlutterFlowIconButton(
@@ -177,15 +178,17 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                       },
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Container(
-                            child: Align(
+                  Flexible(
+                    child: Container(
+                      height: 60.0,
+                      decoration: BoxDecoration(),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Align(
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Text(
                                 'Tienda',
@@ -209,148 +212,156 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                     ),
                               ),
                             ),
-                          ),
-                          StreamBuilder<TenderosRecord>(
-                            stream:
-                                TenderosRecord.getDocument(widget.tenderoRef!),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                            Flexible(
+                              child: StreamBuilder<TenderosRecord>(
+                                stream: TenderosRecord.getDocument(
+                                    widget.tenderoRef!),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                );
-                              }
+                                    );
+                                  }
 
-                              final textTenderosRecord = snapshot.data!;
+                                  final textTenderosRecord = snapshot.data!;
 
-                              return Text(
-                                valueOrDefault<String>(
-                                  textTenderosRecord.tenderos.nombreTienda,
-                                  'tiendaName',
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
+                                  return AutoSizeText(
+                                    valueOrDefault<String>(
+                                      textTenderosRecord.tenderos.nombreTienda,
+                                      'tiendaName',
                                     ),
-                              );
-                            },
-                          ),
-                        ].divide(SizedBox(height: 5.0)),
-                      ),
-                    ].divide(SizedBox(width: 60.0)),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                      child: Container(
-                        width: 110.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 3.0,
-                              color: Color(0x20000000),
-                              offset: Offset(
-                                0.0,
-                                1.0,
-                              ),
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              8.0, 8.0, 0.0, 8.0),
-                          child: StreamBuilder<List<ClientesRecord>>(
-                            stream: queryClientesRecord(
-                              queryBuilder: (clientesRecord) =>
-                                  clientesRecord.where(
-                                'cliente.idTendero',
-                                isEqualTo: widget.tenderoRef,
+                                    textAlign: TextAlign.center,
+                                    minFontSize: 6.0,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                  );
+                                },
                               ),
                             ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<ClientesRecord> textClientesRecordList =
-                                  snapshot.data!;
-
-                              return AutoSizeText(
-                                () {
-                                  if (_model.tabBarCurrentIndex == 0) {
-                                    return 'Num. Clientes: ${textClientesRecordList.length.toString()}';
-                                  } else if (_model.tabBarCurrentIndex == 1) {
-                                    return 'Clientes fiando: ${textClientesRecordList.where((e) => e.cliente.isFiando).toList().length.toString()}';
-                                  } else {
-                                    return 'Clientes sin fiar: ${textClientesRecordList.where((e) => !e.cliente.isFiando).toList().length.toString()}';
-                                  }
-                                }(),
-                                style: FlutterFlowTheme.of(context)
-                                    .labelSmall
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .labelSmall
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontStyle,
-                                    ),
-                              );
-                            },
-                          ),
+                          ].divide(SizedBox(height: 5.0)),
                         ),
                       ),
                     ),
                   ),
-                ].divide(SizedBox(width: 30.0)),
+                  Container(
+                    width: 126.0,
+                    height: 30.0,
+                    constraints: BoxConstraints(
+                      maxWidth: 130.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      boxShadow: [
+                        BoxShadow(
+                          blurRadius: 3.0,
+                          color: Color(0x20000000),
+                          offset: Offset(
+                            0.0,
+                            1.0,
+                          ),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                      child: StreamBuilder<List<ClientesRecord>>(
+                        stream: queryClientesRecord(
+                          queryBuilder: (clientesRecord) =>
+                              clientesRecord.where(
+                            'cliente.idTendero',
+                            isEqualTo: widget.tenderoRef,
+                          ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<ClientesRecord> textClientesRecordList =
+                              snapshot.data!;
+
+                          return AutoSizeText(
+                            () {
+                              if (_model.tabBarCurrentIndex == 0) {
+                                return 'Num. Clientes: ${textClientesRecordList.length.toString()}';
+                              } else if (_model.tabBarCurrentIndex == 1) {
+                                return 'Clientes fiando: ${textClientesRecordList.where((e) => e.cliente.isFiando).toList().length.toString()}';
+                              } else {
+                                return 'Clientes sin fiar: ${textClientesRecordList.where((e) => !e.cliente.isFiando).toList().length.toString()}';
+                              }
+                            }(),
+                            minFontSize: 6.0,
+                            style: FlutterFlowTheme.of(context)
+                                .labelSmall
+                                .override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelSmall
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontStyle,
+                                ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
               actions: [],
               centerTitle: false,

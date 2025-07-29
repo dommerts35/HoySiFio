@@ -127,7 +127,7 @@ class _PageTutorialListaClientesHelpWidgetState
         onWillPop: () async => false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: Color(0xFF008980),
           body: SafeArea(
             top: true,
             child: Column(
@@ -933,7 +933,7 @@ class _PageTutorialListaClientesHelpWidgetState
                           alignment: AlignmentDirectional(0.0, 1.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 16.0),
+                                0.0, 0.0, 0.0, 30.0),
                             child: smooth_page_indicator.SmoothPageIndicator(
                               controller: _model.pageViewController ??=
                                   PageController(initialPage: 0),
@@ -948,7 +948,7 @@ class _PageTutorialListaClientesHelpWidgetState
                                 safeSetState(() {});
                               },
                               effect: smooth_page_indicator.SlideEffect(
-                                spacing: 8.0,
+                                spacing: 5.0,
                                 radius: 8.0,
                                 dotWidth: 8.0,
                                 dotHeight: 8.0,

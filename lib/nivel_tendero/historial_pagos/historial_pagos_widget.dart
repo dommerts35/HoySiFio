@@ -716,7 +716,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                             .transparent,
                                                                       ),
                                                                     ),
-                                                                    Text(
+                                                                    AutoSizeText(
                                                                       valueOrDefault<
                                                                           String>(
                                                                         listaProdPagadosGroupItem
@@ -726,6 +726,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                             .toString(),
                                                                         '0',
                                                                       ),
+                                                                      minFontSize:
+                                                                          6.0,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .titleMedium
@@ -763,14 +765,10 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           .transparent,
                                                                     ),
                                                                   ),
-                                                                  Text(
-                                                                    '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}'
-                                                                        .maybeHandleOverflow(
-                                                                      maxChars:
-                                                                          7,
-                                                                      replacement:
-                                                                          '…',
-                                                                    ),
+                                                                  AutoSizeText(
+                                                                    '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
+                                                                    minFontSize:
+                                                                        6.0,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleMedium
@@ -811,7 +809,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           .transparent,
                                                                     ),
                                                                   ),
-                                                                  Text(
+                                                                  AutoSizeText(
                                                                     '\$ ${formatNumber(
                                                                       listaProdPagadosGroupItem
                                                                               .productos
@@ -832,6 +830,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     textAlign:
                                                                         TextAlign
                                                                             .end,
+                                                                    minFontSize:
+                                                                        6.0,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleMedium
@@ -872,7 +872,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           .transparent,
                                                                     ),
                                                                   ),
-                                                                  Text(
+                                                                  AutoSizeText(
                                                                     '\$ ${formatNumber(
                                                                       listaProdPagadosGroupItem
                                                                           .productos
@@ -890,6 +890,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     textAlign:
                                                                         TextAlign
                                                                             .end,
+                                                                    minFontSize:
+                                                                        6.0,
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleMedium

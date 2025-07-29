@@ -745,22 +745,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                             }(),
                                                           );
                                                         }
-                                                        unawaited(
-                                                          () async {
-                                                            await actions
-                                                                .sendCustomEmailForClienteRegister(
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .emailCliente,
-                                                              clienteVincClientesRecord
-                                                                  .cliente
-                                                                  .nombre,
-                                                              'Cuenta vinculada en nueva tienda: ${widget.nombreTienda}',
-                                                              widget
-                                                                  .nombreTienda!,
-                                                            );
-                                                          }(),
-                                                        );
 
                                                         context.pushNamed(
                                                           ListaClientesWidget
@@ -783,6 +767,12 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                 serializeParam(
                                                               widget
                                                                   .tenderoEmail,
+                                                              ParamType.String,
+                                                            ),
+                                                            'nombreTendero':
+                                                                serializeParam(
+                                                              widget
+                                                                  .nombreTienda,
                                                               ParamType.String,
                                                             ),
                                                           }.withoutNulls,

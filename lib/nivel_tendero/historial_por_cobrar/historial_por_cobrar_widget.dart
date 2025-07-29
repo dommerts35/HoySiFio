@@ -156,6 +156,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                       0.0, 10.0, 0.0, 10.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -264,7 +265,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                             .headlineMedium
                                                             .fontStyle,
                                                   ),
-                                                  fontSize: 26.0,
+                                                  fontSize: 22.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -778,8 +779,10 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                               Colors.transparent,
                                                                         ),
                                                                       ),
-                                                                      Text(
+                                                                      AutoSizeText(
                                                                         '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.cantidad.toString()}',
+                                                                        minFontSize:
+                                                                            6.0,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
@@ -812,17 +815,14 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                               Colors.transparent,
                                                                         ),
                                                                       ),
-                                                                      Text(
+                                                                      AutoSizeText(
                                                                         valueOrDefault<
                                                                             String>(
                                                                           '${listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
                                                                           'prod',
-                                                                        ).maybeHandleOverflow(
-                                                                          maxChars:
-                                                                              8,
-                                                                          replacement:
-                                                                              '…',
                                                                         ),
+                                                                        minFontSize:
+                                                                            6.0,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
@@ -855,7 +855,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                               Colors.transparent,
                                                                         ),
                                                                       ),
-                                                                      Text(
+                                                                      AutoSizeText(
                                                                         '\$${formatNumber(
                                                                           listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.valorProd /
                                                                               listaProdPorPagarGroupItem.productos.elementAtOrNull(singleProdIndex)!.cantidad,
@@ -866,6 +866,8 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                           locale:
                                                                               '',
                                                                         )}',
+                                                                        minFontSize:
+                                                                            6.0,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
@@ -898,7 +900,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                               Colors.transparent,
                                                                         ),
                                                                       ),
-                                                                      Text(
+                                                                      AutoSizeText(
                                                                         '\$ ${formatNumber(
                                                                           listaProdPorPagarGroupItem
                                                                               .productos
@@ -913,6 +915,8 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                                         )}',
                                                                         textAlign:
                                                                             TextAlign.end,
+                                                                        minFontSize:
+                                                                            6.0,
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleMedium
                                                                             .override(
@@ -1469,9 +1473,10 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 5.0, 10.0, 5.0),
-                            child: Text(
+                            child: AutoSizeText(
                               'Suma global de las cuentas: \$${widget.totalPassed}',
                               textAlign: TextAlign.center,
+                              minFontSize: 15.0,
                               style: FlutterFlowTheme.of(context)
                                   .titleLarge
                                   .override(

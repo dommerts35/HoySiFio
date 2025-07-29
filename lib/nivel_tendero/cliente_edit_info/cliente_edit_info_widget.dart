@@ -1,11 +1,14 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/cloud_functions/cloud_functions.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -1986,109 +1989,251 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                       maxWidth: 770.0,
                     ),
                     decoration: BoxDecoration(),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          16.0, 12.0, 16.0, 12.0),
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          _model.validacionEdit = true;
-                          if (_model.formKey.currentState == null ||
-                              !_model.formKey.currentState!.validate()) {
-                            _model.validacionEdit = false;
-                          }
-                          if (_model.validacionEdit == true) {
-                            await widget.idCliente!
-                                .update(createClientesRecordData(
-                              cliente: createDataTypeClienteStruct(
-                                nombre: _model.fullNameEditTextController.text,
-                                telf: _model.phoneNumberEditTextController.text,
-                                apellido:
-                                    _model.secondNameEditTextController.text,
-                                cedula: _model.cedulaEditTextController.text,
-                                direccionDomicilio:
-                                    _model.direccionEditTextController.text,
-                                viviendaAlq: _model.isVivAlq,
-                                viviendaPropia: _model.isVivProp,
-                                emailCliente:
-                                    _model.emailEditTextController.text,
-                                clearUnsetFields: false,
-                              ),
-                            ));
+                    child: Builder(
+                      builder: (context) => Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 12.0, 16.0, 12.0),
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            var _shouldSetState = false;
+                            _model.validacionEdit = true;
+                            if (_model.formKey.currentState == null ||
+                                !_model.formKey.currentState!.validate()) {
+                              _model.validacionEdit = false;
+                            }
+                            _shouldSetState = true;
+                            if (_model.validacionEdit == true) {
+                              _model.tenderoReadOnEditClient =
+                                  await TenderosRecord.getDocumentOnce(
+                                      widget.tenderoRef!);
+                              _shouldSetState = true;
+                              if ((_model.emailEditTextController.text ==
+                                      _model.tenderoReadOnEditClient?.email) ||
+                                  (_model.fullNameEditTextController.text ==
+                                      _model.tenderoReadOnEditClient?.tenderos
+                                          .nombreTendero) ||
+                                  (_model.phoneNumberEditTextController.text ==
+                                      _model.tenderoReadOnEditClient
+                                          ?.phoneNumber) ||
+                                  (_model.secondNameEditTextController.text ==
+                                      _model.tenderoReadOnEditClient?.tenderos
+                                          .nombreTendero) ||
+                                  ('${_model.fullNameEditTextController.text} ${_model.secondNameEditTextController.text}' ==
+                                      _model.tenderoReadOnEditClient?.tenderos
+                                          .nombreTendero)) {
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: DialogBtnWidget(
+                                          titulo: '¡Alerta!',
+                                          mensaje:
+                                              'No puede ingresar su e-mail de tendero en los datos de un cliente. Ingrese un e-mail válido.',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
 
-                            context.goNamed(
-                              ClienteInfoEditWidget.routeName,
-                              queryParameters: {
-                                'nombre': serializeParam(
-                                  _model.fullNameEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'telf': serializeParam(
-                                  _model.phoneNumberEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'isFiando': serializeParam(
-                                  widget.isFiando,
-                                  ParamType.bool,
-                                ),
-                                'idCliente': serializeParam(
-                                  widget.idCliente,
-                                  ParamType.DocumentReference,
-                                ),
-                                'apellido': serializeParam(
-                                  _model.secondNameEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'cedula': serializeParam(
-                                  _model.cedulaEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'direccionDomicilio': serializeParam(
-                                  _model.direccionEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'emailCliente': serializeParam(
-                                  _model.emailEditTextController.text,
-                                  ParamType.String,
-                                ),
-                                'tenderoRef': serializeParam(
-                                  widget.tenderoRef,
-                                  ParamType.DocumentReference,
-                                ),
-                                'viviendaAlq': serializeParam(
-                                  _model.isVivAlq,
-                                  ParamType.bool,
-                                ),
-                                'viviendaProp': serializeParam(
-                                  _model.isVivProp,
-                                  ParamType.bool,
-                                ),
-                              }.withoutNulls,
-                            );
-                          }
+                                if (_shouldSetState) safeSetState(() {});
+                                return;
+                              }
+                              _model.correoNew =
+                                  _model.emailEditTextController.text;
+                              safeSetState(() {});
+                              if (_model.emailEditTextController.text !=
+                                  widget.emailCliente) {
+                                unawaited(
+                                  () async {
+                                    await actions
+                                        .sendCustomEmailForClienteEmailChange(
+                                      _model.emailEditTextController.text,
+                                      widget.nombre!,
+                                      'Cambio de correo electrónico - HoySíFio',
+                                      _model
+                                          .tenderoReadOnEditClient!.displayName,
+                                      widget.emailCliente!,
+                                      _model.emailEditTextController.text,
+                                      dateTimeFormat(
+                                        "d/M/y h:mm a",
+                                        getCurrentTimestamp,
+                                        locale: FFLocalizations.of(context)
+                                            .languageCode,
+                                      ),
+                                    );
+                                  }(),
+                                );
 
-                          safeSetState(() {});
-                        },
-                        text: 'Enviar',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 48.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.inter(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
+                                await widget.idCliente!
+                                    .update(createClientesRecordData(
+                                  cliente: createDataTypeClienteStruct(
+                                    nombre:
+                                        _model.fullNameEditTextController.text,
+                                    telf: _model
+                                        .phoneNumberEditTextController.text,
+                                    apellido: _model
+                                        .secondNameEditTextController.text,
+                                    cedula:
+                                        _model.cedulaEditTextController.text,
+                                    direccionDomicilio:
+                                        _model.direccionEditTextController.text,
+                                    viviendaAlq: _model.isVivAlq,
+                                    viviendaPropia: _model.isVivProp,
+                                    emailCliente:
+                                        _model.emailEditTextController.text,
+                                    clearUnsetFields: false,
+                                  ),
+                                ));
+
+                                context.goNamed(
+                                  ClienteInfoEditWidget.routeName,
+                                  queryParameters: {
+                                    'nombre': serializeParam(
+                                      _model.fullNameEditTextController.text,
+                                      ParamType.String,
                                     ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
+                                    'telf': serializeParam(
+                                      _model.phoneNumberEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'isFiando': serializeParam(
+                                      widget.isFiando,
+                                      ParamType.bool,
+                                    ),
+                                    'idCliente': serializeParam(
+                                      widget.idCliente,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'apellido': serializeParam(
+                                      _model.secondNameEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'cedula': serializeParam(
+                                      _model.cedulaEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'direccionDomicilio': serializeParam(
+                                      _model.direccionEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'emailCliente': serializeParam(
+                                      _model.emailEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'tenderoRef': serializeParam(
+                                      widget.tenderoRef,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'viviendaAlq': serializeParam(
+                                      _model.isVivAlq,
+                                      ParamType.bool,
+                                    ),
+                                    'viviendaProp': serializeParam(
+                                      _model.isVivProp,
+                                      ParamType.bool,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              } else {
+                                await widget.idCliente!
+                                    .update(createClientesRecordData(
+                                  cliente: createDataTypeClienteStruct(
+                                    nombre:
+                                        _model.fullNameEditTextController.text,
+                                    telf: _model
+                                        .phoneNumberEditTextController.text,
+                                    apellido: _model
+                                        .secondNameEditTextController.text,
+                                    cedula:
+                                        _model.cedulaEditTextController.text,
+                                    direccionDomicilio:
+                                        _model.direccionEditTextController.text,
+                                    viviendaAlq: _model.isVivAlq,
+                                    viviendaPropia: _model.isVivProp,
+                                    emailCliente:
+                                        _model.emailEditTextController.text,
+                                    clearUnsetFields: false,
+                                  ),
+                                ));
+
+                                context.goNamed(
+                                  ClienteInfoEditWidget.routeName,
+                                  queryParameters: {
+                                    'nombre': serializeParam(
+                                      _model.fullNameEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'telf': serializeParam(
+                                      _model.phoneNumberEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'isFiando': serializeParam(
+                                      widget.isFiando,
+                                      ParamType.bool,
+                                    ),
+                                    'idCliente': serializeParam(
+                                      widget.idCliente,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'apellido': serializeParam(
+                                      _model.secondNameEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'cedula': serializeParam(
+                                      _model.cedulaEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'direccionDomicilio': serializeParam(
+                                      _model.direccionEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'emailCliente': serializeParam(
+                                      _model.emailEditTextController.text,
+                                      ParamType.String,
+                                    ),
+                                    'tenderoRef': serializeParam(
+                                      widget.tenderoRef,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'viviendaAlq': serializeParam(
+                                      _model.isVivAlq,
+                                      ParamType.bool,
+                                    ),
+                                    'viviendaProp': serializeParam(
+                                      _model.isVivProp,
+                                      ParamType.bool,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              }
+                            }
+                            if (_shouldSetState) safeSetState(() {});
+                          },
+                          text: 'Enviar',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 48.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  font: GoogleFonts.inter(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,
@@ -2096,12 +2241,22 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                         .titleSmall
                                         .fontStyle,
                                   ),
-                          elevation: 3.0,
-                          borderSide: BorderSide(
-                            color: Colors.transparent,
-                            width: 1.0,
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                            elevation: 3.0,
+                            borderSide: BorderSide(
+                              color: Colors.transparent,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ),

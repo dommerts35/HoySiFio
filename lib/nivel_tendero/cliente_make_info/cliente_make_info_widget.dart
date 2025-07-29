@@ -208,7 +208,27 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     size: 24.0,
                   ),
                   onPressed: () async {
-                    context.safePop();
+                    context.pushNamed(
+                      ListaClientesWidget.routeName,
+                      queryParameters: {
+                        'tenderoRef': serializeParam(
+                          widget.tenderoRef,
+                          ParamType.DocumentReference,
+                        ),
+                        'nombreTienda': serializeParam(
+                          widget.nombreTienda,
+                          ParamType.String,
+                        ),
+                        'tenderoEmail': serializeParam(
+                          widget.tenderoEmail,
+                          ParamType.String,
+                        ),
+                        'nombreTendero': serializeParam(
+                          widget.nombreTendero,
+                          ParamType.String,
+                        ),
+                      }.withoutNulls,
+                    );
                   },
                 ),
               ),
@@ -2298,6 +2318,40 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       clearUnsetFields: false,
                                     ),
                                   ));
+                                  unawaited(
+                                    () async {
+                                      await actions
+                                          .sendCustomEmailForClienteRegister(
+                                        _model.emailTextController.text,
+                                        _model.fullNameTextController.text,
+                                        'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
+                                        widget.nombreTienda!,
+                                        _model.randomized,
+                                      );
+                                    }(),
+                                  );
+                                  await makeCloudCall(
+                                    'addUser',
+                                    {
+                                      'user_id': currentUserUid,
+                                      'tags': {
+                                        'idToken': currentJwtToken,
+                                        'tipodeCuenta': 'Cliente',
+                                        'email':
+                                            _model.emailTextController.text,
+                                        'isPromos': _model.emailSendsCheckValue!
+                                            .toString(),
+                                      },
+                                      'subscriptions': [
+                                        {
+                                          'type': 'Email',
+                                          'token':
+                                              _model.emailTextController.text,
+                                        },
+                                      ],
+                                    },
+                                  );
+
                                   await showDialog(
                                     context: context,
                                     builder: (dialogContext) {
@@ -2317,11 +2371,11 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                 ?.unfocus();
                                           },
                                           child: Container(
-                                            height: 200.0,
+                                            height: 400.0,
                                             child: DialogBtnWidget(
                                               titulo: '¡Enhorabuena! 😊',
                                               mensaje:
-                                                  'El cliente ha sido registrado. Por favor, muestre el siguiente código de autenticación al cliente.',
+                                                  'El cliente ha sido registrado exitosamente. Por favor, muéstrele el siguiente código de autenticación, el cual también ha sido enviado al correo electrónico ingresado.',
                                             ),
                                           ),
                                         ),
@@ -2353,46 +2407,12 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                               titulo:
                                                   'Código de autenticación del cliente',
                                               mensaje:
-                                                  '\"${_model.randomized}\". En caso de necesitar consultar el código de nuevo, revise la información completa del cliente.',
+                                                  '\"${_model.randomized}\". Si necesita consultar el código nuevamente, puede revisar la información completa del cliente o indicarle que lo revise en su correo electrónico.',
                                             ),
                                           ),
                                         ),
                                       );
                                     },
-                                  );
-
-                                  await makeCloudCall(
-                                    'addUser',
-                                    {
-                                      'user_id': currentUserUid,
-                                      'tags': {
-                                        'idToken': currentJwtToken,
-                                        'tipodeCuenta': 'Cliente',
-                                        'email':
-                                            _model.emailTextController.text,
-                                        'isPromos': _model.emailSendsCheckValue!
-                                            .toString(),
-                                      },
-                                      'subscriptions': [
-                                        {
-                                          'type': 'Email',
-                                          'token':
-                                              _model.emailTextController.text,
-                                        },
-                                      ],
-                                    },
-                                  );
-
-                                  unawaited(
-                                    () async {
-                                      await actions
-                                          .sendCustomEmailForClienteRegister(
-                                        _model.emailTextController.text,
-                                        _model.fullNameTextController.text,
-                                        'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
-                                        widget.nombreTienda!,
-                                      );
-                                    }(),
                                   );
 
                                   context.pushNamed(
@@ -2408,6 +2428,10 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                       ),
                                       'tenderoEmail': serializeParam(
                                         widget.tenderoEmail,
+                                        ParamType.String,
+                                      ),
+                                      'nombreTendero': serializeParam(
+                                        widget.nombreTendero,
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,

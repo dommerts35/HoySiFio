@@ -45,6 +45,8 @@ void main() async {
   // Bloquear orientación en portrait (vertical)
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),

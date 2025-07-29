@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'cliente_edit_info_widget.dart' show ClienteEditInfoWidget;
@@ -9,6 +10,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   bool isVivAlq = false;
 
   bool isVivProp = false;
+
+  String? correoNew;
 
   ///  State fields for stateful widgets in this page.
 
@@ -23,8 +26,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
       return 'Ingrese los nombres del cliente.';
     }
 
-    if (val.length < 5) {
-      return 'Ingrese el nombre con más de 5 carácteres';
+    if (val.length < 3) {
+      return 'Ingrese el nombre con más de 3 carácteres';
     }
 
     return null;
@@ -41,8 +44,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
       return 'Ingrese los apellidos del cliente.';
     }
 
-    if (val.length < 5) {
-      return 'Ingrese el apellido con más de 5 carácteres';
+    if (val.length < 3) {
+      return 'Ingrese el apellido con más de 3 carácteres';
     }
 
     return null;
@@ -112,7 +115,7 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
     }
 
     if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
-      return 'Ese Email no existe';
+      return 'Has to be a valid email address.';
     }
     return null;
   }
@@ -121,6 +124,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   bool? checkboxValue;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
+  // Stores action output result for [Backend Call - Read Document] action in enviarButton widget.
+  TenderosRecord? tenderoReadOnEditClient;
 
   @override
   void initState(BuildContext context) {

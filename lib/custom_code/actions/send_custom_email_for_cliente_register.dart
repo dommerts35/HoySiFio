@@ -12,8 +12,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> sendCustomEmailForClienteRegister(String recipientEmail,
-    String recipientName, String emailSubject, String tiendaNombre) async {
+Future<void> sendCustomEmailForClienteRegister(
+    String recipientEmail,
+    String recipientName,
+    String emailSubject,
+    String tiendaNombre,
+    String otp) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -44,10 +48,18 @@ Future<void> sendCustomEmailForClienteRegister(String recipientEmail,
         <td style="padding-bottom: 20px;">
           <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
           <p style="margin: 0 0 20px 0;">Ha sido registrado exitosamente en el sistema de la tienda: <strong>$tiendaNombre</strong>.</p>
-          <p style="margin: 0 0 15px 0;">Para acceder a su cuenta de cliente en HoySíFio, dirígete a la sección de inicio de sesión para clientes e ingrese su número de cédula. No necesitas ingresar una contraseña o PIN en este paso. Luego, solicita al tendero que te registró que te proporcione tu código de cliente. Con este código, podrá crear una contraseña y activar su cuenta.</p>
+          <p style="margin: 0 0 15px 0;">Para acceder a su cuenta de cliente en HoySíFio, dirígete a la sección de inicio de sesión para clientes e ingrese su número de cédula. No necesita ingresar una contraseña o PIN en este paso. Luego, solicita al tendero que te registró que te proporcione tu código de cliente o ingresa el código que se va a mostrar a continuación. Con este código, podrá crear una contraseña y activar su cuenta.</p>
         </td>
       </tr>
     </table>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; text-align: center;">
+            <tr>
+              <td style="background-color: #f8f8f8; border: 2px dashed #FF5722; padding: 15px; font-size: 24px; font-weight: bold; color: #FF5722;">
+                $otp
+              </td>
+            </tr>
+          </table>
 
     <!-- Footer -->
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">

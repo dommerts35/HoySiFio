@@ -1,6 +1,6 @@
 import '/backend/backend.dart';
 import '/components/dialog_two_btns_widget.dart';
-import '/components_nivel_tendero/empty_voucher_comp/empty_voucher_comp_widget.dart';
+import '/components_cliente/empty_cuentas_pagadas_cliente/empty_cuentas_pagadas_cliente_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -501,7 +501,8 @@ class _HistorialPagosClienteWidgetState
                                                   .toList();
                                           if (listaProdsPagados.isEmpty) {
                                             return Center(
-                                              child: EmptyVoucherCompWidget(),
+                                              child:
+                                                  EmptyCuentasPagadasClienteWidget(),
                                             );
                                           }
 

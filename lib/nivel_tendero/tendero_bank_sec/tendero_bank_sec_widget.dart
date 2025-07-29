@@ -140,45 +140,49 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: AlignmentDirectional(-0.81, -0.91),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 0.0, 0.0),
-                              child: FlutterFlowIconButton(
-                                borderColor:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                borderRadius: 8.0,
-                                buttonSize: 40.0,
-                                icon: Icon(
-                                  Icons.arrow_back,
-                                  color: FlutterFlowTheme.of(context)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(-0.81, -0.91),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 0.0, 0.0),
+                                child: FlutterFlowIconButton(
+                                  borderColor: FlutterFlowTheme.of(context)
                                       .secondaryText,
-                                  size: 24.0,
+                                  borderRadius: 8.0,
+                                  buttonSize: 40.0,
+                                  icon: Icon(
+                                    Icons.arrow_back,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    context.pushNamed(
+                                      TenderoEditInfoWidget.routeName,
+                                      queryParameters: {
+                                        'tenderoRef': serializeParam(
+                                          widget.tenderoRef,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'nombreTienda': serializeParam(
+                                          widget.nombreTienda,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
                                 ),
-                                onPressed: () async {
-                                  context.pushNamed(
-                                    TenderoEditInfoWidget.routeName,
-                                    queryParameters: {
-                                      'tenderoRef': serializeParam(
-                                        widget.tenderoRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                      'nombreTienda': serializeParam(
-                                        widget.nombreTienda,
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                },
                               ),
                             ),
-                          ),
-                        ].addToEnd(SizedBox(width: 50.0)),
+                          ].addToEnd(SizedBox(width: 50.0)),
+                        ),
                       ),
                       Padding(
                         padding:

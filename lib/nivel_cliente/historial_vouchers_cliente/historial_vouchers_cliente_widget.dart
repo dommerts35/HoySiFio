@@ -577,7 +577,7 @@ class _HistorialVouchersClienteWidgetState
                                                               .estadoVoucher ==
                                                           'Negado')
                                                         Text(
-                                                          'Voucher Negado',
+                                                          'Comprobante Negado',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleMedium

@@ -620,7 +620,10 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .bodyLarge
                                                                 .fontStyle,
                                                       ),
-                                                  maxLength: 35,
+                                                  maxLength: 20,
+                                                  maxLengthEnforcement:
+                                                      MaxLengthEnforcement
+                                                          .enforced,
                                                   buildCounter: (context,
                                                           {required currentLength,
                                                           required isFocused,

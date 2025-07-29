@@ -3,20 +3,20 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'empty_productos_pagados_comp_model.dart';
-export 'empty_productos_pagados_comp_model.dart';
+import 'empty_cuentas_pagadas_cliente_model.dart';
+export 'empty_cuentas_pagadas_cliente_model.dart';
 
-class EmptyProductosPagadosCompWidget extends StatefulWidget {
-  const EmptyProductosPagadosCompWidget({super.key});
+class EmptyCuentasPagadasClienteWidget extends StatefulWidget {
+  const EmptyCuentasPagadasClienteWidget({super.key});
 
   @override
-  State<EmptyProductosPagadosCompWidget> createState() =>
-      _EmptyProductosPagadosCompWidgetState();
+  State<EmptyCuentasPagadasClienteWidget> createState() =>
+      _EmptyCuentasPagadasClienteWidgetState();
 }
 
-class _EmptyProductosPagadosCompWidgetState
-    extends State<EmptyProductosPagadosCompWidget> {
-  late EmptyProductosPagadosCompModel _model;
+class _EmptyCuentasPagadasClienteWidgetState
+    extends State<EmptyCuentasPagadasClienteWidget> {
+  late EmptyCuentasPagadasClienteModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -27,7 +27,7 @@ class _EmptyProductosPagadosCompWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EmptyProductosPagadosCompModel());
+    _model = createModel(context, () => EmptyCuentasPagadasClienteModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -44,7 +44,7 @@ class _EmptyProductosPagadosCompWidgetState
     return Padding(
       padding: EdgeInsets.all(12.0),
       child: Container(
-        height: 347.71,
+        height: 330.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           boxShadow: [
@@ -74,7 +74,7 @@ class _EmptyProductosPagadosCompWidgetState
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50.0),
                   child: SvgPicture.asset(
-                    'assets/images/undraw_celebration_wtm8.svg',
+                    'assets/images/undraw_taken_mshk.svg',
                     width: 250.0,
                     height: 250.0,
                     fit: BoxFit.contain,
@@ -84,7 +84,7 @@ class _EmptyProductosPagadosCompWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 8.0, 10.0, 10.0),
                 child: Text(
-                  '¡Hurra! No hay cuentas por cobrar',
+                  'No hay pagos registrados.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
                         font: GoogleFonts.inter(
                           fontWeight: FlutterFlowTheme.of(context)

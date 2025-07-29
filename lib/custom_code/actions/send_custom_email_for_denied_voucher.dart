@@ -17,7 +17,9 @@ Future<void> sendCustomEmailForDeniedVoucher(
     String recipientName,
     String emailSubject,
     String nombreTienda,
-    String razonNegado) async {
+    String razonNegado,
+    String numComprobante,
+    String valorComprobante) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -47,7 +49,7 @@ Future<void> sendCustomEmailForDeniedVoucher(
       <tr>
         <td style="padding: 25px;">
           <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado $recipientName,</p>
-          <p style="margin: 0 0 20px 0; font-size: 16px;">Lamentamos informarte que el tendero de la tienda: <strong style="color: #286181;">$nombreTienda</strong> ha rechazado su comprobante de pago.</p>
+          <p style="margin: 0 0 20px 0; font-size: 16px;">Lamentamos informarte que el tendero de la tienda: <strong style="color: #286181;">$nombreTienda</strong> ha rechazado su comprobante de pago <strong style="color: #286181;">$numComprobante</strong> con el valor de <strong style="color: #286181;">$valorComprobante</strong>.</p>
         
           <!-- Detalles del rechazo -->
           <table width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0; background-color: #fff8f8; border-left: 4px solid #e53935; padding: 15px;">

@@ -55,11 +55,6 @@ class TenderosRecord extends FirestoreRecord {
   String get pin => _pin ?? '';
   bool hasPin() => _pin != null;
 
-  // "clientes" field.
-  DataTypeClienteStruct? _clientes;
-  DataTypeClienteStruct get clientes => _clientes ?? DataTypeClienteStruct();
-  bool hasClientes() => _clientes != null;
-
   // "player_ids" field.
   List<String>? _playerIds;
   List<String> get playerIds => _playerIds ?? const [];
@@ -86,9 +81,6 @@ class TenderosRecord extends FirestoreRecord {
     _phoneNumber = snapshotData['phone_number'] as String?;
     _uid = snapshotData['uid'] as String?;
     _pin = snapshotData['pin'] as String?;
-    _clientes = snapshotData['clientes'] is DataTypeClienteStruct
-        ? snapshotData['clientes']
-        : DataTypeClienteStruct.maybeFromMap(snapshotData['clientes']);
     _playerIds = getDataList(snapshotData['player_ids']);
     _otp = snapshotData['otp'] as String?;
     _isAuth = snapshotData['isAuth'] as bool?;
@@ -137,7 +129,6 @@ Map<String, dynamic> createTenderosRecordData({
   String? phoneNumber,
   String? uid,
   String? pin,
-  DataTypeClienteStruct? clientes,
   String? otp,
   bool? isAuth,
 }) {
@@ -151,7 +142,6 @@ Map<String, dynamic> createTenderosRecordData({
       'phone_number': phoneNumber,
       'uid': uid,
       'pin': pin,
-      'clientes': DataTypeClienteStruct().toMap(),
       'otp': otp,
       'isAuth': isAuth,
     }.withoutNulls,
@@ -159,9 +149,6 @@ Map<String, dynamic> createTenderosRecordData({
 
   // Handle nested data for "tenderos" field.
   addDataTypeTenderoStructData(firestoreData, tenderos, 'tenderos');
-
-  // Handle nested data for "clientes" field.
-  addDataTypeClienteStructData(firestoreData, clientes, 'clientes');
 
   return firestoreData;
 }
@@ -180,7 +167,6 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e1?.phoneNumber == e2?.phoneNumber &&
         e1?.uid == e2?.uid &&
         e1?.pin == e2?.pin &&
-        e1?.clientes == e2?.clientes &&
         listEquality.equals(e1?.playerIds, e2?.playerIds) &&
         e1?.otp == e2?.otp &&
         e1?.isAuth == e2?.isAuth;
@@ -196,7 +182,6 @@ class TenderosRecordDocumentEquality implements Equality<TenderosRecord> {
         e?.phoneNumber,
         e?.uid,
         e?.pin,
-        e?.clientes,
         e?.playerIds,
         e?.otp,
         e?.isAuth

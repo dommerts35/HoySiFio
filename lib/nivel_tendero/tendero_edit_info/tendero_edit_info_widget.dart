@@ -540,7 +540,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
-                                            maxLength: 35,
+                                            maxLength: 20,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
                                             buildCounter: (context,
@@ -3813,24 +3813,6 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                               true) &&
                                           (_model.checkboxListCAValue ==
                                               true)) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text('¡Alerta!'),
-                                              content: Text(
-                                                  'Por favor, ingrese solo un tipo de cuenta bancaria.'),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text('Ok'),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
                                         await showDialog(
                                           context: context,
                                           builder: (dialogContext) {

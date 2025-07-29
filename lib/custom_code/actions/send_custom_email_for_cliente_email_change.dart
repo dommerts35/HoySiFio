@@ -12,13 +12,14 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> sendCustomEmailForAcceptedVoucher(
+Future<void> sendCustomEmailForClienteEmailChange(
     String recipientEmail,
     String recipientName,
     String emailSubject,
     String nombreTienda,
-    String numComprobante,
-    String valorPago) async {
+    String correoAnterior,
+    String correoNuevo,
+    String fechaCambio) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -26,38 +27,44 @@ Future<void> sendCustomEmailForAcceptedVoucher(
   // 1. Template HTML con variables dinámicas
   final htmlContent = """
   <!DOCTYPE html>
-  <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprobante Aceptado - HoySíFio</title>
-  </head>
-  <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Cambio de correo electrónico - HoySíFio</title>
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0;">
     <!-- Header con logo -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
-      <tr>
-        <td align="center" style="padding: 20px;">
-          <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 50%; height: auto; padding: 0 0 0 15px;">
-          <h1 style="color: white; margin: 10px 0 0 0; font-size: 24px;">¡Comprobante aceptado!</h1>
-        </td>
-      </tr>
-    </table>
+      <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #286181;">
+        <tr>
+          <td align="center" style="padding: 20px;">
+            <img src="https://firebasestorage.googleapis.com/v0/b/hoy-si-fio-7c5yyn.firebasestorage.app/o/email-assets%2FsmallHsf.png?alt=media&token=cff4ab55-fc89-40d5-995a-150af3fa5505" alt="Logo de HoySíFio" width="400" height="120" style="max-width: 50%; height: auto; padding: 0 0 0 15px;">
+            <h1 style="color: white; margin: 10px 0 0 0;">Cambio de correo electrónico</h1>
+          </td>
+        </tr>
+      </table>
 
     <!-- Contenido principal -->
-    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+      <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; padding: 20px;">
       <tr>
-        <td style="padding: 25px;">
-          <p style="margin: 0 0 16px 0; font-size: 16px;">Estimado, $recipientName</p>
-          <p style="margin: 0 0 20px 0; font-size: 16px;">El tendero de la tienda: <strong style="color: #286181;">$nombreTienda</strong> ha aceptado el comprobante de pago <strong style="color: #286181;">$numComprobante</strong>, con el valor de <strong style="color: #286181;">$valorPago</strong>.</p>
-
-          <p style="margin: 20px 0 10px 0; font-size: 14px; color: #4CAF50; font-weight: bold;">
-            ✔️ Su deuda ha sido actualizada correctamente
+        <td style="padding-bottom: 20px;">
+          <p style="margin: 0 0 15px 0;">¡Hola, $recipientName!</p>
+          <p style="margin: 0 0 15px 0;">
+          Le informamos que el correo electrónico asociado a su cuenta de cliente en la tienda <strong>$nombreTienda</strong> ha sido actualizado.
+          </p>
+          <p style="margin: 0 0 15px 0;">
+          <strong>Correo anterior:</strong> $correoAnterior<br>
+          <strong>Nuevo correo:</strong> $correoNuevo<br>
+          <strong>Fecha del cambio:</strong> $fechaCambio
+          </p>
+          <p style="margin: 0 0 15px 0;">
+          Si usted no autorizó este cambio, por favor comuníquese con la tienda lo antes posible.
           </p>
         </td>
       </tr>
     </table>
 
-    <!-- Footer -->
+  <!-- Footer -->
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
       <tr>
         <td align="center" style="padding: 20px; font-size: 12px; color: #777;">
@@ -67,7 +74,7 @@ Future<void> sendCustomEmailForAcceptedVoucher(
       </tr>
     </table>
   </body>
-  </html>
+</html>
   """;
 
   // 2. Configurar petición a OneSignal

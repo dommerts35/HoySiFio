@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
 import '/components/dialog_two_btns_widget.dart';
+import '/components_cliente/empty_productos_fiados_cliente/empty_productos_fiados_cliente_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -98,7 +99,7 @@ class _ResumenFiadoClienProdsNewWidgetState
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               body: Container(
                 decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).primary,
+                  color: Color(0xFF6397FF),
                 ),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -113,7 +114,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 16.0, 16.0, 0.0),
+                                    16.0, 0.0, 16.0, 0.0),
                                 child: Wrap(
                                   spacing: 16.0,
                                   runSpacing: 16.0,
@@ -379,54 +380,96 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                   .of(context)
                                                               .alternate,
                                                         ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        10.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: StreamBuilder<
-                                                                TenderosRecord>(
-                                                              stream: TenderosRecord
-                                                                  .getDocument(
-                                                                      widget
-                                                                          .idTendero!),
-                                                              builder: (context,
-                                                                  snapshot) {
-                                                                // Customize what your widget looks like when it's loading.
-                                                                if (!snapshot
-                                                                    .hasData) {
-                                                                  return Center(
-                                                                    child:
-                                                                        SizedBox(
-                                                                      width:
-                                                                          50.0,
-                                                                      height:
-                                                                          50.0,
-                                                                      child:
-                                                                          CircularProgressIndicator(
-                                                                        valueColor:
-                                                                            AlwaysStoppedAnimation<Color>(
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .primary,
-                                                                        ),
-                                                                      ),
+                                                        Container(
+                                                          width: 300.0,
+                                                          height: 50.0,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0),
+                                                                    child: StreamBuilder<
+                                                                        TenderosRecord>(
+                                                                      stream: TenderosRecord.getDocument(
+                                                                          widget
+                                                                              .idTendero!),
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 50.0,
+                                                                              height: 50.0,
+                                                                              child: CircularProgressIndicator(
+                                                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                  FlutterFlowTheme.of(context).primary,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        }
+
+                                                                        final textTenderosRecord =
+                                                                            snapshot.data!;
+
+                                                                        return AutoSizeText(
+                                                                          'Tienda: ${textTenderosRecord.tenderos.nombreTienda}',
+                                                                          minFontSize:
+                                                                              8.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .titleMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.readexPro(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                        );
+                                                                      },
                                                                     ),
-                                                                  );
-                                                                }
-
-                                                                final textTenderosRecord =
-                                                                    snapshot
-                                                                        .data!;
-
-                                                                return Text(
-                                                                  'Tienda: ${textTenderosRecord.tenderos.nombreTienda}',
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child: Text(
+                                                                  'Total: \$${formatNumber(
+                                                                    resumenFiadoClienProdsNewClientesRecord
+                                                                        .cliente
+                                                                        .totalDeudaCompleta,
+                                                                    formatType:
+                                                                        FormatType
+                                                                            .custom,
+                                                                    format:
+                                                                        '#0.00',
+                                                                    locale: '',
+                                                                  )}',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
@@ -449,52 +492,9 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                             .titleMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Text(
-                                                            'Total: \$${formatNumber(
-                                                              resumenFiadoClienProdsNewClientesRecord
-                                                                  .cliente
-                                                                  .totalDeudaCompleta,
-                                                              formatType:
-                                                                  FormatType
-                                                                      .custom,
-                                                              format: '#0.00',
-                                                              locale: '',
-                                                            )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .titleMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .readexPro(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleMedium
-                                                                      .fontStyle,
                                                                 ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ]
@@ -554,6 +554,13 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                 .historialPorPagarProd
                                                                 .map((e) => e)
                                                                 .toList();
+                                                        if (historialColumns
+                                                            .isEmpty) {
+                                                          return Center(
+                                                            child:
+                                                                EmptyProductosFiadosClienteWidget(),
+                                                          );
+                                                        }
 
                                                         return SingleChildScrollView(
                                                           child: Column(
@@ -736,7 +743,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       maxChars: 10,
                                                                                                       replacement: '…',
                                                                                                     ),
-                                                                                                    minFontSize: 10.0,
+                                                                                                    minFontSize: 6.0,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           font: GoogleFonts.inter(
                                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -760,11 +767,12 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       color: Colors.transparent,
                                                                                                     ),
                                                                                                   ),
-                                                                                                  Text(
+                                                                                                  AutoSizeText(
                                                                                                     valueOrDefault<String>(
                                                                                                       productosChildItem.cantidad.toString(),
                                                                                                       '0',
                                                                                                     ),
+                                                                                                    minFontSize: 6.0,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           font: GoogleFonts.inter(
                                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -788,7 +796,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       color: Colors.transparent,
                                                                                                     ),
                                                                                                   ),
-                                                                                                  Text(
+                                                                                                  AutoSizeText(
                                                                                                     '\$${formatNumber(
                                                                                                       productosChildItem.valorProd / productosChildItem.cantidad,
                                                                                                       formatType: FormatType.custom,
@@ -796,6 +804,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       locale: '',
                                                                                                     )}',
                                                                                                     textAlign: TextAlign.end,
+                                                                                                    minFontSize: 6.0,
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                           font: GoogleFonts.inter(
                                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -821,7 +830,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                   ),
                                                                                                   Padding(
                                                                                                     padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                    child: Text(
+                                                                                                    child: AutoSizeText(
                                                                                                       '\$${formatNumber(
                                                                                                         productosChildItem.valorProd,
                                                                                                         formatType: FormatType.custom,
@@ -829,6 +838,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                         locale: '',
                                                                                                       )}',
                                                                                                       textAlign: TextAlign.end,
+                                                                                                      minFontSize: 6.0,
                                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                             font: GoogleFonts.inter(
                                                                                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -1245,250 +1255,259 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                 Builder(
                                                   builder: (context) =>
                                                       FFButtonWidget(
-                                                    onPressed: () async {
-                                                      var _shouldSetState =
-                                                          false;
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (dialogContext) {
-                                                          return Dialog(
-                                                            elevation: 0,
-                                                            insetPadding:
-                                                                EdgeInsets.zero,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            alignment: AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                            child:
-                                                                GestureDetector(
-                                                              onTap: () {
-                                                                FocusScope.of(
-                                                                        dialogContext)
-                                                                    .unfocus();
-                                                                FocusManager
-                                                                    .instance
-                                                                    .primaryFocus
-                                                                    ?.unfocus();
-                                                              },
-                                                              child: Container(
-                                                                height: 500.0,
-                                                                child:
-                                                                    DialogTwoBtnsWidget(
-                                                                  titulo:
-                                                                      '¡Alerta!',
-                                                                  mensaje:
-                                                                      'Esta por enviar un comprobante de todos los productos, debe pagar: \$${formatNumber(
-                                                                    resumenFiadoClienProdsNewClientesRecord
-                                                                        .cliente
-                                                                        .totalDeudaCompleta,
-                                                                    formatType:
-                                                                        FormatType
-                                                                            .custom,
-                                                                    format:
-                                                                        '#0.00',
-                                                                    locale: '',
-                                                                  )} en total. ¿Está seguro?',
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          safeSetState(() =>
-                                                              _model.isPagarTodo =
-                                                                  value));
-
-                                                      _shouldSetState = true;
-                                                      if (_model.isPagarTodo!) {
-                                                        if (resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .historialPorPagarProd
-                                                                .where((e) => e
-                                                                    .isVoucherSent)
-                                                                .toList()
-                                                                .length >
-                                                            0) {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (dialogContext) {
-                                                              return Dialog(
-                                                                elevation: 0,
-                                                                insetPadding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                alignment: AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
-                                                                    .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
-                                                                child:
-                                                                    GestureDetector(
-                                                                  onTap: () {
-                                                                    FocusScope.of(
-                                                                            dialogContext)
-                                                                        .unfocus();
-                                                                    FocusManager
-                                                                        .instance
-                                                                        .primaryFocus
-                                                                        ?.unfocus();
+                                                    onPressed:
+                                                        (resumenFiadoClienProdsNewClientesRecord
+                                                                    .cliente
+                                                                    .historialPorPagarProd
+                                                                    .length <=
+                                                                0)
+                                                            ? null
+                                                            : () async {
+                                                                var _shouldSetState =
+                                                                    false;
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          FocusScope.of(dialogContext)
+                                                                              .unfocus();
+                                                                          FocusManager
+                                                                              .instance
+                                                                              .primaryFocus
+                                                                              ?.unfocus();
+                                                                        },
+                                                                        child:
+                                                                            Container(
+                                                                          height:
+                                                                              500.0,
+                                                                          child:
+                                                                              DialogTwoBtnsWidget(
+                                                                            titulo:
+                                                                                '¡Alerta!',
+                                                                            mensaje:
+                                                                                'Esta por enviar un comprobante de todos los productos, debe pagar: \$${formatNumber(
+                                                                              resumenFiadoClienProdsNewClientesRecord.cliente.totalDeudaCompleta,
+                                                                              formatType: FormatType.custom,
+                                                                              format: '#0.00',
+                                                                              locale: '',
+                                                                            )} en total. ¿Está seguro?',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
                                                                   },
-                                                                  child:
-                                                                      Container(
-                                                                    height:
-                                                                        200.0,
-                                                                    child:
-                                                                        DialogBtnWidget(
-                                                                      titulo:
-                                                                          '¡Alerta!',
-                                                                      mensaje:
-                                                                          'Ya ha enviado un comprobante, por favor espere a que el tendero acepte su comprobante.',
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            },
-                                                          );
+                                                                ).then((value) =>
+                                                                    safeSetState(() =>
+                                                                        _model.isPagarTodo =
+                                                                            value));
 
-                                                          if (_shouldSetState)
-                                                            safeSetState(() {});
-                                                          return;
-                                                        } else {
-                                                          context.pushNamed(
-                                                            HistorialFullVoucherPagoWidget
-                                                                .routeName,
-                                                            queryParameters: {
-                                                              'idCliente':
-                                                                  serializeParam(
-                                                                widget
-                                                                    .idCliente,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                              'nombre':
-                                                                  serializeParam(
-                                                                widget
-                                                                    .nombreCliente,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'tenderoRef':
-                                                                  serializeParam(
-                                                                widget
-                                                                    .idTendero,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                              'historialPorPagarDT':
-                                                                  serializeParam(
-                                                                widget
-                                                                    .historialPorPagarDTList,
-                                                                ParamType
-                                                                    .DataStruct,
-                                                                isList: true,
-                                                              ),
-                                                              'doc':
-                                                                  serializeParam(
-                                                                widget.doc,
-                                                                ParamType
-                                                                    .Document,
-                                                                isList: true,
-                                                              ),
-                                                              'idTenderoList':
-                                                                  serializeParam(
-                                                                widget
-                                                                    .idTenderoList,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                                isList: true,
-                                                              ),
-                                                              'telf':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .telf,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'isFiando':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .isFiando,
-                                                                ParamType.bool,
-                                                              ),
-                                                              'apellido':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .apellido,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'cedula':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .cedula,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'direccionDomicilio':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .direccionDomicilio,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                              'viviendaAlq':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .viviendaAlq,
-                                                                ParamType.bool,
-                                                              ),
-                                                              'vivendaProp':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .viviendaPropia,
-                                                                ParamType.bool,
-                                                              ),
-                                                              'emailCliente':
-                                                                  serializeParam(
-                                                                resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .emailCliente,
-                                                                ParamType
-                                                                    .String,
-                                                              ),
-                                                            }.withoutNulls,
-                                                            extra: <String,
-                                                                dynamic>{
-                                                              'doc':
-                                                                  widget.doc,
-                                                            },
-                                                          );
-                                                        }
-                                                      } else {
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                        return;
-                                                      }
+                                                                _shouldSetState =
+                                                                    true;
+                                                                if (_model
+                                                                    .isPagarTodo!) {
+                                                                  if (resumenFiadoClienProdsNewClientesRecord
+                                                                          .cliente
+                                                                          .historialPorPagarProd
+                                                                          .where((e) =>
+                                                                              e.isVoucherSent)
+                                                                          .toList()
+                                                                          .length >
+                                                                      0) {
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Dialog(
+                                                                          elevation:
+                                                                              0,
+                                                                          insetPadding:
+                                                                              EdgeInsets.zero,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          alignment:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              height: 200.0,
+                                                                              child: DialogBtnWidget(
+                                                                                titulo: '¡Alerta!',
+                                                                                mensaje: 'Ya ha enviado un comprobante, por favor espere a que el tendero acepte su comprobante.',
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    );
 
-                                                      if (_shouldSetState)
-                                                        safeSetState(() {});
-                                                    },
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    return;
+                                                                  } else {
+                                                                    context
+                                                                        .pushNamed(
+                                                                      HistorialFullVoucherPagoWidget
+                                                                          .routeName,
+                                                                      queryParameters:
+                                                                          {
+                                                                        'idCliente':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .idCliente,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'nombre':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .nombreCliente,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'tenderoRef':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .idTendero,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                        ),
+                                                                        'historialPorPagarDT':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .historialPorPagarDTList,
+                                                                          ParamType
+                                                                              .DataStruct,
+                                                                          isList:
+                                                                              true,
+                                                                        ),
+                                                                        'doc':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .doc,
+                                                                          ParamType
+                                                                              .Document,
+                                                                          isList:
+                                                                              true,
+                                                                        ),
+                                                                        'idTenderoList':
+                                                                            serializeParam(
+                                                                          widget
+                                                                              .idTenderoList,
+                                                                          ParamType
+                                                                              .DocumentReference,
+                                                                          isList:
+                                                                              true,
+                                                                        ),
+                                                                        'telf':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .telf,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'isFiando':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .isFiando,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'apellido':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .apellido,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'cedula':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .cedula,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'direccionDomicilio':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .direccionDomicilio,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                        'viviendaAlq':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .viviendaAlq,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'vivendaProp':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .viviendaPropia,
+                                                                          ParamType
+                                                                              .bool,
+                                                                        ),
+                                                                        'emailCliente':
+                                                                            serializeParam(
+                                                                          resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .emailCliente,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
+                                                                      }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        'doc': widget
+                                                                            .doc,
+                                                                      },
+                                                                    );
+                                                                  }
+                                                                } else {
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+
+                                                                if (_shouldSetState)
+                                                                  safeSetState(
+                                                                      () {});
+                                                              },
                                                     text:
                                                         'Pagar Todo Por Transferencia',
                                                     options: FFButtonOptions(
@@ -1516,7 +1535,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                   .toList()
                                                                   .length >
                                                               0
-                                                          ? Color(0xFFB25C34)
+                                                          ? Color(0xFFFFBEA1)
                                                           : FlutterFlowTheme.of(
                                                                   context)
                                                               .tertiary,
@@ -1573,6 +1592,8 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
+                                                      disabledColor:
+                                                          Color(0xFFFFBEA1),
                                                     ),
                                                   ),
                                                 ),
