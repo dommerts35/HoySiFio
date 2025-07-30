@@ -65,7 +65,7 @@ Future<void> sendCustomEmailForSentVoucherToTendero(
           </table>
 
           <p style="margin: 20px 0 10px 0; font-size: 15px;">
-            Por favor revise el comprobante en su cuenta y confirme si es válido.
+            Por favor, revise el comprobante en su cuenta y confirme si es válido.
           </p>
         </td>
       </tr>

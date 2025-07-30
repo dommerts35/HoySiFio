@@ -258,13 +258,27 @@ class _HistorialSingleVoucherPagoWidgetState
                                                         .fontStyle,
                                               ),
                                         ),
-                                        AutoSizeText(
-                                          'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.numCuenta}',
-                                          minFontSize: 10.0,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
+                                        Flexible(
+                                          child: AutoSizeText(
+                                            'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.numCuenta}',
+                                            minFontSize: 8.0,
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -276,48 +290,47 @@ class _HistorialSingleVoucherPagoWidgetState
                                                           .labelMedium
                                                           .fontStyle,
                                                 ),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
+                                          ),
                                         ),
-                                        AutoSizeText(
-                                          'Titular: ${infoColTenderosRecord.tenderos.nombreTitularBanco}',
-                                          maxLines: 2,
-                                          minFontSize: 10.0,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: AutoSizeText(
+                                              'Titular: ${infoColTenderosRecord.tenderos.nombreTitularBanco}',
+                                              maxLines: 2,
+                                              minFontSize: 8.0,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
                                         ),
                                         AutoSizeText(
                                           infoColTenderosRecord
@@ -349,40 +362,49 @@ class _HistorialSingleVoucherPagoWidgetState
                                                         .fontStyle,
                                               ),
                                         ),
-                                        AutoSizeText(
-                                          'Banco: ${infoColTenderosRecord.tenderos.cuentaDeBancoName}',
-                                          minFontSize: 10.0,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
+                                        Flexible(
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: AutoSizeText(
+                                              'Banco: ${infoColTenderosRecord.tenderos.cuentaDeBancoName}',
+                                              minFontSize: 8.0,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
                                         ),
                                         Flexible(
                                           child: AutoSizeText(
                                             'Tienda: ${infoColTenderosRecord.tenderos.nombreTienda}',
-                                            minFontSize: 10.0,
+                                            minFontSize: 8.0,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -577,7 +599,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                             0.0, 0.0),
                                                     child: AutoSizeText(
                                                       'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec}',
-                                                      minFontSize: 10.0,
+                                                      minFontSize: 8.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -628,7 +650,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                     child: AutoSizeText(
                                                       'Titular: ${infoColTenderosRecord.tenderos.cuentaSecTendero.nombreTitularBancoSec}',
                                                       maxLines: 2,
-                                                      minFontSize: 10.0,
+                                                      minFontSize: 8.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -718,7 +740,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                             0.0, 0.0),
                                                     child: AutoSizeText(
                                                       'Banco: ${infoColTenderosRecord.tenderos.cuentaSecTendero.cuentaDeBancoSecName}',
-                                                      minFontSize: 10.0,
+                                                      minFontSize: 8.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -763,7 +785,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                           0.0, 0.0),
                                                   child: AutoSizeText(
                                                     'Tienda: ${infoColTenderosRecord.tenderos.nombreTienda}',
-                                                    minFontSize: 10.0,
+                                                    minFontSize: 8.0,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium

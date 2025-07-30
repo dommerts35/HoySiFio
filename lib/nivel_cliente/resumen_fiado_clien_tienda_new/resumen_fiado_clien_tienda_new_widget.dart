@@ -600,133 +600,142 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                    Flexible(
-                                                                      child: StreamBuilder<
-                                                                          List<
-                                                                              TenderosRecord>>(
-                                                                        stream:
-                                                                            queryTenderosRecord(
-                                                                          queryBuilder: (tenderosRecord) =>
-                                                                              tenderosRecord.where(
-                                                                            'tenderos.idTendero',
-                                                                            isEqualTo:
-                                                                                widget.idTenderoList?.elementAtOrNull(tiendaChildIndex),
-                                                                          ),
-                                                                          singleRecord:
-                                                                              true,
+                                                                    StreamBuilder<
+                                                                        List<
+                                                                            TenderosRecord>>(
+                                                                      stream:
+                                                                          queryTenderosRecord(
+                                                                        queryBuilder:
+                                                                            (tenderosRecord) =>
+                                                                                tenderosRecord.where(
+                                                                          'tenderos.idTendero',
+                                                                          isEqualTo: widget
+                                                                              .idTenderoList
+                                                                              ?.elementAtOrNull(tiendaChildIndex),
                                                                         ),
-                                                                        builder:
-                                                                            (context,
-                                                                                snapshot) {
-                                                                          // Customize what your widget looks like when it's loading.
-                                                                          if (!snapshot
-                                                                              .hasData) {
-                                                                            return Center(
-                                                                              child: SizedBox(
-                                                                                width: 50.0,
-                                                                                height: 50.0,
-                                                                                child: CircularProgressIndicator(
-                                                                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                    FlutterFlowTheme.of(context).primary,
-                                                                                  ),
+                                                                        singleRecord:
+                                                                            true,
+                                                                      ),
+                                                                      builder:
+                                                                          (context,
+                                                                              snapshot) {
+                                                                        // Customize what your widget looks like when it's loading.
+                                                                        if (!snapshot
+                                                                            .hasData) {
+                                                                          return Center(
+                                                                            child:
+                                                                                SizedBox(
+                                                                              width: 50.0,
+                                                                              height: 50.0,
+                                                                              child: CircularProgressIndicator(
+                                                                                valueColor: AlwaysStoppedAnimation<Color>(
+                                                                                  FlutterFlowTheme.of(context).primary,
                                                                                 ),
                                                                               ),
-                                                                            );
-                                                                          }
-                                                                          List<TenderosRecord>
-                                                                              infoIconTenderosRecordList =
-                                                                              snapshot.data!;
-                                                                          // Return an empty Container when the item does not exist.
-                                                                          if (snapshot
-                                                                              .data!
-                                                                              .isEmpty) {
-                                                                            return Container();
-                                                                          }
-                                                                          final infoIconTenderosRecord = infoIconTenderosRecordList.isNotEmpty
-                                                                              ? infoIconTenderosRecordList.first
-                                                                              : null;
-
-                                                                          return FlutterFlowIconButton(
-                                                                            borderRadius:
-                                                                                8.0,
-                                                                            buttonSize:
-                                                                                40.0,
-                                                                            icon:
-                                                                                Icon(
-                                                                              Icons.info_outline,
-                                                                              color: FlutterFlowTheme.of(context).primary,
-                                                                              size: 24.0,
                                                                             ),
-                                                                            onPressed:
-                                                                                () async {
-                                                                              await showModalBottomSheet(
-                                                                                isScrollControlled: true,
-                                                                                backgroundColor: Colors.transparent,
-                                                                                context: context,
-                                                                                builder: (context) {
-                                                                                  return GestureDetector(
-                                                                                    onTap: () {
-                                                                                      FocusScope.of(context).unfocus();
-                                                                                      FocusManager.instance.primaryFocus?.unfocus();
-                                                                                    },
-                                                                                    child: Padding(
-                                                                                      padding: MediaQuery.viewInsetsOf(context),
-                                                                                      child: Container(
-                                                                                        height: 400.0,
-                                                                                        child: ClienteDataFromTiendaListWidget(
-                                                                                          nombreCliente: tiendaChildItem.cliente.nombre,
-                                                                                          telefonoCliente: tiendaChildItem.cliente.telf,
-                                                                                          cedulaCliente: tiendaChildItem.cliente.cedula,
-                                                                                          direccionCliente: tiendaChildItem.cliente.direccionDomicilio,
-                                                                                          isViviendaPropia: tiendaChildItem.cliente.viviendaPropia,
-                                                                                          isViviendaAlq: tiendaChildItem.cliente.viviendaAlq,
-                                                                                          emailCliente: tiendaChildItem.cliente.emailCliente,
-                                                                                          tiendaNombre: infoIconTenderosRecord?.displayName,
-                                                                                          apellidoCliente: tiendaChildItem.cliente.apellido,
-                                                                                        ),
+                                                                          );
+                                                                        }
+                                                                        List<TenderosRecord>
+                                                                            infoIconTenderosRecordList =
+                                                                            snapshot.data!;
+                                                                        // Return an empty Container when the item does not exist.
+                                                                        if (snapshot
+                                                                            .data!
+                                                                            .isEmpty) {
+                                                                          return Container();
+                                                                        }
+                                                                        final infoIconTenderosRecord = infoIconTenderosRecordList.isNotEmpty
+                                                                            ? infoIconTenderosRecordList.first
+                                                                            : null;
+
+                                                                        return FlutterFlowIconButton(
+                                                                          borderRadius:
+                                                                              8.0,
+                                                                          buttonSize:
+                                                                              40.0,
+                                                                          icon:
+                                                                              Icon(
+                                                                            Icons.info_outline,
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            size:
+                                                                                24.0,
+                                                                          ),
+                                                                          onPressed:
+                                                                              () async {
+                                                                            await showModalBottomSheet(
+                                                                              isScrollControlled: true,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              context: context,
+                                                                              builder: (context) {
+                                                                                return GestureDetector(
+                                                                                  onTap: () {
+                                                                                    FocusScope.of(context).unfocus();
+                                                                                    FocusManager.instance.primaryFocus?.unfocus();
+                                                                                  },
+                                                                                  child: Padding(
+                                                                                    padding: MediaQuery.viewInsetsOf(context),
+                                                                                    child: Container(
+                                                                                      height: 400.0,
+                                                                                      child: ClienteDataFromTiendaListWidget(
+                                                                                        nombreCliente: tiendaChildItem.cliente.nombre,
+                                                                                        telefonoCliente: tiendaChildItem.cliente.telf,
+                                                                                        cedulaCliente: tiendaChildItem.cliente.cedula,
+                                                                                        direccionCliente: tiendaChildItem.cliente.direccionDomicilio,
+                                                                                        isViviendaPropia: tiendaChildItem.cliente.viviendaPropia,
+                                                                                        isViviendaAlq: tiendaChildItem.cliente.viviendaAlq,
+                                                                                        emailCliente: tiendaChildItem.cliente.emailCliente,
+                                                                                        tiendaNombre: infoIconTenderosRecord?.displayName,
+                                                                                        apellidoCliente: tiendaChildItem.cliente.apellido,
                                                                                       ),
                                                                                     ),
-                                                                                  );
-                                                                                },
-                                                                              ).then((value) => safeSetState(() {}));
-                                                                            },
-                                                                          );
-                                                                        },
-                                                                      ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                safeSetState(() {}));
+                                                                          },
+                                                                        );
+                                                                      },
                                                                     ),
                                                                   ],
                                                                 ),
-                                                                Divider(
-                                                                  thickness:
-                                                                      2.0,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .alternate,
-                                                                ),
-                                                                Text(
-                                                                  tiendaChildItem
-                                                                              .cliente
-                                                                              .historialPorPagarProd
-                                                                              .length <=
-                                                                          0
-                                                                      ? '¡Hurra! No hay deudas pendientes en esta tienda.'
-                                                                      : 'Total a pagar de los productos: \$${formatNumber(
-                                                                          tiendaChildItem
-                                                                              .cliente
-                                                                              .totalDeudaCompleta,
-                                                                          formatType:
-                                                                              FormatType.custom,
-                                                                          format:
-                                                                              '#0.00',
-                                                                          locale:
-                                                                              '',
-                                                                        )}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLarge
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .inter(
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    tiendaChildItem.cliente.historialPorPagarProd.length <=
+                                                                            0
+                                                                        ? '¡Hurra! No hay deudas pendientes en esta tienda.'
+                                                                        : 'Total a pagar de los productos: \$${formatNumber(
+                                                                            tiendaChildItem.cliente.totalDeudaCompleta,
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            format:
+                                                                                '#0.00',
+                                                                            locale:
+                                                                                '',
+                                                                          )}',
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyLarge
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.inter(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                          ),
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                          letterSpacing:
+                                                                              0.0,
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .bodyLarge
                                                                               .fontWeight,
@@ -734,19 +743,11 @@ class _ResumenFiadoClienTiendaNewWidgetState
                                                                               .bodyLarge
                                                                               .fontStyle,
                                                                         ),
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyLarge
-                                                                            .fontStyle,
-                                                                      ),
+                                                                  ),
                                                                 ),
-                                                              ],
+                                                              ].divide(SizedBox(
+                                                                  height:
+                                                                      15.0)),
                                                             ),
                                                           ),
                                                         ),

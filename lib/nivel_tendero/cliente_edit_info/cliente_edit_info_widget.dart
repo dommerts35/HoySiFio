@@ -349,7 +349,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
             top: true,
             child: Form(
               key: _model.formKey,
-              autovalidateMode: AutovalidateMode.disabled,
+              autovalidateMode: AutovalidateMode.always,
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

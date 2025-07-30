@@ -3270,7 +3270,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                             5.0,
                                                                             0.0,
                                                                             5.0,
-                                                                            0.0),
+                                                                            5.0),
                                                                 child: StreamBuilder<
                                                                     ClientesRecord>(
                                                                   stream: _model
@@ -3365,119 +3365,127 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                                     crossAxisAlignment: CrossAxisAlignment.center,
                                                                                     children: [
-                                                                                      Column(
-                                                                                        mainAxisSize: MainAxisSize.min,
-                                                                                        children: [
-                                                                                          SizedBox(
-                                                                                            width: 38.0,
-                                                                                            child: Divider(
-                                                                                              height: 0.0,
-                                                                                              thickness: 0.0,
-                                                                                              color: Colors.transparent,
+                                                                                      Flexible(
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          children: [
+                                                                                            SizedBox(
+                                                                                              width: 38.0,
+                                                                                              child: Divider(
+                                                                                                height: 0.0,
+                                                                                                thickness: 0.0,
+                                                                                                color: Colors.transparent,
+                                                                                              ),
                                                                                             ),
-                                                                                          ),
-                                                                                          Text(
-                                                                                            vistaMainItem.cantidad.toString(),
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  font: GoogleFonts.inter(
+                                                                                            Text(
+                                                                                              vistaMainItem.cantidad.toString(),
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    font: GoogleFonts.inter(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
+                                                                                                    letterSpacing: 0.0,
                                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ],
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
                                                                                       ),
-                                                                                      Column(
-                                                                                        mainAxisSize: MainAxisSize.min,
-                                                                                        children: [
-                                                                                          SizedBox(
-                                                                                            width: 78.0,
-                                                                                            child: Divider(
-                                                                                              height: 0.0,
-                                                                                              thickness: 0.0,
-                                                                                              color: Colors.transparent,
+                                                                                      Flexible(
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          children: [
+                                                                                            SizedBox(
+                                                                                              width: 78.0,
+                                                                                              child: Divider(
+                                                                                                height: 0.0,
+                                                                                                thickness: 0.0,
+                                                                                                color: Colors.transparent,
+                                                                                              ),
                                                                                             ),
-                                                                                          ),
-                                                                                          AutoSizeText(
-                                                                                            vistaMainItem.nombreProd.maybeHandleOverflow(
-                                                                                              maxChars: 10,
-                                                                                              replacement: '…',
-                                                                                            ),
-                                                                                            minFontSize: 10.0,
-                                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                  font: GoogleFonts.inter(
+                                                                                            AutoSizeText(
+                                                                                              vistaMainItem.nombreProd.maybeHandleOverflow(
+                                                                                                maxChars: 10,
+                                                                                                replacement: '…',
+                                                                                              ),
+                                                                                              minFontSize: 10.0,
+                                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                    font: GoogleFonts.inter(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                    ),
+                                                                                                    letterSpacing: 0.0,
                                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                   ),
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                      Column(
-                                                                                        mainAxisSize: MainAxisSize.min,
-                                                                                        children: [
-                                                                                          SizedBox(
-                                                                                            width: 50.0,
-                                                                                            child: Divider(
-                                                                                              height: 0.0,
-                                                                                              thickness: 0.0,
-                                                                                              color: Colors.transparent,
                                                                                             ),
-                                                                                          ),
-                                                                                          Text(
-                                                                                            '\$${formatNumber(
-                                                                                              vistaMainItem.valorProd / vistaMainItem.cantidad,
-                                                                                              formatType: FormatType.custom,
-                                                                                              format: '#0.00',
-                                                                                              locale: '',
-                                                                                            )}',
-                                                                                            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                  font: GoogleFonts.inter(
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                      Flexible(
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          children: [
+                                                                                            SizedBox(
+                                                                                              width: 50.0,
+                                                                                              child: Divider(
+                                                                                                height: 0.0,
+                                                                                                thickness: 0.0,
+                                                                                                color: Colors.transparent,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              '\$${formatNumber(
+                                                                                                vistaMainItem.valorProd / vistaMainItem.cantidad,
+                                                                                                formatType: FormatType.custom,
+                                                                                                format: '#0.00',
+                                                                                                locale: '',
+                                                                                              )}',
+                                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                    font: GoogleFonts.inter(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                    ),
+                                                                                                    letterSpacing: 0.0,
                                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                   ),
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ],
-                                                                                      ),
-                                                                                      Column(
-                                                                                        mainAxisSize: MainAxisSize.min,
-                                                                                        children: [
-                                                                                          SizedBox(
-                                                                                            width: 33.0,
-                                                                                            child: Divider(
-                                                                                              height: 0.0,
-                                                                                              thickness: 0.0,
-                                                                                              color: Colors.transparent,
                                                                                             ),
-                                                                                          ),
-                                                                                          Text(
-                                                                                            '\$${formatNumber(
-                                                                                              vistaMainItem.valorProd,
-                                                                                              formatType: FormatType.custom,
-                                                                                              format: '#0.00',
-                                                                                              locale: '',
-                                                                                            )}',
-                                                                                            style: FlutterFlowTheme.of(context).bodyLarge.override(
-                                                                                                  font: GoogleFonts.inter(
+                                                                                          ],
+                                                                                        ),
+                                                                                      ),
+                                                                                      Flexible(
+                                                                                        child: Column(
+                                                                                          mainAxisSize: MainAxisSize.min,
+                                                                                          children: [
+                                                                                            SizedBox(
+                                                                                              width: 33.0,
+                                                                                              child: Divider(
+                                                                                                height: 0.0,
+                                                                                                thickness: 0.0,
+                                                                                                color: Colors.transparent,
+                                                                                              ),
+                                                                                            ),
+                                                                                            Text(
+                                                                                              '\$${formatNumber(
+                                                                                                vistaMainItem.valorProd,
+                                                                                                formatType: FormatType.custom,
+                                                                                                format: '#0.00',
+                                                                                                locale: '',
+                                                                                              )}',
+                                                                                              style: FlutterFlowTheme.of(context).bodyLarge.override(
+                                                                                                    font: GoogleFonts.inter(
+                                                                                                      fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                                                      fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                                                    ),
+                                                                                                    letterSpacing: 0.0,
                                                                                                     fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                                                   ),
-                                                                                                  letterSpacing: 0.0,
-                                                                                                  fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                                                  fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                                                ),
-                                                                                          ),
-                                                                                        ],
+                                                                                            ),
+                                                                                          ],
+                                                                                        ),
                                                                                       ),
                                                                                       Column(
                                                                                         mainAxisSize: MainAxisSize.max,

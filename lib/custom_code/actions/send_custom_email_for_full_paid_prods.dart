@@ -12,8 +12,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<void> sendCustomEmailForFullPaidProds(String recipientEmail,
-    String recipientName, String emailSubject, String nombreTienda) async {
+Future<void> sendCustomEmailForFullPaidProds(
+    String recipientEmail,
+    String recipientName,
+    String emailSubject,
+    String nombreTienda,
+    String numComprobante,
+    String valorComprobante) async {
   final String oneSignalAppId = "fc0f984a-a2c3-4fdb-b633-ac1517360e8e";
   final String oneSignalRestApiKey =
       "os_v2_app_7qhzqsvcynh5xnrtvqkronqory7h3fci6sxunx4yd64ecbnxx7sutv3nhvqcfvpfqrhmbqqs2u7qbyvcklyymchv6z5smpppcbmkfey";
@@ -43,7 +48,7 @@ Future<void> sendCustomEmailForFullPaidProds(String recipientEmail,
       <tr>
         <td style="padding: 25px;">
           <p style="margin: 0 0 16px 0;">¡Hola, $recipientName!</p>
-          <p style="margin: 0 0 16px 0;">Se ha registrado un pago completo de todos los productos adeudados en la tienda: <strong>$nombreTienda</strong>.</p>
+          <p style="margin: 0 0 16px 0;">Se ha registrado un pago completo de todos los productos adeudados en la tienda: <strong>$nombreTienda</strong>, con el número de comprobante <strong>$numComprobante</strong> y el valor de <strong>$valorComprobante</strong>.</p>
           <p style="margin: 16px 0; color: #777; font-style: italic;">El tendero ha sido notificado y revisará el comprobante de pago pronto.</p>
         </td>
       </tr>

@@ -645,6 +645,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                 double.infinity,
                                                                             constraints:
                                                                                 BoxConstraints(
+                                                                              minHeight: 310.0,
                                                                               maxWidth: 430.0,
                                                                             ),
                                                                             decoration:
@@ -718,121 +719,88 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       children: List.generate(productosChild.length, (productosChildIndex) {
                                                                                         final productosChildItem = productosChild[productosChildIndex];
-                                                                                        return Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
-                                                                                          child: Row(
-                                                                                            mainAxisSize: MainAxisSize.max,
-                                                                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                                            children: [
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  SizedBox(
-                                                                                                    width: 65.0,
-                                                                                                    child: Divider(
-                                                                                                      height: 0.0,
-                                                                                                      thickness: 0.0,
-                                                                                                      color: Colors.transparent,
+                                                                                        return Container(
+                                                                                          width: 281.0,
+                                                                                          height: 41.0,
+                                                                                          decoration: BoxDecoration(),
+                                                                                          child: Padding(
+                                                                                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                                                                                            child: Row(
+                                                                                              mainAxisSize: MainAxisSize.max,
+                                                                                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                                              children: [
+                                                                                                Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    SizedBox(
+                                                                                                      width: 65.0,
+                                                                                                      child: Divider(
+                                                                                                        height: 0.0,
+                                                                                                        thickness: 0.0,
+                                                                                                        color: Colors.transparent,
+                                                                                                      ),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  AutoSizeText(
-                                                                                                    valueOrDefault<String>(
-                                                                                                      productosChildItem.nombreProd,
-                                                                                                      'p',
-                                                                                                    ).maybeHandleOverflow(
-                                                                                                      maxChars: 10,
-                                                                                                      replacement: '…',
-                                                                                                    ),
-                                                                                                    minFontSize: 6.0,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          font: GoogleFonts.inter(
+                                                                                                    AutoSizeText(
+                                                                                                      valueOrDefault<String>(
+                                                                                                        productosChildItem.nombreProd,
+                                                                                                        'p',
+                                                                                                      ),
+                                                                                                      minFontSize: 6.0,
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            font: GoogleFonts.inter(
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                            ),
+                                                                                                            letterSpacing: 0.0,
                                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                           ),
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  SizedBox(
-                                                                                                    width: 60.0,
-                                                                                                    child: Divider(
-                                                                                                      height: 0.0,
-                                                                                                      thickness: 0.0,
-                                                                                                      color: Colors.transparent,
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  AutoSizeText(
-                                                                                                    valueOrDefault<String>(
-                                                                                                      productosChildItem.cantidad.toString(),
-                                                                                                      '0',
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    SizedBox(
+                                                                                                      width: 60.0,
+                                                                                                      child: Divider(
+                                                                                                        height: 0.0,
+                                                                                                        thickness: 0.0,
+                                                                                                        color: Colors.transparent,
+                                                                                                      ),
                                                                                                     ),
-                                                                                                    minFontSize: 6.0,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          font: GoogleFonts.inter(
+                                                                                                    AutoSizeText(
+                                                                                                      valueOrDefault<String>(
+                                                                                                        productosChildItem.cantidad.toString(),
+                                                                                                        '0',
+                                                                                                      ),
+                                                                                                      minFontSize: 6.0,
+                                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                            font: GoogleFonts.inter(
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                            ),
+                                                                                                            letterSpacing: 0.0,
                                                                                                             fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                           ),
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  SizedBox(
-                                                                                                    width: 51.0,
-                                                                                                    child: Divider(
-                                                                                                      height: 0.0,
-                                                                                                      thickness: 0.0,
-                                                                                                      color: Colors.transparent,
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  AutoSizeText(
-                                                                                                    '\$${formatNumber(
-                                                                                                      productosChildItem.valorProd / productosChildItem.cantidad,
-                                                                                                      formatType: FormatType.custom,
-                                                                                                      format: '#0.00',
-                                                                                                      locale: '',
-                                                                                                    )}',
-                                                                                                    textAlign: TextAlign.end,
-                                                                                                    minFontSize: 6.0,
-                                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                                          font: GoogleFonts.inter(
-                                                                                                            fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                            fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                          ),
-                                                                                                          letterSpacing: 0.0,
-                                                                                                          fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                                                                                                          fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                                                                                                        ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                              Column(
-                                                                                                mainAxisSize: MainAxisSize.max,
-                                                                                                children: [
-                                                                                                  SizedBox(
-                                                                                                    width: 33.0,
-                                                                                                    child: Divider(
-                                                                                                      height: 0.0,
-                                                                                                      thickness: 0.0,
-                                                                                                      color: Colors.transparent,
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    SizedBox(
+                                                                                                      width: 51.0,
+                                                                                                      child: Divider(
+                                                                                                        height: 0.0,
+                                                                                                        thickness: 0.0,
+                                                                                                        color: Colors.transparent,
+                                                                                                      ),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                  Padding(
-                                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                                                                                                    child: AutoSizeText(
+                                                                                                    AutoSizeText(
                                                                                                       '\$${formatNumber(
-                                                                                                        productosChildItem.valorProd,
+                                                                                                        productosChildItem.valorProd / productosChildItem.cantidad,
                                                                                                         formatType: FormatType.custom,
                                                                                                         format: '#0.00',
                                                                                                         locale: '',
@@ -849,10 +817,45 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                             fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                           ),
                                                                                                     ),
-                                                                                                  ),
-                                                                                                ],
-                                                                                              ),
-                                                                                            ],
+                                                                                                  ],
+                                                                                                ),
+                                                                                                Column(
+                                                                                                  mainAxisSize: MainAxisSize.max,
+                                                                                                  children: [
+                                                                                                    SizedBox(
+                                                                                                      width: 33.0,
+                                                                                                      child: Divider(
+                                                                                                        height: 0.0,
+                                                                                                        thickness: 0.0,
+                                                                                                        color: Colors.transparent,
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                    Padding(
+                                                                                                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                                                                                                      child: AutoSizeText(
+                                                                                                        '\$${formatNumber(
+                                                                                                          productosChildItem.valorProd,
+                                                                                                          formatType: FormatType.custom,
+                                                                                                          format: '#0.00',
+                                                                                                          locale: '',
+                                                                                                        )}',
+                                                                                                        textAlign: TextAlign.end,
+                                                                                                        minFontSize: 6.0,
+                                                                                                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                                              font: GoogleFonts.inter(
+                                                                                                                fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                                fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                              ),
+                                                                                                              letterSpacing: 0.0,
+                                                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                                                            ),
+                                                                                                      ),
+                                                                                                    ),
+                                                                                                  ],
+                                                                                                ),
+                                                                                              ],
+                                                                                            ),
                                                                                           ),
                                                                                         );
                                                                                       }),
