@@ -37,6 +37,10 @@ class FFAppState extends ChangeNotifier {
           prefs.getBool('ff_isFirstTimeClienteProdList') ??
               _isFirstTimeClienteProdList;
     });
+    _safeInit(() {
+      _isFirstTimeHistorialCPP = prefs.getBool('ff_isFirstTimeHistorialCPP') ??
+          _isFirstTimeHistorialCPP;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -92,6 +96,13 @@ class FFAppState extends ChangeNotifier {
   String get playerId => _playerId;
   set playerId(String value) {
     _playerId = value;
+  }
+
+  bool _isFirstTimeHistorialCPP = true;
+  bool get isFirstTimeHistorialCPP => _isFirstTimeHistorialCPP;
+  set isFirstTimeHistorialCPP(bool value) {
+    _isFirstTimeHistorialCPP = value;
+    prefs.setBool('ff_isFirstTimeHistorialCPP', value);
   }
 }
 

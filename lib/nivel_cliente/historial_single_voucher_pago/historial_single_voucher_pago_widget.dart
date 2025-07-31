@@ -122,7 +122,7 @@ class _HistorialSingleVoucherPagoWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(190.0),
+            preferredSize: Size.fromHeight(200.0),
             child: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               automaticallyImplyLeading: false,
@@ -188,10 +188,10 @@ class _HistorialSingleVoucherPagoWidgetState
                       },
                     ),
                   ),
-                  Expanded(
+                  Flexible(
                     child: Container(
                       width: double.infinity,
-                      height: 190.0,
+                      height: 210.0,
                       child: Stack(
                         children: [
                           Padding(
@@ -299,7 +299,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                             child: AutoSizeText(
                                               'Titular: ${infoColTenderosRecord.tenderos.nombreTitularBanco}',
                                               maxLines: 2,
-                                              minFontSize: 8.0,
+                                              minFontSize: 4.0,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
@@ -363,14 +363,19 @@ class _HistorialSingleVoucherPagoWidgetState
                                               ),
                                         ),
                                         Flexible(
-                                          child: Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: AutoSizeText(
-                                              'Banco: ${infoColTenderosRecord.tenderos.cuentaDeBancoName}',
-                                              minFontSize: 8.0,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: AutoSizeText(
+                                                  'Banco: ${infoColTenderosRecord.tenderos.cuentaDeBancoName}',
+                                                  minFontSize: 4.0,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .labelMedium
                                                       .override(
                                                         font: GoogleFonts.inter(
@@ -398,7 +403,9 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
-                                            ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Flexible(
@@ -549,7 +556,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                             0.0, 0.0),
                                                     child: AutoSizeText(
                                                       'Este tendero no tiene \nuna cuenta secundaria',
-                                                      minFontSize: 10.0,
+                                                      minFontSize: 4.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -599,7 +606,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                             0.0, 0.0),
                                                     child: AutoSizeText(
                                                       'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec}',
-                                                      minFontSize: 8.0,
+                                                      minFontSize: 4.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -650,7 +657,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                     child: AutoSizeText(
                                                       'Titular: ${infoColTenderosRecord.tenderos.cuentaSecTendero.nombreTitularBancoSec}',
                                                       maxLines: 2,
-                                                      minFontSize: 8.0,
+                                                      minFontSize: 4.0,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -695,7 +702,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                                   .tenderos
                                                   .cuentaSecTendero
                                                   .tipoDeCuentaSec,
-                                              minFontSize: 10.0,
+                                              minFontSize: 4.0,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .labelLarge
@@ -725,42 +732,36 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                 .fontStyle,
                                                       ),
                                             ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              if (infoColTenderosRecord
-                                                          .tenderos
-                                                          .cuentaSecTendero
-                                                          .numCuentaSec !=
-                                                      '')
-                                                Flexible(
-                                                  child: Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: AutoSizeText(
-                                                      'Banco: ${infoColTenderosRecord.tenderos.cuentaSecTendero.cuentaDeBancoSecName}',
-                                                      minFontSize: 8.0,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
+                                          Container(
+                                            width: double.infinity,
+                                            constraints: BoxConstraints(
+                                              minHeight: 21.0,
+                                              maxHeight: 21.0,
+                                            ),
+                                            decoration: BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                if (infoColTenderosRecord
+                                                            .tenderos
+                                                            .cuentaSecTendero
+                                                            .numCuentaSec !=
+                                                        '')
+                                                  Flexible(
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: AutoSizeText(
+                                                        'Banco: ${infoColTenderosRecord.tenderos.cuentaSecTendero.cuentaDeBancoSecName}',
+                                                        maxLines: 2,
+                                                        minFontSize: 4.0,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .inter(
                                                                 fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -770,10 +771,25 @@ class _HistorialSingleVoucherPagoWidgetState
                                                                     .labelMedium
                                                                     .fontStyle,
                                                               ),
+                                                              fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -945,7 +961,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                         CrossAxisAlignment.center,
                                     children: [
                                       Container(
-                                        height: 70.0,
+                                        height: 62.0,
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -1087,7 +1103,6 @@ class _HistorialSingleVoucherPagoWidgetState
                                                               context)
                                                           .bodyMedium
                                                           .fontStyle,
-                                                  lineHeight: 3.0,
                                                 ),
                                             maxLength: 8,
                                             buildCounter: (context,
@@ -1125,7 +1140,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                         ),
                                       ),
                                       Container(
-                                        height: 70.0,
+                                        height: 62.0,
                                         decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
@@ -1268,7 +1283,6 @@ class _HistorialSingleVoucherPagoWidgetState
                                                               context)
                                                           .bodyMedium
                                                           .fontStyle,
-                                                  lineHeight: 3.0,
                                                 ),
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
@@ -1296,7 +1310,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                         ),
                                       ),
                                       Container(
-                                        height: 70.0,
+                                        height: 62.0,
                                         child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -1436,7 +1450,6 @@ class _HistorialSingleVoucherPagoWidgetState
                                                               context)
                                                           .bodyMedium
                                                           .fontStyle,
-                                                  lineHeight: 3.0,
                                                 ),
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)

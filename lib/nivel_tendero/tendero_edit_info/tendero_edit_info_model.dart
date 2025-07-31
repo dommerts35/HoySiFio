@@ -5,6 +5,10 @@ import 'tendero_edit_info_widget.dart' show TenderoEditInfoWidget;
 import 'package:flutter/material.dart';
 
 class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
+  ///  Local state fields for this page.
+
+  bool isDeletedCuentaSec = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -22,8 +26,8 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     if (val.length < 2) {
       return 'Ingrese el nombre de su tienda con al menos 2 carácteres';
     }
-    if (val.length > 30) {
-      return 'Ingrese el nombre de su tienda con  menos de 30 carácteres';
+    if (val.length > 20) {
+      return 'Ingrese el nombre de su tienda con  menos de 20 carácteres';
     }
 
     return null;

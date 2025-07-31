@@ -1310,6 +1310,88 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['tenderos'],
             ),
           ),
+        ),
+        FFRoute(
+          name: PageTutorialHistorialCPPFTWidget.routeName,
+          path: PageTutorialHistorialCPPFTWidget.routePath,
+          builder: (context, params) => PageTutorialHistorialCPPFTWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreCliente: params.getParam(
+              'nombreCliente',
+              ParamType.String,
+            ),
+            telf: params.getParam(
+              'telf',
+              ParamType.String,
+            ),
+            isFiando: params.getParam(
+              'isFiando',
+              ParamType.bool,
+            ),
+            idCliente: params.getParam(
+              'idCliente',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['clientes'],
+            ),
+            apellido: params.getParam(
+              'apellido',
+              ParamType.String,
+            ),
+            cedula: params.getParam(
+              'cedula',
+              ParamType.String,
+            ),
+            direccionDomicilio: params.getParam(
+              'direccionDomicilio',
+              ParamType.String,
+            ),
+            viviendaAlq: params.getParam(
+              'viviendaAlq',
+              ParamType.bool,
+            ),
+            viviendaProp: params.getParam(
+              'viviendaProp',
+              ParamType.bool,
+            ),
+            emailCliente: params.getParam(
+              'emailCliente',
+              ParamType.String,
+            ),
+            totalPassed: params.getParam(
+              'totalPassed',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: PageTutorialHistorialCPPHelpWidget.routeName,
+          path: PageTutorialHistorialCPPHelpWidget.routePath,
+          builder: (context, params) => PageTutorialHistorialCPPHelpWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

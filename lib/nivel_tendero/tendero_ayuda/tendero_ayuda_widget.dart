@@ -330,6 +330,71 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                     ),
+                                    FFButtonWidget(
+                                      onPressed: () async {
+                                        context.goNamed(
+                                          PageTutorialHistorialCPPHelpWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.tenderoEmail,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      text: 'Cuentas por cobrar',
+                                      options: FFButtonOptions(
+                                        width: double.infinity,
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
+                                        elevation: 0.0,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
                                   ].divide(SizedBox(height: 20.0)),
                                 ),
                               ),

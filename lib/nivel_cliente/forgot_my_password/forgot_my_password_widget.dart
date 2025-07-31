@@ -1445,52 +1445,29 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                               child: FFButtonWidget(
                                                 onPressed: () async {
                                                   var _shouldSetState = false;
-                                                  if (_model
-                                                          .otpForgotTextController
-                                                          .text ==
-                                                      _model.pswrdOtp) {
+                                                  _model.isFormValidated = true;
+                                                  if (_model.formKey
+                                                              .currentState ==
+                                                          null ||
+                                                      !_model
+                                                          .formKey.currentState!
+                                                          .validate()) {
+                                                    safeSetState(() =>
+                                                        _model.isFormValidated =
+                                                            false);
+                                                    return;
+                                                  }
+                                                  _shouldSetState = true;
+                                                  if (_model.isFormValidated ==
+                                                      true) {
                                                     if (_model
-                                                            .isProfileTenderoChosen ==
-                                                        true) {
-                                                      _model.resetQuery =
-                                                          await queryTenderosRecordOnce(
-                                                        queryBuilder:
-                                                            (tenderosRecord) =>
-                                                                tenderosRecord
-                                                                    .where(
-                                                          'email',
-                                                          isEqualTo: _model
-                                                              .emailAddressForgotTextController
-                                                              .text,
-                                                        ),
-                                                        singleRecord: true,
-                                                      ).then((s) =>
-                                                              s.firstOrNull);
-                                                      _shouldSetState = true;
-
-                                                      await _model
-                                                          .resetQuery!.reference
-                                                          .update(
-                                                              createTenderosRecordData(
-                                                        tenderos:
-                                                            createDataTypeTenderoStruct(
-                                                          pw: _model
-                                                              .passwordNewForgotTextController
-                                                              .text,
-                                                          clearUnsetFields:
-                                                              false,
-                                                        ),
-                                                      ));
-                                                    } else {
-                                                      if ((_model.queryTenderoForPswrdReset
-                                                                      ?.displayName !=
-                                                                  null &&
-                                                              _model.queryTenderoForPswrdReset
-                                                                      ?.displayName !=
-                                                                  '') &&
-                                                          (_model.isProfileClienteChosen ==
-                                                              false)) {
-                                                        _model.resetQueryTenderoChosen =
+                                                            .otpForgotTextController
+                                                            .text ==
+                                                        _model.pswrdOtp) {
+                                                      if (_model
+                                                              .isProfileTenderoChosen ==
+                                                          true) {
+                                                        _model.resetQuery =
                                                             await queryTenderosRecordOnce(
                                                           queryBuilder:
                                                               (tenderosRecord) =>
@@ -1506,8 +1483,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                 s.firstOrNull);
                                                         _shouldSetState = true;
 
-                                                        await _model
-                                                            .resetQueryTenderoChosen!
+                                                        await _model.resetQuery!
                                                             .reference
                                                             .update(
                                                                 createTenderosRecordData(
@@ -1521,225 +1497,278 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                           ),
                                                         ));
                                                       } else {
-                                                        _model.resetQueryCliente =
-                                                            await queryClientesRecordOnce(
-                                                          queryBuilder:
-                                                              (clientesRecord) =>
-                                                                  clientesRecord
-                                                                      .where(
-                                                            'cliente.emailCliente',
-                                                            isEqualTo: _model
-                                                                .emailAddressForgotTextController
-                                                                .text,
-                                                          ),
-                                                        );
-                                                        _shouldSetState = true;
-                                                        for (int loop1Index = 0;
-                                                            loop1Index <
-                                                                _model
-                                                                    .resetQueryCliente!
-                                                                    .length;
-                                                            loop1Index++) {
-                                                          final currentLoop1Item =
-                                                              _model.resetQueryCliente![
-                                                                  loop1Index];
+                                                        if ((_model.queryTenderoForPswrdReset
+                                                                        ?.displayName !=
+                                                                    null &&
+                                                                _model.queryTenderoForPswrdReset
+                                                                        ?.displayName !=
+                                                                    '') &&
+                                                            (_model.isProfileClienteChosen ==
+                                                                false)) {
+                                                          _model.resetQueryTenderoChosen =
+                                                              await queryTenderosRecordOnce(
+                                                            queryBuilder:
+                                                                (tenderosRecord) =>
+                                                                    tenderosRecord
+                                                                        .where(
+                                                              'email',
+                                                              isEqualTo: _model
+                                                                  .emailAddressForgotTextController
+                                                                  .text,
+                                                            ),
+                                                            singleRecord: true,
+                                                          ).then((s) => s
+                                                                  .firstOrNull);
+                                                          _shouldSetState =
+                                                              true;
 
-                                                          await currentLoop1Item
+                                                          await _model
+                                                              .resetQueryTenderoChosen!
                                                               .reference
                                                               .update(
-                                                                  createClientesRecordData(
-                                                            cliente:
-                                                                createDataTypeClienteStruct(
-                                                              contrasena: _model
+                                                                  createTenderosRecordData(
+                                                            tenderos:
+                                                                createDataTypeTenderoStruct(
+                                                              pw: _model
                                                                   .passwordNewForgotTextController
                                                                   .text,
                                                               clearUnsetFields:
                                                                   false,
                                                             ),
                                                           ));
-                                                        }
-                                                        await showDialog(
-                                                          context: context,
-                                                          builder:
-                                                              (dialogContext) {
-                                                            return Dialog(
-                                                              elevation: 0,
-                                                              insetPadding:
-                                                                  EdgeInsets
-                                                                      .zero,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              alignment: AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () {
-                                                                  FocusScope.of(
-                                                                          dialogContext)
-                                                                      .unfocus();
-                                                                  FocusManager
-                                                                      .instance
-                                                                      .primaryFocus
-                                                                      ?.unfocus();
-                                                                },
+                                                        } else {
+                                                          _model.resetQueryCliente =
+                                                              await queryClientesRecordOnce(
+                                                            queryBuilder:
+                                                                (clientesRecord) =>
+                                                                    clientesRecord
+                                                                        .where(
+                                                              'cliente.emailCliente',
+                                                              isEqualTo: _model
+                                                                  .emailAddressForgotTextController
+                                                                  .text,
+                                                            ),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          for (int loop1Index =
+                                                                  0;
+                                                              loop1Index <
+                                                                  _model
+                                                                      .resetQueryCliente!
+                                                                      .length;
+                                                              loop1Index++) {
+                                                            final currentLoop1Item =
+                                                                _model.resetQueryCliente![
+                                                                    loop1Index];
+
+                                                            await currentLoop1Item
+                                                                .reference
+                                                                .update(
+                                                                    createClientesRecordData(
+                                                              cliente:
+                                                                  createDataTypeClienteStruct(
+                                                                contrasena: _model
+                                                                    .passwordNewForgotTextController
+                                                                    .text,
+                                                                clearUnsetFields:
+                                                                    false,
+                                                              ),
+                                                            ));
+                                                          }
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
                                                                 child:
-                                                                    Container(
-                                                                  height: 200.0,
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
                                                                   child:
-                                                                      DialogBtnWidget(
-                                                                    titulo:
-                                                                        '¡Exito!',
-                                                                    mensaje:
-                                                                        'Su contraseña ha sido reestablecida.',
+                                                                      Container(
+                                                                    height:
+                                                                        200.0,
+                                                                    child:
+                                                                        DialogBtnWidget(
+                                                                      titulo:
+                                                                          '¡Exito!',
+                                                                      mensaje:
+                                                                          'Su contraseña ha sido reestablecida.',
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
+                                                              );
+                                                            },
+                                                          );
 
-                                                        _model.pswrdOtp = null;
-                                                        safeSetState(() {});
-
-                                                        context.goNamedAuth(
-                                                            AuthSigningInWidget
-                                                                .routeName,
-                                                            context.mounted);
-
-                                                        if (_shouldSetState)
+                                                          _model.pswrdOtp =
+                                                              null;
                                                           safeSetState(() {});
+
+                                                          context.goNamedAuth(
+                                                              AuthSigningInWidget
+                                                                  .routeName,
+                                                              context.mounted);
+
+                                                          if (_shouldSetState)
+                                                            safeSetState(() {});
+                                                          return;
+                                                        }
+                                                      }
+
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+
+                                                      final user =
+                                                          await authManager
+                                                              .signInWithEmail(
+                                                        context,
+                                                        _model
+                                                            .emailAddressForgotTextController
+                                                            .text,
+                                                        _model
+                                                            .queryTenderoForPswrdReset!
+                                                            .tenderos
+                                                            .pw,
+                                                      );
+                                                      if (user == null) {
                                                         return;
                                                       }
-                                                    }
 
-                                                    GoRouter.of(context)
-                                                        .prepareAuthEvent();
+                                                      await authManager
+                                                          .updatePassword(
+                                                        newPassword: _model
+                                                            .passwordNewForgotTextController
+                                                            .text,
+                                                        context: context,
+                                                      );
+                                                      safeSetState(() {});
 
-                                                    final user =
-                                                        await authManager
-                                                            .signInWithEmail(
-                                                      context,
-                                                      _model
-                                                          .emailAddressForgotTextController
-                                                          .text,
-                                                      _model
-                                                          .queryTenderoForPswrdReset!
-                                                          .tenderos
-                                                          .pw,
-                                                    );
-                                                    if (user == null) {
+                                                      GoRouter.of(context)
+                                                          .prepareAuthEvent();
+                                                      await authManager
+                                                          .signOut();
+                                                      GoRouter.of(context)
+                                                          .clearRedirectLocation();
+
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Container(
+                                                                height: 200.0,
+                                                                child:
+                                                                    DialogBtnWidget(
+                                                                  titulo:
+                                                                      '¡Exito!',
+                                                                  mensaje:
+                                                                      'Su contraseña ha sido reestablecida.',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+
+                                                      _model.pswrdOtp = null;
+                                                      safeSetState(() {});
+
+                                                      context.goNamedAuth(
+                                                          AuthSigningInWidget
+                                                              .routeName,
+                                                          context.mounted);
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Container(
+                                                                height: 200.0,
+                                                                child:
+                                                                    DialogBtnWidget(
+                                                                  titulo:
+                                                                      '¡Código incorrecto!',
+                                                                  mensaje:
+                                                                      'El código ingresado es inválido.',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
                                                       return;
                                                     }
-
-                                                    await authManager
-                                                        .updatePassword(
-                                                      newPassword: _model
-                                                          .passwordNewForgotTextController
-                                                          .text,
-                                                      context: context,
-                                                    );
-                                                    safeSetState(() {});
-
-                                                    GoRouter.of(context)
-                                                        .prepareAuthEvent();
-                                                    await authManager.signOut();
-                                                    GoRouter.of(context)
-                                                        .clearRedirectLocation();
-
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder: (dialogContext) {
-                                                        return Dialog(
-                                                          elevation: 0,
-                                                          insetPadding:
-                                                              EdgeInsets.zero,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          alignment: AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Container(
-                                                              height: 200.0,
-                                                              child:
-                                                                  DialogBtnWidget(
-                                                                titulo:
-                                                                    '¡Exito!',
-                                                                mensaje:
-                                                                    'Su contraseña ha sido reestablecida.',
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
-
-                                                    _model.pswrdOtp = null;
-                                                    safeSetState(() {});
-
-                                                    context.goNamedAuth(
-                                                        AuthSigningInWidget
-                                                            .routeName,
-                                                        context.mounted);
                                                   } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder: (dialogContext) {
-                                                        return Dialog(
-                                                          elevation: 0,
-                                                          insetPadding:
-                                                              EdgeInsets.zero,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          alignment: AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child: Container(
-                                                              height: 200.0,
-                                                              child:
-                                                                  DialogBtnWidget(
-                                                                titulo:
-                                                                    '¡Código incorrecto!',
-                                                                mensaje:
-                                                                    'El código ingresado es inválido.',
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
-
                                                     if (_shouldSetState)
                                                       safeSetState(() {});
                                                     return;

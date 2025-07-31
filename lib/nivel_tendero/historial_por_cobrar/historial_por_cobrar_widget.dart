@@ -12,6 +12,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'historial_por_cobrar_model.dart';
 export 'historial_por_cobrar_model.dart';
 
@@ -73,6 +74,66 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
           clearUnsetFields: false,
         ),
       ));
+      if (FFAppState().isFirstTimeHistorialCPP == true) {
+        FFAppState().isFirstTimeHistorialCPP = false;
+        safeSetState(() {});
+
+        context.pushNamed(
+          PageTutorialHistorialCPPFTWidget.routeName,
+          queryParameters: {
+            'tenderoRef': serializeParam(
+              widget.idTendero,
+              ParamType.DocumentReference,
+            ),
+            'nombreCliente': serializeParam(
+              widget.nombre,
+              ParamType.String,
+            ),
+            'telf': serializeParam(
+              widget.telf,
+              ParamType.String,
+            ),
+            'isFiando': serializeParam(
+              widget.isFiando,
+              ParamType.bool,
+            ),
+            'idCliente': serializeParam(
+              widget.idCliente,
+              ParamType.DocumentReference,
+            ),
+            'apellido': serializeParam(
+              widget.apellido,
+              ParamType.String,
+            ),
+            'cedula': serializeParam(
+              widget.cedula,
+              ParamType.String,
+            ),
+            'direccionDomicilio': serializeParam(
+              widget.direccionDomicilio,
+              ParamType.String,
+            ),
+            'viviendaAlq': serializeParam(
+              widget.viviendaAlq,
+              ParamType.bool,
+            ),
+            'viviendaProp': serializeParam(
+              widget.viviendaProp,
+              ParamType.bool,
+            ),
+            'emailCliente': serializeParam(
+              widget.emailCliente,
+              ParamType.String,
+            ),
+            'totalPassed': serializeParam(
+              widget.totalPassed,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+        );
+
+        return;
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -87,6 +148,8 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<ClientesRecord>(
       stream: ClientesRecord.getDocument(widget.idCliente!),
       builder: (context, snapshot) {

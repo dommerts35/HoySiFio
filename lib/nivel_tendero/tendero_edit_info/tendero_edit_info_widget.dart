@@ -761,7 +761,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
-                                            maxLength: 35,
+                                            maxLength: 30,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
                                             buildCounter: (context,
@@ -977,6 +977,14 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                            maxLength: 10,
+                                            maxLengthEnforcement:
+                                                MaxLengthEnforcement.enforced,
+                                            buildCounter: (context,
+                                                    {required currentLength,
+                                                    required isFocused,
+                                                    maxLength}) =>
+                                                null,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
@@ -1187,6 +1195,14 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                            maxLength: 10,
+                                            maxLengthEnforcement:
+                                                MaxLengthEnforcement.enforced,
+                                            buildCounter: (context,
+                                                    {required currentLength,
+                                                    required isFocused,
+                                                    maxLength}) =>
+                                                null,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
                                                     .primary,
@@ -1440,6 +1456,14 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                            maxLength: 15,
+                                            maxLengthEnforcement:
+                                                MaxLengthEnforcement.enforced,
+                                            buildCounter: (context,
+                                                    {required currentLength,
+                                                    required isFocused,
+                                                    maxLength}) =>
+                                                null,
                                             keyboardType: TextInputType.number,
                                             cursorColor:
                                                 FlutterFlowTheme.of(context)
@@ -2119,6 +2143,10 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                             .cuentaSecTendero
                                                             .numCuentaSec !=
                                                         '') {
+                                                  _model.isDeletedCuentaSec =
+                                                      true;
+                                                  safeSetState(() {});
+
                                                   await widget.tenderoRef!.update(
                                                       createTenderosRecordData(
                                                     tenderos:
@@ -2466,6 +2494,15 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
+                                                  maxLength: 15,
+                                                  maxLengthEnforcement:
+                                                      MaxLengthEnforcement
+                                                          .enforced,
+                                                  buildCounter: (context,
+                                                          {required currentLength,
+                                                          required isFocused,
+                                                          maxLength}) =>
+                                                      null,
                                                   keyboardType:
                                                       TextInputType.number,
                                                   cursorColor:
@@ -3964,18 +4001,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                           pin:
                                               _model.pinEditTextController.text,
                                         ));
-                                        if (_model
-                                                    .queryForComparisonNameTienda
-                                                    ?.tenderos
-                                                    .cuentaSecTendero
-                                                    .numCuentaSec !=
-                                                null &&
-                                            _model
-                                                    .queryForComparisonNameTienda
-                                                    ?.tenderos
-                                                    .cuentaSecTendero
-                                                    .numCuentaSec !=
-                                                '') {
+                                        if (_model.isDeletedCuentaSec != true) {
                                           await widget.tenderoRef!
                                               .update(createTenderosRecordData(
                                             tenderos:

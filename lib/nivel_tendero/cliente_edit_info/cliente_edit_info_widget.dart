@@ -612,7 +612,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                               );
                                             }),
                                           FilteringTextInputFormatter.allow(
-                                              RegExp('^[A-Za-z\\s]+'))
+                                              RegExp(
+                                                  '[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
                                         ],
                                       ),
                                       TextFormField(
@@ -806,7 +807,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                               );
                                             }),
                                           FilteringTextInputFormatter.allow(
-                                              RegExp('^[A-Za-z\\s]+'))
+                                              RegExp(
+                                                  '[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
                                         ],
                                       ),
                                       TextFormField(

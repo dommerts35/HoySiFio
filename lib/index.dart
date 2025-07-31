@@ -67,3 +67,7 @@ export '/nivel_tendero/tendero_bank_sec/tendero_bank_sec_widget.dart'
     show TenderoBankSecWidget;
 export '/nivel_cliente/historial_pagos_cliente/historial_pagos_cliente_widget.dart'
     show HistorialPagosClienteWidget;
+export '/tutoriales/page_tutorial_historial_c_p_p_f_t/page_tutorial_historial_c_p_p_f_t_widget.dart'
+    show PageTutorialHistorialCPPFTWidget;
+export '/tutoriales/page_tutorial_historial_c_p_p_help/page_tutorial_historial_c_p_p_help_widget.dart'
+    show PageTutorialHistorialCPPHelpWidget;

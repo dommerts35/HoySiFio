@@ -242,7 +242,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       'tiendaName',
                                     ),
                                     textAlign: TextAlign.center,
-                                    minFontSize: 6.0,
+                                    minFontSize: 4.0,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(

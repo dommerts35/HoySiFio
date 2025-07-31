@@ -59,6 +59,8 @@ class ForgotMyPasswordModel extends FlutterFlowModel<ForgotMyPasswordWidget> {
   FocusNode? otpForgotFocusNode;
   TextEditingController? otpForgotTextController;
   String? Function(BuildContext, String?)? otpForgotTextControllerValidator;
+  // Stores action output result for [Validate Form] action in btn_sendForgot widget.
+  bool? isFormValidated;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_sendForgot widget.
   TenderosRecord? resetQuery;
   // Stores action output result for [Firestore Query - Query a collection] action in btn_sendForgot widget.

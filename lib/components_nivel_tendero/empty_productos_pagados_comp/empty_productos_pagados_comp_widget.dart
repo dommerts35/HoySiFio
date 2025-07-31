@@ -44,7 +44,8 @@ class _EmptyProductosPagadosCompWidgetState
     return Padding(
       padding: EdgeInsets.all(12.0),
       child: Container(
-        height: 347.71,
+        width: 301.4,
+        height: 362.17,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
           boxShadow: [

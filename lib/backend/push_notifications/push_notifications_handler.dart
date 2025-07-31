@@ -463,6 +463,31 @@ final parametersBuilderMap =
           'cedula': getParameter<String>(data, 'cedula'),
         },
       ),
+  'pageTutorialHistorialCPPFT': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+          'telf': getParameter<String>(data, 'telf'),
+          'isFiando': getParameter<bool>(data, 'isFiando'),
+          'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
+          'apellido': getParameter<String>(data, 'apellido'),
+          'cedula': getParameter<String>(data, 'cedula'),
+          'direccionDomicilio':
+              getParameter<String>(data, 'direccionDomicilio'),
+          'viviendaAlq': getParameter<bool>(data, 'viviendaAlq'),
+          'viviendaProp': getParameter<bool>(data, 'viviendaProp'),
+          'emailCliente': getParameter<String>(data, 'emailCliente'),
+          'totalPassed': getParameter<String>(data, 'totalPassed'),
+        },
+      ),
+  'pageTutorialHistorialCPPHelp': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {
