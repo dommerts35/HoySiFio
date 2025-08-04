@@ -620,7 +620,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .bodyLarge
                                                                 .fontStyle,
                                                       ),
-                                                  maxLength: 20,
+                                                  maxLength: 30,
                                                   maxLengthEnforcement:
                                                       MaxLengthEnforcement
                                                           .enforced,
@@ -651,6 +651,9 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .words),
                                                         );
                                                       }),
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                                   ],
                                                 ),
                                               ),
@@ -789,7 +792,10 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .bodyLarge
                                                                 .fontStyle,
                                                       ),
-                                                  maxLength: 35,
+                                                  maxLength: 30,
+                                                  maxLengthEnforcement:
+                                                      MaxLengthEnforcement
+                                                          .enforced,
                                                   buildCounter: (context,
                                                           {required currentLength,
                                                           required isFocused,
@@ -817,6 +823,9 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .words),
                                                         );
                                                       }),
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                                   ],
                                                 ),
                                               ),
@@ -1688,6 +1697,11 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .bancoTenderoTextControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
+                                                            ],
                                                           ),
                                                         ),
                                                         Container(
@@ -1868,6 +1882,11 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .duenoBancoTenderoTextControllerValidator
                                                                 .asValidator(
                                                                     context),
+                                                            inputFormatters: [
+                                                              FilteringTextInputFormatter
+                                                                  .allow(RegExp(
+                                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
+                                                            ],
                                                           ),
                                                         ),
                                                         Align(
@@ -2572,6 +2591,11 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .bancoSecTenderoTextControllerValidator
                                                                   .asValidator(
                                                                       context),
+                                                              inputFormatters: [
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
+                                                              ],
                                                             ),
                                                           ),
                                                           Container(
@@ -2755,6 +2779,11 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .duenoBancoSecTenderoTextControllerValidator
                                                                   .asValidator(
                                                                       context),
+                                                              inputFormatters: [
+                                                                FilteringTextInputFormatter
+                                                                    .allow(RegExp(
+                                                                        '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
+                                                              ],
                                                             ),
                                                           ),
                                                           Align(
@@ -3009,7 +3038,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                 ),
                                               ),
                                               Text(
-                                                'Ingrese una contraseña con al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula, un número y un carácter especial (como , ., #, \$, ¿).',
+                                                'Ingrese una contraseña con al menos 8 caracteres, incluyendo al menos una letra mayúscula, al menos una letra minúscula, al menos un número y al menos un carácter especial (como , ., #, \$, ¿).',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall

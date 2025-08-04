@@ -453,7 +453,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .bodyLarge
                                                     .fontStyle,
                                           ),
-                                      maxLength: 35,
+                                      maxLength: 25,
                                       maxLengthEnforcement:
                                           MaxLengthEnforcement.enforced,
                                       buildCounter: (context,
@@ -477,8 +477,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       TextCapitalization.words),
                                             );
                                           }),
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp('[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
+                                        FilteringTextInputFormatter.allow(RegExp(
+                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                       ],
                                     ),
                                     TextFormField(
@@ -638,7 +638,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .bodyLarge
                                                     .fontStyle,
                                           ),
-                                      maxLength: 35,
+                                      maxLength: 25,
                                       maxLengthEnforcement:
                                           MaxLengthEnforcement.enforced,
                                       buildCounter: (context,
@@ -662,8 +662,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       TextCapitalization.words),
                                             );
                                           }),
-                                        FilteringTextInputFormatter.allow(
-                                            RegExp('[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
+                                        FilteringTextInputFormatter.allow(RegExp(
+                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                       ],
                                     ),
                                     TextFormField(
@@ -1757,7 +1757,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                                 titulo:
                                                                     '¡Alerta!',
                                                                 mensaje:
-                                                                    'Los datos registrados se perderán al ingresar a los términos y condiciones. ¿Está seguro?',
+                                                                    'Los datos registrados se perderán al ingresar a la política de privacidad. ¿Está seguro?',
                                                               ),
                                                             ),
                                                           ),

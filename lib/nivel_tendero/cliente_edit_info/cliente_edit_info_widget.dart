@@ -592,7 +592,14 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       .bodyLarge
                                                       .fontStyle,
                                             ),
-                                        maxLength: 21,
+                                        maxLength: 25,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -611,9 +618,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                             .words),
                                               );
                                             }),
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp(
-                                                  '[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
+                                          FilteringTextInputFormatter.allow(RegExp(
+                                              '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                         ],
                                       ),
                                       TextFormField(
@@ -787,7 +793,14 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       .bodyLarge
                                                       .fontStyle,
                                             ),
-                                        maxLength: 21,
+                                        maxLength: 25,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
@@ -806,9 +819,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                             .words),
                                               );
                                             }),
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp(
-                                                  '[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]'))
+                                          FilteringTextInputFormatter.allow(RegExp(
+                                              '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                         ],
                                       ),
                                       TextFormField(
@@ -981,6 +993,13 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       .fontStyle,
                                             ),
                                         maxLength: 10,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         keyboardType: TextInputType.number,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -1174,6 +1193,13 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       .fontStyle,
                                             ),
                                         maxLength: 10,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         keyboardType: TextInputType.phone,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
@@ -1367,6 +1393,13 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       .fontStyle,
                                             ),
                                         maxLength: 30,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,

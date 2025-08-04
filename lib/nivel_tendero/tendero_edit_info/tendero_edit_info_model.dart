@@ -23,11 +23,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
       return 'Ingrese el nombre de su tienda';
     }
 
-    if (val.length < 2) {
-      return 'Ingrese el nombre de su tienda con al menos 2 carácteres';
+    if (val.length < 3) {
+      return 'Ingrese el nombre de su tienda con al menos 3 carácteres';
     }
-    if (val.length > 20) {
-      return 'Ingrese el nombre de su tienda con  menos de 20 carácteres';
+    if (val.length > 30) {
+      return 'Ingrese el nombre de su tienda con  menos de 30 carácteres';
     }
 
     return null;
@@ -42,6 +42,10 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Ingrese su nombre';
+    }
+
+    if (val.length < 3) {
+      return 'Ingrese su nombre de al menos 3 caracteres';
     }
 
     return null;

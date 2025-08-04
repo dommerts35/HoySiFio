@@ -540,7 +540,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
-                                            maxLength: 20,
+                                            maxLength: 30,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
                                             buildCounter: (context,
@@ -567,6 +567,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .words),
                                                   );
                                                 }),
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp(
+                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                             ],
                                           ),
                                           TextFormField(
@@ -788,6 +791,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .words),
                                                   );
                                                 }),
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp(
+                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                             ],
                                           ),
                                           TextFormField(
@@ -1652,7 +1658,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
-                                            maxLength: 30,
+                                            maxLength: 20,
                                             maxLengthEnforcement:
                                                 MaxLengthEnforcement.enforced,
                                             buildCounter: (context,
@@ -1679,6 +1685,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .words),
                                                   );
                                                 }),
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp(
+                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                             ],
                                           ),
                                           TextFormField(
@@ -1873,6 +1882,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .words),
                                                   );
                                                 }),
+                                              FilteringTextInputFormatter.allow(
+                                                  RegExp(
+                                                      '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                             ],
                                           ),
                                           Material(
@@ -2712,7 +2724,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
-                                                  maxLength: 30,
+                                                  maxLength: 20,
                                                   maxLengthEnforcement:
                                                       MaxLengthEnforcement
                                                           .enforced,
@@ -2743,6 +2755,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                       .words),
                                                         );
                                                       }),
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                                   ],
                                                 ),
                                                 TextFormField(
@@ -2957,6 +2972,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                       .words),
                                                         );
                                                       }),
+                                                    FilteringTextInputFormatter
+                                                        .allow(RegExp(
+                                                            '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
                                                   ],
                                                 ),
                                                 Material(

@@ -433,6 +433,15 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                       .bodyLarge
                                                                       .fontStyle,
                                                                 ),
+                                                        maxLength: 15,
+                                                        maxLengthEnforcement:
+                                                            MaxLengthEnforcement
+                                                                .enforced,
+                                                        buildCounter: (context,
+                                                                {required currentLength,
+                                                                required isFocused,
+                                                                maxLength}) =>
+                                                            null,
                                                         cursorColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -813,6 +822,11 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                             .duenoBancoSecTenderoTextControllerValidator
                                                             .asValidator(
                                                                 context),
+                                                        inputFormatters: [
+                                                          FilteringTextInputFormatter
+                                                              .allow(RegExp(
+                                                                  '^(?!.*([a-zA-ZáéíóúÁÉÍÓÚüÜñÑ])\\1{2})[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\\s]+\$'))
+                                                        ],
                                                       ),
                                                     ),
                                                     Align(

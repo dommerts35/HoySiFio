@@ -656,7 +656,7 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 5.0),
                                                 child: Text(
-                                                  'Ingrese una contraseña que contenga al menos 8 carácteres, una mayúscula, una minúscula y un carácter especial (*.#\$¿)',
+                                                  'Ingrese una contraseña con al menos 8 carácteres, incluyendo al menos una letra  mayúscula, al menos una letra minúscula y al menos un carácter especial (*.#\$¿)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelSmall
