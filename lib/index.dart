@@ -33,8 +33,8 @@ export '/nivel_cliente/resumen_fiado_clien_tienda_new/resumen_fiado_clien_tienda
     show ResumenFiadoClienTiendaNewWidget;
 export '/nivel_cliente/historial_full_voucher_pago/historial_full_voucher_pago_widget.dart'
     show HistorialFullVoucherPagoWidget;
-export '/nivel_cliente/terms_of_service_sub_page_to_accept/terms_of_service_sub_page_to_accept_widget.dart'
-    show TermsOfServiceSubPageToAcceptWidget;
+export '/nivel_cliente/politica_priv_sub_page_to_accept/politica_priv_sub_page_to_accept_widget.dart'
+    show PoliticaPrivSubPageToAcceptWidget;
 export '/nivel_tendero/tendero_edit_info/tendero_edit_info_widget.dart'
     show TenderoEditInfoWidget;
 export '/nivel_tendero/signin_confirm/signin_confirm_widget.dart'
@@ -47,8 +47,6 @@ export '/nivel_cliente/cliente_first_login/cliente_first_login_widget.dart'
     show ClienteFirstLoginWidget;
 export '/nivel_cliente/forgot_my_password/forgot_my_password_widget.dart'
     show ForgotMyPasswordWidget;
-export '/nivel_cliente/terms_of_service_sub_page_to_view/terms_of_service_sub_page_to_view_widget.dart'
-    show TermsOfServiceSubPageToViewWidget;
 export '/nivel_cliente/tendero_first_login/tendero_first_login_widget.dart'
     show TenderoFirstLoginWidget;
 export '/nivel_tendero/tendero_ayuda/tendero_ayuda_widget.dart'
@@ -71,3 +69,17 @@ export '/tutoriales/page_tutorial_historial_c_p_p_f_t/page_tutorial_historial_c_
     show PageTutorialHistorialCPPFTWidget;
 export '/tutoriales/page_tutorial_historial_c_p_p_help/page_tutorial_historial_c_p_p_help_widget.dart'
     show PageTutorialHistorialCPPHelpWidget;
+export '/nivel_tendero/terms_of_service_of_tendero_help/terms_of_service_of_tendero_help_widget.dart'
+    show TermsOfServiceOfTenderoHelpWidget;
+export '/nivel_tendero/politicas_priv_from_make_cliente/politicas_priv_from_make_cliente_widget.dart'
+    show PoliticasPrivFromMakeClienteWidget;
+export '/nivel_tendero/terms_of_service_of_cliente_make/terms_of_service_of_cliente_make_widget.dart'
+    show TermsOfServiceOfClienteMakeWidget;
+export '/nivel_cliente/terms_of_service_from_accept/terms_of_service_from_accept_widget.dart'
+    show TermsOfServiceFromAcceptWidget;
+export '/nivel_cliente/terms_of_service_login/terms_of_service_login_widget.dart'
+    show TermsOfServiceLoginWidget;
+export '/nivel_cliente/politica_priv_sub_page_to_view/politica_priv_sub_page_to_view_widget.dart'
+    show PoliticaPrivSubPageToViewWidget;
+export '/nivel_tendero/politica_priv_of_tendero_help/politica_priv_of_tendero_help_widget.dart'
+    show PoliticaPrivOfTenderoHelpWidget;

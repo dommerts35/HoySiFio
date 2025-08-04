@@ -2056,7 +2056,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .transparent,
                                                             onTap: () async {
                                                               context.pushNamed(
-                                                                  TermsOfServiceSubPageToAcceptWidget
+                                                                  PoliticaPrivSubPageToAcceptWidget
                                                                       .routeName);
                                                             },
                                                             child: Text(
@@ -2170,12 +2170,71 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              context.pushNamed(
-                                                                  TermsOfServiceSubPageToViewWidget
+                                                              context.goNamed(
+                                                                  PoliticaPrivSubPageToViewWidget
                                                                       .routeName);
                                                             },
                                                             child: AutoSizeText(
                                                               'Políticas de privacidad',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .start,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .underline,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.goNamed(
+                                                                  TermsOfServiceLoginWidget
+                                                                      .routeName);
+                                                            },
+                                                            child: AutoSizeText(
+                                                              'Términos de servicio',
                                                               textAlign:
                                                                   TextAlign
                                                                       .start,
@@ -3717,7 +3776,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                            TermsOfServiceSubPageToViewWidget
+                                                            PoliticaPrivSubPageToViewWidget
                                                                 .routeName);
                                                       },
                                                       child: Text(
@@ -3810,6 +3869,73 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .success,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                                decoration:
+                                                                    TextDecoration
+                                                                        .underline,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          context.goNamed(
+                                                              TermsOfServiceLoginWidget
+                                                                  .routeName);
+                                                        },
+                                                        child: AutoSizeText(
+                                                          'Términos de servicio',
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(

@@ -115,7 +115,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Tutoriales',
+                      'Ayuda',
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
                                 font: GoogleFonts.readexPro(
@@ -136,7 +136,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                               ),
                     ),
                     Text(
-                      'Seleccione un tutorial para visualizar',
+                      'Seleccione un tutorial a visualizar',
                       maxLines: 2,
                       style: FlutterFlowTheme.of(context).labelMedium.override(
                             font: GoogleFonts.inter(
@@ -393,6 +393,128 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         elevation: 0.0,
                                         borderRadius:
                                             BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.goNamed(
+                                          TermsOfServiceOfTenderoHelpWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.tenderoEmail,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Text(
+                                        'Términos de servicio y condiciones de uso',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .success,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.goNamed(
+                                          PoliticaPrivOfTenderoHelpWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.tenderoEmail,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Text(
+                                        'Políticas de privacidad',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .success,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
                                       ),
                                     ),
                                   ].divide(SizedBox(height: 20.0)),

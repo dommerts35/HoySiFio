@@ -198,6 +198,10 @@ flutter:
     - assets/pdfs/
     - assets/jsons/
 
+  fonts:
+    - family: 'Times New Roman'
+      fonts:
+        - asset: assets/fonts/times.ttf
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

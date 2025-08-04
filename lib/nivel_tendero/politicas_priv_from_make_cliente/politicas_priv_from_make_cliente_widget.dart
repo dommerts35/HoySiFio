@@ -1,31 +1,43 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'terms_of_service_sub_page_to_view_model.dart';
-export 'terms_of_service_sub_page_to_view_model.dart';
+import 'politicas_priv_from_make_cliente_model.dart';
+export 'politicas_priv_from_make_cliente_model.dart';
 
-class TermsOfServiceSubPageToViewWidget extends StatefulWidget {
-  const TermsOfServiceSubPageToViewWidget({super.key});
+class PoliticasPrivFromMakeClienteWidget extends StatefulWidget {
+  const PoliticasPrivFromMakeClienteWidget({
+    super.key,
+    this.tenderoRef,
+    this.nombreTendero,
+    this.nombreTienda,
+    this.emailTendero,
+  });
 
-  static String routeName = 'termsOfServiceSubPageToView';
-  static String routePath = '/termsOfServiceSubPageToView';
+  final DocumentReference? tenderoRef;
+  final String? nombreTendero;
+  final String? nombreTienda;
+  final String? emailTendero;
+
+  static String routeName = 'politicasPrivFromMakeCliente';
+  static String routePath = '/politicasPrivFromMakeCliente';
 
   @override
-  State<TermsOfServiceSubPageToViewWidget> createState() =>
-      _TermsOfServiceSubPageToViewWidgetState();
+  State<PoliticasPrivFromMakeClienteWidget> createState() =>
+      _PoliticasPrivFromMakeClienteWidgetState();
 }
 
-class _TermsOfServiceSubPageToViewWidgetState
-    extends State<TermsOfServiceSubPageToViewWidget> {
-  late TermsOfServiceSubPageToViewModel _model;
+class _PoliticasPrivFromMakeClienteWidgetState
+    extends State<PoliticasPrivFromMakeClienteWidget> {
+  late PoliticasPrivFromMakeClienteModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => TermsOfServiceSubPageToViewModel());
+    _model = createModel(context, () => PoliticasPrivFromMakeClienteModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -49,6 +61,157 @@ class _TermsOfServiceSubPageToViewWidgetState
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: Color(0xFFF1F4F8),
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(65.0),
+            child: AppBar(
+              backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+              automaticallyImplyLeading: false,
+              title: Container(
+                height: 105.0,
+                decoration: BoxDecoration(),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 24.0, 16.0, 12.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  ClienteMakeInfoWidget.routeName,
+                                  queryParameters: {
+                                    'tenderoRef': serializeParam(
+                                      widget.tenderoRef,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'nombreTienda': serializeParam(
+                                      widget.nombreTienda,
+                                      ParamType.String,
+                                    ),
+                                    'tenderoEmail': serializeParam(
+                                      widget.emailTendero,
+                                      ParamType.String,
+                                    ),
+                                    'nombreTendero': serializeParam(
+                                      widget.nombreTendero,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Icon(
+                                Icons.arrow_back,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 24.0,
+                              ),
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    12.0, 0.0, 0.0, 0.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 4.0),
+                                      child: Text(
+                                        'HoySíFio',
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.outfit(
+                                                fontWeight: FontWeight.normal,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              color: Color(0xFF14181B),
+                                              fontSize: 24.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ),
+                                    Text(
+                                      'POLÍTICA DE PRIVACIDAD',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight: FontWeight.normal,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodySmall
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF14181B),
+                                            fontSize: 12.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Container(
+                              width: 44.0,
+                              height: 44.0,
+                              decoration: BoxDecoration(
+                                color: Color(0x4C4B39EF),
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Color(0xFF4B39EF),
+                                  width: 2.0,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(2.0),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(44.0),
+                                  child: Image.asset(
+                                    'assets/images/hsf.png',
+                                    width: 44.0,
+                                    height: 44.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              actions: [],
+              centerTitle: false,
+              elevation: 0.0,
+            ),
+          ),
           body: SafeArea(
             top: true,
             child: Padding(
@@ -57,139 +220,6 @@ class _TermsOfServiceSubPageToViewWidgetState
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 4.0,
-                          color: Color(0x33000000),
-                          offset: Offset(
-                            0.0,
-                            2.0,
-                          ),
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 12.0, 16.0, 12.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.safePop();
-                                },
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  size: 24.0,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 4.0),
-                                        child: Text(
-                                          'HoySíFio',
-                                          style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
-                                              .override(
-                                                font: GoogleFonts.outfit(
-                                                  fontWeight: FontWeight.normal,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF14181B),
-                                                fontSize: 24.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                      Text(
-                                        'POLÍTICA DE PRIVACIDAD',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .override(
-                                              font: GoogleFonts.plusJakartaSans(
-                                                fontWeight: FontWeight.normal,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodySmall
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF14181B),
-                                              fontSize: 12.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.normal,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                width: 44.0,
-                                height: 44.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0x4C4B39EF),
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                    color: Color(0xFF4B39EF),
-                                    width: 2.0,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(2.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(44.0),
-                                    child: Image.asset(
-                                      'assets/images/hsf.png',
-                                      width: 44.0,
-                                      height: 44.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
@@ -220,7 +250,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 16.0, 16.0),
                               child: Text(
-                                'Política de Privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta política de privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
+                                'Política de privacidad\nÚltima actualización: 05 de junio de 2025\n\nEsta política de privacidad describe nuestras políticas y procedimientos sobre la recopilación, uso y divulgación de su información cuando utiliza el servicio, y le informa sobre sus derechos de privacidad y cómo la ley lo protege.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -304,7 +334,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n      \nLas siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
+                                          '\n      Las siguientes definiciones tendrán el mismo significado independientemente de si aparecen en singular o en plural.',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
@@ -335,7 +365,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n       \nPara los fines de esta política de privacidad:\n',
+                                          '\n       Para los fines de esta política de privacidad:\n',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
@@ -366,7 +396,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n      Significa una cuenta única creada para que usted acceda a nuestro servicio o partes de nuestro servicio.',
+                                          '\n      Significa una cuenta única creada para que usted acceda a nuestro servicio o partes de nuestro dervicio.',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
@@ -580,12 +610,12 @@ class _TermsOfServiceSubPageToViewWidgetState
                                           ),
                                     ),
                                     TextSpan(
-                                      text: ': se refiere a la Aplicación.',
+                                      text: ': se refiere a la aplicación.',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n\n     1.2.9. Proveedor de Servicios:',
+                                          '\n\n     1.2.9. Proveedor de servicios:',
                                       style: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
@@ -612,7 +642,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la compañía. Se refiere a empresas o individuos terceros empleados por la compañía para facilitar el servicio, proporcionarlo en nombre de la compañía, realizar servicios relacionados con el servicio o ayudar a la compañía a analizar cómo se utiliza el servicio.',
+                                          '\n\nCualquier persona natural o jurídica que procesa los datos en nombre de la compañía. Se refiere a empresas o individuos terceros empleados por la compañía para facilitar el servicio, proporcionarlo en nombre de la compañía, realizar servicios relacionados con el servicio o ayudar a la compañía a analizar cómo se utiliza el servicio proveído.',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
@@ -679,7 +709,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n\n2. Recopilación y sso de sus datos personales',
+                                          '\n\n2. Recopilación y uso de datos personales',
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium
                                           .override(
@@ -966,7 +996,7 @@ class _TermsOfServiceSubPageToViewWidgetState
                                     ),
                                     TextSpan(
                                       text:
-                                          '\n\nNotificaremos actualizaciones publicando la nueva Política en esta página y actualizando la fecha de \"última actualización\". Se recomienda revisarla periódicamente. ',
+                                          '\n\nNotificaremos actualizaciones publicando la nueva política en esta página y actualizando la fecha de \"última actualización\". Se recomienda revisarla periódicamente. ',
                                       style: TextStyle(),
                                     ),
                                     TextSpan(
@@ -1030,7 +1060,9 @@ class _TermsOfServiceSubPageToViewWidgetState
                       ),
                     ),
                   ),
-                ].divide(SizedBox(height: 10.0)),
+                ]
+                    .addToStart(SizedBox(height: 10.0))
+                    .addToEnd(SizedBox(height: 10.0)),
               ),
             ),
           ),

@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/cloud_functions/cloud_functions.dart';
 import '/components/dialog_btn_widget.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1649,6 +1650,233 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .alternate,
                                           ),
                                           child: Checkbox(
+                                            value: _model.politicsCheckValue ??=
+                                                false,
+                                            onChanged: (newValue) async {
+                                              safeSetState(() =>
+                                                  _model.politicsCheckValue =
+                                                      newValue!);
+                                            },
+                                            side: (FlutterFlowTheme.of(context)
+                                                        .alternate !=
+                                                    null)
+                                                ? BorderSide(
+                                                    width: 2,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  )
+                                                : null,
+                                            activeColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            checkColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .info,
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            AutoSizeText(
+                                              'Al registrarse, el cliente acepta las',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Builder(
+                                                builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Container(
+                                                              height: 400.0,
+                                                              child:
+                                                                  DialogTwoBtnsWidget(
+                                                                titulo:
+                                                                    '¡Alerta!',
+                                                                mensaje:
+                                                                    'Los datos registrados se perderán al ingresar a los términos y condiciones. ¿Está seguro?',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() => _model
+                                                                .isAcceptedToPolitics =
+                                                            value));
+
+                                                    if (_model
+                                                            .isAcceptedToPolitics ==
+                                                        true) {
+                                                      context.goNamed(
+                                                        PoliticasPrivFromMakeClienteWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'tenderoRef':
+                                                              serializeParam(
+                                                            widget.tenderoRef,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'nombreTendero':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTendero,
+                                                            ParamType.String,
+                                                          ),
+                                                          'nombreTienda':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTienda,
+                                                            ParamType.String,
+                                                          ),
+                                                          'emailTendero':
+                                                              serializeParam(
+                                                            widget
+                                                                .tenderoEmail,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    }
+
+                                                    safeSetState(() {});
+                                                  },
+                                                  child: AutoSizeText(
+                                                    'políticas de privacidad',
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .success,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ].divide(SizedBox(width: 3.0)),
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Theme(
+                                          data: ThemeData(
+                                            checkboxTheme: CheckboxThemeData(
+                                              visualDensity:
+                                                  VisualDensity.compact,
+                                              materialTapTargetSize:
+                                                  MaterialTapTargetSize
+                                                      .shrinkWrap,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.0),
+                                              ),
+                                            ),
+                                            unselectedWidgetColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                          ),
+                                          child: Checkbox(
                                             value: _model.termsCheckValue ??=
                                                 false,
                                             onChanged: (newValue) async {
@@ -1711,24 +1939,123 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                             Align(
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  await launchURL(
-                                                      'https://docs.google.com/document/d/1L9vE10gbEot5aDjT5ROJmGqOr10PpLhomXmg4J8G9xQ/edit?usp=sharing');
-                                                },
-                                                child: AutoSizeText(
-                                                  'políticas de privacidad',
-                                                  textAlign: TextAlign.start,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                                              child: Builder(
+                                                builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Container(
+                                                              height: 400.0,
+                                                              child:
+                                                                  DialogTwoBtnsWidget(
+                                                                titulo:
+                                                                    '¡Alerta!',
+                                                                mensaje:
+                                                                    'Los datos registrados se perderán al ingresar a los términos y condiciones. ¿Está seguro?',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() => _model
+                                                                .isAcceptedToTerms =
+                                                            value));
+
+                                                    if (_model
+                                                            .isAcceptedToTerms ==
+                                                        true) {
+                                                      context.goNamed(
+                                                        TermsOfServiceOfClienteMakeWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'tenderoRef':
+                                                              serializeParam(
+                                                            widget.tenderoRef,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'nombreTienda':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTienda,
+                                                            ParamType.String,
+                                                          ),
+                                                          'tenderoEmail':
+                                                              serializeParam(
+                                                            widget
+                                                                .tenderoEmail,
+                                                            ParamType.String,
+                                                          ),
+                                                          'nombreTendero':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTendero,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    }
+
+                                                    safeSetState(() {});
+                                                  },
+                                                  child: AutoSizeText(
+                                                    'términos y condiciones',
+                                                    textAlign: TextAlign.start,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .labelMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .success,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1739,27 +2066,11 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                                       context)
                                                                   .labelMedium
                                                                   .fontStyle,
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .underline,
                                                         ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .success,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                        decoration:
-                                                            TextDecoration
-                                                                .underline,
-                                                      ),
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -1879,7 +2190,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .success,
+                                                              .primary,
                                                       fontSize: 12.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -1926,6 +2237,38 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                 await TenderosRecord.getDocumentOnce(
                                     widget.tenderoRef!);
                             _shouldSetState = true;
+                            if (_model.politicsCheckValue != true) {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        FocusScope.of(dialogContext).unfocus();
+                                        FocusManager.instance.primaryFocus
+                                            ?.unfocus();
+                                      },
+                                      child: Container(
+                                        height: 200.0,
+                                        child: DialogBtnWidget(
+                                          titulo: '¡Alerta!',
+                                          mensaje:
+                                              'Por favor, acepte la política de privacidad para continuar.',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+
+                              if (_shouldSetState) safeSetState(() {});
+                              return;
+                            }
                             if (_model.termsCheckValue != true) {
                               await showDialog(
                                 context: context,

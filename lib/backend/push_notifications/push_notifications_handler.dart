@@ -352,7 +352,14 @@ final parametersBuilderMap =
           'emailCliente': getParameter<String>(data, 'emailCliente'),
         },
       ),
-  'termsOfServiceSubPageToAccept': ParameterData.none(),
+  'politicaPrivSubPageToAccept': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'emailTendero': getParameter<String>(data, 'emailTendero'),
+        },
+      ),
   'tenderoEditInfo': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
@@ -389,7 +396,6 @@ final parametersBuilderMap =
         },
       ),
   'forgotMyPassword': ParameterData.none(),
-  'termsOfServiceSubPageToView': ParameterData.none(),
   'tenderoFirstLogin': (data) async => ParameterData(
         allParams: {
           'idTenderoNoAuth':
@@ -486,6 +492,48 @@ final parametersBuilderMap =
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
           'nombreTendero': getParameter<String>(data, 'nombreTendero'),
           'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+        },
+      ),
+  'termsOfServiceOfTenderoHelp': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'politicasPrivFromMakeCliente': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'emailTendero': getParameter<String>(data, 'emailTendero'),
+        },
+      ),
+  'termsOfServiceOfClienteMake': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'termsOfServiceFromAccept': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'termsOfServiceLogin': ParameterData.none(),
+  'politicaPrivSubPageToView': ParameterData.none(),
+  'politicaPrivOfTenderoHelp': (data) async => ParameterData(
+        allParams: {
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
 };

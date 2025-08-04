@@ -139,8 +139,14 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     return null;
   }
 
+  // State field(s) for politicsCheck widget.
+  bool? politicsCheckValue;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in politics widget.
+  bool? isAcceptedToPolitics;
   // State field(s) for termsCheck widget.
   bool? termsCheckValue;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in termsOfServ widget.
+  bool? isAcceptedToTerms;
   // State field(s) for emailSendsCheck widget.
   bool? emailSendsCheckValue;
   // Stores action output result for [Backend Call - Read Document] action in enviarButton widget.

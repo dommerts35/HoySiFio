@@ -936,9 +936,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: TermsOfServiceSubPageToAcceptWidget.routeName,
-          path: TermsOfServiceSubPageToAcceptWidget.routePath,
-          builder: (context, params) => TermsOfServiceSubPageToAcceptWidget(),
+          name: PoliticaPrivSubPageToAcceptWidget.routeName,
+          path: PoliticaPrivSubPageToAcceptWidget.routePath,
+          builder: (context, params) => PoliticaPrivSubPageToAcceptWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            emailTendero: params.getParam(
+              'emailTendero',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: TenderoEditInfoWidget.routeName,
@@ -1065,11 +1084,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ForgotMyPasswordWidget.routeName,
           path: ForgotMyPasswordWidget.routePath,
           builder: (context, params) => ForgotMyPasswordWidget(),
-        ),
-        FFRoute(
-          name: TermsOfServiceSubPageToViewWidget.routeName,
-          path: TermsOfServiceSubPageToViewWidget.routePath,
-          builder: (context, params) => TermsOfServiceSubPageToViewWidget(),
         ),
         FFRoute(
           name: TenderoFirstLoginWidget.routeName,
@@ -1389,6 +1403,136 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             tenderoEmail: params.getParam(
               'tenderoEmail',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TermsOfServiceOfTenderoHelpWidget.routeName,
+          path: TermsOfServiceOfTenderoHelpWidget.routePath,
+          builder: (context, params) => TermsOfServiceOfTenderoHelpWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: PoliticasPrivFromMakeClienteWidget.routeName,
+          path: PoliticasPrivFromMakeClienteWidget.routePath,
+          builder: (context, params) => PoliticasPrivFromMakeClienteWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            emailTendero: params.getParam(
+              'emailTendero',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TermsOfServiceOfClienteMakeWidget.routeName,
+          path: TermsOfServiceOfClienteMakeWidget.routePath,
+          builder: (context, params) => TermsOfServiceOfClienteMakeWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TermsOfServiceFromAcceptWidget.routeName,
+          path: TermsOfServiceFromAcceptWidget.routePath,
+          builder: (context, params) => TermsOfServiceFromAcceptWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: TermsOfServiceLoginWidget.routeName,
+          path: TermsOfServiceLoginWidget.routePath,
+          builder: (context, params) => TermsOfServiceLoginWidget(),
+        ),
+        FFRoute(
+          name: PoliticaPrivSubPageToViewWidget.routeName,
+          path: PoliticaPrivSubPageToViewWidget.routePath,
+          builder: (context, params) => PoliticaPrivSubPageToViewWidget(),
+        ),
+        FFRoute(
+          name: PoliticaPrivOfTenderoHelpWidget.routeName,
+          path: PoliticaPrivOfTenderoHelpWidget.routePath,
+          builder: (context, params) => PoliticaPrivOfTenderoHelpWidget(
+            tenderoRef: params.getParam(
+              'tenderoRef',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['tenderos'],
+            ),
+            nombreTienda: params.getParam(
+              'nombreTienda',
+              ParamType.String,
+            ),
+            tenderoEmail: params.getParam(
+              'tenderoEmail',
+              ParamType.String,
+            ),
+            nombreTendero: params.getParam(
+              'nombreTendero',
               ParamType.String,
             ),
           ),
