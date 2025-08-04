@@ -360,7 +360,10 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 3.0, 0.0),
                                       child: AutoSizeText(
-                                        '${widget.nombre}',
+                                        '${widget.nombre} ${valueOrDefault<String>(
+                                          widget.apellido,
+                                          '-',
+                                        )}',
                                         maxLines: 1,
                                         minFontSize: 6.0,
                                         style: FlutterFlowTheme.of(context)
@@ -387,39 +390,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                       .fontStyle,
                                             ),
                                       ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: AutoSizeText(
-                                      valueOrDefault<String>(
-                                        widget.apellido,
-                                        '-',
-                                      ),
-                                      maxLines: 1,
-                                      minFontSize: 6.0,
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .fontStyle,
-                                          ),
                                     ),
                                   ),
                                 ],
@@ -2771,10 +2741,12 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                     );
                                                                     _shouldSetState =
                                                                         true;
-                                                                    if ((_model.cantidatTfTextController.text !=
-                                                                                '') &&
-                                                                        (_model.valorTFTextController.text !=
-                                                                                '')) {
+                                                                    if (((_model.cantidatTfTextController.text != '') &&
+                                                                            (_model.cantidatTfTextController.text !=
+                                                                                '0')) &&
+                                                                        ((_model.valorTFTextController.text != '') &&
+                                                                            (_model.valorTFTextController.text !=
+                                                                                '0'))) {
                                                                       if (widget
                                                                               .viviendaProp ==
                                                                           true) {
@@ -3024,7 +2996,45 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               false,
                                                                         ),
                                                                       ));
+                                                                    } else {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (dialogContext) {
+                                                                          return Dialog(
+                                                                            elevation:
+                                                                                0,
+                                                                            insetPadding:
+                                                                                EdgeInsets.zero,
+                                                                            backgroundColor:
+                                                                                Colors.transparent,
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () {
+                                                                                FocusScope.of(dialogContext).unfocus();
+                                                                                FocusManager.instance.primaryFocus?.unfocus();
+                                                                              },
+                                                                              child: Container(
+                                                                                height: 300.0,
+                                                                                child: DialogBtnWidget(
+                                                                                  titulo: '¡Alerta!',
+                                                                                  mensaje: 'Ingrese una cantidad y valor unitario válidas.',
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+
+                                                                      if (_shouldSetState)
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      return;
                                                                     }
+
                                                                     if (_shouldSetState)
                                                                       safeSetState(
                                                                           () {});

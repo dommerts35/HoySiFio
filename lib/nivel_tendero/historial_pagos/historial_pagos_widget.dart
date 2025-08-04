@@ -314,8 +314,10 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                               alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 0.0),
+                                    16.0, 5.0, 16.0, 0.0),
                                 child: Container(
+                                  width: 350.0,
+                                  height: 50.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
@@ -332,7 +334,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 5.0, 5.0, 0.0),
                                         child: Text(
-                                          'Aquí se mostrarán los productos pagados ',
+                                          'Aquí se mostrarán los productos pagados de:',
                                           textAlign: TextAlign.start,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -361,45 +363,50 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                               ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 5.0),
-                                        child: StreamBuilder<ClientesRecord>(
-                                          stream: _model
-                                              .queryNameClienteHistorialPagado(
-                                            requestFn: () =>
-                                                ClientesRecord.getDocument(
-                                                    widget.idCliente!),
-                                          ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child:
-                                                      CircularProgressIndicator(
-                                                    valueColor:
-                                                        AlwaysStoppedAnimation<
-                                                            Color>(
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Flexible(
+                                            child:
+                                                StreamBuilder<ClientesRecord>(
+                                              stream: _model
+                                                  .queryNameClienteHistorialPagado(
+                                                requestFn: () =>
+                                                    ClientesRecord.getDocument(
+                                                        widget.idCliente!),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                              );
-                                            }
+                                                  );
+                                                }
 
-                                            final nameClienteClientesRecord =
-                                                snapshot.data!;
+                                                final nameClienteClientesRecord =
+                                                    snapshot.data!;
 
-                                            return Text(
-                                              'del cliente: ${nameClienteClientesRecord.cliente.nombre} ${nameClienteClientesRecord.cliente.apellido}',
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                                return AutoSizeText(
+                                                  '${nameClienteClientesRecord.cliente.nombre} ${nameClienteClientesRecord.cliente.apellido}',
+                                                  textAlign: TextAlign.start,
+                                                  minFontSize: 6.0,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         font: GoogleFonts.inter(
@@ -426,9 +433,11 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                            );
-                                          },
-                                        ),
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),

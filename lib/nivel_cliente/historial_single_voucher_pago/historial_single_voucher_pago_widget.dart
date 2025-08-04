@@ -228,6 +228,8 @@ class _HistorialSingleVoucherPagoWidgetState
 
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         AutoSizeText(
                                           'Cuenta principal',
@@ -509,6 +511,8 @@ class _HistorialSingleVoucherPagoWidgetState
 
                                       return Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           AutoSizeText(
                                             'Cuenta secundaria',

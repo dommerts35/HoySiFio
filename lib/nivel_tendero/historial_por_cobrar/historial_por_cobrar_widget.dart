@@ -441,6 +441,8 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                 Align(
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Container(
+                                    width: 360.0,
+                                    height: 45.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -458,7 +460,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 5.0, 5.0, 0.0),
                                           child: Text(
-                                            'Aquí se mostrarán los productos por cobrar',
+                                            'Aquí se mostrarán los productos por cobrar del cliente:',
                                             textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
@@ -475,6 +477,7 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
+                                                  fontSize: 13.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -489,40 +492,44 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 5.0),
-                                          child: Text(
-                                            'del cliente: ${historialPorCobrarClientesRecord.cliente.nombre} ${historialPorCobrarClientesRecord.cliente.apellido}',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
+                                        Flexible(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 5.0),
+                                            child: AutoSizeText(
+                                              '${historialPorCobrarClientesRecord.cliente.nombre} ${historialPorCobrarClientesRecord.cliente.apellido}',
+                                              textAlign: TextAlign.start,
+                                              minFontSize: 4.0,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
                                           ),
                                         ),
                                       ],
