@@ -972,7 +972,8 @@ class _PageTutorialinfoProdFTWidgetState
                                 radius: 8.0,
                                 dotWidth: 8.0,
                                 dotHeight: 8.0,
-                                dotColor: FlutterFlowTheme.of(context).accent3,
+                                dotColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 activeDotColor:
                                     FlutterFlowTheme.of(context).tertiary,
                                 paintStyle: PaintingStyle.fill,
