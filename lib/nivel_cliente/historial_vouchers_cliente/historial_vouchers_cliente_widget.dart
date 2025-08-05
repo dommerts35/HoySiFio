@@ -68,8 +68,8 @@ class _HistorialVouchersClienteWidgetState
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -336,8 +336,9 @@ class _HistorialVouchersClienteWidgetState
                                 alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
+                                      16.0, 10.0, 16.0, 0.0),
                                   child: Container(
+                                    height: 48.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
@@ -353,11 +354,14 @@ class _HistorialVouchersClienteWidgetState
                                           10.0, 5.0, 10.0, 5.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           AutoSizeText(
                                             'Aquí se mostrarán los comprobantes enviados por ti:',
                                             textAlign: TextAlign.start,
-                                            minFontSize: 10.0,
+                                            maxLines: 1,
+                                            minFontSize: 6.0,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -387,58 +391,48 @@ class _HistorialVouchersClienteWidgetState
                                                           .fontStyle,
                                                 ),
                                           ),
-                                          StreamBuilder<ClientesRecord>(
-                                            stream: _model
-                                                .queryNameClienteHistorialPagado(
-                                              requestFn: () =>
-                                                  ClientesRecord.getDocument(
-                                                      widget.idCliente!),
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
+                                          Flexible(
+                                            child:
+                                                StreamBuilder<ClientesRecord>(
+                                              stream: _model
+                                                  .queryNameClienteHistorialPagado(
+                                                requestFn: () =>
+                                                    ClientesRecord.getDocument(
+                                                        widget.idCliente!),
+                                              ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child:
+                                                          CircularProgressIndicator(
+                                                        valueColor:
+                                                            AlwaysStoppedAnimation<
+                                                                Color>(
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                );
-                                              }
+                                                  );
+                                                }
 
-                                              final textClientesRecord =
-                                                  snapshot.data!;
+                                                final textClientesRecord =
+                                                    snapshot.data!;
 
-                                              return Text(
-                                                '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
+                                                return AutoSizeText(
+                                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
+                                                  textAlign: TextAlign.center,
+                                                  minFontSize: 4.0,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -450,8 +444,21 @@ class _HistorialVouchersClienteWidgetState
                                                                   .labelMedium
                                                                   .fontStyle,
                                                         ),
-                                              );
-                                            },
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                                );
+                                              },
+                                            ),
                                           ),
                                         ],
                                       ),

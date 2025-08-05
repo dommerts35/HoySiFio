@@ -150,8 +150,8 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -1571,7 +1571,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               .readForTenderoNotifLogInPsswrd!
                                                                               .tenderos
                                                                               .nombreTendero,
-                                                                          'Inicio de Sesion',
+                                                                          'Inicio de sesion como tendero',
                                                                           _model
                                                                               .readForTenderoNotifLogInPsswrd!
                                                                               .tenderos
@@ -1817,7 +1817,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               .readForTenderoNotifLogInPIN!
                                                                               .tenderos
                                                                               .nombreTendero,
-                                                                          'Inicio de Sesion',
+                                                                          'Inicio de sesion como tendero',
                                                                           _model
                                                                               .readForTenderoNotifLogInPIN!
                                                                               .displayName,

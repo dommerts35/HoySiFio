@@ -105,8 +105,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).primary,
@@ -242,6 +242,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       'tiendaName',
                                     ),
                                     textAlign: TextAlign.center,
+                                    maxLines: 2,
                                     minFontSize: 4.0,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -272,16 +273,16 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                 },
                               ),
                             ),
-                          ].divide(SizedBox(height: 5.0)),
+                          ],
                         ),
                       ),
                     ),
                   ),
                   Container(
-                    width: 126.0,
+                    width: 125.0,
                     height: 30.0,
                     constraints: BoxConstraints(
-                      maxWidth: 130.0,
+                      maxWidth: 125.0,
                     ),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -494,7 +495,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                         }
 
                                         return ListView.separated(
-                                          padding: EdgeInsets.zero,
+                                          padding: EdgeInsets.fromLTRB(
+                                            0,
+                                            0,
+                                            0,
+                                            20.0,
+                                          ),
                                           scrollDirection: Axis.vertical,
                                           itemCount:
                                               listViewClientesRecordList.length,
@@ -888,7 +894,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                   }
 
                                   return ListView.builder(
-                                    padding: EdgeInsets.zero,
+                                    padding: EdgeInsets.fromLTRB(
+                                      0,
+                                      0,
+                                      0,
+                                      20.0,
+                                    ),
                                     scrollDirection: Axis.vertical,
                                     itemCount:
                                         listViewClientesRecordList.length,
@@ -1181,7 +1192,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                   }
 
                                   return ListView.builder(
-                                    padding: EdgeInsets.zero,
+                                    padding: EdgeInsets.fromLTRB(
+                                      0,
+                                      0,
+                                      0,
+                                      20.0,
+                                    ),
                                     scrollDirection: Axis.vertical,
                                     itemCount:
                                         listViewClientesRecordList.length,

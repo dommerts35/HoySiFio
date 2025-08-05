@@ -141,8 +141,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: WillPopScope(
-        onWillPop: () async => false,
+      child: PopScope(
+        canPop: false,
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -2169,7 +2169,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
-                                                'envío de emails promocionales',
+                                                'envío de e-mails promocionales',
                                                 textAlign: TextAlign.start,
                                                 style: FlutterFlowTheme.of(
                                                         context)
