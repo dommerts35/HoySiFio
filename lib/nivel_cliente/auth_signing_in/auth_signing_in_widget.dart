@@ -368,6 +368,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                             safeSetState(() {
                                               _model.ciClienteTextController
                                                   ?.clear();
+                                              _model.pinClienteTextController
+                                                  ?.clear();
+                                              _model
+                                                  .passwordClienteTextController
+                                                  ?.clear();
                                             });
                                             _model.isClienteSetWithPss = false;
                                             safeSetState(() {});

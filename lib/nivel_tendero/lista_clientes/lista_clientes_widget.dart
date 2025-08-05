@@ -438,359 +438,371 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                   ).image,
                                 ),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Opacity(
-                                    opacity: 0.0,
-                                    child: Divider(
-                                      height: 0.0,
-                                      thickness: 0.0,
-                                      color: Color(0x00E0E3E7),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: 380.0,
-                                    height: 595.0,
-                                    decoration: BoxDecoration(),
-                                    child: StreamBuilder<List<ClientesRecord>>(
-                                      stream: queryClientesRecord(
-                                        queryBuilder: (clientesRecord) =>
-                                            clientesRecord.where(
-                                          'cliente.idTendero',
-                                          isEqualTo: widget.tenderoRef,
-                                        ),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Opacity(
+                                      opacity: 0.0,
+                                      child: Divider(
+                                        height: 0.0,
+                                        thickness: 0.0,
+                                        color: Color(0x00E0E3E7),
                                       ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                                    ),
+                                    Container(
+                                      width: 380.0,
+                                      height: 595.0,
+                                      decoration: BoxDecoration(),
+                                      child:
+                                          StreamBuilder<List<ClientesRecord>>(
+                                        stream: queryClientesRecord(
+                                          queryBuilder: (clientesRecord) =>
+                                              clientesRecord.where(
+                                            'cliente.idTendero',
+                                            isEqualTo: widget.tenderoRef,
+                                          ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                        }
-                                        List<ClientesRecord>
-                                            listViewClientesRecordList =
-                                            snapshot.data!;
-                                        if (listViewClientesRecordList
-                                            .isEmpty) {
-                                          return Center(
-                                            child: Container(
-                                              width: 340.0,
-                                              height: 360.0,
-                                              child: EmptyClientesListWidget(),
-                                            ),
-                                          );
-                                        }
+                                            );
+                                          }
+                                          List<ClientesRecord>
+                                              listViewClientesRecordList =
+                                              snapshot.data!;
+                                          if (listViewClientesRecordList
+                                              .isEmpty) {
+                                            return Center(
+                                              child: Container(
+                                                width: 340.0,
+                                                height: 360.0,
+                                                child:
+                                                    EmptyClientesListWidget(),
+                                              ),
+                                            );
+                                          }
 
-                                        return ListView.separated(
-                                          padding: EdgeInsets.fromLTRB(
-                                            0,
-                                            0,
-                                            0,
-                                            20.0,
-                                          ),
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              listViewClientesRecordList.length,
-                                          separatorBuilder: (_, __) =>
-                                              SizedBox(height: 5.0),
-                                          itemBuilder:
-                                              (context, listViewIndex) {
-                                            final listViewClientesRecord =
-                                                listViewClientesRecordList[
-                                                    listViewIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 8.0, 16.0, 0.0),
-                                              child: InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  context.pushNamed(
-                                                    ClienteInfoEditWidget
-                                                        .routeName,
-                                                    queryParameters: {
-                                                      'nombre': serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.nombre,
-                                                        ParamType.String,
-                                                      ),
-                                                      'telf': serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.telf,
-                                                        ParamType.String,
-                                                      ),
-                                                      'isFiando':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.isFiando,
-                                                        ParamType.bool,
-                                                      ),
-                                                      'idCliente':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.idCliente,
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                      'apellido':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.apellido,
-                                                        ParamType.String,
-                                                      ),
-                                                      'cedula': serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente.cedula,
-                                                        ParamType.String,
-                                                      ),
-                                                      'direccionDomicilio':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente
-                                                            .direccionDomicilio,
-                                                        ParamType.String,
-                                                      ),
-                                                      'emailCliente':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente
-                                                            .emailCliente,
-                                                        ParamType.String,
-                                                      ),
-                                                      'viviendaAlq':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente
-                                                            .viviendaAlq,
-                                                        ParamType.bool,
-                                                      ),
-                                                      'viviendaProp':
-                                                          serializeParam(
-                                                        listViewClientesRecord
-                                                            .cliente
-                                                            .viviendaPropia,
-                                                        ParamType.bool,
-                                                      ),
-                                                      'tenderoRef':
-                                                          serializeParam(
-                                                        widget.tenderoRef,
-                                                        ParamType
-                                                            .DocumentReference,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 5.0,
-                                                        color:
-                                                            Color(0x20000000),
-                                                        offset: Offset(
-                                                          0.0,
-                                                          1.0,
+                                          return ListView.separated(
+                                            padding: EdgeInsets.fromLTRB(
+                                              0,
+                                              0,
+                                              0,
+                                              20.0,
+                                            ),
+                                            scrollDirection: Axis.vertical,
+                                            itemCount:
+                                                listViewClientesRecordList
+                                                    .length,
+                                            separatorBuilder: (_, __) =>
+                                                SizedBox(height: 5.0),
+                                            itemBuilder:
+                                                (context, listViewIndex) {
+                                              final listViewClientesRecord =
+                                                  listViewClientesRecordList[
+                                                      listViewIndex];
+                                              return Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        16.0, 8.0, 16.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      ClienteInfoEditWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'nombre':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente.nombre,
+                                                          ParamType.String,
                                                         ),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            12.0),
-                                                    border: Border.all(
-                                                      color: Color(0xFF0050FF),
-                                                      width: 2.0,
-                                                    ),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 8.0,
-                                                                12.0, 8.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        10.0,
-                                                                        0.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      AutoSizeText(
-                                                                    'Cliente: ${valueOrDefault<String>(
-                                                                      listViewClientesRecord
-                                                                          .cliente
-                                                                          .nombre,
-                                                                      '---',
-                                                                    )} ${listViewClientesRecord.cliente.apellido}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .bodyLarge
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyLarge
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      AutoSizeText(
-                                                                    'CI: ${valueOrDefault<String>(
-                                                                      listViewClientesRecord
-                                                                          .cliente
-                                                                          .cedula,
-                                                                      '000',
-                                                                    )}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyLarge
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .bodyLarge
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyLarge
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          16.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    'Fiando: \$${formatNumber(
-                                                                      listViewClientesRecord
-                                                                          .cliente
-                                                                          .totalDeudaCompleta,
-                                                                      formatType:
-                                                                          FormatType
-                                                                              .custom,
-                                                                      format:
-                                                                          '#0.00',
-                                                                      locale:
-                                                                          '',
-                                                                    )}',
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
-                                                                          ),
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                        'telf': serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente.telf,
+                                                          ParamType.String,
+                                                        ),
+                                                        'isFiando':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente.isFiando,
+                                                          ParamType.bool,
+                                                        ),
+                                                        'idCliente':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente
+                                                              .idCliente,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                        'apellido':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente.apellido,
+                                                          ParamType.String,
+                                                        ),
+                                                        'cedula':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente.cedula,
+                                                          ParamType.String,
+                                                        ),
+                                                        'direccionDomicilio':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente
+                                                              .direccionDomicilio,
+                                                          ParamType.String,
+                                                        ),
+                                                        'emailCliente':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente
+                                                              .emailCliente,
+                                                          ParamType.String,
+                                                        ),
+                                                        'viviendaAlq':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente
+                                                              .viviendaAlq,
+                                                          ParamType.bool,
+                                                        ),
+                                                        'viviendaProp':
+                                                            serializeParam(
+                                                          listViewClientesRecord
+                                                              .cliente
+                                                              .viviendaPropia,
+                                                          ParamType.bool,
+                                                        ),
+                                                        'tenderoRef':
+                                                            serializeParam(
+                                                          widget.tenderoRef,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 5.0,
+                                                          color:
+                                                              Color(0x20000000),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            1.0,
                                                           ),
-                                                        ),
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            Color(0xFF0050FF),
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  8.0,
+                                                                  8.0,
+                                                                  12.0,
+                                                                  8.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Expanded(
+                                                            child: Padding(
                                                               padding:
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
-                                                                          30.0,
+                                                                          10.0,
                                                                           0.0),
-                                                              child: Text(
-                                                                'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AutoSizeText(
+                                                                      'Cliente: ${valueOrDefault<String>(
+                                                                        listViewClientesRecord
+                                                                            .cliente
+                                                                            .nombre,
+                                                                        '---',
+                                                                      )} ${listViewClientesRecord.cliente.apellido}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AutoSizeText(
+                                                                      'CI: ${valueOrDefault<String>(
+                                                                        listViewClientesRecord
+                                                                            .cliente
+                                                                            .cedula,
+                                                                        '000',
+                                                                      )}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            16.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Fiando: \$${formatNumber(
+                                                                        listViewClientesRecord
+                                                                            .cliente
+                                                                            .totalDeudaCompleta,
+                                                                        formatType:
+                                                                            FormatType.custom,
+                                                                        format:
+                                                                            '#0.00',
+                                                                        locale:
+                                                                            '',
+                                                                      )}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            30.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .inter(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelMedium
                                                                             .fontWeight,
@@ -798,43 +810,33 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        if (listViewClientesRecord
-                                                            .cliente.isFiando)
-                                                          Icon(
-                                                            Icons
-                                                                .radio_button_checked,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            size: 24.0,
+                                                            ],
                                                           ),
-                                                      ],
+                                                          if (listViewClientesRecord
+                                                              .cliente.isFiando)
+                                                            Icon(
+                                                              Icons
+                                                                  .radio_button_checked,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primary,
+                                                              size: 24.0,
+                                                            ),
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                             Container(

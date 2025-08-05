@@ -263,7 +263,7 @@ class _HistorialSingleVoucherPagoWidgetState
                                         Flexible(
                                           child: AutoSizeText(
                                             'Núm. de Cuenta: ${infoColTenderosRecord.tenderos.numCuenta}',
-                                            minFontSize: 8.0,
+                                            minFontSize: 4.0,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -484,6 +484,8 @@ class _HistorialSingleVoucherPagoWidgetState
                                   },
                                 ),
                                 Container(
+                                  width: 360.0,
+                                  height: 100.0,
                                   decoration: BoxDecoration(),
                                   child: StreamBuilder<TenderosRecord>(
                                     stream: TenderosRecord.getDocument(
