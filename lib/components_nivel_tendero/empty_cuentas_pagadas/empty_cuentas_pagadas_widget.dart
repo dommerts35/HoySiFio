@@ -85,7 +85,7 @@ class _EmptyCuentasPagadasWidgetState extends State<EmptyCuentasPagadasWidget> {
                 child: Text(
                   'El cliente no tiene cuentas.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

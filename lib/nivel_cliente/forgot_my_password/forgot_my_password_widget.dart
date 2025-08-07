@@ -91,16 +91,14 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                           alignment: AlignmentDirectional(-0.81, -0.91),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 0.0, 0.0, 0.0),
+                                20.0, 32.0, 0.0, 0.0),
                             child: FlutterFlowIconButton(
-                              borderColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
+                              borderColor: FlutterFlowTheme.of(context).primary,
                               borderRadius: 8.0,
                               buttonSize: 40.0,
                               icon: Icon(
                                 Icons.arrow_back,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
+                                color: FlutterFlowTheme.of(context).primary,
                                 size: 24.0,
                               ),
                               onPressed: () async {
@@ -111,7 +109,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                         ),
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 32.0, 110.0, 16.0),
+                              0.0, 32.0, 136.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
                             text: TextSpan(
@@ -121,7 +119,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        font: GoogleFonts.readexPro(
+                                        font: GoogleFonts.asap(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .displaySmall
@@ -145,7 +143,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        font: GoogleFonts.readexPro(
+                                        font: GoogleFonts.asap(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .displaySmall
@@ -173,7 +171,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
-                                    font: GoogleFonts.readexPro(
+                                    font: GoogleFonts.asap(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .displaySmall
                                           .fontWeight,
@@ -213,7 +211,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                               alignment: AlignmentDirectional(0.0, -1.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 16.0, 24.0, 0.0),
+                                    36.0, 0.0, 36.0, 0.0),
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -233,13 +231,28 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                 .secondaryBackground,
                                           ),
                                         ),
-                                      Text(
-                                        'Olvidé mi contraseña',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              font: GoogleFonts.readexPro(
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0),
+                                        child: Text(
+                                          'Olvidé mi contraseña',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                font: GoogleFonts.quicksand(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
+                                                ),
+                                                letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .headlineMedium
@@ -249,52 +262,48 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         .headlineMedium
                                                         .fontStyle,
                                               ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontStyle,
-                                            ),
+                                        ),
                                       ),
                                       if (_model.isSent == false)
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 4.0, 0.0, 24.0),
-                                          child: Text(
-                                            'Ingrese el e-mail de su cuenta para restablecer su contraseña.',
-                                            textAlign: TextAlign.start,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 24.0),
+                                            child: Text(
+                                              'Ingrese el e-mail de su cuenta para restablecer su contraseña.',
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
                                           ),
                                         ),
                                       if (_model.isSent == false)
@@ -318,42 +327,45 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText: 'E-mail',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .fontStyle,
-                                                        ),
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .labelLarge
+                                                    .override(
+                                                      font: GoogleFonts.asap(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontStyle,
+                                                      ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .fontStyle,
+                                                    ),
                                                 hintText: 'E-mail',
                                                 hintStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -378,7 +390,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -387,10 +399,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.0),
+                                                          0.0),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -399,9 +411,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.0),
+                                                          0.0),
                                                 ),
-                                                errorBorder: OutlineInputBorder(
+                                                errorBorder:
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -410,10 +423,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.0),
+                                                          0.0),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
@@ -422,20 +435,16 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          12.0),
+                                                          0.0),
                                                 ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
                                                 contentPadding:
-                                                    EdgeInsets.all(24.0),
+                                                    EdgeInsets.all(14.0),
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -949,25 +958,23 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                   if (_shouldSetState)
                                                     safeSetState(() {});
                                                 },
-                                                text: 'Enviar E-mail',
+                                                text: 'Enviar e-mail',
                                                 options: FFButtonOptions(
-                                                  width: 230.0,
-                                                  height: 52.0,
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
+                                                      .fromSTEB(24.0, 16.0,
+                                                          24.0, 16.0),
                                                   iconPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiary,
+                                                      .primary,
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .titleSmall
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1019,11 +1026,12 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         0.0, 0.0, 0.0, 24.0),
                                                 child: Text(
                                                   'Ingrese una contraseña con al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula, un número y un carácter especial (como , ., #, \$, ¿).',
+                                                  textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .labelMedium
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1079,7 +1087,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelLarge
@@ -1089,6 +1097,9 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                       .labelLarge
                                                                       .fontStyle,
                                                                 ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -1108,7 +1119,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelLarge
@@ -1130,7 +1141,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                     .fontStyle,
                                                               ),
                                                       enabledBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1139,10 +1150,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       focusedBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1151,10 +1162,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       errorBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1163,10 +1174,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       focusedErrorBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1175,14 +1186,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
                                                       contentPadding:
-                                                          EdgeInsets.all(24.0),
+                                                          EdgeInsets.all(14.0),
                                                       suffixIcon: InkWell(
                                                         onTap: () =>
                                                             safeSetState(
@@ -1212,7 +1219,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         .bodyLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1284,7 +1291,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelLarge
@@ -1294,6 +1301,9 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                       .labelLarge
                                                                       .fontStyle,
                                                                 ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -1313,7 +1323,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelLarge
@@ -1323,6 +1333,9 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                       .labelLarge
                                                                       .fontStyle,
                                                                 ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -1335,7 +1348,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                     .fontStyle,
                                                               ),
                                                       enabledBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1344,10 +1357,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       focusedBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1356,10 +1369,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       errorBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1368,10 +1381,10 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
                                                       focusedErrorBorder:
-                                                          OutlineInputBorder(
+                                                          UnderlineInputBorder(
                                                         borderSide: BorderSide(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1380,21 +1393,17 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(12.0),
+                                                                .circular(0.0),
                                                       ),
-                                                      filled: true,
-                                                      fillColor: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
                                                       contentPadding:
-                                                          EdgeInsets.all(24.0),
+                                                          EdgeInsets.all(14.0),
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1779,23 +1788,21 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                 },
                                                 text: 'Reestablecer contraseña',
                                                 options: FFButtonOptions(
-                                                  width: 230.0,
-                                                  height: 52.0,
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
+                                                      .fromSTEB(24.0, 16.0,
+                                                          24.0, 16.0),
                                                   iconPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiary,
+                                                      .primary,
                                                   textStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .titleSmall
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)

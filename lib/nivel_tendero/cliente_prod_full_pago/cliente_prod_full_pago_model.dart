@@ -31,13 +31,13 @@ class ClienteProdFullPagoModel
   final formKey = GlobalKey<FormState>();
   // State field(s) for checkTransfer widget.
   bool? checkTransferValue;
+  // State field(s) for checkEfectivo widget.
+  bool? checkEfectivoValue;
   // State field(s) for comprobanteNumTF widget.
   FocusNode? comprobanteNumTFFocusNode;
   TextEditingController? comprobanteNumTFTextController;
   String? Function(BuildContext, String?)?
       comprobanteNumTFTextControllerValidator;
-  // State field(s) for checkEfectivo widget.
-  bool? checkEfectivoValue;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
   double? totalDeudaCompletaConv;
   // Stores action output result for [Validate Form] action in botonPago widget.

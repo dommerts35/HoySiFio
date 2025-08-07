@@ -142,7 +142,7 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF105DFB);
+  late Color primary = const Color(0xFF1E6CDD);
   late Color secondary = const Color(0xFF8AC7FF);
   late Color tertiary = const Color(0xFFEE8B60);
   late Color alternate = const Color(0xFFE0E3E7);
@@ -227,9 +227,9 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Readex Pro';
+  String get displaySmallFamily => 'Asap';
   bool get displaySmallIsCustom => false;
-  TextStyle get displaySmall => GoogleFonts.readexPro(
+  TextStyle get displaySmall => GoogleFonts.asap(
         color: theme.primaryText,
         fontWeight: FontWeight.w600,
         fontSize: 32.0,
@@ -241,12 +241,12 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Readex Pro';
+  String get headlineMediumFamily => 'Quicksand';
   bool get headlineMediumIsCustom => false;
-  TextStyle get headlineMedium => GoogleFonts.readexPro(
+  TextStyle get headlineMedium => GoogleFonts.quicksand(
         color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 22.0,
+        fontWeight: FontWeight.bold,
+        fontSize: 26.0,
       );
   String get headlineSmallFamily => 'Readex Pro';
   bool get headlineSmallIsCustom => false;
@@ -269,53 +269,53 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w500,
         fontSize: 18.0,
       );
-  String get titleSmallFamily => 'Inter';
+  String get titleSmallFamily => 'Asap';
   bool get titleSmallIsCustom => false;
-  TextStyle get titleSmall => GoogleFonts.inter(
+  TextStyle get titleSmall => GoogleFonts.asap(
         color: theme.primaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Inter';
+  String get labelLargeFamily => 'Asap';
   bool get labelLargeIsCustom => false;
-  TextStyle get labelLarge => GoogleFonts.inter(
+  TextStyle get labelLarge => GoogleFonts.asap(
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Inter';
+  String get labelMediumFamily => 'Asap';
   bool get labelMediumIsCustom => false;
-  TextStyle get labelMedium => GoogleFonts.inter(
+  TextStyle get labelMedium => GoogleFonts.asap(
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
-        fontSize: 14.0,
+        fontSize: 16.0,
       );
-  String get labelSmallFamily => 'Inter';
+  String get labelSmallFamily => 'Asap';
   bool get labelSmallIsCustom => false;
-  TextStyle get labelSmall => GoogleFonts.inter(
+  TextStyle get labelSmall => GoogleFonts.asap(
         color: theme.secondaryText,
         fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Inter';
+  String get bodyLargeFamily => 'Asap';
   bool get bodyLargeIsCustom => false;
-  TextStyle get bodyLarge => GoogleFonts.inter(
+  TextStyle get bodyLarge => GoogleFonts.asap(
         color: theme.primaryText,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Inter';
+  String get bodyMediumFamily => 'Asap';
   bool get bodyMediumIsCustom => false;
-  TextStyle get bodyMedium => GoogleFonts.inter(
+  TextStyle get bodyMedium => GoogleFonts.asap(
+        color: theme.primaryText,
+        fontWeight: FontWeight.normal,
+        fontSize: 16.0,
+      );
+  String get bodySmallFamily => 'Asap';
+  bool get bodySmallIsCustom => false;
+  TextStyle get bodySmall => GoogleFonts.asap(
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
-      );
-  String get bodySmallFamily => 'Inter';
-  bool get bodySmallIsCustom => false;
-  TextStyle get bodySmall => GoogleFonts.inter(
-        color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
       );
 }
 

@@ -191,7 +191,7 @@ class _PoliticaPrivSubPageToViewWidgetState
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 620.0,
@@ -223,7 +223,7 @@ class _PoliticaPrivSubPageToViewWidgetState
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      font: GoogleFonts.inter(
+                                      font: GoogleFonts.asap(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .fontWeight,
@@ -1387,7 +1387,7 @@ class _PoliticaPrivSubPageToViewWidgetState
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
-                                        font: GoogleFonts.inter(
+                                        font: GoogleFonts.asap(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .bodyLarge

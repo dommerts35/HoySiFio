@@ -88,7 +88,7 @@ class _EmptyClientesListNoFiandoWidgetState
                   textAlign: TextAlign.center,
                   minFontSize: 10.0,
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

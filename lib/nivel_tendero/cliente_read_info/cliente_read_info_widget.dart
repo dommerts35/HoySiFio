@@ -173,7 +173,6 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
                         child: FlutterFlowIconButton(
-                          borderColor: FlutterFlowTheme.of(context).primary,
                           borderRadius: 12.0,
                           borderWidth: 1.0,
                           buttonSize: 40.0,
@@ -238,28 +237,31 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Text(
-                        'Datos completos',
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              font: GoogleFonts.readexPro(
+                    Text(
+                      'Datos completos',
+                      style:
+                          FlutterFlowTheme.of(context).headlineSmall.override(
+                                font: GoogleFonts.readexPro(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
+                                letterSpacing: 0.0,
                                 fontWeight: FlutterFlowTheme.of(context)
-                                    .headlineMedium
+                                    .headlineSmall
                                     .fontWeight,
                                 fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
+                                    .headlineSmall
                                     .fontStyle,
                               ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontStyle,
-                            ),
+                    ),
+                    Container(
+                      width: 40.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                     ),
                   ],
@@ -268,7 +270,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
               actions: [],
               centerTitle: false,
               toolbarHeight: 75.0,
-              elevation: 0.0,
+              elevation: 2.0,
             ),
           ),
           body: SafeArea(
@@ -285,23 +287,41 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 0.0),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 20.0, 24.0, 24.0),
+                            child: Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14.0),
+                              ),
                               child: Container(
-                                height: 750.0,
-                                constraints: BoxConstraints(
-                                  maxWidth: 770.0,
+                                height: 550.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 4.0,
+                                      color: Color(0x33000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).primary,
+                                  ),
                                 ),
-                                decoration: BoxDecoration(),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 12.0, 16.0, 0.0),
+                                      16.0, 0.0, 16.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -322,7 +342,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                     context)
                                                 .headlineMedium
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.quicksand(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -336,7 +356,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .primary,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -349,11 +369,12 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                           .headlineMedium
                                                           .fontStyle,
                                                 ),
+                                            alignLabelWithHint: false,
                                             hintStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -381,7 +402,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -422,7 +443,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -481,7 +502,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                     context)
                                                 .headlineMedium
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.quicksand(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -495,7 +516,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .primary,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -512,7 +533,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -540,7 +561,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -581,7 +602,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -638,7 +659,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -650,6 +671,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -664,7 +688,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -690,7 +714,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .bodyMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -727,7 +751,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -781,7 +805,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -793,6 +817,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -807,7 +834,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -833,7 +860,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .bodyMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -870,7 +897,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -925,7 +952,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -937,6 +964,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -953,7 +984,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -981,7 +1012,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1022,7 +1053,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1077,7 +1108,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1089,6 +1120,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -1103,7 +1137,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1129,7 +1163,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .bodyMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1166,7 +1200,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -1220,7 +1254,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1232,6 +1266,9 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                           .labelLarge
                                                           .fontStyle,
                                                 ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -1246,7 +1283,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .labelMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1272,7 +1309,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                   context)
                                               .bodyMedium
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1309,7 +1346,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyLarge
@@ -1367,7 +1404,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1379,6 +1416,10 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                                 .labelLarge
                                                                 .fontStyle,
                                                       ),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -1395,7 +1436,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1423,7 +1464,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1464,7 +1505,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                font: GoogleFonts.inter(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -1505,9 +1546,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget> {
                                               }),
                                           ],
                                         ),
-                                    ]
-                                        .divide(SizedBox(height: 14.0))
-                                        .addToEnd(SizedBox(height: 32.0)),
+                                    ],
                                   ),
                                 ),
                               ),

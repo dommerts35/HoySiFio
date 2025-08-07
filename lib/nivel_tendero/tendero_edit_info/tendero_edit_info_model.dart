@@ -131,10 +131,10 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     return null;
   }
 
-  // State field(s) for CheckboxListCC widget.
-  bool? checkboxListCCValue;
-  // State field(s) for CheckboxListCA widget.
-  bool? checkboxListCAValue;
+  // State field(s) for betterCheckCC widget.
+  bool? betterCheckCCValue;
+  // State field(s) for betterCheckCA widget.
+  bool? betterCheckCAValue;
   // State field(s) for numCuentaEditSec widget.
   FocusNode? numCuentaEditSecFocusNode;
   TextEditingController? numCuentaEditSecTextController;
@@ -150,14 +150,60 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   TextEditingController? nombreTitularBancoEditSecTextController;
   String? Function(BuildContext, String?)?
       nombreTitularBancoEditSecTextControllerValidator;
-  // State field(s) for CCSec widget.
-  bool? cCSecValue;
-  // State field(s) for CASec widget.
-  bool? cASecValue;
+  // State field(s) for betterCheckCCSec widget.
+  bool? betterCheckCCSecValue;
+  // State field(s) for betterCheckCASec widget.
+  bool? betterCheckCASecValue;
+  // State field(s) for mailEdit widget.
+  FocusNode? mailEditFocusNode;
+  TextEditingController? mailEditTextController;
+  String? Function(BuildContext, String?)? mailEditTextControllerValidator;
+  String? _mailEditTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese un PIN';
+    }
+
+    if (val.length < 4) {
+      return 'Ingrese un PIN de 4 dígitos';
+    }
+    if (val.length > 4) {
+      return 'Ingrese un PIN de 4 dígitos';
+    }
+
+    return null;
+  }
+
   // State field(s) for pinEdit widget.
   FocusNode? pinEditFocusNode;
   TextEditingController? pinEditTextController;
+  late bool pinEditVisibility;
   String? Function(BuildContext, String?)? pinEditTextControllerValidator;
+  // State field(s) for contrasenaEdit widget.
+  FocusNode? contrasenaEditFocusNode;
+  TextEditingController? contrasenaEditTextController;
+  late bool contrasenaEditVisibility;
+  String? Function(BuildContext, String?)?
+      contrasenaEditTextControllerValidator;
+  String? _contrasenaEditTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese una contraseña.';
+    }
+
+    if (val.length < 8) {
+      return 'Ingrese una contraseña de al menos 8 caracteres';
+    }
+    if (val.length > 16) {
+      return 'Ingrese una contraseña de máximo 16 caracteres';
+    }
+    if (!RegExp(
+            '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
+        .hasMatch(val)) {
+      return 'Ingrese una contraseña válida.';
+    }
+    return null;
+  }
+
   // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
   bool? isBorrar;
   // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
@@ -187,6 +233,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
         _nombreBancoEditTextControllerValidator;
     nombreTitularBancoEditTextControllerValidator =
         _nombreTitularBancoEditTextControllerValidator;
+    mailEditTextControllerValidator = _mailEditTextControllerValidator;
+    pinEditVisibility = false;
+    contrasenaEditVisibility = false;
+    contrasenaEditTextControllerValidator =
+        _contrasenaEditTextControllerValidator;
   }
 
   @override
@@ -221,7 +272,13 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     nombreTitularBancoEditSecFocusNode?.dispose();
     nombreTitularBancoEditSecTextController?.dispose();
 
+    mailEditFocusNode?.dispose();
+    mailEditTextController?.dispose();
+
     pinEditFocusNode?.dispose();
     pinEditTextController?.dispose();
+
+    contrasenaEditFocusNode?.dispose();
+    contrasenaEditTextController?.dispose();
   }
 }

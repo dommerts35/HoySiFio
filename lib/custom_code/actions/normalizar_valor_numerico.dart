@@ -10,29 +10,26 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 Future<double> normalizarValorNumerico(String input) async {
-  // Elimina espacios y caracteres no numéricos (excepto , y .)
-  String cleaned = input.replaceAll(RegExp(r'[^\d.,]'), '');
-
-  // Reemplaza todas las comas por puntos para estandarizar
-  cleaned = cleaned.replaceAll(',', '.');
-
-  // Maneja casos donde hay múltiples puntos decimales
-  if (cleaned.split('.').length > 2) {
-    // Conserva solo el primer punto como decimal
-    cleaned = cleaned.replaceFirst('.', '');
-    cleaned = cleaned.replaceFirst('.', '.');
+  // 1. Verificación rápida para valores ya normalizados (evita reprocesar)
+  if (input.contains(RegExp(r'^\d+\.\d{2}$'))) {
+    return double.tryParse(input) ?? 0.0;
   }
 
-  // Convierte a double
-  final valor = double.tryParse(cleaned);
+  // 2. Limpieza del input original
+  String cleaned =
+      input.replaceAll(RegExp(r'[^\d.,]'), '').replaceAll(',', '.');
 
-  if (valor == null || valor.isNaN) {
-    // Devuelve 0.0 en lugar de lanzar excepción para mejor manejo en FlutterFlow
-    return 0.0;
+  // 3. Lógica de centavos (convertir "0,1" → 0.01)
+  if (cleaned.split('.').length == 2) {
+    String parteDecimal = cleaned.split('.')[1];
+    if (parteDecimal.length == 1) {
+      // Ej: "0.1"
+      cleaned = '${cleaned.split('.')[0]}.0${parteDecimal}';
+    }
   }
 
-  // Redondea a 2 decimales para consistencia
-  return double.parse(valor.toStringAsFixed(2));
+  // 4. Conversión final con protección
+  return double.tryParse(cleaned) ?? 0.0;
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

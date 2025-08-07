@@ -118,7 +118,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                       'Ayuda',
                       style:
                           FlutterFlowTheme.of(context).headlineMedium.override(
-                                font: GoogleFonts.readexPro(
+                                font: GoogleFonts.quicksand(
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .headlineMedium
                                       .fontWeight,
@@ -139,7 +139,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                       'Seleccione un tutorial a visualizar',
                       maxLines: 2,
                       style: FlutterFlowTheme.of(context).labelMedium.override(
-                            font: GoogleFonts.inter(
+                            font: GoogleFonts.asap(
                               fontWeight: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .fontWeight,
@@ -238,7 +238,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -304,7 +304,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -369,7 +369,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -429,7 +429,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall
@@ -490,7 +490,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .titleSmall

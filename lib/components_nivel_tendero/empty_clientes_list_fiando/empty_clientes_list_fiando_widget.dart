@@ -85,7 +85,7 @@ class _EmptyClientesListFiandoWidgetState
                 child: Text(
                   'No hay clientes fiando.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

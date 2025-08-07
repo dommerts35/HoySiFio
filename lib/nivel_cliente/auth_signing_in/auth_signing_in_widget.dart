@@ -1,6 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/components/dialog_btn_widget.dart';
+import '/components/dialog_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -62,7 +62,22 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
       vsync: this,
       length: 2,
       initialIndex: 0,
-    )..addListener(() => safeSetState(() {}));
+    )
+      ..addListener(() => safeSetState(() {}))
+      ..addListener(() async {
+        if (_model.tabInicioSesionController!.indexIsChanging) {
+          return;
+        }
+
+        safeSetState(() {
+          _model.emailAddressTenderoTextController?.clear();
+          _model.passwordTenderoTextController?.clear();
+          _model.pinTenderoTextController?.clear();
+          _model.ciClienteTextController?.clear();
+          _model.pinClienteTextController?.clear();
+          _model.passwordClienteTextController?.clear();
+        });
+      });
 
     _model.emailAddressTenderoTextController ??= TextEditingController();
     _model.emailAddressTenderoFocusNode ??= FocusNode();
@@ -178,7 +193,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      font: GoogleFonts.readexPro(
+                                      font: GoogleFonts.asap(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .fontWeight,
@@ -186,7 +201,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                             .displaySmall
                                             .fontStyle,
                                       ),
-                                      fontSize: 30.0,
+                                      fontSize: 32.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .displaySmall
@@ -201,7 +216,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      font: GoogleFonts.readexPro(
+                                      font: GoogleFonts.asap(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .fontWeight,
@@ -210,7 +225,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                             .fontStyle,
                                       ),
                                       color: Color(0xFF01AFFF),
-                                      fontSize: 30.0,
+                                      fontSize: 32.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .displaySmall
@@ -222,15 +237,32 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                               ),
                               TextSpan(
                                 text: 'Fio',
-                                style: TextStyle(
-                                  fontSize: 30.0,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      font: GoogleFonts.asap(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .displaySmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .displaySmall
+                                            .fontStyle,
+                                      ),
+                                      fontSize: 32.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .fontStyle,
+                                    ),
                               )
                             ],
                             style: FlutterFlowTheme.of(context)
                                 .displaySmall
                                 .override(
-                                  font: GoogleFonts.readexPro(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .displaySmall
                                         .fontWeight,
@@ -273,7 +305,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            font: GoogleFonts.inter(
+                                            font: GoogleFonts.asap(
                                               fontWeight: FontWeight.bold,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
@@ -291,7 +323,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                               context)
                                           .bodyLarge
                                           .override(
-                                            font: GoogleFonts.inter(
+                                            font: GoogleFonts.asap(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -392,7 +424,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 24.0, 24.0, 0.0),
+                                                    36.0, 16.0, 36.0, 0.0),
                                             child: SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -421,7 +453,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         .headlineMedium
                                                         .override(
                                                           font: GoogleFonts
-                                                              .readexPro(
+                                                              .quicksand(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -462,7 +494,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -514,7 +546,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -535,36 +567,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         .labelLarge
                                                                         .fontStyle,
                                                                   ),
-                                                          hintText: 'E-mail',
-                                                          hintStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelLarge
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .inter(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelLarge
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelLarge
-                                                                        .fontStyle,
-                                                                  ),
+                                                          alignLabelWithHint:
+                                                              true,
                                                           enabledBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -575,10 +581,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           focusedBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -589,10 +595,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           errorBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -603,10 +609,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           focusedErrorBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -617,15 +623,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
                                                           contentPadding:
                                                               EdgeInsets.all(
-                                                                  24.0),
+                                                                  14.0),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -634,7 +636,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -706,7 +708,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -725,8 +727,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .labelLarge
                                                                           .fontStyle,
                                                                     ),
+                                                            alignLabelWithHint:
+                                                                true,
                                                             enabledBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -736,11 +740,23 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               ),
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(
-                                                                          12.0),
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
                                                             ),
                                                             focusedBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -750,11 +766,23 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               ),
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(
-                                                                          12.0),
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
                                                             ),
                                                             errorBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -764,11 +792,23 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               ),
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(
-                                                                          12.0),
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
                                                             ),
                                                             focusedErrorBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -778,16 +818,24 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               ),
                                                               borderRadius:
                                                                   BorderRadius
-                                                                      .circular(
-                                                                          12.0),
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
                                                             ),
-                                                            filled: true,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
                                                             contentPadding:
                                                                 EdgeInsets.all(
-                                                                    24.0),
+                                                                    14.0),
                                                             suffixIcon: InkWell(
                                                               onTap: () =>
                                                                   safeSetState(
@@ -818,7 +866,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyLarge
@@ -895,7 +943,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -914,8 +962,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .labelLarge
                                                                           .fontStyle,
                                                                     ),
+                                                            alignLabelWithHint:
+                                                                true,
                                                             enabledBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -926,10 +976,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          12.0),
+                                                                          0.0),
                                                             ),
                                                             focusedBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -940,10 +990,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          12.0),
+                                                                          0.0),
                                                             ),
                                                             errorBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -954,10 +1004,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          12.0),
+                                                                          0.0),
                                                             ),
                                                             focusedErrorBorder:
-                                                                OutlineInputBorder(
+                                                                UnderlineInputBorder(
                                                               borderSide:
                                                                   BorderSide(
                                                                 color: FlutterFlowTheme.of(
@@ -968,15 +1018,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          12.0),
+                                                                          0.0),
                                                             ),
-                                                            filled: true,
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
                                                             contentPadding:
                                                                 EdgeInsets.all(
-                                                                    24.0),
+                                                                    14.0),
                                                             suffixIcon: InkWell(
                                                               onTap: () =>
                                                                   safeSetState(
@@ -1007,7 +1053,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyLarge
@@ -1130,7 +1176,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .titleSmall
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -1233,11 +1279,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         height:
                                                                             200.0,
                                                                         child:
-                                                                            DialogBtnWidget(
+                                                                            DialogWidget(
                                                                           titulo:
                                                                               '¡Datos incorrectos!',
                                                                           mensaje:
-                                                                              'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar. Compruebe su conexión y vuelva a intentar.',
+                                                                              'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1379,9 +1425,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             height:
                                                                                 200.0,
                                                                             child:
-                                                                                DialogBtnWidget(
+                                                                                DialogWidget(
                                                                               titulo: '¡Datos incorrectos!',
-                                                                              mensaje: 'Los datos ingresados son inválidos.  Compruebe su conexión y vuelva a intentar.',
+                                                                              mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                             ),
                                                                           ),
                                                                         ),
@@ -1502,14 +1548,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             FocusManager.instance.primaryFocus?.unfocus();
                                                                           },
                                                                           child:
-                                                                              Container(
-                                                                            height:
-                                                                                200.0,
-                                                                            child:
-                                                                                DialogBtnWidget(
-                                                                              titulo: '¡Bienvenido! 😊',
-                                                                              mensaje: 'Ha iniciado sesión exitosamente en la tienda: ${_model.queryInicioTenderoPin?.tenderos.nombreTienda} 🏪',
-                                                                            ),
+                                                                              DialogWidget(
+                                                                            titulo:
+                                                                                '¡Bienvenido! 😊',
+                                                                            mensaje:
+                                                                                'Ha iniciado sesión exitosamente en la tienda: ${_model.queryInicioTenderoPin?.tenderos.nombreTienda} 🏪',
                                                                           ),
                                                                         ),
                                                                       );
@@ -1656,7 +1699,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             height:
                                                                                 200.0,
                                                                             child:
-                                                                                DialogBtnWidget(
+                                                                                DialogWidget(
                                                                               titulo: '¡Datos incorrectos!',
                                                                               mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                             ),
@@ -1752,7 +1795,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             height:
                                                                                 200.0,
                                                                             child:
-                                                                                DialogBtnWidget(
+                                                                                DialogWidget(
                                                                               titulo: '¡Bienvenido! 😊',
                                                                               mensaje: 'Ha iniciado sesión exitosamente en la tienda: ${_model.queryInicioTenderoPswrd?.tenderos.nombreTienda} 🏪',
                                                                             ),
@@ -1901,7 +1944,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             height:
                                                                                 200.0,
                                                                             child:
-                                                                                DialogBtnWidget(
+                                                                                DialogWidget(
                                                                               titulo: '¡Datos incorrectos!',
                                                                               mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                             ),
@@ -1947,7 +1990,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           height:
                                                                               200.0,
                                                                           child:
-                                                                              DialogBtnWidget(
+                                                                              DialogWidget(
                                                                             titulo:
                                                                                 '¡Datos incorrectos!',
                                                                             mensaje:
@@ -1999,7 +2042,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .titleSmall
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -2065,20 +2108,23 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .routeName);
                                                             },
                                                             child: Text(
-                                                              'Registrarse como tendero',
+                                                              'Registrar mi tienda',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
-                                                                  .titleMedium
+                                                                  .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .readexPro(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .titleMedium
+                                                                          .labelLarge
                                                                           .fontWeight,
                                                                       fontStyle: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .titleMedium
+                                                                          .labelLarge
                                                                           .fontStyle,
                                                                     ),
                                                                     color: FlutterFlowTheme.of(
@@ -2088,11 +2134,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .titleMedium
+                                                                        .labelLarge
                                                                         .fontWeight,
                                                                     fontStyle: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .titleMedium
+                                                                        .labelLarge
                                                                         .fontStyle,
                                                                     decoration:
                                                                         TextDecoration
@@ -2121,7 +2167,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .routeName);
                                                             },
                                                             child: AutoSizeText(
-                                                              '¿Olvidó su contraseña?',
+                                                              'Olvidé mi contraseña',
                                                               textAlign:
                                                                   TextAlign
                                                                       .start,
@@ -2130,7 +2176,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .labelMedium
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
@@ -2189,7 +2235,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .labelMedium
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
@@ -2248,7 +2294,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .labelMedium
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
@@ -2293,7 +2339,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 24.0, 24.0, 0.0),
+                                                    36.0, 16.0, 36.0, 0.0),
                                             child: SingleChildScrollView(
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
@@ -2322,7 +2368,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         .headlineMedium
                                                         .override(
                                                           font: GoogleFonts
-                                                              .readexPro(
+                                                              .quicksand(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -2363,7 +2409,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -2413,7 +2459,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -2434,8 +2480,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         .labelLarge
                                                                         .fontStyle,
                                                                   ),
+                                                          alignLabelWithHint:
+                                                              true,
                                                           enabledBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -2446,10 +2494,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           focusedBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -2460,10 +2508,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           errorBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -2474,10 +2522,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
                                                           focusedErrorBorder:
-                                                              OutlineInputBorder(
+                                                              UnderlineInputBorder(
                                                             borderSide:
                                                                 BorderSide(
                                                               color: FlutterFlowTheme
@@ -2488,19 +2536,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        12.0),
+                                                                        0.0),
                                                           ),
-                                                          filled: true,
-                                                          fillColor: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
                                                           contentPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      24.0,
-                                                                      24.0,
-                                                                      0.0,
-                                                                      24.0),
+                                                              EdgeInsets.all(
+                                                                  14.0),
                                                         ),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -2509,7 +2549,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -2604,7 +2644,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2623,8 +2663,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .labelLarge
                                                                           .fontStyle,
                                                                     ),
+                                                                alignLabelWithHint:
+                                                                    true,
                                                                 enabledBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2635,10 +2677,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 focusedBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2649,10 +2691,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 errorBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2663,10 +2705,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 focusedErrorBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2677,16 +2719,12 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
                                                                 contentPadding:
                                                                     EdgeInsets
                                                                         .all(
-                                                                            24.0),
+                                                                            14.0),
                                                                 suffixIcon:
                                                                     InkWell(
                                                                   onTap: () =>
@@ -2717,7 +2755,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .bodyLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyLarge
@@ -2814,7 +2852,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2833,8 +2871,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           .labelLarge
                                                                           .fontStyle,
                                                                     ),
+                                                                alignLabelWithHint:
+                                                                    true,
                                                                 enabledBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2845,10 +2885,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 focusedBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2859,10 +2899,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 errorBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2873,10 +2913,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
                                                                 focusedErrorBorder:
-                                                                    OutlineInputBorder(
+                                                                    UnderlineInputBorder(
                                                                   borderSide:
                                                                       BorderSide(
                                                                     color: FlutterFlowTheme.of(
@@ -2887,16 +2927,12 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
-                                                                              12.0),
+                                                                              0.0),
                                                                 ),
-                                                                filled: true,
-                                                                fillColor: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
                                                                 contentPadding:
                                                                     EdgeInsets
                                                                         .all(
-                                                                            24.0),
+                                                                            14.0),
                                                                 suffixIcon:
                                                                     InkWell(
                                                                   onTap: () =>
@@ -2927,7 +2963,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .bodyLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyLarge
@@ -3053,7 +3089,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                         .titleSmall
                                                                         .override(
                                                                           font:
-                                                                              GoogleFonts.inter(
+                                                                              GoogleFonts.asap(
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                             fontStyle:
@@ -3148,11 +3184,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             ?.unfocus();
                                                                       },
                                                                       child:
-                                                                          DialogBtnWidget(
+                                                                          DialogWidget(
                                                                         titulo:
                                                                             '¡Datos incorrectos!',
                                                                         mensaje:
-                                                                            'Los datos ingresados son inválidos. Comrpuebe su conexión y vuelva a intentar.',
+                                                                            'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                       ),
                                                                     ),
                                                                   );
@@ -3183,6 +3219,10 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                       .firstOrNull);
                                                               _shouldSetState =
                                                                   true;
+                                                              _model.idsTenderos =
+                                                                  [];
+                                                              safeSetState(
+                                                                  () {});
                                                               if (_model
                                                                           .queryForClienteWithPswrd
                                                                           ?.cliente
@@ -3270,11 +3310,11 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             FocusManager.instance.primaryFocus?.unfocus();
                                                                           },
                                                                           child:
-                                                                              DialogBtnWidget(
+                                                                              DialogWidget(
                                                                             titulo:
                                                                                 '¡Datos incorrectos!',
                                                                             mensaje:
-                                                                                'Los datos ingresados son inválidos. Comrpuebe su conexión y vuelva a intentar.',
+                                                                                'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
                                                                           ),
                                                                         ),
                                                                       );
@@ -3457,7 +3497,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           height:
                                                                               300.0,
                                                                           child:
-                                                                              DialogBtnWidget(
+                                                                              DialogWidget(
                                                                             titulo:
                                                                                 '¡Inicio de sesión exitoso! ✔',
                                                                             mensaje:
@@ -3493,6 +3533,17 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           true,
                                                                     ),
                                                                   }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                    ),
+                                                                  },
                                                                 );
                                                               } else {
                                                                 _model.queryClientePIN =
@@ -3619,7 +3670,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             height:
                                                                                 300.0,
                                                                             child:
-                                                                                DialogBtnWidget(
+                                                                                DialogWidget(
                                                                               titulo: '¡Inicio de sesión exitoso! ✔',
                                                                               mensaje: '¡Bienvenido, ${_model.notifPINReadCliente?.cliente.nombre} ${_model.notifPINReadCliente?.cliente.apellido}! 😊',
                                                                             ),
@@ -3653,6 +3704,16 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             true,
                                                                       ),
                                                                     }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.fade,
+                                                                      ),
+                                                                    },
                                                                   );
                                                                 } else {
                                                                   await showDialog(
@@ -3677,11 +3738,14 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             FocusManager.instance.primaryFocus?.unfocus();
                                                                           },
                                                                           child:
-                                                                              DialogBtnWidget(
-                                                                            titulo:
-                                                                                '¡Datos incorrectos!',
-                                                                            mensaje:
-                                                                                'Los datos ingresados son inválidos. Comrpuebe su conexión y vuelva a intentar.',
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogWidget(
+                                                                              titulo: '¡Datos incorrectos!',
+                                                                              mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
+                                                                            ),
                                                                           ),
                                                                         ),
                                                                       );
@@ -3729,7 +3793,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .titleSmall
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -3795,7 +3859,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -3861,7 +3925,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -3928,7 +3992,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium

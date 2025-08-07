@@ -151,7 +151,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -182,7 +182,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -249,7 +249,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -337,7 +337,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -425,7 +425,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -574,7 +574,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -689,7 +689,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                         color: FlutterFlowTheme.of(context).tertiary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,

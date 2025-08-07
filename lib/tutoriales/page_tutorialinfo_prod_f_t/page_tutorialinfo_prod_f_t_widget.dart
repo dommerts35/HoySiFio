@@ -164,7 +164,7 @@ class _PageTutorialinfoProdFTWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -195,7 +195,7 @@ class _PageTutorialinfoProdFTWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -262,7 +262,7 @@ class _PageTutorialinfoProdFTWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -350,7 +350,7 @@ class _PageTutorialinfoProdFTWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -466,7 +466,7 @@ class _PageTutorialinfoProdFTWidgetState
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyLarge
                                                 .override(
-                                                  font: GoogleFonts.inter(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -518,7 +518,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -573,7 +573,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -628,7 +628,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -680,7 +680,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                         .bodyMedium
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -731,7 +731,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                         .bodyMedium
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -910,7 +910,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1053,7 +1053,7 @@ class _PageTutorialinfoProdFTWidgetState
                         color: FlutterFlowTheme.of(context).tertiary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontWeight,

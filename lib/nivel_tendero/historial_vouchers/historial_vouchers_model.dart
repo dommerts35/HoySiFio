@@ -1,9 +1,6 @@
 import '/backend/backend.dart';
 import '/components_nivel_tendero/razon_negado_c/razon_negado_c_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'dart:async';
-import '/flutter_flow/request_manager.dart';
-
 import '/index.dart';
 import 'historial_vouchers_widget.dart' show HistorialVouchersWidget;
 import 'package:flutter/material.dart';
@@ -74,25 +71,6 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
   // Stores action output result for [Backend Call - Read Document] action in iconoConfirmarComprobante widget.
   TenderosRecord? readForTenderoAcceptPush;
 
-  /// Query cache managers for this widget.
-
-  final _queryNameClienteHistorialPagadoManager =
-      StreamRequestManager<ClientesRecord>();
-  Stream<ClientesRecord> queryNameClienteHistorialPagado({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<ClientesRecord> Function() requestFn,
-  }) =>
-      _queryNameClienteHistorialPagadoManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearQueryNameClienteHistorialPagadoCache() =>
-      _queryNameClienteHistorialPagadoManager.clear();
-  void clearQueryNameClienteHistorialPagadoCacheKey(String? uniqueKey) =>
-      _queryNameClienteHistorialPagadoManager.clearRequest(uniqueKey);
-
   @override
   void initState(BuildContext context) {
     razonNegadoCModels = FlutterFlowDynamicModels(() => RazonNegadoCModel());
@@ -101,9 +79,5 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
   @override
   void dispose() {
     razonNegadoCModels.dispose();
-
-    /// Dispose query cache managers for this widget.
-
-    clearQueryNameClienteHistorialPagadoCache();
   }
 }

@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'razon_negado_c_model.dart';
 export 'razon_negado_c_model.dart';
@@ -54,7 +55,7 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
             isDense: true,
             labelText: 'Razón de Negación',
             labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.asap(
                     fontWeight:
                         FlutterFlowTheme.of(context).labelMedium.fontWeight,
                     fontStyle:
@@ -67,7 +68,7 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
                 ),
             hintText: 'Ingrese la razón de la negación',
             hintStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                  font: GoogleFonts.inter(
+                  font: GoogleFonts.asap(
                     fontWeight:
                         FlutterFlowTheme.of(context).labelMedium.fontWeight,
                     fontStyle:
@@ -110,7 +111,7 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
             fillColor: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                font: GoogleFonts.inter(
+                font: GoogleFonts.asap(
                   fontWeight:
                       FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                   fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -120,6 +121,8 @@ class _RazonNegadoCWidgetState extends State<RazonNegadoCWidget> {
                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
               ),
           maxLines: 4,
+          maxLength: 50,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
           cursorColor: FlutterFlowTheme.of(context).primaryText,
           validator:
               _model.razonNegadoTextControllerValidator.asValidator(context),

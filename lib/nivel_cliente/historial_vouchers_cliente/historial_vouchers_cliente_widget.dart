@@ -74,10 +74,7 @@ class _HistorialVouchersClienteWidgetState
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           body: Container(
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primary,
-            ),
+            decoration: BoxDecoration(),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 30.0),
               child: Row(
@@ -89,23 +86,11 @@ class _HistorialVouchersClienteWidgetState
                       padding: EdgeInsetsDirectional.fromSTEB(
                           12.0, 12.0, 12.0, 12.0),
                       child: Container(
-                        width: double.infinity,
-                        height: double.infinity,
                         constraints: BoxConstraints(
                           maxWidth: 1170.0,
                         ),
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: Image.asset(
-                              'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
-                            ).image,
-                          ),
                           borderRadius: BorderRadius.circular(8.0),
-                          border: Border.all(
-                            color: FlutterFlowTheme.of(context).primaryText,
-                            width: 1.0,
-                          ),
                         ),
                         child: SingleChildScrollView(
                           child: Column(
@@ -118,23 +103,18 @@ class _HistorialVouchersClienteWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Container(
-                                    width: 300.0,
+                                    width: 360.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        width: 1.0,
-                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
                                     child: Align(
                                       alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Row(
-                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Padding(
                                             padding:
@@ -220,7 +200,7 @@ class _HistorialVouchersClienteWidgetState
                                                       context)
                                                   .headlineMedium
                                                   .override(
-                                                    font: GoogleFonts.readexPro(
+                                                    font: GoogleFonts.quicksand(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -338,47 +318,24 @@ class _HistorialVouchersClienteWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 10.0, 16.0, 0.0),
                                   child: Container(
-                                    height: 48.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        width: 1.0,
-                                      ),
+                                      borderRadius: BorderRadius.circular(0.0),
                                     ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 5.0, 10.0, 5.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          AutoSizeText(
-                                            'Aquí se mostrarán los comprobantes enviados por ti:',
-                                            textAlign: TextAlign.start,
-                                            maxLines: 1,
-                                            minFontSize: 6.0,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Aquí se mostrarán tus comprobantes enviados:',
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -390,78 +347,19 @@ class _HistorialVouchersClienteWidgetState
                                                           .labelMedium
                                                           .fontStyle,
                                                 ),
-                                          ),
-                                          Flexible(
-                                            child:
-                                                StreamBuilder<ClientesRecord>(
-                                              stream: _model
-                                                  .queryNameClienteHistorialPagado(
-                                                requestFn: () =>
-                                                    ClientesRecord.getDocument(
-                                                        widget.idCliente!),
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .fontStyle,
                                               ),
-                                              builder: (context, snapshot) {
-                                                // Customize what your widget looks like when it's loading.
-                                                if (!snapshot.hasData) {
-                                                  return Center(
-                                                    child: SizedBox(
-                                                      width: 50.0,
-                                                      height: 50.0,
-                                                      child:
-                                                          CircularProgressIndicator(
-                                                        valueColor:
-                                                            AlwaysStoppedAnimation<
-                                                                Color>(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-
-                                                final textClientesRecord =
-                                                    snapshot.data!;
-
-                                                return AutoSizeText(
-                                                  '${textClientesRecord.cliente.nombre} ${textClientesRecord.cliente.apellido}',
-                                                  textAlign: TextAlign.center,
-                                                  minFontSize: 4.0,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .labelMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .fontStyle,
-                                                      ),
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -530,31 +428,20 @@ class _HistorialVouchersClienteWidgetState
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  constraints: BoxConstraints(
-                                                    maxWidth: 570.0,
-                                                  ),
-                                                  decoration: BoxDecoration(
-                                                    color:
-                                                        valueOrDefault<Color>(
-                                                      listaVouchersItem
-                                                                  .estadoVoucher ==
-                                                              'Negado'
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText
-                                                          : FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryBackground,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                    ),
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 2.0,
+                                                  shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),
-                                                    border: Border.all(
+                                                  ),
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    constraints: BoxConstraints(
+                                                      maxWidth: 570.0,
+                                                    ),
+                                                    decoration: BoxDecoration(
                                                       color:
                                                           valueOrDefault<Color>(
                                                         listaVouchersItem
@@ -562,35 +449,80 @@ class _HistorialVouchersClienteWidgetState
                                                                 'Negado'
                                                             ? FlutterFlowTheme
                                                                     .of(context)
-                                                                .error
+                                                                .primaryText
                                                             : FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryText,
+                                                                .secondaryBackground,
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .secondaryBackground,
                                                       ),
-                                                      width: 1.0,
+                                                      boxShadow: [
+                                                        BoxShadow(
+                                                          blurRadius: 4.0,
+                                                          color:
+                                                              Color(0x33000000),
+                                                          offset: Offset(
+                                                            0.0,
+                                                            2.0,
+                                                          ),
+                                                        )
+                                                      ],
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
+                                                        color: valueOrDefault<
+                                                            Color>(
+                                                          listaVouchersItem
+                                                                      .estadoVoucher ==
+                                                                  'Negado'
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .error
+                                                              : FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        width: 1.0,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
-                                                    children: [
-                                                      if (listaVouchersItem
-                                                              .estadoVoucher ==
-                                                          'Negado')
-                                                        Text(
-                                                          'Comprobante Negado',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .readexPro(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: [
+                                                        if (listaVouchersItem
+                                                                .estadoVoucher ==
+                                                            'Negado')
+                                                          Text(
+                                                            'Comprobante Negado',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .titleMedium
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleMedium
@@ -600,394 +532,133 @@ class _HistorialVouchersClienteWidgetState
                                                                       .titleMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      Container(
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            width: 3.0,
                                                           ),
-                                                        ),
-                                                        child: Opacity(
-                                                          opacity: listaVouchersItem
-                                                                      .estadoVoucher ==
-                                                                  'Negado'
-                                                              ? 0.5
-                                                              : 1.0,
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
-                                                                        .network(
-                                                                      listaVouchersItem
+                                                        Container(
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .alternate,
+                                                              width: 3.0,
+                                                            ),
+                                                          ),
+                                                          child: Opacity(
+                                                            opacity:
+                                                                listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Negado'
+                                                                    ? 0.5
+                                                                    : 1.0,
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await Navigator
+                                                                    .push(
+                                                                  context,
+                                                                  PageTransition(
+                                                                    type: PageTransitionType
+                                                                        .fade,
+                                                                    child:
+                                                                        FlutterFlowExpandedImageView(
+                                                                      image: Image
+                                                                          .network(
+                                                                        listaVouchersItem
+                                                                            .imgVoucher,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                      allowRotation:
+                                                                          false,
+                                                                      tag: listaVouchersItem
                                                                           .imgVoucher,
-                                                                      fit: BoxFit
-                                                                          .contain,
+                                                                      useHeroAnimation:
+                                                                          true,
                                                                     ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: listaVouchersItem
-                                                                        .imgVoucher,
-                                                                    useHeroAnimation:
-                                                                        true,
                                                                   ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag: listaVouchersItem
-                                                                  .imgVoucher,
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  listaVouchersItem
-                                                                      .imgVoucher,
-                                                                  width: 200.0,
-                                                                  height: 200.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
+                                                                );
+                                                              },
+                                                              child: Hero(
+                                                                tag: listaVouchersItem
+                                                                    .imgVoucher,
+                                                                transitionOnUserGestures:
+                                                                    true,
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    listaVouchersItem
+                                                                        .imgVoucher,
+                                                                    width:
+                                                                        200.0,
+                                                                    height:
+                                                                        200.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      if ((listaVouchersItem
-                                                                  .estadoVoucher ==
-                                                              'Pendiente') &&
-                                                          (listaVouchersItem
-                                                                  .historialPagoParaEliminar !=
-                                                              null))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
-                                                                listaVouchersItem
-                                                                    .historialPagoParaEliminar
-                                                                    .totalPorPagar,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              ) : formatNumber(
-                                                                mainHistorialViewClientesRecord
-                                                                    .cliente
-                                                                    .totalDeudaCompleta,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      if ((listaVouchersItem
-                                                                  .estadoVoucher ==
-                                                              'Pendiente') &&
-                                                          (listaVouchersItem
-                                                                  .historialPagoParaEliminar !=
-                                                              null))
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
-                                                                listaVouchersItem
-                                                                    .montoAPagar,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              ) : formatNumber(
-                                                                mainHistorialViewClientesRecord
-                                                                    .cliente
-                                                                    .totalDeudaCompleta,
-                                                                formatType:
-                                                                    FormatType
-                                                                        .custom,
-                                                                format: '#0.00',
-                                                                locale: '',
-                                                              )}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Tipo de comprobante: ${listaVouchersItem.tipoVoucher}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: listaVouchersItem
-                                                                            .estadoVoucher ==
-                                                                        'Negado'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: listaVouchersItem
-                                                                            .estadoVoucher ==
-                                                                        'Negado'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Estado del Comprobante: ${listaVouchersItem.estadoVoucher}',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: listaVouchersItem
-                                                                            .estadoVoucher ==
-                                                                        'Negado'
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      if (listaVouchersItem
-                                                              .estadoVoucher ==
-                                                          'Negado')
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Padding(
+                                                        if ((listaVouchersItem
+                                                                    .estadoVoucher ==
+                                                                'Pendiente') &&
+                                                            (listaVouchersItem
+                                                                    .historialPagoParaEliminar !=
+                                                                null))
+                                                          Padding(
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        40.0,
+                                                                        0.0,
                                                                         5.0,
-                                                                        40.0,
+                                                                        0.0,
                                                                         0.0),
-                                                            child: AutoSizeText(
-                                                              'Razón de negación: ${listaVouchersItem.razonDenegado}',
+                                                            child: Text(
+                                                              'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
+                                                                  listaVouchersItem
+                                                                      .historialPagoParaEliminar
+                                                                      .totalPorPagar,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                ) : formatNumber(
+                                                                  mainHistorialViewClientesRecord
+                                                                      .cliente
+                                                                      .totalDeudaCompleta,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                )}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .labelMedium
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
@@ -997,9 +668,6 @@ class _HistorialVouchersClienteWidgetState
                                                                           .labelMedium
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
                                                                     letterSpacing:
                                                                         0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
@@ -1013,14 +681,269 @@ class _HistorialVouchersClienteWidgetState
                                                                   ),
                                                             ),
                                                           ),
+                                                        if ((listaVouchersItem
+                                                                    .estadoVoucher ==
+                                                                'Pendiente') &&
+                                                            (listaVouchersItem
+                                                                    .historialPagoParaEliminar !=
+                                                                null))
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        5.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
+                                                                  listaVouchersItem
+                                                                      .montoAPagar,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                ) : formatNumber(
+                                                                  mainHistorialViewClientesRecord
+                                                                      .cliente
+                                                                      .totalDeudaCompleta,
+                                                                  formatType:
+                                                                      FormatType
+                                                                          .custom,
+                                                                  format:
+                                                                      '#0.00',
+                                                                  locale: '',
+                                                                )}',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .asap(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Tipo de comprobante: ${listaVouchersItem.tipoVoucher}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
                                                         ),
-                                                    ]
-                                                        .divide(SizedBox(
-                                                            height: 10.0))
-                                                        .addToStart(SizedBox(
-                                                            height: 15.0))
-                                                        .addToEnd(SizedBox(
-                                                            height: 10.0)),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            'Estado del Comprobante: ${listaVouchersItem.estadoVoucher}',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .labelMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: listaVouchersItem
+                                                                              .estadoVoucher ==
+                                                                          'Negado'
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                        if (listaVouchersItem
+                                                                .estadoVoucher ==
+                                                            'Negado')
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          40.0,
+                                                                          5.0,
+                                                                          40.0,
+                                                                          0.0),
+                                                              child:
+                                                                  AutoSizeText(
+                                                                'Razón de negación: ${listaVouchersItem.razonDenegado}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .asap(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                      ]
+                                                          .divide(SizedBox(
+                                                              height: 10.0))
+                                                          .addToStart(SizedBox(
+                                                              height: 15.0))
+                                                          .addToEnd(SizedBox(
+                                                              height: 10.0)),
+                                                    ),
                                                   ),
                                                 ),
                                               );

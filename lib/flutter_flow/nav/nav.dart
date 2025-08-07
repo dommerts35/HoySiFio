@@ -973,20 +973,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'nombreTienda',
               ParamType.String,
             ),
-          ),
-        ),
-        FFRoute(
-          name: SigninConfirmWidget.routeName,
-          path: SigninConfirmWidget.routePath,
-          builder: (context, params) => SigninConfirmWidget(
-            tenderoRef: params.getParam(
-              'tenderoRef',
-              ParamType.DocumentReference,
-              isList: false,
-              collectionNamePath: ['tenderos'],
+            pwPassed: params.getParam(
+              'pwPassed',
+              ParamType.String,
             ),
-            nombreTienda: params.getParam(
-              'nombreTienda',
+            tenderoEmailPassed: params.getParam(
+              'tenderoEmailPassed',
               ParamType.String,
             ),
           ),

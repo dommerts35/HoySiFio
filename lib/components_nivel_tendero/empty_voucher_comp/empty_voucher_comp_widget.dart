@@ -85,7 +85,7 @@ class _EmptyVoucherCompWidgetState extends State<EmptyVoucherCompWidget> {
                 child: Text(
                   'No hay comprobantes.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

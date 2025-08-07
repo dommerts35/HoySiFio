@@ -259,7 +259,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
                                               .override(
-                                                font: GoogleFonts.readexPro(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -287,7 +287,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .displaySmall
                                               .override(
-                                                font: GoogleFonts.readexPro(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -319,7 +319,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .displaySmall
                                           .override(
-                                            font: GoogleFonts.readexPro(
+                                            font: GoogleFonts.asap(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .displaySmall
@@ -382,7 +382,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .readexPro(
+                                                            .quicksand(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -416,7 +416,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelMedium
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -459,7 +459,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .readexPro(
+                                                            .quicksand(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -509,7 +509,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -596,7 +596,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -681,7 +681,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -768,7 +768,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -850,7 +850,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -937,7 +937,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -994,7 +994,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1081,7 +1081,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1151,7 +1151,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -1238,7 +1238,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -1318,7 +1318,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .headlineMedium
                                                                 .override(
                                                                   font: GoogleFonts
-                                                                      .readexPro(
+                                                                      .quicksand(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .headlineMedium
@@ -1368,7 +1368,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1391,7 +1391,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1479,7 +1479,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1546,7 +1546,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1571,7 +1571,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1659,7 +1659,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1731,7 +1731,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1756,7 +1756,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                       .labelLarge
                                                                       .override(
                                                                         font: GoogleFonts
-                                                                            .inter(
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .labelLarge
                                                                               .fontWeight,
@@ -1844,7 +1844,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1901,7 +1901,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -1991,7 +1991,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                           .titleSmall
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                             ),
@@ -2069,7 +2069,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                           .titleSmall
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                             ),
@@ -2145,7 +2145,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                               .override(
                                                                 font:
                                                                     GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -2206,7 +2206,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .headlineMedium
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .readexPro(
+                                                                        .quicksand(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .headlineMedium
@@ -2257,7 +2257,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2281,7 +2281,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2370,7 +2370,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .bodyLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyLarge
@@ -2438,7 +2438,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2464,7 +2464,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2553,7 +2553,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .bodyLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyLarge
@@ -2626,7 +2626,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2652,7 +2652,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                     .labelLarge
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelLarge
                                                                             .fontWeight,
@@ -2741,7 +2741,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .bodyLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyLarge
@@ -2797,7 +2797,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                   .titleSmall
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .titleSmall
@@ -2879,7 +2879,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                           .titleSmall
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                             ),
@@ -2957,7 +2957,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                           .titleSmall
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                             ),
@@ -3011,7 +3011,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .readexPro(
+                                                            .quicksand(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -3044,7 +3044,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelSmall
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3091,7 +3091,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3121,7 +3121,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3230,7 +3230,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -3295,7 +3295,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3404,7 +3404,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -3455,7 +3455,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .labelSmall
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -3503,7 +3503,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3533,7 +3533,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -3642,7 +3642,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -4258,7 +4258,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          font: GoogleFonts.inter(
+                                          font: GoogleFonts.asap(
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall

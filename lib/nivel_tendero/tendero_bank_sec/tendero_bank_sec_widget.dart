@@ -245,7 +245,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                 .headlineMedium
                                                                 .override(
                                                                   font: GoogleFonts
-                                                                      .readexPro(
+                                                                      .quicksand(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .headlineMedium
@@ -293,7 +293,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -320,7 +320,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -412,7 +412,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -477,7 +477,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -506,7 +506,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -598,7 +598,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -663,7 +663,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -692,7 +692,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                   .labelLarge
                                                                   .override(
                                                                     font: GoogleFonts
-                                                                        .inter(
+                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelLarge
@@ -784,7 +784,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -842,7 +842,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -928,7 +928,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                     .titleSmall
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -1020,7 +1020,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                                                     .titleSmall
                                                                     .override(
                                                                       font: GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -1157,7 +1157,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      font: GoogleFonts.inter(
+                                      font: GoogleFonts.asap(
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .fontWeight,

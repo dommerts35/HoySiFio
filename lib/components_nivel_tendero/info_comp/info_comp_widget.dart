@@ -104,26 +104,26 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                         ' Cliente: ',
                                         minFontSize: 4.0,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .bodySmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodySmall
                                                         .fontWeight,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodySmall
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontStyle,
                                             ),
                                       ),
@@ -138,30 +138,30 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                               minFontSize: 1.0,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .bodySmall
                                                                   .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .bodySmall
                                                                   .fontStyle,
                                                         ),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .bodySmall
                                                                 .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .bodySmall
                                                                 .fontStyle,
                                                       ),
                                             ),
@@ -172,30 +172,30 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                               minFontSize: 1.0,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .bodySmall
                                                                   .fontWeight,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
+                                                                  .bodySmall
                                                                   .fontStyle,
                                                         ),
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .bodySmall
                                                                 .fontWeight,
                                                         fontStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium
+                                                                .bodySmall
                                                                 .fontStyle,
                                                       ),
                                             ),
@@ -219,26 +219,26 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                     Text(
                                       ' Núm. de Teléfono: ${widget.phoneNumber}',
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
+                                          .bodySmall
                                           .override(
-                                            font: GoogleFonts.inter(
+                                            font: GoogleFonts.asap(
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontStyle,
                                             ),
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium
+                                                    .bodySmall
                                                     .fontWeight,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
-                                                    .bodyMedium
+                                                    .bodySmall
                                                     .fontStyle,
                                           ),
                                     ),
@@ -260,26 +260,26 @@ class _InfoCompWidgetState extends State<InfoCompWidget> {
                                       Text(
                                         ' CI: ${widget.ced}',
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .bodySmall
                                             .override(
-                                              font: GoogleFonts.inter(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodySmall
                                                         .fontWeight,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium
+                                                        .bodySmall
                                                         .fontStyle,
                                               ),
                                               letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontWeight,
                                               fontStyle:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium
+                                                      .bodySmall
                                                       .fontStyle,
                                             ),
                                       ),

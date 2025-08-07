@@ -87,7 +87,7 @@ class _EmptyProductosPagadosCompWidgetState
                 child: Text(
                   '¡Hurra! No hay cuentas por cobrar',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

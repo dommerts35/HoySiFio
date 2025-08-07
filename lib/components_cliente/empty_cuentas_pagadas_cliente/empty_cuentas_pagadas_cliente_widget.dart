@@ -86,7 +86,7 @@ class _EmptyCuentasPagadasClienteWidgetState
                 child: Text(
                   'No hay pagos registrados.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

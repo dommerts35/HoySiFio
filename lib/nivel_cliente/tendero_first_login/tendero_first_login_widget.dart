@@ -178,7 +178,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -208,7 +208,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                             style: FlutterFlowTheme.of(context)
                                                 .displaySmall
                                                 .override(
-                                                  font: GoogleFonts.readexPro(
+                                                  font: GoogleFonts.asap(
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -242,7 +242,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .displaySmall
                                             .override(
-                                              font: GoogleFonts.readexPro(
+                                              font: GoogleFonts.asap(
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .displaySmall
@@ -304,7 +304,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       .headlineMedium
                                                       .override(
                                                         font: GoogleFonts
-                                                            .readexPro(
+                                                            .quicksand(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -337,7 +337,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                         .labelSmall
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -384,7 +384,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -396,6 +396,9 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -414,7 +417,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                         .labelLarge
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -426,6 +429,9 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                     .labelLarge
                                                                     .fontStyle,
                                                           ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -439,7 +445,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                   .fontStyle,
                                                         ),
                                                     enabledBorder:
-                                                        OutlineInputBorder(
+                                                        UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -449,10 +455,10 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              12.0),
+                                                              0.0),
                                                     ),
                                                     focusedBorder:
-                                                        OutlineInputBorder(
+                                                        UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -462,10 +468,10 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              12.0),
+                                                              0.0),
                                                     ),
                                                     errorBorder:
-                                                        OutlineInputBorder(
+                                                        UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -475,10 +481,10 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              12.0),
+                                                              0.0),
                                                     ),
                                                     focusedErrorBorder:
-                                                        OutlineInputBorder(
+                                                        UnderlineInputBorder(
                                                       borderSide: BorderSide(
                                                         color:
                                                             FlutterFlowTheme.of(
@@ -488,14 +494,10 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.circular(
-                                                              12.0),
+                                                              0.0),
                                                     ),
-                                                    filled: true,
-                                                    fillColor: FlutterFlowTheme
-                                                            .of(context)
-                                                        .secondaryBackground,
                                                     contentPadding:
-                                                        EdgeInsets.all(24.0),
+                                                        EdgeInsets.all(14.0),
                                                     suffixIcon: InkWell(
                                                       onTap: () => safeSetState(
                                                         () => _model
@@ -523,7 +525,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -813,7 +815,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondary,
+                                                                .primary,
                                                         textStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -821,7 +823,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .titleSmall
@@ -833,7 +835,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                   ),
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .primaryText,
+                                                                      .primaryBackground,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -845,7 +847,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                       .titleSmall
                                                                       .fontStyle,
                                                                 ),
-                                                        elevation: 3.0,
+                                                        elevation: 2.0,
                                                         borderSide: BorderSide(
                                                           color: Colors
                                                               .transparent,
@@ -867,7 +869,7 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                   ),
                                                 ),
                                               ),
-                                            ].divide(SizedBox(height: 10.0)),
+                                            ].divide(SizedBox(height: 15.0)),
                                           ),
                                         ).animateOnPageLoad(animationsMap[
                                             'columnOnPageLoadAnimation']!),

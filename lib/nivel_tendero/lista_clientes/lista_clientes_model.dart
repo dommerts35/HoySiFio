@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'lista_clientes_widget.dart' show ListaClientesWidget;
@@ -35,6 +34,8 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
+  // Stores action output result for [Backend Call - Read Document] action in iconSettings widget.
+  TenderosRecord? tenderoReadToPass;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconBack widget.
   bool? isLogoff;
 

@@ -109,7 +109,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
         canPop: false,
         child: Scaffold(
           key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).primary,
+          backgroundColor: FlutterFlowTheme.of(context).accent1,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(70.0),
             child: AppBar(
@@ -122,14 +122,11 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                 children: [
                   Builder(
                     builder: (context) => FlutterFlowIconButton(
-                      borderColor: Color(0xFFFF0000),
-                      borderRadius: 8.0,
-                      borderWidth: 2.0,
                       buttonSize: 50.0,
                       icon: Icon(
                         Icons.logout,
-                        color: Color(0xFFFF0000),
-                        size: 30.0,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 36.0,
                       ),
                       onPressed: () async {
                         var _shouldSetState = false;
@@ -180,7 +177,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                   ),
                   Flexible(
                     child: Container(
-                      height: 60.0,
+                      width: 190.0,
+                      height: 50.0,
                       decoration: BoxDecoration(),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -195,7 +193,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      font: GoogleFonts.inter(
+                                      font: GoogleFonts.asap(
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -247,7 +245,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          font: GoogleFonts.inter(
+                                          font: GoogleFonts.asap(
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium
@@ -341,7 +339,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                             style: FlutterFlowTheme.of(context)
                                 .labelSmall
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelSmall
                                         .fontWeight,
@@ -430,13 +428,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                               width: 100.0,
                               height: 100.0,
                               decoration: BoxDecoration(
-                                color: Color(0xFFF1F4F8),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: Image.asset(
-                                    'assets/images/poster-with-hand-drawn-fresh-vegetables-healthy-food-agriculture-concept-illustration-food_559587-18.png',
-                                  ).image,
-                                ),
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
                               child: SingleChildScrollView(
                                 child: Column(
@@ -501,7 +494,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                           return ListView.separated(
                                             padding: EdgeInsets.fromLTRB(
                                               0,
-                                              0,
+                                              40.0,
                                               0,
                                               20.0,
                                             ),
@@ -630,7 +623,9 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                               12.0),
                                                       border: Border.all(
                                                         color:
-                                                            Color(0xFF0050FF),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
                                                         width: 2.0,
                                                       ),
                                                     ),
@@ -638,30 +633,28 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  8.0,
-                                                                  8.0,
-                                                                  12.0,
-                                                                  8.0),
+                                                                  0.0,
+                                                                  0.0,
+                                                                  24.0,
+                                                                  0.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
+                                                          Flexible(
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(),
                                                               child: Column(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
                                                                 crossAxisAlignment:
                                                                     CrossAxisAlignment
                                                                         .start,
@@ -669,8 +662,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            16.0,
-                                                                            0.0,
+                                                                            24.0,
+                                                                            12.0,
                                                                             0.0,
                                                                             0.0),
                                                                     child:
@@ -686,7 +679,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                           .bodyLarge
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                             ),
@@ -702,7 +695,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            16.0,
+                                                                            24.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
@@ -719,7 +712,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                           .bodyLarge
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                                                                             ),
@@ -735,28 +728,18 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                   Padding(
                                                                     padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
-                                                                            16.0,
-                                                                            4.0,
+                                                                            24.0,
+                                                                            0.0,
                                                                             0.0,
                                                                             0.0),
                                                                     child: Text(
-                                                                      'Fiando: \$${formatNumber(
-                                                                        listViewClientesRecord
-                                                                            .cliente
-                                                                            .totalDeudaCompleta,
-                                                                        formatType:
-                                                                            FormatType.custom,
-                                                                        format:
-                                                                            '#0.00',
-                                                                        locale:
-                                                                            '',
-                                                                      )}',
+                                                                      'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
                                                                           .override(
                                                                             font:
-                                                                                GoogleFonts.inter(
+                                                                                GoogleFonts.asap(
                                                                               fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                               fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
                                                                             ),
@@ -769,50 +752,67 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                           ),
                                                                     ),
                                                                   ),
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            8.0,
+                                                                            0.0,
+                                                                            12.0,
+                                                                            8.0),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .start,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Flexible(
+                                                                          child:
+                                                                              Padding(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                0.0,
+                                                                                0.0,
+                                                                                10.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Column(
+                                                                              mainAxisSize: MainAxisSize.max,
+                                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                                              children: [
+                                                                                Padding(
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                                  child: Text(
+                                                                                    'Fiando: \$${formatNumber(
+                                                                                      listViewClientesRecord.cliente.totalDeudaCompleta,
+                                                                                      formatType: FormatType.custom,
+                                                                                      format: '#0.00',
+                                                                                      locale: '',
+                                                                                    )}',
+                                                                                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                          font: GoogleFonts.asap(
+                                                                                            fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                            fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                          ),
+                                                                                          letterSpacing: 0.0,
+                                                                                          fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                          fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                        ),
+                                                                                  ),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
                                                                 ],
                                                               ),
                                                             ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            30.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  'Comprobantes: ${listViewClientesRecord.cliente.dataTypeVouchers.where((e) => e.estadoVoucher == 'Pendiente').toList().length.toString()}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .override(
-                                                                        font: GoogleFonts
-                                                                            .inter(
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .labelMedium
-                                                                              .fontStyle,
-                                                                        ),
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
                                                           ),
                                                           if (listViewClientesRecord
                                                               .cliente.isFiando)
@@ -1036,7 +1036,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1088,7 +1088,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -1332,7 +1332,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyLarge
@@ -1375,7 +1375,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                 .override(
                                                                   font:
                                                                       GoogleFonts
-                                                                          .inter(
+                                                                          .asap(
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -1527,8 +1527,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                           size: 30.0,
                         ),
                         onPressed: () async {
+                          _model.tenderoReadToPass =
+                              await TenderosRecord.getDocumentOnce(
+                                  widget.tenderoRef!);
+
                           context.pushNamed(
-                            SigninConfirmWidget.routeName,
+                            TenderoEditInfoWidget.routeName,
                             queryParameters: {
                               'tenderoRef': serializeParam(
                                 widget.tenderoRef,
@@ -1538,8 +1542,14 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                 widget.nombreTienda,
                                 ParamType.String,
                               ),
+                              'pwPassed': serializeParam(
+                                _model.tenderoReadToPass?.tenderos.pw,
+                                ParamType.String,
+                              ),
                             }.withoutNulls,
                           );
+
+                          safeSetState(() {});
                         },
                       ),
                     ),

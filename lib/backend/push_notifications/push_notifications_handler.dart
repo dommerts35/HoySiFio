@@ -364,12 +364,9 @@ final parametersBuilderMap =
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
-        },
-      ),
-  'signinConfirm': (data) async => ParameterData(
-        allParams: {
-          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
-          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'pwPassed': getParameter<String>(data, 'pwPassed'),
+          'tenderoEmailPassed':
+              getParameter<String>(data, 'tenderoEmailPassed'),
         },
       ),
   'historialVouchersCliente': (data) async => ParameterData(

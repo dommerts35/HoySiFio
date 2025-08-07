@@ -9,18 +9,6 @@ class ResumenFiadoClienTiendaNewModel
     extends FlutterFlowModel<ResumenFiadoClienTiendaNewWidget> {
   ///  Local state fields for this page.
 
-  List<String> nombresTiendas = [];
-  void addToNombresTiendas(String item) => nombresTiendas.add(item);
-  void removeFromNombresTiendas(String item) => nombresTiendas.remove(item);
-  void removeAtIndexFromNombresTiendas(int index) =>
-      nombresTiendas.removeAt(index);
-  void insertAtIndexInNombresTiendas(int index, String item) =>
-      nombresTiendas.insert(index, item);
-  void updateNombresTiendasAtIndex(int index, Function(String) updateFn) =>
-      nombresTiendas[index] = updateFn(nombresTiendas[index]);
-
-  int tempNombreTiendasCount = 0;
-
   String? urImg;
 
   int tempSetCountCliente = 0;
@@ -31,8 +19,6 @@ class ResumenFiadoClienTiendaNewModel
 
   // Stores action output result for [Firestore Query - Query a collection] action in resumenFiadoClienTiendaNew widget.
   List<ClientesRecord>? queryOnLoadClientes;
-  // Stores action output result for [Backend Call - Read Document] action in resumenFiadoClienTiendaNew widget.
-  TenderosRecord? readCountTendero;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
 

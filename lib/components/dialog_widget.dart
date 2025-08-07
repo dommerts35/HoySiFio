@@ -1,13 +1,15 @@
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dialog_two_btns_model.dart';
-export 'dialog_two_btns_model.dart';
+import 'dialog_model.dart';
+export 'dialog_model.dart';
 
-class DialogTwoBtnsWidget extends StatefulWidget {
-  const DialogTwoBtnsWidget({
+class DialogWidget extends StatefulWidget {
+  const DialogWidget({
     super.key,
     this.titulo,
     this.mensaje,
@@ -17,11 +19,14 @@ class DialogTwoBtnsWidget extends StatefulWidget {
   final String? mensaje;
 
   @override
-  State<DialogTwoBtnsWidget> createState() => _DialogTwoBtnsWidgetState();
+  State<DialogWidget> createState() => _DialogWidgetState();
 }
 
-class _DialogTwoBtnsWidgetState extends State<DialogTwoBtnsWidget> {
-  late DialogTwoBtnsModel _model;
+class _DialogWidgetState extends State<DialogWidget>
+    with TickerProviderStateMixin {
+  late DialogModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -32,7 +37,32 @@ class _DialogTwoBtnsWidgetState extends State<DialogTwoBtnsWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => DialogTwoBtnsModel());
+    _model = createModel(context, () => DialogModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(
+        Duration(
+          milliseconds: 3000,
+        ),
+      );
+      Navigator.pop(context);
+    });
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1500.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -148,94 +178,10 @@ class _DialogTwoBtnsWidgetState extends State<DialogTwoBtnsWidget> {
                     ],
                   ),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 12.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        Navigator.pop(context, true);
-                      },
-                      text: 'Aceptar',
-                      options: FFButtonOptions(
-                        height: 30.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.asap(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 12.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        Navigator.pop(context, false);
-                      },
-                      text: 'Cancelar',
-                      options: FFButtonOptions(
-                        height: 30.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.asap(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
-        ),
+        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
       ),
     );
   }

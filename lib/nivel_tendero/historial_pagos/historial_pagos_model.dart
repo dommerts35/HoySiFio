@@ -1,7 +1,6 @@
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/request_manager.dart';
-
 import '/index.dart';
 import 'historial_pagos_widget.dart' show HistorialPagosWidget;
 import 'package:flutter/material.dart';
@@ -27,32 +26,9 @@ class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
           .map((e) => e.key)
           .toList();
 
-  /// Query cache managers for this widget.
-
-  final _queryNameClienteHistorialPagadoManager =
-      StreamRequestManager<ClientesRecord>();
-  Stream<ClientesRecord> queryNameClienteHistorialPagado({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Stream<ClientesRecord> Function() requestFn,
-  }) =>
-      _queryNameClienteHistorialPagadoManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearQueryNameClienteHistorialPagadoCache() =>
-      _queryNameClienteHistorialPagadoManager.clear();
-  void clearQueryNameClienteHistorialPagadoCacheKey(String? uniqueKey) =>
-      _queryNameClienteHistorialPagadoManager.clearRequest(uniqueKey);
-
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    /// Dispose query cache managers for this widget.
-
-    clearQueryNameClienteHistorialPagadoCache();
-  }
+  void dispose() {}
 }

@@ -98,7 +98,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
               appBar: PreferredSize(
-                preferredSize: Size.fromHeight(150.0),
+                preferredSize: Size.fromHeight(80.0),
                 child: AppBar(
                   backgroundColor:
                       FlutterFlowTheme.of(context).secondaryBackground,
@@ -109,28 +109,28 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                     children: [
                       Column(
                         mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             'Vincular',
                             style: FlutterFlowTheme.of(context)
-                                .headlineMedium
+                                .headlineSmall
                                 .override(
                                   font: GoogleFonts.readexPro(
                                     fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineMedium
+                                        .headlineSmall
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineMedium
+                                        .headlineSmall
                                         .fontStyle,
                                   ),
-                                  fontSize: 40.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineMedium
+                                      .headlineSmall
                                       .fontWeight,
                                   fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineMedium
+                                      .headlineSmall
                                       .fontStyle,
                                 ),
                           ),
@@ -143,7 +143,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium
                                   .override(
-                                    font: GoogleFonts.inter(
+                                    font: GoogleFonts.asap(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .fontWeight,
@@ -151,7 +151,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                           .labelMedium
                                           .fontStyle,
                                     ),
-                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -168,7 +167,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  font: GoogleFonts.inter(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .fontWeight,
@@ -192,8 +191,8 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                   ),
                   actions: [],
                   centerTitle: false,
-                  toolbarHeight: 200.0,
-                  elevation: 0.0,
+                  toolbarHeight: 75.0,
+                  elevation: 2.0,
                 ),
               ),
               body: SafeArea(
@@ -206,20 +205,43 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 24.0, 0.0),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Material(
+                                  color: Colors.transparent,
+                                  elevation: 2.0,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(14.0),
+                                  ),
                                   child: Container(
                                     constraints: BoxConstraints(
                                       maxWidth: 770.0,
                                     ),
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(14.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                      ),
+                                    ),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
@@ -231,7 +253,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            height: 150.0,
                                             child: TextFormField(
                                               controller: _model
                                                   .valorUserTextController,
@@ -249,7 +270,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                         context)
                                                     .labelMedium
                                                     .override(
-                                                      font: GoogleFonts.inter(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         fontStyle:
@@ -262,7 +283,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
-                                                      fontSize: 28.0,
+                                                      fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -278,7 +299,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                         .labelMedium
                                                         .override(
                                                           font:
-                                                              GoogleFonts.inter(
+                                                              GoogleFonts.asap(
                                                             fontWeight:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -290,7 +311,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                           ),
-                                                          fontSize: 28.0,
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -304,62 +325,61 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                   .fontStyle,
                                                         ),
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
-                                                    width: 1.0,
+                                                        .alternate,
+                                                    width: 2.0,
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
+                                                          0.0),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primary,
-                                                    width: 1.0,
+                                                    width: 2.0,
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
+                                                          0.0),
                                                 ),
-                                                errorBorder: OutlineInputBorder(
+                                                errorBorder:
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 2.0,
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
+                                                          0.0),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                    UnderlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 2.0,
                                                   ),
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
+                                                          0.0),
                                                 ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                contentPadding:
+                                                    EdgeInsets.all(14.0),
                                               ),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        font: GoogleFonts.inter(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -371,7 +391,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 28.0,
+                                                        fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -383,7 +403,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                     context)
                                                                 .bodyMedium
                                                                 .fontStyle,
-                                                        lineHeight: 3.0,
                                                       ),
                                               maxLength: 10,
                                               maxLengthEnforcement:
@@ -418,11 +437,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                               ],
                                             ),
                                           ),
-                                          Divider(
-                                            thickness: 2.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .alternate,
-                                          ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -431,113 +445,128 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Container(
-                                                  width: double.infinity,
-                                                  height: 190.0,
                                                   decoration: BoxDecoration(
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
                                                   ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Text(
-                                                          'El cliente está registrado en: ',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .readexPro(
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 15.0),
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Text(
+                                                            'El cliente está registrado en: ',
+                                                            textAlign: TextAlign
+                                                                .center,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  font: GoogleFonts
+                                                                      .readexPro(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .headlineMedium
+                                                                      .headlineSmall
                                                                       .fontWeight,
                                                                   fontStyle: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .headlineMedium
+                                                                      .headlineSmall
                                                                       .fontStyle,
                                                                 ),
-                                                                fontSize: 30.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: StreamBuilder<
-                                                            List<
-                                                                ClientesRecord>>(
-                                                          stream:
-                                                              queryClientesRecord(
-                                                            queryBuilder:
-                                                                (clientesRecord) =>
-                                                                    clientesRecord
-                                                                        .where(
-                                                              'cliente.cedula',
-                                                              isEqualTo: _model
-                                                                  .valorUserTextController
-                                                                  .text,
-                                                            ),
                                                           ),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: StreamBuilder<
+                                                              List<
+                                                                  ClientesRecord>>(
+                                                            stream:
+                                                                queryClientesRecord(
+                                                              queryBuilder:
+                                                                  (clientesRecord) =>
+                                                                      clientesRecord
+                                                                          .where(
+                                                                'cliente.cedula',
+                                                                isEqualTo: _model
+                                                                    .valorUserTextController
+                                                                    .text,
+                                                              ),
+                                                            ),
+                                                            builder: (context,
+                                                                snapshot) {
+                                                              // Customize what your widget looks like when it's loading.
+                                                              if (!snapshot
+                                                                  .hasData) {
+                                                                return Center(
                                                                   child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                                      SizedBox(
+                                                                    width: 50.0,
+                                                                    height:
+                                                                        50.0,
+                                                                    child:
+                                                                        CircularProgressIndicator(
+                                                                      valueColor:
+                                                                          AlwaysStoppedAnimation<
+                                                                              Color>(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            List<ClientesRecord>
-                                                                textClientesRecordList =
-                                                                snapshot.data!;
+                                                                );
+                                                              }
+                                                              List<ClientesRecord>
+                                                                  textClientesRecordList =
+                                                                  snapshot
+                                                                      .data!;
 
-                                                            return Text(
-                                                              '${textClientesRecordList.length.toString()} ${textClientesRecordList.length == 1 ? 'Tienda' : 'Tiendas'}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .headlineSmall
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .readexPro(
+                                                              return Text(
+                                                                '${textClientesRecordList.length.toString()} ${textClientesRecordList.length == 1 ? 'Tienda' : 'Tiendas'}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .headlineSmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      fontSize:
+                                                                          25.0,
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .headlineSmall
@@ -547,282 +576,251 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                           .headlineSmall
                                                                           .fontStyle,
                                                                     ),
-                                                                    fontSize:
-                                                                        30.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                            );
-                                                          },
+                                                              );
+                                                            },
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(height: 5.0)),
+                                                      ].divide(SizedBox(
+                                                          height: 5.0)),
+                                                    ),
                                                   ),
                                                 ),
                                                 Align(
                                                   alignment:
                                                       AlignmentDirectional(
                                                           0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 50.0,
-                                                                0.0, 0.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: () async {
-                                                        var clientesRecordReference =
-                                                            ClientesRecord
-                                                                .collection
-                                                                .doc();
-                                                        await clientesRecordReference
-                                                            .set({
-                                                          ...createClientesRecordData(
-                                                            cliente:
-                                                                createDataTypeClienteStruct(
-                                                              nombre:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .nombre,
-                                                              telf:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .telf,
-                                                              isFiando: false,
-                                                              apellido:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .apellido,
-                                                              cedula:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .cedula,
-                                                              direccionDomicilio:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .direccionDomicilio,
-                                                              viviendaAlq:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .viviendaAlq,
-                                                              viviendaPropia:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .viviendaPropia,
-                                                              emailCliente:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .emailCliente,
-                                                              idTendero: widget
-                                                                  .tenderoRef,
-                                                              totalDeudaCompleta:
-                                                                  0.0,
-                                                              contrasena:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .contrasena,
-                                                              pin:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .pin,
-                                                              clearUnsetFields:
-                                                                  false,
-                                                              create: true,
-                                                            ),
-                                                          ),
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'player_ids':
-                                                                  clienteVincClientesRecord
-                                                                      .playerIds,
-                                                            },
-                                                          ),
-                                                        });
-                                                        _model.makeVincCliente =
-                                                            ClientesRecord
-                                                                .getDocumentFromData({
-                                                          ...createClientesRecordData(
-                                                            cliente:
-                                                                createDataTypeClienteStruct(
-                                                              nombre:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .nombre,
-                                                              telf:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .telf,
-                                                              isFiando: false,
-                                                              apellido:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .apellido,
-                                                              cedula:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .cedula,
-                                                              direccionDomicilio:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .direccionDomicilio,
-                                                              viviendaAlq:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .viviendaAlq,
-                                                              viviendaPropia:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .viviendaPropia,
-                                                              emailCliente:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .emailCliente,
-                                                              idTendero: widget
-                                                                  .tenderoRef,
-                                                              totalDeudaCompleta:
-                                                                  0.0,
-                                                              contrasena:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .contrasena,
-                                                              pin:
-                                                                  clienteVincClientesRecord
-                                                                      .cliente
-                                                                      .pin,
-                                                              clearUnsetFields:
-                                                                  false,
-                                                              create: true,
-                                                            ),
-                                                          ),
-                                                          ...mapToFirestore(
-                                                            {
-                                                              'player_ids':
-                                                                  clienteVincClientesRecord
-                                                                      .playerIds,
-                                                            },
-                                                          ),
-                                                        }, clientesRecordReference);
-
-                                                        await _model
-                                                            .makeVincCliente!
-                                                            .reference
-                                                            .update(
-                                                                createClientesRecordData(
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      var clientesRecordReference =
+                                                          ClientesRecord
+                                                              .collection
+                                                              .doc();
+                                                      await clientesRecordReference
+                                                          .set({
+                                                        ...createClientesRecordData(
                                                           cliente:
                                                               createDataTypeClienteStruct(
-                                                            idCliente: _model
-                                                                .makeVincCliente
-                                                                ?.reference,
+                                                            nombre:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .nombre,
+                                                            telf:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .telf,
+                                                            isFiando: false,
+                                                            apellido:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .apellido,
+                                                            cedula:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .cedula,
+                                                            direccionDomicilio:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .direccionDomicilio,
+                                                            viviendaAlq:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaAlq,
+                                                            viviendaPropia:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaPropia,
+                                                            emailCliente:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .emailCliente,
+                                                            idTendero: widget
+                                                                .tenderoRef,
+                                                            totalDeudaCompleta:
+                                                                0.0,
+                                                            contrasena:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .contrasena,
+                                                            pin:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .pin,
                                                             clearUnsetFields:
                                                                 false,
+                                                            create: true,
                                                           ),
-                                                        ));
-                                                        for (int loop1Index = 0;
-                                                            loop1Index <
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'player_ids':
                                                                 clienteVincClientesRecord
-                                                                    .playerIds
-                                                                    .length;
-                                                            loop1Index++) {
-                                                          final currentLoop1Item =
+                                                                    .playerIds,
+                                                          },
+                                                        ),
+                                                      });
+                                                      _model.makeVincCliente =
+                                                          ClientesRecord
+                                                              .getDocumentFromData({
+                                                        ...createClientesRecordData(
+                                                          cliente:
+                                                              createDataTypeClienteStruct(
+                                                            nombre:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .nombre,
+                                                            telf:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .telf,
+                                                            isFiando: false,
+                                                            apellido:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .apellido,
+                                                            cedula:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .cedula,
+                                                            direccionDomicilio:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .direccionDomicilio,
+                                                            viviendaAlq:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaAlq,
+                                                            viviendaPropia:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .viviendaPropia,
+                                                            emailCliente:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .emailCliente,
+                                                            idTendero: widget
+                                                                .tenderoRef,
+                                                            totalDeudaCompleta:
+                                                                0.0,
+                                                            contrasena:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .contrasena,
+                                                            pin:
+                                                                clienteVincClientesRecord
+                                                                    .cliente
+                                                                    .pin,
+                                                            clearUnsetFields:
+                                                                false,
+                                                            create: true,
+                                                          ),
+                                                        ),
+                                                        ...mapToFirestore(
+                                                          {
+                                                            'player_ids':
+                                                                clienteVincClientesRecord
+                                                                    .playerIds,
+                                                          },
+                                                        ),
+                                                      }, clientesRecordReference);
+
+                                                      await _model
+                                                          .makeVincCliente!
+                                                          .reference
+                                                          .update(
+                                                              createClientesRecordData(
+                                                        cliente:
+                                                            createDataTypeClienteStruct(
+                                                          idCliente: _model
+                                                              .makeVincCliente
+                                                              ?.reference,
+                                                          clearUnsetFields:
+                                                              false,
+                                                        ),
+                                                      ));
+                                                      for (int loop1Index = 0;
+                                                          loop1Index <
                                                               clienteVincClientesRecord
-                                                                      .playerIds[
-                                                                  loop1Index];
-                                                          unawaited(
-                                                            () async {
-                                                              await actions
-                                                                  .sendNotificationToPlayer(
-                                                                currentLoop1Item,
-                                                                '${clienteVincClientesRecord.cliente.nombre}: ¡Has sido registrado en una nueva tienda: \" ${widget.nombreTienda}\"!',
-                                                              );
-                                                            }(),
-                                                          );
-                                                        }
-
-                                                        context.pushNamed(
-                                                          ListaClientesWidget
-                                                              .routeName,
-                                                          queryParameters: {
-                                                            'tenderoRef':
-                                                                serializeParam(
-                                                              widget
-                                                                  .tenderoRef,
-                                                              ParamType
-                                                                  .DocumentReference,
-                                                            ),
-                                                            'nombreTienda':
-                                                                serializeParam(
-                                                              widget
-                                                                  .nombreTienda,
-                                                              ParamType.String,
-                                                            ),
-                                                            'tenderoEmail':
-                                                                serializeParam(
-                                                              widget
-                                                                  .tenderoEmail,
-                                                              ParamType.String,
-                                                            ),
-                                                            'nombreTendero':
-                                                                serializeParam(
-                                                              widget
-                                                                  .nombreTienda,
-                                                              ParamType.String,
-                                                            ),
-                                                          }.withoutNulls,
+                                                                  .playerIds
+                                                                  .length;
+                                                          loop1Index++) {
+                                                        final currentLoop1Item =
+                                                            clienteVincClientesRecord
+                                                                    .playerIds[
+                                                                loop1Index];
+                                                        unawaited(
+                                                          () async {
+                                                            await actions
+                                                                .sendNotificationToPlayer(
+                                                              currentLoop1Item,
+                                                              '${clienteVincClientesRecord.cliente.nombre}: ¡Has sido registrado en una nueva tienda: \" ${widget.nombreTienda}\"!',
+                                                            );
+                                                          }(),
                                                         );
+                                                      }
 
-                                                        safeSetState(() {});
-                                                      },
-                                                      text: 'Vincular Cuenta',
-                                                      options: FFButtonOptions(
-                                                        width: double.infinity,
-                                                        height: 40.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Colors
-                                                                      .white,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                      context.pushNamed(
+                                                        ListaClientesWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'tenderoRef':
+                                                              serializeParam(
+                                                            widget.tenderoRef,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'nombreTienda':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTienda,
+                                                            ParamType.String,
+                                                          ),
+                                                          'tenderoEmail':
+                                                              serializeParam(
+                                                            widget
+                                                                .tenderoEmail,
+                                                            ParamType.String,
+                                                          ),
+                                                          'nombreTendero':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreTienda,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+
+                                                      safeSetState(() {});
+                                                    },
+                                                    text: 'Vincular Cuenta',
+                                                    options: FFButtonOptions(
+                                                      width: double.infinity,
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  0.0,
+                                                                  16.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -832,11 +830,23 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                                                       .titleSmall
                                                                       .fontStyle,
                                                                 ),
-                                                        elevation: 0.0,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
                                                     ),
                                                   ),
                                                 ),
@@ -844,18 +854,18 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget> {
                                             ),
                                           ),
                                         ]
-                                            .divide(SizedBox(height: 30.0))
-                                            .addToStart(SizedBox(height: 15.0)),
+                                            .addToStart(SizedBox(height: 5.0))
+                                            .addToEnd(SizedBox(height: 10.0)),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ],
+                    ].addToStart(SizedBox(height: 30.0)),
                   ),
                 ),
               ),

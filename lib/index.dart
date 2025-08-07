@@ -37,8 +37,6 @@ export '/nivel_cliente/politica_priv_sub_page_to_accept/politica_priv_sub_page_t
     show PoliticaPrivSubPageToAcceptWidget;
 export '/nivel_tendero/tendero_edit_info/tendero_edit_info_widget.dart'
     show TenderoEditInfoWidget;
-export '/nivel_tendero/signin_confirm/signin_confirm_widget.dart'
-    show SigninConfirmWidget;
 export '/nivel_cliente/historial_vouchers_cliente/historial_vouchers_cliente_widget.dart'
     show HistorialVouchersClienteWidget;
 export '/nivel_tendero/cliente_vinc/cliente_vinc_widget.dart'

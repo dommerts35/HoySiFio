@@ -75,7 +75,7 @@ class _EmptyProductosFiadosClienteWidgetState
                 child: Text(
                   '¡Hurra! No hay deudas que pagar.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.inter(
+                        font: GoogleFonts.asap(
                           fontWeight: FlutterFlowTheme.of(context)
                               .titleSmall
                               .fontWeight,

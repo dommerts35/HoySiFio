@@ -15,6 +15,8 @@ export 'send_custom_email_for_cliente_login.dart'
     show sendCustomEmailForClienteLogin;
 export 'send_custom_email_for_cliente_email_change.dart'
     show sendCustomEmailForClienteEmailChange;
+export 'send_custom_email_for_tendero_email_change.dart'
+    show sendCustomEmailForTenderoEmailChange;
 export 'send_custom_email_for_full_paid_prods.dart'
     show sendCustomEmailForFullPaidProds;
 export 'send_custom_email_for_select_prods.dart'

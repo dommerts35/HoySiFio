@@ -3,41 +3,31 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'cliente_data_from_tienda_list_model.dart';
-export 'cliente_data_from_tienda_list_model.dart';
+import 'tienda_data_from_tienda_list_model.dart';
+export 'tienda_data_from_tienda_list_model.dart';
 
-class ClienteDataFromTiendaListWidget extends StatefulWidget {
-  const ClienteDataFromTiendaListWidget({
+class TiendaDataFromTiendaListWidget extends StatefulWidget {
+  const TiendaDataFromTiendaListWidget({
     super.key,
-    this.nombreCliente,
-    String? telefonoCliente,
-    this.cedulaCliente,
-    this.direccionCliente,
-    this.isViviendaPropia,
-    this.isViviendaAlq,
-    this.emailCliente,
+    this.nombreTendero,
+    String? telefonoTendero,
+    this.emailTendero,
     this.tiendaNombre,
-    this.apellidoCliente,
-  }) : this.telefonoCliente = telefonoCliente ?? '000000000';
+  }) : this.telefonoTendero = telefonoTendero ?? '000000000';
 
-  final String? nombreCliente;
-  final String telefonoCliente;
-  final String? cedulaCliente;
-  final String? direccionCliente;
-  final bool? isViviendaPropia;
-  final bool? isViviendaAlq;
-  final String? emailCliente;
+  final String? nombreTendero;
+  final String telefonoTendero;
+  final String? emailTendero;
   final String? tiendaNombre;
-  final String? apellidoCliente;
 
   @override
-  State<ClienteDataFromTiendaListWidget> createState() =>
-      _ClienteDataFromTiendaListWidgetState();
+  State<TiendaDataFromTiendaListWidget> createState() =>
+      _TiendaDataFromTiendaListWidgetState();
 }
 
-class _ClienteDataFromTiendaListWidgetState
-    extends State<ClienteDataFromTiendaListWidget> {
-  late ClienteDataFromTiendaListModel _model;
+class _TiendaDataFromTiendaListWidgetState
+    extends State<TiendaDataFromTiendaListWidget> {
+  late TiendaDataFromTiendaListModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -48,7 +38,7 @@ class _ClienteDataFromTiendaListWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ClienteDataFromTiendaListModel());
+    _model = createModel(context, () => TiendaDataFromTiendaListModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -64,7 +54,7 @@ class _ClienteDataFromTiendaListWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: 380.0,
-      height: 290.0,
+      height: 200.0,
       constraints: BoxConstraints(
         minHeight: 290.0,
         maxWidth: 570.0,
@@ -96,7 +86,7 @@ class _ClienteDataFromTiendaListWidgetState
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Datos registrados en la tienda:',
+                          'Datos de contacto de la tienda:',
                           textAlign: TextAlign.end,
                           maxLines: 2,
                           style: FlutterFlowTheme.of(context)
@@ -173,7 +163,7 @@ class _ClienteDataFromTiendaListWidgetState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Nombre completo: ',
+                          'Nombre del tendero: ',
                           style:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.asap(
@@ -196,47 +186,15 @@ class _ClienteDataFromTiendaListWidgetState
                         ),
                         Flexible(
                           child: Container(
-                            height: 40.0,
+                            height: 20.0,
                             decoration: BoxDecoration(),
                             child: Column(
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Flexible(
                                   child: AutoSizeText(
                                     valueOrDefault<String>(
-                                      widget.nombreCliente,
-                                      'Ejemplo',
-                                    ),
-                                    maxLines: 2,
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          font: GoogleFonts.asap(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ),
-                                Flexible(
-                                  child: AutoSizeText(
-                                    valueOrDefault<String>(
-                                      widget.apellidoCliente,
+                                      widget.nombreTendero,
                                       'Ejemplo',
                                     ),
                                     maxLines: 2,
@@ -302,189 +260,9 @@ class _ClienteDataFromTiendaListWidgetState
                           children: [
                             Text(
                               valueOrDefault<String>(
-                                widget.telefonoCliente,
+                                widget.telefonoTendero,
                                 '0000000000',
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Cédula: ',
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              valueOrDefault<String>(
-                                widget.cedulaCliente,
-                                '0000000000',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Dirección: ',
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              valueOrDefault<String>(
-                                widget.direccionCliente,
-                                'Av. Ejemplo',
-                              ),
-                              maxLines: 2,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Vivienda: ',
-                          style:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              () {
-                                if (widget.isViviendaPropia == true) {
-                                  return 'Propia';
-                                } else if (widget.isViviendaAlq == true) {
-                                  return 'Alquilada';
-                                } else {
-                                  return 'No establecida';
-                                }
-                              }(),
                               style: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -540,7 +318,7 @@ class _ClienteDataFromTiendaListWidgetState
                           children: [
                             Text(
                               valueOrDefault<String>(
-                                widget.emailCliente,
+                                widget.emailTendero,
                                 'ejemplo@gmail.com',
                               ),
                               style: FlutterFlowTheme.of(context)
