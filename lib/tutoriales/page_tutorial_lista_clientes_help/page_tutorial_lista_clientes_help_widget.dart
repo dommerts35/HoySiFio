@@ -675,15 +675,6 @@ class _PageTutorialListaClientesHelpWidgetState
                                                       .alternate,
                                                 ),
                                               ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/imagen_2025-08-11_132956294.png',
-                                                  height: 190.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
                                             ),
                                             Divider(
                                               thickness: 2.0,
@@ -770,15 +761,6 @@ class _PageTutorialListaClientesHelpWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
-                                                ),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/imagen_2025-08-11_133133232.png',
-                                                  width: 250.0,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
@@ -869,15 +851,6 @@ class _PageTutorialListaClientesHelpWidgetState
                                                       .alternate,
                                                 ),
                                               ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/imagen_2025-08-11_133414905.png',
-                                                  width: 250.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
                                             ),
                                             Divider(
                                               thickness: 2.0,
@@ -964,15 +937,6 @@ class _PageTutorialListaClientesHelpWidgetState
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
-                                                ),
-                                              ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/imagen_2025-08-11_133741011.png',
-                                                  width: 250.0,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
