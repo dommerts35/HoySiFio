@@ -1,14 +1,16 @@
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
+import '/components/dialog_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tendero_first_login_model.dart';
@@ -54,52 +56,65 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.0, 80.0),
+            duration: 1200.0.ms,
+            begin: Offset(0.0, -17.0),
             end: Offset(0.0, 0.0),
           ),
-          ScaleEffect(
+          FadeEffect(
             curve: Curves.easeInOut,
-            delay: 150.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.8, 0.8),
-            end: Offset(1.0, 1.0),
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
           ),
         ],
       ),
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 300.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.0, 20.0),
-            end: Offset(0.0, 0.0),
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
           ),
         ],
       ),
     });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -126,10 +141,9 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                child: SpinKitWanderingCubes(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 50.0,
                 ),
               ),
             ),
@@ -161,111 +175,24 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 32.0, 0.0, 16.0),
-                                    child: RichText(
-                                      textScaler:
-                                          MediaQuery.of(context).textScaler,
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: 'Hoy',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  font: GoogleFonts.asap(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'Sí',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  font: GoogleFonts.asap(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF01AFFF),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'Fio',
-                                            style: TextStyle(),
-                                          )
-                                        ],
-                                        style: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .override(
-                                              font: GoogleFonts.asap(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .fontStyle,
-                                            ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/actualhoysifioload_c7004ecf.gif',
+                                        width: 200.0,
+                                        height: 80.0,
+                                        fit: BoxFit.fitWidth,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                               Form(
                                 key: _model.formKey,
@@ -290,12 +217,14 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                         child: SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    -1.0, 0.0),
+                                                    0.0, 0.0),
                                                 child: Text(
                                                   'Bienvenido ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}',
                                                   textAlign: TextAlign.start,
@@ -330,26 +259,16 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                       ),
                                                 ),
                                               ),
-                                              Text(
-                                                'Ingrese el código enviado a su e-mail para autenticar su cuenta.',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.asap(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelSmall
-                                                                    .fontStyle,
-                                                          ),
-                                                          letterSpacing: 0.0,
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Text(
+                                                  'Ingrese el código enviado a su e-mail para autenticar su cuenta.',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        font: GoogleFonts.asap(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -361,6 +280,19 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                   .labelSmall
                                                                   .fontStyle,
                                                         ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .fontStyle,
+                                                      ),
+                                                ),
                                               ),
                                               Container(
                                                 width: double.infinity,
@@ -577,267 +509,228 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Builder(
-                                                  builder: (context) => Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 2.0),
-                                                    child: FFButtonWidget(
-                                                      onPressed: (_model.codigoFirstLoginClienteTextController
-                                                                      .text ==
-                                                                  '')
-                                                          ? null
-                                                          : () async {
-                                                              var _shouldSetState =
-                                                                  false;
-                                                              _model.validarFirstLoginCliente =
-                                                                  true;
-                                                              if (_model.formKey
-                                                                          .currentState ==
-                                                                      null ||
-                                                                  !_model
-                                                                      .formKey
-                                                                      .currentState!
-                                                                      .validate()) {
-                                                                safeSetState(() =>
-                                                                    _model.validarFirstLoginCliente =
-                                                                        false);
-                                                                return;
-                                                              }
-                                                              _shouldSetState =
-                                                                  true;
-                                                              if (_model
-                                                                      .codigoFirstLoginClienteTextController
-                                                                      .text !=
-                                                                  tenderoFirstLoginTenderosRecord
-                                                                      .otp) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          FocusScope.of(dialogContext)
-                                                                              .unfocus();
-                                                                          FocusManager
-                                                                              .instance
-                                                                              .primaryFocus
-                                                                              ?.unfocus();
-                                                                        },
+                                                  builder: (context) =>
+                                                      FFButtonWidget(
+                                                    onPressed:
+                                                        (_model.codigoFirstLoginClienteTextController
+                                                                        .text ==
+                                                                    '')
+                                                            ? null
+                                                            : () async {
+                                                                var _shouldSetState =
+                                                                    false;
+                                                                _model.validarFirstLoginCliente =
+                                                                    true;
+                                                                if (_model.formKey
+                                                                            .currentState ==
+                                                                        null ||
+                                                                    !_model
+                                                                        .formKey
+                                                                        .currentState!
+                                                                        .validate()) {
+                                                                  safeSetState(() =>
+                                                                      _model.validarFirstLoginCliente =
+                                                                          false);
+                                                                  return;
+                                                                }
+                                                                _shouldSetState =
+                                                                    true;
+                                                                if (_model
+                                                                        .codigoFirstLoginClienteTextController
+                                                                        .text !=
+                                                                    tenderoFirstLoginTenderosRecord
+                                                                        .otp) {
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
-                                                                            Container(
-                                                                          height:
-                                                                              200.0,
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
                                                                           child:
-                                                                              DialogBtnWidget(
-                                                                            titulo:
-                                                                                '¡Alerta!',
-                                                                            mensaje:
-                                                                                'Código inválido.',
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogBtnWidget(
+                                                                              titulo: '¡Alerta!',
+                                                                              mensaje: 'Código inválido.',
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              }
-                                                              if (_model
-                                                                      .validarFirstLoginCliente ==
-                                                                  true) {
-                                                                await widget
-                                                                    .idTenderoNoAuth!
-                                                                    .update({
-                                                                  ...createTenderosRecordData(
-                                                                    isAuth:
-                                                                        true,
-                                                                  ),
-                                                                  ...mapToFirestore(
-                                                                    {
-                                                                      'otp': FieldValue
-                                                                          .delete(),
+                                                                      );
                                                                     },
-                                                                  ),
-                                                                });
-                                                                if (!(tenderoFirstLoginTenderosRecord
-                                                                        .playerIds
-                                                                        .contains(FFAppState()
-                                                                            .playerId) ||
-                                                                    (FFAppState().playerId ==
-                                                                            ''))) {
-                                                                  await tenderoFirstLoginTenderosRecord
-                                                                      .reference
+                                                                  );
+
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+                                                                if (_model
+                                                                        .validarFirstLoginCliente ==
+                                                                    true) {
+                                                                  await widget
+                                                                      .idTenderoNoAuth!
                                                                       .update({
+                                                                    ...createTenderosRecordData(
+                                                                      isAuth:
+                                                                          true,
+                                                                    ),
                                                                     ...mapToFirestore(
                                                                       {
-                                                                        'player_ids':
-                                                                            FieldValue.arrayUnion([
-                                                                          FFAppState()
-                                                                              .playerId
-                                                                        ]),
+                                                                        'otp': FieldValue
+                                                                            .delete(),
                                                                       },
                                                                     ),
                                                                   });
-                                                                }
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          FocusScope.of(dialogContext)
-                                                                              .unfocus();
-                                                                          FocusManager
-                                                                              .instance
-                                                                              .primaryFocus
-                                                                              ?.unfocus();
+                                                                  if (!(tenderoFirstLoginTenderosRecord
+                                                                          .playerIds
+                                                                          .contains(FFAppState()
+                                                                              .playerId) ||
+                                                                      (FFAppState().playerId ==
+                                                                              ''))) {
+                                                                    await tenderoFirstLoginTenderosRecord
+                                                                        .reference
+                                                                        .update({
+                                                                      ...mapToFirestore(
+                                                                        {
+                                                                          'player_ids':
+                                                                              FieldValue.arrayUnion([
+                                                                            FFAppState().playerId
+                                                                          ]),
                                                                         },
+                                                                      ),
+                                                                    });
+                                                                  }
+                                                                  await showDialog(
+                                                                    context:
+                                                                        context,
+                                                                    builder:
+                                                                        (dialogContext) {
+                                                                      return Dialog(
+                                                                        elevation:
+                                                                            0,
+                                                                        insetPadding:
+                                                                            EdgeInsets.zero,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        alignment:
+                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
-                                                                            Container(
-                                                                          height:
-                                                                              200.0,
+                                                                            GestureDetector(
+                                                                          onTap:
+                                                                              () {
+                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                          },
                                                                           child:
-                                                                              DialogBtnWidget(
-                                                                            titulo:
-                                                                                '¡Bienvenido a HoySíFio!',
-                                                                            mensaje:
-                                                                                '¡Hola, ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}! Estamos encantados de que formes parte de nuestra red de tenderos. 😊',
+                                                                              Container(
+                                                                            height:
+                                                                                200.0,
+                                                                            child:
+                                                                                DialogWidget(
+                                                                              titulo: '¡Bienvenido a HoySíFio!',
+                                                                              mensaje: '¡Hola, ${tenderoFirstLoginTenderosRecord.tenderos.nombreTendero}! Estamos encantados de que formes parte de nuestra red de tenderos. 😊',
+                                                                            ),
                                                                           ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
+                                                                      );
+                                                                    },
+                                                                  );
 
-                                                                context.goNamed(
-                                                                  ListaClientesWidget
-                                                                      .routeName,
-                                                                  queryParameters:
-                                                                      {
-                                                                    'tenderoRef':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idTenderoNoAuth,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                    'nombreTienda':
-                                                                        serializeParam(
-                                                                      tenderoFirstLoginTenderosRecord
-                                                                          .displayName,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'tenderoEmail':
-                                                                        serializeParam(
-                                                                      tenderoFirstLoginTenderosRecord
-                                                                          .email,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'nombreTendero':
-                                                                        serializeParam(
-                                                                      tenderoFirstLoginTenderosRecord
-                                                                          .tenderos
-                                                                          .nombreTendero,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              } else {
+                                                                  context
+                                                                      .pushNamed(
+                                                                    LoginMsgWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'nombreIfTendero':
+                                                                          serializeParam(
+                                                                        tenderoFirstLoginTenderosRecord
+                                                                            .tenderos
+                                                                            .nombreTendero,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'tenderoRef':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .idTenderoNoAuth,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'nombreTienda':
+                                                                          serializeParam(
+                                                                        tenderoFirstLoginTenderosRecord
+                                                                            .displayName,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'emailTendero':
+                                                                          serializeParam(
+                                                                        tenderoFirstLoginTenderosRecord
+                                                                            .email,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                } else {
+                                                                  if (_shouldSetState)
+                                                                    safeSetState(
+                                                                        () {});
+                                                                  return;
+                                                                }
+
                                                                 if (_shouldSetState)
                                                                   safeSetState(
                                                                       () {});
-                                                                return;
-                                                              }
-
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                            },
-                                                      text: 'Continuar',
-                                                      options: FFButtonOptions(
-                                                        width: 230.0,
-                                                        height: 52.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryBackground,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                              },
+                                                    text: 'Continuar',
+                                                    options: FFButtonOptions(
+                                                      width: 230.0,
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .titleSmall
@@ -847,35 +740,47 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                                                                       .titleSmall
                                                                       .fontStyle,
                                                                 ),
-                                                        elevation: 2.0,
-                                                        borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                        disabledColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent2,
-                                                        disabledTextColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                      elevation: 2.0,
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
                                                       ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      disabledColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent2,
+                                                      disabledTextColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
                                                     ),
-                                                  ),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                          'buttonOnPageLoadAnimation']!),
                                                 ),
                                               ),
                                             ].divide(SizedBox(height: 15.0)),
                                           ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'columnOnPageLoadAnimation']!),
+                                        ),
                                       ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'containerOnPageLoadAnimation']!),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -885,7 +790,12 @@ class _TenderoFirstLoginWidgetState extends State<TenderoFirstLoginWidget>
                       ],
                     ),
                   ),
-                ),
+                )
+                    .animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!)
+                    .animateOnActionTrigger(
+                      animationsMap['containerOnActionTriggerAnimation']!,
+                    ),
               ),
             ),
           ),

@@ -1,6 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'cliente_data_from_tienda_list_model.dart';
@@ -200,6 +200,7 @@ class _ClienteDataFromTiendaListWidgetState
                             decoration: BoxDecoration(),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Flexible(
                                   child: AutoSizeText(
@@ -207,6 +208,7 @@ class _ClienteDataFromTiendaListWidgetState
                                       widget.nombreCliente,
                                       'Ejemplo',
                                     ),
+                                    textAlign: TextAlign.start,
                                     maxLines: 2,
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall
@@ -239,6 +241,7 @@ class _ClienteDataFromTiendaListWidgetState
                                       widget.apellidoCliente,
                                       'Ejemplo',
                                     ),
+                                    textAlign: TextAlign.start,
                                     maxLines: 2,
                                     style: FlutterFlowTheme.of(context)
                                         .titleSmall

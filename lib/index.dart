@@ -29,8 +29,6 @@ export '/nivel_cliente/historial_single_voucher_pago/historial_single_voucher_pa
     show HistorialSingleVoucherPagoWidget;
 export '/nivel_cliente/resumen_fiado_clien_prods_new/resumen_fiado_clien_prods_new_widget.dart'
     show ResumenFiadoClienProdsNewWidget;
-export '/nivel_cliente/resumen_fiado_clien_tienda_new/resumen_fiado_clien_tienda_new_widget.dart'
-    show ResumenFiadoClienTiendaNewWidget;
 export '/nivel_cliente/historial_full_voucher_pago/historial_full_voucher_pago_widget.dart'
     show HistorialFullVoucherPagoWidget;
 export '/nivel_cliente/politica_priv_sub_page_to_accept/politica_priv_sub_page_to_accept_widget.dart'
@@ -81,3 +79,13 @@ export '/nivel_cliente/politica_priv_sub_page_to_view/politica_priv_sub_page_to_
     show PoliticaPrivSubPageToViewWidget;
 export '/nivel_tendero/politica_priv_of_tendero_help/politica_priv_of_tendero_help_widget.dart'
     show PoliticaPrivOfTenderoHelpWidget;
+export '/start/start_widget.dart' show StartWidget;
+export '/nivel_tendero/ayuda/ayuda_widget.dart' show AyudaWidget;
+export '/page_loader/page_loader_widget.dart' show PageLoaderWidget;
+export '/login_msg/login_msg_widget.dart' show LoginMsgWidget;
+export '/nivel_cliente/inicio_cliente/inicio_cliente_widget.dart'
+    show InicioClienteWidget;
+export '/nivel_cliente/tienda_better/tienda_better_widget.dart'
+    show TiendaBetterWidget;
+export '/nivel_cliente/ajustes_cliente/ajustes_cliente_widget.dart'
+    show AjustesClienteWidget;

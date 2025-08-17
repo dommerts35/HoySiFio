@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'lista_clientes_widget.dart' show ListaClientesWidget;
@@ -23,10 +24,18 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
       emptyDTHistorialPagoPorPagar[index] =
           updateFn(emptyDTHistorialPagoPorPagar[index]);
 
-  String? searchQuery;
+  int? tiempo;
+
+  String? tiempoGlobalToString;
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - Read Document] action in listaClientes widget.
+  TenderosRecord? tenderoReadLoad;
+  // Stores action output result for [Custom Action - retornarStringAInt] action in listaClientes widget.
+  int? tiempoResult;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconBack widget.
+  bool? isLogoff;
   // State field(s) for TabBar widget.
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
@@ -34,16 +43,17 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
   int get tabBarPreviousIndex =>
       tabBarController != null ? tabBarController!.previousIndex : 0;
 
-  // Stores action output result for [Backend Call - Read Document] action in iconSettings widget.
-  TenderosRecord? tenderoReadToPass;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconBack widget.
-  bool? isLogoff;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    navBarModel = createModel(context, () => NavBarModel());
+  }
 
   @override
   void dispose() {
     tabBarController?.dispose();
+    navBarModel.dispose();
   }
 }

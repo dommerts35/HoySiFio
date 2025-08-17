@@ -58,6 +58,10 @@ class HistorialSingleVoucherPagoModel
   double? valorMAPReConv;
   // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
   TenderosRecord? tenderoRead;
+  // Stores action output result for [Backend Call - Read Document] action in botonPago widget.
+  ClientesRecord? readClienteToNormalizeTotal;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in botonPago widget.
+  double? totalDeudaCompletaReal;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 

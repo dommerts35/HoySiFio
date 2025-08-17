@@ -1,18 +1,24 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/dialog_btn_widget.dart';
 import '/components/dialog_two_btns_widget.dart';
+import '/components/nav_bar_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'tendero_edit_info_model.dart';
 export 'tendero_edit_info_model.dart';
@@ -38,10 +44,13 @@ class TenderoEditInfoWidget extends StatefulWidget {
   State<TenderoEditInfoWidget> createState() => _TenderoEditInfoWidgetState();
 }
 
-class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
+class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
+    with TickerProviderStateMixin {
   late TenderoEditInfoModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -88,6 +97,35 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
 
     _model.contrasenaEditFocusNode ??= FocusNode();
     _model.contrasenaEditFocusNode!.addListener(() => safeSetState(() {}));
+    animationsMap.addAll({
+      'formOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -111,10 +149,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                child: SpinKitWanderingCubes(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 50.0,
                 ),
               ),
             ),
@@ -133,133 +170,6 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(50.0),
-                child: AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  title: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      FlutterFlowIconButton(
-                        borderRadius: 12.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        icon: Icon(
-                          Icons.arrow_back,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          context.goNamed(
-                            ListaClientesWidget.routeName,
-                            queryParameters: {
-                              'tenderoRef': serializeParam(
-                                widget.tenderoRef,
-                                ParamType.DocumentReference,
-                              ),
-                              'nombreTienda': serializeParam(
-                                widget.nombreTienda,
-                                ParamType.String,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AutoSizeText(
-                            'Perfil de tendero',
-                            minFontSize: 24.0,
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.readexPro(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                        ].divide(SizedBox(height: 4.0)),
-                      ),
-                      Builder(
-                        builder: (context) => FlutterFlowIconButton(
-                          borderRadius: 12.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: Icon(
-                            Icons.logout,
-                            color: FlutterFlowTheme.of(context).error,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            await showDialog(
-                              context: context,
-                              builder: (dialogContext) {
-                                return Dialog(
-                                  elevation: 0,
-                                  insetPadding: EdgeInsets.zero,
-                                  backgroundColor: Colors.transparent,
-                                  alignment: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      FocusScope.of(dialogContext).unfocus();
-                                      FocusManager.instance.primaryFocus
-                                          ?.unfocus();
-                                    },
-                                    child: Container(
-                                      height: 200.0,
-                                      child: DialogTwoBtnsWidget(
-                                        titulo: '¿Desea cerrar sesión?',
-                                        mensaje:
-                                            'Sus datos se guardarán automáticamente.',
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).then((value) =>
-                                safeSetState(() => _model.isLogoff = value));
-
-                            if (_model.isLogoff!) {
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
-
-                              context.goNamedAuth(AuthSigningInWidget.routeName,
-                                  context.mounted);
-                            }
-
-                            safeSetState(() {});
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  actions: [],
-                  centerTitle: false,
-                  toolbarHeight: 50.0,
-                  elevation: 2.0,
-                ),
-              ),
               body: SafeArea(
                 top: true,
                 child: Form(
@@ -269,17 +179,177 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 770.0,
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 2.0,
+                          child: Container(
+                            height: 80.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
                                   ),
+                                )
+                              ],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Opacity(
+                                    opacity: 0.0,
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 12.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () {
+                                        print('iconoBack pressed ...');
+                                      },
+                                    ),
+                                  ),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      AutoSizeText(
+                                        'Perfil de tendero',
+                                        minFontSize: 24.0,
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              font: GoogleFonts.quicksand(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .headlineMedium
+                                                        .fontStyle,
+                                              ),
+                                              fontSize: 22.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineMedium
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                  Builder(
+                                    builder: (context) => FlutterFlowIconButton(
+                                      borderRadius: 12.0,
+                                      buttonSize: 40.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.logout,
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Container(
+                                                  height: 200.0,
+                                                  child: DialogTwoBtnsWidget(
+                                                    titulo:
+                                                        '¿Desea cerrar sesión?',
+                                                    mensaje:
+                                                        'Sus datos se guardarán automáticamente.',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.isLogoff = value));
+
+                                        if (_model.isLogoff!) {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await authManager.signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          if (animationsMap[
+                                                  'formOnActionTriggerAnimation'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'formOnActionTriggerAnimation']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
+                                          context.goNamedAuth(
+                                              AuthSigningInWidget.routeName,
+                                              context.mounted);
+                                        }
+
+                                        safeSetState(() {});
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Container(
                                   decoration: BoxDecoration(),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -1278,6 +1348,288 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                       }),
                                                   ],
                                                 ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Foto de perfil de la tienda',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelLarge
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .asap(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                              ),
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Builder(
+                                                      builder: (context) =>
+                                                          FFButtonWidget(
+                                                        onPressed: () async {
+                                                          final selectedMedia =
+                                                              await selectMediaWithSourceBottomSheet(
+                                                            context: context,
+                                                            storageFolderPath:
+                                                                'tenderos/imgs',
+                                                            maxWidth: 300.00,
+                                                            maxHeight: 100.00,
+                                                            allowPhoto: true,
+                                                            textColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                            pickerFontFamily:
+                                                                'Asap',
+                                                          );
+                                                          if (selectedMedia !=
+                                                                  null &&
+                                                              selectedMedia.every((m) =>
+                                                                  validateFileFormat(
+                                                                      m.storagePath,
+                                                                      context))) {
+                                                            safeSetState(() =>
+                                                                _model.isDataUploading_uploadDataGfs5 =
+                                                                    true);
+                                                            var selectedUploadedFiles =
+                                                                <FFUploadedFile>[];
+
+                                                            var downloadUrls =
+                                                                <String>[];
+                                                            try {
+                                                              selectedUploadedFiles =
+                                                                  selectedMedia
+                                                                      .map((m) =>
+                                                                          FFUploadedFile(
+                                                                            name:
+                                                                                m.storagePath.split('/').last,
+                                                                            bytes:
+                                                                                m.bytes,
+                                                                            height:
+                                                                                m.dimensions?.height,
+                                                                            width:
+                                                                                m.dimensions?.width,
+                                                                            blurHash:
+                                                                                m.blurHash,
+                                                                          ))
+                                                                      .toList();
+
+                                                              downloadUrls =
+                                                                  await uploadSupabaseStorageFiles(
+                                                                bucketName:
+                                                                    'img.vouchers',
+                                                                selectedFiles:
+                                                                    selectedMedia,
+                                                              );
+                                                            } finally {
+                                                              _model.isDataUploading_uploadDataGfs5 =
+                                                                  false;
+                                                            }
+                                                            if (selectedUploadedFiles
+                                                                        .length ==
+                                                                    selectedMedia
+                                                                        .length &&
+                                                                downloadUrls
+                                                                        .length ==
+                                                                    selectedMedia
+                                                                        .length) {
+                                                              safeSetState(() {
+                                                                _model.uploadedLocalFile_uploadDataGfs5 =
+                                                                    selectedUploadedFiles
+                                                                        .first;
+                                                                _model.uploadedFileUrl_uploadDataGfs5 =
+                                                                    downloadUrls
+                                                                        .first;
+                                                              });
+                                                            } else {
+                                                              safeSetState(
+                                                                  () {});
+                                                              return;
+                                                            }
+                                                          }
+
+                                                          if (_model.uploadedFileUrl_uploadDataGfs5 ==
+                                                                  '') {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          200.0,
+                                                                      child:
+                                                                          DialogBtnWidget(
+                                                                        titulo:
+                                                                            '¡Alerta!',
+                                                                        mensaje:
+                                                                            'Hubo un error al subir la imágen, inténtelo de nuevo.',
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
+
+                                                            return;
+                                                          }
+
+                                                          await widget
+                                                              .tenderoRef!
+                                                              .update(
+                                                                  createTenderosRecordData(
+                                                            photoUrl: _model
+                                                                .uploadedFileUrl_uploadDataGfs5,
+                                                          ));
+                                                        },
+                                                        text:
+                                                            'Subir imágen de la tienda',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          height: 40.0,
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      16.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .asap(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleSmall
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    color: Colors
+                                                                        .white,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                          elevation: 0.0,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    if (tenderoEditInfoTenderosRecord
+                                                            .photoUrl !=
+                                                        '')
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      14.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 3.0,
+                                                          ),
+                                                        ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10.0),
+                                                          child: Image.network(
+                                                            tenderoEditInfoTenderosRecord
+                                                                .photoUrl,
+                                                            width: 300.0,
+                                                            height: 150.0,
+                                                            fit: BoxFit.fill,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                  ].divide(
+                                                      SizedBox(height: 10.0)),
+                                                ),
                                               ]
                                                   .divide(
                                                       SizedBox(height: 20.0))
@@ -2257,7 +2609,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                           newValue!);
                                                                   if (newValue!) {
                                                                     if (_model
-                                                                            .betterCheckCCSecValue ==
+                                                                            .betterCheckCCValue ==
                                                                         true) {
                                                                       safeSetState(
                                                                           () {
@@ -2272,7 +2624,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                     } else {
                                                                       safeSetState(
                                                                           () {
-                                                                        _model.betterCheckCAValue =
+                                                                        _model.betterCheckCCValue =
                                                                             true;
                                                                       });
                                                                     }
@@ -2419,12 +2771,17 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                                Divider(
-                                                  thickness: 2.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                ),
+                                                if (tenderoEditInfoTenderosRecord
+                                                            .tenderos
+                                                            .cuentaSecTendero
+                                                            .numCuentaSec !=
+                                                        '')
+                                                  Divider(
+                                                    thickness: 2.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
                                                 if (tenderoEditInfoTenderosRecord
                                                             .tenderos
                                                             .cuentaSecTendero
@@ -2438,10 +2795,11 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                         alignment:
                                                             AlignmentDirectional(
                                                                 0.0, 0.0),
-                                                        child: Text(
+                                                        child: AutoSizeText(
                                                           'Datos bancarios secundarios',
                                                           textAlign:
                                                               TextAlign.center,
+                                                          minFontSize: 4.0,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .titleLarge
@@ -2457,6 +2815,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                                                       .titleLarge
                                                                       .fontStyle,
                                                                 ),
+                                                                fontSize: 20.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight: FlutterFlowTheme.of(
@@ -4491,435 +4850,498 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget> {
                                             ),
                                           ),
                                         ),
+                                        Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 12.0, 16.0, 12.0),
+                                            child: FFButtonWidget(
+                                              onPressed: () async {
+                                                var _shouldSetState = false;
+                                                if ((_model.betterCheckCCValue ==
+                                                        false) &&
+                                                    (_model.betterCheckCAValue ==
+                                                        false)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Container(
+                                                            height: 200.0,
+                                                            child:
+                                                                DialogBtnWidget(
+                                                              titulo:
+                                                                  '¡Alerta!',
+                                                              mensaje:
+                                                                  'Ingrese el tipo de cuenta bancaria.',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                  return;
+                                                } else {
+                                                  if ((_model.betterCheckCCValue ==
+                                                          true) &&
+                                                      (_model.betterCheckCAValue ==
+                                                          true)) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Container(
+                                                              height: 200.0,
+                                                              child:
+                                                                  DialogBtnWidget(
+                                                                titulo:
+                                                                    '¡Alerta!',
+                                                                mensaje:
+                                                                    'Ingrese solo un tipo de cuenta bancaria.',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
+                                                  }
+                                                }
+
+                                                _model.validacionEdit = true;
+                                                if (_model.formKey
+                                                            .currentState ==
+                                                        null ||
+                                                    !_model
+                                                        .formKey.currentState!
+                                                        .validate()) {
+                                                  _model.validacionEdit = false;
+                                                }
+                                                _shouldSetState = true;
+                                                if (_model.validacionEdit ==
+                                                    true) {
+                                                  _model.queryForComparisonNameTienda =
+                                                      await queryTenderosRecordOnce(
+                                                    queryBuilder:
+                                                        (tenderosRecord) =>
+                                                            tenderosRecord
+                                                                .where(
+                                                                  'tenderos.idTendero',
+                                                                  isNotEqualTo:
+                                                                      widget
+                                                                          .tenderoRef,
+                                                                )
+                                                                .where(
+                                                                  'tenderos.nombreTienda',
+                                                                  isEqualTo: _model
+                                                                      .tiendaNameEditTextController
+                                                                      .text,
+                                                                ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  _shouldSetState = true;
+                                                  if (_model
+                                                          .queryForComparisonNameTienda
+                                                          ?.tenderos !=
+                                                      null) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Container(
+                                                              height: 200.0,
+                                                              child:
+                                                                  DialogBtnWidget(
+                                                                titulo:
+                                                                    '¡Alerta!',
+                                                                mensaje:
+                                                                    'El nombre de tienda ingresado ya ha sido registrado por otra tienda.',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
+                                                  } else {
+                                                    await widget.tenderoRef!
+                                                        .update(
+                                                            createTenderosRecordData(
+                                                      tenderos:
+                                                          createDataTypeTenderoStruct(
+                                                        nombreTienda: _model
+                                                            .tiendaNameEditTextController
+                                                            .text,
+                                                        numCuenta: _model
+                                                            .numCuentaEditTextController
+                                                            .text,
+                                                        cuentaDeBancoName: _model
+                                                            .nombreBancoEditTextController
+                                                            .text,
+                                                        tipoDeCuenta: () {
+                                                          if (_model
+                                                                  .betterCheckCAValue ==
+                                                              true) {
+                                                            return 'Cuenta de Ahorros';
+                                                          } else if (_model
+                                                                  .betterCheckCCValue ==
+                                                              true) {
+                                                            return 'Cuenta Corriente';
+                                                          } else {
+                                                            return 'Cuenta sin especificar';
+                                                          }
+                                                        }(),
+                                                        ciTendero: _model
+                                                            .ciEditTextController
+                                                            .text,
+                                                        nombreTendero: _model
+                                                            .tenderoNameEditTextController
+                                                            .text,
+                                                        nombreTitularBanco: _model
+                                                            .nombreTitularBancoEditTextController
+                                                            .text,
+                                                        pin: _model
+                                                            .pinEditTextController
+                                                            .text,
+                                                        clearUnsetFields: false,
+                                                      ),
+                                                      displayName: _model
+                                                          .tiendaNameEditTextController
+                                                          .text,
+                                                      phoneNumber: _model
+                                                          .numTelfEditTextController
+                                                          .text,
+                                                      pin: _model
+                                                          .pinEditTextController
+                                                          .text,
+                                                    ));
+                                                    if (_model
+                                                            .isDeletedCuentaSec !=
+                                                        true) {
+                                                      await widget.tenderoRef!
+                                                          .update(
+                                                              createTenderosRecordData(
+                                                        tenderos:
+                                                            createDataTypeTenderoStruct(
+                                                          cuentaSecTendero:
+                                                              createDataTypeCuentaSecundariaStruct(
+                                                            numCuentaSec: _model
+                                                                .numCuentaEditSecTextController
+                                                                .text,
+                                                            cuentaDeBancoSecName:
+                                                                _model
+                                                                    .nombreBancoEditSecTextController
+                                                                    .text,
+                                                            tipoDeCuentaSec:
+                                                                () {
+                                                              if (_model
+                                                                      .betterCheckCCSecValue ==
+                                                                  true) {
+                                                                return 'Cuenta Corriente';
+                                                              } else if (_model
+                                                                      .betterCheckCASecValue ==
+                                                                  true) {
+                                                                return 'Cuenta de Ahorros';
+                                                              } else {
+                                                                return 'Sin especificar';
+                                                              }
+                                                            }(),
+                                                            nombreTitularBancoSec:
+                                                                _model
+                                                                    .nombreTitularBancoEditSecTextController
+                                                                    .text,
+                                                            clearUnsetFields:
+                                                                false,
+                                                          ),
+                                                          clearUnsetFields:
+                                                              false,
+                                                        ),
+                                                      ));
+                                                    }
+                                                    if (_model
+                                                            .contrasenaEditTextController
+                                                            .text !=
+                                                        widget.pwPassed) {
+                                                      await authManager
+                                                          .updatePassword(
+                                                        newPassword: _model
+                                                            .contrasenaEditTextController
+                                                            .text,
+                                                        context: context,
+                                                      );
+                                                      safeSetState(() {});
+
+                                                      await widget.tenderoRef!
+                                                          .update(
+                                                              createTenderosRecordData(
+                                                        tenderos:
+                                                            createDataTypeTenderoStruct(
+                                                          pw: _model
+                                                              .contrasenaEditTextController
+                                                              .text,
+                                                          clearUnsetFields:
+                                                              false,
+                                                        ),
+                                                      ));
+                                                    }
+                                                    if (widget
+                                                            .tenderoEmailPassed !=
+                                                        _model
+                                                            .mailEditTextController
+                                                            .text) {
+                                                      if (_model
+                                                          .mailEditTextController
+                                                          .text
+                                                          .isEmpty) {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                          SnackBar(
+                                                            content: Text(
+                                                              'E-mail requerido',
+                                                            ),
+                                                          ),
+                                                        );
+                                                        return;
+                                                      }
+
+                                                      await authManager
+                                                          .updateEmail(
+                                                        email: _model
+                                                            .mailEditTextController
+                                                            .text,
+                                                        context: context,
+                                                      );
+                                                      safeSetState(() {});
+
+                                                      await widget.tenderoRef!
+                                                          .update(
+                                                              createTenderosRecordData(
+                                                        tenderos:
+                                                            createDataTypeTenderoStruct(
+                                                          mail: _model
+                                                              .mailEditTextController
+                                                              .text,
+                                                          clearUnsetFields:
+                                                              false,
+                                                        ),
+                                                        email: _model
+                                                            .mailEditTextController
+                                                            .text,
+                                                      ));
+                                                      unawaited(
+                                                        () async {
+                                                          await actions
+                                                              .sendCustomEmailForTenderoEmailChange(
+                                                            _model
+                                                                .mailEditTextController
+                                                                .text,
+                                                            _model
+                                                                .tenderoNameEditTextController
+                                                                .text,
+                                                            'Cambio de dirección de correo electrónico - HoySíFio',
+                                                            _model
+                                                                .tiendaNameEditTextController
+                                                                .text,
+                                                            widget
+                                                                .tenderoEmailPassed!,
+                                                            _model
+                                                                .mailEditTextController
+                                                                .text,
+                                                            dateTimeFormat(
+                                                              "d/M/y h:mm a",
+                                                              getCurrentTimestamp,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
+                                                            ),
+                                                          );
+                                                        }(),
+                                                      );
+                                                    }
+
+                                                    context.goNamedAuth(
+                                                      ListaClientesWidget
+                                                          .routeName,
+                                                      context.mounted,
+                                                      queryParameters: {
+                                                        'tenderoRef':
+                                                            serializeParam(
+                                                          widget.tenderoRef,
+                                                          ParamType
+                                                              .DocumentReference,
+                                                        ),
+                                                        'nombreTienda':
+                                                            serializeParam(
+                                                          widget.nombreTienda,
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  }
+                                                }
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                              },
+                                              text: 'Guardar',
+                                              options: FFButtonOptions(
+                                                width: double.infinity,
+                                                height: 48.0,
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        24.0, 0.0, 24.0, 0.0),
+                                                iconPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                textStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                elevation: 3.0,
+                                                borderSide: BorderSide(
+                                                  color: Colors.transparent,
+                                                  width: 1.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ]
                                           .divide(SizedBox(height: 30.0))
                                           .addToEnd(SizedBox(height: 30.0)),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        elevation: 2.0,
-                        child: Container(
-                          constraints: BoxConstraints(
-                            maxWidth: 770.0,
-                          ),
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 4.0,
-                                color: Color(0x33000000),
-                                offset: Offset(
-                                  0.0,
-                                  2.0,
-                                ),
-                              )
-                            ],
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Builder(
-                                builder: (context) => Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 12.0, 16.0, 12.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      var _shouldSetState = false;
-                                      if ((_model.betterCheckCCValue ==
-                                              false) &&
-                                          (_model.betterCheckCAValue ==
-                                              false)) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (dialogContext) {
-                                            return Dialog(
-                                              elevation: 0,
-                                              insetPadding: EdgeInsets.zero,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              alignment:
-                                                  AlignmentDirectional(0.0, 0.0)
-                                                      .resolve(
-                                                          Directionality.of(
-                                                              context)),
-                                              child: GestureDetector(
-                                                onTap: () {
-                                                  FocusScope.of(dialogContext)
-                                                      .unfocus();
-                                                  FocusManager
-                                                      .instance.primaryFocus
-                                                      ?.unfocus();
-                                                },
-                                                child: Container(
-                                                  height: 200.0,
-                                                  child: DialogBtnWidget(
-                                                    titulo: '¡Alerta!',
-                                                    mensaje:
-                                                        'Ingrese el tipo de cuenta bancaria.',
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        );
-
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
-                                      } else {
-                                        if ((_model.betterCheckCCValue ==
-                                                true) &&
-                                            (_model.betterCheckCAValue ==
-                                                true)) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                elevation: 0,
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(dialogContext)
-                                                        .unfocus();
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                  },
-                                                  child: Container(
-                                                    height: 200.0,
-                                                    child: DialogBtnWidget(
-                                                      titulo: '¡Alerta!',
-                                                      mensaje:
-                                                          'Ingrese solo un tipo de cuenta bancaria.',
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          );
-
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
-                                        }
-                                      }
-
-                                      _model.validacionEdit = true;
-                                      if (_model.formKey.currentState == null ||
-                                          !_model.formKey.currentState!
-                                              .validate()) {
-                                        _model.validacionEdit = false;
-                                      }
-                                      _shouldSetState = true;
-                                      if (_model.validacionEdit == true) {
-                                        _model.queryForComparisonNameTienda =
-                                            await queryTenderosRecordOnce(
-                                          queryBuilder: (tenderosRecord) =>
-                                              tenderosRecord
-                                                  .where(
-                                                    'tenderos.idTendero',
-                                                    isNotEqualTo:
-                                                        widget.tenderoRef,
-                                                  )
-                                                  .where(
-                                                    'tenderos.nombreTienda',
-                                                    isEqualTo: _model
-                                                        .tiendaNameEditTextController
-                                                        .text,
-                                                  ),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        _shouldSetState = true;
-                                        if (_model.queryForComparisonNameTienda
-                                                ?.tenderos !=
-                                            null) {
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                elevation: 0,
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(dialogContext)
-                                                        .unfocus();
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                  },
-                                                  child: Container(
-                                                    height: 200.0,
-                                                    child: DialogBtnWidget(
-                                                      titulo: '¡Alerta!',
-                                                      mensaje:
-                                                          'El nombre de tienda ingresado ya ha sido registrado por otra tienda.',
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          );
-
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                          return;
-                                        } else {
-                                          await widget.tenderoRef!
-                                              .update(createTenderosRecordData(
-                                            tenderos:
-                                                createDataTypeTenderoStruct(
-                                              nombreTienda: _model
-                                                  .tiendaNameEditTextController
-                                                  .text,
-                                              numCuenta: _model
-                                                  .numCuentaEditTextController
-                                                  .text,
-                                              cuentaDeBancoName: _model
-                                                  .nombreBancoEditTextController
-                                                  .text,
-                                              tipoDeCuenta: () {
-                                                if (_model.betterCheckCAValue ==
-                                                    true) {
-                                                  return 'Cuenta de Ahorros';
-                                                } else if (_model
-                                                        .betterCheckCCValue ==
-                                                    true) {
-                                                  return 'Cuenta Corriente';
-                                                } else {
-                                                  return 'Cuenta sin especificar';
-                                                }
-                                              }(),
-                                              ciTendero: _model
-                                                  .ciEditTextController.text,
-                                              nombreTendero: _model
-                                                  .tenderoNameEditTextController
-                                                  .text,
-                                              nombreTitularBanco: _model
-                                                  .nombreTitularBancoEditTextController
-                                                  .text,
-                                              pin: _model
-                                                  .mailEditTextController.text,
-                                              clearUnsetFields: false,
-                                            ),
-                                            displayName: _model
-                                                .tiendaNameEditTextController
-                                                .text,
-                                            phoneNumber: _model
-                                                .numTelfEditTextController.text,
-                                            pin: _model
-                                                .mailEditTextController.text,
-                                          ));
-                                          if (_model.isDeletedCuentaSec !=
-                                              true) {
-                                            await widget.tenderoRef!.update(
-                                                createTenderosRecordData(
-                                              tenderos:
-                                                  createDataTypeTenderoStruct(
-                                                cuentaSecTendero:
-                                                    createDataTypeCuentaSecundariaStruct(
-                                                  numCuentaSec: _model
-                                                      .numCuentaEditSecTextController
-                                                      .text,
-                                                  cuentaDeBancoSecName: _model
-                                                      .nombreBancoEditSecTextController
-                                                      .text,
-                                                  tipoDeCuentaSec: () {
-                                                    if (_model
-                                                            .betterCheckCCSecValue ==
-                                                        true) {
-                                                      return 'Cuenta Corriente';
-                                                    } else if (_model
-                                                            .betterCheckCASecValue ==
-                                                        true) {
-                                                      return 'Cuenta de Ahorros';
-                                                    } else {
-                                                      return 'Sin especificar';
-                                                    }
-                                                  }(),
-                                                  nombreTitularBancoSec: _model
-                                                      .nombreTitularBancoEditSecTextController
-                                                      .text,
-                                                  clearUnsetFields: false,
-                                                ),
-                                                clearUnsetFields: false,
-                                              ),
-                                            ));
-                                          }
-                                          if (_model
-                                                  .contrasenaEditTextController
-                                                  .text !=
-                                              widget.pwPassed) {
-                                            await authManager.updatePassword(
-                                              newPassword: _model
-                                                  .contrasenaEditTextController
-                                                  .text,
-                                              context: context,
-                                            );
-                                            safeSetState(() {});
-
-                                            await widget.tenderoRef!.update(
-                                                createTenderosRecordData(
-                                              tenderos:
-                                                  createDataTypeTenderoStruct(
-                                                pw: _model
-                                                    .contrasenaEditTextController
-                                                    .text,
-                                                clearUnsetFields: false,
-                                              ),
-                                            ));
-                                          }
-                                          if (widget.tenderoEmailPassed !=
-                                              _model.mailEditTextController
-                                                  .text) {
-                                            if (_model.mailEditTextController
-                                                .text.isEmpty) {
-                                              ScaffoldMessenger.of(context)
-                                                  .showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    'E-mail requerido',
-                                                  ),
-                                                ),
-                                              );
-                                              return;
-                                            }
-
-                                            await authManager.updateEmail(
-                                              email: _model
-                                                  .mailEditTextController.text,
-                                              context: context,
-                                            );
-                                            safeSetState(() {});
-
-                                            await widget.tenderoRef!.update(
-                                                createTenderosRecordData(
-                                              tenderos:
-                                                  createDataTypeTenderoStruct(
-                                                mail: _model
-                                                    .mailEditTextController
-                                                    .text,
-                                                clearUnsetFields: false,
-                                              ),
-                                              email: _model
-                                                  .mailEditTextController.text,
-                                            ));
-                                            unawaited(
-                                              () async {
-                                                await actions
-                                                    .sendCustomEmailForTenderoEmailChange(
-                                                  _model.mailEditTextController
-                                                      .text,
-                                                  _model
-                                                      .tenderoNameEditTextController
-                                                      .text,
-                                                  'Cambio de dirección de correo electrónico - HoySíFio',
-                                                  _model
-                                                      .tiendaNameEditTextController
-                                                      .text,
-                                                  widget.tenderoEmailPassed!,
-                                                  _model.mailEditTextController
-                                                      .text,
-                                                  dateTimeFormat(
-                                                    "d/M/y h:mm a",
-                                                    getCurrentTimestamp,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  ),
-                                                );
-                                              }(),
-                                            );
-                                          }
-
-                                          context.goNamedAuth(
-                                            ListaClientesWidget.routeName,
-                                            context.mounted,
-                                            queryParameters: {
-                                              'tenderoRef': serializeParam(
-                                                widget.tenderoRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                              'nombreTienda': serializeParam(
-                                                widget.nombreTienda,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        }
-                                      }
-                                      if (_shouldSetState) safeSetState(() {});
-                                    },
-                                    text: 'Guardar',
-                                    options: FFButtonOptions(
-                                      width: double.infinity,
-                                      height: 48.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            font: GoogleFonts.asap(
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .fontStyle,
-                                            ),
-                                            color: Colors.white,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .fontStyle,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                      Container(
+                        decoration: BoxDecoration(),
+                        child: wrapWithModel(
+                          model: _model.navBarModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: NavBarWidget(
+                            activePage: 'Perfil',
+                            nombreTienda: widget.nombreTienda,
+                            emailTendero: widget.tenderoEmailPassed,
+                            nombreTendero: widget.nombreTienda,
+                            pwPass: widget.pwPassed,
+                            tenderoRef: widget.tenderoRef,
                           ),
                         ),
                       ),
                     ],
                   ),
+                ).animateOnActionTrigger(
+                  animationsMap['formOnActionTriggerAnimation']!,
                 ),
               ),
             ),

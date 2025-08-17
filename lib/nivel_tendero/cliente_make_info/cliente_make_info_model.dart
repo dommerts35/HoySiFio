@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'cliente_make_info_widget.dart' show ClienteMakeInfoWidget;
@@ -127,6 +128,11 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     return null;
   }
 
+  bool isDataUploading_uploadDataPfs1 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataPfs1 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadDataPfs1 = '';
+
   // State field(s) for direccion widget.
   FocusNode? direccionFocusNode;
   TextEditingController? direccionTextController;
@@ -163,6 +169,10 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   ClientesRecord? clienteSinContrasenaQuery;
   // Stores action output result for [Backend Call - Create Document] action in enviarButton widget.
   ClientesRecord? createdCliente;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
 
   @override
   void initState(BuildContext context) {
@@ -173,6 +183,7 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
     phoneNumberTextControllerValidator = _phoneNumberTextControllerValidator;
     emailTextControllerValidator = _emailTextControllerValidator;
     direccionTextControllerValidator = _direccionTextControllerValidator;
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
@@ -194,5 +205,7 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
 
     direccionFocusNode?.dispose();
     direccionTextController?.dispose();
+
+    navBarModel.dispose();
   }
 }

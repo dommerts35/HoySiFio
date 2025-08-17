@@ -45,6 +45,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
     String? pin,
     String? secretPass,
     bool? isSubscribedToEmails,
+    int? customLimit,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _nombre = nombre,
         _telf = telf,
@@ -68,6 +69,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         _pin = pin,
         _secretPass = secretPass,
         _isSubscribedToEmails = isSubscribedToEmails,
+        _customLimit = customLimit,
         super(firestoreUtilData);
 
   // "nombre" field.
@@ -259,6 +261,15 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
 
   bool hasIsSubscribedToEmails() => _isSubscribedToEmails != null;
 
+  // "customLimit" field.
+  int? _customLimit;
+  int get customLimit => _customLimit ?? 0;
+  set customLimit(int? val) => _customLimit = val;
+
+  void incrementCustomLimit(int amount) => customLimit = customLimit + amount;
+
+  bool hasCustomLimit() => _customLimit != null;
+
   static DataTypeClienteStruct fromMap(Map<String, dynamic> data) =>
       DataTypeClienteStruct(
         nombre: data['nombre'] as String?,
@@ -298,6 +309,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         pin: data['pin'] as String?,
         secretPass: data['secret_pass'] as String?,
         isSubscribedToEmails: data['isSubscribedToEmails'] as bool?,
+        customLimit: castToType<int>(data['customLimit']),
       );
 
   static DataTypeClienteStruct? maybeFromMap(dynamic data) => data is Map
@@ -330,6 +342,7 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'pin': _pin,
         'secret_pass': _secretPass,
         'isSubscribedToEmails': _isSubscribedToEmails,
+        'customLimit': _customLimit,
       }.withoutNulls;
 
   @override
@@ -426,6 +439,10 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         'isSubscribedToEmails': serializeParam(
           _isSubscribedToEmails,
           ParamType.bool,
+        ),
+        'customLimit': serializeParam(
+          _customLimit,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -551,6 +568,11 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
           ParamType.bool,
           false,
         ),
+        customLimit: deserializeParam(
+          data['customLimit'],
+          ParamType.int,
+          false,
+        ),
       );
 
   @override
@@ -583,7 +605,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         contrasena == other.contrasena &&
         pin == other.pin &&
         secretPass == other.secretPass &&
-        isSubscribedToEmails == other.isSubscribedToEmails;
+        isSubscribedToEmails == other.isSubscribedToEmails &&
+        customLimit == other.customLimit;
   }
 
   @override
@@ -609,7 +632,8 @@ class DataTypeClienteStruct extends FFFirebaseStruct {
         contrasena,
         pin,
         secretPass,
-        isSubscribedToEmails
+        isSubscribedToEmails,
+        customLimit
       ]);
 }
 
@@ -631,6 +655,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
   String? pin,
   String? secretPass,
   bool? isSubscribedToEmails,
+  int? customLimit,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -654,6 +679,7 @@ DataTypeClienteStruct createDataTypeClienteStruct({
       pin: pin,
       secretPass: secretPass,
       isSubscribedToEmails: isSubscribedToEmails,
+      customLimit: customLimit,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

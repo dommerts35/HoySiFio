@@ -1,6 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dialog_two_btns_choice_reset_pw_model.dart';
@@ -77,7 +77,7 @@ class _DialogTwoBtnsChoiceResetPwWidgetState
               ],
               borderRadius: BorderRadius.circular(24.0),
               border: Border.all(
-                color: FlutterFlowTheme.of(context).primaryBackground,
+                color: FlutterFlowTheme.of(context).primary,
                 width: 1.0,
               ),
             ),
@@ -99,25 +99,24 @@ class _DialogTwoBtnsChoiceResetPwWidgetState
                           'Titulo',
                         ),
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              font: GoogleFonts.quicksand(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontStyle,
-                              ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontStyle,
-                            ),
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
                       ),
                       Padding(
                         padding:
@@ -137,6 +136,7 @@ class _DialogTwoBtnsChoiceResetPwWidgetState
                                           .labelMedium
                                           .fontStyle,
                                     ),
+                                    fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium
@@ -161,9 +161,46 @@ class _DialogTwoBtnsChoiceResetPwWidgetState
                       },
                       text: 'Tendero',
                       options: FFButtonOptions(
-                        height: 30.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
+                        padding: EdgeInsets.all(8.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).success,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.asap(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                        ),
+                        borderRadius: BorderRadius.circular(14.0),
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(1.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 12.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        Navigator.pop(context, false);
+                      },
+                      text: 'Cliente',
+                      options: FFButtonOptions(
+                        padding: EdgeInsets.all(8.0),
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
@@ -183,53 +220,10 @@ class _DialogTwoBtnsChoiceResetPwWidgetState
                                       .titleSmall
                                       .fontStyle,
                                 ),
-                        elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,
                         ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 12.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        Navigator.pop(context, false);
-                      },
-                      text: 'Cliente',
-                      options: FFButtonOptions(
-                        height: 30.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleSmall.override(
-                                  font: GoogleFonts.asap(
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
+                        borderRadius: BorderRadius.circular(14.0),
                       ),
                     ),
                   ),

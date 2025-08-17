@@ -58,12 +58,28 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
   bool? isDeny;
   // Stores action output result for [Backend Call - Read Document] action in iconoDeny widget.
   TenderosRecord? readForTenderoDenyPush;
+  // Stores action output result for [Backend Call - Read Document] action in iconoConfirmarComprobante widget.
+  ClientesRecord? readClienteToNormalize;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? totalDeudaRCompletaReal;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? totalPorPagarNormalized;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? totalPorPagarRE;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconoConfirmarComprobante widget.
   bool? isConfirmar;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormV;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormV2;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? calculoNormalized;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? montoAPagarNormalized;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? montoAPagarReal;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
+  double? resultadoProcesado;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.
   double? tDCNormVF;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in iconoConfirmarComprobante widget.

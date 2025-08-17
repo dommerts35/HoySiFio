@@ -1,8 +1,8 @@
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -72,7 +72,7 @@ class _ClienteConfigWidgetState extends State<ClienteConfigWidget> {
       ),
       child: Form(
         key: _model.formKey,
-        autovalidateMode: AutovalidateMode.always,
+        autovalidateMode: AutovalidateMode.disabled,
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(18.0, 12.0, 18.0, 12.0),
           child: Column(

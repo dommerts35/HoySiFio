@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'tendero_edit_info_widget.dart' show TenderoEditInfoWidget;
@@ -9,9 +10,13 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
 
   bool isDeletedCuentaSec = false;
 
+  String? imgTiendaNew;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // State field(s) for tiendaNameEdit widget.
   FocusNode? tiendaNameEditFocusNode;
   TextEditingController? tiendaNameEditTextController;
@@ -90,6 +95,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
     return null;
   }
 
+  bool isDataUploading_uploadDataGfs5 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataGfs5 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadDataGfs5 = '';
+
   // State field(s) for numCuentaEdit widget.
   FocusNode? numCuentaEditFocusNode;
   TextEditingController? numCuentaEditTextController;
@@ -160,14 +170,7 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   String? Function(BuildContext, String?)? mailEditTextControllerValidator;
   String? _mailEditTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Ingrese un PIN';
-    }
-
-    if (val.length < 4) {
-      return 'Ingrese un PIN de 4 dígitos';
-    }
-    if (val.length > 4) {
-      return 'Ingrese un PIN de 4 dígitos';
+      return 'Ingrese un e-mail';
     }
 
     return null;
@@ -178,6 +181,21 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   TextEditingController? pinEditTextController;
   late bool pinEditVisibility;
   String? Function(BuildContext, String?)? pinEditTextControllerValidator;
+  String? _pinEditTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese un PIN';
+    }
+
+    if (val.length < 4) {
+      return 'Ingrese un PIN de cuatro carácteres';
+    }
+    if (val.length > 4) {
+      return 'Ingrese un PIN de cuatro carácteres';
+    }
+
+    return null;
+  }
+
   // State field(s) for contrasenaEdit widget.
   FocusNode? contrasenaEditFocusNode;
   TextEditingController? contrasenaEditTextController;
@@ -216,8 +234,8 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   bool? validacionEdit;
   // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.
   TenderosRecord? queryForComparisonNameTienda;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
-  bool? isLogoff;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   @override
   void initState(BuildContext context) {
@@ -235,9 +253,11 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
         _nombreTitularBancoEditTextControllerValidator;
     mailEditTextControllerValidator = _mailEditTextControllerValidator;
     pinEditVisibility = false;
+    pinEditTextControllerValidator = _pinEditTextControllerValidator;
     contrasenaEditVisibility = false;
     contrasenaEditTextControllerValidator =
         _contrasenaEditTextControllerValidator;
+    navBarModel = createModel(context, () => NavBarModel());
   }
 
   @override
@@ -280,5 +300,7 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
 
     contrasenaEditFocusNode?.dispose();
     contrasenaEditTextController?.dispose();
+
+    navBarModel.dispose();
   }
 }

@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'serialization_util.dart';
-import '/backend/backend.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -80,11 +81,14 @@ class _PushNotificationsHandlerState extends State<PushNotificationsHandler> {
 
   @override
   Widget build(BuildContext context) => _loading
-      ? Container(
-          color: Color(0xFF286181),
-          child: Image.asset(
-            'assets/images/financial.png',
-            fit: BoxFit.scaleDown,
+      ? Center(
+          child: SizedBox(
+            width: 50.0,
+            height: 50.0,
+            child: SpinKitWanderingCubes(
+              color: FlutterFlowTheme.of(context).primary,
+              size: 50.0,
+            ),
           ),
         )
       : widget.child;
@@ -142,6 +146,7 @@ final parametersBuilderMap =
           'viviendaProp': getParameter<bool>(data, 'viviendaProp'),
           'emailCliente': getParameter<String>(data, 'emailCliente'),
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'customLimit': getParameter<int>(data, 'customLimit'),
         },
       ),
   'clienteInfoEdit': (data) async => ParameterData(
@@ -331,11 +336,6 @@ final parametersBuilderMap =
           'cedula': getParameter<String>(data, 'cedula'),
         },
       ),
-  'resumenFiadoClienTiendaNew': (data) async => ParameterData(
-        allParams: {
-          'cedula': getParameter<String>(data, 'cedula'),
-        },
-      ),
   'historialFullVoucherPago': (data) async => ParameterData(
         allParams: {
           'idCliente': getParameter<DocumentReference>(data, 'idCliente'),
@@ -410,6 +410,7 @@ final parametersBuilderMap =
   'pageTutorialForClienteFT': (data) async => ParameterData(
         allParams: {
           'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
         },
       ),
   'pageTutorialinfoProdFT': (data) async => ParameterData(
@@ -456,6 +457,9 @@ final parametersBuilderMap =
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'pwPassed': getParameter<String>(data, 'pwPassed'),
+          'tenderoEmailPassed':
+              getParameter<String>(data, 'tenderoEmailPassed'),
         },
       ),
   'historialPagosCliente': (data) async => ParameterData(
@@ -523,14 +527,63 @@ final parametersBuilderMap =
           'nombreTendero': getParameter<String>(data, 'nombreTendero'),
         },
       ),
-  'termsOfServiceLogin': ParameterData.none(),
-  'politicaPrivSubPageToView': ParameterData.none(),
+  'termsOfServiceLogin': (data) async => ParameterData(
+        allParams: {
+          'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCLiente': getParameter<String>(data, 'nombreCLiente'),
+        },
+      ),
+  'politicaPrivSubPageToView': (data) async => ParameterData(
+        allParams: {
+          'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+        },
+      ),
   'politicaPrivOfTenderoHelp': (data) async => ParameterData(
         allParams: {
           'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
           'nombreTienda': getParameter<String>(data, 'nombreTienda'),
           'tenderoEmail': getParameter<String>(data, 'tenderoEmail'),
           'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'start': ParameterData.none(),
+  'ayuda': (data) async => ParameterData(
+        allParams: {
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'emailTendero': getParameter<String>(data, 'emailTendero'),
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'nombreTendero': getParameter<String>(data, 'nombreTendero'),
+        },
+      ),
+  'pageLoader': ParameterData.none(),
+  'loginMsg': (data) async => ParameterData(
+        allParams: {
+          'nombreIfTendero': getParameter<String>(data, 'nombreIfTendero'),
+          'nombreIfCliente': getParameter<String>(data, 'nombreIfCliente'),
+          'tenderoRef': getParameter<DocumentReference>(data, 'tenderoRef'),
+          'clienteRef': getParameter<DocumentReference>(data, 'clienteRef'),
+          'nombreTienda': getParameter<String>(data, 'nombreTienda'),
+          'emailTendero': getParameter<String>(data, 'emailTendero'),
+          'cedulaCliente': getParameter<String>(data, 'cedulaCliente'),
+        },
+      ),
+  'inicioCliente': (data) async => ParameterData(
+        allParams: {
+          'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+        },
+      ),
+  'tiendaBetter': (data) async => ParameterData(
+        allParams: {
+          'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+        },
+      ),
+  'ajustesCliente': (data) async => ParameterData(
+        allParams: {
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+          'cedula': getParameter<String>(data, 'cedula'),
         },
       ),
 };

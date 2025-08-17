@@ -2,9 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
 import '/components/dialog_two_btns_widget.dart';
-import '/components_nivel_tendero/info_comp/info_comp_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
@@ -14,9 +13,12 @@ import '/index.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cliente_info_edit_model.dart';
@@ -76,10 +78,13 @@ class ClienteInfoEditWidget extends StatefulWidget {
   State<ClienteInfoEditWidget> createState() => _ClienteInfoEditWidgetState();
 }
 
-class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
+class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
+    with TickerProviderStateMixin {
   late ClienteInfoEditModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -196,10 +201,18 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
       _model.totalDeudaCompleta =
           _model.tempSumHistorial + _model.tempSumProductos;
       safeSetState(() {});
+      _model.totalDeudaCompletaFR = await actions.normalizarValorNumerico(
+        formatNumber(
+          _model.totalDeudaCompleta,
+          formatType: FormatType.custom,
+          format: '#0.00',
+          locale: '',
+        ),
+      );
 
       await widget.idCliente!.update(createClientesRecordData(
         cliente: createDataTypeClienteStruct(
-          totalDeudaCompleta: _model.totalDeudaCompleta,
+          totalDeudaCompleta: _model.totalDeudaCompletaFR,
           clearUnsetFields: false,
         ),
       ));
@@ -221,6 +234,139 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
 
     _model.valorTFTextController ??= TextEditingController();
     _model.valorTFFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'formOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
+      'formOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: Offset(0.0, -17.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(-10.0, 0.0),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 400.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation3': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation4': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 2000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 800.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -249,10 +395,9 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                child: SpinKitWanderingCubes(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 50.0,
                 ),
               ),
             ),
@@ -271,208 +416,6 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(75.0),
-                child: AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  title: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 8.0),
-                          child: FlutterFlowIconButton(
-                            borderRadius: 12.0,
-                            borderWidth: 1.0,
-                            buttonSize: 40.0,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            icon: Icon(
-                              Icons.arrow_back,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              await widget.idCliente!
-                                  .update(createClientesRecordData(
-                                cliente: createDataTypeClienteStruct(
-                                  fieldValues: {
-                                    'producto': FieldValue.delete(),
-                                  },
-                                  clearUnsetFields: false,
-                                ),
-                              ));
-
-                              context.goNamed(
-                                ListaClientesWidget.routeName,
-                                queryParameters: {
-                                  'tenderoRef': serializeParam(
-                                    widget.tenderoRef,
-                                    ParamType.DocumentReference,
-                                  ),
-                                }.withoutNulls,
-                              );
-                            },
-                          ),
-                        ),
-                        Container(
-                          width: 235.0,
-                          decoration: BoxDecoration(),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: AutoSizeText(
-                                  'Información del cliente',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        font: GoogleFonts.quicksand(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .headlineMedium
-                                                  .fontStyle,
-                                        ),
-                                        fontSize: 20.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Flexible(
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 3.0, 0.0),
-                                        child: AutoSizeText(
-                                          '${widget.nombre} ${valueOrDefault<String>(
-                                            widget.apellido,
-                                            '-',
-                                          )}',
-                                          maxLines: 1,
-                                          minFontSize: 6.0,
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium
-                                              .override(
-                                                font: GoogleFonts.asap(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium
-                                                          .fontStyle,
-                                                ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) => FlutterFlowIconButton(
-                            borderRadius: 12.0,
-                            buttonSize: 40.0,
-                            icon: Icon(
-                              Icons.logout,
-                              color: Color(0xFFE75353),
-                              size: 24.0,
-                            ),
-                            onPressed: () async {
-                              var _shouldSetState = false;
-                              await showDialog(
-                                context: context,
-                                builder: (dialogContext) {
-                                  return Dialog(
-                                    elevation: 0,
-                                    insetPadding: EdgeInsets.zero,
-                                    backgroundColor: Colors.transparent,
-                                    alignment: AlignmentDirectional(0.0, 0.0)
-                                        .resolve(Directionality.of(context)),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        FocusScope.of(dialogContext).unfocus();
-                                        FocusManager.instance.primaryFocus
-                                            ?.unfocus();
-                                      },
-                                      child: Container(
-                                        height: 300.0,
-                                        child: DialogTwoBtnsWidget(
-                                          titulo: '¿Desea cerrar sesión?',
-                                          mensaje:
-                                              'Sus datos se guardarán automáticamente.',
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) =>
-                                  safeSetState(() => _model.isLogoff = value));
-
-                              _shouldSetState = true;
-                              if (_model.isLogoff!) {
-                                GoRouter.of(context).prepareAuthEvent();
-                                await authManager.signOut();
-                                GoRouter.of(context).clearRedirectLocation();
-
-                                context.goNamedAuth(
-                                    AuthSigningInWidget.routeName,
-                                    context.mounted);
-                              } else {
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-
-                              if (_shouldSetState) safeSetState(() {});
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  actions: [],
-                  centerTitle: false,
-                  toolbarHeight: 75.0,
-                  elevation: 2.0,
-                ),
-              ),
               body: SafeArea(
                 top: true,
                 child: Form(
@@ -482,6 +425,221 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                        child: Material(
+                          color: Colors.transparent,
+                          elevation: 2.0,
+                          child: Container(
+                            height: 80.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 4.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(
+                                    0.0,
+                                    2.0,
+                                  ),
+                                )
+                              ],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 8.0, 0.0, 8.0),
+                                    child: FlutterFlowIconButton(
+                                      borderRadius: 12.0,
+                                      borderWidth: 1.0,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      icon: Icon(
+                                        Icons.arrow_back,
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        await widget.idCliente!
+                                            .update(createClientesRecordData(
+                                          cliente: createDataTypeClienteStruct(
+                                            fieldValues: {
+                                              'producto': FieldValue.delete(),
+                                            },
+                                            clearUnsetFields: false,
+                                          ),
+                                        ));
+                                        _model.readTendero =
+                                            await TenderosRecord
+                                                .getDocumentOnce(
+                                                    widget.tenderoRef!);
+
+                                        context.pushNamed(
+                                          ListaClientesWidget.routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              _model.readTendero?.displayName,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              _model.readTendero?.email,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              _model.readTendero?.tenderos
+                                                  .nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+
+                                        safeSetState(() {});
+                                      },
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconButtonOnPageLoadAnimation1']!),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: AutoSizeText(
+                                            'Información del cliente',
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineMedium
+                                                .override(
+                                                  font: GoogleFonts.quicksand(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) => FlutterFlowIconButton(
+                                      borderRadius: 12.0,
+                                      icon: Icon(
+                                        Icons.logout,
+                                        color: Color(0xFFE75353),
+                                        size: 24.0,
+                                      ),
+                                      onPressed: () async {
+                                        var _shouldSetState = false;
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Container(
+                                                  height: 300.0,
+                                                  child: DialogTwoBtnsWidget(
+                                                    titulo:
+                                                        '¿Desea cerrar sesión?',
+                                                    mensaje:
+                                                        'Sus datos se guardarán automáticamente.',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.isLogoff = value));
+
+                                        _shouldSetState = true;
+                                        if (_model.isLogoff!) {
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await authManager.signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          if (animationsMap[
+                                                  'formOnActionTriggerAnimation'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'formOnActionTriggerAnimation']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
+                                          context.goNamedAuth(
+                                              AuthSigningInWidget.routeName,
+                                              context.mounted);
+                                        } else {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(
@@ -491,7 +649,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                 alignment: AlignmentDirectional(0.0, -1.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 5.0),
+                                      0.0, 5.0, 0.0, 5.0),
                                   child: Container(
                                     constraints: BoxConstraints(
                                       maxWidth: 770.0,
@@ -509,74 +667,60 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 0.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: Material(
-                                                color: Colors.transparent,
-                                                elevation: 2.0,
-                                                shape: RoundedRectangleBorder(
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 15.0, 0.0, 0.0),
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 2.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(14.0),
+                                              ),
+                                              child: Container(
+                                                width: double.infinity,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 4.0,
+                                                      color: Color(0x33000000),
+                                                      offset: Offset(
+                                                        0.0,
+                                                        2.0,
+                                                      ),
+                                                    )
+                                                  ],
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           14.0),
-                                                ),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
+                                                  border: Border.all(
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryBackground,
-                                                    boxShadow: [
-                                                      BoxShadow(
-                                                        blurRadius: 4.0,
-                                                        color:
-                                                            Color(0x33000000),
-                                                        offset: Offset(
-                                                          0.0,
-                                                          2.0,
-                                                        ),
-                                                      )
-                                                    ],
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            14.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                    ),
+                                                        .primary,
                                                   ),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Datos ',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .headlineSmall
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .readexPro(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Text(
+                                                          'Datos ',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                font: GoogleFonts
+                                                                    .readexPro(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineSmall
@@ -586,76 +730,58 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                       .headlineSmall
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        'Edición y visualización',
-                                                        maxLines: 1,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
+                                                                letterSpacing:
                                                                     0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            wrapWithModel(
-                                                              model: _model
-                                                                  .infoCompModel,
-                                                              updateCallback: () =>
-                                                                  safeSetState(
-                                                                      () {}),
-                                                              child:
-                                                                  InfoCompWidget(
-                                                                fullName:
-                                                                    widget
-                                                                        .nombre,
-                                                                secondName:
-                                                                    widget
-                                                                        .apellido,
-                                                                phoneNumber:
-                                                                    widget
-                                                                        .telf,
-                                                                ced: widget
-                                                                    .cedula,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
                                                               ),
-                                                            ),
-                                                            Column(
+                                                        ),
+                                                        Text(
+                                                          'Edición y visualización del cliente:',
+                                                          maxLines: 1,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            width: 280.0,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
@@ -663,25 +789,574 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                   MainAxisAlignment
                                                                       .center,
                                                               children: [
-                                                                FlutterFlowIconButton(
+                                                                Container(
+                                                                  width: 280.0,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            3.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        Flexible(
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            '${valueOrDefault<String>(
+                                                                              widget.nombre,
+                                                                              'nombre',
+                                                                            )} ${widget.apellido}',
+                                                                            maxLines:
+                                                                                1,
+                                                                            minFontSize:
+                                                                                4.0,
+                                                                            style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  font: GoogleFonts.asap(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                  ),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  5.0,
+                                                                  16.0,
+                                                                  10.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 65.0,
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        'Cédula: ',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .override(
+                                                                              font: GoogleFonts.asap(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .cedula,
+                                                                      'cedula',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.asap(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              FlutterFlowIconButton(
+                                                                borderRadius:
+                                                                    8.0,
+                                                                borderWidth:
+                                                                    1.0,
+                                                                icon: Icon(
+                                                                  Icons.edit,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  size: 26.0,
+                                                                ),
+                                                                onPressed:
+                                                                    () async {
+                                                                  context
+                                                                      .goNamed(
+                                                                    ClienteEditInfoWidget
+                                                                        .routeName,
+                                                                    queryParameters:
+                                                                        {
+                                                                      'nombre':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .nombre,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'telf':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .telf,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'isFiando':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .isFiando,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'idCliente':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .idCliente,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'apellido':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .apellido,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'cedula':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .cedula,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'direccionDomicilio':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .direccionDomicilio,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'viviendaAlq':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaAlq,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'viviendaProp':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .viviendaProp,
+                                                                        ParamType
+                                                                            .bool,
+                                                                      ),
+                                                                      'emailCliente':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .emailCliente,
+                                                                        ParamType
+                                                                            .String,
+                                                                      ),
+                                                                      'tenderoRef':
+                                                                          serializeParam(
+                                                                        widget
+                                                                            .tenderoRef,
+                                                                        ParamType
+                                                                            .DocumentReference,
+                                                                      ),
+                                                                      'customLimit':
+                                                                          serializeParam(
+                                                                        clienteInfoEditClientesRecord
+                                                                            .cliente
+                                                                            .customLimit,
+                                                                        ParamType
+                                                                            .int,
+                                                                      ),
+                                                                    }.withoutNulls,
+                                                                  );
+                                                                },
+                                                              ).animateOnPageLoad(
+                                                                  animationsMap[
+                                                                      'iconButtonOnPageLoadAnimation2']!),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Container(
+                                                                    width: 65.0,
+                                                                    decoration:
+                                                                        BoxDecoration(),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Text(
+                                                                        'Teléfono: ',
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .override(
+                                                                              font: GoogleFonts.asap(
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Text(
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      widget
+                                                                          .telf,
+                                                                      'telefono',
+                                                                    ),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodySmall
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.asap(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                          ),
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Builder(
+                                                                builder: (context) =>
+                                                                    FlutterFlowIconButton(
                                                                   borderRadius:
-                                                                      8.0,
+                                                                      12.0,
                                                                   borderWidth:
                                                                       1.0,
-                                                                  buttonSize:
-                                                                      40.0,
                                                                   icon: Icon(
-                                                                    Icons.edit,
+                                                                    Icons
+                                                                        .delete,
+                                                                    color: Color(
+                                                                        0xFFE75353),
+                                                                    size: 26.0,
+                                                                  ),
+                                                                  onPressed:
+                                                                      () async {
+                                                                    var _shouldSetState =
+                                                                        false;
+                                                                    await showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Dialog(
+                                                                          elevation:
+                                                                              0,
+                                                                          insetPadding:
+                                                                              EdgeInsets.zero,
+                                                                          backgroundColor:
+                                                                              Colors.transparent,
+                                                                          alignment:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          child:
+                                                                              GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              FocusScope.of(dialogContext).unfocus();
+                                                                              FocusManager.instance.primaryFocus?.unfocus();
+                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              height: 400.0,
+                                                                              child: DialogTwoBtnsWidget(
+                                                                                titulo: '¿Está seguro que desea eliminar este cliente?',
+                                                                                mensaje: 'Esta acción es permanente y no se podrá recuperar los datos del cliente.',
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        safeSetState(() =>
+                                                                            _model.isDeleting =
+                                                                                value));
+
+                                                                    _shouldSetState =
+                                                                        true;
+                                                                    if (_model
+                                                                        .isDeleting!) {
+                                                                      _model.readForClienteDelete =
+                                                                          await ClientesRecord.getDocumentOnce(
+                                                                              widget.idCliente!);
+                                                                      _shouldSetState =
+                                                                          true;
+                                                                      if ((_model.readForClienteDelete?.cliente.historialPorPagarProd != null &&
+                                                                              (_model.readForClienteDelete?.cliente.historialPorPagarProd)!.isNotEmpty) ==
+                                                                          true) {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Dialog(
+                                                                              elevation: 0,
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              child: GestureDetector(
+                                                                                onTap: () {
+                                                                                  FocusScope.of(dialogContext).unfocus();
+                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                },
+                                                                                child: Container(
+                                                                                  height: 200.0,
+                                                                                  child: DialogBtnWidget(
+                                                                                    titulo: '¡Alerta!',
+                                                                                    mensaje: 'El cliente tiene deudas pendientes, por lo tanto, sus datos no podrán ser eliminados.',
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      }
+                                                                      if (_model
+                                                                              .readForClienteDelete!
+                                                                              .cliente
+                                                                              .totalDeudaCompleta >
+                                                                          0.0) {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Dialog(
+                                                                              elevation: 0,
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              child: GestureDetector(
+                                                                                onTap: () {
+                                                                                  FocusScope.of(dialogContext).unfocus();
+                                                                                  FocusManager.instance.primaryFocus?.unfocus();
+                                                                                },
+                                                                                child: Container(
+                                                                                  height: 200.0,
+                                                                                  child: DialogBtnWidget(
+                                                                                    titulo: '¡Este cliente no puede ser eliminado!',
+                                                                                    mensaje: 'El cliente aún tiene deudas pendientes en su tienda.',
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      } else {
+                                                                        await widget
+                                                                            .idCliente!
+                                                                            .delete();
+
+                                                                        context
+                                                                            .pushNamed(
+                                                                          ListaClientesWidget
+                                                                              .routeName,
+                                                                          queryParameters:
+                                                                              {
+                                                                            'tenderoRef':
+                                                                                serializeParam(
+                                                                              widget.tenderoRef,
+                                                                              ParamType.DocumentReference,
+                                                                            ),
+                                                                          }.withoutNulls,
+                                                                        );
+                                                                      }
+                                                                    }
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
+                                                                  },
+                                                                ).animateOnPageLoad(
+                                                                        animationsMap[
+                                                                            'iconButtonOnPageLoadAnimation3']!),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Container(
+                                                            width: 320.0,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
+                                                              children: [
+                                                                Container(
+                                                                  width: 230.0,
+                                                                  height: 20.0,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child: Row(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    children: [
+                                                                      Container(
+                                                                        width:
+                                                                            65.0,
+                                                                        decoration:
+                                                                            BoxDecoration(),
+                                                                        child:
+                                                                            Align(
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Text(
+                                                                            'E-mail: ',
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  font: GoogleFonts.asap(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                                  ),
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      Flexible(
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            widget.emailCliente,
+                                                                            'email',
+                                                                          ),
+                                                                          minFontSize:
+                                                                              4.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodySmall
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).bodySmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).bodySmall.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                FlutterFlowIconButton(
+                                                                  borderRadius:
+                                                                      12.0,
+                                                                  borderWidth:
+                                                                      1.0,
+                                                                  icon: Icon(
+                                                                    Icons.info,
                                                                     color: FlutterFlowTheme.of(
                                                                             context)
-                                                                        .primary,
+                                                                        .tertiary,
                                                                     size: 26.0,
                                                                   ),
                                                                   onPressed:
                                                                       () async {
                                                                     context
-                                                                        .goNamed(
-                                                                      ClienteEditInfoWidget
+                                                                        .pushNamed(
+                                                                      ClienteReadInfoWidget
                                                                           .routeName,
                                                                       queryParameters:
                                                                           {
@@ -762,304 +1437,28 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           ParamType
                                                                               .DocumentReference,
                                                                         ),
+                                                                        'codigoInicioSesion':
+                                                                            serializeParam(
+                                                                          clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .secretPass,
+                                                                          ParamType
+                                                                              .String,
+                                                                        ),
                                                                       }.withoutNulls,
                                                                     );
                                                                   },
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 30.0,
-                                                                  child:
-                                                                      Divider(
-                                                                    height: 2.0,
-                                                                    thickness:
-                                                                        2.0,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.0,
-                                                                          -0.02),
-                                                                  child:
-                                                                      Builder(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            FlutterFlowIconButton(
-                                                                      borderRadius:
-                                                                          12.0,
-                                                                      borderWidth:
-                                                                          1.0,
-                                                                      buttonSize:
-                                                                          40.0,
-                                                                      icon:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .delete,
-                                                                        color: Color(
-                                                                            0xFFE75353),
-                                                                        size:
-                                                                            26.0,
-                                                                      ),
-                                                                      onPressed:
-                                                                          () async {
-                                                                        var _shouldSetState =
-                                                                            false;
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (dialogContext) {
-                                                                            return Dialog(
-                                                                              elevation: 0,
-                                                                              insetPadding: EdgeInsets.zero,
-                                                                              backgroundColor: Colors.transparent,
-                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                              child: GestureDetector(
-                                                                                onTap: () {
-                                                                                  FocusScope.of(dialogContext).unfocus();
-                                                                                  FocusManager.instance.primaryFocus?.unfocus();
-                                                                                },
-                                                                                child: Container(
-                                                                                  height: 400.0,
-                                                                                  child: DialogTwoBtnsWidget(
-                                                                                    titulo: '¿Está seguro que desea eliminar este cliente?',
-                                                                                    mensaje: 'Esta acción es permanente y no se podrá recuperar los datos del cliente.',
-                                                                                  ),
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            safeSetState(() =>
-                                                                                _model.isDeleting = value));
-
-                                                                        _shouldSetState =
-                                                                            true;
-                                                                        if (_model
-                                                                            .isDeleting!) {
-                                                                          _model.readForClienteDelete =
-                                                                              await ClientesRecord.getDocumentOnce(widget.idCliente!);
-                                                                          _shouldSetState =
-                                                                              true;
-                                                                          if ((_model.readForClienteDelete?.cliente.historialPorPagarProd != null && (_model.readForClienteDelete?.cliente.historialPorPagarProd)!.isNotEmpty) ==
-                                                                              true) {
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (dialogContext) {
-                                                                                return Dialog(
-                                                                                  elevation: 0,
-                                                                                  insetPadding: EdgeInsets.zero,
-                                                                                  backgroundColor: Colors.transparent,
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                  child: GestureDetector(
-                                                                                    onTap: () {
-                                                                                      FocusScope.of(dialogContext).unfocus();
-                                                                                      FocusManager.instance.primaryFocus?.unfocus();
-                                                                                    },
-                                                                                    child: Container(
-                                                                                      height: 200.0,
-                                                                                      child: DialogBtnWidget(
-                                                                                        titulo: '¡Alerta!',
-                                                                                        mensaje: 'El cliente tiene deudas pendientes, por lo tanto, sus datos no podrán ser eliminados.',
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                );
-                                                                              },
-                                                                            );
-
-                                                                            if (_shouldSetState)
-                                                                              safeSetState(() {});
-                                                                            return;
-                                                                          }
-                                                                          if (_model.readForClienteDelete!.cliente.totalDeudaCompleta >
-                                                                              0.0) {
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (dialogContext) {
-                                                                                return Dialog(
-                                                                                  elevation: 0,
-                                                                                  insetPadding: EdgeInsets.zero,
-                                                                                  backgroundColor: Colors.transparent,
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                  child: GestureDetector(
-                                                                                    onTap: () {
-                                                                                      FocusScope.of(dialogContext).unfocus();
-                                                                                      FocusManager.instance.primaryFocus?.unfocus();
-                                                                                    },
-                                                                                    child: Container(
-                                                                                      height: 200.0,
-                                                                                      child: DialogBtnWidget(
-                                                                                        titulo: '¡Este cliente no puede ser eliminado!',
-                                                                                        mensaje: 'El cliente aún tiene deudas pendientes',
-                                                                                      ),
-                                                                                    ),
-                                                                                  ),
-                                                                                );
-                                                                              },
-                                                                            );
-                                                                          } else {
-                                                                            await widget.idCliente!.delete();
-                                                                            ScaffoldMessenger.of(context).clearSnackBars();
-                                                                            ScaffoldMessenger.of(context).showSnackBar(
-                                                                              SnackBar(
-                                                                                content: Text(
-                                                                                  'El cliente ha sido eliminado.',
-                                                                                  style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                        font: GoogleFonts.readexPro(
-                                                                                          fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                          fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                                        ),
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        letterSpacing: 0.0,
-                                                                                        fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                        fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
-                                                                                      ),
-                                                                                ),
-                                                                                duration: Duration(milliseconds: 2000),
-                                                                                backgroundColor: FlutterFlowTheme.of(context).secondary,
-                                                                              ),
-                                                                            );
-
-                                                                            context.pushNamed(
-                                                                              ListaClientesWidget.routeName,
-                                                                              queryParameters: {
-                                                                                'tenderoRef': serializeParam(
-                                                                                  widget.tenderoRef,
-                                                                                  ParamType.DocumentReference,
-                                                                                ),
-                                                                              }.withoutNulls,
-                                                                            );
-                                                                          }
-                                                                        }
-                                                                        if (_shouldSetState)
-                                                                          safeSetState(
-                                                                              () {});
-                                                                      },
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  width: 30.0,
-                                                                  child:
-                                                                      Divider(
-                                                                    height: 2.0,
-                                                                    thickness:
-                                                                        2.0,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.68),
-                                                                  child:
-                                                                      FlutterFlowIconButton(
-                                                                    borderRadius:
-                                                                        12.0,
-                                                                    borderWidth:
-                                                                        1.0,
-                                                                    buttonSize:
-                                                                        40.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .info,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .tertiary,
-                                                                      size:
-                                                                          26.0,
-                                                                    ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      context
-                                                                          .pushNamed(
-                                                                        ClienteReadInfoWidget
-                                                                            .routeName,
-                                                                        queryParameters:
-                                                                            {
-                                                                          'nombre':
-                                                                              serializeParam(
-                                                                            widget.nombre,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'telf':
-                                                                              serializeParam(
-                                                                            widget.telf,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'isFiando':
-                                                                              serializeParam(
-                                                                            widget.isFiando,
-                                                                            ParamType.bool,
-                                                                          ),
-                                                                          'idCliente':
-                                                                              serializeParam(
-                                                                            widget.idCliente,
-                                                                            ParamType.DocumentReference,
-                                                                          ),
-                                                                          'apellido':
-                                                                              serializeParam(
-                                                                            widget.apellido,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'cedula':
-                                                                              serializeParam(
-                                                                            widget.cedula,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'direccionDomicilio':
-                                                                              serializeParam(
-                                                                            widget.direccionDomicilio,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'viviendaAlq':
-                                                                              serializeParam(
-                                                                            widget.viviendaAlq,
-                                                                            ParamType.bool,
-                                                                          ),
-                                                                          'viviendaProp':
-                                                                              serializeParam(
-                                                                            widget.viviendaProp,
-                                                                            ParamType.bool,
-                                                                          ),
-                                                                          'emailCliente':
-                                                                              serializeParam(
-                                                                            widget.emailCliente,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                          'tenderoRef':
-                                                                              serializeParam(
-                                                                            widget.tenderoRef,
-                                                                            ParamType.DocumentReference,
-                                                                          ),
-                                                                          'codigoInicioSesion':
-                                                                              serializeParam(
-                                                                            clienteInfoEditClientesRecord.cliente.secretPass,
-                                                                            ParamType.String,
-                                                                          ),
-                                                                        }.withoutNulls,
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                ),
+                                                                ).animateOnPageLoad(
+                                                                    animationsMap[
+                                                                        'iconButtonOnPageLoadAnimation4']!),
                                                               ],
                                                             ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
-                                                    ]
-                                                        .addToStart(SizedBox(
-                                                            height: 5.0))
-                                                        .addToEnd(SizedBox(
-                                                            height: 15.0)),
-                                                  ),
+                                                    ),
+                                                  ].addToStart(
+                                                      SizedBox(height: 5.0)),
                                                 ),
                                               ),
                                             ),
@@ -1163,31 +1562,9 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                         .labelMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  color:
-                                                                      valueOrDefault<
-                                                                          Color>(
-                                                                    () {
-                                                                      if ((widget.viviendaProp ==
-                                                                              true) &&
-                                                                          (_model.totalDeudaCompleta >
-                                                                              20.0)) {
-                                                                        return FlutterFlowTheme.of(context)
-                                                                            .error;
-                                                                      } else if ((widget.viviendaAlq ==
-                                                                              true) &&
-                                                                          (_model.totalDeudaCompleta >
-                                                                              10.0)) {
-                                                                        return FlutterFlowTheme.of(context)
-                                                                            .error;
-                                                                      } else {
-                                                                        return FlutterFlowTheme.of(context)
-                                                                            .secondaryText;
-                                                                      }
-                                                                    }(),
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryText,
-                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -2006,11 +2383,11 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                         height:
                                                                             50.0,
                                                                         child:
-                                                                            CircularProgressIndicator(
-                                                                          valueColor:
-                                                                              AlwaysStoppedAnimation<Color>(
-                                                                            FlutterFlowTheme.of(context).primary,
-                                                                          ),
+                                                                            SpinKitWanderingCubes(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).primary,
+                                                                          size:
+                                                                              50.0,
                                                                         ),
                                                                       ),
                                                                     );
@@ -2032,7 +2409,25 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                           '#0.00',
                                                                       locale:
                                                                           '',
-                                                                    )}/${widget.viviendaProp == true ? '20' : '10'}',
+                                                                    )}/${() {
+                                                                      if ((widget.viviendaProp ==
+                                                                              true) &&
+                                                                          ((textClientesRecord.cliente.customLimit == null) ||
+                                                                              (textClientesRecord.cliente.customLimit <=
+                                                                                  0))) {
+                                                                        return '20';
+                                                                      } else if ((textClientesRecord.cliente.customLimit !=
+                                                                              null) &&
+                                                                          (textClientesRecord.cliente.customLimit >
+                                                                              0)) {
+                                                                        return textClientesRecord
+                                                                            .cliente
+                                                                            .customLimit
+                                                                            .toString();
+                                                                      } else {
+                                                                        return '10';
+                                                                      }
+                                                                    }()}',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
@@ -2702,115 +3097,148 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                   ),
                                                             ),
                                                           ),
-                                                          Expanded(
-                                                            child: Builder(
-                                                              builder:
-                                                                  (context) =>
-                                                                      Padding(
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        16.0,
-                                                                        0.0),
-                                                                child:
-                                                                    FFButtonWidget(
-                                                                  onPressed: () {
-                                                                    if ((clienteInfoEditClientesRecord.cliente.viviendaPropia ==
-                                                                            true) &&
-                                                                        (clienteInfoEditClientesRecord.cliente.totalDeudaCompleta >=
-                                                                            20.0)) {
-                                                                      return true;
-                                                                    } else if ((clienteInfoEditClientesRecord.cliente.viviendaAlq ==
-                                                                            true) &&
-                                                                        (clienteInfoEditClientesRecord.cliente.totalDeudaCompleta >=
-                                                                            10.0)) {
-                                                                      return true;
-                                                                    } else {
-                                                                      return false;
-                                                                    }
-                                                                  }()
-                                                                      ? null
-                                                                      : () async {
-                                                                          var _shouldSetState =
-                                                                              false;
-                                                                          _model.valorConvVTF =
-                                                                              await actions.normalizarValorNumerico(
-                                                                            _model.valorTFTextController.text,
-                                                                          );
-                                                                          _shouldSetState =
-                                                                              true;
-                                                                          _model.valorConvCTF =
-                                                                              await actions.normalizarValorNumerico(
-                                                                            _model.cantidatTfTextController.text,
-                                                                          );
-                                                                          _shouldSetState =
-                                                                              true;
-                                                                          if (((_model.cantidatTfTextController.text != '') && (_model.cantidatTfTextController.text != '0')) &&
-                                                                              ((_model.valorTFTextController.text != '') && (_model.valorTFTextController.text != '0'))) {
-                                                                            if (widget.viviendaProp ==
-                                                                                true) {
-                                                                              if ((_model.totalDeudaCompleta + ((_model.valorConvVTF!) * (_model.valorConvCTF!))) > 20.0) {
-                                                                                await showDialog(
-                                                                                  context: context,
-                                                                                  builder: (dialogContext) {
-                                                                                    return Dialog(
-                                                                                      elevation: 0,
-                                                                                      insetPadding: EdgeInsets.zero,
-                                                                                      backgroundColor: Colors.transparent,
-                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                      child: GestureDetector(
-                                                                                        onTap: () {
-                                                                                          FocusScope.of(dialogContext).unfocus();
-                                                                                          FocusManager.instance.primaryFocus?.unfocus();
-                                                                                        },
-                                                                                        child: Container(
-                                                                                          height: 200.0,
-                                                                                          child: DialogBtnWidget(
-                                                                                            titulo: '¡Alerta!',
-                                                                                            mensaje: 'El cliente ha superado el límite de crédito. No se aumentará más productos.',
-                                                                                          ),
+                                                          Builder(
+                                                            builder:
+                                                                (context) =>
+                                                                    Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed: () {
+                                                                  if ((clienteInfoEditClientesRecord.cliente.viviendaPropia == true) &&
+                                                                      (clienteInfoEditClientesRecord
+                                                                              .cliente.totalDeudaCompleta >=
+                                                                          20.0) &&
+                                                                      ((clienteInfoEditClientesRecord.cliente.customLimit ==
+                                                                              null) ||
+                                                                          (clienteInfoEditClientesRecord.cliente.customLimit ==
+                                                                              0))) {
+                                                                    return true;
+                                                                  } else if ((clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .viviendaAlq ==
+                                                                          true) &&
+                                                                      (clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta >=
+                                                                          10.0) &&
+                                                                      ((clienteInfoEditClientesRecord.cliente.customLimit ==
+                                                                              null) ||
+                                                                          (clienteInfoEditClientesRecord.cliente.customLimit ==
+                                                                              0))) {
+                                                                    return true;
+                                                                  } else if ((clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .customLimit >
+                                                                          0) &&
+                                                                      (clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta >=
+                                                                          clienteInfoEditClientesRecord
+                                                                              .cliente
+                                                                              .customLimit
+                                                                              .toDouble())) {
+                                                                    return true;
+                                                                  } else {
+                                                                    return false;
+                                                                  }
+                                                                }()
+                                                                    ? null
+                                                                    : () async {
+                                                                        var _shouldSetState =
+                                                                            false;
+                                                                        _model.valorConvVTF =
+                                                                            await actions.normalizarValorNumerico(
+                                                                          _model
+                                                                              .valorTFTextController
+                                                                              .text,
+                                                                        );
+                                                                        _shouldSetState =
+                                                                            true;
+                                                                        _model.valorConvCTF =
+                                                                            await actions.normalizarValorNumerico(
+                                                                          _model
+                                                                              .cantidatTfTextController
+                                                                              .text,
+                                                                        );
+                                                                        _shouldSetState =
+                                                                            true;
+                                                                        if (((_model.cantidatTfTextController.text != '') && (_model.cantidatTfTextController.text != '0')) &&
+                                                                            ((_model.valorTFTextController.text != '') &&
+                                                                                (_model.valorTFTextController.text != '0'))) {
+                                                                          if ((widget.viviendaProp == true) &&
+                                                                              (clienteInfoEditClientesRecord.cliente.customLimit == 0)) {
+                                                                            if ((_model.totalDeudaCompleta + ((_model.valorConvVTF!) * (_model.valorConvCTF!))) >
+                                                                                20.0) {
+                                                                              await showDialog(
+                                                                                context: context,
+                                                                                builder: (dialogContext) {
+                                                                                  return Dialog(
+                                                                                    elevation: 0,
+                                                                                    insetPadding: EdgeInsets.zero,
+                                                                                    backgroundColor: Colors.transparent,
+                                                                                    alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                    child: GestureDetector(
+                                                                                      onTap: () {
+                                                                                        FocusScope.of(dialogContext).unfocus();
+                                                                                        FocusManager.instance.primaryFocus?.unfocus();
+                                                                                      },
+                                                                                      child: Container(
+                                                                                        height: 200.0,
+                                                                                        child: DialogBtnWidget(
+                                                                                          titulo: '¡Alerta!',
+                                                                                          mensaje: 'El cliente ha superado el límite de crédito. No se aumentará más productos.',
                                                                                         ),
                                                                                       ),
-                                                                                    );
-                                                                                  },
-                                                                                );
+                                                                                    ),
+                                                                                  );
+                                                                                },
+                                                                              );
 
-                                                                                if (_shouldSetState) safeSetState(() {});
-                                                                                return;
-                                                                              } else {
-                                                                                await widget.idCliente!.update(createClientesRecordData(
-                                                                                  cliente: createDataTypeClienteStruct(
-                                                                                    fieldValues: {
-                                                                                      'producto': FieldValue.arrayUnion([
-                                                                                        getDataTypeProductosFirestoreData(
-                                                                                          createDataTypeProductosStruct(
-                                                                                            nombreProd: _model.prodTFTextController.text,
-                                                                                            valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
-                                                                                            cantidad: _model.valorConvCTF,
-                                                                                            idProd: random_data.randomString(
-                                                                                              6,
-                                                                                              6,
-                                                                                              true,
-                                                                                              true,
-                                                                                              true,
-                                                                                            ),
-                                                                                            clearUnsetFields: false,
-                                                                                          ),
-                                                                                          true,
-                                                                                        )
-                                                                                      ]),
-                                                                                    },
-                                                                                    clearUnsetFields: false,
-                                                                                  ),
-                                                                                ));
-                                                                                safeSetState(() {
-                                                                                  _model.cantidatTfTextController?.clear();
-                                                                                  _model.valorTFTextController?.clear();
-                                                                                  _model.prodTFTextController?.clear();
-                                                                                });
-                                                                              }
+                                                                              if (_shouldSetState)
+                                                                                safeSetState(() {});
+                                                                              return;
                                                                             } else {
+                                                                              await widget.idCliente!.update(createClientesRecordData(
+                                                                                cliente: createDataTypeClienteStruct(
+                                                                                  fieldValues: {
+                                                                                    'producto': FieldValue.arrayUnion([
+                                                                                      getDataTypeProductosFirestoreData(
+                                                                                        createDataTypeProductosStruct(
+                                                                                          nombreProd: _model.prodTFTextController.text,
+                                                                                          valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
+                                                                                          cantidad: _model.valorConvCTF,
+                                                                                          idProd: random_data.randomString(
+                                                                                            6,
+                                                                                            6,
+                                                                                            true,
+                                                                                            true,
+                                                                                            true,
+                                                                                          ),
+                                                                                          clearUnsetFields: false,
+                                                                                        ),
+                                                                                        true,
+                                                                                      )
+                                                                                    ]),
+                                                                                  },
+                                                                                  clearUnsetFields: false,
+                                                                                ),
+                                                                              ));
+                                                                              safeSetState(() {
+                                                                                _model.cantidatTfTextController?.clear();
+                                                                                _model.valorTFTextController?.clear();
+                                                                                _model.prodTFTextController?.clear();
+                                                                              });
+                                                                            }
+                                                                          } else {
+                                                                            if ((widget.viviendaAlq == true) &&
+                                                                                (clienteInfoEditClientesRecord.cliente.customLimit == 0)) {
                                                                               if ((_model.totalDeudaCompleta + ((_model.valorConvVTF!) * (_model.valorConvCTF!))) > 10.0) {
                                                                                 await showDialog(
                                                                                   context: context,
@@ -2871,148 +3299,219 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                   _model.prodTFTextController?.clear();
                                                                                 });
                                                                               }
-                                                                            }
-
-                                                                            _model.queryOnAnadir =
-                                                                                await queryClientesRecordOnce(
-                                                                              queryBuilder: (clientesRecord) => clientesRecord
-                                                                                  .where(
-                                                                                    'cliente.idCliente',
-                                                                                    isEqualTo: widget.idCliente,
-                                                                                  )
-                                                                                  .where(
-                                                                                    'cliente.idTendero',
-                                                                                    isEqualTo: widget.tenderoRef,
-                                                                                  ),
-                                                                              singleRecord: true,
-                                                                            ).then((s) => s.firstOrNull);
-                                                                            _shouldSetState =
-                                                                                true;
-                                                                            _model.tempCount =
-                                                                                0;
-                                                                            _model.tempSumHistorial =
-                                                                                0.0;
-                                                                            _model.tempSumProductos =
-                                                                                0.0;
-                                                                            _model.totalDeudaCompleta =
-                                                                                0.0;
-                                                                            safeSetState(() {});
-                                                                            if ((_model.queryOnAnadir?.cliente.producto != null && (_model.queryOnAnadir?.cliente.producto)!.isNotEmpty) ==
-                                                                                true) {
-                                                                              while (_model.tempCount < _model.queryOnAnadir!.cliente.producto.length) {
-                                                                                _model.tempSumProductos = _model.tempSumProductos + _model.queryOnAnadir!.cliente.producto.elementAtOrNull(_model.tempCount)!.valorProd;
-                                                                                safeSetState(() {});
-                                                                                _model.tempCount = _model.tempCount + 1;
-                                                                                safeSetState(() {});
-                                                                              }
-                                                                            }
-                                                                            _model.tempCount =
-                                                                                0;
-                                                                            safeSetState(() {});
-                                                                            if ((_model.queryOnAnadir?.cliente.historialPorPagarProd != null && (_model.queryOnAnadir?.cliente.historialPorPagarProd)!.isNotEmpty) ==
-                                                                                true) {
-                                                                              while (_model.tempCount < _model.queryOnAnadir!.cliente.historialPorPagarProd.length) {
-                                                                                _model.tempSumHistorial = _model.tempSumHistorial + _model.queryOnAnadir!.cliente.historialPorPagarProd.elementAtOrNull(_model.tempCount)!.totalPorPagar;
-                                                                                safeSetState(() {});
-                                                                                _model.tempCount = _model.tempCount + 1;
-                                                                                safeSetState(() {});
-                                                                              }
-                                                                            }
-                                                                            _model.totalDeudaCompleta =
-                                                                                _model.tempSumHistorial + _model.tempSumProductos;
-                                                                            _model.valorANormalizar =
-                                                                                formatNumber(
-                                                                              _model.totalDeudaCompleta,
-                                                                              formatType: FormatType.custom,
-                                                                              format: '#0.00',
-                                                                              locale: '',
-                                                                            );
-                                                                            safeSetState(() {});
-                                                                            _model.totalDeudaCompletaNorm =
-                                                                                await actions.normalizarValorNumerico(
-                                                                              _model.valorANormalizar!,
-                                                                            );
-                                                                            _shouldSetState =
-                                                                                true;
-                                                                            _model.totalDeudaCompleta =
-                                                                                _model.totalDeudaCompletaNorm!;
-                                                                            safeSetState(() {});
-
-                                                                            await widget.idCliente!.update(createClientesRecordData(
-                                                                              cliente: createDataTypeClienteStruct(
-                                                                                totalDeudaCompleta: _model.totalDeudaCompletaNorm,
-                                                                                clearUnsetFields: false,
-                                                                              ),
-                                                                            ));
-                                                                          } else {
-                                                                            await showDialog(
-                                                                              context: context,
-                                                                              builder: (dialogContext) {
-                                                                                return Dialog(
-                                                                                  elevation: 0,
-                                                                                  insetPadding: EdgeInsets.zero,
-                                                                                  backgroundColor: Colors.transparent,
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                  child: GestureDetector(
-                                                                                    onTap: () {
-                                                                                      FocusScope.of(dialogContext).unfocus();
-                                                                                      FocusManager.instance.primaryFocus?.unfocus();
+                                                                            } else {
+                                                                              if (clienteInfoEditClientesRecord.cliente.customLimit > 0) {
+                                                                                if ((_model.totalDeudaCompleta + ((_model.valorConvVTF!) * (_model.valorConvCTF!))) > clienteInfoEditClientesRecord.cliente.customLimit.toDouble()) {
+                                                                                  await showDialog(
+                                                                                    context: context,
+                                                                                    builder: (dialogContext) {
+                                                                                      return Dialog(
+                                                                                        elevation: 0,
+                                                                                        insetPadding: EdgeInsets.zero,
+                                                                                        backgroundColor: Colors.transparent,
+                                                                                        alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                        child: GestureDetector(
+                                                                                          onTap: () {
+                                                                                            FocusScope.of(dialogContext).unfocus();
+                                                                                            FocusManager.instance.primaryFocus?.unfocus();
+                                                                                          },
+                                                                                          child: Container(
+                                                                                            height: 200.0,
+                                                                                            child: DialogBtnWidget(
+                                                                                              titulo: '¡Alerta!',
+                                                                                              mensaje: 'El cliente ha superado el límite de crédito. No se aumentará más productos.',
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                      );
                                                                                     },
-                                                                                    child: Container(
-                                                                                      height: 300.0,
-                                                                                      child: DialogBtnWidget(
-                                                                                        titulo: '¡Alerta!',
-                                                                                        mensaje: 'Ingrese una cantidad y valor unitario válidas.',
-                                                                                      ),
+                                                                                  );
+
+                                                                                  if (_shouldSetState) safeSetState(() {});
+                                                                                  return;
+                                                                                } else {
+                                                                                  await widget.idCliente!.update(createClientesRecordData(
+                                                                                    cliente: createDataTypeClienteStruct(
+                                                                                      fieldValues: {
+                                                                                        'producto': FieldValue.arrayUnion([
+                                                                                          getDataTypeProductosFirestoreData(
+                                                                                            createDataTypeProductosStruct(
+                                                                                              nombreProd: _model.prodTFTextController.text,
+                                                                                              valorProd: (_model.valorConvVTF!) * (_model.valorConvCTF!),
+                                                                                              cantidad: _model.valorConvCTF,
+                                                                                              idProd: random_data.randomString(
+                                                                                                6,
+                                                                                                6,
+                                                                                                true,
+                                                                                                true,
+                                                                                                true,
+                                                                                              ),
+                                                                                              clearUnsetFields: false,
+                                                                                            ),
+                                                                                            true,
+                                                                                          )
+                                                                                        ]),
+                                                                                      },
+                                                                                      clearUnsetFields: false,
+                                                                                    ),
+                                                                                  ));
+                                                                                  safeSetState(() {
+                                                                                    _model.cantidatTfTextController?.clear();
+                                                                                    _model.valorTFTextController?.clear();
+                                                                                    _model.prodTFTextController?.clear();
+                                                                                  });
+                                                                                }
+                                                                              } else {
+                                                                                if (_shouldSetState) safeSetState(() {});
+                                                                                return;
+                                                                              }
+                                                                            }
+                                                                          }
+
+                                                                          _model.queryOnAnadir =
+                                                                              await queryClientesRecordOnce(
+                                                                            queryBuilder: (clientesRecord) => clientesRecord
+                                                                                .where(
+                                                                                  'cliente.idCliente',
+                                                                                  isEqualTo: widget.idCliente,
+                                                                                )
+                                                                                .where(
+                                                                                  'cliente.idTendero',
+                                                                                  isEqualTo: widget.tenderoRef,
+                                                                                ),
+                                                                            singleRecord:
+                                                                                true,
+                                                                          ).then((s) => s.firstOrNull);
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          _model.tempCount =
+                                                                              0;
+                                                                          _model.tempSumHistorial =
+                                                                              0.0;
+                                                                          _model.tempSumProductos =
+                                                                              0.0;
+                                                                          _model.totalDeudaCompleta =
+                                                                              0.0;
+                                                                          safeSetState(
+                                                                              () {});
+                                                                          if ((_model.queryOnAnadir?.cliente.producto != null && (_model.queryOnAnadir?.cliente.producto)!.isNotEmpty) ==
+                                                                              true) {
+                                                                            while (_model.tempCount <
+                                                                                _model.queryOnAnadir!.cliente.producto.length) {
+                                                                              _model.tempSumProductos = _model.tempSumProductos + _model.queryOnAnadir!.cliente.producto.elementAtOrNull(_model.tempCount)!.valorProd;
+                                                                              safeSetState(() {});
+                                                                              _model.tempCount = _model.tempCount + 1;
+                                                                              safeSetState(() {});
+                                                                            }
+                                                                          }
+                                                                          _model.tempCount =
+                                                                              0;
+                                                                          safeSetState(
+                                                                              () {});
+                                                                          if ((_model.queryOnAnadir?.cliente.historialPorPagarProd != null && (_model.queryOnAnadir?.cliente.historialPorPagarProd)!.isNotEmpty) ==
+                                                                              true) {
+                                                                            while (_model.tempCount <
+                                                                                _model.queryOnAnadir!.cliente.historialPorPagarProd.length) {
+                                                                              _model.tempSumHistorial = _model.tempSumHistorial + _model.queryOnAnadir!.cliente.historialPorPagarProd.elementAtOrNull(_model.tempCount)!.totalPorPagar;
+                                                                              safeSetState(() {});
+                                                                              _model.tempCount = _model.tempCount + 1;
+                                                                              safeSetState(() {});
+                                                                            }
+                                                                          }
+                                                                          _model.totalDeudaCompleta =
+                                                                              _model.tempSumHistorial + _model.tempSumProductos;
+                                                                          _model.valorANormalizar =
+                                                                              formatNumber(
+                                                                            _model.totalDeudaCompleta,
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            format:
+                                                                                '#0.00',
+                                                                            locale:
+                                                                                '',
+                                                                          );
+                                                                          safeSetState(
+                                                                              () {});
+                                                                          _model.totalDeudaCompletaNorm =
+                                                                              await actions.normalizarValorNumerico(
+                                                                            _model.valorANormalizar!,
+                                                                          );
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          _model.totalDeudaCompleta =
+                                                                              _model.totalDeudaCompletaNorm!;
+                                                                          safeSetState(
+                                                                              () {});
+
+                                                                          await widget
+                                                                              .idCliente!
+                                                                              .update(createClientesRecordData(
+                                                                            cliente:
+                                                                                createDataTypeClienteStruct(
+                                                                              totalDeudaCompleta: _model.totalDeudaCompletaNorm,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                          ));
+                                                                        } else {
+                                                                          await showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (dialogContext) {
+                                                                              return Dialog(
+                                                                                elevation: 0,
+                                                                                insetPadding: EdgeInsets.zero,
+                                                                                backgroundColor: Colors.transparent,
+                                                                                alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                child: GestureDetector(
+                                                                                  onTap: () {
+                                                                                    FocusScope.of(dialogContext).unfocus();
+                                                                                    FocusManager.instance.primaryFocus?.unfocus();
+                                                                                  },
+                                                                                  child: Container(
+                                                                                    height: 300.0,
+                                                                                    child: DialogBtnWidget(
+                                                                                      titulo: '¡Alerta!',
+                                                                                      mensaje: 'Ingrese una cantidad y valor unitario válidas.',
                                                                                     ),
                                                                                   ),
-                                                                                );
-                                                                              },
-                                                                            );
-
-                                                                            if (_shouldSetState)
-                                                                              safeSetState(() {});
-                                                                            return;
-                                                                          }
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          );
 
                                                                           if (_shouldSetState)
                                                                             safeSetState(() {});
-                                                                        },
-                                                                  text:
-                                                                      'Añadir Producto',
-                                                                  options:
-                                                                      FFButtonOptions(
-                                                                    width: 1.0,
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    iconPadding:
-                                                                        EdgeInsetsDirectional.fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .success,
-                                                                    textStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodySmall
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.asap(
-                                                                            fontWeight:
-                                                                                FlutterFlowTheme.of(context).bodySmall.fontWeight,
-                                                                            fontStyle:
-                                                                                FlutterFlowTheme.of(context).bodySmall.fontStyle,
-                                                                          ),
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                          letterSpacing:
-                                                                              0.0,
+                                                                          return;
+                                                                        }
+
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                      },
+                                                                text:
+                                                                    'Añadir Producto',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  padding:
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              8.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .success,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodySmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .asap(
                                                                           fontWeight: FlutterFlowTheme.of(context)
                                                                               .bodySmall
                                                                               .fontWeight,
@@ -3020,18 +3519,33 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                               .bodySmall
                                                                               .fontStyle,
                                                                         ),
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    disabledColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .accent2,
-                                                                    disabledTextColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                  ),
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodySmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  disabledColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent2,
+                                                                  disabledTextColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
                                                                 ),
-                                                              ),
+                                                              ).animateOnPageLoad(
+                                                                      animationsMap[
+                                                                          'buttonOnPageLoadAnimation1']!),
                                                             ),
                                                           ),
                                                         ],
@@ -3198,10 +3712,9 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                   child: SizedBox(
                                                                                     width: 50.0,
                                                                                     height: 50.0,
-                                                                                    child: CircularProgressIndicator(
-                                                                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                                                                        FlutterFlowTheme.of(context).primary,
-                                                                                      ),
+                                                                                    child: SpinKitWanderingCubes(
+                                                                                      color: FlutterFlowTheme.of(context).primary,
+                                                                                      size: 50.0,
                                                                                     ),
                                                                                   ),
                                                                                 );
@@ -3217,7 +3730,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                       child: ClipRRect(
                                                                                         borderRadius: BorderRadius.circular(0.0),
                                                                                         child: Image.asset(
-                                                                                          'assets/images/imagen_2025-06-18_135131020.png',
+                                                                                          'assets/images/imagen_2025-08-07_172622687.png',
                                                                                         ),
                                                                                       ),
                                                                                     );
@@ -3271,12 +3784,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                                         ),
                                                                                                       ),
                                                                                                       Text(
-                                                                                                        formatNumber(
-                                                                                                          vistaMainItem.cantidad,
-                                                                                                          formatType: FormatType.custom,
-                                                                                                          format: '#0.00',
-                                                                                                          locale: '',
-                                                                                                        ),
+                                                                                                        vistaMainItem.cantidad.toString(),
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               font: GoogleFonts.asap(
                                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
@@ -3307,12 +3815,13 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                                                                                           maxChars: 10,
                                                                                                           replacement: '…',
                                                                                                         ),
-                                                                                                        minFontSize: 10.0,
+                                                                                                        minFontSize: 4.0,
                                                                                                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                               font: GoogleFonts.asap(
                                                                                                                 fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                                 fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                                               ),
+                                                                                                              fontSize: 14.0,
                                                                                                               letterSpacing: 0.0,
                                                                                                               fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -3822,7 +4331,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                         ),
-                                      ),
+                                      ).animateOnPageLoad(animationsMap[
+                                          'buttonOnPageLoadAnimation2']!),
                                     ),
                                   ),
                                 ),
@@ -3833,7 +4343,12 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget> {
                       ),
                     ],
                   ),
-                ),
+                )
+                    .animateOnPageLoad(
+                        animationsMap['formOnPageLoadAnimation']!)
+                    .animateOnActionTrigger(
+                      animationsMap['formOnActionTriggerAnimation']!,
+                    ),
               ),
             ),
           ),

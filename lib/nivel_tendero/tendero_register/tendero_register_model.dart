@@ -32,6 +32,8 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
   bool isCuentaDeAhorrosSec = false;
 
+  String? imgTienda;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -118,6 +120,11 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
 
     return null;
   }
+
+  bool isDataUploading_uploadDataZs2 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataZs2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadDataZs2 = '';
 
   // State field(s) for NumCuenta_tendero widget.
   FocusNode? numCuentaTenderoFocusNode;

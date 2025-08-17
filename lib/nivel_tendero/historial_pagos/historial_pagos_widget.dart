@@ -2,13 +2,17 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/dialog_two_btns_widget.dart';
 import '/components_nivel_tendero/empty_cuentas_pagadas/empty_cuentas_pagadas_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'historial_pagos_model.dart';
 export 'historial_pagos_model.dart';
 
@@ -47,15 +51,81 @@ class HistorialPagosWidget extends StatefulWidget {
   State<HistorialPagosWidget> createState() => _HistorialPagosWidgetState();
 }
 
-class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
+class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
+    with TickerProviderStateMixin {
   late HistorialPagosModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => HistorialPagosModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: Offset(0.0, -17.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(-10.0, 0.0),
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -79,8 +149,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          body: SafeArea(
-            top: true,
+          body: Container(
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -88,6 +158,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                   color: Colors.transparent,
                   elevation: 2.0,
                   child: Container(
+                    height: 80.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       boxShadow: [
@@ -101,17 +172,16 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                         )
                       ],
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 8.0, 12.0, 8.0),
-                          child: FlutterFlowIconButton(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlutterFlowIconButton(
                             borderRadius: 12.0,
                             borderWidth: 1.0,
-                            buttonSize: 40.0,
                             fillColor: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             icon: Icon(
@@ -120,6 +190,15 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                               size: 24.0,
                             ),
                             onPressed: () async {
+                              if (animationsMap[
+                                      'containerOnActionTriggerAnimation'] !=
+                                  null) {
+                                await animationsMap[
+                                        'containerOnActionTriggerAnimation']!
+                                    .controller
+                                    .forward(from: 0.0);
+                              }
+
                               context.pushNamed(
                                 ClienteInfoEditWidget.routeName,
                                 queryParameters: {
@@ -170,50 +249,43 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                 }.withoutNulls,
                               );
                             },
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(0.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 5.0, 5.0, 5.0),
+                          ).animateOnPageLoad(
+                              animationsMap['iconButtonOnPageLoadAnimation']!),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
                             child: Text(
                               'Cuentas pagadas',
                               maxLines: 2,
                               style: FlutterFlowTheme.of(context)
-                                  .headlineSmall
+                                  .headlineMedium
                                   .override(
-                                    font: GoogleFonts.readexPro(
+                                    font: GoogleFonts.quicksand(
                                       fontWeight: FlutterFlowTheme.of(context)
-                                          .headlineSmall
+                                          .headlineMedium
                                           .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineSmall
+                                          .headlineMedium
                                           .fontStyle,
                                     ),
+                                    fontSize: 22.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
+                                        .headlineMedium
                                         .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
+                                        .headlineMedium
                                         .fontStyle,
                                   ),
                             ),
                           ),
-                        ),
-                        Builder(
-                          builder: (context) => Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 12.0, 0.0),
-                            child: FlutterFlowIconButton(
+                          Builder(
+                            builder: (context) => FlutterFlowIconButton(
                               borderRadius: 12.0,
                               borderWidth: 1.0,
-                              buttonSize: 40.0,
                               fillColor: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               icon: Icon(
@@ -259,9 +331,26 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                   await authManager.signOut();
                                   GoRouter.of(context).clearRedirectLocation();
 
+                                  if (animationsMap[
+                                          'containerOnActionTriggerAnimation'] !=
+                                      null) {
+                                    await animationsMap[
+                                            'containerOnActionTriggerAnimation']!
+                                        .controller
+                                        .forward(from: 0.0);
+                                  }
+
                                   context.goNamedAuth(
-                                      AuthSigningInWidget.routeName,
-                                      context.mounted);
+                                    AuthSigningInWidget.routeName,
+                                    context.mounted,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 1000),
+                                      ),
+                                    },
+                                  );
                                 } else {
                                   if (_shouldSetState) safeSetState(() {});
                                   return;
@@ -271,8 +360,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                               },
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -296,10 +385,10 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                   child: SizedBox(
                                     width: 50.0,
                                     height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
+                                    child: SpinKitWanderingCubes(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 50.0,
                                     ),
                                   ),
                                 );
@@ -387,22 +476,29 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 15.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Cantidad',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                Container(
+                                                  width: 340.0,
+                                                  height: 36.0,
+                                                  decoration: BoxDecoration(),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(1.0, 15.0,
+                                                                1.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .center,
+                                                      children: [
+                                                        Flexible(
+                                                          child: AutoSizeText(
+                                                            'Cantidad',
+                                                            maxLines: 1,
+                                                            minFontSize: 4.0,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .labelMedium
                                                                 .override(
                                                                   font:
@@ -417,6 +513,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .labelMedium
                                                                         .fontStyle,
                                                                   ),
+                                                                  fontSize:
+                                                                      14.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -428,12 +526,15 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        'Producto',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          ),
+                                                        ),
+                                                        Flexible(
+                                                          child: AutoSizeText(
+                                                            'Producto',
+                                                            maxLines: 1,
+                                                            minFontSize: 4.0,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .labelMedium
                                                                 .override(
                                                                   font:
@@ -448,6 +549,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .labelMedium
                                                                         .fontStyle,
                                                                   ),
+                                                                  fontSize:
+                                                                      14.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -459,12 +562,47 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        'Valor Unitario',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          ),
+                                                        ),
+                                                        AutoSizeText(
+                                                          'Valor Unitario',
+                                                          maxLines: 1,
+                                                          minFontSize: 4.0,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                        Flexible(
+                                                          child: AutoSizeText(
+                                                            'Valor',
+                                                            minFontSize: 5.0,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .labelMedium
                                                                 .override(
                                                                   font:
@@ -479,6 +617,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .labelMedium
                                                                         .fontStyle,
                                                                   ),
+                                                                  fontSize:
+                                                                      14.0,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -490,40 +630,11 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Text(
-                                                        'Valor',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                      ),
-                                                    ].divide(
-                                                        SizedBox(width: 18.0)),
+                                                          ),
+                                                        ),
+                                                      ].divide(SizedBox(
+                                                          width: 18.0)),
+                                                    ),
                                                   ),
                                                 ),
                                                 Container(
@@ -605,14 +716,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                             ),
                                                                             minFontSize:
                                                                                 6.0,
-                                                                            style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                  font: GoogleFonts.readexPro(
-                                                                                    fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                  font: GoogleFonts.asap(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                   ),
                                                                                   letterSpacing: 0.0,
-                                                                                  fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                 ),
                                                                           ),
                                                                         ),
@@ -661,14 +772,14 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                               '${listaProdPagadosGroupItem.productos.elementAtOrNull(singleProdIndex)?.nombreProd}',
                                                                               maxLines: 2,
                                                                               minFontSize: 4.0,
-                                                                              style: FlutterFlowTheme.of(context).titleMedium.override(
-                                                                                    font: GoogleFonts.readexPro(
-                                                                                      fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                      fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              style: FlutterFlowTheme.of(context).titleSmall.override(
+                                                                                    font: GoogleFonts.asap(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                     ),
                                                                                     letterSpacing: 0.0,
-                                                                                    fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                    fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                   ),
                                                                             ),
                                                                           ),
@@ -715,15 +826,15 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           minFontSize:
                                                                               6.0,
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .titleMedium
+                                                                              .titleSmall
                                                                               .override(
-                                                                                font: GoogleFonts.readexPro(
-                                                                                  fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                 ),
                                                                                 letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -764,15 +875,15 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                           minFontSize:
                                                                               6.0,
                                                                           style: FlutterFlowTheme.of(context)
-                                                                              .titleMedium
+                                                                              .titleSmall
                                                                               .override(
-                                                                                font: GoogleFonts.readexPro(
-                                                                                  fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                  fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                                 ),
                                                                                 letterSpacing: 0.0,
-                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
-                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleSmall.fontStyle,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -799,75 +910,74 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   children: [
-                                                    Text(
-                                                      'Total precio de productos: \$${formatNumber(
-                                                        listaProdPagadosGroupItem
-                                                            .totalGeneral,
-                                                        formatType:
-                                                            FormatType.custom,
-                                                        format: '#0.00',
-                                                        locale: '',
-                                                      )}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                    if (listaProdPagadosGroupItem
-                                                            .totalPorPagar >
-                                                        0.0)
-                                                      Text(
-                                                        'Total por pagar: \$${formatNumber(
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Text(
+                                                        'Total precio de productos: \$${formatNumber(
                                                           listaProdPagadosGroupItem
-                                                              .totalPorPagar,
+                                                              .totalGeneral,
                                                           formatType:
                                                               FormatType.custom,
                                                           format: '#0.00',
                                                           locale: '',
                                                         )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .asap(
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                              fontSize: 14.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    if (listaProdPagadosGroupItem
+                                                            .totalPorPagar >
+                                                        0.0)
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Text(
+                                                          'Total por pagar: \$${formatNumber(
+                                                            listaProdPagadosGroupItem
+                                                                .totalPorPagar,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#0.00',
+                                                            locale: '',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -877,38 +987,44 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
                                                       ),
                                                     if (listaProdPagadosGroupItem
                                                             .totalPorPagar >
                                                         0.0)
-                                                      Text(
-                                                        'Total abonado: \$${formatNumber(
-                                                          listaProdPagadosGroupItem
-                                                              .totalPagado,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#0.00',
-                                                          locale: '',
-                                                        )}',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Text(
+                                                          'Total abonado: \$${formatNumber(
+                                                            listaProdPagadosGroupItem
+                                                                .totalPagado,
+                                                            formatType:
+                                                                FormatType
+                                                                    .custom,
+                                                            format: '#0.00',
+                                                            locale: '',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
@@ -918,40 +1034,44 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                       .labelMedium
                                                                       .fontStyle,
                                                                 ),
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
                                                       ),
-                                                    AutoSizeText(
-                                                      'Fecha del cobro: ${dateTimeFormat(
-                                                        "d/M/y h:mm a",
-                                                        listaProdPagadosGroupItem
-                                                            .fechaDeCobro,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      )}',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      maxLines: 2,
-                                                      minFontSize: 4.0,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: AutoSizeText(
+                                                        'Fecha del cobro: ${dateTimeFormat(
+                                                          "d/M/y h:mm a",
+                                                          listaProdPagadosGroupItem
+                                                              .fechaDeCobro,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        )}',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 2,
+                                                        minFontSize: 4.0,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .asap(
                                                                 fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -961,40 +1081,46 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                               ),
-                                                    ),
-                                                    AutoSizeText(
-                                                      'Fecha del fío: ${dateTimeFormat(
-                                                        "d/M/y h:mm a",
-                                                        listaProdPagadosGroupItem
-                                                            .fechaDeFio,
-                                                        locale:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .languageCode,
-                                                      )}',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      maxLines: 2,
-                                                      minFontSize: 2.0,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
+                                                              fontSize: 14.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
                                                                       .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .labelMedium
                                                                       .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: AutoSizeText(
+                                                        'Fecha del fío: ${dateTimeFormat(
+                                                          "d/M/y h:mm a",
+                                                          listaProdPagadosGroupItem
+                                                              .fechaDeFio,
+                                                          locale:
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode,
+                                                        )}',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        maxLines: 2,
+                                                        minFontSize: 2.0,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .asap(
                                                                 fontWeight: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -1004,34 +1130,65 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                     .labelMedium
                                                                     .fontStyle,
                                                               ),
+                                                              fontSize: 14.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                            ),
+                                                      ),
                                                     ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: [
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Transferencia:',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .asap(
+                                                    Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceEvenly,
+                                                        children: [
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Transferencia:',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .asap(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelMedium
                                                                             .fontWeight,
@@ -1039,97 +1196,97 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Theme(
-                                                              data: ThemeData(
-                                                                checkboxTheme:
-                                                                    CheckboxThemeData(
-                                                                  visualDensity:
-                                                                      VisualDensity
-                                                                          .compact,
-                                                                  materialTapTargetSize:
-                                                                      MaterialTapTargetSize
-                                                                          .shrinkWrap,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            4.0),
-                                                                  ),
                                                                 ),
-                                                                unselectedWidgetColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
                                                               ),
-                                                              child: Checkbox(
-                                                                value: _model
-                                                                            .checkboxValueMap1[
-                                                                        listaProdPagadosGroupItem] ??=
-                                                                    listaProdPagadosGroupItem
-                                                                        .transferencia,
-                                                                onChanged: true
-                                                                    ? null
-                                                                    : (newValue) async {
-                                                                        safeSetState(() =>
-                                                                            _model.checkboxValueMap1[listaProdPagadosGroupItem] =
-                                                                                newValue!);
-                                                                      },
-                                                                side: (FlutterFlowTheme.of(context)
-                                                                            .alternate !=
-                                                                        null)
-                                                                    ? BorderSide(
-                                                                        width:
-                                                                            2,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                      )
-                                                                    : null,
-                                                                activeColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                checkColor: true
-                                                                    ? null
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
+                                                              Theme(
+                                                                data: ThemeData(
+                                                                  checkboxTheme:
+                                                                      CheckboxThemeData(
+                                                                    visualDensity:
+                                                                        VisualDensity
+                                                                            .compact,
+                                                                    materialTapTargetSize:
+                                                                        MaterialTapTargetSize
+                                                                            .shrinkWrap,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  unselectedWidgetColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                ),
+                                                                child: Checkbox(
+                                                                  value: _model
+                                                                              .checkboxValueMap1[
+                                                                          listaProdPagadosGroupItem] ??=
+                                                                      listaProdPagadosGroupItem
+                                                                          .transferencia,
+                                                                  onChanged: true
+                                                                      ? null
+                                                                      : (newValue) async {
+                                                                          safeSetState(() =>
+                                                                              _model.checkboxValueMap1[listaProdPagadosGroupItem] = newValue!);
+                                                                        },
+                                                                  side: (FlutterFlowTheme.of(context)
+                                                                              .alternate !=
+                                                                          null)
+                                                                      ? BorderSide(
+                                                                          width:
+                                                                              2,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                        )
+                                                                      : null,
+                                                                  activeColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  checkColor: true
+                                                                      ? null
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Efectivo',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .asap(
+                                                            ],
+                                                          ),
+                                                          Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  'Efectivo',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .asap(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        letterSpacing:
+                                                                            0.0,
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .labelMedium
                                                                             .fontWeight,
@@ -1137,78 +1294,67 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                             .labelMedium
                                                                             .fontStyle,
                                                                       ),
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                            Theme(
-                                                              data: ThemeData(
-                                                                checkboxTheme:
-                                                                    CheckboxThemeData(
-                                                                  visualDensity:
-                                                                      VisualDensity
-                                                                          .compact,
-                                                                  materialTapTargetSize:
-                                                                      MaterialTapTargetSize
-                                                                          .shrinkWrap,
-                                                                  shape:
-                                                                      RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            4.0),
-                                                                  ),
                                                                 ),
-                                                                unselectedWidgetColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
                                                               ),
-                                                              child: Checkbox(
-                                                                value: _model
-                                                                            .checkboxValueMap2[
-                                                                        listaProdPagadosGroupItem] ??=
-                                                                    listaProdPagadosGroupItem
-                                                                        .efectivo,
-                                                                onChanged: true
-                                                                    ? null
-                                                                    : (newValue) async {
-                                                                        safeSetState(() =>
-                                                                            _model.checkboxValueMap2[listaProdPagadosGroupItem] =
-                                                                                newValue!);
-                                                                      },
-                                                                side: (FlutterFlowTheme.of(context)
-                                                                            .alternate !=
-                                                                        null)
-                                                                    ? BorderSide(
-                                                                        width:
-                                                                            2,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .alternate,
-                                                                      )
-                                                                    : null,
-                                                                activeColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                checkColor: true
-                                                                    ? null
-                                                                    : FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .info,
+                                                              Theme(
+                                                                data: ThemeData(
+                                                                  checkboxTheme:
+                                                                      CheckboxThemeData(
+                                                                    visualDensity:
+                                                                        VisualDensity
+                                                                            .compact,
+                                                                    materialTapTargetSize:
+                                                                        MaterialTapTargetSize
+                                                                            .shrinkWrap,
+                                                                    shape:
+                                                                        RoundedRectangleBorder(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              4.0),
+                                                                    ),
+                                                                  ),
+                                                                  unselectedWidgetColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .alternate,
+                                                                ),
+                                                                child: Checkbox(
+                                                                  value: _model
+                                                                              .checkboxValueMap2[
+                                                                          listaProdPagadosGroupItem] ??=
+                                                                      listaProdPagadosGroupItem
+                                                                          .efectivo,
+                                                                  onChanged: true
+                                                                      ? null
+                                                                      : (newValue) async {
+                                                                          safeSetState(() =>
+                                                                              _model.checkboxValueMap2[listaProdPagadosGroupItem] = newValue!);
+                                                                        },
+                                                                  side: (FlutterFlowTheme.of(context)
+                                                                              .alternate !=
+                                                                          null)
+                                                                      ? BorderSide(
+                                                                          width:
+                                                                              2,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).alternate,
+                                                                        )
+                                                                      : null,
+                                                                  activeColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  checkColor: true
+                                                                      ? null
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
                                                     ),
                                                     if (listaProdPagadosGroupItem
                                                             .numVoucher >
@@ -1220,19 +1366,36 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                             MainAxisAlignment
                                                                 .spaceEvenly,
                                                         children: [
-                                                          AutoSizeText(
-                                                            'Número de comprobante: ${listaProdPagadosGroupItem.numVoucher.toString()}',
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            maxLines: 2,
-                                                            minFontSize: 4.0,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: AutoSizeText(
+                                                              'Número de comprobante: ${listaProdPagadosGroupItem.numVoucher.toString()}',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              maxLines: 2,
+                                                              minFontSize: 4.0,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .asap(
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    letterSpacing:
+                                                                        0.0,
                                                                     fontWeight: FlutterFlowTheme.of(
                                                                             context)
                                                                         .labelMedium
@@ -1242,17 +1405,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                                         .labelMedium
                                                                         .fontStyle,
                                                                   ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
+                                                            ),
                                                           ),
                                                         ],
                                                       ),
@@ -1295,50 +1448,64 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                                                           width: 1.0,
                                                         ),
                                                       ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              EdgeInsets.all(
-                                                                  4.0),
-                                                          child: Text(
-                                                            'Pagado',
-                                                            textAlign: TextAlign
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
                                                                 .center,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
+                                                        children: [
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(4.0),
+                                                              child: Text(
+                                                                'Pagado',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
                                                                           .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .tertiary,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .tertiary,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .fontStyle,
+                                                                    ),
+                                                              ),
+                                                            ),
                                                           ),
-                                                        ),
+                                                          Lottie.asset(
+                                                            'assets/jsons/coinAnimated.json',
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            fit: BoxFit.contain,
+                                                            animate: true,
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
@@ -1443,7 +1610,11 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget> {
                 ),
               ].divide(SizedBox(height: 5.0)),
             ),
-          ),
+          )
+              .animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!)
+              .animateOnActionTrigger(
+                animationsMap['containerOnActionTriggerAnimation']!,
+              ),
         ),
       ),
     );

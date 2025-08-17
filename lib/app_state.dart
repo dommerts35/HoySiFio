@@ -41,6 +41,9 @@ class FFAppState extends ChangeNotifier {
       _isFirstTimeHistorialCPP = prefs.getBool('ff_isFirstTimeHistorialCPP') ??
           _isFirstTimeHistorialCPP;
     });
+    _safeInit(() {
+      _isFirstTime = prefs.getBool('ff_isFirstTime') ?? _isFirstTime;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -103,6 +106,13 @@ class FFAppState extends ChangeNotifier {
   set isFirstTimeHistorialCPP(bool value) {
     _isFirstTimeHistorialCPP = value;
     prefs.setBool('ff_isFirstTimeHistorialCPP', value);
+  }
+
+  bool _isFirstTime = true;
+  bool get isFirstTime => _isFirstTime;
+  set isFirstTime(bool value) {
+    _isFirstTime = value;
+    prefs.setBool('ff_isFirstTime', value);
   }
 }
 

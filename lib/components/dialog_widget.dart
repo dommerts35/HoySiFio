@@ -1,6 +1,6 @@
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -105,7 +105,7 @@ class _DialogWidgetState extends State<DialogWidget>
               ],
               borderRadius: BorderRadius.circular(24.0),
               border: Border.all(
-                color: FlutterFlowTheme.of(context).primaryBackground,
+                color: FlutterFlowTheme.of(context).primary,
                 width: 1.0,
               ),
             ),
@@ -127,29 +127,28 @@ class _DialogWidgetState extends State<DialogWidget>
                           'Titulo',
                         ),
                         textAlign: TextAlign.start,
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              font: GoogleFonts.quicksand(
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontStyle,
-                              ),
-                              letterSpacing: 0.0,
-                              fontWeight: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontWeight,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontStyle,
-                            ),
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  font: GoogleFonts.readexPro(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineSmall
+                                        .fontStyle,
+                                  ),
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineSmall
+                                      .fontStyle,
+                                ),
                       ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 12.0, 0.0, 12.0),
                         child: Text(
                           valueOrDefault<String>(
                             widget.mensaje,
@@ -165,6 +164,7 @@ class _DialogWidgetState extends State<DialogWidget>
                                           .labelMedium
                                           .fontStyle,
                                     ),
+                                    fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelMedium

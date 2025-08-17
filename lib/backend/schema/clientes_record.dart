@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 
+
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -25,11 +26,17 @@ class ClientesRecord extends FirestoreRecord {
   List<String> get playerIds => _playerIds ?? const [];
   bool hasPlayerIds() => _playerIds != null;
 
+  // "profile_url" field.
+  String? _profileUrl;
+  String get profileUrl => _profileUrl ?? '';
+  bool hasProfileUrl() => _profileUrl != null;
+
   void _initializeFields() {
     _cliente = snapshotData['cliente'] is DataTypeClienteStruct
         ? snapshotData['cliente']
         : DataTypeClienteStruct.maybeFromMap(snapshotData['cliente']);
     _playerIds = getDataList(snapshotData['player_ids']);
+    _profileUrl = snapshotData['profile_url'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -68,10 +75,12 @@ class ClientesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createClientesRecordData({
   DataTypeClienteStruct? cliente,
+  String? profileUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'cliente': DataTypeClienteStruct().toMap(),
+      'profile_url': profileUrl,
     }.withoutNulls,
   );
 
@@ -88,12 +97,13 @@ class ClientesRecordDocumentEquality implements Equality<ClientesRecord> {
   bool equals(ClientesRecord? e1, ClientesRecord? e2) {
     const listEquality = ListEquality();
     return e1?.cliente == e2?.cliente &&
-        listEquality.equals(e1?.playerIds, e2?.playerIds);
+        listEquality.equals(e1?.playerIds, e2?.playerIds) &&
+        e1?.profileUrl == e2?.profileUrl;
   }
 
   @override
   int hash(ClientesRecord? e) =>
-      const ListEquality().hash([e?.cliente, e?.playerIds]);
+      const ListEquality().hash([e?.cliente, e?.playerIds, e?.profileUrl]);
 
   @override
   bool isValidKey(Object? o) => o is ClientesRecord;

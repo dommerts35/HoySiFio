@@ -13,6 +13,10 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
 
   String? correoNew;
 
+  bool? isCustomLimit;
+
+  int? limitStringToInt;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -120,8 +124,18 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
     return null;
   }
 
+  bool isDataUploading_uploadDataPfse2 = false;
+  FFUploadedFile uploadedLocalFile_uploadDataPfse2 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl_uploadDataPfse2 = '';
+
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // State field(s) for customLimitEdit widget.
+  FocusNode? customLimitEditFocusNode;
+  TextEditingController? customLimitEditTextController;
+  String? Function(BuildContext, String?)?
+      customLimitEditTextControllerValidator;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
   // Stores action output result for [Backend Call - Read Document] action in enviarButton widget.
@@ -159,5 +173,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
 
     emailEditFocusNode?.dispose();
     emailEditTextController?.dispose();
+
+    customLimitEditFocusNode?.dispose();
+    customLimitEditTextController?.dispose();
   }
 }

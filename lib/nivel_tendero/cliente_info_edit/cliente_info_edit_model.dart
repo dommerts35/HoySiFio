@@ -1,5 +1,4 @@
 import '/backend/backend.dart';
-import '/components_nivel_tendero/info_comp/info_comp_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/flutter_flow/request_manager.dart';
@@ -39,8 +38,12 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   final formKey = GlobalKey<FormState>();
   // Stores action output result for [Firestore Query - Query a collection] action in clienteInfoEdit widget.
   ClientesRecord? queryOnLoad;
-  // Model for infoComp component.
-  late InfoCompModel infoCompModel;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in clienteInfoEdit widget.
+  double? totalDeudaCompletaFR;
+  // Stores action output result for [Backend Call - Read Document] action in iconoBack widget.
+  TenderosRecord? readTendero;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconoBorrar widget.
   bool? isDeleting;
   // Stores action output result for [Backend Call - Read Document] action in iconoBorrar widget.
@@ -77,8 +80,6 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   double? sumaValoresEnDTNorm;
   // Stores action output result for [Backend Call - Read Document] action in Button_guardarProductosFIados widget.
   TenderosRecord? tenderoReadForEmailToClientProds;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
-  bool? isLogoff;
 
   /// Query cache managers for this widget.
 
@@ -98,13 +99,10 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
       _queryUpdateTotalManager.clearRequest(uniqueKey);
 
   @override
-  void initState(BuildContext context) {
-    infoCompModel = createModel(context, () => InfoCompModel());
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    infoCompModel.dispose();
     cantidatTfFocusNode?.dispose();
     cantidatTfTextController?.dispose();
 

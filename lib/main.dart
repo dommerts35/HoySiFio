@@ -10,7 +10,7 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/push_notifications/push_notifications_util.dart';
 import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 
@@ -148,10 +148,36 @@ class _MyAppState extends State<MyApp> {
       ],
       theme: ThemeData(
         brightness: Brightness.light,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(false),
+          interactive: true,
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
+              return Color(4287285247);
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return Color(4287285247);
+            }
+            return Color(4287285247);
+          }),
+        ),
         useMaterial3: false,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: WidgetStateProperty.all(false),
+          interactive: true,
+          thumbColor: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.dragged)) {
+              return Color(4287285247);
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return Color(4287285247);
+            }
+            return Color(4287285247);
+          }),
+        ),
         useMaterial3: false,
       ),
       themeMode: _themeMode,

@@ -2,16 +2,18 @@ import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'cliente_prod_select_pago_model.dart';
 export 'cliente_prod_select_pago_model.dart';
 
@@ -74,16 +76,57 @@ class _ClienteProdSelectPagoWidgetState
     _model.comprobanteNumTFFocusNode ??= FocusNode();
 
     animationsMap.addAll({
-      'checkboxOnActionTriggerAnimation': AnimationInfo(
+      'formOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
           FadeEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 1000.0.ms,
             begin: 1.0,
             end: 0.0,
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(-10.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.1, 1.1),
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 650.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.1, 1.1),
+            end: Offset(0.9, 0.9),
           ),
         ],
       ),
@@ -120,10 +163,9 @@ class _ClienteProdSelectPagoWidgetState
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                child: SpinKitWanderingCubes(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 50.0,
                 ),
               ),
             ),
@@ -142,189 +184,6 @@ class _ClienteProdSelectPagoWidgetState
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(100.0),
-                child: AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  title: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
-                        child: FlutterFlowIconButton(
-                          borderRadius: 12.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: FlutterFlowTheme.of(context).primary,
-                            size: 24.0,
-                          ),
-                          onPressed: () async {
-                            context.goNamed(
-                              HistorialPorCobrarWidget.routeName,
-                              queryParameters: {
-                                'idCliente': serializeParam(
-                                  widget.idCliente,
-                                  ParamType.DocumentReference,
-                                ),
-                                'idTendero': serializeParam(
-                                  widget.tenderoRef,
-                                  ParamType.DocumentReference,
-                                ),
-                                'nombre': serializeParam(
-                                  widget.nombre,
-                                  ParamType.String,
-                                ),
-                                'telf': serializeParam(
-                                  widget.telf,
-                                  ParamType.String,
-                                ),
-                                'isFiando': serializeParam(
-                                  widget.isFiando,
-                                  ParamType.bool,
-                                ),
-                                'apellido': serializeParam(
-                                  widget.apellido,
-                                  ParamType.String,
-                                ),
-                                'cedula': serializeParam(
-                                  widget.cedula,
-                                  ParamType.String,
-                                ),
-                                'direccionDomicilio': serializeParam(
-                                  widget.direccionDomicilio,
-                                  ParamType.String,
-                                ),
-                                'viviendaAlq': serializeParam(
-                                  widget.viviendaAlq,
-                                  ParamType.bool,
-                                ),
-                                'viviendaProp': serializeParam(
-                                  widget.vivendaProp,
-                                  ParamType.bool,
-                                ),
-                                'emailCliente': serializeParam(
-                                  widget.emailCliente,
-                                  ParamType.String,
-                                ),
-                                'totalPassed': serializeParam(
-                                  widget.totalPassed,
-                                  ParamType.String,
-                                ),
-                              }.withoutNulls,
-                            );
-                          },
-                        ),
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Total: \$${formatNumber(
-                              widget.calcForTotalPorPagar,
-                              formatType: FormatType.custom,
-                              format: '#0.00',
-                              locale: '',
-                            )}',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineSmall
-                                .override(
-                                  font: GoogleFonts.readexPro(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .headlineSmall
-                                        .fontStyle,
-                                  ),
-                                  fontSize: 24.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineSmall
-                                      .fontStyle,
-                                ),
-                          ),
-                          Text(
-                            'Total por cobrar: \$${formatNumber(
-                              widget.calcForTotalPorPagar,
-                              formatType: FormatType.custom,
-                              format: '#0.00',
-                              locale: '',
-                            )}',
-                            maxLines: 2,
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  font: GoogleFonts.asap(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                          Text(
-                            'del cliente: ${widget.nombre}',
-                            maxLines: 2,
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  font: GoogleFonts.asap(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .labelMedium
-                                        .fontStyle,
-                                  ),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .fontStyle,
-                                ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        width: 40.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                      ),
-                    ],
-                  ),
-                  actions: [],
-                  centerTitle: false,
-                  toolbarHeight: 200.0,
-                  elevation: 2.0,
-                ),
-              ),
               body: SafeArea(
                 top: true,
                 child: Form(
@@ -334,6 +193,219 @@ class _ClienteProdSelectPagoWidgetState
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Material(
+                        color: Colors.transparent,
+                        elevation: 2.0,
+                        child: Container(
+                          height: 80.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FlutterFlowIconButton(
+                                  borderRadius: 12.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.arrow_back,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    if (animationsMap[
+                                            'formOnActionTriggerAnimation'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'formOnActionTriggerAnimation']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
+
+                                    context.goNamed(
+                                      HistorialPorCobrarWidget.routeName,
+                                      queryParameters: {
+                                        'idCliente': serializeParam(
+                                          widget.idCliente,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'idTendero': serializeParam(
+                                          widget.tenderoRef,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'nombre': serializeParam(
+                                          widget.nombre,
+                                          ParamType.String,
+                                        ),
+                                        'telf': serializeParam(
+                                          widget.telf,
+                                          ParamType.String,
+                                        ),
+                                        'isFiando': serializeParam(
+                                          widget.isFiando,
+                                          ParamType.bool,
+                                        ),
+                                        'apellido': serializeParam(
+                                          widget.apellido,
+                                          ParamType.String,
+                                        ),
+                                        'cedula': serializeParam(
+                                          widget.cedula,
+                                          ParamType.String,
+                                        ),
+                                        'direccionDomicilio': serializeParam(
+                                          widget.direccionDomicilio,
+                                          ParamType.String,
+                                        ),
+                                        'viviendaAlq': serializeParam(
+                                          widget.viviendaAlq,
+                                          ParamType.bool,
+                                        ),
+                                        'viviendaProp': serializeParam(
+                                          widget.vivendaProp,
+                                          ParamType.bool,
+                                        ),
+                                        'emailCliente': serializeParam(
+                                          widget.emailCliente,
+                                          ParamType.String,
+                                        ),
+                                        'totalPassed': serializeParam(
+                                          widget.totalPassed,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                ).animateOnPageLoad(animationsMap[
+                                    'iconButtonOnPageLoadAnimation']!),
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Total: \$${formatNumber(
+                                        widget.calcForTotalPorPagar,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      )}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineSmall
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .headlineSmall
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 24.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmall
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      'Total por cobrar: \$${formatNumber(
+                                        widget.calcForTotalPorPagar,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      )}',
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.asap(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      'del cliente: ${widget.nombre}',
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.asap(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                       Expanded(
                         child: SingleChildScrollView(
                           child: Column(
@@ -549,9 +621,6 @@ class _ClienteProdSelectPagoWidgetState
                                                                       context)
                                                                   .info,
                                                         ),
-                                                      ).animateOnActionTrigger(
-                                                        animationsMap[
-                                                            'checkboxOnActionTriggerAnimation']!,
                                                       ),
                                                     ),
                                                     Container(
@@ -1366,19 +1435,26 @@ class _ClienteProdSelectPagoWidgetState
                                                             );
                                                           }
                                                           unawaited(
-                                                            () async {
-                                                              await actions
-                                                                  .sendCustomEmailForSelectProds(
-                                                                widget
-                                                                    .emailCliente!,
-                                                                widget.nombre!,
-                                                                'Registro de pago de productos selectos en la tienda: ${_model.tenderoReadSP?.displayName}',
-                                                                _model
-                                                                    .tenderoReadSP!
-                                                                    .displayName,
-                                                              );
-                                                            }(),
+                                                            () async {}(),
                                                           );
+                                                          if (animationsMap[
+                                                                  'buttonOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'buttonOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+                                                          if (animationsMap[
+                                                                  'formOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'formOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
 
                                                           context.goNamed(
                                                             ClienteInfoEditWidget
@@ -1456,6 +1532,20 @@ class _ClienteProdSelectPagoWidgetState
                                                                     .String,
                                                               ),
                                                             }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        1000),
+                                                              ),
+                                                            },
                                                           );
                                                         }
                                                       } else {
@@ -1561,6 +1651,9 @@ class _ClienteProdSelectPagoWidgetState
                                                         BorderRadius.circular(
                                                             8.0),
                                                   ),
+                                                ).animateOnActionTrigger(
+                                                  animationsMap[
+                                                      'buttonOnActionTriggerAnimation']!,
                                                 ),
                                               ),
                                             ),
@@ -1578,8 +1671,17 @@ class _ClienteProdSelectPagoWidgetState
                           ),
                         ),
                       ),
-                    ],
+                      Lottie.asset(
+                        'assets/jsons/coinAnimated.json',
+                        width: 200.0,
+                        height: 200.0,
+                        fit: BoxFit.contain,
+                        animate: true,
+                      ),
+                    ].addToEnd(SizedBox(height: 20.0)),
                   ),
+                ).animateOnActionTrigger(
+                  animationsMap['formOnActionTriggerAnimation']!,
                 ),
               ),
             ),

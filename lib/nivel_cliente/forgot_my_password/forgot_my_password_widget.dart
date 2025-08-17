@@ -2,8 +2,8 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
 import '/components/dialog_two_btns_choice_reset_pw_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
@@ -11,9 +11,11 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'forgot_my_password_model.dart';
 export 'forgot_my_password_model.dart';
@@ -28,10 +30,13 @@ class ForgotMyPasswordWidget extends StatefulWidget {
   State<ForgotMyPasswordWidget> createState() => _ForgotMyPasswordWidgetState();
 }
 
-class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
+class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget>
+    with TickerProviderStateMixin {
   late ForgotMyPasswordModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -51,6 +56,55 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
 
     _model.otpForgotTextController ??= TextEditingController();
     _model.otpForgotFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'stackOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: Offset(0.0, -17.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -83,114 +137,60 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(-0.81, -0.91),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 32.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: FlutterFlowTheme.of(context).primary,
-                              borderRadius: 8.0,
-                              buttonSize: 40.0,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 24.0,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-0.81, -0.91),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 32.0, 0.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  if (animationsMap[
+                                          'stackOnActionTriggerAnimation'] !=
+                                      null) {
+                                    await animationsMap[
+                                            'stackOnActionTriggerAnimation']!
+                                        .controller
+                                        .forward(from: 0.0);
+                                  }
+
+                                  context
+                                      .goNamed(AuthSigningInWidget.routeName);
+                                },
                               ),
-                              onPressed: () async {
-                                context.pop();
-                              },
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 32.0, 136.0, 0.0),
-                          child: RichText(
-                            textScaler: MediaQuery.of(context).textScaler,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Hoy',
-                                  style: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .override(
-                                        font: GoogleFonts.asap(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontStyle,
-                                        ),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: 'Sí',
-                                  style: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .override(
-                                        font: GoogleFonts.asap(
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontStyle,
-                                        ),
-                                        color: Color(0xFF01AFFF),
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: 'Fio',
-                                  style: TextStyle(),
-                                )
-                              ],
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .displaySmall
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .fontStyle,
-                                  ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/actualhoysifioload_c7004ecf.gif',
+                              width: 200.0,
+                              height: 80.0,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
-                        ),
-                      ],
+                          Container(
+                            width: 40.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: Align(
@@ -238,28 +238,28 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                           'Olvidé mi contraseña',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
-                                              .headlineMedium
+                                              .headlineSmall
                                               .override(
-                                                font: GoogleFonts.quicksand(
+                                                font: GoogleFonts.readexPro(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .headlineMedium
+                                                          .headlineSmall
                                                           .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .headlineMedium
+                                                          .headlineSmall
                                                           .fontStyle,
                                                 ),
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .headlineSmall
                                                         .fontWeight,
                                                 fontStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .headlineMedium
+                                                        .headlineSmall
                                                         .fontStyle,
                                               ),
                                         ),
@@ -291,6 +291,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                   .labelMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -1043,6 +1044,7 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                                                                   .labelMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -1852,7 +1854,11 @@ class _ForgotMyPasswordWidgetState extends State<ForgotMyPasswordWidget> {
                   ],
                 ),
               ],
-            ),
+            )
+                .animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!)
+                .animateOnActionTrigger(
+                  animationsMap['stackOnActionTriggerAnimation']!,
+                ),
           ),
         ),
       ),

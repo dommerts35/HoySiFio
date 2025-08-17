@@ -32,12 +32,33 @@ class ClienteConfigModel extends FlutterFlowModel<ClienteConfigWidget> {
   FocusNode? contrasenaTfFocusNode;
   TextEditingController? contrasenaTfTextController;
   String? Function(BuildContext, String?)? contrasenaTfTextControllerValidator;
+  String? _contrasenaTfTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Ingrese una contraseña';
+    }
+
+    if (val.length < 8) {
+      return 'Ingrese una contraseña de al menos 8 caracteres.';
+    }
+    if (val.length > 16) {
+      return 'Ingrese una contraseña de menos de 16 caracteres.';
+    }
+    if (!RegExp(
+            '^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+{}\\[\\]:;<>,.?\\~]).{8,}\$')
+        .hasMatch(val)) {
+      return 'Ingrese una contraseña válida.';
+    }
+    return null;
+  }
+
   // Stores action output result for [Firestore Query - Query a collection] action in buttonPswrd widget.
   List<ClientesRecord>? queryConfigContrasenaCliente;
 
   @override
   void initState(BuildContext context) {
     pinTfTextControllerValidator = _pinTfTextControllerValidator;
+    contrasenaTfTextControllerValidator = _contrasenaTfTextControllerValidator;
   }
 
   @override

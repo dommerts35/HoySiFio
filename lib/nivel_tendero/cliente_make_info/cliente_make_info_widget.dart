@@ -1,19 +1,22 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/cloud_functions/cloud_functions.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/dialog_btn_widget.dart';
 import '/components/dialog_two_btns_widget.dart';
+import '/components/nav_bar_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:collection/collection.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -76,6 +79,26 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
     _model.direccionFocusNode ??= FocusNode();
     _model.direccionFocusNode!.addListener(() => safeSetState(() {}));
     animationsMap.addAll({
+      'formOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
       'buttonOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -113,6 +136,20 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
             duration: 600.0.ms,
             begin: Offset(1.3, 1.3),
             end: Offset(0.75, 0.75),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
           ),
         ],
       ),
@@ -155,42 +192,20 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(12.0, 12.0, 12.0, 12.0),
+                  Opacity(
+                    opacity: 0.0,
                     child: FlutterFlowIconButton(
                       borderRadius: 12.0,
-                      borderWidth: 1.0,
                       buttonSize: 40.0,
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
                       icon: Icon(
-                        Icons.arrow_back,
-                        color: FlutterFlowTheme.of(context).primary,
+                        Icons.logout,
+                        color: FlutterFlowTheme.of(context).error,
                         size: 24.0,
                       ),
-                      onPressed: () async {
-                        context.pushNamed(
-                          ListaClientesWidget.routeName,
-                          queryParameters: {
-                            'tenderoRef': serializeParam(
-                              widget.tenderoRef,
-                              ParamType.DocumentReference,
-                            ),
-                            'nombreTienda': serializeParam(
-                              widget.nombreTienda,
-                              ParamType.String,
-                            ),
-                            'tenderoEmail': serializeParam(
-                              widget.tenderoEmail,
-                              ParamType.String,
-                            ),
-                            'nombreTendero': serializeParam(
-                              widget.nombreTendero,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
+                      onPressed: () {
+                        print('iconNothing pressed ...');
                       },
                     ),
                   ),
@@ -199,7 +214,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Registrar Cliente',
+                        'Añadir Cliente',
                         style: FlutterFlowTheme.of(context).titleLarge.override(
                               font: GoogleFonts.readexPro(
                                 fontWeight: FlutterFlowTheme.of(context)
@@ -220,10 +235,64 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                       ),
                     ].divide(SizedBox(height: 4.0)),
                   ),
-                  Container(
-                    width: 40.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                  Builder(
+                    builder: (context) => FlutterFlowIconButton(
+                      borderRadius: 12.0,
+                      buttonSize: 40.0,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      icon: Icon(
+                        Icons.logout,
+                        color: FlutterFlowTheme.of(context).error,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(dialogContext).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Container(
+                                  height: 200.0,
+                                  child: DialogTwoBtnsWidget(
+                                    titulo: '¿Desea cerrar sesión?',
+                                    mensaje:
+                                        'Sus datos se guardarán automáticamente.',
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ).then((value) =>
+                            safeSetState(() => _model.isLogoff = value));
+
+                        if (_model.isLogoff!) {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          if (animationsMap['formOnActionTriggerAnimation'] !=
+                              null) {
+                            await animationsMap['formOnActionTriggerAnimation']!
+                                .controller
+                                .forward(from: 0.0);
+                          }
+
+                          context.goNamedAuth(
+                              AuthSigningInWidget.routeName, context.mounted);
+                        }
+
+                        safeSetState(() {});
+                      },
                     ),
                   ),
                 ],
@@ -1435,6 +1504,275 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     }),
                                                 ],
                                               ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 15.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Foto de perfil del cliente (opcional)',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .labelLarge
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .asap(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
+                                                            ),
+                                                            fontSize: 18.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                  Builder(
+                                                    builder: (context) =>
+                                                        FFButtonWidget(
+                                                      onPressed: () async {
+                                                        final selectedMedia =
+                                                            await selectMediaWithSourceBottomSheet(
+                                                          context: context,
+                                                          storageFolderPath:
+                                                              'clientes/profiles',
+                                                          maxWidth: 300.00,
+                                                          maxHeight: 100.00,
+                                                          allowPhoto: true,
+                                                          textColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          pickerFontFamily:
+                                                              'Asap',
+                                                        );
+                                                        if (selectedMedia !=
+                                                                null &&
+                                                            selectedMedia.every((m) =>
+                                                                validateFileFormat(
+                                                                    m.storagePath,
+                                                                    context))) {
+                                                          safeSetState(() =>
+                                                              _model.isDataUploading_uploadDataPfs1 =
+                                                                  true);
+                                                          var selectedUploadedFiles =
+                                                              <FFUploadedFile>[];
+
+                                                          var downloadUrls =
+                                                              <String>[];
+                                                          try {
+                                                            selectedUploadedFiles =
+                                                                selectedMedia
+                                                                    .map((m) =>
+                                                                        FFUploadedFile(
+                                                                          name: m
+                                                                              .storagePath
+                                                                              .split('/')
+                                                                              .last,
+                                                                          bytes:
+                                                                              m.bytes,
+                                                                          height: m
+                                                                              .dimensions
+                                                                              ?.height,
+                                                                          width: m
+                                                                              .dimensions
+                                                                              ?.width,
+                                                                          blurHash:
+                                                                              m.blurHash,
+                                                                        ))
+                                                                    .toList();
+
+                                                            downloadUrls =
+                                                                await uploadSupabaseStorageFiles(
+                                                              bucketName:
+                                                                  'img.vouchers',
+                                                              selectedFiles:
+                                                                  selectedMedia,
+                                                            );
+                                                          } finally {
+                                                            _model.isDataUploading_uploadDataPfs1 =
+                                                                false;
+                                                          }
+                                                          if (selectedUploadedFiles
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length &&
+                                                              downloadUrls
+                                                                      .length ==
+                                                                  selectedMedia
+                                                                      .length) {
+                                                            safeSetState(() {
+                                                              _model.uploadedLocalFile_uploadDataPfs1 =
+                                                                  selectedUploadedFiles
+                                                                      .first;
+                                                              _model.uploadedFileUrl_uploadDataPfs1 =
+                                                                  downloadUrls
+                                                                      .first;
+                                                            });
+                                                          } else {
+                                                            safeSetState(() {});
+                                                            return;
+                                                          }
+                                                        }
+
+                                                        if (_model.uploadedFileUrl_uploadDataPfs1 ==
+                                                                '') {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      DialogBtnWidget(
+                                                                    titulo:
+                                                                        '¡Alerta!',
+                                                                    mensaje:
+                                                                        'Hubo un error al subir la imágen, inténtelo de nuevo.',
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+
+                                                          return;
+                                                        }
+                                                      },
+                                                      text:
+                                                          'Subir imágen de perfil del cliente',
+                                                      options: FFButtonOptions(
+                                                        height: 40.0,
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    16.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .titleSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  if (_model
+                                                          .uploadedFileUrl_uploadDataPfs1 !=
+                                                      '')
+                                                    Container(
+                                                      width: 150.0,
+                                                      height: 150.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(14.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 3.0,
+                                                        ),
+                                                      ),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child: Image.network(
+                                                          _model
+                                                              .uploadedFileUrl_uploadDataPfs1,
+                                                          width: 150.0,
+                                                          height: 150.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ].divide(
+                                                    SizedBox(height: 10.0)),
+                                              ),
                                             ]
                                                 .divide(SizedBox(height: 15.0))
                                                 .addToStart(
@@ -2573,6 +2911,810 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                         ),
                                       ].divide(SizedBox(width: 3.0)),
                                     ),
+                                    Builder(
+                                      builder: (context) => Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 12.0, 16.0, 12.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            var _shouldSetState = false;
+                                            _model.tenderoRead =
+                                                await TenderosRecord
+                                                    .getDocumentOnce(
+                                                        widget.tenderoRef!);
+                                            _shouldSetState = true;
+                                            if (_model.politicsCheckValue !=
+                                                true) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Container(
+                                                        height: 200.0,
+                                                        child: DialogBtnWidget(
+                                                          titulo: '¡Alerta!',
+                                                          mensaje:
+                                                              'Por favor, acepte la política de privacidad para continuar.',
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
+                                            if (_model.termsCheckValue !=
+                                                true) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Container(
+                                                        height: 200.0,
+                                                        child: DialogBtnWidget(
+                                                          titulo: '¡Alerta!',
+                                                          mensaje:
+                                                              'Por favor, acepte los términos de servicio para continuar.',
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
+                                            if ((_model.isVivProp == false) &&
+                                                (_model.isVivAlq == false)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Container(
+                                                        height: 200.0,
+                                                        child: DialogBtnWidget(
+                                                          titulo: '¡Alerta!',
+                                                          mensaje:
+                                                              'Ingrese el tipo de vivienda de su cliente.',
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
+                                            if ((_model.emailTextController.text ==
+                                                    widget.tenderoEmail) ||
+                                                (_model.tenderoRead?.phoneNumber ==
+                                                    _model
+                                                        .phoneNumberTextController
+                                                        .text) ||
+                                                (_model.tenderoRead?.tenderos.ciTendero ==
+                                                    _model.cedulaTextController
+                                                        .text) ||
+                                                (_model.tenderoRead?.tenderos.nombreTendero ==
+                                                    _model
+                                                        .fullNameTextController
+                                                        .text) ||
+                                                (_model.tenderoRead?.tenderos
+                                                        .nombreTendero ==
+                                                    '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}') ||
+                                                (_model.tenderoRead?.tenderos
+                                                        .nombreTitularBanco ==
+                                                    _model
+                                                        .fullNameTextController
+                                                        .text) ||
+                                                (_model.tenderoRead?.tenderos
+                                                        .nombreTitularBanco ==
+                                                    '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}')) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child: Container(
+                                                        height: 200.0,
+                                                        child: DialogBtnWidget(
+                                                          titulo: '¡Alerta!',
+                                                          mensaje:
+                                                              'No puede ingresar sus propios datos de tendero para registrar un cliente.',
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
+                                            _model.validarMake = true;
+                                            if (_model.formKey.currentState ==
+                                                    null ||
+                                                !_model.formKey.currentState!
+                                                    .validate()) {
+                                              _model.validarMake = false;
+                                            }
+                                            _shouldSetState = true;
+                                            if (_model.validarMake == true) {
+                                              _model.queryValidarCedula =
+                                                  await queryClientesRecordOnce(
+                                                queryBuilder:
+                                                    (clientesRecord) =>
+                                                        clientesRecord
+                                                            .where(
+                                                              'cliente.cedula',
+                                                              isEqualTo: _model
+                                                                  .cedulaTextController
+                                                                  .text,
+                                                            )
+                                                            .where(
+                                                              'cliente.idTendero',
+                                                              isEqualTo: widget
+                                                                  .tenderoRef,
+                                                            ),
+                                                singleRecord: true,
+                                              ).then((s) => s.firstOrNull);
+                                              _shouldSetState = true;
+                                              if (_model.queryValidarCedula
+                                                      ?.cliente !=
+                                                  null) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child: Container(
+                                                          height: 200.0,
+                                                          child:
+                                                              DialogBtnWidget(
+                                                            titulo: '¡Alerta!',
+                                                            mensaje:
+                                                                'Ya existe un cliente con esa cédula registrado en su tienda.',
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              } else {
+                                                _model.queryClienteInOtherTiendas =
+                                                    await queryClientesRecordOnce(
+                                                  queryBuilder:
+                                                      (clientesRecord) =>
+                                                          clientesRecord
+                                                              .where(
+                                                                'cliente.cedula',
+                                                                isEqualTo: _model
+                                                                    .cedulaTextController
+                                                                    .text,
+                                                              )
+                                                              .where(
+                                                                'cliente.contrasena',
+                                                                isNotEqualTo:
+                                                                    null,
+                                                              ),
+                                                  singleRecord: true,
+                                                ).then((s) => s.firstOrNull);
+                                                _shouldSetState = true;
+                                                if (_model
+                                                            .queryClienteInOtherTiendas
+                                                            ?.cliente
+                                                            .contrasena !=
+                                                        null &&
+                                                    _model
+                                                            .queryClienteInOtherTiendas
+                                                            ?.cliente
+                                                            .contrasena !=
+                                                        '') {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Container(
+                                                            height: 200.0,
+                                                            child:
+                                                                DialogBtnWidget(
+                                                              titulo:
+                                                                  '¡Alerta!',
+                                                              mensaje:
+                                                                  'El cliente añadido es un usuario regular de HoySíFio, por lo que se vincularán sus datos.',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+
+                                                  _model.queryForIDCliente =
+                                                      await queryClientesRecordOnce(
+                                                    queryBuilder:
+                                                        (clientesRecord) =>
+                                                            clientesRecord
+                                                                .where(
+                                                      'cliente.cedula',
+                                                      isEqualTo: _model
+                                                          .cedulaTextController
+                                                          .text,
+                                                    ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  _shouldSetState = true;
+
+                                                  context.goNamed(
+                                                    ClienteVincWidget.routeName,
+                                                    queryParameters: {
+                                                      'idCliente':
+                                                          serializeParam(
+                                                        _model.queryForIDCliente
+                                                            ?.reference,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'tenderoRef':
+                                                          serializeParam(
+                                                        widget.tenderoRef,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'nombreTienda':
+                                                          serializeParam(
+                                                        widget.nombreTienda,
+                                                        ParamType.String,
+                                                      ),
+                                                      'tenderoEmail':
+                                                          serializeParam(
+                                                        widget.tenderoEmail,
+                                                        ParamType.String,
+                                                      ),
+                                                      'cedulaPassed':
+                                                          serializeParam(
+                                                        _model
+                                                            .cedulaTextController
+                                                            .text,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                } else {
+                                                  _model.clienteSinContrasenaQuery =
+                                                      await queryClientesRecordOnce(
+                                                    queryBuilder:
+                                                        (clientesRecord) =>
+                                                            clientesRecord
+                                                                .where(
+                                                                  'cliente.cedula',
+                                                                  isEqualTo: _model
+                                                                      .cedulaTextController
+                                                                      .text,
+                                                                )
+                                                                .where(
+                                                                  'cliente.contrasena',
+                                                                  isEqualTo:
+                                                                      null,
+                                                                ),
+                                                    singleRecord: true,
+                                                  ).then((s) => s.firstOrNull);
+                                                  _shouldSetState = true;
+                                                  if (_model
+                                                          .clienteSinContrasenaQuery
+                                                          ?.cliente !=
+                                                      null) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () {
+                                                              FocusScope.of(
+                                                                      dialogContext)
+                                                                  .unfocus();
+                                                              FocusManager
+                                                                  .instance
+                                                                  .primaryFocus
+                                                                  ?.unfocus();
+                                                            },
+                                                            child: Container(
+                                                              height: 200.0,
+                                                              child:
+                                                                  DialogBtnWidget(
+                                                                titulo:
+                                                                    '¡Alerta!',
+                                                                mensaje:
+                                                                    'Este cliente ha sido registrado anteriormente, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
+                                                  }
+                                                  _model.randomized =
+                                                      random_data.randomString(
+                                                    4,
+                                                    4,
+                                                    false,
+                                                    false,
+                                                    true,
+                                                  );
+                                                  safeSetState(() {});
+
+                                                  var clientesRecordReference =
+                                                      ClientesRecord.collection
+                                                          .doc();
+                                                  await clientesRecordReference
+                                                      .set(
+                                                          createClientesRecordData(
+                                                    cliente:
+                                                        createDataTypeClienteStruct(
+                                                      nombre: _model
+                                                          .fullNameTextController
+                                                          .text,
+                                                      telf: _model
+                                                          .phoneNumberTextController
+                                                          .text,
+                                                      isFiando: false,
+                                                      apellido: _model
+                                                          .fullSecondNameTextController
+                                                          .text,
+                                                      cedula: _model
+                                                          .cedulaTextController
+                                                          .text,
+                                                      direccionDomicilio: _model
+                                                          .direccionTextController
+                                                          .text,
+                                                      viviendaAlq:
+                                                          _model.isVivAlq,
+                                                      viviendaPropia:
+                                                          _model.isVivProp,
+                                                      emailCliente: _model
+                                                          .emailTextController
+                                                          .text,
+                                                      idTendero:
+                                                          widget.tenderoRef,
+                                                      totalDeudaCompleta: 0.0,
+                                                      secretPass:
+                                                          _model.randomized,
+                                                      contrasena: null,
+                                                      isSubscribedToEmails: _model
+                                                          .emailSendsCheckValue,
+                                                      clearUnsetFields: false,
+                                                      create: true,
+                                                    ),
+                                                    profileUrl: _model.uploadedFileUrl_uploadDataPfs1 !=
+                                                                ''
+                                                        ? _model
+                                                            .uploadedFileUrl_uploadDataPfs1
+                                                        : 'NONE',
+                                                  ));
+                                                  _model.createdCliente = ClientesRecord
+                                                      .getDocumentFromData(
+                                                          createClientesRecordData(
+                                                            cliente:
+                                                                createDataTypeClienteStruct(
+                                                              nombre: _model
+                                                                  .fullNameTextController
+                                                                  .text,
+                                                              telf: _model
+                                                                  .phoneNumberTextController
+                                                                  .text,
+                                                              isFiando: false,
+                                                              apellido: _model
+                                                                  .fullSecondNameTextController
+                                                                  .text,
+                                                              cedula: _model
+                                                                  .cedulaTextController
+                                                                  .text,
+                                                              direccionDomicilio:
+                                                                  _model
+                                                                      .direccionTextController
+                                                                      .text,
+                                                              viviendaAlq:
+                                                                  _model
+                                                                      .isVivAlq,
+                                                              viviendaPropia:
+                                                                  _model
+                                                                      .isVivProp,
+                                                              emailCliente: _model
+                                                                  .emailTextController
+                                                                  .text,
+                                                              idTendero: widget
+                                                                  .tenderoRef,
+                                                              totalDeudaCompleta:
+                                                                  0.0,
+                                                              secretPass: _model
+                                                                  .randomized,
+                                                              contrasena: null,
+                                                              isSubscribedToEmails:
+                                                                  _model
+                                                                      .emailSendsCheckValue,
+                                                              clearUnsetFields:
+                                                                  false,
+                                                              create: true,
+                                                            ),
+                                                            profileUrl: _model.uploadedFileUrl_uploadDataPfs1 !=
+                                                                        ''
+                                                                ? _model
+                                                                    .uploadedFileUrl_uploadDataPfs1
+                                                                : 'NONE',
+                                                          ),
+                                                          clientesRecordReference);
+                                                  _shouldSetState = true;
+
+                                                  await _model
+                                                      .createdCliente!.reference
+                                                      .update(
+                                                          createClientesRecordData(
+                                                    cliente:
+                                                        createDataTypeClienteStruct(
+                                                      idCliente: _model
+                                                          .createdCliente
+                                                          ?.reference,
+                                                      clearUnsetFields: false,
+                                                    ),
+                                                  ));
+                                                  unawaited(
+                                                    () async {
+                                                      await actions
+                                                          .sendCustomEmailForClienteRegister(
+                                                        _model
+                                                            .emailTextController
+                                                            .text,
+                                                        _model
+                                                            .fullNameTextController
+                                                            .text,
+                                                        'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
+                                                        widget.nombreTienda!,
+                                                        _model.randomized,
+                                                      );
+                                                    }(),
+                                                  );
+                                                  await makeCloudCall(
+                                                    'addUser',
+                                                    {
+                                                      'user_id': currentUserUid,
+                                                      'tags': {
+                                                        'idToken':
+                                                            currentJwtToken,
+                                                        'tipodeCuenta':
+                                                            'Cliente',
+                                                        'email': _model
+                                                            .emailTextController
+                                                            .text,
+                                                        'isPromos': _model
+                                                            .emailSendsCheckValue!
+                                                            .toString(),
+                                                      },
+                                                      'subscriptions': [
+                                                        {
+                                                          'type': 'Email',
+                                                          'token': _model
+                                                              .emailTextController
+                                                              .text,
+                                                        },
+                                                      ],
+                                                    },
+                                                  );
+
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Container(
+                                                            height: 400.0,
+                                                            child:
+                                                                DialogBtnWidget(
+                                                              titulo:
+                                                                  '¡Enhorabuena! 😊',
+                                                              mensaje:
+                                                                  'El cliente ha sido registrado exitosamente. Por favor, muéstrele el siguiente código de autenticación, el cual también ha sido enviado al correo electrónico ingresado.',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
+                                                          },
+                                                          child: Container(
+                                                            height: 300.0,
+                                                            child:
+                                                                DialogBtnWidget(
+                                                              titulo:
+                                                                  'Código de autenticación del cliente',
+                                                              mensaje:
+                                                                  '\"${_model.randomized}\". Si necesita consultar el código nuevamente, puede revisar la información completa del cliente o indicarle que lo revise en su correo electrónico.',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+
+                                                  context.pushNamed(
+                                                    ListaClientesWidget
+                                                        .routeName,
+                                                    queryParameters: {
+                                                      'tenderoRef':
+                                                          serializeParam(
+                                                        widget.tenderoRef,
+                                                        ParamType
+                                                            .DocumentReference,
+                                                      ),
+                                                      'nombreTienda':
+                                                          serializeParam(
+                                                        widget.nombreTienda,
+                                                        ParamType.String,
+                                                      ),
+                                                      'tenderoEmail':
+                                                          serializeParam(
+                                                        widget.tenderoEmail,
+                                                        ParamType.String,
+                                                      ),
+                                                      'nombreTendero':
+                                                          serializeParam(
+                                                        widget.nombreTendero,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                }
+                                              }
+                                            } else {
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                              return;
+                                            }
+
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                          },
+                                          text: 'Registrar nuevo cliente',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    24.0, 0.0, 24.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.asap(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                            elevation: 3.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'buttonOnPageLoadAnimation']!),
+                                      ),
+                                    ),
                                   ]
                                       .divide(SizedBox(height: 20.0))
                                       .addToEnd(SizedBox(height: 15.0)),
@@ -2588,9 +3730,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                     color: Colors.transparent,
                     elevation: 3.0,
                     child: Container(
-                      constraints: BoxConstraints(
-                        maxWidth: 770.0,
-                      ),
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         boxShadow: [
@@ -2605,621 +3744,16 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                           )
                         ],
                       ),
-                      child: Builder(
-                        builder: (context) => Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 12.0, 16.0, 12.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              var _shouldSetState = false;
-                              _model.tenderoRead =
-                                  await TenderosRecord.getDocumentOnce(
-                                      widget.tenderoRef!);
-                              _shouldSetState = true;
-                              if (_model.politicsCheckValue != true) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Container(
-                                          height: 200.0,
-                                          child: DialogBtnWidget(
-                                            titulo: '¡Alerta!',
-                                            mensaje:
-                                                'Por favor, acepte la política de privacidad para continuar.',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-                              if (_model.termsCheckValue != true) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Container(
-                                          height: 200.0,
-                                          child: DialogBtnWidget(
-                                            titulo: '¡Alerta!',
-                                            mensaje:
-                                                'Por favor, acepte los términos de servicio para continuar.',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-                              if ((_model.isVivProp == false) &&
-                                  (_model.isVivAlq == false)) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Container(
-                                          height: 200.0,
-                                          child: DialogBtnWidget(
-                                            titulo: '¡Alerta!',
-                                            mensaje:
-                                                'Ingrese el tipo de vivienda de su cliente.',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-                              if ((_model.emailTextController.text ==
-                                      widget.tenderoEmail) ||
-                                  (_model.tenderoRead?.phoneNumber ==
-                                      _model.phoneNumberTextController.text) ||
-                                  (_model.tenderoRead?.tenderos.ciTendero ==
-                                      _model.cedulaTextController.text) ||
-                                  (_model.tenderoRead?.tenderos
-                                          .nombreTendero ==
-                                      _model.fullNameTextController.text) ||
-                                  (_model.tenderoRead?.tenderos
-                                          .nombreTendero ==
-                                      '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}') ||
-                                  (_model.tenderoRead?.tenderos
-                                          .nombreTitularBanco ==
-                                      _model.fullNameTextController.text) ||
-                                  (_model.tenderoRead?.tenderos
-                                          .nombreTitularBanco ==
-                                      '${_model.fullNameTextController.text} ${_model.fullSecondNameTextController.text}')) {
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Container(
-                                          height: 200.0,
-                                          child: DialogBtnWidget(
-                                            titulo: '¡Alerta!',
-                                            mensaje:
-                                                'No puede ingresar sus propios datos de tendero para registrar un cliente.',
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                );
-
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-                              _model.validarMake = true;
-                              if (_model.formKey.currentState == null ||
-                                  !_model.formKey.currentState!.validate()) {
-                                _model.validarMake = false;
-                              }
-                              _shouldSetState = true;
-                              if (_model.validarMake == true) {
-                                _model.queryValidarCedula =
-                                    await queryClientesRecordOnce(
-                                  queryBuilder: (clientesRecord) =>
-                                      clientesRecord
-                                          .where(
-                                            'cliente.cedula',
-                                            isEqualTo: _model
-                                                .cedulaTextController.text,
-                                          )
-                                          .where(
-                                            'cliente.idTendero',
-                                            isEqualTo: widget.tenderoRef,
-                                          ),
-                                  singleRecord: true,
-                                ).then((s) => s.firstOrNull);
-                                _shouldSetState = true;
-                                if (_model.queryValidarCedula?.cliente !=
-                                    null) {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (dialogContext) {
-                                      return Dialog(
-                                        elevation: 0,
-                                        insetPadding: EdgeInsets.zero,
-                                        backgroundColor: Colors.transparent,
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        child: GestureDetector(
-                                          onTap: () {
-                                            FocusScope.of(dialogContext)
-                                                .unfocus();
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                          },
-                                          child: Container(
-                                            height: 200.0,
-                                            child: DialogBtnWidget(
-                                              titulo: '¡Alerta!',
-                                              mensaje:
-                                                  'Ya existe un cliente con esa cédula registrado en su tienda.',
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
-
-                                  if (_shouldSetState) safeSetState(() {});
-                                  return;
-                                } else {
-                                  _model.queryClienteInOtherTiendas =
-                                      await queryClientesRecordOnce(
-                                    queryBuilder: (clientesRecord) =>
-                                        clientesRecord
-                                            .where(
-                                              'cliente.cedula',
-                                              isEqualTo: _model
-                                                  .cedulaTextController.text,
-                                            )
-                                            .where(
-                                              'cliente.contrasena',
-                                              isNotEqualTo: null,
-                                            ),
-                                    singleRecord: true,
-                                  ).then((s) => s.firstOrNull);
-                                  _shouldSetState = true;
-                                  if (_model.queryClienteInOtherTiendas?.cliente
-                                              .contrasena !=
-                                          null &&
-                                      _model.queryClienteInOtherTiendas?.cliente
-                                              .contrasena !=
-                                          '') {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (dialogContext) {
-                                        return Dialog(
-                                          elevation: 0,
-                                          insetPadding: EdgeInsets.zero,
-                                          backgroundColor: Colors.transparent,
-                                          alignment: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(dialogContext)
-                                                  .unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Container(
-                                              height: 200.0,
-                                              child: DialogBtnWidget(
-                                                titulo: '¡Alerta!',
-                                                mensaje:
-                                                    'El cliente añadido es un usuario regular de HoySíFio, por lo que se vincularán sus datos.',
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-
-                                    _model.queryForIDCliente =
-                                        await queryClientesRecordOnce(
-                                      queryBuilder: (clientesRecord) =>
-                                          clientesRecord.where(
-                                        'cliente.cedula',
-                                        isEqualTo:
-                                            _model.cedulaTextController.text,
-                                      ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _shouldSetState = true;
-
-                                    context.goNamed(
-                                      ClienteVincWidget.routeName,
-                                      queryParameters: {
-                                        'idCliente': serializeParam(
-                                          _model.queryForIDCliente?.reference,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'tenderoRef': serializeParam(
-                                          widget.tenderoRef,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'nombreTienda': serializeParam(
-                                          widget.nombreTienda,
-                                          ParamType.String,
-                                        ),
-                                        'tenderoEmail': serializeParam(
-                                          widget.tenderoEmail,
-                                          ParamType.String,
-                                        ),
-                                        'cedulaPassed': serializeParam(
-                                          _model.cedulaTextController.text,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  } else {
-                                    _model.clienteSinContrasenaQuery =
-                                        await queryClientesRecordOnce(
-                                      queryBuilder: (clientesRecord) =>
-                                          clientesRecord
-                                              .where(
-                                                'cliente.cedula',
-                                                isEqualTo: _model
-                                                    .cedulaTextController.text,
-                                              )
-                                              .where(
-                                                'cliente.contrasena',
-                                                isEqualTo: null,
-                                              ),
-                                      singleRecord: true,
-                                    ).then((s) => s.firstOrNull);
-                                    _shouldSetState = true;
-                                    if (_model.clienteSinContrasenaQuery
-                                            ?.cliente !=
-                                        null) {
-                                      await showDialog(
-                                        context: context,
-                                        builder: (dialogContext) {
-                                          return Dialog(
-                                            elevation: 0,
-                                            insetPadding: EdgeInsets.zero,
-                                            backgroundColor: Colors.transparent,
-                                            alignment: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(dialogContext)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: Container(
-                                                height: 200.0,
-                                                child: DialogBtnWidget(
-                                                  titulo: '¡Alerta!',
-                                                  mensaje:
-                                                      'Este cliente ha sido registrado anteriormente, pero no se ha autenticado. Por razones de seguridad, no será registrado en su tienda.',
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      );
-
-                                      if (_shouldSetState) safeSetState(() {});
-                                      return;
-                                    }
-                                    _model.randomized =
-                                        random_data.randomString(
-                                      4,
-                                      4,
-                                      false,
-                                      false,
-                                      true,
-                                    );
-                                    safeSetState(() {});
-
-                                    var clientesRecordReference =
-                                        ClientesRecord.collection.doc();
-                                    await clientesRecordReference
-                                        .set(createClientesRecordData(
-                                      cliente: createDataTypeClienteStruct(
-                                        nombre:
-                                            _model.fullNameTextController.text,
-                                        telf: _model
-                                            .phoneNumberTextController.text,
-                                        isFiando: false,
-                                        apellido: _model
-                                            .fullSecondNameTextController.text,
-                                        cedula:
-                                            _model.cedulaTextController.text,
-                                        direccionDomicilio:
-                                            _model.direccionTextController.text,
-                                        viviendaAlq: _model.isVivAlq,
-                                        viviendaPropia: _model.isVivProp,
-                                        emailCliente:
-                                            _model.emailTextController.text,
-                                        idTendero: widget.tenderoRef,
-                                        totalDeudaCompleta: 0.0,
-                                        secretPass: _model.randomized,
-                                        contrasena: null,
-                                        isSubscribedToEmails:
-                                            _model.emailSendsCheckValue,
-                                        clearUnsetFields: false,
-                                        create: true,
-                                      ),
-                                    ));
-                                    _model.createdCliente =
-                                        ClientesRecord.getDocumentFromData(
-                                            createClientesRecordData(
-                                              cliente:
-                                                  createDataTypeClienteStruct(
-                                                nombre: _model
-                                                    .fullNameTextController
-                                                    .text,
-                                                telf: _model
-                                                    .phoneNumberTextController
-                                                    .text,
-                                                isFiando: false,
-                                                apellido: _model
-                                                    .fullSecondNameTextController
-                                                    .text,
-                                                cedula: _model
-                                                    .cedulaTextController.text,
-                                                direccionDomicilio: _model
-                                                    .direccionTextController
-                                                    .text,
-                                                viviendaAlq: _model.isVivAlq,
-                                                viviendaPropia:
-                                                    _model.isVivProp,
-                                                emailCliente: _model
-                                                    .emailTextController.text,
-                                                idTendero: widget.tenderoRef,
-                                                totalDeudaCompleta: 0.0,
-                                                secretPass: _model.randomized,
-                                                contrasena: null,
-                                                isSubscribedToEmails:
-                                                    _model.emailSendsCheckValue,
-                                                clearUnsetFields: false,
-                                                create: true,
-                                              ),
-                                            ),
-                                            clientesRecordReference);
-                                    _shouldSetState = true;
-
-                                    await _model.createdCliente!.reference
-                                        .update(createClientesRecordData(
-                                      cliente: createDataTypeClienteStruct(
-                                        idCliente:
-                                            _model.createdCliente?.reference,
-                                        clearUnsetFields: false,
-                                      ),
-                                    ));
-                                    unawaited(
-                                      () async {
-                                        await actions
-                                            .sendCustomEmailForClienteRegister(
-                                          _model.emailTextController.text,
-                                          _model.fullNameTextController.text,
-                                          'Has sido registrado como cliente en la tienda: ${widget.nombreTienda}',
-                                          widget.nombreTienda!,
-                                          _model.randomized,
-                                        );
-                                      }(),
-                                    );
-                                    await makeCloudCall(
-                                      'addUser',
-                                      {
-                                        'user_id': currentUserUid,
-                                        'tags': {
-                                          'idToken': currentJwtToken,
-                                          'tipodeCuenta': 'Cliente',
-                                          'email':
-                                              _model.emailTextController.text,
-                                          'isPromos': _model
-                                              .emailSendsCheckValue!
-                                              .toString(),
-                                        },
-                                        'subscriptions': [
-                                          {
-                                            'type': 'Email',
-                                            'token':
-                                                _model.emailTextController.text,
-                                          },
-                                        ],
-                                      },
-                                    );
-
-                                    await showDialog(
-                                      context: context,
-                                      builder: (dialogContext) {
-                                        return Dialog(
-                                          elevation: 0,
-                                          insetPadding: EdgeInsets.zero,
-                                          backgroundColor: Colors.transparent,
-                                          alignment: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(dialogContext)
-                                                  .unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Container(
-                                              height: 400.0,
-                                              child: DialogBtnWidget(
-                                                titulo: '¡Enhorabuena! 😊',
-                                                mensaje:
-                                                    'El cliente ha sido registrado exitosamente. Por favor, muéstrele el siguiente código de autenticación, el cual también ha sido enviado al correo electrónico ingresado.',
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-
-                                    await showDialog(
-                                      context: context,
-                                      builder: (dialogContext) {
-                                        return Dialog(
-                                          elevation: 0,
-                                          insetPadding: EdgeInsets.zero,
-                                          backgroundColor: Colors.transparent,
-                                          alignment: AlignmentDirectional(
-                                                  0.0, 0.0)
-                                              .resolve(
-                                                  Directionality.of(context)),
-                                          child: GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(dialogContext)
-                                                  .unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Container(
-                                              height: 300.0,
-                                              child: DialogBtnWidget(
-                                                titulo:
-                                                    'Código de autenticación del cliente',
-                                                mensaje:
-                                                    '\"${_model.randomized}\". Si necesita consultar el código nuevamente, puede revisar la información completa del cliente o indicarle que lo revise en su correo electrónico.',
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-
-                                    context.pushNamed(
-                                      ListaClientesWidget.routeName,
-                                      queryParameters: {
-                                        'tenderoRef': serializeParam(
-                                          widget.tenderoRef,
-                                          ParamType.DocumentReference,
-                                        ),
-                                        'nombreTienda': serializeParam(
-                                          widget.nombreTienda,
-                                          ParamType.String,
-                                        ),
-                                        'tenderoEmail': serializeParam(
-                                          widget.tenderoEmail,
-                                          ParamType.String,
-                                        ),
-                                        'nombreTendero': serializeParam(
-                                          widget.nombreTendero,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  }
-                                }
-                              } else {
-                                if (_shouldSetState) safeSetState(() {});
-                                return;
-                              }
-
-                              if (_shouldSetState) safeSetState(() {});
-                            },
-                            text: 'Enviar',
-                            options: FFButtonOptions(
-                              width: double.infinity,
-                              height: 48.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
+                      child: Container(
+                        child: wrapWithModel(
+                          model: _model.navBarModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: NavBarWidget(
+                            activePage: 'Añadir',
+                            nombreTienda: widget.nombreTienda,
+                            emailTendero: widget.tenderoEmail,
+                            nombreTendero: widget.nombreTendero,
+                            tenderoRef: widget.tenderoRef,
                           ),
                         ),
                       ),
@@ -3227,6 +3761,8 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                   ),
                 ],
               ),
+            ).animateOnActionTrigger(
+              animationsMap['formOnActionTriggerAnimation']!,
             ),
           ),
         ),

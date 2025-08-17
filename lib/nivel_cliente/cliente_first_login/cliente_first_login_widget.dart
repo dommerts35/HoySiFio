@@ -1,14 +1,15 @@
 import '/backend/backend.dart';
 import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cliente_first_login_model.dart';
@@ -63,52 +64,51 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.0, 80.0),
+            duration: 1200.0.ms,
+            begin: Offset(0.0, -17.0),
             end: Offset(0.0, 0.0),
           ),
-          ScaleEffect(
+          FadeEffect(
             curve: Curves.easeInOut,
-            delay: 150.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.8, 0.8),
-            end: Offset(1.0, 1.0),
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
           ),
         ],
       ),
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
+      'containerOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
         effectsBuilder: () => [
-          VisibilityEffect(duration: 300.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
           MoveEffect(
             curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
-            begin: Offset(0.0, 20.0),
-            end: Offset(0.0, 0.0),
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
           ),
         ],
       ),
     });
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -135,10 +135,9 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
-                  ),
+                child: SpinKitWanderingCubes(
+                  color: FlutterFlowTheme.of(context).primary,
+                  size: 50.0,
                 ),
               ),
             ),
@@ -174,104 +173,13 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 32.0, 0.0, 16.0),
-                                    child: RichText(
-                                      textScaler:
-                                          MediaQuery.of(context).textScaler,
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: 'Hoy',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  font: GoogleFonts.asap(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'Sí',
-                                            style: FlutterFlowTheme.of(context)
-                                                .displaySmall
-                                                .override(
-                                                  font: GoogleFonts.asap(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .displaySmall
-                                                            .fontStyle,
-                                                  ),
-                                                  color: Color(0xFF01AFFF),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .displaySmall
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'Fio',
-                                            style: TextStyle(),
-                                          )
-                                        ],
-                                        style: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .override(
-                                              font: GoogleFonts.asap(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .displaySmall
-                                                        .fontStyle,
-                                              ),
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .displaySmall
-                                                      .fontStyle,
-                                            ),
-                                      ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/actualhoysifioload_c7004ecf.gif',
+                                      width: 200.0,
+                                      height: 80.0,
+                                      fit: BoxFit.fitWidth,
                                     ),
                                   ),
                                 ],
@@ -1568,9 +1476,19 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                               safeSetState(
                                                                   () {});
                                                             }
+                                                            if (animationsMap[
+                                                                    'containerOnActionTriggerAnimation'] !=
+                                                                null) {
+                                                              await animationsMap[
+                                                                      'containerOnActionTriggerAnimation']!
+                                                                  .controller
+                                                                  .forward(
+                                                                      from:
+                                                                          0.0);
+                                                            }
 
                                                             context.goNamed(
-                                                              ResumenFiadoClienTiendaNewWidget
+                                                              InicioClienteWidget
                                                                   .routeName,
                                                               queryParameters: {
                                                                 'cedula':
@@ -1669,13 +1587,11 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                                                 ),
                                               ),
                                             ),
-                                          ].divide(SizedBox(height: 15.0)),
+                                          ].divide(SizedBox(height: 10.0)),
                                         ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'columnOnPageLoadAnimation']!),
+                                      ),
                                     ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation']!),
+                                  ),
                                 ),
                               ),
                             ],
@@ -1684,7 +1600,12 @@ class _ClienteFirstLoginWidgetState extends State<ClienteFirstLoginWidget>
                       ],
                     ),
                   ),
-                ),
+                )
+                    .animateOnPageLoad(
+                        animationsMap['containerOnPageLoadAnimation']!)
+                    .animateOnActionTrigger(
+                      animationsMap['containerOnActionTriggerAnimation']!,
+                    ),
               ),
             ),
           ),
