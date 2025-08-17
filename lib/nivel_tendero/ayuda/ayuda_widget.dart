@@ -107,51 +107,65 @@ class _AyudaWidgetState extends State<AyudaWidget>
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
-            title: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Opacity(
-                  opacity: 0.0,
-                  child: FlutterFlowIconButton(
-                    borderRadius: 12.0,
-                    buttonSize: 40.0,
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    icon: Icon(
-                      Icons.logout,
-                      color: FlutterFlowTheme.of(context).error,
-                      size: 24.0,
+            title: Container(
+              decoration: BoxDecoration(),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Opacity(
+                    opacity: 0.0,
+                    child: FlutterFlowIconButton(
+                      borderRadius: 12.0,
+                      buttonSize: 40.0,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      icon: Icon(
+                        Icons.logout,
+                        color: FlutterFlowTheme.of(context).error,
+                        size: 24.0,
+                      ),
+                      onPressed: () {
+                        print('iconNothing pressed ...');
+                      },
                     ),
-                    onPressed: () {
-                      print('iconNothing pressed ...');
-                    },
                   ),
-                ),
-                Container(
-                  width: 270.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Flexible(
-                              child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
-                                child: AutoSizeText(
-                                  widget.nombreTienda,
-                                  textAlign: TextAlign.center,
-                                  maxLines: 1,
-                                  minFontSize: 4.0,
-                                  style: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .override(
-                                        font: GoogleFonts.asap(
+                  Container(
+                    width: 260.0,
+                    height: 50.0,
+                    decoration: BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Flexible(
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: AutoSizeText(
+                                    widget.nombreTienda,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    minFontSize: 4.0,
+                                    style: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .override(
+                                          font: GoogleFonts.asap(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .displaySmall
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 28.0,
+                                          letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .displaySmall
@@ -161,33 +175,37 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                                   .displaySmall
                                                   .fontStyle,
                                         ),
-                                        fontSize: 28.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .displaySmall
-                                            .fontStyle,
-                                      ),
+                                  ),
                                 ),
                               ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Flexible(
-                                  child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: AutoSizeText(
-                                      widget.emailTendero,
-                                      textAlign: TextAlign.center,
-                                      maxLines: 1,
-                                      minFontSize: 4.0,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.asap(
+                              Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Flexible(
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: AutoSizeText(
+                                        widget.emailTendero,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 1,
+                                        minFontSize: 4.0,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.asap(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -197,97 +215,90 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-                Builder(
-                  builder: (context) => FlutterFlowIconButton(
-                    borderRadius: 12.0,
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
-                    icon: Icon(
-                      Icons.logout,
-                      color: FlutterFlowTheme.of(context).error,
-                      size: 24.0,
+                      ],
                     ),
-                    onPressed: () async {
-                      await showDialog(
-                        context: context,
-                        builder: (dialogContext) {
-                          return Dialog(
-                            elevation: 0,
-                            insetPadding: EdgeInsets.zero,
-                            backgroundColor: Colors.transparent,
-                            alignment: AlignmentDirectional(0.0, 0.0)
-                                .resolve(Directionality.of(context)),
-                            child: GestureDetector(
-                              onTap: () {
-                                FocusScope.of(dialogContext).unfocus();
-                                FocusManager.instance.primaryFocus?.unfocus();
-                              },
-                              child: Container(
-                                height: 200.0,
-                                child: DialogTwoBtnsWidget(
-                                  titulo: '¿Desea cerrar sesión?',
-                                  mensaje:
-                                      'Sus datos se guardarán automáticamente.',
+                  ),
+                  Builder(
+                    builder: (context) => FlutterFlowIconButton(
+                      borderRadius: 12.0,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      icon: Icon(
+                        Icons.logout,
+                        color: FlutterFlowTheme.of(context).error,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(dialogContext).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Container(
+                                  height: 200.0,
+                                  child: DialogTwoBtnsWidget(
+                                    titulo: '¿Desea cerrar sesión?',
+                                    mensaje:
+                                        'Sus datos se guardarán automáticamente.',
+                                  ),
                                 ),
                               ),
-                            ),
+                            );
+                          },
+                        ).then((value) =>
+                            safeSetState(() => _model.isLogoff = value));
+
+                        if (_model.isLogoff!) {
+                          GoRouter.of(context).prepareAuthEvent();
+                          await authManager.signOut();
+                          GoRouter.of(context).clearRedirectLocation();
+
+                          if (animationsMap['stackOnActionTriggerAnimation'] !=
+                              null) {
+                            await animationsMap[
+                                    'stackOnActionTriggerAnimation']!
+                                .controller
+                                .forward(from: 0.0);
+                          }
+
+                          context.goNamedAuth(
+                            AuthSigningInWidget.routeName,
+                            context.mounted,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 1000),
+                              ),
+                            },
                           );
-                        },
-                      ).then((value) =>
-                          safeSetState(() => _model.isLogoff = value));
-
-                      if (_model.isLogoff!) {
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
-
-                        if (animationsMap['stackOnActionTriggerAnimation'] !=
-                            null) {
-                          await animationsMap['stackOnActionTriggerAnimation']!
-                              .controller
-                              .forward(from: 0.0);
                         }
 
-                        context.goNamedAuth(
-                          AuthSigningInWidget.routeName,
-                          context.mounted,
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 1000),
-                            ),
-                          },
-                        );
-                      }
-
-                      safeSetState(() {});
-                    },
+                        safeSetState(() {});
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ]
+                    .addToStart(SizedBox(width: 5.0))
+                    .addToEnd(SizedBox(width: 5.0)),
+              ),
             ),
             actions: [],
             centerTitle: false,

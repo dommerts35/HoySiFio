@@ -199,7 +199,7 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
                                     .forward(from: 0.0);
                               }
 
-                              context.pushNamed(
+                              context.goNamed(
                                 ClienteInfoEditWidget.routeName,
                                 queryParameters: {
                                   'nombre': serializeParam(
@@ -341,16 +341,8 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
                                   }
 
                                   context.goNamedAuth(
-                                    AuthSigningInWidget.routeName,
-                                    context.mounted,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 1000),
-                                      ),
-                                    },
-                                  );
+                                      AuthSigningInWidget.routeName,
+                                      context.mounted);
                                 } else {
                                   if (_shouldSetState) safeSetState(() {});
                                   return;

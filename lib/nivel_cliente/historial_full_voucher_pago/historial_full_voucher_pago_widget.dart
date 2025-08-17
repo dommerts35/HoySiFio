@@ -88,7 +88,7 @@ class _HistorialFullVoucherPagoWidgetState
     _model.nombreBancoFocusNode ??= FocusNode();
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation1': AnimationInfo(
+      'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -108,61 +108,7 @@ class _HistorialFullVoucherPagoWidgetState
           ),
         ],
       ),
-      'containerOnActionTriggerAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
-      'buttonOnPageLoadAnimation': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 600.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation2': AnimationInfo(
+      'containerOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -193,6 +139,20 @@ class _HistorialFullVoucherPagoWidgetState
             duration: 600.0.ms,
             begin: Offset(0.0, 0.0),
             end: Offset(-6.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
           ),
         ],
       ),
@@ -250,134 +210,118 @@ class _HistorialFullVoucherPagoWidgetState
             child: Scaffold(
               key: scaffoldKey,
               backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(200.0),
-                child: AppBar(
-                  backgroundColor:
-                      FlutterFlowTheme.of(context).secondaryBackground,
-                  automaticallyImplyLeading: false,
-                  title: Container(
-                    decoration: BoxDecoration(),
+              body: SafeArea(
+                top: true,
+                child: Container(
+                  decoration: BoxDecoration(),
+                  child: Form(
+                    key: _model.formKey,
+                    autovalidateMode: AutovalidateMode.disabled,
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderRadius: 12.0,
-                              buttonSize: 40.0,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation1'] !=
-                                    null) {
-                                  await animationsMap[
-                                          'containerOnActionTriggerAnimation1']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation2'] !=
-                                    null) {
-                                  await animationsMap[
-                                          'containerOnActionTriggerAnimation2']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                24.0, 0.0, 24.0, 0.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 0.9,
+                                    height: 200.0,
+                                    decoration: BoxDecoration(),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            FlutterFlowIconButton(
+                                              borderRadius: 12.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              icon: Icon(
+                                                Icons.arrow_back,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                if (animationsMap[
+                                                        'containerOnActionTriggerAnimation'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'containerOnActionTriggerAnimation']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
 
-                                context.goNamed(
-                                  ResumenFiadoClienProdsNewWidget.routeName,
-                                  queryParameters: {
-                                    'historialPorPagarDTList': serializeParam(
-                                      widget.historialPorPagarDT,
-                                      ParamType.DataStruct,
-                                      isList: true,
-                                    ),
-                                    'nombreCliente': serializeParam(
-                                      widget.nombre,
-                                      ParamType.String,
-                                    ),
-                                    'idCliente': serializeParam(
-                                      widget.idCliente,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'idTendero': serializeParam(
-                                      widget.tenderoRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'doc': serializeParam(
-                                      widget.doc,
-                                      ParamType.Document,
-                                      isList: true,
-                                    ),
-                                    'cedula': serializeParam(
-                                      widget.cedula,
-                                      ParamType.String,
-                                    ),
-                                    'idTenderoList': serializeParam(
-                                      widget.idTenderoList,
-                                      ParamType.DocumentReference,
-                                      isList: true,
-                                    ),
-                                  }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    'doc': widget.doc,
-                                  },
-                                );
-                              },
-                            ).animateOnPageLoad(animationsMap[
-                                'iconButtonOnPageLoadAnimation']!),
-                            Flexible(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 28.0, 0.0),
-                                child: StreamBuilder<TenderosRecord>(
-                                  stream: TenderosRecord.getDocument(
-                                      widget.tenderoRef!),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: SpinKitWanderingCubes(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 50.0,
-                                          ),
-                                        ),
-                                      );
-                                    }
-
-                                    final pageViewTenderosRecord =
-                                        snapshot.data!;
-
-                                    return Container(
-                                      width: 280.0,
-                                      height: 210.0,
-                                      child: Stack(
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 20.0),
-                                            child: PageView(
-                                              controller:
-                                                  _model.pageViewController ??=
-                                                      PageController(
-                                                          initialPage: 0),
-                                              scrollDirection: Axis.horizontal,
-                                              children: [
-                                                StreamBuilder<TenderosRecord>(
+                                                context.goNamed(
+                                                  ResumenFiadoClienProdsNewWidget
+                                                      .routeName,
+                                                  queryParameters: {
+                                                    'historialPorPagarDTList':
+                                                        serializeParam(
+                                                      widget
+                                                          .historialPorPagarDT,
+                                                      ParamType.DataStruct,
+                                                      isList: true,
+                                                    ),
+                                                    'nombreCliente':
+                                                        serializeParam(
+                                                      widget.nombre,
+                                                      ParamType.String,
+                                                    ),
+                                                    'idCliente': serializeParam(
+                                                      widget.idCliente,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'idTendero': serializeParam(
+                                                      widget.tenderoRef,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'doc': serializeParam(
+                                                      widget.doc,
+                                                      ParamType.Document,
+                                                      isList: true,
+                                                    ),
+                                                    'cedula': serializeParam(
+                                                      widget.cedula,
+                                                      ParamType.String,
+                                                    ),
+                                                    'idTenderoList':
+                                                        serializeParam(
+                                                      widget.idTenderoList,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                      isList: true,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'doc': widget.doc,
+                                                  },
+                                                );
+                                              },
+                                            ).animateOnPageLoad(animationsMap[
+                                                'iconButtonOnPageLoadAnimation']!),
+                                            Flexible(
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 28.0, 0.0),
+                                                child: StreamBuilder<
+                                                    TenderosRecord>(
                                                   stream: TenderosRecord
                                                       .getDocument(
                                                           widget.tenderoRef!),
@@ -399,693 +343,489 @@ class _HistorialFullVoucherPagoWidgetState
                                                       );
                                                     }
 
-                                                    final infoColumnTenderosRecord =
+                                                    final pageViewTenderosRecord =
                                                         snapshot.data!;
 
-                                                    return Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        AutoSizeText(
-                                                          'Cuenta principal',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .quicksand(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 26.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        Flexible(
-                                                          child: AutoSizeText(
-                                                            'Núm. de Cuenta: ${infoColumnTenderosRecord.tenderos.numCuenta}',
-                                                            minFontSize: 10.0,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Flexible(
-                                                          child: Align(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: AutoSizeText(
-                                                              'Titular: ${infoColumnTenderosRecord.tenderos.nombreTitularBanco}',
-                                                              maxLines: 2,
-                                                              minFontSize: 4.0,
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .asap(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    fontSize:
-                                                                        16.0,
-                                                                    letterSpacing:
+                                                    return Container(
+                                                      width: 280.0,
+                                                      height: 210.0,
+                                                      child: Stack(
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
                                                                         0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                                        0.0,
+                                                                        0.0,
+                                                                        20.0),
+                                                            child: PageView(
+                                                              controller: _model
+                                                                      .pageViewController ??=
+                                                                  PageController(
+                                                                      initialPage:
+                                                                          0),
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              children: [
+                                                                StreamBuilder<
+                                                                    TenderosRecord>(
+                                                                  stream: TenderosRecord
+                                                                      .getDocument(
+                                                                          widget
+                                                                              .tenderoRef!),
+                                                                  builder: (context,
+                                                                      snapshot) {
+                                                                    // Customize what your widget looks like when it's loading.
+                                                                    if (!snapshot
+                                                                        .hasData) {
+                                                                      return Center(
+                                                                        child:
+                                                                            SizedBox(
+                                                                          width:
+                                                                              50.0,
+                                                                          height:
+                                                                              50.0,
+                                                                          child:
+                                                                              SpinKitWanderingCubes(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primary,
+                                                                            size:
+                                                                                50.0,
+                                                                          ),
+                                                                        ),
+                                                                      );
+                                                                    }
+
+                                                                    final infoColumnTenderosRecord =
+                                                                        snapshot
+                                                                            .data!;
+
+                                                                    return Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center,
+                                                                      children: [
+                                                                        AutoSizeText(
+                                                                          'Cuenta principal',
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .headlineMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.quicksand(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                                ),
+                                                                                fontSize: 26.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                        Flexible(
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Núm. de Cuenta: ${infoColumnTenderosRecord.tenderos.numCuenta}',
+                                                                            minFontSize:
+                                                                                10.0,
+                                                                            style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  font: GoogleFonts.asap(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                  ),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Flexible(
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                            child:
+                                                                                AutoSizeText(
+                                                                              'Titular: ${infoColumnTenderosRecord.tenderos.nombreTitularBanco}',
+                                                                              maxLines: 2,
+                                                                              minFontSize: 4.0,
+                                                                              style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                    font: GoogleFonts.asap(
+                                                                                      fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                    ),
+                                                                                    fontSize: 16.0,
+                                                                                    letterSpacing: 0.0,
+                                                                                    fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                  ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        AutoSizeText(
+                                                                          infoColumnTenderosRecord
+                                                                              .tenderos
+                                                                              .tipoDeCuenta,
+                                                                          minFontSize:
+                                                                              4.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelLarge
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                        Flexible(
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.max,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            children: [
+                                                                              AutoSizeText(
+                                                                                'Banco: ${infoColumnTenderosRecord.tenderos.cuentaDeBancoName}',
+                                                                                minFontSize: 10.0,
+                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                      font: GoogleFonts.asap(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                      ),
+                                                                                      fontSize: 16.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                        Flexible(
+                                                                          child:
+                                                                              AutoSizeText(
+                                                                            'Tienda: ${infoColumnTenderosRecord.tenderos.nombreTienda}',
+                                                                            minFontSize:
+                                                                                10.0,
+                                                                            style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                  font: GoogleFonts.asap(
+                                                                                    fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                    fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                  ),
+                                                                                  fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        AutoSizeText(
+                                                                          'Total A Pagar: \$${formatNumber(
+                                                                            historialFullVoucherPagoClientesRecord.cliente.totalDeudaCompleta,
+                                                                            formatType:
+                                                                                FormatType.custom,
+                                                                            format:
+                                                                                '#0.00',
+                                                                            locale:
+                                                                                '',
+                                                                          )}',
+                                                                          minFontSize:
+                                                                              10.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                                fontSize: 16.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ],
+                                                                    );
+                                                                  },
+                                                                ),
+                                                                Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    AutoSizeText(
+                                                                      'Cuenta secundaria',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .headlineMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.quicksand(
+                                                                              fontWeight: FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                            ),
+                                                                            fontSize:
+                                                                                26.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                    if (pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec !=
+                                                                            '')
+                                                                      Flexible(
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          'Núm. de Cuenta: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec}',
+                                                                          minFontSize:
+                                                                              8.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                                fontSize: 16.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    if (pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec !=
+                                                                            '')
+                                                                      Flexible(
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          'Titular: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.nombreTitularBancoSec}',
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                          minFontSize:
+                                                                              3.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                ),
+                                                                                fontSize: 16.0,
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    if (pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec !=
+                                                                            '')
+                                                                      Flexible(
+                                                                        child:
+                                                                            AutoSizeText(
+                                                                          pageViewTenderosRecord
+                                                                              .tenderos
+                                                                              .cuentaSecTendero
+                                                                              .tipoDeCuentaSec,
+                                                                          minFontSize:
+                                                                              4.0,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .labelLarge
+                                                                              .override(
+                                                                                font: GoogleFonts.asap(
+                                                                                  fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                  fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                                ),
+                                                                                letterSpacing: 0.0,
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.max,
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.center,
+                                                                        children: [
+                                                                          if (pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec != '')
+                                                                            Flexible(
+                                                                              child: AutoSizeText(
+                                                                                'Banco: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.cuentaDeBancoSecName}',
+                                                                                minFontSize: 4.0,
+                                                                                style: FlutterFlowTheme.of(context).labelMedium.override(
+                                                                                      font: GoogleFonts.asap(
+                                                                                        fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                        fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                      ),
+                                                                                      fontSize: 16.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                      fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                        ],
+                                                                      ),
+                                                                    ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        'Tienda: ${pageViewTenderosRecord.tenderos.nombreTienda}',
+                                                                        minFontSize:
+                                                                            4.0,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.asap(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              fontSize: 16.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                    if (pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec ==
+                                                                            '')
+                                                                      AutoSizeText(
+                                                                        'Este tendero no tiene \nuna cuenta secundaria',
+                                                                        minFontSize:
+                                                                            4.0,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.asap(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              fontSize: 16.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    Flexible(
+                                                                      child:
+                                                                          AutoSizeText(
+                                                                        'Total A Pagar: \$${formatNumber(
+                                                                          historialFullVoucherPagoClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        )}',
+                                                                        minFontSize:
+                                                                            10.0,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .labelMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.asap(
+                                                                                fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                              ),
+                                                                              fontSize: 16.0,
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
-                                                        ),
-                                                        AutoSizeText(
-                                                          infoColumnTenderosRecord
-                                                              .tenderos
-                                                              .tipoDeCuenta,
-                                                          minFontSize: 4.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                        Flexible(
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              AutoSizeText(
-                                                                'Banco: ${infoColumnTenderosRecord.tenderos.cuentaDeBancoName}',
-                                                                minFontSize:
-                                                                    10.0,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .asap(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      letterSpacing:
+                                                          Align(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 1.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                           0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          16.0),
+                                                              child: smooth_page_indicator
+                                                                  .SmoothPageIndicator(
+                                                                controller: _model
+                                                                        .pageViewController ??=
+                                                                    PageController(
+                                                                        initialPage:
+                                                                            0),
+                                                                count: 2,
+                                                                axisDirection: Axis
+                                                                    .horizontal,
+                                                                onDotClicked:
+                                                                    (i) async {
+                                                                  await _model
+                                                                      .pageViewController!
+                                                                      .animateToPage(
+                                                                    i,
+                                                                    duration: Duration(
+                                                                        milliseconds:
+                                                                            500),
+                                                                    curve: Curves
+                                                                        .ease,
+                                                                  );
+                                                                  safeSetState(
+                                                                      () {});
+                                                                },
+                                                                effect: smooth_page_indicator
+                                                                    .SlideEffect(
+                                                                  spacing: 8.0,
+                                                                  radius: 8.0,
+                                                                  dotWidth: 8.0,
+                                                                  dotHeight:
+                                                                      8.0,
+                                                                  dotColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                                  activeDotColor:
+                                                                      FlutterFlowTheme.of(
                                                                               context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Flexible(
-                                                          child: AutoSizeText(
-                                                            'Tienda: ${infoColumnTenderosRecord.tenderos.nombreTienda}',
-                                                            minFontSize: 10.0,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
+                                                                          .primary,
+                                                                  paintStyle:
+                                                                      PaintingStyle
+                                                                          .fill,
                                                                 ),
-                                                          ),
-                                                        ),
-                                                        AutoSizeText(
-                                                          'Total A Pagar: \$${formatNumber(
-                                                            historialFullVoucherPagoClientesRecord
-                                                                .cliente
-                                                                .totalDeudaCompleta,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          )}',
-                                                          minFontSize: 10.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
                                                               ),
-                                                        ),
-                                                      ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    AutoSizeText(
-                                                      'Cuenta secundaria',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .override(
-                                                                font: GoogleFonts
-                                                                    .quicksand(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .headlineMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 26.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                    if (pageViewTenderosRecord
-                                                                .tenderos
-                                                                .cuentaSecTendero
-                                                                .numCuentaSec !=
-                                                            '')
-                                                      Flexible(
-                                                        child: AutoSizeText(
-                                                          'Núm. de Cuenta: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.numCuentaSec}',
-                                                          minFontSize: 8.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    if (pageViewTenderosRecord
-                                                                .tenderos
-                                                                .cuentaSecTendero
-                                                                .numCuentaSec !=
-                                                            '')
-                                                      Flexible(
-                                                        child: AutoSizeText(
-                                                          'Titular: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.nombreTitularBancoSec}',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          minFontSize: 3.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 16.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    if (pageViewTenderosRecord
-                                                                .tenderos
-                                                                .cuentaSecTendero
-                                                                .numCuentaSec !=
-                                                            '')
-                                                      Flexible(
-                                                        child: AutoSizeText(
-                                                          pageViewTenderosRecord
-                                                              .tenderos
-                                                              .cuentaSecTendero
-                                                              .tipoDeCuentaSec,
-                                                          minFontSize: 4.0,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    Flexible(
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          if (pageViewTenderosRecord
-                                                                      .tenderos
-                                                                      .cuentaSecTendero
-                                                                      .numCuentaSec !=
-                                                                  '')
-                                                            Flexible(
-                                                              child:
-                                                                  AutoSizeText(
-                                                                'Banco: ${pageViewTenderosRecord.tenderos.cuentaSecTendero.cuentaDeBancoSecName}',
-                                                                minFontSize:
-                                                                    4.0,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .asap(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .labelMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Flexible(
-                                                      child: AutoSizeText(
-                                                        'Tienda: ${pageViewTenderosRecord.tenderos.nombreTienda}',
-                                                        minFontSize: 4.0,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .asap(
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                    if (pageViewTenderosRecord
-                                                                .tenderos
-                                                                .cuentaSecTendero
-                                                                .numCuentaSec ==
-                                                            '')
-                                                      AutoSizeText(
-                                                        'Este tendero no tiene \nuna cuenta secundaria',
-                                                        minFontSize: 4.0,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .asap(
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                      ),
-                                                    Flexible(
-                                                      child: AutoSizeText(
-                                                        'Total A Pagar: \$${formatNumber(
-                                                          historialFullVoucherPagoClientesRecord
-                                                              .cliente
-                                                              .totalDeudaCompleta,
-                                                          formatType:
-                                                              FormatType.custom,
-                                                          format: '#0.00',
-                                                          locale: '',
-                                                        )}',
-                                                        minFontSize: 10.0,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .labelMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .asap(
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 16.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment:
-                                                AlignmentDirectional(0.0, 1.0),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 16.0),
-                                              child: smooth_page_indicator
-                                                  .SmoothPageIndicator(
-                                                controller: _model
-                                                        .pageViewController ??=
-                                                    PageController(
-                                                        initialPage: 0),
-                                                count: 2,
-                                                axisDirection: Axis.horizontal,
-                                                onDotClicked: (i) async {
-                                                  await _model
-                                                      .pageViewController!
-                                                      .animateToPage(
-                                                    i,
-                                                    duration: Duration(
-                                                        milliseconds: 500),
-                                                    curve: Curves.ease,
-                                                  );
-                                                  safeSetState(() {});
-                                                },
-                                                effect: smooth_page_indicator
-                                                    .SlideEffect(
-                                                  spacing: 8.0,
-                                                  radius: 8.0,
-                                                  dotWidth: 8.0,
-                                                  dotHeight: 8.0,
-                                                  dotColor: FlutterFlowTheme.of(
-                                                          context)
-                                                      .accent1,
-                                                  activeDotColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  paintStyle:
-                                                      PaintingStyle.fill,
-                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                      .animateOnPageLoad(
-                          animationsMap['containerOnPageLoadAnimation2']!)
-                      .animateOnActionTrigger(
-                        animationsMap['containerOnActionTriggerAnimation2']!,
-                      ),
-                  actions: [],
-                  centerTitle: false,
-                  toolbarHeight: 200.0,
-                  elevation: 2.0,
-                ),
-              ),
-              body: SafeArea(
-                top: true,
-                child: Container(
-                  decoration: BoxDecoration(),
-                  child: Form(
-                    key: _model.formKey,
-                    autovalidateMode: AutovalidateMode.disabled,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            child: SingleChildScrollView(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
@@ -2129,7 +1869,7 @@ class _HistorialFullVoucherPagoWidgetState
                                                           textColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .error,
+                                                                  .primary,
                                                         );
                                                         if (selectedMedia !=
                                                                 null &&
@@ -2758,6 +2498,14 @@ class _HistorialFullVoucherPagoWidgetState
                                                           );
                                                         }(),
                                                       );
+                                                      if (animationsMap[
+                                                              'containerOnActionTriggerAnimation'] !=
+                                                          null) {
+                                                        await animationsMap[
+                                                                'containerOnActionTriggerAnimation']!
+                                                            .controller
+                                                            .forward(from: 0.0);
+                                                      }
 
                                                       context.goNamed(
                                                         ResumenFiadoClienProdsNewWidget
@@ -2810,6 +2558,16 @@ class _HistorialFullVoucherPagoWidgetState
                                                         extra: <String,
                                                             dynamic>{
                                                           'doc': widget.doc,
+                                                          kTransitionInfoKey:
+                                                              TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                          ),
                                                         },
                                                       );
                                                     }
@@ -2891,9 +2649,9 @@ class _HistorialFullVoucherPagoWidgetState
                   ),
                 )
                     .animateOnPageLoad(
-                        animationsMap['containerOnPageLoadAnimation1']!)
+                        animationsMap['containerOnPageLoadAnimation']!)
                     .animateOnActionTrigger(
-                      animationsMap['containerOnActionTriggerAnimation1']!,
+                      animationsMap['containerOnActionTriggerAnimation']!,
                     ),
               ),
             ),

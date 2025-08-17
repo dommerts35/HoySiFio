@@ -938,6 +938,17 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                 ),
                                                                 onPressed:
                                                                     () async {
+                                                                  if (animationsMap[
+                                                                          'formOnActionTriggerAnimation'] !=
+                                                                      null) {
+                                                                    await animationsMap[
+                                                                            'formOnActionTriggerAnimation']!
+                                                                        .controller
+                                                                        .forward(
+                                                                            from:
+                                                                                0.0);
+                                                                  }
+
                                                                   context
                                                                       .goNamed(
                                                                     ClienteEditInfoWidget
@@ -1030,6 +1041,18 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                             .int,
                                                                       ),
                                                                     }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.fade,
+                                                                        duration:
+                                                                            Duration(milliseconds: 1000),
+                                                                      ),
+                                                                    },
                                                                   );
                                                                 },
                                                               ).animateOnPageLoad(
@@ -1354,8 +1377,18 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                   ),
                                                                   onPressed:
                                                                       () async {
+                                                                    if (animationsMap[
+                                                                            'formOnActionTriggerAnimation'] !=
+                                                                        null) {
+                                                                      await animationsMap[
+                                                                              'formOnActionTriggerAnimation']!
+                                                                          .controller
+                                                                          .forward(
+                                                                              from: 0.0);
+                                                                    }
+
                                                                     context
-                                                                        .pushNamed(
+                                                                        .goNamed(
                                                                       ClienteReadInfoWidget
                                                                           .routeName,
                                                                       queryParameters:
@@ -1446,6 +1479,18 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                               .String,
                                                                         ),
                                                                       }.withoutNulls,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        kTransitionInfoKey:
+                                                                            TransitionInfo(
+                                                                          hasTransition:
+                                                                              true,
+                                                                          transitionType:
+                                                                              PageTransitionType.fade,
+                                                                          duration:
+                                                                              Duration(milliseconds: 1000),
+                                                                        ),
+                                                                      },
                                                                     );
                                                                   },
                                                                 ).animateOnPageLoad(
@@ -1621,6 +1666,16 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                       true,
                                                                 ).then((s) => s
                                                                         .firstOrNull);
+                                                                if (animationsMap[
+                                                                        'formOnActionTriggerAnimation'] !=
+                                                                    null) {
+                                                                  await animationsMap[
+                                                                          'formOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0);
+                                                                }
 
                                                                 context.goNamed(
                                                                   HistorialPagosWidget
@@ -1706,6 +1761,20 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                           .String,
                                                                     ),
                                                                   }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              1000),
+                                                                    ),
+                                                                  },
                                                                 );
 
                                                                 safeSetState(
@@ -1787,6 +1856,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                             context)
                                                                         .info,
                                                               ),
+                                                              showLoadingIndicator:
+                                                                  false,
                                                             ),
                                                           ),
                                                           Align(
@@ -1815,6 +1886,16 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                       true,
                                                                 ).then((s) => s
                                                                         .firstOrNull);
+                                                                if (animationsMap[
+                                                                        'formOnActionTriggerAnimation'] !=
+                                                                    null) {
+                                                                  await animationsMap[
+                                                                          'formOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0);
+                                                                }
 
                                                                 context.goNamed(
                                                                   HistorialPorCobrarWidget
@@ -1997,6 +2078,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                             context)
                                                                         .info,
                                                               ),
+                                                              showLoadingIndicator:
+                                                                  false,
                                                             ),
                                                           ),
                                                         ],
@@ -2090,6 +2173,17 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                 FFButtonWidget(
                                                               onPressed:
                                                                   () async {
+                                                                if (animationsMap[
+                                                                        'formOnActionTriggerAnimation'] !=
+                                                                    null) {
+                                                                  await animationsMap[
+                                                                          'formOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0);
+                                                                }
+
                                                                 context.goNamed(
                                                                   HistorialVouchersWidget
                                                                       .routeName,
@@ -2173,6 +2267,20 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                           .String,
                                                                     ),
                                                                   }.withoutNulls,
+                                                                  extra: <String,
+                                                                      dynamic>{
+                                                                    kTransitionInfoKey:
+                                                                        TransitionInfo(
+                                                                      hasTransition:
+                                                                          true,
+                                                                      transitionType:
+                                                                          PageTransitionType
+                                                                              .fade,
+                                                                      duration: Duration(
+                                                                          milliseconds:
+                                                                              1000),
+                                                                    ),
+                                                                  },
                                                                 );
                                                               },
                                                               text:
@@ -2251,6 +2359,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                             context)
                                                                         .info,
                                                               ),
+                                                              showLoadingIndicator:
+                                                                  false,
                                                             ),
                                                           ),
                                                         ],

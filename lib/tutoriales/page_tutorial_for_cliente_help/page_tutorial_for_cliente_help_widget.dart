@@ -9,11 +9,11 @@ import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'page_tutorial_for_cliente_f_t_model.dart';
-export 'page_tutorial_for_cliente_f_t_model.dart';
+import 'page_tutorial_for_cliente_help_model.dart';
+export 'page_tutorial_for_cliente_help_model.dart';
 
-class PageTutorialForClienteFTWidget extends StatefulWidget {
-  const PageTutorialForClienteFTWidget({
+class PageTutorialForClienteHelpWidget extends StatefulWidget {
+  const PageTutorialForClienteHelpWidget({
     super.key,
     this.cedula,
     this.idTenderoList,
@@ -24,18 +24,18 @@ class PageTutorialForClienteFTWidget extends StatefulWidget {
   final List<DocumentReference>? idTenderoList;
   final String? nombreCliente;
 
-  static String routeName = 'pageTutorialForClienteFT';
-  static String routePath = '/pageTutorialForClienteFT';
+  static String routeName = 'pageTutorialForClienteHelp';
+  static String routePath = '/pageTutorialForClienteHelp';
 
   @override
-  State<PageTutorialForClienteFTWidget> createState() =>
-      _PageTutorialForClienteFTWidgetState();
+  State<PageTutorialForClienteHelpWidget> createState() =>
+      _PageTutorialForClienteHelpWidgetState();
 }
 
-class _PageTutorialForClienteFTWidgetState
-    extends State<PageTutorialForClienteFTWidget>
+class _PageTutorialForClienteHelpWidgetState
+    extends State<PageTutorialForClienteHelpWidget>
     with TickerProviderStateMixin {
-  late PageTutorialForClienteFTModel _model;
+  late PageTutorialForClienteHelpModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -44,7 +44,7 @@ class _PageTutorialForClienteFTWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PageTutorialForClienteFTModel());
+    _model = createModel(context, () => PageTutorialForClienteHelpModel());
 
     animationsMap.addAll({
       'containerOnPageLoadAnimation1': AnimationInfo(
@@ -72,6 +72,20 @@ class _PageTutorialForClienteFTWidgetState
             duration: 600.0.ms,
             begin: Offset(0.0, 0.0),
             end: Offset(-5.0, 0.0),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
           ),
         ],
       ),
@@ -234,7 +248,7 @@ class _PageTutorialForClienteFTWidgetState
                                                       .alternate,
                                             ),
                                             Text(
-                                              '1. Tiendas registradas',
+                                              '1. Cerrar sesión',
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -270,7 +284,103 @@ class _PageTutorialForClienteFTWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'En la pestaña de tiendas, verás una lista de comercios en las que has sido registrado, sus datos y podrás acceder al resúmen de productos que fias o has fiado.',
+                                                '¿Ves este ícono al lado de \"Lista de tiendas\"? Tócalo cuando quieras salir de tu cuenta. Lo encontrarás en varias secciones de la app.',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                              ),
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                ),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/imagen_2025-08-11_121230547.png',
+                                                  width: 250.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                            Divider(
+                                              thickness: 2.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .alternate,
+                                            ),
+                                            Text(
+                                              '2. Tiendas registradas',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineSmall
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineSmall
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              child: Text(
+                                                'Visualizarás una lista de comercios en las que has sido registrado. Si la tienda tiene el color rojo, significa que tiene deudas pendientes. Si la tienda tiene el color verde, es porque se saldó sus deudas. ',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -319,7 +429,7 @@ class _PageTutorialForClienteFTWidgetState
                                                 child: Image.asset(
                                                   'assets/images/imagen_2025-08-11_124941209.png',
                                                   width: 240.0,
-                                                  fit: BoxFit.fill,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
@@ -980,8 +1090,14 @@ class _PageTutorialForClienteFTWidgetState
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 context.goNamed(
-                                                  TiendaBetterWidget.routeName,
+                                                  AjustesClienteWidget
+                                                      .routeName,
                                                   queryParameters: {
+                                                    'nombreCliente':
+                                                        serializeParam(
+                                                      widget.nombreCliente,
+                                                      ParamType.String,
+                                                    ),
                                                     'cedula': serializeParam(
                                                       widget.cedula,
                                                       ParamType.String,
@@ -1044,7 +1160,8 @@ class _PageTutorialForClienteFTWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                            ),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'buttonOnPageLoadAnimation']!),
                                           ),
                                         ].divide(SizedBox(height: 20.0)),
                                       ),
@@ -1100,8 +1217,12 @@ class _PageTutorialForClienteFTWidgetState
                     child: FFButtonWidget(
                       onPressed: () async {
                         context.goNamed(
-                          TiendaBetterWidget.routeName,
+                          AjustesClienteWidget.routeName,
                           queryParameters: {
+                            'nombreCliente': serializeParam(
+                              widget.nombreCliente,
+                              ParamType.String,
+                            ),
                             'cedula': serializeParam(
                               widget.cedula,
                               ParamType.String,

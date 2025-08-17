@@ -352,6 +352,15 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
+                                  if (animationsMap[
+                                          'formOnActionTriggerAnimation'] !=
+                                      null) {
+                                    await animationsMap[
+                                            'formOnActionTriggerAnimation']!
+                                        .controller
+                                        .forward(from: 0.0);
+                                  }
+
                                   context.goNamed(
                                     ClienteInfoEditWidget.routeName,
                                     queryParameters: {

@@ -288,16 +288,30 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                 },
                                               ).animateOnPageLoad(animationsMap[
                                                   'iconButtonOnPageLoadAnimation1']!),
-                                              AutoSizeText(
-                                                'Resúmen de productos fiados',
-                                                textAlign: TextAlign.center,
-                                                minFontSize: 16.0,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
+                                              Flexible(
+                                                child: AutoSizeText(
+                                                  'Resúmen de productos fiados',
+                                                  textAlign: TextAlign.center,
+                                                  minFontSize: 6.0,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -309,18 +323,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                 .titleMedium
                                                                 .fontStyle,
                                                       ),
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontStyle,
-                                                    ),
+                                                ),
                                               ),
                                               Builder(
                                                 builder: (context) =>
@@ -532,9 +535,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                             ],
                                           ),
                                         ),
-                                      ]
-                                          .addToStart(SizedBox(height: 5.0))
-                                          .addToEnd(SizedBox(height: 5.0)),
+                                      ].addToEnd(SizedBox(height: 5.0)),
                                     ),
                                   ),
                                 ),
@@ -1210,7 +1211,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                     await animationsMap['containerOnActionTriggerAnimation']!.controller.forward(from: 0.0);
                                                                                                   }
 
-                                                                                                  context.pushNamed(
+                                                                                                  context.goNamed(
                                                                                                     HistorialSingleVoucherPagoWidget.routeName,
                                                                                                     queryParameters: {
                                                                                                       'idCliente': serializeParam(
@@ -1310,7 +1311,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       kTransitionInfoKey: TransitionInfo(
                                                                                                         hasTransition: true,
                                                                                                         transitionType: PageTransitionType.fade,
-                                                                                                        duration: Duration(milliseconds: 2000),
+                                                                                                        duration: Duration(milliseconds: 1000),
                                                                                                       ),
                                                                                                     },
                                                                                                   );
@@ -1543,8 +1544,18 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                       () {});
                                                                 return;
                                                               } else {
-                                                                context
-                                                                    .pushNamed(
+                                                                if (animationsMap[
+                                                                        'containerOnActionTriggerAnimation'] !=
+                                                                    null) {
+                                                                  await animationsMap[
+                                                                          'containerOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0);
+                                                                }
+
+                                                                context.goNamed(
                                                                   HistorialFullVoucherPagoWidget
                                                                       .routeName,
                                                                   queryParameters:
@@ -1676,7 +1687,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                               .fade,
                                                                       duration: Duration(
                                                                           milliseconds:
-                                                                              2000),
+                                                                              1000),
                                                                     ),
                                                                   },
                                                                 );
@@ -1774,80 +1785,121 @@ class _ResumenFiadoClienProdsNewWidgetState
                                               ),
                                             ),
                                           ),
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.goNamed(
-                                                HistorialVouchersClienteWidget
-                                                    .routeName,
-                                                queryParameters: {
-                                                  'idCliente': serializeParam(
-                                                    widget.idCliente,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'idTendero': serializeParam(
-                                                    widget.idTendero,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'historialPorPagarDTList':
-                                                      serializeParam(
-                                                    widget
-                                                        .historialPorPagarDTList,
-                                                    ParamType.DataStruct,
-                                                    isList: true,
-                                                  ),
-                                                  'nombreCliente':
-                                                      serializeParam(
-                                                    widget.nombreCliente,
-                                                    ParamType.String,
-                                                  ),
-                                                  'doc': serializeParam(
-                                                    widget.doc,
-                                                    ParamType.Document,
-                                                    isList: true,
-                                                  ),
-                                                  'cedula': serializeParam(
-                                                    widget.cedula,
-                                                    ParamType.String,
-                                                  ),
-                                                  'idTenderoList':
-                                                      serializeParam(
-                                                    widget.idTenderoList,
-                                                    ParamType.DocumentReference,
-                                                    isList: true,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'doc': widget.doc,
-                                                },
-                                              );
-                                            },
-                                            child: Container(
-                                              width: 360.0,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Historial de comprobantes',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.asap(
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (animationsMap[
+                                                        'containerOnActionTriggerAnimation'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'containerOnActionTriggerAnimation']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+
+                                                context.goNamed(
+                                                  HistorialVouchersClienteWidget
+                                                      .routeName,
+                                                  queryParameters: {
+                                                    'idCliente': serializeParam(
+                                                      widget.idCliente,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'idTendero': serializeParam(
+                                                      widget.idTendero,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'historialPorPagarDTList':
+                                                        serializeParam(
+                                                      widget
+                                                          .historialPorPagarDTList,
+                                                      ParamType.DataStruct,
+                                                      isList: true,
+                                                    ),
+                                                    'nombreCliente':
+                                                        serializeParam(
+                                                      widget.nombreCliente,
+                                                      ParamType.String,
+                                                    ),
+                                                    'doc': serializeParam(
+                                                      widget.doc,
+                                                      ParamType.Document,
+                                                      isList: true,
+                                                    ),
+                                                    'cedula': serializeParam(
+                                                      widget.cedula,
+                                                      ParamType.String,
+                                                    ),
+                                                    'idTenderoList':
+                                                        serializeParam(
+                                                      widget.idTenderoList,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                      isList: true,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'doc': widget.doc,
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 1000),
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'Historial de comprobantes',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .asap(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             fontStyle:
@@ -1856,104 +1908,134 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                  Lottie.asset(
-                                                    'assets/jsons/read.json',
-                                                    width: 40.0,
-                                                    height: 40.0,
-                                                    fit: BoxFit.contain,
-                                                    animate: true,
-                                                  ),
-                                                ],
+                                                    ),
+                                                    Lottie.asset(
+                                                      'assets/jsons/read.json',
+                                                      width: 40.0,
+                                                      height: 40.0,
+                                                      fit: BoxFit.contain,
+                                                      animate: true,
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              context.pushNamed(
-                                                HistorialPagosClienteWidget
-                                                    .routeName,
-                                                queryParameters: {
-                                                  'idCliente': serializeParam(
-                                                    widget.idCliente,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'idTendero': serializeParam(
-                                                    widget.idTendero,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'historialPagosDTList':
-                                                      serializeParam(
-                                                    widget
-                                                        .historialPorPagarDTList,
-                                                    ParamType.DataStruct,
-                                                    isList: true,
-                                                  ),
-                                                  'nombreCliente':
-                                                      serializeParam(
-                                                    widget.nombreCliente,
-                                                    ParamType.String,
-                                                  ),
-                                                  'doc': serializeParam(
-                                                    widget.doc,
-                                                    ParamType.Document,
-                                                    isList: true,
-                                                  ),
-                                                  'cedula': serializeParam(
-                                                    widget.cedula,
-                                                    ParamType.String,
-                                                  ),
-                                                  'idTenderoList':
-                                                      serializeParam(
-                                                    widget.idTenderoList,
-                                                    ParamType.DocumentReference,
-                                                    isList: true,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  'doc': widget.doc,
-                                                },
-                                              );
-                                            },
-                                            child: Container(
-                                              width: 360.0,
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .success,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                    'Historial de pagos',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.asap(
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (animationsMap[
+                                                        'containerOnActionTriggerAnimation'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'containerOnActionTriggerAnimation']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+
+                                                context.goNamed(
+                                                  HistorialPagosClienteWidget
+                                                      .routeName,
+                                                  queryParameters: {
+                                                    'idCliente': serializeParam(
+                                                      widget.idCliente,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'idTendero': serializeParam(
+                                                      widget.idTendero,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                    ),
+                                                    'historialPagosDTList':
+                                                        serializeParam(
+                                                      widget
+                                                          .historialPorPagarDTList,
+                                                      ParamType.DataStruct,
+                                                      isList: true,
+                                                    ),
+                                                    'nombreCliente':
+                                                        serializeParam(
+                                                      widget.nombreCliente,
+                                                      ParamType.String,
+                                                    ),
+                                                    'doc': serializeParam(
+                                                      widget.doc,
+                                                      ParamType.Document,
+                                                      isList: true,
+                                                    ),
+                                                    'cedula': serializeParam(
+                                                      widget.cedula,
+                                                      ParamType.String,
+                                                    ),
+                                                    'idTenderoList':
+                                                        serializeParam(
+                                                      widget.idTenderoList,
+                                                      ParamType
+                                                          .DocumentReference,
+                                                      isList: true,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'doc': widget.doc,
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 1000),
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .success,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      'Historial de pagos',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .asap(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                            ),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             fontStyle:
@@ -1962,27 +2044,17 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                  Lottie.asset(
-                                                    'assets/jsons/coinAnimated.json',
-                                                    width: 30.0,
-                                                    height: 30.0,
-                                                    fit: BoxFit.contain,
-                                                    animate: true,
-                                                  ),
-                                                ].divide(SizedBox(width: 5.0)),
+                                                    ),
+                                                    Lottie.asset(
+                                                      'assets/jsons/coinAnimated.json',
+                                                      width: 30.0,
+                                                      height: 30.0,
+                                                      fit: BoxFit.contain,
+                                                      animate: true,
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 5.0)),
+                                                ),
                                               ),
                                             ),
                                           ),

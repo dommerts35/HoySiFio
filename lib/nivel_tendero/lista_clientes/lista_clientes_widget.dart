@@ -315,7 +315,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                           ),
                                           child: ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                                BorderRadius.circular(8.0),
                                             child: Image.network(
                                               containerTenderosRecord.photoUrl,
                                               width: 90.0,
@@ -757,7 +757,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                     child:
                                                                         Container(
                                                                       width:
-                                                                          300.0,
+                                                                          400.0,
                                                                       height:
                                                                           360.0,
                                                                       child:
@@ -845,7 +845,12 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                               Colors.transparent,
                                                                           onTap:
                                                                               () async {
-                                                                            context.pushNamed(
+                                                                            if (animationsMap['columnOnActionTriggerAnimation'] !=
+                                                                                null) {
+                                                                              await animationsMap['columnOnActionTriggerAnimation']!.controller.forward(from: 0.0);
+                                                                            }
+
+                                                                            context.goNamed(
                                                                               ClienteInfoEditWidget.routeName,
                                                                               queryParameters: {
                                                                                 'nombre': serializeParam(
@@ -1163,7 +1168,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                     .isEmpty) {
                                                   return Center(
                                                     child: Container(
-                                                      width: 300.0,
+                                                      width: 400.0,
                                                       height: 360.0,
                                                       child:
                                                           EmptyClientesListFiandoWidget(),
@@ -1901,9 +1906,9 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                   padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           24.0,
+                                                                          5.0,
                                                                           0.0,
-                                                                          0.0,
-                                                                          0.0),
+                                                                          5.0),
                                                                   child: Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize

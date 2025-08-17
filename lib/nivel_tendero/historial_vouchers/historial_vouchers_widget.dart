@@ -1293,7 +1293,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                               var _shouldSetState = false;
                                                                               _model.readClienteToNormalize = await ClientesRecord.getDocumentOnce(widget.idCliente!);
                                                                               _shouldSetState = true;
-                                                                              _model.totalDeudaRCompletaReal = await actions.normalizarValorNumerico(
+                                                                              _model.totalDeudaRCompletaReal = await actions.normalizarValorParaAceptacionDePago(
                                                                                 formatNumber(
                                                                                   _model.readClienteToNormalize!.cliente.totalDeudaCompleta,
                                                                                   formatType: FormatType.custom,
@@ -1309,7 +1309,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                   clearUnsetFields: false,
                                                                                 ),
                                                                               ));
-                                                                              _model.totalPorPagarNormalized = await actions.normalizarValorNumerico(
+                                                                              _model.totalPorPagarNormalized = await actions.normalizarValorParaAceptacionDePago(
                                                                                 formatNumber(
                                                                                   listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
                                                                                   formatType: FormatType.custom,
@@ -1318,7 +1318,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                 ),
                                                                               );
                                                                               _shouldSetState = true;
-                                                                              _model.totalPorPagarRE = await actions.normalizarValorNumerico(
+                                                                              _model.totalPorPagarRE = await actions.normalizarValorParaAceptacionDePago(
                                                                                 formatNumber(
                                                                                   _model.totalPorPagarNormalized,
                                                                                   formatType: FormatType.custom,
@@ -1538,8 +1538,101 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                                 totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
                                                                                                 idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
                                                                                                 fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                                numVoucher: null,
+                                                                                                isVoucherSent: false,
+                                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                                                fieldValues: {
+                                                                                                  'productos': getDataTypeProductosListFirestoreData(
+                                                                                                    listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                                  ),
+                                                                                                },
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              createDataTypeHistorialPagoStruct(
+                                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.efectivo,
+                                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                                numVoucher: null,
+                                                                                                isVoucherSent: true,
+                                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                                                fieldValues: {
+                                                                                                  'productos': getDataTypeProductosListFirestoreData(
+                                                                                                    listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                                  ),
+                                                                                                },
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              createDataTypeHistorialPagoStruct(
+                                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.efectivo,
+                                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
                                                                                                 numVoucher: 0,
                                                                                                 isVoucherSent: true,
+                                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                                                fieldValues: {
+                                                                                                  'productos': getDataTypeProductosListFirestoreData(
+                                                                                                    listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                                  ),
+                                                                                                },
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              createDataTypeHistorialPagoStruct(
+                                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.efectivo,
+                                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                                numVoucher: 0,
+                                                                                                isVoucherSent: false,
                                                                                                 fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
                                                                                                 fieldValues: {
                                                                                                   'productos': getDataTypeProductosListFirestoreData(
@@ -1628,7 +1721,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                     safeSetState(() {});
                                                                                     _model.removeFromTempHistorialList(_model.dtHistorialPagoOld!);
                                                                                     safeSetState(() {});
-                                                                                    _model.montoAPagarNormalized = await actions.normalizarValorNumerico(
+                                                                                    _model.montoAPagarNormalized = await actions.normalizarValorParaAceptacionDePago(
                                                                                       formatNumber(
                                                                                         -listaVouchersItem.montoAPagar,
                                                                                         formatType: FormatType.custom,
@@ -1637,11 +1730,11 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                       ),
                                                                                     );
                                                                                     _shouldSetState = true;
-                                                                                    _model.montoAPagarReal = await actions.normalizarValorNumerico(
+                                                                                    _model.montoAPagarReal = await actions.normalizarValorParaAceptacionDePago(
                                                                                       ((_model.totalPorPagarRE!) - listaVouchersItem.montoAPagar).toString(),
                                                                                     );
                                                                                     _shouldSetState = true;
-                                                                                    _model.resultadoProcesado = await actions.normalizarValorNumerico(
+                                                                                    _model.resultadoProcesado = await actions.normalizarValorParaAceptacionDePago(
                                                                                       formatNumber(
                                                                                         _model.montoAPagarReal,
                                                                                         formatType: FormatType.custom,
@@ -1683,17 +1776,6 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                     safeSetState(() {});
                                                                                     _model.addToTempHistorialList(_model.dtHistorialPagoNew!);
                                                                                     safeSetState(() {});
-
-                                                                                    await widget.idCliente!.update(createClientesRecordData(
-                                                                                      cliente: createDataTypeClienteStruct(
-                                                                                        fieldValues: {
-                                                                                          'historialPorPagarProd': getDataTypeHistorialPagoListFirestoreData(
-                                                                                            _model.tempHistorialList,
-                                                                                          ),
-                                                                                        },
-                                                                                        clearUnsetFields: false,
-                                                                                      ),
-                                                                                    ));
                                                                                     _model.tDCNormVF = await actions.normalizarValorNumerico(
                                                                                       formatNumber(
                                                                                         mainHistorialViewClientesRecord.cliente.totalDeudaCompleta,
@@ -1703,6 +1785,71 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                                       ),
                                                                                     );
                                                                                     _shouldSetState = true;
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              createDataTypeHistorialPagoStruct(
+                                                                                                totalPagado: listaVouchersItem.historialPagoParaEliminar.totalPagado,
+                                                                                                totalPorPagar: listaVouchersItem.historialPagoParaEliminar.totalPorPagar,
+                                                                                                transferencia: listaVouchersItem.historialPagoParaEliminar.transferencia,
+                                                                                                efectivo: listaVouchersItem.historialPagoParaEliminar.efectivo,
+                                                                                                totalGeneral: listaVouchersItem.historialPagoParaEliminar.totalGeneral,
+                                                                                                idTransaccion: listaVouchersItem.historialPagoParaEliminar.idTransaccion,
+                                                                                                fechaDeFio: listaVouchersItem.historialPagoParaEliminar.fechaDeFio,
+                                                                                                numVoucher: 0,
+                                                                                                isVoucherSent: true,
+                                                                                                fechaDeCobro: listaVouchersItem.historialPagoParaEliminar.fechaDeCobro,
+                                                                                                fieldValues: {
+                                                                                                  'productos': getDataTypeProductosListFirestoreData(
+                                                                                                    listaVouchersItem.historialPagoParaEliminar.productos,
+                                                                                                  ),
+                                                                                                },
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayRemove([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              updateDataTypeHistorialPagoStruct(
+                                                                                                _model.dtHistorialPagoOld,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
+
+                                                                                    await widget.idCliente!.update(createClientesRecordData(
+                                                                                      cliente: createDataTypeClienteStruct(
+                                                                                        fieldValues: {
+                                                                                          'historialPorPagarProd': FieldValue.arrayUnion([
+                                                                                            getDataTypeHistorialPagoFirestoreData(
+                                                                                              updateDataTypeHistorialPagoStruct(
+                                                                                                _model.dtHistorialPagoNew,
+                                                                                                clearUnsetFields: false,
+                                                                                              ),
+                                                                                              true,
+                                                                                            )
+                                                                                          ]),
+                                                                                        },
+                                                                                        clearUnsetFields: false,
+                                                                                      ),
+                                                                                    ));
                                                                                     _model.tDCNormVF2 = await actions.normalizarValorNumerico(
                                                                                       formatNumber(
                                                                                         _model.tDCNormVF,

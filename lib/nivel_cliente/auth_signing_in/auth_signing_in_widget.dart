@@ -46,7 +46,6 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setDarkModeSetting(context, ThemeMode.light);
       _model.playerIdResult = await actions.getPlayerId();
       _model.getFCMTokenResult = await actions.getFCMToken();
       FFAppState().playerId = _model.playerIdResult!;
@@ -2034,7 +2033,18 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
-                                                                context.pushNamed(
+                                                                if (animationsMap[
+                                                                        'stackOnActionTriggerAnimation'] !=
+                                                                    null) {
+                                                                  await animationsMap[
+                                                                          'stackOnActionTriggerAnimation']!
+                                                                      .controller
+                                                                      .forward(
+                                                                          from:
+                                                                              0.0);
+                                                                }
+
+                                                                context.goNamed(
                                                                     PoliticaPrivSubPageToAcceptWidget
                                                                         .routeName);
                                                               },
@@ -2093,7 +2103,17 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
-                                                          context.pushNamed(
+                                                          if (animationsMap[
+                                                                  'stackOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'stackOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+
+                                                          context.goNamed(
                                                               ForgotMyPasswordWidget
                                                                   .routeName);
                                                         },
@@ -2151,6 +2171,16 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          if (animationsMap[
+                                                                  'stackOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'stackOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+
                                                           context.goNamed(
                                                               PoliticaPrivSubPageToViewWidget
                                                                   .routeName);
@@ -2209,6 +2239,16 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          if (animationsMap[
+                                                                  'stackOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'stackOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+
                                                           context.goNamed(
                                                               TermsOfServiceLoginWidget
                                                                   .routeName);
@@ -3692,7 +3732,17 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        context.pushNamed(
+                                                        if (animationsMap[
+                                                                'stackOnActionTriggerAnimation'] !=
+                                                            null) {
+                                                          await animationsMap[
+                                                                  'stackOnActionTriggerAnimation']!
+                                                              .controller
+                                                              .forward(
+                                                                  from: 0.0);
+                                                        }
+
+                                                        context.goNamed(
                                                             ForgotMyPasswordWidget
                                                                 .routeName);
                                                       },
@@ -3751,7 +3801,17 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        context.pushNamed(
+                                                        if (animationsMap[
+                                                                'stackOnActionTriggerAnimation'] !=
+                                                            null) {
+                                                          await animationsMap[
+                                                                  'stackOnActionTriggerAnimation']!
+                                                              .controller
+                                                              .forward(
+                                                                  from: 0.0);
+                                                        }
+
+                                                        context.goNamed(
                                                             PoliticaPrivSubPageToViewWidget
                                                                 .routeName);
                                                       },
@@ -3810,6 +3870,16 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        if (animationsMap[
+                                                                'stackOnActionTriggerAnimation'] !=
+                                                            null) {
+                                                          await animationsMap[
+                                                                  'stackOnActionTriggerAnimation']!
+                                                              .controller
+                                                              .forward(
+                                                                  from: 0.0);
+                                                        }
+
                                                         context.goNamed(
                                                             TermsOfServiceLoginWidget
                                                                 .routeName);

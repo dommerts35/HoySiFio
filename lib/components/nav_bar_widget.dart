@@ -131,15 +131,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                     currentItemName: 'Inicio',
                     title: 'Inicio',
                     action: () async {
-                      if (animationsMap['navBarItemOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap[
-                                'navBarItemOnActionTriggerAnimation']!
-                            .controller
-                          ..reset()
-                          ..repeat();
-                      }
-
                       context.goNamed(
                         ListaClientesWidget.routeName,
                         queryParameters: {
@@ -190,15 +181,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                     currentItemName: 'Añadir',
                     title: 'Añadir',
                     action: () async {
-                      if (animationsMap['navBarItemOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap[
-                                'navBarItemOnActionTriggerAnimation']!
-                            .controller
-                          ..reset()
-                          ..repeat();
-                      }
-
                       context.goNamed(
                         ClienteMakeInfoWidget.routeName,
                         queryParameters: {
@@ -247,15 +229,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                     currentItemName: 'Ayuda',
                     title: 'Ayuda',
                     action: () async {
-                      if (animationsMap['navBarItemOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap[
-                                'navBarItemOnActionTriggerAnimation']!
-                            .controller
-                          ..reset()
-                          ..repeat();
-                      }
-
                       context.goNamed(
                         AyudaWidget.routeName,
                         queryParameters: {
@@ -304,15 +277,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                     currentItemName: 'Perfil',
                     title: 'Perfil',
                     action: () async {
-                      if (animationsMap['navBarItemOnActionTriggerAnimation'] !=
-                          null) {
-                        await animationsMap[
-                                'navBarItemOnActionTriggerAnimation']!
-                            .controller
-                          ..reset()
-                          ..repeat();
-                      }
-
                       context.goNamed(
                         TenderoEditInfoWidget.routeName,
                         queryParameters: {
@@ -333,13 +297,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             ParamType.String,
                           ),
                         }.withoutNulls,
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
                       );
                     },
                   ),

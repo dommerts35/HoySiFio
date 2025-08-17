@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/components/dialog_two_btns_widget.dart';
 import '/components_cliente/cliente_config/cliente_config_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:collection/collection.dart';
@@ -106,7 +105,7 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 300.0.ms,
             begin: Offset(1.0, 1.0),
             end: Offset(1.1, 1.1),
           ),
@@ -133,7 +132,7 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 300.0.ms,
             begin: Offset(1.0, 1.0),
             end: Offset(1.1, 1.1),
           ),
@@ -201,6 +200,7 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                       children: [
                         Expanded(
                           child: SingleChildScrollView(
+                            primary: false,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -224,10 +224,19 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                 children: [
                                                   Flexible(
                                                     child: Text(
-                                                      valueOrDefault<String>(
-                                                        widget.nombreCliente,
+                                                      '${valueOrDefault<String>(
+                                                        _model
+                                                            .queryClienteAjustes
+                                                            ?.cliente
+                                                            .nombre,
                                                         'nombreCliente',
-                                                      ),
+                                                      )} ${valueOrDefault<String>(
+                                                        _model
+                                                            .queryClienteAjustes
+                                                            ?.cliente
+                                                            .apellido,
+                                                        'apellidoCliente',
+                                                      )}',
                                                       maxLines: 1,
                                                       style:
                                                           FlutterFlowTheme.of(
@@ -315,76 +324,57 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                   thickness: 2.0,
                                   color: FlutterFlowTheme.of(context).alternate,
                                 ),
-                                SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.goNamed(
-                                              PageTutorialForClienteFTWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'cedula': serializeParam(
-                                                  widget.cedula,
-                                                  ParamType.String,
-                                                ),
-                                                'idTenderoList': serializeParam(
-                                                  widget.idTenderoList,
-                                                  ParamType.DocumentReference,
-                                                  isList: true,
-                                                ),
-                                                'nombreCliente': serializeParam(
-                                                  widget.nombreCliente,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            child: ListTile(
-                                              leading: Icon(
-                                                Icons.error_outline_outlined,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 24.0,
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.goNamed(
+                                            PageTutorialForClienteFTWidget
+                                                .routeName,
+                                            queryParameters: {
+                                              'cedula': serializeParam(
+                                                widget.cedula,
+                                                ParamType.String,
                                               ),
-                                              title: Text(
-                                                'Tutorial',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
+                                              'idTenderoList': serializeParam(
+                                                widget.idTenderoList,
+                                                ParamType.DocumentReference,
+                                                isList: true,
+                                              ),
+                                              'nombreCliente': serializeParam(
+                                                widget.nombreCliente,
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          child: ListTile(
+                                            leading: Icon(
+                                              Icons.error_outline_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 24.0,
+                                            ),
+                                            title: Text(
+                                              'Tutorial',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -396,92 +386,88 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                              ),
-                                              tileColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              dense: false,
-                                              contentPadding:
-                                                  EdgeInsets.all(0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 17.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
+                                            tileColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            dense: false,
+                                            contentPadding: EdgeInsets.all(0.0),
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.goNamed(
-                                              PoliticaPrivSubPageToViewWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'cedula': serializeParam(
-                                                  widget.cedula,
-                                                  ParamType.String,
-                                                ),
-                                                'nombreCliente': serializeParam(
-                                                  widget.nombreCliente,
-                                                  ParamType.String,
-                                                ),
-                                                'idTenderosList':
-                                                    serializeParam(
-                                                  widget.idTenderoList,
-                                                  ParamType.DocumentReference,
-                                                  isList: true,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration: Duration(
-                                                      milliseconds: 2000),
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            child: ListTile(
-                                              leading: Icon(
-                                                Icons.remove_red_eye_outlined,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 24.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.goNamed(
+                                            PoliticaPrivSubPageToViewWidget
+                                                .routeName,
+                                            queryParameters: {
+                                              'cedula': serializeParam(
+                                                widget.cedula,
+                                                ParamType.String,
                                               ),
-                                              title: Text(
-                                                'Políticas de privacidad',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
+                                              'nombreCliente': serializeParam(
+                                                widget.nombreCliente,
+                                                ParamType.String,
+                                              ),
+                                              'idTenderosList': serializeParam(
+                                                widget.idTenderoList,
+                                                ParamType.DocumentReference,
+                                                isList: true,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration: Duration(
+                                                    milliseconds: 2000),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          child: ListTile(
+                                            leading: Icon(
+                                              Icons.remove_red_eye_outlined,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 24.0,
+                                            ),
+                                            title: Text(
+                                              'Políticas de privacidad',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -493,94 +479,89 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                              ),
-                                              tileColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              dense: false,
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 17.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
+                                            tileColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            dense: false,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            context.goNamed(
-                                              TermsOfServiceLoginWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'cedula': serializeParam(
-                                                  widget.cedula,
-                                                  ParamType.String,
-                                                ),
-                                                'nombreCLiente': serializeParam(
-                                                  widget.nombreCliente,
-                                                  ParamType.String,
-                                                ),
-                                                'idTenderosList':
-                                                    serializeParam(
-                                                  widget.idTenderoList,
-                                                  ParamType.DocumentReference,
-                                                  isList: true,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration: Duration(
-                                                      milliseconds: 2000),
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            child: ListTile(
-                                              leading: Icon(
-                                                Icons.text_snippet_sharp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 24.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.goNamed(
+                                            TermsOfServiceLoginWidget.routeName,
+                                            queryParameters: {
+                                              'cedula': serializeParam(
+                                                widget.cedula,
+                                                ParamType.String,
                                               ),
-                                              title: Text(
-                                                'Términos y condiciones',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
+                                              'nombreCLiente': serializeParam(
+                                                widget.nombreCliente,
+                                                ParamType.String,
+                                              ),
+                                              'idTenderosList': serializeParam(
+                                                widget.idTenderoList,
+                                                ParamType.DocumentReference,
+                                                isList: true,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration: Duration(
+                                                    milliseconds: 2000),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          child: ListTile(
+                                            leading: Icon(
+                                              Icons.text_snippet_sharp,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 24.0,
+                                            ),
+                                            title: Text(
+                                              'Términos y condiciones',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -592,105 +573,100 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                              ),
-                                              tileColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              dense: false,
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 17.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
+                                            tileColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            dense: false,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                           ),
                                         ),
                                       ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 0.0, 16.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () {
-                                                    FocusScope.of(context)
-                                                        .unfocus();
-                                                    FocusManager
-                                                        .instance.primaryFocus
-                                                        ?.unfocus();
-                                                  },
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: Container(
-                                                      height: 500.0,
-                                                      child:
-                                                          ClienteConfigWidget(
-                                                        pinCliente: _model
-                                                            .queryClienteAjustes
-                                                            ?.cliente
-                                                            .pin,
-                                                        emailCliente: _model
-                                                            .queryClienteAjustes
-                                                            ?.cliente
-                                                            .emailCliente,
-                                                        contrasenaCliente: _model
-                                                            .queryClienteAjustes
-                                                            ?.cliente
-                                                            .contrasena,
-                                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 0.0, 16.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Colors.transparent,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(context)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: Container(
+                                                    height: 500.0,
+                                                    child: ClienteConfigWidget(
+                                                      pinCliente: _model
+                                                          .queryClienteAjustes
+                                                          ?.cliente
+                                                          .pin,
+                                                      emailCliente: _model
+                                                          .queryClienteAjustes
+                                                          ?.cliente
+                                                          .emailCliente,
+                                                      contrasenaCliente: _model
+                                                          .queryClienteAjustes
+                                                          ?.cliente
+                                                          .contrasena,
                                                     ),
                                                   ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          },
-                                          child: Material(
-                                            color: Colors.transparent,
-                                            child: ListTile(
-                                              leading: Icon(
-                                                Icons.security,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 24.0,
-                                              ),
-                                              title: Text(
-                                                'Seguridad',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .titleMedium
-                                                    .override(
-                                                      font:
-                                                          GoogleFonts.readexPro(
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      fontSize: 17.0,
-                                                      letterSpacing: 0.0,
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        },
+                                        child: Material(
+                                          color: Colors.transparent,
+                                          child: ListTile(
+                                            leading: Icon(
+                                              Icons.security,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 24.0,
+                                            ),
+                                            title: Text(
+                                              'Seguridad',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .titleMedium
+                                                  .override(
+                                                    font: GoogleFonts.readexPro(
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -702,30 +678,42 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                               .titleMedium
                                                               .fontStyle,
                                                     ),
-                                              ),
-                                              tileColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              dense: false,
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontSize: 17.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
+                                            tileColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            dense: false,
+                                            contentPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
                                           ),
                                         ),
                                       ),
-                                    ]
-                                        .divide(SizedBox(height: 8.0))
-                                        .addToEnd(SizedBox(height: 24.0)),
-                                  ),
+                                    ),
+                                  ].divide(SizedBox(height: 8.0)),
                                 ),
                                 Opacity(
                                   opacity: 0.4,
                                   child: Lottie.asset(
                                     'assets/jsons/ajustesBg.json',
-                                    width: 200.0,
-                                    height: 200.0,
+                                    width: 100.0,
+                                    height: 150.0,
                                     fit: BoxFit.contain,
                                     animate: true,
                                   ),
@@ -777,6 +765,14 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                               .controller
                                               .reverse);
                                     }
+                                    if (animationsMap[
+                                            'stackOnActionTriggerAnimation'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'stackOnActionTriggerAnimation']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
 
                                     context.goNamed(
                                       InicioClienteWidget.routeName,
@@ -800,8 +796,6 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
-                                          duration:
-                                              Duration(milliseconds: 2000),
                                         ),
                                       },
                                     );
@@ -890,6 +884,14 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                               .controller
                                               .reverse);
                                     }
+                                    if (animationsMap[
+                                            'stackOnActionTriggerAnimation'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'stackOnActionTriggerAnimation']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
 
                                     context.goNamed(
                                       TiendaBetterWidget.routeName,
@@ -913,8 +915,6 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
-                                          duration:
-                                              Duration(milliseconds: 2000),
                                         ),
                                       },
                                     );
@@ -1115,23 +1115,11 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                           .fontStyle,
                                                 ),
                                           ),
-                                          FlutterFlowIconButton(
-                                            borderRadius: 12.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            icon: Icon(
-                                              Icons.logout,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              size: 24.0,
-                                            ),
-                                            onPressed: () {
-                                              print('iconLogOff pressed ...');
-                                            },
+                                          Icon(
+                                            Icons.logout,
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            size: 26.0,
                                           ),
                                         ],
                                       ),

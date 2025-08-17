@@ -37,6 +37,14 @@ class HistorialFullVoucherPagoModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // State field(s) for PageView widget.
+  PageController? pageViewController;
+
+  int get pageViewCurrentIndex => pageViewController != null &&
+          pageViewController!.hasClients &&
+          pageViewController!.page != null
+      ? pageViewController!.page!.round()
+      : 0;
   // State field(s) for numComprobante widget.
   FocusNode? numComprobanteFocusNode;
   TextEditingController? numComprobanteTextController;
@@ -61,14 +69,6 @@ class HistorialFullVoucherPagoModel
 
   // Stores action output result for [Backend Call - Read Document] action in botonGuardar widget.
   TenderosRecord? tenderoReadFull;
-  // State field(s) for PageView widget.
-  PageController? pageViewController;
-
-  int get pageViewCurrentIndex => pageViewController != null &&
-          pageViewController!.hasClients &&
-          pageViewController!.page != null
-      ? pageViewController!.page!.round()
-      : 0;
 
   /// Query cache managers for this widget.
 

@@ -33,3 +33,5 @@ export 'send_custom_verification_email.dart' show sendCustomVerificationEmail;
 export 'send_custom_psw_reset.dart' show sendCustomPswReset;
 export 'enter_immersive_mode.dart' show enterImmersiveMode;
 export 'retornar_string_a_int.dart' show retornarStringAInt;
+export 'normalizar_valor_para_aceptacion_de_pago.dart'
+    show normalizarValorParaAceptacionDePago;

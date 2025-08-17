@@ -308,7 +308,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                           child: Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
                             child: AutoSizeText(
-                              '¡Bienvenido/a ${inicioClienteClientesRecordList.firstOrNull?.cliente.nombre}!',
+                              '¡Hola ${inicioClienteClientesRecordList.firstOrNull?.cliente.nombre}!',
                               textAlign: TextAlign.start,
                               minFontSize: 4.0,
                               style: FlutterFlowTheme.of(context)
@@ -365,6 +365,14 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                               .controller
                                               .reverse);
                                     }
+                                    if (animationsMap[
+                                            'containerOnActionTriggerAnimation1'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'containerOnActionTriggerAnimation1']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
 
                                     context.goNamed(
                                       TiendaBetterWidget.routeName,
@@ -388,8 +396,6 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
-                                          duration:
-                                              Duration(milliseconds: 2000),
                                         ),
                                       },
                                     );
@@ -474,6 +480,14 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                           .controller
                                           .forward(from: 0.0);
                                     }
+                                    if (animationsMap[
+                                            'containerOnActionTriggerAnimation1'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'containerOnActionTriggerAnimation1']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
 
                                     context.goNamed(
                                       AjustesClienteWidget.routeName,
@@ -497,8 +511,6 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                           hasTransition: true,
                                           transitionType:
                                               PageTransitionType.fade,
-                                          duration:
-                                              Duration(milliseconds: 2000),
                                         ),
                                       },
                                     );
@@ -642,6 +654,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                         border: Border.all(
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          width: 3.0,
                                         ),
                                       ),
                                       child: Column(
@@ -650,7 +663,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            'Salir',
+                                            'Cerrar Sesión',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
@@ -688,7 +701,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                             Icons.logout,
                                             color: FlutterFlowTheme.of(context)
                                                 .error,
-                                            size: 30.0,
+                                            size: 26.0,
                                           ),
                                         ],
                                       ),

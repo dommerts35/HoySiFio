@@ -74,7 +74,7 @@ class _EmptyClientesListNoFiandoWidgetState
                   borderRadius: BorderRadius.circular(50.0),
                   child: Image.asset(
                     'assets/images/empty_ffbc4b23.gif',
-                    width: 200.0,
+                    width: 150.0,
                     height: 156.0,
                     fit: BoxFit.none,
                   ),

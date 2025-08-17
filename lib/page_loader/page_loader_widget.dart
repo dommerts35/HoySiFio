@@ -1,4 +1,6 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,12 @@ class _PageLoaderWidgetState extends State<PageLoaderWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setDarkModeSetting(context, ThemeMode.light);
+      unawaited(
+        () async {
+          await actions.enterImmersiveMode();
+        }(),
+      );
       await Future.delayed(
         Duration(
           milliseconds: 5000,

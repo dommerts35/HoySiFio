@@ -62,22 +62,22 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
 
     _model.fullNameTextController ??= TextEditingController();
     _model.fullNameFocusNode ??= FocusNode();
-    _model.fullNameFocusNode!.addListener(() => safeSetState(() {}));
+
     _model.fullSecondNameTextController ??= TextEditingController();
     _model.fullSecondNameFocusNode ??= FocusNode();
-    _model.fullSecondNameFocusNode!.addListener(() => safeSetState(() {}));
+
     _model.cedulaTextController ??= TextEditingController();
     _model.cedulaFocusNode ??= FocusNode();
-    _model.cedulaFocusNode!.addListener(() => safeSetState(() {}));
+
     _model.phoneNumberTextController ??= TextEditingController();
     _model.phoneNumberFocusNode ??= FocusNode();
-    _model.phoneNumberFocusNode!.addListener(() => safeSetState(() {}));
+
     _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
-    _model.emailFocusNode!.addListener(() => safeSetState(() {}));
+
     _model.direccionTextController ??= TextEditingController();
     _model.direccionFocusNode ??= FocusNode();
-    _model.direccionFocusNode!.addListener(() => safeSetState(() {}));
+
     animationsMap.addAll({
       'formOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
@@ -405,7 +405,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .fullNameTextController,
                                                 focusNode:
                                                     _model.fullNameFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.words,
                                                 textInputAction:
@@ -628,7 +628,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .fullSecondNameTextController,
                                                 focusNode: _model
                                                     .fullSecondNameFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.words,
                                                 textInputAction:
@@ -851,7 +851,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     _model.cedulaTextController,
                                                 focusNode:
                                                     _model.cedulaFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.none,
                                                 textInputAction:
@@ -1074,7 +1074,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .phoneNumberTextController,
                                                 focusNode:
                                                     _model.phoneNumberFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.none,
                                                 textInputAction:
@@ -1298,7 +1298,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     _model.emailTextController,
                                                 focusNode:
                                                     _model.emailFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.none,
                                                 textInputAction:
@@ -1510,19 +1510,39 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     MainAxisAlignment
                                                         .spaceEvenly,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 15.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Foto de perfil del cliente (opcional)',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .labelLarge
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .asap(
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  15.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Foto de perfil del cliente (opcional)',
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelLarge
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .asap(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                              ),
+                                                              fontSize: 18.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                               fontWeight:
                                                                   FontWeight
                                                                       .w600,
@@ -1532,16 +1552,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                                       .labelLarge
                                                                       .fontStyle,
                                                             ),
-                                                            fontSize: 18.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                          ),
+                                                      ),
                                                     ),
                                                   ),
                                                   Builder(
@@ -1857,7 +1868,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                     .direccionTextController,
                                                 focusNode:
                                                     _model.direccionFocusNode,
-                                                autofocus: true,
+                                                autofocus: false,
                                                 textCapitalization:
                                                     TextCapitalization.none,
                                                 textInputAction:

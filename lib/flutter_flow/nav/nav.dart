@@ -1705,6 +1705,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
         ),
       ),
       FFRoute(
+        name: PageTutorialForClienteHelpWidget.routeName,
+        path: PageTutorialForClienteHelpWidget.routePath,
+        builder: (context, params) => PageTutorialForClienteHelpWidget(
+          cedula: params.getParam(
+            'cedula',
+            ParamType.String,
+          ),
+          idTenderoList: params.getParam<DocumentReference>(
+            'idTenderoList',
+            ParamType.DocumentReference,
+            isList: true,
+            collectionNamePath: ['tenderos'],
+          ),
+          nombreCliente: params.getParam(
+            'nombreCliente',
+            ParamType.String,
+          ),
+        ),
+      ),
+      FFRoute(
         name:
             $animated_text_library_sk2998.AnimatedTextExamplesWidget.routeName,
         path:

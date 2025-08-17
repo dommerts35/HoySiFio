@@ -586,6 +586,12 @@ final parametersBuilderMap =
           'cedula': getParameter<String>(data, 'cedula'),
         },
       ),
+  'pageTutorialForClienteHelp': (data) async => ParameterData(
+        allParams: {
+          'cedula': getParameter<String>(data, 'cedula'),
+          'nombreCliente': getParameter<String>(data, 'nombreCliente'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

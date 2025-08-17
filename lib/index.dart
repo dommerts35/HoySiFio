@@ -89,3 +89,5 @@ export '/nivel_cliente/tienda_better/tienda_better_widget.dart'
     show TiendaBetterWidget;
 export '/nivel_cliente/ajustes_cliente/ajustes_cliente_widget.dart'
     show AjustesClienteWidget;
+export '/tutoriales/page_tutorial_for_cliente_help/page_tutorial_for_cliente_help_widget.dart'
+    show PageTutorialForClienteHelpWidget;
