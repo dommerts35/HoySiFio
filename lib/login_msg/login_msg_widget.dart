@@ -2,11 +2,13 @@ import '/components/dialog_two_btns_choice_reset_pw_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'login_msg_model.dart';
 export 'login_msg_model.dart';
 
@@ -285,6 +287,39 @@ class _LoginMsgWidgetState extends State<LoginMsgWidget>
           ),
         ],
       ),
+      'lottieAnimationOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 1300.0.ms,
+            begin: Offset(-100.0, 0.0),
+            end: Offset(1.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 1300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 3000.0.ms,
+            duration: 1300.0.ms,
+            begin: Offset(1.0, 0.0),
+            end: Offset(100.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 3000.0.ms,
+            duration: 1300.0.ms,
+            begin: 1.0,
+            end: 0.0,
+          ),
+        ],
+      ),
       'textOnPageLoadAnimation3': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -383,7 +418,7 @@ class _LoginMsgWidgetState extends State<LoginMsgWidget>
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
                   child: Text(
-                    'Bienvenido',
+                    'Bienvenido/a',
                     style: FlutterFlowTheme.of(context).displaySmall.override(
                           font: GoogleFonts.asap(
                             fontWeight: FlutterFlowTheme.of(context)
@@ -404,75 +439,123 @@ class _LoginMsgWidgetState extends State<LoginMsgWidget>
                   ).animateOnPageLoad(
                       animationsMap['textOnPageLoadAnimation1']!),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Text(
-                    () {
-                      if (widget.emailTendero != null &&
-                          widget.emailTendero != '') {
-                        return '${widget.nombreIfTendero} 😊';
-                      } else if (widget.cedulaCliente != null &&
-                          widget.cedulaCliente != '') {
-                        return '${widget.nombreIfCliente} 😊';
-                      } else {
-                        return 'Usuario';
-                      }
-                    }(),
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).displaySmall.override(
-                          font: GoogleFonts.asap(
-                            fontWeight: FlutterFlowTheme.of(context)
+                Container(
+                  height: 60.0,
+                  decoration: BoxDecoration(),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: AutoSizeText(
+                            valueOrDefault<String>(
+                              () {
+                                if (widget.emailTendero != null &&
+                                    widget.emailTendero != '') {
+                                  return '${widget.nombreIfTendero}';
+                                } else if (widget.cedulaCliente != null &&
+                                    widget.cedulaCliente != '') {
+                                  return '${widget.nombreIfCliente}';
+                                } else {
+                                  return 'Usuario';
+                                }
+                              }(),
+                              'Usuario',
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 2,
+                            minFontSize: 4.0,
+                            style: FlutterFlowTheme.of(context)
                                 .displaySmall
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .fontStyle,
-                          ),
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontStyle,
+                                .override(
+                                  font: GoogleFonts.asap(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .fontStyle,
+                                  ),
+                                  fontSize: 32.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .displaySmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .displaySmall
+                                      .fontStyle,
+                                ),
+                          ).animateOnPageLoad(
+                              animationsMap['textOnPageLoadAnimation2']!),
                         ),
-                  ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation2']!),
+                        Flexible(
+                          child: Lottie.asset(
+                            'assets/jsons/party.json',
+                            width: 50.0,
+                            height: 50.0,
+                            fit: BoxFit.contain,
+                            animate: true,
+                          ).animateOnPageLoad(animationsMap[
+                              'lottieAnimationOnPageLoadAnimation']!),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Align(
                   alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Text(
-                    () {
-                      if (widget.emailTendero != null &&
-                          widget.emailTendero != '') {
-                        return 'A la tienda:';
-                      } else if (widget.cedulaCliente != null &&
-                          widget.cedulaCliente != '') {
-                        return 'A HoySíFio';
-                      } else {
-                        return 'A HoySiFio';
-                      }
-                    }(),
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).displaySmall.override(
-                          font: GoogleFonts.asap(
-                            fontWeight: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .fontWeight,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .fontStyle,
+                  child: Container(
+                    height: 40.0,
+                    decoration: BoxDecoration(),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: AutoSizeText(
+                              () {
+                                if (widget.emailTendero != null &&
+                                    widget.emailTendero != '') {
+                                  return 'A la tienda:';
+                                } else if (widget.cedulaCliente != null &&
+                                    widget.cedulaCliente != '') {
+                                  return 'A HoySíFio';
+                                } else {
+                                  return 'A HoySiFio';
+                                }
+                              }(),
+                              textAlign: TextAlign.center,
+                              minFontSize: 4.0,
+                              style: FlutterFlowTheme.of(context)
+                                  .displaySmall
+                                  .override(
+                                    font: GoogleFonts.asap(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .fontStyle,
+                                    ),
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .fontStyle,
+                                  ),
+                            ).animateOnPageLoad(
+                                animationsMap['textOnPageLoadAnimation3']!),
                           ),
-                          letterSpacing: 0.0,
-                          fontWeight: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontWeight,
-                          fontStyle: FlutterFlowTheme.of(context)
-                              .displaySmall
-                              .fontStyle,
-                        ),
-                  ).animateOnPageLoad(
-                      animationsMap['textOnPageLoadAnimation3']!),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
                 if (widget.emailTendero != null && widget.emailTendero != '')
                   Align(

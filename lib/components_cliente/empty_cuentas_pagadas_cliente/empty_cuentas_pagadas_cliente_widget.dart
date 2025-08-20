@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'empty_cuentas_pagadas_cliente_model.dart';
 export 'empty_cuentas_pagadas_cliente_model.dart';
 
@@ -70,15 +70,13 @@ class _EmptyCuentasPagadasClienteWidgetState
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
-                  child: SvgPicture.asset(
-                    'assets/images/undraw_taken_mshk.svg',
-                    width: 250.0,
-                    height: 250.0,
-                    fit: BoxFit.contain,
-                  ),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: Lottie.asset(
+                  'assets/jsons/empty.json',
+                  width: 250.0,
+                  height: 250.0,
+                  fit: BoxFit.contain,
+                  animate: true,
                 ),
               ),
               Padding(

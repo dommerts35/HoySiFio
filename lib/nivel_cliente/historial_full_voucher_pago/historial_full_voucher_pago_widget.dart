@@ -2635,8 +2635,8 @@ class _HistorialFullVoucherPagoWidgetState
                                   Lottie.asset(
                                     'assets/jsons/coinAnimated.json',
                                     width: 100.0,
-                                    height: 200.0,
-                                    fit: BoxFit.contain,
+                                    height: 100.0,
+                                    fit: BoxFit.fill,
                                     animate: true,
                                   ),
                                 ],

@@ -8,6 +8,7 @@ import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'tendero_ayuda_model.dart';
 export 'tendero_ayuda_model.dart';
 
@@ -174,123 +175,102 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          body: SafeArea(
-            top: true,
-            child: Form(
-              key: _model.formKey,
-              autovalidateMode: AutovalidateMode.disabled,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fitWidth,
-                    image: Image.asset(
-                      'assets/images/questions_9232469a.gif',
-                    ).image,
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Material(
-                      color: Colors.transparent,
-                      elevation: 2.0,
-                      child: Container(
-                        height: 80.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 4.0,
-                              color: Color(0x33000000),
-                              offset: Offset(
-                                0.0,
-                                2.0,
+          body: Form(
+            key: _model.formKey,
+            autovalidateMode: AutovalidateMode.disabled,
+            child: Container(
+              decoration: BoxDecoration(),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Material(
+                    color: Colors.transparent,
+                    elevation: 2.0,
+                    child: Container(
+                      height: 80.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 4.0,
+                            color: Color(0x33000000),
+                            offset: Offset(
+                              0.0,
+                              2.0,
+                            ),
+                          )
+                        ],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            FlutterFlowIconButton(
+                              borderRadius: 12.0,
+                              borderWidth: 1.0,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              icon: Icon(
+                                Icons.arrow_back,
+                                color: FlutterFlowTheme.of(context).primary,
+                                size: 24.0,
                               ),
-                            )
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              FlutterFlowIconButton(
-                                borderRadius: 12.0,
-                                borderWidth: 1.0,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                icon: Icon(
-                                  Icons.arrow_back,
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  size: 24.0,
-                                ),
-                                onPressed: () async {
-                                  if (animationsMap[
-                                          'formOnActionTriggerAnimation'] !=
-                                      null) {
-                                    await animationsMap[
-                                            'formOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
+                              onPressed: () async {
+                                if (animationsMap[
+                                        'formOnActionTriggerAnimation'] !=
+                                    null) {
+                                  await animationsMap[
+                                          'formOnActionTriggerAnimation']!
+                                      .controller
+                                      .forward(from: 0.0);
+                                }
 
-                                  context.goNamed(
-                                    ListaClientesWidget.routeName,
-                                    queryParameters: {
-                                      'tenderoRef': serializeParam(
-                                        widget.tenderoRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                      'nombreTienda': serializeParam(
-                                        widget.nombreTienda,
-                                        ParamType.String,
-                                      ),
-                                      'tenderoEmail': serializeParam(
-                                        widget.tenderoEmail,
-                                        ParamType.String,
-                                      ),
-                                      'nombreTendero': serializeParam(
-                                        widget.nombreTendero,
-                                        ParamType.String,
-                                      ),
-                                    }.withoutNulls,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 1000),
-                                      ),
-                                    },
-                                  );
-                                },
-                              ).animateOnPageLoad(animationsMap[
-                                  'iconButtonOnPageLoadAnimation']!),
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Ayuda',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          font: GoogleFonts.quicksand(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .headlineMedium
-                                                    .fontStyle,
-                                          ),
-                                          fontSize: 22.0,
-                                          letterSpacing: 0.0,
+                                context.goNamed(
+                                  ListaClientesWidget.routeName,
+                                  queryParameters: {
+                                    'tenderoRef': serializeParam(
+                                      widget.tenderoRef,
+                                      ParamType.DocumentReference,
+                                    ),
+                                    'nombreTienda': serializeParam(
+                                      widget.nombreTienda,
+                                      ParamType.String,
+                                    ),
+                                    'tenderoEmail': serializeParam(
+                                      widget.tenderoEmail,
+                                      ParamType.String,
+                                    ),
+                                    'nombreTendero': serializeParam(
+                                      widget.nombreTendero,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 1000),
+                                    ),
+                                  },
+                                );
+                              },
+                            ).animateOnPageLoad(animationsMap[
+                                'iconButtonOnPageLoadAnimation']!),
+                            Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Tutoriales',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.quicksand(
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .headlineMedium
@@ -300,162 +280,190 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                   .headlineMedium
                                                   .fontStyle,
                                         ),
-                                  ),
-                                ].divide(SizedBox(height: 4.0)),
-                              ),
-                              Container(
-                                width: 40.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                        fontSize: 22.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .fontStyle,
+                                      ),
                                 ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
+                            Container(
+                              width: 40.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 15.0, 0.0, 0.0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 0.0),
+                              child: Material(
+                                color: Colors.transparent,
+                                elevation: 2.0,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                ),
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                    maxWidth: 770.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 4.0,
+                                        color: Color(0x33000000),
+                                        offset: Offset(
+                                          0.0,
+                                          2.0,
+                                        ),
+                                      )
+                                    ],
                                     borderRadius: BorderRadius.circular(14.0),
+                                    border: Border.all(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 1.0,
+                                    ),
                                   ),
-                                  child: Container(
-                                    constraints: BoxConstraints(
-                                      maxWidth: 770.0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      boxShadow: [
-                                        BoxShadow(
-                                          blurRadius: 4.0,
-                                          color: Color(0x33000000),
-                                          offset: Offset(
-                                            0.0,
-                                            2.0,
-                                          ),
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(14.0),
-                                      border: Border.all(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 12.0, 16.0, 16.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            'Tutoriales',
-                                            maxLines: 2,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleMedium
-                                                .override(
-                                                  font: GoogleFonts.readexPro(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                  fontSize: 20.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleMedium
-                                                          .fontStyle,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 12.0, 16.0, 16.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              PageTutorialListaClientesHelpWidget
+                                                  .routeName,
+                                              queryParameters: {
+                                                'tenderoRef': serializeParam(
+                                                  widget.tenderoRef,
+                                                  ParamType.DocumentReference,
                                                 ),
+                                                'nombreTienda': serializeParam(
+                                                  widget.nombreTienda,
+                                                  ParamType.String,
+                                                ),
+                                                'tenderoEmail': serializeParam(
+                                                  widget.tenderoEmail,
+                                                  ParamType.String,
+                                                ),
+                                                'nombreTendero': serializeParam(
+                                                  widget.nombreTendero,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text: 'Lista de clientes',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            padding: EdgeInsets.all(9.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.asap(
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .fontStyle,
+                                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              context.pushNamed(
-                                                PageTutorialListaClientesHelpWidget
-                                                    .routeName,
-                                                queryParameters: {
-                                                  'tenderoRef': serializeParam(
-                                                    widget.tenderoRef,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'nombreTienda':
-                                                      serializeParam(
-                                                    widget.nombreTienda,
-                                                    ParamType.String,
-                                                  ),
-                                                  'tenderoEmail':
-                                                      serializeParam(
-                                                    widget.tenderoEmail,
-                                                    ParamType.String,
-                                                  ),
-                                                  'nombreTendero':
-                                                      serializeParam(
-                                                    widget.nombreTendero,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            text: 'Lista de clientes',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              padding: EdgeInsets.all(9.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font: GoogleFonts.asap(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
+                                        ).animateOnPageLoad(animationsMap[
+                                            'buttonOnPageLoadAnimation1']!),
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            context.pushNamed(
+                                              PageTutorialinfoProdHelpWidget
+                                                  .routeName,
+                                              queryParameters: {
+                                                'tenderoRef': serializeParam(
+                                                  widget.tenderoRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'nombreTendero': serializeParam(
+                                                  widget.nombreTendero,
+                                                  ParamType.String,
+                                                ),
+                                                'tenderoEmail': serializeParam(
+                                                  widget.tenderoEmail,
+                                                  ParamType.String,
+                                                ),
+                                                'nombreTienda': serializeParam(
+                                                  widget.nombreTienda,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text:
+                                              'Datos, historiales y productos fiados de un cliente',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            padding: EdgeInsets.all(8.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -467,68 +475,64 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                                 .titleSmall
                                                                 .fontStyle,
                                                       ),
-                                              elevation: 0.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'buttonOnPageLoadAnimation1']!),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              context.pushNamed(
-                                                PageTutorialinfoProdHelpWidget
-                                                    .routeName,
-                                                queryParameters: {
-                                                  'tenderoRef': serializeParam(
-                                                    widget.tenderoRef,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'nombreTendero':
-                                                      serializeParam(
-                                                    widget.nombreTendero,
-                                                    ParamType.String,
-                                                  ),
-                                                  'tenderoEmail':
-                                                      serializeParam(
-                                                    widget.tenderoEmail,
-                                                    ParamType.String,
-                                                  ),
-                                                  'nombreTienda':
-                                                      serializeParam(
-                                                    widget.nombreTienda,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            text:
-                                                'Datos, historiales y productos fiados de un cliente',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              padding: EdgeInsets.all(8.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font: GoogleFonts.asap(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'buttonOnPageLoadAnimation2']!),
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            context.goNamed(
+                                              PageTutorialHistorialCPPHelpWidget
+                                                  .routeName,
+                                              queryParameters: {
+                                                'tenderoRef': serializeParam(
+                                                  widget.tenderoRef,
+                                                  ParamType.DocumentReference,
+                                                ),
+                                                'nombreTienda': serializeParam(
+                                                  widget.nombreTienda,
+                                                  ParamType.String,
+                                                ),
+                                                'nombreTendero': serializeParam(
+                                                  widget.nombreTendero,
+                                                  ParamType.String,
+                                                ),
+                                                'tenderoEmail': serializeParam(
+                                                  widget.tenderoEmail,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text: 'Cuentas por cobrar',
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            padding: EdgeInsets.all(8.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .override(
+                                                      font: GoogleFonts.asap(
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -540,104 +544,51 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                                 .titleSmall
                                                                 .fontStyle,
                                                       ),
-                                              elevation: 0.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'buttonOnPageLoadAnimation2']!),
-                                          FFButtonWidget(
-                                            onPressed: () async {
-                                              context.goNamed(
-                                                PageTutorialHistorialCPPHelpWidget
-                                                    .routeName,
-                                                queryParameters: {
-                                                  'tenderoRef': serializeParam(
-                                                    widget.tenderoRef,
-                                                    ParamType.DocumentReference,
-                                                  ),
-                                                  'nombreTienda':
-                                                      serializeParam(
-                                                    widget.nombreTienda,
-                                                    ParamType.String,
-                                                  ),
-                                                  'nombreTendero':
-                                                      serializeParam(
-                                                    widget.nombreTendero,
-                                                    ParamType.String,
-                                                  ),
-                                                  'tenderoEmail':
-                                                      serializeParam(
-                                                    widget.tenderoEmail,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            text: 'Cuentas por cobrar',
-                                            options: FFButtonOptions(
-                                              width: double.infinity,
-                                              padding: EdgeInsets.all(8.0),
-                                              iconPadding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font: GoogleFonts.asap(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: Colors.white,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontStyle,
-                                                      ),
-                                              elevation: 0.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ).animateOnPageLoad(animationsMap[
-                                              'buttonOnPageLoadAnimation3']!),
-                                        ].divide(SizedBox(height: 20.0)),
-                                      ),
+                                                      color: Colors.white,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .fontStyle,
+                                                    ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'buttonOnPageLoadAnimation3']!),
+                                      ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                            Lottie.asset(
+                              'assets/jsons/questions.json',
+                              width: 300.0,
+                              height: 300.0,
+                              fit: BoxFit.fill,
+                              animate: true,
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            )
-                .animateOnPageLoad(animationsMap['formOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['formOnActionTriggerAnimation']!,
-                ),
-          ),
+            ),
+          )
+              .animateOnPageLoad(animationsMap['formOnPageLoadAnimation']!)
+              .animateOnActionTrigger(
+                animationsMap['formOnActionTriggerAnimation']!,
+              ),
         ),
       ),
     );

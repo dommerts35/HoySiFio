@@ -114,6 +114,20 @@ class _ResumenFiadoClienProdsNewWidgetState
           ),
         ],
       ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.01, 1.01),
+          ),
+        ],
+      ),
       'iconButtonOnPageLoadAnimation2': AnimationInfo(
         loop: true,
         reverse: true,
@@ -323,7 +337,8 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                 .titleMedium
                                                                 .fontStyle,
                                                       ),
-                                                ),
+                                                ).animateOnPageLoad(animationsMap[
+                                                    'textOnPageLoadAnimation']!),
                                               ),
                                               Builder(
                                                 builder: (context) =>
@@ -1410,377 +1425,333 @@ class _ResumenFiadoClienProdsNewWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
-                                              child: FFButtonWidget(
-                                                onPressed:
-                                                    (resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .historialPorPagarProd
-                                                                .length <=
-                                                            0)
-                                                        ? null
-                                                        : () async {
-                                                            var _shouldSetState =
-                                                                false;
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          600.0,
-                                                                      child:
-                                                                          DialogTwoBtnsWidget(
-                                                                        titulo:
-                                                                            '¡Alerta!',
-                                                                        mensaje:
-                                                                            'A continuación, debe adjuntar una imagen del comprobante que respalde el pago de los productos fiados, con un total de \$${formatNumber(
-                                                                          resumenFiadoClienProdsNewClientesRecord
-                                                                              .cliente
-                                                                              .totalDeudaCompleta,
-                                                                          formatType:
-                                                                              FormatType.custom,
-                                                                          format:
-                                                                              '#0.00',
-                                                                          locale:
-                                                                              '',
-                                                                        )}. ¿Desea proceder?',
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(() =>
-                                                                    _model.isPagarTodo =
-                                                                        value));
-
-                                                            _shouldSetState =
-                                                                true;
-                                                            if (_model
-                                                                .isPagarTodo!) {
-                                                              if (resumenFiadoClienProdsNewClientesRecord
-                                                                      .cliente
-                                                                      .historialPorPagarProd
-                                                                      .where((e) =>
-                                                                          e.isVoucherSent)
-                                                                      .toList()
-                                                                      .length >
-                                                                  0) {
-                                                                await showDialog(
-                                                                  context:
-                                                                      context,
-                                                                  builder:
-                                                                      (dialogContext) {
-                                                                    return Dialog(
-                                                                      elevation:
-                                                                          0,
-                                                                      insetPadding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      backgroundColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      alignment: AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0)
-                                                                          .resolve(
-                                                                              Directionality.of(context)),
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap:
-                                                                            () {
-                                                                          FocusScope.of(dialogContext)
-                                                                              .unfocus();
-                                                                          FocusManager
-                                                                              .instance
-                                                                              .primaryFocus
-                                                                              ?.unfocus();
-                                                                        },
-                                                                        child:
-                                                                            Container(
-                                                                          height:
-                                                                              200.0,
-                                                                          child:
-                                                                              DialogBtnWidget(
-                                                                            titulo:
-                                                                                '¡Alerta!',
-                                                                            mensaje:
-                                                                                'Ya ha enviado un comprobante, por favor espere a que el tendero acepte su comprobante anterior.',
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                                return;
-                                                              } else {
-                                                                if (animationsMap[
-                                                                        'containerOnActionTriggerAnimation'] !=
-                                                                    null) {
-                                                                  await animationsMap[
-                                                                          'containerOnActionTriggerAnimation']!
-                                                                      .controller
-                                                                      .forward(
-                                                                          from:
-                                                                              0.0);
-                                                                }
-
-                                                                context.goNamed(
-                                                                  HistorialFullVoucherPagoWidget
-                                                                      .routeName,
-                                                                  queryParameters:
-                                                                      {
-                                                                    'idCliente':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idCliente,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                    'nombre':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .nombreCliente,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'tenderoRef':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idTendero,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                    ),
-                                                                    'historialPorPagarDT':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .historialPorPagarDTList,
-                                                                      ParamType
-                                                                          .DataStruct,
-                                                                      isList:
-                                                                          true,
-                                                                    ),
-                                                                    'doc':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .doc,
-                                                                      ParamType
-                                                                          .Document,
-                                                                      isList:
-                                                                          true,
-                                                                    ),
-                                                                    'idTenderoList':
-                                                                        serializeParam(
-                                                                      widget
-                                                                          .idTenderoList,
-                                                                      ParamType
-                                                                          .DocumentReference,
-                                                                      isList:
-                                                                          true,
-                                                                    ),
-                                                                    'telf':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .telf,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'isFiando':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .isFiando,
-                                                                      ParamType
-                                                                          .bool,
-                                                                    ),
-                                                                    'apellido':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .apellido,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'cedula':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .cedula,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'direccionDomicilio':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .direccionDomicilio,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                    'viviendaAlq':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .viviendaAlq,
-                                                                      ParamType
-                                                                          .bool,
-                                                                    ),
-                                                                    'vivendaProp':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .viviendaPropia,
-                                                                      ParamType
-                                                                          .bool,
-                                                                    ),
-                                                                    'emailCliente':
-                                                                        serializeParam(
-                                                                      resumenFiadoClienProdsNewClientesRecord
-                                                                          .cliente
-                                                                          .emailCliente,
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                  extra: <String,
-                                                                      dynamic>{
-                                                                    'doc':
-                                                                        widget
-                                                                            .doc,
-                                                                    kTransitionInfoKey:
-                                                                        TransitionInfo(
-                                                                      hasTransition:
-                                                                          true,
-                                                                      transitionType:
-                                                                          PageTransitionType
-                                                                              .fade,
-                                                                      duration: Duration(
-                                                                          milliseconds:
-                                                                              1000),
-                                                                    ),
-                                                                  },
-                                                                );
-                                                              }
-                                                            } else {
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                              return;
-                                                            }
-
-                                                            if (_shouldSetState)
-                                                              safeSetState(
-                                                                  () {});
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  var _shouldSetState = false;
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () {
+                                                            FocusScope.of(
+                                                                    dialogContext)
+                                                                .unfocus();
+                                                            FocusManager
+                                                                .instance
+                                                                .primaryFocus
+                                                                ?.unfocus();
                                                           },
-                                                text:
-                                                    'Enviar comprobante de pago total',
-                                                icon: Icon(
-                                                  Icons.payments_sharp,
-                                                  size: 15.0,
-                                                ),
-                                                options: FFButtonOptions(
+                                                          child: Container(
+                                                            height: 600.0,
+                                                            child:
+                                                                DialogTwoBtnsWidget(
+                                                              titulo:
+                                                                  '¡Alerta!',
+                                                              mensaje:
+                                                                  'A continuación, debe adjuntar una imagen del comprobante que respalde el pago de los productos fiados, con un total de \$${formatNumber(
+                                                                resumenFiadoClienProdsNewClientesRecord
+                                                                    .cliente
+                                                                    .totalDeudaCompleta,
+                                                                formatType:
+                                                                    FormatType
+                                                                        .custom,
+                                                                format: '#0.00',
+                                                                locale: '',
+                                                              )}. ¿Desea proceder?',
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() =>
+                                                          _model.isPagarTodo =
+                                                              value));
+
+                                                  _shouldSetState = true;
+                                                  if (_model.isPagarTodo!) {
+                                                    if (resumenFiadoClienProdsNewClientesRecord
+                                                            .cliente
+                                                            .historialPorPagarProd
+                                                            .where((e) =>
+                                                                e.isVoucherSent)
+                                                            .toList()
+                                                            .length >
+                                                        0) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Container(
+                                                                height: 200.0,
+                                                                child:
+                                                                    DialogBtnWidget(
+                                                                  titulo:
+                                                                      '¡Alerta!',
+                                                                  mensaje:
+                                                                      'Ya ha enviado un comprobante, por favor espere a que el tendero acepte su comprobante anterior.',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                      return;
+                                                    } else {
+                                                      if (animationsMap[
+                                                              'containerOnActionTriggerAnimation'] !=
+                                                          null) {
+                                                        await animationsMap[
+                                                                'containerOnActionTriggerAnimation']!
+                                                            .controller
+                                                            .forward(from: 0.0);
+                                                      }
+
+                                                      context.goNamed(
+                                                        HistorialFullVoucherPagoWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'idCliente':
+                                                              serializeParam(
+                                                            widget.idCliente,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'nombre':
+                                                              serializeParam(
+                                                            widget
+                                                                .nombreCliente,
+                                                            ParamType.String,
+                                                          ),
+                                                          'tenderoRef':
+                                                              serializeParam(
+                                                            widget.idTendero,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                          ),
+                                                          'historialPorPagarDT':
+                                                              serializeParam(
+                                                            widget
+                                                                .historialPorPagarDTList,
+                                                            ParamType
+                                                                .DataStruct,
+                                                            isList: true,
+                                                          ),
+                                                          'doc': serializeParam(
+                                                            widget.doc,
+                                                            ParamType.Document,
+                                                            isList: true,
+                                                          ),
+                                                          'idTenderoList':
+                                                              serializeParam(
+                                                            widget
+                                                                .idTenderoList,
+                                                            ParamType
+                                                                .DocumentReference,
+                                                            isList: true,
+                                                          ),
+                                                          'telf':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente.telf,
+                                                            ParamType.String,
+                                                          ),
+                                                          'isFiando':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .isFiando,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'apellido':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .apellido,
+                                                            ParamType.String,
+                                                          ),
+                                                          'cedula':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente.cedula,
+                                                            ParamType.String,
+                                                          ),
+                                                          'direccionDomicilio':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .direccionDomicilio,
+                                                            ParamType.String,
+                                                          ),
+                                                          'viviendaAlq':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .viviendaAlq,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'vivendaProp':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .viviendaPropia,
+                                                            ParamType.bool,
+                                                          ),
+                                                          'emailCliente':
+                                                              serializeParam(
+                                                            resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .emailCliente,
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                        extra: <String,
+                                                            dynamic>{
+                                                          'doc': widget.doc,
+                                                          kTransitionInfoKey:
+                                                              TransitionInfo(
+                                                            hasTransition: true,
+                                                            transitionType:
+                                                                PageTransitionType
+                                                                    .fade,
+                                                            duration: Duration(
+                                                                milliseconds:
+                                                                    1000),
+                                                          ),
+                                                        },
+                                                      );
+                                                    }
+                                                  } else {
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                    return;
+                                                  }
+
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                },
+                                                child: Container(
                                                   width: double.infinity,
                                                   height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
-                                                  iconAlignment:
-                                                      IconAlignment.end,
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: resumenFiadoClienProdsNewClientesRecord
-                                                              .cliente
-                                                              .historialPorPagarProd
-                                                              .where((e) => e
-                                                                  .isVoucherSent)
-                                                              .toList()
-                                                              .length >
-                                                          0
-                                                      ? Color(0xFFFFBEA1)
-                                                      : FlutterFlowTheme.of(
-                                                              context)
-                                                          .tertiary,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        font: GoogleFonts.asap(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .fontStyle,
-                                                        ),
-                                                        color: resumenFiadoClienProdsNewClientesRecord
-                                                                    .cliente
-                                                                    .historialPorPagarProd
-                                                                    .where((e) => e
-                                                                        .isVoucherSent)
-                                                                    .toList()
-                                                                    .length >
-                                                                0
-                                                            ? FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
+                                                  decoration: BoxDecoration(
+                                                    color: resumenFiadoClienProdsNewClientesRecord
+                                                                .cliente
+                                                                .historialPorPagarProd
+                                                                .where((e) => e
+                                                                    .isVoucherSent)
+                                                                .toList()
+                                                                .length >
+                                                            0
+                                                        ? Color(0xFFFFBEA1)
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .tertiary,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'Enviar comprobante de pago total',
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .titleSmall
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .fontStyle,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: resumenFiadoClienProdsNewClientesRecord
+                                                                              .cliente
+                                                                              .historialPorPagarProd
+                                                                              .where((e) => e
+                                                                                  .isVoucherSent)
+                                                                              .toList()
+                                                                              .length >
+                                                                          0
+                                                                      ? FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText
+                                                                      : FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                       ),
-                                                  elevation: 1.0,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  disabledColor:
-                                                      Color(0xFFFFBEA1),
+                                                      Lottie.asset(
+                                                        'assets/jsons/Main_Scene.json',
+                                                        width: 40.0,
+                                                        height: 40.0,
+                                                        fit: BoxFit.contain,
+                                                        animate: true,
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),

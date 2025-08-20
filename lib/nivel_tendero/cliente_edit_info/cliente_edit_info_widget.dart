@@ -2013,8 +2013,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                             .profileUrl !=
                                                         '')
                                                       Container(
-                                                        width: 80.0,
-                                                        height: 80.0,
+                                                        width: 70.0,
+                                                        height: 70.0,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: FlutterFlowTheme
@@ -2030,8 +2030,8 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                           ),
                                                         ),
                                                         child: Container(
-                                                          width: 80.0,
-                                                          height: 80.0,
+                                                          width: 70.0,
+                                                          height: 70.0,
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           decoration:
@@ -2048,172 +2048,186 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                       ),
                                                     Builder(
                                                       builder: (context) =>
-                                                          FFButtonWidget(
-                                                        onPressed: () async {
-                                                          final selectedMedia =
-                                                              await selectMediaWithSourceBottomSheet(
-                                                            context: context,
-                                                            storageFolderPath:
-                                                                'clientes/profiles',
-                                                            maxWidth: 200.00,
-                                                            maxHeight: 200.00,
-                                                            allowPhoto: true,
-                                                            textColor:
+                                                          Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    20.0),
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            final selectedMedia =
+                                                                await selectMediaWithSourceBottomSheet(
+                                                              context: context,
+                                                              storageFolderPath:
+                                                                  'clientes/profiles',
+                                                              allowPhoto: true,
+                                                              textColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                              pickerFontFamily:
+                                                                  'Asap',
+                                                            );
+                                                            if (selectedMedia !=
+                                                                    null &&
+                                                                selectedMedia.every((m) =>
+                                                                    validateFileFormat(
+                                                                        m.storagePath,
+                                                                        context))) {
+                                                              safeSetState(() =>
+                                                                  _model.isDataUploading_uploadDataPfse2 =
+                                                                      true);
+                                                              var selectedUploadedFiles =
+                                                                  <FFUploadedFile>[];
+
+                                                              var downloadUrls =
+                                                                  <String>[];
+                                                              try {
+                                                                selectedUploadedFiles =
+                                                                    selectedMedia
+                                                                        .map((m) =>
+                                                                            FFUploadedFile(
+                                                                              name: m.storagePath.split('/').last,
+                                                                              bytes: m.bytes,
+                                                                              height: m.dimensions?.height,
+                                                                              width: m.dimensions?.width,
+                                                                              blurHash: m.blurHash,
+                                                                            ))
+                                                                        .toList();
+
+                                                                downloadUrls =
+                                                                    await uploadSupabaseStorageFiles(
+                                                                  bucketName:
+                                                                      'img.vouchers',
+                                                                  selectedFiles:
+                                                                      selectedMedia,
+                                                                );
+                                                              } finally {
+                                                                _model.isDataUploading_uploadDataPfse2 =
+                                                                    false;
+                                                              }
+                                                              if (selectedUploadedFiles
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length &&
+                                                                  downloadUrls
+                                                                          .length ==
+                                                                      selectedMedia
+                                                                          .length) {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.uploadedLocalFile_uploadDataPfse2 =
+                                                                      selectedUploadedFiles
+                                                                          .first;
+                                                                  _model.uploadedFileUrl_uploadDataPfse2 =
+                                                                      downloadUrls
+                                                                          .first;
+                                                                });
+                                                              } else {
+                                                                safeSetState(
+                                                                    () {});
+                                                                return;
+                                                              }
+                                                            }
+
+                                                            if (_model.uploadedFileUrl_uploadDataPfse2 ==
+                                                                    '') {
+                                                              await showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap:
+                                                                          () {
+                                                                        FocusScope.of(dialogContext)
+                                                                            .unfocus();
+                                                                        FocusManager
+                                                                            .instance
+                                                                            .primaryFocus
+                                                                            ?.unfocus();
+                                                                      },
+                                                                      child:
+                                                                          DialogBtnWidget(
+                                                                        titulo:
+                                                                            '¡Alerta!',
+                                                                        mensaje:
+                                                                            'Hubo un error al subir la imágen, inténtelo de nuevo.',
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              );
+
+                                                              return;
+                                                            } else {
+                                                              await widget
+                                                                  .idCliente!
+                                                                  .update(
+                                                                      createClientesRecordData(
+                                                                profileUrl: _model
+                                                                    .uploadedFileUrl_uploadDataPfse2,
+                                                              ));
+                                                            }
+                                                          },
+                                                          text:
+                                                              'Subir foto de perfil del cliente',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        0.0,
+                                                                        16.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            textStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primary,
-                                                            pickerFontFamily:
-                                                                'Asap',
-                                                          );
-                                                          if (selectedMedia !=
-                                                                  null &&
-                                                              selectedMedia.every((m) =>
-                                                                  validateFileFormat(
-                                                                      m.storagePath,
-                                                                      context))) {
-                                                            safeSetState(() =>
-                                                                _model.isDataUploading_uploadDataPfse2 =
-                                                                    true);
-                                                            var selectedUploadedFiles =
-                                                                <FFUploadedFile>[];
-
-                                                            var downloadUrls =
-                                                                <String>[];
-                                                            try {
-                                                              selectedUploadedFiles =
-                                                                  selectedMedia
-                                                                      .map((m) =>
-                                                                          FFUploadedFile(
-                                                                            name:
-                                                                                m.storagePath.split('/').last,
-                                                                            bytes:
-                                                                                m.bytes,
-                                                                            height:
-                                                                                m.dimensions?.height,
-                                                                            width:
-                                                                                m.dimensions?.width,
-                                                                            blurHash:
-                                                                                m.blurHash,
-                                                                          ))
-                                                                      .toList();
-
-                                                              downloadUrls =
-                                                                  await uploadSupabaseStorageFiles(
-                                                                bucketName:
-                                                                    'img.vouchers',
-                                                                selectedFiles:
-                                                                    selectedMedia,
-                                                              );
-                                                            } finally {
-                                                              _model.isDataUploading_uploadDataPfse2 =
-                                                                  false;
-                                                            }
-                                                            if (selectedUploadedFiles
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length &&
-                                                                downloadUrls
-                                                                        .length ==
-                                                                    selectedMedia
-                                                                        .length) {
-                                                              safeSetState(() {
-                                                                _model.uploadedLocalFile_uploadDataPfse2 =
-                                                                    selectedUploadedFiles
-                                                                        .first;
-                                                                _model.uploadedFileUrl_uploadDataPfse2 =
-                                                                    downloadUrls
-                                                                        .first;
-                                                              });
-                                                            } else {
-                                                              safeSetState(
-                                                                  () {});
-                                                              return;
-                                                            }
-                                                          }
-
-                                                          if (_model.uploadedFileUrl_uploadDataPfse2 ==
-                                                                  '') {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .asap(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleSmall
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: Colors
+                                                                          .white,
+                                                                      letterSpacing:
                                                                           0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        DialogBtnWidget(
-                                                                      titulo:
-                                                                          '¡Alerta!',
-                                                                      mensaje:
-                                                                          'Hubo un error al subir la imágen, inténtelo de nuevo.',
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            );
-
-                                                            return;
-                                                          } else {
-                                                            await widget
-                                                                .idCliente!
-                                                                .update(
-                                                                    createClientesRecordData(
-                                                              profileUrl: _model
-                                                                  .uploadedFileUrl_uploadDataPfse2,
-                                                            ));
-                                                          }
-                                                        },
-                                                        text:
-                                                            'Subir foto de perfil del cliente',
-                                                        options:
-                                                            FFButtonOptions(
-                                                          height: 40.0,
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      16.0,
-                                                                      0.0),
-                                                          iconPadding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          textStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .asap(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .titleSmall
@@ -2223,24 +2237,12 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                                                                           .titleSmall
                                                                           .fontStyle,
                                                                     ),
-                                                                    color: Colors
-                                                                        .white,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                          elevation: 0.0,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
+                                                            elevation: 0.0,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8.0),
+                                                          ),
                                                         ),
                                                       ),
                                                     ),

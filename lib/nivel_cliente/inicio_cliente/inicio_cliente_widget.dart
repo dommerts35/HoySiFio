@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/dialog_two_btns_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'inicio_cliente_model.dart';
 export 'inicio_cliente_model.dart';
@@ -58,6 +60,17 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
               isEqualTo: widget.cedula,
             ),
       );
+      _model.tiempoGlobalToString = dateTimeFormat(
+        "H",
+        getCurrentTimestamp,
+        locale: FFLocalizations.of(context).languageCode,
+      );
+      safeSetState(() {});
+      _model.tiempoResultCliente = await actions.retornarStringAInt(
+        _model.tiempoGlobalToString!,
+      );
+      _model.tiempo = _model.tiempoResultCliente;
+      safeSetState(() {});
       if (FFAppState().isFirstTimeClienteTiendaList == true) {
         FFAppState().isFirstTimeClienteTiendaList = false;
         safeSetState(() {});
@@ -131,7 +144,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 300.0.ms,
             begin: Offset(1.0, 1.0),
             end: Offset(1.1, 1.1),
           ),
@@ -158,7 +171,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
+            duration: 300.0.ms,
             begin: Offset(1.0, 1.0),
             end: Offset(1.1, 1.1),
           ),
@@ -244,431 +257,302 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: MediaQuery.sizeOf(context).height * 0.6,
-                          child: CarouselSlider(
-                            items: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(0.0),
-                                child: Image.asset(
-                                  'assets/images/tuxpi.com.1755131606.jpg',
-                                  width: double.infinity,
-                                  height: 400.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(0.0),
-                                child: Image.asset(
-                                  'assets/images/tuxpi.com.1755131472.jpg',
-                                  width: double.infinity,
-                                  height: 400.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(0.0),
-                                child: Image.asset(
-                                  'assets/images/tuxpi.com.1755199456.jpg',
-                                  width: double.infinity,
-                                  height: 400.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ],
-                            carouselController: _model.carouselController ??=
-                                CarouselSliderController(),
-                            options: CarouselOptions(
-                              initialPage: 1,
-                              viewportFraction: 1.0,
-                              disableCenter: true,
-                              enlargeCenterPage: true,
-                              enlargeFactor: 0.15,
-                              enableInfiniteScroll: true,
-                              scrollDirection: Axis.horizontal,
-                              autoPlay: true,
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
-                              autoPlayInterval:
-                                  Duration(milliseconds: (800 + 3000)),
-                              autoPlayCurve: Curves.linear,
-                              pauseAutoPlayInFiniteScroll: true,
-                              onPageChanged: (index, _) =>
-                                  _model.carouselCurrentIndex = index,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 0.8,
-                          decoration: BoxDecoration(),
-                          child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: AutoSizeText(
-                              '¡Hola ${inicioClienteClientesRecordList.firstOrNull?.cliente.nombre}!',
-                              textAlign: TextAlign.start,
-                              minFontSize: 4.0,
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    font: GoogleFonts.readexPro(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .fontStyle,
-                                    ),
-                                    letterSpacing: 0.0,
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontWeight,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleLarge
-                                        .fontStyle,
-                                  ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          child: Container(
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
                             width: double.infinity,
-                            height: 200.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                            height: MediaQuery.sizeOf(context).height * 0.6,
+                            child: CarouselSlider(
+                              items: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.asset(
+                                    'assets/images/tuxpi.com.1755131606.jpg',
+                                    width: double.infinity,
+                                    height: 400.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.asset(
+                                    'assets/images/tuxpi.com.1755131472.jpg',
+                                    width: double.infinity,
+                                    height: 400.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(0.0),
+                                  child: Image.asset(
+                                    'assets/images/tuxpi.com.1755199456.jpg',
+                                    width: double.infinity,
+                                    height: 400.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                              carouselController: _model.carouselController ??=
+                                  CarouselSliderController(),
+                              options: CarouselOptions(
+                                initialPage: 1,
+                                viewportFraction: 1.0,
+                                disableCenter: true,
+                                enlargeCenterPage: true,
+                                enlargeFactor: 0.15,
+                                enableInfiniteScroll: true,
+                                scrollDirection: Axis.horizontal,
+                                autoPlay: true,
+                                autoPlayAnimationDuration:
+                                    Duration(milliseconds: 800),
+                                autoPlayInterval:
+                                    Duration(milliseconds: (800 + 3000)),
+                                autoPlayCurve: Curves.linear,
+                                pauseAutoPlayInFiniteScroll: true,
+                                onPageChanged: (index, _) =>
+                                    _model.carouselCurrentIndex = index,
+                              ),
                             ),
-                            child: Row(
+                          ),
+                          Container(
+                            width: MediaQuery.sizeOf(context).width * 0.8,
+                            decoration: BoxDecoration(),
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (animationsMap[
-                                            'containerOnActionTriggerAnimation2'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'containerOnActionTriggerAnimation2']!
-                                          .controller
-                                          .forward(from: 0.0)
-                                          .whenComplete(animationsMap[
-                                                  'containerOnActionTriggerAnimation2']!
-                                              .controller
-                                              .reverse);
-                                    }
-                                    if (animationsMap[
-                                            'containerOnActionTriggerAnimation1'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'containerOnActionTriggerAnimation1']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-
-                                    context.goNamed(
-                                      TiendaBetterWidget.routeName,
-                                      queryParameters: {
-                                        'cedula': serializeParam(
-                                          widget.cedula,
-                                          ParamType.String,
-                                        ),
-                                        'idTenderoList': serializeParam(
-                                          widget.idTenderoList,
-                                          ParamType.DocumentReference,
-                                          isList: true,
-                                        ),
-                                        'nombreCliente': serializeParam(
-                                          widget.nombreCliente,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                        ),
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      borderRadius: BorderRadius.circular(14.0),
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Text(
-                                            'Tiendas',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.quicksand(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 24.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: AutoSizeText(
+                                    '¡Hola ${inicioClienteClientesRecordList.firstOrNull?.cliente.nombre}!',
+                                    textAlign: TextAlign.start,
+                                    minFontSize: 4.0,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          font: GoogleFonts.readexPro(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
                                           ),
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleLarge
+                                                  .fontStyle,
                                         ),
-                                        Icon(
-                                          Icons.storefront_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          size: 36.0,
-                                        ),
-                                      ],
-                                    ).animateOnPageLoad(animationsMap[
-                                        'columnOnPageLoadAnimation1']!),
                                   ),
-                                ).animateOnActionTrigger(
-                                  animationsMap[
-                                      'containerOnActionTriggerAnimation2']!,
                                 ),
-                                InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    if (animationsMap[
-                                            'containerOnActionTriggerAnimation3'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'containerOnActionTriggerAnimation3']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-                                    if (animationsMap[
-                                            'containerOnActionTriggerAnimation1'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'containerOnActionTriggerAnimation1']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-
-                                    context.goNamed(
-                                      AjustesClienteWidget.routeName,
-                                      queryParameters: {
-                                        'nombreCliente': serializeParam(
-                                          widget.nombreCliente,
-                                          ParamType.String,
+                                if (_model.tiempoGlobalToString != null &&
+                                    _model.tiempoGlobalToString != '')
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      AutoSizeText(
+                                        valueOrDefault<String>(
+                                          () {
+                                            if ((_model.tiempo! >= 6) &&
+                                                (_model.tiempo! < 12)) {
+                                              return '¡Buenos días!';
+                                            } else if ((_model.tiempo! >= 12) &&
+                                                (_model.tiempo! < 18)) {
+                                              return '¡Buenas tardes!';
+                                            } else {
+                                              return '¡Buenas noches!';
+                                            }
+                                          }(),
+                                          'Buenos dias',
                                         ),
-                                        'cedula': serializeParam(
-                                          widget.cedula,
-                                          ParamType.String,
+                                        minFontSize: 6.0,
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              font: GoogleFonts.readexPro(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleLarge
+                                                        .fontStyle,
+                                              ),
+                                              letterSpacing: 0.0,
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
+                                      ),
+                                      if ((_model.tiempo! >= 6) &&
+                                          (_model.tiempo! < 12))
+                                        Lottie.asset(
+                                          'assets/jsons/sol.json',
+                                          width: 30.0,
+                                          height: 50.0,
+                                          fit: BoxFit.contain,
+                                          animate: true,
                                         ),
-                                        'idTenderoList': serializeParam(
-                                          widget.idTenderoList,
-                                          ParamType.DocumentReference,
-                                          isList: true,
+                                      if ((_model.tiempo! >= 12) &&
+                                          (_model.tiempo! < 18))
+                                        Lottie.asset(
+                                          'assets/jsons/cloudy.json',
+                                          width: 30.0,
+                                          height: 50.0,
+                                          fit: BoxFit.contain,
+                                          animate: true,
                                         ),
-                                      }.withoutNulls,
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
+                                      if (valueOrDefault<bool>(
+                                        () {
+                                          if ((_model.tiempo! >= 6) &&
+                                              (_model.tiempo! < 12)) {
+                                            return false;
+                                          } else if ((_model.tiempo! >= 12) &&
+                                              (_model.tiempo! < 18)) {
+                                            return false;
+                                          } else {
+                                            return true;
+                                          }
+                                        }(),
+                                        false,
+                                      ))
+                                        Lottie.asset(
+                                          'assets/jsons/luna.json',
+                                          width: 30.0,
+                                          height: 50.0,
+                                          fit: BoxFit.contain,
+                                          animate: true,
                                         ),
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    width: 100.0,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).tertiary,
-                                      borderRadius: BorderRadius.circular(14.0),
-                                    ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Text(
-                                            'Ajustes',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.quicksand(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ),
-                                        Icon(
-                                          Icons.settings_sharp,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          size: 36.0,
-                                        ),
-                                      ],
-                                    ).animateOnPageLoad(animationsMap[
-                                        'columnOnPageLoadAnimation2']!),
+                                    ],
                                   ),
-                                ).animateOnActionTrigger(
-                                  animationsMap[
-                                      'containerOnActionTriggerAnimation3']!,
-                                ),
-                                Builder(
-                                  builder: (context) => InkWell(
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              height: 200.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      var _shouldSetState = false;
-                                      await showDialog(
-                                        context: context,
-                                        builder: (dialogContext) {
-                                          return Dialog(
-                                            elevation: 0,
-                                            insetPadding: EdgeInsets.zero,
-                                            backgroundColor: Colors.transparent,
-                                            alignment: AlignmentDirectional(
-                                                    0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                            child: GestureDetector(
-                                              onTap: () {
-                                                FocusScope.of(dialogContext)
-                                                    .unfocus();
-                                                FocusManager
-                                                    .instance.primaryFocus
-                                                    ?.unfocus();
-                                              },
-                                              child: Container(
-                                                height: 300.0,
-                                                child: DialogTwoBtnsWidget(
-                                                  titulo:
-                                                      '¿Desea cerrar sesión?',
-                                                  mensaje:
-                                                      'Sus datos se guardarán automáticamente.',
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(
-                                          () => _model.isLogoff = value));
-
-                                      _shouldSetState = true;
-                                      if (_model.isLogoff!) {
-                                        if (animationsMap[
-                                                'containerOnActionTriggerAnimation1'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'containerOnActionTriggerAnimation1']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
-                                        context.goNamed(
-                                            AuthSigningInWidget.routeName);
-                                      } else {
-                                        if (_shouldSetState)
-                                          safeSetState(() {});
-                                        return;
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation2'] !=
+                                          null) {
+                                        await animationsMap[
+                                                'containerOnActionTriggerAnimation2']!
+                                            .controller
+                                            .forward(from: 0.0)
+                                            .whenComplete(animationsMap[
+                                                    'containerOnActionTriggerAnimation2']!
+                                                .controller
+                                                .reverse);
+                                      }
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation1'] !=
+                                          null) {
+                                        await animationsMap[
+                                                'containerOnActionTriggerAnimation1']!
+                                            .controller
+                                            .forward(from: 0.0);
                                       }
 
-                                      if (_shouldSetState) safeSetState(() {});
+                                      context.goNamed(
+                                        TiendaBetterWidget.routeName,
+                                        queryParameters: {
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'idTenderoList': serializeParam(
+                                            widget.idTenderoList,
+                                            ParamType.DocumentReference,
+                                            isList: true,
+                                          ),
+                                          'nombreCliente': serializeParam(
+                                            widget.nombreCliente,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                          ),
+                                        },
+                                      );
                                     },
                                     child: Container(
                                       width: 100.0,
                                       height: 100.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                            .primary,
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 3.0,
-                                        ),
+                                            BorderRadius.circular(14.0),
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text(
-                                            'Cerrar Sesión',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  font: GoogleFonts.quicksand(
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              'Tiendas',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineMedium
+                                                  .override(
+                                                    font: GoogleFonts.quicksand(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 24.0,
+                                                    letterSpacing: 0.0,
                                                     fontWeight:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -680,39 +564,281 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                                             .headlineMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  fontSize: 22.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .headlineMedium
-                                                          .fontStyle,
-                                                ),
+                                            ),
                                           ),
                                           Icon(
-                                            Icons.logout,
+                                            Icons.storefront_sharp,
                                             color: FlutterFlowTheme.of(context)
-                                                .error,
-                                            size: 26.0,
+                                                .secondaryBackground,
+                                            size: 36.0,
                                           ),
                                         ],
+                                      ).animateOnPageLoad(animationsMap[
+                                          'columnOnPageLoadAnimation1']!),
+                                    ),
+                                  ).animateOnActionTrigger(
+                                    animationsMap[
+                                        'containerOnActionTriggerAnimation2']!,
+                                  ),
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation3'] !=
+                                          null) {
+                                        await animationsMap[
+                                                'containerOnActionTriggerAnimation3']!
+                                            .controller
+                                            .forward(from: 0.0)
+                                            .whenComplete(animationsMap[
+                                                    'containerOnActionTriggerAnimation3']!
+                                                .controller
+                                                .reverse);
+                                      }
+                                      if (animationsMap[
+                                              'containerOnActionTriggerAnimation1'] !=
+                                          null) {
+                                        await animationsMap[
+                                                'containerOnActionTriggerAnimation1']!
+                                            .controller
+                                            .forward(from: 0.0);
+                                      }
+
+                                      context.goNamed(
+                                        AjustesClienteWidget.routeName,
+                                        queryParameters: {
+                                          'nombreCliente': serializeParam(
+                                            widget.nombreCliente,
+                                            ParamType.String,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'idTenderoList': serializeParam(
+                                            widget.idTenderoList,
+                                            ParamType.DocumentReference,
+                                            isList: true,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                          ),
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 100.0,
+                                      height: 100.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        borderRadius:
+                                            BorderRadius.circular(14.0),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: Text(
+                                              'Ajustes',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineMedium
+                                                  .override(
+                                                    font: GoogleFonts.quicksand(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                          Icon(
+                                            Icons.settings_sharp,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            size: 36.0,
+                                          ),
+                                        ],
+                                      ).animateOnPageLoad(animationsMap[
+                                          'columnOnPageLoadAnimation2']!),
+                                    ),
+                                  ).animateOnActionTrigger(
+                                    animationsMap[
+                                        'containerOnActionTriggerAnimation3']!,
+                                  ),
+                                  Builder(
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        var _shouldSetState = false;
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child: Container(
+                                                  height: 300.0,
+                                                  child: DialogTwoBtnsWidget(
+                                                    titulo:
+                                                        '¿Desea cerrar sesión?',
+                                                    mensaje:
+                                                        'Sus datos se guardarán automáticamente.',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(
+                                            () => _model.isLogoff = value));
+
+                                        _shouldSetState = true;
+                                        if (_model.isLogoff!) {
+                                          if (animationsMap[
+                                                  'containerOnActionTriggerAnimation1'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'containerOnActionTriggerAnimation1']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
+                                          context.goNamed(
+                                              AuthSigningInWidget.routeName);
+                                        } else {
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                      },
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 100.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 3.0,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Cerrar Sesión',
+                                              textAlign: TextAlign.center,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .headlineMedium
+                                                  .override(
+                                                    font: GoogleFonts.quicksand(
+                                                      fontWeight:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontWeight,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    fontSize: 22.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                            Icon(
+                                              Icons.logout,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                              size: 26.0,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

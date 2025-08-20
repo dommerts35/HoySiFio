@@ -112,7 +112,21 @@ class _HistorialVouchersClienteWidgetState
           ),
         ],
       ),
-      'textOnPageLoadAnimation': AnimationInfo(
+      'textOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation2': AnimationInfo(
         loop: true,
         reverse: true,
         trigger: AnimationTrigger.onPageLoad,
@@ -284,7 +298,8 @@ class _HistorialVouchersClienteWidgetState
                                           .headlineSmall
                                           .fontStyle,
                                     ),
-                              ),
+                              ).animateOnPageLoad(
+                                  animationsMap['textOnPageLoadAnimation1']!),
                               Builder(
                                 builder: (context) => Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -548,7 +563,7 @@ class _HistorialVouchersClienteWidgetState
                                                               ),
                                                         ).animateOnPageLoad(
                                                             animationsMap[
-                                                                'textOnPageLoadAnimation']!),
+                                                                'textOnPageLoadAnimation2']!),
                                                       Container(
                                                         decoration:
                                                             BoxDecoration(

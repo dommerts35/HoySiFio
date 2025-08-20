@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'empty_clientes_list_no_fiando_model.dart';
 export 'empty_clientes_list_no_fiando_model.dart';
 
@@ -68,17 +69,12 @@ class _EmptyClientesListNoFiandoWidgetState
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 0.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
-                  child: Image.asset(
-                    'assets/images/empty_ffbc4b23.gif',
-                    width: 150.0,
-                    height: 156.0,
-                    fit: BoxFit.none,
-                  ),
-                ),
+              Lottie.asset(
+                'assets/jsons/empty.json',
+                width: 200.0,
+                height: 200.0,
+                fit: BoxFit.contain,
+                animate: true,
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 0.0, 10.0),

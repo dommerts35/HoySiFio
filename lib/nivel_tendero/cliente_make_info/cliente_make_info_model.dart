@@ -48,6 +48,8 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // State field(s) for fullName widget.
   FocusNode? fullNameFocusNode;
   TextEditingController? fullNameTextController;
@@ -171,8 +173,6 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   ClientesRecord? createdCliente;
   // Model for navBar component.
   late NavBarModel navBarModel;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
-  bool? isLogoff;
 
   @override
   void initState(BuildContext context) {

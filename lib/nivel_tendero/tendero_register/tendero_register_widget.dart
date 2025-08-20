@@ -96,6 +96,7 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
     animationsMap.addAll({
       'columnOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
+        applyInitialState: true,
         effectsBuilder: () => [
           MoveEffect(
             curve: Curves.easeInOut,
@@ -110,6 +111,26 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
             duration: 1200.0.ms,
             begin: 0.0,
             end: 1.0,
+          ),
+        ],
+      ),
+      'columnOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -17.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1000.0.ms,
+            begin: 1.0,
+            end: 0.0,
           ),
         ],
       ),
@@ -1360,6 +1381,41 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                                 .circular(8.0),
                                                       ),
                                                     ),
+                                                    if (_model.uploadedFileUrl_uploadDataZs2 !=
+                                                            '')
+                                                      Container(
+                                                        width: 100.0,
+                                                        height: 100.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primary,
+                                                            width: 3.0,
+                                                          ),
+                                                        ),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          child: Image.network(
+                                                            _model
+                                                                .uploadedFileUrl_uploadDataZs2,
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
                                                   ].divide(
                                                       SizedBox(height: 10.0)),
                                                 ),
@@ -4259,10 +4315,28 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                                                   },
                                                 );
 
+                                                if (animationsMap[
+                                                        'columnOnActionTriggerAnimation'] !=
+                                                    null) {
+                                                  await animationsMap[
+                                                          'columnOnActionTriggerAnimation']!
+                                                      .controller
+                                                      .forward(from: 0.0);
+                                                }
+
                                                 context.goNamedAuth(
-                                                    AuthSigningInWidget
-                                                        .routeName,
-                                                    context.mounted);
+                                                  AuthSigningInWidget.routeName,
+                                                  context.mounted,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                    ),
+                                                  },
+                                                );
                                               }
                                             }
 
@@ -4330,7 +4404,11 @@ class _TenderoRegisterWidgetState extends State<TenderoRegisterWidget>
                   ),
                 ],
               ),
-            ).animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!),
+            )
+                .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
+                .animateOnActionTrigger(
+                  animationsMap['columnOnActionTriggerAnimation']!,
+                ),
           ),
         ),
       ),

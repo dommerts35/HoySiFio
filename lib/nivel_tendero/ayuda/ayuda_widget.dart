@@ -102,538 +102,599 @@ class _AyudaWidgetState extends State<AyudaWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(70.0),
-          child: AppBar(
-            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-            automaticallyImplyLeading: false,
-            title: Container(
-              decoration: BoxDecoration(),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Opacity(
-                    opacity: 0.0,
-                    child: FlutterFlowIconButton(
-                      borderRadius: 12.0,
-                      buttonSize: 40.0,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      icon: Icon(
-                        Icons.logout,
-                        color: FlutterFlowTheme.of(context).error,
-                        size: 24.0,
-                      ),
-                      onPressed: () {
-                        print('iconNothing pressed ...');
-                      },
-                    ),
-                  ),
-                  Container(
-                    width: 260.0,
-                    height: 50.0,
-                    decoration: BoxDecoration(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Flexible(
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: AutoSizeText(
-                                    widget.nombreTienda,
-                                    textAlign: TextAlign.center,
-                                    maxLines: 1,
-                                    minFontSize: 4.0,
-                                    style: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .override(
-                                          font: GoogleFonts.asap(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .displaySmall
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .displaySmall
-                                                    .fontStyle,
-                                          ),
-                                          fontSize: 28.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontStyle,
-                                        ),
-                                  ),
-                                ),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          child: Stack(
+            alignment: AlignmentDirectional(1.0, -1.0),
+            children: [
+              Container(
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      child: Container(
+                        height: 90.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
                               ),
-                              Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Flexible(
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: AutoSizeText(
-                                        widget.emailTendero,
-                                        textAlign: TextAlign.center,
-                                        maxLines: 1,
-                                        minFontSize: 4.0,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.asap(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Builder(
-                    builder: (context) => FlutterFlowIconButton(
-                      borderRadius: 12.0,
-                      fillColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      icon: Icon(
-                        Icons.logout,
-                        color: FlutterFlowTheme.of(context).error,
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        await showDialog(
-                          context: context,
-                          builder: (dialogContext) {
-                            return Dialog(
-                              elevation: 0,
-                              insetPadding: EdgeInsets.zero,
-                              backgroundColor: Colors.transparent,
-                              alignment: AlignmentDirectional(0.0, 0.0)
-                                  .resolve(Directionality.of(context)),
-                              child: GestureDetector(
-                                onTap: () {
-                                  FocusScope.of(dialogContext).unfocus();
-                                  FocusManager.instance.primaryFocus?.unfocus();
-                                },
-                                child: Container(
-                                  height: 200.0,
-                                  child: DialogTwoBtnsWidget(
-                                    titulo: '¿Desea cerrar sesión?',
-                                    mensaje:
-                                        'Sus datos se guardarán automáticamente.',
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Opacity(
+                                opacity: 0.0,
+                                child: FlutterFlowIconButton(
+                                  borderRadius: 12.0,
+                                  buttonSize: 40.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.logout,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    size: 24.0,
                                   ),
+                                  onPressed: () {
+                                    print('iconNothing pressed ...');
+                                  },
                                 ),
                               ),
-                            );
-                          },
-                        ).then((value) =>
-                            safeSetState(() => _model.isLogoff = value));
-
-                        if (_model.isLogoff!) {
-                          GoRouter.of(context).prepareAuthEvent();
-                          await authManager.signOut();
-                          GoRouter.of(context).clearRedirectLocation();
-
-                          if (animationsMap['stackOnActionTriggerAnimation'] !=
-                              null) {
-                            await animationsMap[
-                                    'stackOnActionTriggerAnimation']!
-                                .controller
-                                .forward(from: 0.0);
-                          }
-
-                          context.goNamedAuth(
-                            AuthSigningInWidget.routeName,
-                            context.mounted,
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.fade,
-                                duration: Duration(milliseconds: 1000),
-                              ),
-                            },
-                          );
-                        }
-
-                        safeSetState(() {});
-                      },
-                    ),
-                  ),
-                ]
-                    .addToStart(SizedBox(width: 5.0))
-                    .addToEnd(SizedBox(width: 5.0)),
-              ),
-            ),
-            actions: [],
-            centerTitle: false,
-            toolbarHeight: 70.0,
-            elevation: 2.0,
-          ),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Stack(
-              alignment: AlignmentDirectional(1.0, -1.0),
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              SingleChildScrollView(
+                              Container(
+                                width: 260.0,
+                                height: 50.0,
+                                decoration: BoxDecoration(),
                                 child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            TenderoAyudaWidget.routeName,
-                                            queryParameters: {
-                                              'tenderoRef': serializeParam(
-                                                widget.tenderoRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                              'nombreTienda': serializeParam(
+                                    Flexible(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Flexible(
+                                            child: Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: AutoSizeText(
                                                 widget.nombreTienda,
-                                                ParamType.String,
+                                                textAlign: TextAlign.center,
+                                                maxLines: 1,
+                                                minFontSize: 4.0,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displaySmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .displaySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .displaySmall
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 24.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .displaySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .displaySmall
+                                                                  .fontStyle,
+                                                        ),
                                               ),
-                                              'tenderoEmail': serializeParam(
-                                                widget.emailTendero,
-                                                ParamType.String,
-                                              ),
-                                              'nombreTendero': serializeParam(
-                                                widget.nombreTendero,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          child: ListTile(
-                                            leading: Icon(
-                                              Icons.error_outline_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 24.0,
                                             ),
-                                            title: Text(
-                                              'Tutoriales',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    font: GoogleFonts.readexPro(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 17.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                            tileColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            dense: false,
-                                            contentPadding: EdgeInsets.all(0.0),
                                           ),
-                                        ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Flexible(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: AutoSizeText(
+                                                    widget.emailTendero,
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 1,
+                                                    minFontSize: 4.0,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            PoliticaPrivOfTenderoHelpWidget
-                                                .routeName,
-                                            queryParameters: {
-                                              'tenderoRef': serializeParam(
-                                                widget.tenderoRef,
-                                                ParamType.DocumentReference,
+                                  ],
+                                ),
+                              ),
+                              Builder(
+                                builder: (context) => FlutterFlowIconButton(
+                                  borderRadius: 12.0,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  icon: Icon(
+                                    Icons.logout,
+                                    color: FlutterFlowTheme.of(context).error,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: Container(
+                                              height: 200.0,
+                                              child: DialogTwoBtnsWidget(
+                                                titulo: '¿Desea cerrar sesión?',
+                                                mensaje:
+                                                    'Sus datos se guardarán automáticamente.',
                                               ),
-                                              'nombreTienda': serializeParam(
-                                                widget.nombreTienda,
-                                                ParamType.String,
-                                              ),
-                                              'tenderoEmail': serializeParam(
-                                                widget.emailTendero,
-                                                ParamType.String,
-                                              ),
-                                              'nombreTendero': serializeParam(
-                                                widget.nombreTendero,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          child: ListTile(
-                                            leading: Icon(
-                                              Icons.remove_red_eye_outlined,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 24.0,
                                             ),
-                                            title: Text(
-                                              'Políticas de privacidad',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    font: GoogleFonts.readexPro(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 17.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                            tileColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            dense: false,
-                                            contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          16.0, 0.0, 16.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            TermsOfServiceOfTenderoHelpWidget
-                                                .routeName,
-                                            queryParameters: {
-                                              'tenderoRef': serializeParam(
-                                                widget.tenderoRef,
-                                                ParamType.DocumentReference,
-                                              ),
-                                              'nombreTienda': serializeParam(
-                                                widget.nombreTienda,
-                                                ParamType.String,
-                                              ),
-                                              'tenderoEmail': serializeParam(
-                                                widget.emailTendero,
-                                                ParamType.String,
-                                              ),
-                                              'nombreTendero': serializeParam(
-                                                widget.nombreTendero,
-                                                ParamType.String,
-                                              ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Material(
-                                          color: Colors.transparent,
-                                          child: ListTile(
-                                            leading: Icon(
-                                              Icons.text_snippet_sharp,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              size: 24.0,
-                                            ),
-                                            title: Text(
-                                              'Términos y condiciones',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .titleMedium
-                                                  .override(
-                                                    font: GoogleFonts.readexPro(
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 17.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .titleMedium
-                                                            .fontStyle,
-                                                  ),
-                                            ),
-                                            tileColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            dense: false,
-                                            contentPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(
+                                        () => _model.isLogoff = value));
+
+                                    if (_model.isLogoff!) {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      await authManager.signOut();
+                                      GoRouter.of(context)
+                                          .clearRedirectLocation();
+
+                                      if (animationsMap[
+                                              'stackOnActionTriggerAnimation'] !=
+                                          null) {
+                                        await animationsMap[
+                                                'stackOnActionTriggerAnimation']!
+                                            .controller
+                                            .forward(from: 0.0);
+                                      }
+
+                                      context.goNamedAuth(
+                                        AuthSigningInWidget.routeName,
+                                        context.mounted,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration:
+                                                Duration(milliseconds: 1000),
                                           ),
-                                        ),
-                                      ),
-                                    ),
-                                  ]
-                                      .divide(SizedBox(height: 8.0))
-                                      .addToEnd(SizedBox(height: 24.0)),
+                                        },
+                                      );
+                                    }
+
+                                    safeSetState(() {});
+                                  },
                                 ),
                               ),
                             ]
-                                .divide(SizedBox(height: 30.0))
-                                .addToStart(SizedBox(height: 24.0))
-                                .addToEnd(SizedBox(height: 24.0)),
+                                .addToStart(SizedBox(width: 5.0))
+                                .addToEnd(SizedBox(width: 5.0)),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                    ),
+                    Expanded(
+                      child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
-                            Lottie.asset(
-                              'assets/jsons/actualHoySiFioLoad.json',
-                              width: 140.0,
-                              height: 50.0,
-                              fit: BoxFit.none,
-                              animate: true,
-                            ),
-                            Text(
-                              'HoySíFio ™. Todos los derechos reservados.',
-                              style: FlutterFlowTheme.of(context)
-                                  .labelSmall
-                                  .override(
-                                    font: GoogleFonts.asap(
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelSmall
-                                          .fontStyle,
+                            SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        if (animationsMap[
+                                                'stackOnActionTriggerAnimation'] !=
+                                            null) {
+                                          await animationsMap[
+                                                  'stackOnActionTriggerAnimation']!
+                                              .controller
+                                              .forward(from: 0.0);
+                                        }
+
+                                        context.goNamed(
+                                          TenderoAyudaWidget.routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.emailTendero,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Lottie.asset(
+                                                  'assets/jsons/info.json',
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.contain,
+                                                  animate: true,
+                                                ),
+                                                Text(
+                                                  'Tutoriales',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 25.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                    fontSize: 9.0,
-                                    letterSpacing: 0.0,
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        if (animationsMap[
+                                                'stackOnActionTriggerAnimation'] !=
+                                            null) {
+                                          await animationsMap[
+                                                  'stackOnActionTriggerAnimation']!
+                                              .controller
+                                              .forward(from: 0.0);
+                                        }
+
+                                        context.goNamed(
+                                          PoliticaPrivOfTenderoHelpWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.emailTendero,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Lottie.asset(
+                                                  'assets/jsons/eye.json',
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.contain,
+                                                  animate: true,
+                                                ),
+                                                Text(
+                                                  'Políticas de privacidad',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 25.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 0.0, 15.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        if (animationsMap[
+                                                'stackOnActionTriggerAnimation'] !=
+                                            null) {
+                                          await animationsMap[
+                                                  'stackOnActionTriggerAnimation']!
+                                              .controller
+                                              .forward(from: 0.0);
+                                        }
+
+                                        context.goNamed(
+                                          TermsOfServiceOfTenderoHelpWidget
+                                              .routeName,
+                                          queryParameters: {
+                                            'tenderoRef': serializeParam(
+                                              widget.tenderoRef,
+                                              ParamType.DocumentReference,
+                                            ),
+                                            'nombreTienda': serializeParam(
+                                              widget.nombreTienda,
+                                              ParamType.String,
+                                            ),
+                                            'tenderoEmail': serializeParam(
+                                              widget.emailTendero,
+                                              ParamType.String,
+                                            ),
+                                            'nombreTendero': serializeParam(
+                                              widget.nombreTendero,
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Lottie.asset(
+                                                  'assets/jsons/read.json',
+                                                  width: 40.0,
+                                                  height: 40.0,
+                                                  fit: BoxFit.contain,
+                                                  animate: true,
+                                                ),
+                                                Text(
+                                                  'Términos y condiciones',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .readexPro(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 25.0)),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]
+                                    .divide(SizedBox(height: 8.0))
+                                    .addToEnd(SizedBox(height: 24.0)),
+                              ),
+                            ),
+                          ]
+                              .divide(SizedBox(height: 30.0))
+                              .addToStart(SizedBox(height: 24.0))
+                              .addToEnd(SizedBox(height: 24.0)),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Lottie.asset(
+                            'assets/jsons/actualHoySiFioLoad.json',
+                            width: 140.0,
+                            height: 50.0,
+                            fit: BoxFit.none,
+                            animate: true,
+                          ),
+                          Text(
+                            'HoySíFio ™. Todos los derechos reservados.',
+                            style: FlutterFlowTheme.of(context)
+                                .labelSmall
+                                .override(
+                                  font: GoogleFonts.asap(
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .labelSmall
                                         .fontWeight,
@@ -641,30 +702,38 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                         .labelSmall
                                         .fontStyle,
                                   ),
-                            ),
-                          ],
-                        ),
+                                  fontSize: 9.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelSmall
+                                      .fontStyle,
+                                ),
+                          ),
+                        ],
                       ),
-                      wrapWithModel(
-                        model: _model.navBarModel,
-                        updateCallback: () => safeSetState(() {}),
-                        updateOnChange: true,
-                        child: NavBarWidget(
-                          activePage: 'Ayuda',
-                          nombreTienda: widget.nombreTienda,
-                          emailTendero: widget.emailTendero,
-                          nombreTendero: widget.nombreTendero,
-                          tenderoRef: widget.tenderoRef,
-                        ),
+                    ),
+                    wrapWithModel(
+                      model: _model.navBarModel,
+                      updateCallback: () => safeSetState(() {}),
+                      updateOnChange: true,
+                      child: NavBarWidget(
+                        activePage: 'Ayuda',
+                        nombreTienda: widget.nombreTienda,
+                        emailTendero: widget.emailTendero,
+                        nombreTendero: widget.nombreTendero,
+                        tenderoRef: widget.tenderoRef,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ).animateOnActionTrigger(
-            animationsMap['stackOnActionTriggerAnimation']!,
+              ),
+            ],
           ),
+        ).animateOnActionTrigger(
+          animationsMap['stackOnActionTriggerAnimation']!,
         ),
       ),
     );

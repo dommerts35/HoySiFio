@@ -213,19 +213,19 @@ class _PoliticaPrivOfTenderoHelpWidgetState
                                 }
 
                                 context.goNamed(
-                                  TenderoAyudaWidget.routeName,
+                                  AyudaWidget.routeName,
                                   queryParameters: {
-                                    'tenderoRef': serializeParam(
-                                      widget.tenderoRef,
-                                      ParamType.DocumentReference,
-                                    ),
                                     'nombreTienda': serializeParam(
                                       widget.nombreTienda,
                                       ParamType.String,
                                     ),
-                                    'tenderoEmail': serializeParam(
+                                    'emailTendero': serializeParam(
                                       widget.tenderoEmail,
                                       ParamType.String,
+                                    ),
+                                    'tenderoRef': serializeParam(
+                                      widget.tenderoRef,
+                                      ParamType.DocumentReference,
                                     ),
                                     'nombreTendero': serializeParam(
                                       widget.nombreTendero,

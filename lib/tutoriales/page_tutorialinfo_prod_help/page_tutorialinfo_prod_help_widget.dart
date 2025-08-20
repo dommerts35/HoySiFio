@@ -198,7 +198,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'Al seleccionar un cliente, podrás ver toda su información, sus cuentas y los productos que se le han fiado.\nSi deseas omitir este tutorial, toca el botón “Saltar” en la parte inferior derecha.\nDesliza hacia la derecha para continuar.',
+                                                'Al seleccionar un cliente, podrás ver toda su información, sus cuentas y los productos que se le han fiado.\n\nSi deseas omitir este tutorial, toca el botón “Saltar” en la parte inferior derecha.\nDesliza hacia la derecha para continuar.\n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -274,7 +274,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'Aquí encuentras la información básica del cliente con tres acciones clave, editar, borrar y ver los datos completos. Al editar, puedes cambiar el límite de crédito del cliente.',
+                                                'Aquí encuentras la información básica del cliente con tres acciones clave, editar, borrar y ver los datos completos. \n\nAl editar, puedes cambiar el límite de crédito del cliente.\n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -581,6 +581,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -638,6 +639,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -695,6 +697,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -747,6 +750,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -798,6 +802,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(

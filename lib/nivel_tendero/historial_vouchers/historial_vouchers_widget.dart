@@ -110,7 +110,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
           ),
         ],
       ),
-      'iconButtonOnPageLoadAnimation': AnimationInfo(
+      'iconButtonOnPageLoadAnimation1': AnimationInfo(
         loop: true,
         reverse: true,
         trigger: AnimationTrigger.onPageLoad,
@@ -121,6 +121,47 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
             duration: 600.0.ms,
             begin: Offset(0.0, 0.0),
             end: Offset(-10.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation2': AnimationInfo(
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation3': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1500.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
           ),
         ],
       ),
@@ -260,7 +301,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                             );
                           },
                         ).animateOnPageLoad(
-                            animationsMap['iconButtonOnPageLoadAnimation']!),
+                            animationsMap['iconButtonOnPageLoadAnimation1']!),
                         Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
@@ -292,7 +333,8 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                         .headlineSmall
                                         .fontStyle,
                                   ),
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['textOnPageLoadAnimation']!),
                           ),
                         ),
                         Builder(
@@ -963,9 +1005,8 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                           -0.02),
                                                                   child:
                                                                       Builder(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            FlutterFlowIconButton(
+                                                                    builder: (context) =>
+                                                                        FlutterFlowIconButton(
                                                                       borderRadius:
                                                                           12.0,
                                                                       borderWidth:
@@ -1255,7 +1296,8 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                               if (_shouldSetState)
                                                                                 safeSetState(() {});
                                                                             },
-                                                                    ),
+                                                                    ).animateOnPageLoad(
+                                                                            animationsMap['iconButtonOnPageLoadAnimation2']!),
                                                                   ),
                                                                 ),
                                                               if (listaVouchersItem
@@ -1268,9 +1310,8 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                           -0.02),
                                                                   child:
                                                                       Builder(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            FlutterFlowIconButton(
+                                                                    builder: (context) =>
+                                                                        FlutterFlowIconButton(
                                                                       borderRadius:
                                                                           12.0,
                                                                       borderWidth:
@@ -1956,7 +1997,8 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                                                               if (_shouldSetState)
                                                                                 safeSetState(() {});
                                                                             },
-                                                                    ),
+                                                                    ).animateOnPageLoad(
+                                                                            animationsMap['iconButtonOnPageLoadAnimation3']!),
                                                                   ),
                                                                 ),
                                                             ],

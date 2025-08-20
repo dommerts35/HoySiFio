@@ -7,10 +7,10 @@ import 'package:flutter/material.dart';
 class AyudaModel extends FlutterFlowModel<AyudaWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Model for navBar component.
-  late NavBarModel navBarModel;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
+  // Model for navBar component.
+  late NavBarModel navBarModel;
 
   @override
   void initState(BuildContext context) {

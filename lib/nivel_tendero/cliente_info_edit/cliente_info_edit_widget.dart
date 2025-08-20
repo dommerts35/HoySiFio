@@ -290,6 +290,20 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
           ),
         ],
       ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 2000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
       'iconButtonOnPageLoadAnimation2': AnimationInfo(
         loop: true,
         reverse: true,
@@ -483,8 +497,16 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                             await TenderosRecord
                                                 .getDocumentOnce(
                                                     widget.tenderoRef!);
+                                        if (animationsMap[
+                                                'formOnActionTriggerAnimation'] !=
+                                            null) {
+                                          await animationsMap[
+                                                  'formOnActionTriggerAnimation']!
+                                              .controller
+                                              .forward(from: 0.0);
+                                        }
 
-                                        context.pushNamed(
+                                        context.goNamed(
                                           ListaClientesWidget.routeName,
                                           queryParameters: {
                                             'tenderoRef': serializeParam(
@@ -505,6 +527,13 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                               ParamType.String,
                                             ),
                                           }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
                                         );
 
                                         safeSetState(() {});
@@ -552,7 +581,8 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                           .headlineMedium
                                                           .fontStyle,
                                                 ),
-                                          ),
+                                          ).animateOnPageLoad(animationsMap[
+                                              'textOnPageLoadAnimation']!),
                                         ),
                                       ],
                                     ),
@@ -605,6 +635,16 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
 
                                         _shouldSetState = true;
                                         if (_model.isLogoff!) {
+                                          await widget.idCliente!
+                                              .update(createClientesRecordData(
+                                            cliente:
+                                                createDataTypeClienteStruct(
+                                              fieldValues: {
+                                                'producto': FieldValue.delete(),
+                                              },
+                                              clearUnsetFields: false,
+                                            ),
+                                          ));
                                           GoRouter.of(context)
                                               .prepareAuthEvent();
                                           await authManager.signOut();
@@ -1666,6 +1706,22 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                       true,
                                                                 ).then((s) => s
                                                                         .firstOrNull);
+
+                                                                await widget
+                                                                    .idCliente!
+                                                                    .update(
+                                                                        createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    fieldValues: {
+                                                                      'producto':
+                                                                          FieldValue
+                                                                              .delete(),
+                                                                    },
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
                                                                 if (animationsMap[
                                                                         'formOnActionTriggerAnimation'] !=
                                                                     null) {
@@ -1886,6 +1942,22 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                       true,
                                                                 ).then((s) => s
                                                                         .firstOrNull);
+
+                                                                await widget
+                                                                    .idCliente!
+                                                                    .update(
+                                                                        createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    fieldValues: {
+                                                                      'producto':
+                                                                          FieldValue
+                                                                              .delete(),
+                                                                    },
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
                                                                 if (animationsMap[
                                                                         'formOnActionTriggerAnimation'] !=
                                                                     null) {
@@ -2183,6 +2255,22 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                                                                           from:
                                                                               0.0);
                                                                 }
+
+                                                                await widget
+                                                                    .idCliente!
+                                                                    .update(
+                                                                        createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    fieldValues: {
+                                                                      'producto':
+                                                                          FieldValue
+                                                                              .delete(),
+                                                                    },
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
 
                                                                 context.goNamed(
                                                                   HistorialVouchersWidget

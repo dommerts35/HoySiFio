@@ -177,6 +177,34 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
           ),
         ],
       ),
+      'buttonOnPageLoadAnimation1': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 600.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.2, 1.2),
+          ),
+        ],
+      ),
       'buttonOnActionTriggerAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -194,6 +222,20 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
             duration: 600.0.ms,
             begin: Offset(1.3, 1.3),
             end: Offset(0.75, 0.75),
+          ),
+        ],
+      ),
+      'buttonOnPageLoadAnimation2': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1200.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
           ),
         ],
       ),
@@ -383,6 +425,8 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                     child: TabBarView(
                                       controller:
                                           _model.tabInicioSesionController,
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
                                       children: [
                                         Padding(
                                           padding:
@@ -420,12 +464,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                         .headlineSmall
                                                         .override(
                                                           font: GoogleFonts
-                                                              .readexPro(
+                                                              .quicksand(
                                                             fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmall
-                                                                    .fontWeight,
+                                                                FontWeight.bold,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -435,10 +476,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                           fontSize: 24.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .headlineSmall
-                                                                  .fontWeight,
+                                                              FontWeight.bold,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -2000,7 +2038,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   .circular(
                                                                       12.0),
                                                         ),
-                                                      ),
+                                                      ).animateOnPageLoad(
+                                                          animationsMap[
+                                                              'buttonOnPageLoadAnimation1']!),
                                                     ),
                                                   ),
                                                 ),
@@ -2015,41 +2055,41 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                       child: Container(
                                                         decoration:
                                                             BoxDecoration(),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                if (animationsMap[
-                                                                        'stackOnActionTriggerAnimation'] !=
-                                                                    null) {
-                                                                  await animationsMap[
-                                                                          'stackOnActionTriggerAnimation']!
-                                                                      .controller
-                                                                      .forward(
-                                                                          from:
-                                                                              0.0);
-                                                                }
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            if (animationsMap[
+                                                                    'stackOnActionTriggerAnimation'] !=
+                                                                null) {
+                                                              await animationsMap[
+                                                                      'stackOnActionTriggerAnimation']!
+                                                                  .controller
+                                                                  .forward(
+                                                                      from:
+                                                                          0.0);
+                                                            }
 
-                                                                context.goNamed(
-                                                                    PoliticaPrivSubPageToAcceptWidget
-                                                                        .routeName);
-                                                              },
-                                                              child: Text(
-                                                                'Registrar mi tienda 🏪',
+                                                            context.goNamed(
+                                                                PoliticaPrivSubPageToAcceptWidget
+                                                                    .routeName);
+                                                          },
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Text(
+                                                                'Registrar mi tienda',
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -2084,8 +2124,46 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               .underline,
                                                                     ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                              Text(
+                                                                ' 🏪',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleMedium
+                                                                    .override(
+                                                                      font: GoogleFonts
+                                                                          .readexPro(
+                                                                        fontWeight: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontWeight,
+                                                                        fontStyle: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .fontStyle,
+                                                                      ),
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontWeight,
+                                                                      fontStyle: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .titleMedium
+                                                                          .fontStyle,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .underline,
+                                                                    ),
+                                                              ).animateOnPageLoad(
+                                                                  animationsMap[
+                                                                      'textOnPageLoadAnimation']!),
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
@@ -2295,6 +2373,49 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                     ),
                                                   ].divide(
                                                       SizedBox(height: 6.0)),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 10.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'HoySíFio ™. Todos los derechos reservados.',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 9.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ),
                                                 ),
                                               ].divide(SizedBox(height: 15.0)),
                                             ),
@@ -3714,7 +3835,9 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                     .circular(
                                                                         12.0),
                                                           ),
-                                                        ),
+                                                        ).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'buttonOnPageLoadAnimation2']!),
                                                       ),
                                                     ),
                                                   ),
@@ -3921,6 +4044,52 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                   decoration:
                                                                       TextDecoration
                                                                           .underline,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 1.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'HoySíFio ™. Todos los derechos reservados.',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelSmall
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelSmall
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize: 9.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
                                                                 ),
                                                       ),
                                                     ),

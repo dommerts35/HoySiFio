@@ -208,6 +208,12 @@ class _TermsOfServiceOfClienteMakeWidgetState
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
                                 );
                               },
                             ).animateOnPageLoad(animationsMap[

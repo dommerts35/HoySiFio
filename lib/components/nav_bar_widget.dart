@@ -97,7 +97,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
             width: double.infinity,
             height: 65.0,
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).primaryBackground,
+              color: FlutterFlowTheme.of(context).secondaryBackground,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 12.0,

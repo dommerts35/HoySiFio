@@ -14,10 +14,16 @@ class InicioClienteModel extends FlutterFlowModel<InicioClienteWidget> {
 
   int tempItemCountHistorial = 0;
 
+  int? tiempo;
+
+  String? tiempoGlobalToString;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Firestore Query - Query a collection] action in inicioCliente widget.
   List<ClientesRecord>? queryOnLoadClientes;
+  // Stores action output result for [Custom Action - retornarStringAInt] action in inicioCliente widget.
+  int? tiempoResultCliente;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;

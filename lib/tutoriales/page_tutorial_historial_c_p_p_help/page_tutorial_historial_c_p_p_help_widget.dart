@@ -162,7 +162,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              'Cuentas por cobrar',
+                                              'Cuentas por cobrar 💲',
                                               textAlign: TextAlign.center,
                                               style: FlutterFlowTheme.of(
                                                       context)
@@ -198,7 +198,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'Una vez añadido un grupo de productos a fiar, podrás visualizarlos en una lista en el apartado de cuentas por cobrar.\nSi deseas omitir este tutorial, toca el botón “Saltar” en la parte inferior derecha.\nDesliza hacia la derecha para continuar.',
+                                                'Una vez añadido un grupo de productos a fiar, podrás visualizarlos en una lista en el apartado de cuentas por cobrar.\n\nSi deseas omitir este tutorial, toca el botón “Saltar” en la parte inferior derecha.\nDesliza hacia la derecha para continuar.\n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -274,7 +274,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'Aquí se encuentra la lista de productos que el cliente fia actualmente. ',
+                                                'Visualizarás la lista de productos que el cliente fia actualmente. \n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -371,7 +371,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'En la parte superior derecha de cada grupo de productos encontrarás un selector que te permite elegir varios grupos. Una vez seleccionados, podrás cobrarlos utilizando el botón \'Cobrar productos seleccionados\', ubicado en la parte inferior de la pantalla.',
+                                                'En la parte superior derecha de cada grupo de productos, encontrarás un selector que te permite elegirlos. \n\nUna vez seleccionados, podrás cobrarlos utilizando el botón \'Cobrar productos seleccionados\', ubicado en la parte inferior de la pantalla.\n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -468,7 +468,7 @@ class _PageTutorialHistorialCPPHelpWidgetState
                                                   .fromSTEB(
                                                       24.0, 0.0, 24.0, 0.0),
                                               child: Text(
-                                                'Al tocar el botón \'Toque para cobrar\' dentro de un grupo, podrás registrar el cobro de los productos correspondientes.\nSi prefieres cobrar todos los productos fiados, pulsa el botón \'Cobrar todos los productos\', ubicado en la parte inferior de la pantalla, debajo del total global.',
+                                                'Al tocar el botón \'Toque para cobrar\' dentro de un grupo, podrás registrar el cobro de los productos correspondientes.\n\nPuedes cobrar todos los produtos que el cliente fia con el botón \"Cobrar todos los productos\".\n',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)

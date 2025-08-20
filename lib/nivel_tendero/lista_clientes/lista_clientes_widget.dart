@@ -6,6 +6,7 @@ import '/components_nivel_tendero/empty_clientes_list/empty_clientes_list_widget
 import '/components_nivel_tendero/empty_clientes_list_fiando/empty_clientes_list_fiando_widget.dart';
 import '/components_nivel_tendero/empty_clientes_list_no_fiando/empty_clientes_list_no_fiando_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -214,16 +215,21 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                         children: [
                           Opacity(
                             opacity: 0.0,
-                            child: FlutterFlowIconButton(
-                              borderRadius: 8.0,
-                              icon: Icon(
-                                Icons.logout,
-                                color: Color(0xFFF90202),
-                                size: 36.0,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 0.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderRadius: 8.0,
+                                buttonSize: 40.0,
+                                icon: Icon(
+                                  Icons.logout,
+                                  color: Color(0xFFF90202),
+                                  size: 36.0,
+                                ),
+                                onPressed: () {
+                                  print('iconNothing pressed ...');
+                                },
                               ),
-                              onPressed: () {
-                                print('iconNothing pressed ...');
-                              },
                             ),
                           ),
                           Flexible(
@@ -303,9 +309,10 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                       if (containerTenderosRecord.photoUrl !=
                                           '')
                                         Container(
+                                          width: 80.0,
+                                          height: 80.0,
                                           decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(14.0),
+                                            shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -313,14 +320,48 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                               width: 3.0,
                                             ),
                                           ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.network(
-                                              containerTenderosRecord.photoUrl,
-                                              width: 90.0,
-                                              height: 70.0,
-                                              fit: BoxFit.fill,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Navigator.push(
+                                                context,
+                                                PageTransition(
+                                                  type: PageTransitionType.fade,
+                                                  child:
+                                                      FlutterFlowExpandedImageView(
+                                                    image: Image.network(
+                                                      containerTenderosRecord
+                                                          .photoUrl,
+                                                      fit: BoxFit.contain,
+                                                    ),
+                                                    allowRotation: false,
+                                                    tag: containerTenderosRecord
+                                                        .photoUrl,
+                                                    useHeroAnimation: true,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                            child: Hero(
+                                              tag: containerTenderosRecord
+                                                  .photoUrl,
+                                              transitionOnUserGestures: true,
+                                              child: Container(
+                                                width: 80.0,
+                                                height: 80.0,
+                                                clipBehavior: Clip.antiAlias,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                ),
+                                                child: Image.network(
+                                                  containerTenderosRecord
+                                                      .photoUrl,
+                                                  fit: BoxFit.fitHeight,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -331,81 +372,90 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                             ),
                           ),
                           Builder(
-                            builder: (context) => FlutterFlowIconButton(
-                              borderRadius: 8.0,
-                              icon: Icon(
-                                Icons.logout,
-                                color: FlutterFlowTheme.of(context).error,
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                var _shouldSetState = false;
-                                await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      elevation: 0,
-                                      insetPadding: EdgeInsets.zero,
-                                      backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          FocusScope.of(dialogContext)
-                                              .unfocus();
-                                          FocusManager.instance.primaryFocus
-                                              ?.unfocus();
-                                        },
-                                        child: Container(
-                                          height: 300.0,
-                                          child: DialogTwoBtnsWidget(
-                                            titulo: '¿Desea cerrar sesión?',
-                                            mensaje:
-                                                'Sus datos se guardarán automáticamente.',
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderRadius: 8.0,
+                                icon: Icon(
+                                  Icons.logout,
+                                  color: FlutterFlowTheme.of(context).error,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Container(
+                                            height: 300.0,
+                                            child: DialogTwoBtnsWidget(
+                                              titulo: '¿Desea cerrar sesión?',
+                                              mensaje:
+                                                  'Sus datos se guardarán automáticamente.',
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(
+                                      () => _model.isLogoff = value));
+
+                                  _shouldSetState = true;
+                                  if (_model.isLogoff!) {
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+
+                                    if (animationsMap[
+                                            'columnOnActionTriggerAnimation'] !=
+                                        null) {
+                                      await animationsMap[
+                                              'columnOnActionTriggerAnimation']!
+                                          .controller
+                                          .forward(from: 0.0);
+                                    }
+
+                                    context.goNamedAuth(
+                                      AuthSigningInWidget.routeName,
+                                      context.mounted,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration:
+                                              Duration(milliseconds: 1000),
+                                        ),
+                                      },
                                     );
-                                  },
-                                ).then((value) => safeSetState(
-                                    () => _model.isLogoff = value));
-
-                                _shouldSetState = true;
-                                if (_model.isLogoff!) {
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  await authManager.signOut();
-                                  GoRouter.of(context).clearRedirectLocation();
-
-                                  if (animationsMap[
-                                          'columnOnActionTriggerAnimation'] !=
-                                      null) {
-                                    await animationsMap[
-                                            'columnOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
+                                  } else {
+                                    if (_shouldSetState) safeSetState(() {});
+                                    return;
                                   }
 
-                                  context.goNamedAuth(
-                                    AuthSigningInWidget.routeName,
-                                    context.mounted,
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 1000),
-                                      ),
-                                    },
-                                  );
-                                } else {
                                   if (_shouldSetState) safeSetState(() {});
-                                  return;
-                                }
-
-                                if (_shouldSetState) safeSetState(() {});
-                              },
+                                },
+                              ),
                             ),
                           ),
-                        ],
+                        ].divide(SizedBox(width: 10.0)),
                       ),
                       Container(
                         width: 310.0,
@@ -660,9 +710,9 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                               image: DecorationImage(
-                                                fit: BoxFit.none,
+                                                fit: BoxFit.fitWidth,
                                                 image: Image.asset(
-                                                  'assets/images/forbackground_2e3249fb.gif',
+                                                  'assets/images/forBackground.gif',
                                                 ).image,
                                               ),
                                               boxShadow: [
@@ -675,12 +725,6 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                   ),
                                                 )
                                               ],
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                width: 1.0,
-                                              ),
                                             ),
                                             child: SingleChildScrollView(
                                               child: Column(
@@ -938,8 +982,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                                       Padding(
                                                                                         padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                                                                                         child: Container(
-                                                                                          width: 80.0,
-                                                                                          height: 80.0,
+                                                                                          width: 70.0,
+                                                                                          height: 70.0,
                                                                                           decoration: BoxDecoration(
                                                                                             color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                                             shape: BoxShape.circle,
@@ -949,8 +993,8 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                                             ),
                                                                                           ),
                                                                                           child: Container(
-                                                                                            width: 80.0,
-                                                                                            height: 80.0,
+                                                                                            width: 70.0,
+                                                                                            height: 70.0,
                                                                                             clipBehavior: Clip.antiAlias,
                                                                                             decoration: BoxDecoration(
                                                                                               shape: BoxShape.circle,
@@ -1101,9 +1145,9 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                             image: DecorationImage(
-                                              fit: BoxFit.none,
+                                              fit: BoxFit.fitWidth,
                                               image: Image.asset(
-                                                'assets/images/forbackground_2e3249fb.gif',
+                                                'assets/images/forBackground.gif',
                                               ).image,
                                             ),
                                             boxShadow: [
@@ -1116,12 +1160,6 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                 ),
                                               )
                                             ],
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                              width: 1.0,
-                                            ),
                                           ),
                                           child: Padding(
                                             padding:
@@ -1607,9 +1645,9 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
                                         image: DecorationImage(
-                                          fit: BoxFit.none,
+                                          fit: BoxFit.fitWidth,
                                           image: Image.asset(
-                                            'assets/images/forbackground_2e3249fb.gif',
+                                            'assets/images/forBackground.gif',
                                           ).image,
                                         ),
                                         boxShadow: [
@@ -1622,10 +1660,6 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                             ),
                                           )
                                         ],
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                        ),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(

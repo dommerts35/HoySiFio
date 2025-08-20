@@ -195,7 +195,7 @@ class _PoliticasPrivFromMakeClienteWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed(
+                                context.goNamed(
                                   ClienteMakeInfoWidget.routeName,
                                   queryParameters: {
                                     'tenderoRef': serializeParam(
@@ -215,6 +215,12 @@ class _PoliticasPrivFromMakeClienteWidgetState
                                       ParamType.String,
                                     ),
                                   }.withoutNulls,
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType: PageTransitionType.fade,
+                                    ),
+                                  },
                                 );
                               },
                               child: Icon(

@@ -9,6 +9,7 @@ import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'ajustes_cliente_model.dart';
@@ -223,24 +224,53 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Flexible(
-                                                    child: Text(
-                                                      '${valueOrDefault<String>(
-                                                        _model
-                                                            .queryClienteAjustes
-                                                            ?.cliente
-                                                            .nombre,
-                                                        'nombreCliente',
-                                                      )} ${valueOrDefault<String>(
-                                                        _model
-                                                            .queryClienteAjustes
-                                                            ?.cliente
-                                                            .apellido,
-                                                        'apellidoCliente',
-                                                      )}',
-                                                      maxLines: 1,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                    child: StreamBuilder<
+                                                        List<ClientesRecord>>(
+                                                      stream:
+                                                          queryClientesRecord(
+                                                        queryBuilder:
+                                                            (clientesRecord) =>
+                                                                clientesRecord
+                                                                    .where(
+                                                          'cliente.cedula',
+                                                          isEqualTo:
+                                                              widget.cedula,
+                                                        ),
+                                                        singleRecord: true,
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  SpinKitWanderingCubes(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                size: 50.0,
+                                                              ),
+                                                            ),
+                                                          );
+                                                        }
+                                                        List<ClientesRecord>
+                                                            textClientesRecordList =
+                                                            snapshot.data!;
+                                                        final textClientesRecord =
+                                                            textClientesRecordList
+                                                                    .isNotEmpty
+                                                                ? textClientesRecordList
+                                                                    .first
+                                                                : null;
+
+                                                        return Text(
+                                                          '${textClientesRecord?.cliente.nombre} ${textClientesRecord?.cliente.apellido}',
+                                                          maxLines: 1,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
                                                               .displaySmall
                                                               .override(
                                                                 font:
@@ -267,6 +297,8 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                                     .displaySmall
                                                                     .fontStyle,
                                                               ),
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                 ],
@@ -338,8 +370,17 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          if (animationsMap[
+                                                  'stackOnActionTriggerAnimation'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'stackOnActionTriggerAnimation']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
                                           context.goNamed(
-                                            PageTutorialForClienteFTWidget
+                                            PageTutorialForClienteHelpWidget
                                                 .routeName,
                                             queryParameters: {
                                               'cedula': serializeParam(
@@ -356,6 +397,14 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                 ParamType.String,
                                               ),
                                             }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                              ),
+                                            },
                                           );
                                         },
                                         child: Material(
@@ -421,6 +470,15 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          if (animationsMap[
+                                                  'stackOnActionTriggerAnimation'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'stackOnActionTriggerAnimation']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
                                           context.goNamed(
                                             PoliticaPrivSubPageToViewWidget
                                                 .routeName,
@@ -445,8 +503,6 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.fade,
-                                                duration: Duration(
-                                                    milliseconds: 2000),
                                               ),
                                             },
                                           );
@@ -516,6 +572,15 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          if (animationsMap[
+                                                  'stackOnActionTriggerAnimation'] !=
+                                              null) {
+                                            await animationsMap[
+                                                    'stackOnActionTriggerAnimation']!
+                                                .controller
+                                                .forward(from: 0.0);
+                                          }
+
                                           context.goNamed(
                                             TermsOfServiceLoginWidget.routeName,
                                             queryParameters: {
@@ -539,8 +604,6 @@ class _AjustesClienteWidgetState extends State<AjustesClienteWidget>
                                                 hasTransition: true,
                                                 transitionType:
                                                     PageTransitionType.fade,
-                                                duration: Duration(
-                                                    milliseconds: 2000),
                                               ),
                                             },
                                           );

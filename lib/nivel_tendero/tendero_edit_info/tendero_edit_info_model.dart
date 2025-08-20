@@ -228,8 +228,12 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   int? count;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
   bool? isCountUp;
+  // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
+  List<ClientesRecord>? queryToDeleteClientesUp;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in borrarButton widget.
   bool? isCountDown;
+  // Stores action output result for [Firestore Query - Query a collection] action in borrarButton widget.
+  List<ClientesRecord>? queryToDeleteClientesDown;
   // Stores action output result for [Validate Form] action in enviarButton widget.
   bool? validacionEdit;
   // Stores action output result for [Firestore Query - Query a collection] action in enviarButton widget.

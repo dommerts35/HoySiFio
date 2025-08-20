@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 class TiendaBetterModel extends FlutterFlowModel<TiendaBetterWidget> {
   ///  Local state fields for this page.
 
-  String? urImg;
-
   int tempSetCountCliente = 0;
 
   int tempItemCountHistorial = 0;

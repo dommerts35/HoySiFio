@@ -53,7 +53,7 @@ class ResumenFiadoClienProdsNewModel
           .map((e) => e.key)
           .toList();
 
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in pagarTodoCliente widget.
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in comprFullBttn widget.
   bool? isPagarTodo;
 
   @override

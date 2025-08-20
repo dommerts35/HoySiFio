@@ -104,6 +104,20 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
           ),
         ],
       ),
+      'textOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        reverse: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 1000.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.1, 1.1),
+          ),
+        ],
+      ),
       'buttonOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -213,7 +227,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                           ),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
+                                10.0, 10.0, 10.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -267,7 +281,8 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                     .headlineMedium
                                                     .fontStyle,
                                           ),
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'textOnPageLoadAnimation']!),
                                   ],
                                 ),
                                 Builder(
@@ -1393,8 +1408,6 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                           context: context,
                                                           storageFolderPath:
                                                               'tenderos/imgs',
-                                                          maxWidth: 300.00,
-                                                          maxHeight: 100.00,
                                                           allowPhoto: true,
                                                           textColor:
                                                               FlutterFlowTheme.of(
@@ -1594,10 +1607,10 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                           .photoUrl !=
                                                       '')
                                                     Container(
+                                                      width: 70.0,
+                                                      height: 70.0,
                                                       decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(14.0),
+                                                        shape: BoxShape.circle,
                                                         border: Border.all(
                                                           color: FlutterFlowTheme
                                                                   .of(context)
@@ -1605,15 +1618,19 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                           width: 3.0,
                                                         ),
                                                       ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10.0),
+                                                      child: Container(
+                                                        width: 70.0,
+                                                        height: 70.0,
+                                                        clipBehavior:
+                                                            Clip.antiAlias,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                        ),
                                                         child: Image.network(
                                                           tenderoEditInfoTenderosRecord
                                                               .photoUrl,
-                                                          width: 60.0,
-                                                          height: 60.0,
                                                           fit: BoxFit.fill,
                                                         ),
                                                       ),
@@ -4592,6 +4609,33 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
 
                                                         _shouldSetState = true;
                                                         if (_model.isCountUp!) {
+                                                          _model.queryToDeleteClientesUp =
+                                                              await queryClientesRecordOnce(
+                                                            queryBuilder:
+                                                                (clientesRecord) =>
+                                                                    clientesRecord
+                                                                        .where(
+                                                              'cliente.idTendero',
+                                                              isEqualTo:
+                                                                  currentUserReference,
+                                                            ),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          for (int loop1Index =
+                                                                  0;
+                                                              loop1Index <
+                                                                  _model
+                                                                      .queryToDeleteClientesUp!
+                                                                      .length;
+                                                              loop1Index++) {
+                                                            final currentLoop1Item =
+                                                                _model.queryToDeleteClientesUp![
+                                                                    loop1Index];
+                                                            await currentLoop1Item
+                                                                .reference
+                                                                .delete();
+                                                          }
                                                           await authManager
                                                               .deleteUser(
                                                                   context);
@@ -4641,18 +4685,36 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                             },
                                                           );
 
-                                                          context.pushNamed(
-                                                              AuthSigningInWidget
-                                                                  .routeName);
+                                                          if (animationsMap[
+                                                                  'formOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'formOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+
+                                                          context.goNamed(
+                                                            AuthSigningInWidget
+                                                                .routeName,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                              ),
+                                                            },
+                                                          );
                                                         } else {
                                                           if (_shouldSetState)
                                                             safeSetState(() {});
                                                           return;
                                                         }
-
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                        return;
                                                       } else {
                                                         await showDialog(
                                                           context: context,
@@ -4704,6 +4766,33 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                         _shouldSetState = true;
                                                         if (_model
                                                             .isCountDown!) {
+                                                          _model.queryToDeleteClientesDown =
+                                                              await queryClientesRecordOnce(
+                                                            queryBuilder:
+                                                                (clientesRecord) =>
+                                                                    clientesRecord
+                                                                        .where(
+                                                              'cliente.idTendero',
+                                                              isEqualTo:
+                                                                  currentUserReference,
+                                                            ),
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          for (int loop1Index =
+                                                                  0;
+                                                              loop1Index <
+                                                                  _model
+                                                                      .queryToDeleteClientesDown!
+                                                                      .length;
+                                                              loop1Index++) {
+                                                            final currentLoop1Item =
+                                                                _model.queryToDeleteClientesDown![
+                                                                    loop1Index];
+                                                            await currentLoop1Item
+                                                                .reference
+                                                                .delete();
+                                                          }
                                                           await authManager
                                                               .deleteUser(
                                                                   context);
@@ -4753,18 +4842,36 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                             },
                                                           );
 
-                                                          context.pushNamed(
-                                                              AuthSigningInWidget
-                                                                  .routeName);
+                                                          if (animationsMap[
+                                                                  'formOnActionTriggerAnimation'] !=
+                                                              null) {
+                                                            await animationsMap[
+                                                                    'formOnActionTriggerAnimation']!
+                                                                .controller
+                                                                .forward(
+                                                                    from: 0.0);
+                                                          }
+
+                                                          context.goNamed(
+                                                            AuthSigningInWidget
+                                                                .routeName,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                              ),
+                                                            },
+                                                          );
                                                         } else {
                                                           if (_shouldSetState)
                                                             safeSetState(() {});
                                                           return;
                                                         }
-
-                                                        if (_shouldSetState)
-                                                          safeSetState(() {});
-                                                        return;
                                                       }
 
                                                       if (_shouldSetState)
