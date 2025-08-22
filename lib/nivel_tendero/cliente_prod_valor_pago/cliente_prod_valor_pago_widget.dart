@@ -147,26 +147,6 @@ class _ClienteProdValorPagoWidgetState extends State<ClienteProdValorPagoWidget>
           ),
         ],
       ),
-      'buttonOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(0.9, 0.9),
-            end: Offset(1.1, 1.1),
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 650.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.1, 1.1),
-            end: Offset(0.9, 0.9),
-          ),
-        ],
-      ),
     });
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -2191,9 +2171,6 @@ class _ClienteProdValorPagoWidgetState extends State<ClienteProdValorPagoWidget>
                                                                   .circular(
                                                                       8.0),
                                                         ),
-                                                      ).animateOnActionTrigger(
-                                                        animationsMap[
-                                                            'buttonOnActionTriggerAnimation']!,
                                                       ),
                                                     ),
                                                   ),

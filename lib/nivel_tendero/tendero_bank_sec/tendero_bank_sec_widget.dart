@@ -1293,10 +1293,10 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                       ),
                     ),
                     Lottie.asset(
-                      'assets/jsons/homeTest.json',
-                      width: 100.0,
+                      'assets/jsons/tarjeta.json',
+                      width: 200.0,
                       height: 200.0,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       animate: true,
                     ),
                   ],

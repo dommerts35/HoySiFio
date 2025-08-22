@@ -5,34 +5,30 @@ import '/index.dart';
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'nav_bar_model.dart';
-export 'nav_bar_model.dart';
+import 'nav_bar_cliente_model.dart';
+export 'nav_bar_cliente_model.dart';
 
-class NavBarWidget extends StatefulWidget {
-  const NavBarWidget({
+class NavBarClienteWidget extends StatefulWidget {
+  const NavBarClienteWidget({
     super.key,
     this.activePage,
-    this.nombreTienda,
-    this.emailTendero,
-    this.tenderoRef,
-    this.nombreTendero,
-    this.pwPass,
+    this.idTenderoList,
+    this.nombreCliente,
+    this.cedula,
   });
 
   final String? activePage;
-  final String? nombreTienda;
-  final String? emailTendero;
-  final DocumentReference? tenderoRef;
-  final String? nombreTendero;
-  final String? pwPass;
+  final List<DocumentReference>? idTenderoList;
+  final String? nombreCliente;
+  final String? cedula;
 
   @override
-  State<NavBarWidget> createState() => _NavBarWidgetState();
+  State<NavBarClienteWidget> createState() => _NavBarClienteWidgetState();
 }
 
-class _NavBarWidgetState extends State<NavBarWidget>
+class _NavBarClienteWidgetState extends State<NavBarClienteWidget>
     with TickerProviderStateMixin {
-  late NavBarModel _model;
+  late NavBarClienteModel _model;
 
   final animationsMap = <String, AnimationInfo>{};
 
@@ -45,7 +41,7 @@ class _NavBarWidgetState extends State<NavBarWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => NavBarModel());
+    _model = createModel(context, () => NavBarClienteModel());
 
     animationsMap.addAll({
       'navBarItemOnActionTriggerAnimation': AnimationInfo(
@@ -121,33 +117,30 @@ class _NavBarWidgetState extends State<NavBarWidget>
                   child: NavBarItemWidget(
                     activePage: widget.activePage!,
                     unselectedIcon: Icon(
-                      Icons.home,
+                      Icons.home_outlined,
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
                     selectedIcon: Icon(
-                      Icons.home,
+                      Icons.home_outlined,
                       color: FlutterFlowTheme.of(context).primary,
                     ),
                     currentItemName: 'Inicio',
                     title: 'Inicio',
                     action: () async {
                       context.goNamed(
-                        ListaClientesWidget.routeName,
+                        InicioClienteWidget.routeName,
                         queryParameters: {
-                          'tenderoRef': serializeParam(
-                            widget.tenderoRef,
+                          'cedula': serializeParam(
+                            widget.cedula,
+                            ParamType.String,
+                          ),
+                          'idTenderoList': serializeParam(
+                            widget.idTenderoList,
                             ParamType.DocumentReference,
+                            isList: true,
                           ),
-                          'nombreTienda': serializeParam(
-                            widget.nombreTienda,
-                            ParamType.String,
-                          ),
-                          'tenderoEmail': serializeParam(
-                            widget.emailTendero,
-                            ParamType.String,
-                          ),
-                          'nombreTendero': serializeParam(
-                            widget.nombreTendero,
+                          'nombreCliente': serializeParam(
+                            widget.nombreCliente,
                             ParamType.String,
                           ),
                         }.withoutNulls,
@@ -171,33 +164,30 @@ class _NavBarWidgetState extends State<NavBarWidget>
                   child: NavBarItemWidget(
                     activePage: widget.activePage!,
                     unselectedIcon: Icon(
-                      Icons.add,
+                      Icons.storefront_sharp,
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
                     selectedIcon: Icon(
-                      Icons.add,
+                      Icons.storefront_sharp,
                       color: FlutterFlowTheme.of(context).primary,
                     ),
-                    currentItemName: 'Añadir Cliente',
-                    title: 'Añadir Cliente',
+                    currentItemName: 'Tiendas',
+                    title: 'Tiendas',
                     action: () async {
                       context.goNamed(
-                        ClienteMakeInfoWidget.routeName,
+                        TiendaBetterWidget.routeName,
                         queryParameters: {
-                          'tenderoRef': serializeParam(
-                            widget.tenderoRef,
+                          'cedula': serializeParam(
+                            widget.cedula,
+                            ParamType.String,
+                          ),
+                          'idTenderoList': serializeParam(
+                            widget.idTenderoList,
                             ParamType.DocumentReference,
+                            isList: true,
                           ),
-                          'nombreTienda': serializeParam(
-                            widget.nombreTienda,
-                            ParamType.String,
-                          ),
-                          'tenderoEmail': serializeParam(
-                            widget.emailTendero,
-                            ParamType.String,
-                          ),
-                          'nombreTendero': serializeParam(
-                            widget.nombreTendero,
+                          'nombreCliente': serializeParam(
+                            widget.nombreCliente,
                             ParamType.String,
                           ),
                         }.withoutNulls,
@@ -219,34 +209,31 @@ class _NavBarWidgetState extends State<NavBarWidget>
                   child: NavBarItemWidget(
                     activePage: widget.activePage!,
                     unselectedIcon: Icon(
-                      Icons.question_mark,
+                      Icons.settings_outlined,
                       color: FlutterFlowTheme.of(context).secondaryText,
                     ),
                     selectedIcon: Icon(
-                      Icons.question_mark,
+                      Icons.settings_outlined,
                       color: FlutterFlowTheme.of(context).primary,
                     ),
-                    currentItemName: 'Ayuda',
-                    title: 'Ayuda',
+                    currentItemName: 'Ajustes',
+                    title: 'Ajustes',
                     action: () async {
                       context.goNamed(
-                        AyudaWidget.routeName,
+                        AjustesClienteWidget.routeName,
                         queryParameters: {
-                          'nombreTienda': serializeParam(
-                            widget.nombreTienda,
+                          'nombreCliente': serializeParam(
+                            widget.nombreCliente,
                             ParamType.String,
                           ),
-                          'emailTendero': serializeParam(
-                            widget.emailTendero,
+                          'cedula': serializeParam(
+                            widget.cedula,
                             ParamType.String,
                           ),
-                          'tenderoRef': serializeParam(
-                            widget.tenderoRef,
+                          'idTenderoList': serializeParam(
+                            widget.idTenderoList,
                             ParamType.DocumentReference,
-                          ),
-                          'nombreTendero': serializeParam(
-                            widget.nombreTendero,
-                            ParamType.String,
+                            isList: true,
                           ),
                         }.withoutNulls,
                         extra: <String, dynamic>{
@@ -256,47 +243,6 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             duration: Duration(milliseconds: 0),
                           ),
                         },
-                      );
-                    },
-                  ),
-                ),
-                wrapWithModel(
-                  model: _model.navBarItemModel4,
-                  updateCallback: () => safeSetState(() {}),
-                  updateOnChange: true,
-                  child: NavBarItemWidget(
-                    activePage: widget.activePage!,
-                    unselectedIcon: Icon(
-                      Icons.person,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                    ),
-                    selectedIcon: Icon(
-                      Icons.person,
-                      color: FlutterFlowTheme.of(context).primary,
-                    ),
-                    currentItemName: 'Perfil',
-                    title: 'Perfil',
-                    action: () async {
-                      context.goNamed(
-                        TenderoEditInfoWidget.routeName,
-                        queryParameters: {
-                          'tenderoRef': serializeParam(
-                            widget.tenderoRef,
-                            ParamType.DocumentReference,
-                          ),
-                          'nombreTienda': serializeParam(
-                            widget.nombreTienda,
-                            ParamType.String,
-                          ),
-                          'pwPassed': serializeParam(
-                            widget.pwPass,
-                            ParamType.String,
-                          ),
-                          'tenderoEmailPassed': serializeParam(
-                            widget.emailTendero,
-                            ParamType.String,
-                          ),
-                        }.withoutNulls,
                       );
                     },
                   ),

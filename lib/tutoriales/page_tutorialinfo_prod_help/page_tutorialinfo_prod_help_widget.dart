@@ -679,7 +679,7 @@ class _PageTutorialinfoProdHelpWidgetState
                                                       .fromSTEB(
                                                           5.0, 5.0, 5.0, 5.0),
                                                   child: Text(
-                                                    '3. 💰 Valor: Define el precio por unidad.',
+                                                    '3. 💰 Valor: Define el precio por unidad o total dependiendo de tu necesidad.',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium

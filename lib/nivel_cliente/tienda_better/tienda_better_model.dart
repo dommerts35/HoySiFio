@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/nav_bar_cliente_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -16,16 +17,22 @@ class TiendaBetterModel extends FlutterFlowModel<TiendaBetterWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in tiendaBetter widget.
   List<ClientesRecord>? queryOnLoadClientes;
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 0;
 
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in ContainerLogoff widget.
-  bool? isLogoff;
+  // Model for navBarCliente component.
+  late NavBarClienteModel navBarClienteModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    navBarClienteModel = createModel(context, () => NavBarClienteModel());
+  }
 
   @override
-  void dispose() {}
+  void dispose() {
+    navBarClienteModel.dispose();
+  }
 }

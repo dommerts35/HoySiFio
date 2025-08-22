@@ -104,20 +104,6 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
           ),
         ],
       ),
-      'textOnPageLoadAnimation': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 1000.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
       'buttonOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -281,8 +267,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                     .headlineMedium
                                                     .fontStyle,
                                           ),
-                                    ).animateOnPageLoad(animationsMap[
-                                        'textOnPageLoadAnimation']!),
+                                    ),
                                   ],
                                 ),
                                 Builder(
@@ -4487,6 +4472,81 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                     }),
                                                 ],
                                               ),
+                                            ]
+                                                .divide(SizedBox(height: 15.0))
+                                                .addToStart(
+                                                    SizedBox(height: 20.0))
+                                                .addToEnd(
+                                                    SizedBox(height: 20.0)),
+                                          ),
+                                        ),
+                                      ),
+                                      Material(
+                                        color: Colors.transparent,
+                                        elevation: 2.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(14.0),
+                                        ),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
+                                                ),
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(14.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .error,
+                                            ),
+                                          ),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: Text(
+                                                  '⚠️ Advertencia: Una vez realizada esta acción, no podrás recuperar tus datos ni acceder nuevamente a tu cuenta.',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodySmall
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ),
                                               Align(
                                                 alignment: AlignmentDirectional(
                                                     0.0, 0.0),
@@ -4528,9 +4588,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                 child:
                                                                     DialogTwoBtnsWidget(
                                                                   titulo:
-                                                                      '¡Alerta!',
-                                                                  mensaje:
                                                                       '¿Desea borrar su cuenta?',
+                                                                  mensaje:
+                                                                      'Al borrar tu cuenta se eliminará de forma permanente e irreversible toda tu información, incluyendo:  Tus datos personales registrados.  El historial de clientes y productos fiados.  Los registros de pagos y deudas pendientes.  Los productos y el inventario de tu tienda.',
                                                                 ),
                                                               ),
                                                             ),
@@ -4894,9 +4954,10 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
                                                       textStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -4913,8 +4974,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                       .titleSmall
                                                                       .fontStyle,
                                                                 ),
-                                                                color: Color(
-                                                                    0xFFEA0412),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
@@ -4927,7 +4989,9 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                               ),
                                                       borderSide: BorderSide(
                                                         color:
-                                                            Color(0xFFEA0412),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:

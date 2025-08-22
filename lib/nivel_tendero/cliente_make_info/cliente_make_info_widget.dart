@@ -99,20 +99,6 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
           ),
         ],
       ),
-      'textOnPageLoadAnimation': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 2000.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
       'buttonOnActionTriggerAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -271,8 +257,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                           .titleLarge
                                           .fontStyle,
                                     ),
-                              ).animateOnPageLoad(
-                                  animationsMap['textOnPageLoadAnimation']!),
+                              ),
                             ],
                           ),
                           Builder(

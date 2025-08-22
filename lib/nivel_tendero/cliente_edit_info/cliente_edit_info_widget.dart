@@ -261,20 +261,6 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
           ),
         ],
       ),
-      'buttonOnPageLoadAnimation': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 800.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
     });
     setupAnimations(
       animationsMap.values.where((anim) =>
@@ -3553,8 +3539,7 @@ class _ClienteEditInfoWidgetState extends State<ClienteEditInfoWidget>
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                          ).animateOnPageLoad(
-                              animationsMap['buttonOnPageLoadAnimation']!),
+                          ),
                         ),
                       ),
                     ),

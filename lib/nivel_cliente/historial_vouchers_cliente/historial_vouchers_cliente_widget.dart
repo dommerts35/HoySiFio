@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'historial_vouchers_cliente_model.dart';
 export 'historial_vouchers_cliente_model.dart';
 
@@ -578,71 +579,85 @@ class _HistorialVouchersClienteWidgetState
                                                             width: 3.0,
                                                           ),
                                                         ),
-                                                        child: Opacity(
-                                                          opacity: listaVouchersItem
-                                                                      .estadoVoucher ==
-                                                                  'Negado'
-                                                              ? 0.5
-                                                              : 1.0,
-                                                          child: InkWell(
-                                                            splashColor: Colors
-                                                                .transparent,
-                                                            focusColor: Colors
-                                                                .transparent,
-                                                            hoverColor: Colors
-                                                                .transparent,
-                                                            highlightColor:
-                                                                Colors
+                                                        child: Stack(
+                                                          children: [
+                                                            Opacity(
+                                                              opacity: listaVouchersItem
+                                                                          .estadoVoucher ==
+                                                                      'Negado'
+                                                                  ? 0.5
+                                                                  : 1.0,
+                                                              child: InkWell(
+                                                                splashColor: Colors
                                                                     .transparent,
-                                                            onTap: () async {
-                                                              await Navigator
-                                                                  .push(
-                                                                context,
-                                                                PageTransition(
-                                                                  type:
-                                                                      PageTransitionType
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  await Navigator
+                                                                      .push(
+                                                                    context,
+                                                                    PageTransition(
+                                                                      type: PageTransitionType
                                                                           .fade,
+                                                                      child:
+                                                                          FlutterFlowExpandedImageView(
+                                                                        image: Image
+                                                                            .network(
+                                                                          listaVouchersItem
+                                                                              .imgVoucher,
+                                                                          fit: BoxFit
+                                                                              .contain,
+                                                                        ),
+                                                                        allowRotation:
+                                                                            false,
+                                                                        tag: listaVouchersItem
+                                                                            .imgVoucher,
+                                                                        useHeroAnimation:
+                                                                            true,
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                                child: Hero(
+                                                                  tag: listaVouchersItem
+                                                                      .imgVoucher,
+                                                                  transitionOnUserGestures:
+                                                                      true,
                                                                   child:
-                                                                      FlutterFlowExpandedImageView(
-                                                                    image: Image
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            8.0),
+                                                                    child: Image
                                                                         .network(
                                                                       listaVouchersItem
                                                                           .imgVoucher,
+                                                                      width:
+                                                                          200.0,
+                                                                      height:
+                                                                          200.0,
                                                                       fit: BoxFit
-                                                                          .contain,
+                                                                          .cover,
                                                                     ),
-                                                                    allowRotation:
-                                                                        false,
-                                                                    tag: listaVouchersItem
-                                                                        .imgVoucher,
-                                                                    useHeroAnimation:
-                                                                        true,
                                                                   ),
-                                                                ),
-                                                              );
-                                                            },
-                                                            child: Hero(
-                                                              tag: listaVouchersItem
-                                                                  .imgVoucher,
-                                                              transitionOnUserGestures:
-                                                                  true,
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  listaVouchersItem
-                                                                      .imgVoucher,
-                                                                  width: 200.0,
-                                                                  height: 200.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
                                                                 ),
                                                               ),
                                                             ),
-                                                          ),
+                                                            Lottie.asset(
+                                                              'assets/jsons/actualHoySiFioLoad.json',
+                                                              width: 200.0,
+                                                              height: 200.0,
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                              animate: true,
+                                                            ),
+                                                          ],
                                                         ),
                                                       ),
                                                       if ((listaVouchersItem

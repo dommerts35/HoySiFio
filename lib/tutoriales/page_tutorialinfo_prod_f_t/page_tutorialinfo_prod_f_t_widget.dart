@@ -743,7 +743,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                     .fromSTEB(
                                                         5.0, 5.0, 5.0, 5.0),
                                                 child: Text(
-                                                  '4. ✅ Añadir: Agrega el producto a la lista con el botón \"Añadir Producto\".',
+                                                  '4. ✅ Añadir productos: Cuando registres un nuevo producto fiado para un cliente, tienes dos opciones:\n\n- ➕ Añadir producto. Ingresas el valor total del producto, sin realizar ningún cálculo.\n\n- 📊Añadir y calcular. Ingresas la cantidad y el valor unitario del producto, y estos valores se multiplican.',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodySmall
@@ -849,7 +849,7 @@ class _PageTutorialinfoProdFTWidgetState
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.asset(
-                                                    'assets/images/imagen_2025-08-12_092622499.png',
+                                                    'assets/images/imagen_2025-08-21_171233856.png',
                                                     width: 250.0,
                                                     fit: BoxFit.cover,
                                                   ),

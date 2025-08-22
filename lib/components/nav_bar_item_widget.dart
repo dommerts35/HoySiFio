@@ -65,7 +65,7 @@ class _NavBarItemWidgetState extends State<NavBarItemWidget> {
         }
       },
       child: Container(
-        width: 48.0,
+        width: 70.0,
         height: 48.0,
         decoration: BoxDecoration(
           boxShadow: [

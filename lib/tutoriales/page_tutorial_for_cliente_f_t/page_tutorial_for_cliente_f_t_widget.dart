@@ -1134,7 +1134,7 @@ class _PageTutorialForClienteFTWidgetState
                                             child: FFButtonWidget(
                                               onPressed: () async {
                                                 context.goNamed(
-                                                  TiendaBetterWidget.routeName,
+                                                  InicioClienteWidget.routeName,
                                                   queryParameters: {
                                                     'cedula': serializeParam(
                                                       widget.cedula,
@@ -1147,7 +1147,21 @@ class _PageTutorialForClienteFTWidgetState
                                                           .DocumentReference,
                                                       isList: true,
                                                     ),
+                                                    'nombreCliente':
+                                                        serializeParam(
+                                                      widget.nombreCliente,
+                                                      ParamType.String,
+                                                    ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                    ),
+                                                  },
                                                 );
                                               },
                                               text: 'Continuar',
@@ -1270,6 +1284,12 @@ class _PageTutorialForClienteFTWidgetState
                               ParamType.String,
                             ),
                           }.withoutNulls,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                            ),
+                          },
                         );
                       },
                       text: 'Saltar',

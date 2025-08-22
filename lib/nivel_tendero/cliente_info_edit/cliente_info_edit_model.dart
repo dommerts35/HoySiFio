@@ -65,12 +65,20 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   TextEditingController? valorTFTextController;
   String? Function(BuildContext, String?)? valorTFTextControllerValidator;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
-  double? valorConvVTF;
+  double? valorConvValorAnadirTF;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
-  double? valorConvCTF;
+  double? valorConvCantiAnadirTF;
   // Stores action output result for [Firestore Query - Query a collection] action in anadirProd_bttn widget.
-  ClientesRecord? queryOnAnadir;
+  ClientesRecord? queryOnAnadirNonCalc;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirProd_bttn widget.
+  double? totalDeudaCompletaNormAnadir;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirCalcProd_bttn widget.
+  double? valorConvVTF;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirCalcProd_bttn widget.
+  double? valorConvCTF;
+  // Stores action output result for [Firestore Query - Query a collection] action in anadirCalcProd_bttn widget.
+  ClientesRecord? queryOnAnadir;
+  // Stores action output result for [Custom Action - normalizarValorNumerico] action in anadirCalcProd_bttn widget.
   double? totalDeudaCompletaNorm;
   // Stores action output result for [Firestore Query - Query a collection] action in Icon_delete widget.
   ClientesRecord? queryAfterDelete;
