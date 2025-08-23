@@ -297,6 +297,13 @@ class _NavBarWidgetState extends State<NavBarWidget>
                             ParamType.String,
                           ),
                         }.withoutNulls,
+                        extra: <String, dynamic>{
+                          kTransitionInfoKey: TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                          ),
+                        },
                       );
                     },
                   ),

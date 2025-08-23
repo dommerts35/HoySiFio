@@ -65,26 +65,6 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
     _model = createModel(context, () => HistorialPagosModel());
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'containerOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -190,15 +170,6 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
                               size: 24.0,
                             ),
                             onPressed: () async {
-                              if (animationsMap[
-                                      'containerOnActionTriggerAnimation'] !=
-                                  null) {
-                                await animationsMap[
-                                        'containerOnActionTriggerAnimation']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
-
                               context.goNamed(
                                 ClienteInfoEditWidget.routeName,
                                 queryParameters: {
@@ -247,6 +218,13 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
                                     ParamType.String,
                                   ),
                                 }.withoutNulls,
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
                               );
                             },
                           ).animateOnPageLoad(
@@ -1618,11 +1596,9 @@ class _HistorialPagosWidgetState extends State<HistorialPagosWidget>
                 ),
               ].divide(SizedBox(height: 5.0)),
             ),
-          )
-              .animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!)
-              .animateOnActionTrigger(
-                animationsMap['containerOnActionTriggerAnimation']!,
-              ),
+          ).animateOnActionTrigger(
+            animationsMap['containerOnActionTriggerAnimation']!,
+          ),
         ),
       ),
     );

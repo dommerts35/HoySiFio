@@ -1,6 +1,9 @@
 import '/backend/backend.dart';
+import '/components/dialog_two_btns_widget.dart';
 import '/components/nav_bar_cliente_widget.dart';
+import '/components_cliente/about_us/about_us_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
@@ -208,69 +211,260 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            width: double.infinity,
-                            height: MediaQuery.sizeOf(context).height * 0.6,
-                            child: CarouselSlider(
-                              items: [
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: Image.asset(
-                                    'assets/images/tendero2.jpg',
-                                    width: double.infinity,
-                                    height: 400.0,
-                                    fit: BoxFit.cover,
+                          Stack(
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: MediaQuery.sizeOf(context).height * 0.6,
+                                child: CarouselSlider(
+                                  items: [
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.asset(
+                                        'assets/images/tendero2.jpg',
+                                        width: double.infinity,
+                                        height: 400.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.asset(
+                                        'assets/images/tuxpi.com.1755820815.jpg',
+                                        width: double.infinity,
+                                        height: 400.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(0.0),
+                                      child: Image.asset(
+                                        'assets/images/imagen_2025-08-21_190322408.png',
+                                        width: double.infinity,
+                                        height: 400.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: Image.asset(
+                                        'assets/images/tendero3.jpg',
+                                        width: 200.0,
+                                        height: 200.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ],
+                                  carouselController:
+                                      _model.carouselController ??=
+                                          CarouselSliderController(),
+                                  options: CarouselOptions(
+                                    initialPage: 1,
+                                    viewportFraction: 1.0,
+                                    disableCenter: true,
+                                    enlargeCenterPage: true,
+                                    enlargeFactor: 0.15,
+                                    enableInfiniteScroll: true,
+                                    scrollDirection: Axis.horizontal,
+                                    autoPlay: true,
+                                    autoPlayAnimationDuration:
+                                        Duration(milliseconds: 800),
+                                    autoPlayInterval:
+                                        Duration(milliseconds: (800 + 3000)),
+                                    autoPlayCurve: Curves.linear,
+                                    pauseAutoPlayInFiniteScroll: true,
+                                    onPageChanged: (index, _) =>
+                                        _model.carouselCurrentIndex = index,
                                   ),
                                 ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: Image.asset(
-                                    'assets/images/tuxpi.com.1755820815.jpg',
-                                    width: double.infinity,
-                                    height: 400.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: Image.asset(
-                                    'assets/images/imagen_2025-08-21_190322408.png',
-                                    width: double.infinity,
-                                    height: 400.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/tendero3.jpg',
-                                    width: 200.0,
-                                    height: 200.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ],
-                              carouselController: _model.carouselController ??=
-                                  CarouselSliderController(),
-                              options: CarouselOptions(
-                                initialPage: 1,
-                                viewportFraction: 1.0,
-                                disableCenter: true,
-                                enlargeCenterPage: true,
-                                enlargeFactor: 0.15,
-                                enableInfiniteScroll: true,
-                                scrollDirection: Axis.horizontal,
-                                autoPlay: true,
-                                autoPlayAnimationDuration:
-                                    Duration(milliseconds: 800),
-                                autoPlayInterval:
-                                    Duration(milliseconds: (800 + 3000)),
-                                autoPlayCurve: Curves.linear,
-                                pauseAutoPlayInFiniteScroll: true,
-                                onPageChanged: (index, _) =>
-                                    _model.carouselCurrentIndex = index,
                               ),
-                            ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 60.0, 16.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(context)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: AboutUsWidget(),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 8.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              offset: Offset(
+                                                0.0,
+                                                2.0,
+                                              ),
+                                            )
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Icon(
+                                              Icons.info_outline,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                            Text(
+                                              'Info',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Builder(
+                                      builder: (context) =>
+                                          FlutterFlowIconButton(
+                                        borderRadius: 12.0,
+                                        borderWidth: 1.0,
+                                        icon: Icon(
+                                          Icons.logout,
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          size: 24.0,
+                                        ),
+                                        onPressed: () async {
+                                          var _shouldSetState = false;
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: Container(
+                                                    height: 200.0,
+                                                    child: DialogTwoBtnsWidget(
+                                                      titulo:
+                                                          '¿Desea cerrar sesión?',
+                                                      mensaje:
+                                                          'Sus datos se guardarán automáticamente.',
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => safeSetState(
+                                              () => _model.isLogoff = value));
+
+                                          _shouldSetState = true;
+                                          if (_model.isLogoff!) {
+                                            if (animationsMap[
+                                                    'containerOnActionTriggerAnimation'] !=
+                                                null) {
+                                              await animationsMap[
+                                                      'containerOnActionTriggerAnimation']!
+                                                  .controller
+                                                  .forward(from: 0.0);
+                                            }
+
+                                            context.goNamed(
+                                              AuthSigningInWidget.routeName,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          } else {
+                                            if (_shouldSetState)
+                                              safeSetState(() {});
+                                            return;
+                                          }
+
+                                          if (_shouldSetState)
+                                            safeSetState(() {});
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
                           Container(
                             width: MediaQuery.sizeOf(context).width * 0.8,

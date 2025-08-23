@@ -143,26 +143,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
     });
 
     animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'columnOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -307,15 +287,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  if (animationsMap[
-                                          'columnOnActionTriggerAnimation'] !=
-                                      null) {
-                                    await animationsMap[
-                                            'columnOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
-
                                   context.goNamed(
                                     ClienteInfoEditWidget.routeName,
                                     queryParameters: {
@@ -364,6 +335,13 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
                                   );
                                 },
                               ).animateOnPageLoad(animationsMap[
@@ -1174,17 +1152,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                                                         .transparent,
                                                                 onTap:
                                                                     () async {
-                                                                  if (animationsMap[
-                                                                          'columnOnActionTriggerAnimation'] !=
-                                                                      null) {
-                                                                    await animationsMap[
-                                                                            'columnOnActionTriggerAnimation']!
-                                                                        .controller
-                                                                        .forward(
-                                                                            from:
-                                                                                0.0);
-                                                                  }
-
                                                                   context
                                                                       .goNamed(
                                                                     ClienteProdValorPagoWidget
@@ -1330,6 +1297,18 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                                                             .String,
                                                                       ),
                                                                     }.withoutNulls,
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.fade,
+                                                                        duration:
+                                                                            Duration(milliseconds: 0),
+                                                                      ),
+                                                                    },
                                                                   );
                                                                 },
                                                                 child:
@@ -1691,15 +1670,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                           () => _model.isSelecPago = value));
 
                                       if (_model.isSelecPago!) {
-                                        if (animationsMap[
-                                                'columnOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'columnOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
                                         context.goNamed(
                                           ClienteProdSelectPagoWidget.routeName,
                                           queryParameters: {
@@ -1758,6 +1728,15 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                               ParamType.String,
                                             ),
                                           }.withoutNulls,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
+                                            ),
+                                          },
                                         );
                                       }
 
@@ -1863,15 +1842,6 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                                 _model.isFullPago = value));
 
                                             if (_model.isFullPago!) {
-                                              if (animationsMap[
-                                                      'columnOnActionTriggerAnimation'] !=
-                                                  null) {
-                                                await animationsMap[
-                                                        'columnOnActionTriggerAnimation']!
-                                                    .controller
-                                                    .forward(from: 0.0);
-                                              }
-
                                               context.goNamed(
                                                 ClienteProdFullPagoWidget
                                                     .routeName,
@@ -1927,6 +1897,16 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                                                     ParamType.String,
                                                   ),
                                                 }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
                                               );
                                             }
 
@@ -1979,12 +1959,9 @@ class _HistorialPorCobrarWidgetState extends State<HistorialPorCobrarWidget>
                       ),
                     ),
                   ].divide(SizedBox(height: 10.0)),
-                )
-                    .animateOnPageLoad(
-                        animationsMap['columnOnPageLoadAnimation']!)
-                    .animateOnActionTrigger(
-                      animationsMap['columnOnActionTriggerAnimation']!,
-                    ),
+                ).animateOnActionTrigger(
+                  animationsMap['columnOnActionTriggerAnimation']!,
+                ),
               ),
             ),
           ),

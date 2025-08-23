@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '/backend/backend.dart';
 
-
 import 'package:ff_commons/flutter_flow/place.dart';
 import 'package:ff_commons/flutter_flow/uploaded_file.dart';
 

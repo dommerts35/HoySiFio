@@ -76,46 +76,6 @@ class _ClienteProdSelectPagoWidgetState
     _model.comprobanteNumTFFocusNode ??= FocusNode();
 
     animationsMap.addAll({
-      'formOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
-      'formOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -131,12 +91,6 @@ class _ClienteProdSelectPagoWidgetState
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -229,15 +183,6 @@ class _ClienteProdSelectPagoWidgetState
                                     size: 24.0,
                                   ),
                                   onPressed: () async {
-                                    if (animationsMap[
-                                            'formOnActionTriggerAnimation'] !=
-                                        null) {
-                                      await animationsMap[
-                                              'formOnActionTriggerAnimation']!
-                                          .controller
-                                          .forward(from: 0.0);
-                                    }
-
                                     context.goNamed(
                                       HistorialPorCobrarWidget.routeName,
                                       queryParameters: {
@@ -290,6 +235,14 @@ class _ClienteProdSelectPagoWidgetState
                                           ParamType.String,
                                         ),
                                       }.withoutNulls,
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
                                     );
                                   },
                                 ).animateOnPageLoad(animationsMap[
@@ -1437,15 +1390,6 @@ class _ClienteProdSelectPagoWidgetState
                                                           unawaited(
                                                             () async {}(),
                                                           );
-                                                          if (animationsMap[
-                                                                  'formOnActionTriggerAnimation'] !=
-                                                              null) {
-                                                            await animationsMap[
-                                                                    'formOnActionTriggerAnimation']!
-                                                                .controller
-                                                                .forward(
-                                                                    from: 0.0);
-                                                          }
 
                                                           context.goNamed(
                                                             ClienteInfoEditWidget
@@ -1534,7 +1478,7 @@ class _ClienteProdSelectPagoWidgetState
                                                                         .fade,
                                                                 duration: Duration(
                                                                     milliseconds:
-                                                                        1000),
+                                                                        0),
                                                               ),
                                                             },
                                                           );
@@ -1668,12 +1612,7 @@ class _ClienteProdSelectPagoWidgetState
                       ),
                     ].addToEnd(SizedBox(height: 20.0)),
                   ),
-                )
-                    .animateOnPageLoad(
-                        animationsMap['formOnPageLoadAnimation']!)
-                    .animateOnActionTrigger(
-                      animationsMap['formOnActionTriggerAnimation']!,
-                    ),
+                ),
               ),
             ),
           ),

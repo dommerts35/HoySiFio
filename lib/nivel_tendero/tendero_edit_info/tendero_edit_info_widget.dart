@@ -2733,6 +2733,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                     .fontStyle,
                                                           ),
                                                           color: Colors.white,
+                                                          fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -5400,6 +5401,17 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                         ParamType.String,
                                                       ),
                                                     }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
                                                   );
                                                 }
                                               }

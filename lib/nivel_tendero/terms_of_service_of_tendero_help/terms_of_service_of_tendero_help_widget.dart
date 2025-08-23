@@ -49,46 +49,6 @@ class _TermsOfServiceOfTenderoHelpWidgetState
     _model = createModel(context, () => TermsOfServiceOfTenderoHelpModel());
 
     animationsMap.addAll({
-      'formOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'formOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -104,12 +64,6 @@ class _TermsOfServiceOfTenderoHelpWidgetState
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -187,15 +141,6 @@ class _TermsOfServiceOfTenderoHelpWidgetState
                                         size: 24.0,
                                       ),
                                       onPressed: () async {
-                                        if (animationsMap[
-                                                'formOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'formOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
                                         context.goNamed(
                                           AyudaWidget.routeName,
                                           queryParameters: {
@@ -1114,11 +1059,7 @@ class _TermsOfServiceOfTenderoHelpWidgetState
                   ),
                 ],
               ),
-            )
-                .animateOnPageLoad(animationsMap['formOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['formOnActionTriggerAnimation']!,
-                ),
+            ),
           ),
         ),
       ),

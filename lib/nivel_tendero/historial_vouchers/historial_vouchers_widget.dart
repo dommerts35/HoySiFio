@@ -91,26 +91,6 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
           ),
         ],
       ),
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation1': AnimationInfo(
         loop: true,
         reverse: true,
@@ -221,15 +201,6 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                             size: 24.0,
                           ),
                           onPressed: () async {
-                            if (animationsMap[
-                                    'columnOnActionTriggerAnimation'] !=
-                                null) {
-                              await animationsMap[
-                                      'columnOnActionTriggerAnimation']!
-                                  .controller
-                                  .forward(from: 0.0);
-                            }
-
                             context.goNamed(
                               ClienteInfoEditWidget.routeName,
                               queryParameters: {
@@ -282,7 +253,7 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                                 kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 1000),
+                                  duration: Duration(milliseconds: 0),
                                 ),
                               },
                             );
@@ -2029,11 +2000,9 @@ class _HistorialVouchersWidgetState extends State<HistorialVouchersWidget>
                 ),
               ),
             ],
-          )
-              .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
-              .animateOnActionTrigger(
-                animationsMap['columnOnActionTriggerAnimation']!,
-              ),
+          ).animateOnActionTrigger(
+            animationsMap['columnOnActionTriggerAnimation']!,
+          ),
         ),
       ),
     );

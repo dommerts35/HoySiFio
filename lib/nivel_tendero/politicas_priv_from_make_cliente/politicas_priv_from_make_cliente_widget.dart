@@ -45,46 +45,6 @@ class _PoliticasPrivFromMakeClienteWidgetState
     _model = createModel(context, () => PoliticasPrivFromMakeClienteModel());
 
     animationsMap.addAll({
-      'containerOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'iconOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -99,53 +59,7 @@ class _PoliticasPrivFromMakeClienteWidgetState
           ),
         ],
       ),
-      'columnOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -219,6 +133,7 @@ class _PoliticasPrivFromMakeClienteWidgetState
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
                                     ),
                                   },
                                 );
@@ -317,12 +232,7 @@ class _PoliticasPrivFromMakeClienteWidgetState
                     ],
                   ),
                 ),
-              )
-                  .animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation']!)
-                  .animateOnActionTrigger(
-                    animationsMap['containerOnActionTriggerAnimation']!,
-                  ),
+              ),
               actions: [],
               centerTitle: false,
               elevation: 2.0,
@@ -1076,12 +986,7 @@ class _PoliticasPrivFromMakeClienteWidgetState
                       .addToStart(SizedBox(height: 10.0))
                       .addToEnd(SizedBox(height: 10.0)),
                 ),
-              )
-                  .animateOnPageLoad(
-                      animationsMap['columnOnPageLoadAnimation']!)
-                  .animateOnActionTrigger(
-                    animationsMap['columnOnActionTriggerAnimation']!,
-                  ),
+              ),
             ),
           ),
         ),

@@ -49,46 +49,6 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
     _model = createModel(context, () => TenderoAyudaModel());
 
     animationsMap.addAll({
-      'formOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'formOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -103,55 +63,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
           ),
         ],
       ),
-      'buttonOnPageLoadAnimation1': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 400.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
-      'buttonOnPageLoadAnimation2': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 600.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
-      'buttonOnPageLoadAnimation3': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 800.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.1, 1.1),
-          ),
-        ],
-      ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -220,15 +132,6 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                 size: 24.0,
                               ),
                               onPressed: () async {
-                                if (animationsMap[
-                                        'formOnActionTriggerAnimation'] !=
-                                    null) {
-                                  await animationsMap[
-                                          'formOnActionTriggerAnimation']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-
                                 context.goNamed(
                                   ListaClientesWidget.routeName,
                                   queryParameters: {
@@ -253,7 +156,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 1000),
+                                      duration: Duration(milliseconds: 0),
                                     ),
                                   },
                                 );
@@ -357,7 +260,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                       children: [
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               PageTutorialListaClientesHelpWidget
                                                   .routeName,
                                               queryParameters: {
@@ -378,6 +281,16 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                   ParamType.String,
                                                 ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
                                             );
                                           },
                                           text: 'Lista de clientes',
@@ -422,8 +335,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'buttonOnPageLoadAnimation1']!),
+                                        ),
                                         FFButtonWidget(
                                           onPressed: () async {
                                             context.pushNamed(
@@ -447,6 +359,16 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                   ParamType.String,
                                                 ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
                                             );
                                           },
                                           text:
@@ -492,8 +414,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'buttonOnPageLoadAnimation2']!),
+                                        ),
                                         FFButtonWidget(
                                           onPressed: () async {
                                             context.goNamed(
@@ -517,6 +438,16 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                   ParamType.String,
                                                 ),
                                               }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
                                             );
                                           },
                                           text: 'Cuentas por cobrar',
@@ -561,8 +492,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'buttonOnPageLoadAnimation3']!),
+                                        ),
                                       ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
@@ -584,11 +514,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                 ],
               ),
             ),
-          )
-              .animateOnPageLoad(animationsMap['formOnPageLoadAnimation']!)
-              .animateOnActionTrigger(
-                animationsMap['formOnActionTriggerAnimation']!,
-              ),
+          ),
         ),
       ),
     );

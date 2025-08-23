@@ -144,46 +144,6 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget>
     _model.codigoInicioSesionReadFocusNode ??= FocusNode();
 
     animationsMap.addAll({
-      'containerOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -199,12 +159,6 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget>
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -275,15 +229,6 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget>
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  if (animationsMap[
-                                          'containerOnActionTriggerAnimation'] !=
-                                      null) {
-                                    await animationsMap[
-                                            'containerOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
-
                                   context.goNamed(
                                     ClienteInfoEditWidget.routeName,
                                     queryParameters: {
@@ -336,7 +281,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget>
                                       kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 1000),
+                                        duration: Duration(milliseconds: 0),
                                       ),
                                     },
                                   );
@@ -1870,11 +1815,7 @@ class _ClienteReadInfoWidgetState extends State<ClienteReadInfoWidget>
                 ],
               ),
             ),
-          )
-              .animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!)
-              .animateOnActionTrigger(
-                animationsMap['containerOnActionTriggerAnimation']!,
-              ),
+          ),
         ),
       ),
     );

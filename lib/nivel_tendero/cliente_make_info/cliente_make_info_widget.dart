@@ -3253,6 +3253,17 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
+                                                  },
                                                 );
                                               } else {
                                                 _model.clienteSinContrasenaQuery =
@@ -3563,7 +3574,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                   },
                                                 );
 
-                                                context.pushNamed(
+                                                context.goNamed(
                                                   ListaClientesWidget.routeName,
                                                   queryParameters: {
                                                     'tenderoRef':
@@ -3588,6 +3599,17 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                                                       ParamType.String,
                                                     ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
+                                                  },
                                                 );
                                               }
                                             }

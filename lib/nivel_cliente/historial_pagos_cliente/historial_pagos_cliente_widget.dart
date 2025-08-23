@@ -198,16 +198,7 @@ class _HistorialPagosClienteWidgetState
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
-                                      if (animationsMap[
-                                              'containerOnActionTriggerAnimation'] !=
-                                          null) {
-                                        await animationsMap[
-                                                'containerOnActionTriggerAnimation']!
-                                            .controller
-                                            .forward(from: 0.0);
-                                      }
-
-                                      context.pushNamed(
+                                      context.goNamed(
                                         ResumenFiadoClienProdsNewWidget
                                             .routeName,
                                         queryParameters: {
@@ -246,6 +237,12 @@ class _HistorialPagosClienteWidgetState
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
                                           'doc': widget.doc,
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
                                         },
                                       );
                                     },

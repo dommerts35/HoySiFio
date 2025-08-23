@@ -59,46 +59,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget>
     _model.valorUserFocusNode ??= FocusNode();
 
     animationsMap.addAll({
-      'formOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'formOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'buttonOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -539,14 +499,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget>
                                                 FFButtonWidget(
                                               onPressed: () async {
                                                 var _shouldSetState = false;
-                                                if (animationsMap[
-                                                        'buttonOnActionTriggerAnimation'] !=
-                                                    null) {
-                                                  await animationsMap[
-                                                          'buttonOnActionTriggerAnimation']!
-                                                      .controller
-                                                      .forward(from: 0.0);
-                                                }
                                                 if (_model.valorUserTextController
                                                             .text ==
                                                         '') {
@@ -746,14 +698,6 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget>
                                                     }(),
                                                   );
                                                 }
-                                                if (animationsMap[
-                                                        'formOnActionTriggerAnimation'] !=
-                                                    null) {
-                                                  await animationsMap[
-                                                          'formOnActionTriggerAnimation']!
-                                                      .controller
-                                                      .forward(from: 0.0);
-                                                }
 
                                                 context.goNamed(
                                                   ListaClientesWidget.routeName,
@@ -788,7 +732,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget>
                                                           PageTransitionType
                                                               .fade,
                                                       duration: Duration(
-                                                          milliseconds: 1000),
+                                                          milliseconds: 0),
                                                     ),
                                                   },
                                                 );
@@ -870,12 +814,7 @@ class _ClienteVincWidgetState extends State<ClienteVincWidget>
                       ),
                     ],
                   ),
-                )
-                    .animateOnPageLoad(
-                        animationsMap['formOnPageLoadAnimation']!)
-                    .animateOnActionTrigger(
-                      animationsMap['formOnActionTriggerAnimation']!,
-                    ),
+                ),
               ),
             ),
           ),

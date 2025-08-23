@@ -114,20 +114,6 @@ class _ResumenFiadoClienProdsNewWidgetState
           ),
         ],
       ),
-      'textOnPageLoadAnimation': AnimationInfo(
-        loop: true,
-        reverse: true,
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 1000.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(1.0, 1.0),
-            end: Offset(1.01, 1.01),
-          ),
-        ],
-      ),
       'iconButtonOnPageLoadAnimation2': AnimationInfo(
         loop: true,
         reverse: true,
@@ -269,20 +255,11 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                   Icons.arrow_back_rounded,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .tertiary,
+                                                      .primary,
                                                   size: 30.0,
                                                 ),
                                                 onPressed: () async {
-                                                  if (animationsMap[
-                                                          'containerOnActionTriggerAnimation'] !=
-                                                      null) {
-                                                    await animationsMap[
-                                                            'containerOnActionTriggerAnimation']!
-                                                        .controller
-                                                        .forward(from: 0.0);
-                                                  }
-
-                                                  context.pushNamed(
+                                                  context.goNamed(
                                                     TiendaBetterWidget
                                                         .routeName,
                                                     queryParameters: {
@@ -297,7 +274,23 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                             .DocumentReference,
                                                         isList: true,
                                                       ),
+                                                      'nombreCliente':
+                                                          serializeParam(
+                                                        widget.nombreCliente,
+                                                        ParamType.String,
+                                                      ),
                                                     }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
                                                   );
                                                 },
                                               ).animateOnPageLoad(animationsMap[
@@ -337,8 +330,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                 .titleMedium
                                                                 .fontStyle,
                                                       ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'textOnPageLoadAnimation']!),
+                                                ),
                                               ),
                                               Builder(
                                                 builder: (context) =>
@@ -1222,10 +1214,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                     },
                                                                                                   );
                                                                                                 } else {
-                                                                                                  if (animationsMap['containerOnActionTriggerAnimation'] != null) {
-                                                                                                    await animationsMap['containerOnActionTriggerAnimation']!.controller.forward(from: 0.0);
-                                                                                                  }
-
                                                                                                   context.goNamed(
                                                                                                     HistorialSingleVoucherPagoWidget.routeName,
                                                                                                     queryParameters: {
@@ -1326,7 +1314,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                                                       kTransitionInfoKey: TransitionInfo(
                                                                                                         hasTransition: true,
                                                                                                         transitionType: PageTransitionType.fade,
-                                                                                                        duration: Duration(milliseconds: 1000),
+                                                                                                        duration: Duration(milliseconds: 0),
                                                                                                       ),
                                                                                                     },
                                                                                                   );
@@ -1541,15 +1529,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                         safeSetState(() {});
                                                       return;
                                                     } else {
-                                                      if (animationsMap[
-                                                              'containerOnActionTriggerAnimation'] !=
-                                                          null) {
-                                                        await animationsMap[
-                                                                'containerOnActionTriggerAnimation']!
-                                                            .controller
-                                                            .forward(from: 0.0);
-                                                      }
-
                                                       context.goNamed(
                                                         HistorialFullVoucherPagoWidget
                                                             .routeName,
@@ -1659,7 +1638,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                                     .fade,
                                                             duration: Duration(
                                                                 milliseconds:
-                                                                    1000),
+                                                                    0),
                                                           ),
                                                         },
                                                       );
@@ -1767,15 +1746,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                if (animationsMap[
-                                                        'containerOnActionTriggerAnimation'] !=
-                                                    null) {
-                                                  await animationsMap[
-                                                          'containerOnActionTriggerAnimation']!
-                                                      .controller
-                                                      .forward(from: 0.0);
-                                                }
-
                                                 context.goNamed(
                                                   HistorialVouchersClienteWidget
                                                       .routeName,
@@ -1828,7 +1798,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                           PageTransitionType
                                                               .fade,
                                                       duration: Duration(
-                                                          milliseconds: 1000),
+                                                          milliseconds: 0),
                                                     ),
                                                   },
                                                 );
@@ -1903,15 +1873,6 @@ class _ResumenFiadoClienProdsNewWidgetState
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                if (animationsMap[
-                                                        'containerOnActionTriggerAnimation'] !=
-                                                    null) {
-                                                  await animationsMap[
-                                                          'containerOnActionTriggerAnimation']!
-                                                      .controller
-                                                      .forward(from: 0.0);
-                                                }
-
                                                 context.goNamed(
                                                   HistorialPagosClienteWidget
                                                       .routeName,
@@ -1964,7 +1925,7 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                           PageTransitionType
                                                               .fade,
                                                       duration: Duration(
-                                                          milliseconds: 1000),
+                                                          milliseconds: 0),
                                                     ),
                                                   },
                                                 );

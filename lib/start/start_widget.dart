@@ -157,89 +157,73 @@ class _StartWidgetState extends State<StartWidget>
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, -0.84),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 0.0, 16.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(),
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        context: context,
-                                        builder: (context) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              FocusScope.of(context).unfocus();
-                                              FocusManager.instance.primaryFocus
-                                                  ?.unfocus();
-                                            },
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: AboutUsWidget(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 8.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            offset: Offset(
-                                              0.0,
-                                              2.0,
-                                            ),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Icon(
-                                            Icons.info_outline,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryText,
-                                            size: 24.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 60.0, 16.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(),
+                                ),
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(context).unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: AboutUsWidget(),
                                           ),
-                                          Text(
-                                            'Info',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.asap(
-                                                    fontWeight:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontWeight,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 8.0,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(0.0),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Icon(
+                                          Icons.info_outline,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          size: 24.0,
+                                        ),
+                                        Text(
+                                          'Info',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.asap(
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -251,13 +235,22 @@ class _StartWidgetState extends State<StartWidget>
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                          ),
-                                        ],
-                                      ),
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

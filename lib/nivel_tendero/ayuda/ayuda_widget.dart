@@ -198,7 +198,7 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                                                     .displaySmall
                                                                     .fontStyle,
                                                           ),
-                                                          fontSize: 24.0,
+                                                          fontSize: 22.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -374,15 +374,6 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        if (animationsMap[
-                                                'stackOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'stackOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
                                         context.goNamed(
                                           TenderoAyudaWidget.routeName,
                                           queryParameters: {
@@ -408,6 +399,8 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -473,15 +466,6 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        if (animationsMap[
-                                                'stackOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'stackOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
                                         context.goNamed(
                                           PoliticaPrivOfTenderoHelpWidget
                                               .routeName,
@@ -508,6 +492,8 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -573,15 +559,6 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        if (animationsMap[
-                                                'stackOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'stackOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
                                         context.goNamed(
                                           TermsOfServiceOfTenderoHelpWidget
                                               .routeName,
@@ -608,6 +585,8 @@ class _AyudaWidgetState extends State<AyudaWidget>
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );

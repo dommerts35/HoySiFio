@@ -45,46 +45,6 @@ class _PoliticaPrivOfTenderoHelpWidgetState
     _model = createModel(context, () => PoliticaPrivOfTenderoHelpModel());
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'iconOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -99,53 +59,7 @@ class _PoliticaPrivOfTenderoHelpWidgetState
           ),
         ],
       ),
-      'containerOnPageLoadAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'containerOnActionTriggerAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -195,23 +109,6 @@ class _PoliticaPrivOfTenderoHelpWidgetState
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation1'] !=
-                                    null) {
-                                  await animationsMap[
-                                          'containerOnActionTriggerAnimation1']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-                                if (animationsMap[
-                                        'containerOnActionTriggerAnimation2'] !=
-                                    null) {
-                                  await animationsMap[
-                                          'containerOnActionTriggerAnimation2']!
-                                      .controller
-                                      .forward(from: 0.0);
-                                }
-
                                 context.goNamed(
                                   AyudaWidget.routeName,
                                   queryParameters: {
@@ -236,7 +133,7 @@ class _PoliticaPrivOfTenderoHelpWidgetState
                                     kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 1000),
+                                      duration: Duration(milliseconds: 0),
                                     ),
                                   },
                                 );
@@ -339,12 +236,7 @@ class _PoliticaPrivOfTenderoHelpWidgetState
                     ],
                   ),
                 ),
-              )
-                  .animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation1']!)
-                  .animateOnActionTrigger(
-                    animationsMap['containerOnActionTriggerAnimation1']!,
-                  ),
+              ),
               actions: [],
               centerTitle: false,
               elevation: 2.0,
@@ -1928,12 +1820,7 @@ class _PoliticaPrivOfTenderoHelpWidgetState
                   ],
                 ),
               ),
-            )
-                .animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation2']!)
-                .animateOnActionTrigger(
-                  animationsMap['containerOnActionTriggerAnimation2']!,
-                ),
+            ),
           ),
         ),
       ),

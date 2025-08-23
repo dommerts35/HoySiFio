@@ -232,16 +232,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
-                                  if (animationsMap[
-                                          'stackOnActionTriggerAnimation'] !=
-                                      null) {
-                                    await animationsMap[
-                                            'stackOnActionTriggerAnimation']!
-                                        .controller
-                                        .forward(from: 0.0);
-                                  }
-
-                                  context.pushNamed(
+                                  context.goNamed(
                                     TenderoEditInfoWidget.routeName,
                                     queryParameters: {
                                       'tenderoRef': serializeParam(
@@ -253,6 +244,13 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                         ParamType.String,
                                       ),
                                     }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
                                   );
                                 },
                               ).animateOnPageLoad(animationsMap[
@@ -1201,16 +1199,8 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                             clearUnsetFields: false,
                                           ),
                                         ));
-                                        if (animationsMap[
-                                                'stackOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'stackOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
 
-                                        context.pushNamed(
+                                        context.goNamed(
                                           TenderoEditInfoWidget.routeName,
                                           queryParameters: {
                                             'tenderoRef': serializeParam(
@@ -1237,7 +1227,7 @@ class _TenderoBankSecWidgetState extends State<TenderoBankSecWidget>
                                               transitionType:
                                                   PageTransitionType.fade,
                                               duration:
-                                                  Duration(milliseconds: 1000),
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );

@@ -13,8 +13,8 @@ import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
-import 'package:animated_text_library_sk2998/index.dart'
-    as $animated_text_library_sk2998;
+import 'package:marketplace_check_internet_connection_library_vrjzhi/index.dart'
+    as $marketplace_check_internet_connection_library_vrjzhi;
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -77,10 +77,10 @@ class AppStateNotifier extends ChangeNotifier {
 }
 
 GoRouter createRouter(AppStateNotifier appStateNotifier) {
-  $animated_text_library_sk2998.initializeRoutes(
-    animatedTextExamplesWidgetName:
-        'animated_text_library_sk2998.AnimatedTextExamples',
-    animatedTextExamplesWidgetPath: '/animatedTextExamples',
+  $marketplace_check_internet_connection_library_vrjzhi.initializeRoutes(
+    homePageWidgetName:
+        'marketplace_check_internet_connection_library_vrjzhi.HomePage',
+    homePageWidgetPath: '/homePage',
   );
 
   return GoRouter(
@@ -1725,12 +1725,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) {
         ),
       ),
       FFRoute(
-        name:
-            $animated_text_library_sk2998.AnimatedTextExamplesWidget.routeName,
-        path:
-            $animated_text_library_sk2998.AnimatedTextExamplesWidget.routePath,
+        name: $marketplace_check_internet_connection_library_vrjzhi
+            .HomePageWidget.routeName,
+        path: $marketplace_check_internet_connection_library_vrjzhi
+            .HomePageWidget.routePath,
         builder: (context, params) =>
-            $animated_text_library_sk2998.AnimatedTextExamplesWidget(),
+            $marketplace_check_internet_connection_library_vrjzhi
+                .HomePageWidget(),
       )
     ].map((r) => r.toRoute(appStateNotifier)).toList(),
   );

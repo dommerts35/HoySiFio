@@ -29,6 +29,8 @@ class InicioClienteModel extends FlutterFlowModel<InicioClienteWidget> {
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
+  bool? isLogoff;
   // Model for navBarCliente component.
   late NavBarClienteModel navBarClienteModel;
 

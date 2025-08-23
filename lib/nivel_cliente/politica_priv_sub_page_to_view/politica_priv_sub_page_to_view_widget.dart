@@ -43,46 +43,6 @@ class _PoliticaPrivSubPageToViewWidgetState
     _model = createModel(context, () => PoliticaPrivSubPageToViewModel());
 
     animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'columnOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'iconOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -98,12 +58,6 @@ class _PoliticaPrivSubPageToViewWidgetState
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -152,7 +106,7 @@ class _PoliticaPrivSubPageToViewWidgetState
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,14 +117,6 @@ class _PoliticaPrivSubPageToViewWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (animationsMap[
-                                      'columnOnActionTriggerAnimation'] !=
-                                  null) {
-                                await animationsMap[
-                                        'columnOnActionTriggerAnimation']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
                               if (widget.cedula != null &&
                                   widget.cedula != '') {
                                 context.goNamed(
@@ -1730,18 +1676,20 @@ class _PoliticaPrivSubPageToViewWidgetState
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              if (animationsMap[
-                                                      'columnOnActionTriggerAnimation'] !=
-                                                  null) {
-                                                await animationsMap[
-                                                        'columnOnActionTriggerAnimation']!
-                                                    .controller
-                                                    .forward(from: 0.0);
-                                              }
-
                                               context.goNamed(
-                                                  TermsOfServiceLoginWidget
-                                                      .routeName);
+                                                TermsOfServiceLoginWidget
+                                                    .routeName,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
                                             },
                                             child: Text(
                                               'términos de servicio y condiciones de uso.',
@@ -1797,11 +1745,7 @@ class _PoliticaPrivSubPageToViewWidgetState
                   ),
                 ),
               ],
-            )
-                .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['columnOnActionTriggerAnimation']!,
-                ),
+            ),
           ),
         ),
       ),

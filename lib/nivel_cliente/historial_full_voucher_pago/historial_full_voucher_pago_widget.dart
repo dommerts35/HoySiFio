@@ -256,15 +256,6 @@ class _HistorialFullVoucherPagoWidgetState
                                                 size: 24.0,
                                               ),
                                               onPressed: () async {
-                                                if (animationsMap[
-                                                        'containerOnActionTriggerAnimation'] !=
-                                                    null) {
-                                                  await animationsMap[
-                                                          'containerOnActionTriggerAnimation']!
-                                                      .controller
-                                                      .forward(from: 0.0);
-                                                }
-
                                                 context.goNamed(
                                                   ResumenFiadoClienProdsNewWidget
                                                       .routeName,
@@ -310,6 +301,15 @@ class _HistorialFullVoucherPagoWidgetState
                                                   }.withoutNulls,
                                                   extra: <String, dynamic>{
                                                     'doc': widget.doc,
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
                                                   },
                                                 );
                                               },
@@ -2498,14 +2498,6 @@ class _HistorialFullVoucherPagoWidgetState
                                                           );
                                                         }(),
                                                       );
-                                                      if (animationsMap[
-                                                              'containerOnActionTriggerAnimation'] !=
-                                                          null) {
-                                                        await animationsMap[
-                                                                'containerOnActionTriggerAnimation']!
-                                                            .controller
-                                                            .forward(from: 0.0);
-                                                      }
 
                                                       context.goNamed(
                                                         ResumenFiadoClienProdsNewWidget
@@ -2566,7 +2558,7 @@ class _HistorialFullVoucherPagoWidgetState
                                                                     .fade,
                                                             duration: Duration(
                                                                 milliseconds:
-                                                                    1000),
+                                                                    0),
                                                           ),
                                                         },
                                                       );

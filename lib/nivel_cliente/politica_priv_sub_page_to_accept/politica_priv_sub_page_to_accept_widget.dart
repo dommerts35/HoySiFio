@@ -46,46 +46,6 @@ class _PoliticaPrivSubPageToAcceptWidgetState
     _model = createModel(context, () => PoliticaPrivSubPageToAcceptModel());
 
     animationsMap.addAll({
-      'columnOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'columnOnActionTriggerAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onActionTrigger,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: Offset(0.0, 0.0),
-            end: Offset(0.0, -17.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1000.0.ms,
-            begin: 1.0,
-            end: 0.0,
-          ),
-        ],
-      ),
       'iconOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -101,12 +61,6 @@ class _PoliticaPrivSubPageToAcceptWidgetState
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -156,7 +110,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                     ),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -167,22 +121,13 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              if (animationsMap[
-                                      'columnOnActionTriggerAnimation'] !=
-                                  null) {
-                                await animationsMap[
-                                        'columnOnActionTriggerAnimation']!
-                                    .controller
-                                    .forward(from: 0.0);
-                              }
-
                               context.goNamed(
                                 AuthSigningInWidget.routeName,
                                 extra: <String, dynamic>{
                                   kTransitionInfoKey: TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
-                                    duration: Duration(milliseconds: 1000),
+                                    duration: Duration(milliseconds: 0),
                                   ),
                                 },
                               );
@@ -1888,16 +1833,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                                     ),
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        if (animationsMap[
-                                                'columnOnActionTriggerAnimation'] !=
-                                            null) {
-                                          await animationsMap[
-                                                  'columnOnActionTriggerAnimation']!
-                                              .controller
-                                              .forward(from: 0.0);
-                                        }
-
-                                        context.pushNamed(
+                                        context.goNamed(
                                           TenderoRegisterWidget.routeName,
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
@@ -1905,7 +1841,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                                               transitionType:
                                                   PageTransitionType.fade,
                                               duration:
-                                                  Duration(milliseconds: 1000),
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -1965,11 +1901,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                   ),
                 ),
               ].divide(SizedBox(height: 10.0)),
-            )
-                .animateOnPageLoad(animationsMap['columnOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['columnOnActionTriggerAnimation']!,
-                ),
+            ),
           ),
         ),
       ),
