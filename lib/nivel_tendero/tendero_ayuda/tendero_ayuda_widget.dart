@@ -1,11 +1,15 @@
 import '/backend/backend.dart';
+import '/components/dialog_btn_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
+import 'package:marketplace_check_internet_connection_library_vrjzhi/custom_code/actions/index.dart'
+    as marketplace_check_internet_connection_library_vrjzhi_actions;
 import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -48,6 +52,49 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
     super.initState();
     _model = createModel(context, () => TenderoAyudaModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      while (true) {
+        await Future.delayed(
+          Duration(
+            milliseconds: 5000,
+          ),
+        );
+        _model.isInternetGood =
+            await marketplace_check_internet_connection_library_vrjzhi_actions
+                .checkInternetConnection();
+        if (_model.isInternetGood == false) {
+          await showDialog(
+            context: context,
+            builder: (dialogContext) {
+              return Dialog(
+                elevation: 0,
+                insetPadding: EdgeInsets.zero,
+                backgroundColor: Colors.transparent,
+                alignment: AlignmentDirectional(0.0, 0.0)
+                    .resolve(Directionality.of(context)),
+                child: GestureDetector(
+                  onTap: () {
+                    FocusScope.of(dialogContext).unfocus();
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: DialogBtnWidget(
+                    titulo: '¡Alerta!',
+                    mensaje:
+                        'No se ha podido detectar una conexión a internet. Por favor, verifica tu red y vuelve a ingresar.',
+                  ),
+                ),
+              );
+            },
+          );
+
+          context.goNamed(AuthSigningInWidget.routeName);
+
+          return;
+        }
+      }
+    });
+
     animationsMap.addAll({
       'iconButtonOnPageLoadAnimation': AnimationInfo(
         loop: true,
@@ -77,103 +124,116 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: PopScope(
-        canPop: false,
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          body: Form(
-            key: _model.formKey,
-            autovalidateMode: AutovalidateMode.disabled,
-            child: Container(
-              decoration: BoxDecoration(),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Material(
-                    color: Colors.transparent,
-                    elevation: 2.0,
-                    child: Container(
-                      height: 80.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 4.0,
-                            color: Color(0x33000000),
-                            offset: Offset(
-                              0.0,
-                              2.0,
-                            ),
-                          )
-                        ],
-                      ),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            FlutterFlowIconButton(
-                              borderRadius: 12.0,
-                              borderWidth: 1.0,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              icon: Icon(
-                                Icons.arrow_back,
-                                color: FlutterFlowTheme.of(context).primary,
-                                size: 24.0,
+    return Builder(
+      builder: (context) => GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: PopScope(
+          canPop: false,
+          child: Scaffold(
+            key: scaffoldKey,
+            backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+            body: Form(
+              key: _model.formKey,
+              autovalidateMode: AutovalidateMode.disabled,
+              child: Container(
+                decoration: BoxDecoration(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      child: Container(
+                        height: 80.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 4.0,
+                              color: Color(0x33000000),
+                              offset: Offset(
+                                0.0,
+                                2.0,
                               ),
-                              onPressed: () async {
-                                context.goNamed(
-                                  ListaClientesWidget.routeName,
-                                  queryParameters: {
-                                    'tenderoRef': serializeParam(
-                                      widget.tenderoRef,
-                                      ParamType.DocumentReference,
-                                    ),
-                                    'nombreTienda': serializeParam(
-                                      widget.nombreTienda,
-                                      ParamType.String,
-                                    ),
-                                    'tenderoEmail': serializeParam(
-                                      widget.tenderoEmail,
-                                      ParamType.String,
-                                    ),
-                                    'nombreTendero': serializeParam(
-                                      widget.nombreTendero,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
-                                  },
-                                );
-                              },
-                            ).animateOnPageLoad(animationsMap[
-                                'iconButtonOnPageLoadAnimation']!),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Tutoriales',
-                                  style: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .override(
-                                        font: GoogleFonts.quicksand(
+                            )
+                          ],
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              FlutterFlowIconButton(
+                                borderRadius: 12.0,
+                                borderWidth: 1.0,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 24.0,
+                                ),
+                                onPressed: () async {
+                                  context.goNamed(
+                                    ListaClientesWidget.routeName,
+                                    queryParameters: {
+                                      'tenderoRef': serializeParam(
+                                        widget.tenderoRef,
+                                        ParamType.DocumentReference,
+                                      ),
+                                      'nombreTienda': serializeParam(
+                                        widget.nombreTienda,
+                                        ParamType.String,
+                                      ),
+                                      'tenderoEmail': serializeParam(
+                                        widget.tenderoEmail,
+                                        ParamType.String,
+                                      ),
+                                      'nombreTendero': serializeParam(
+                                        widget.nombreTendero,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                    extra: <String, dynamic>{
+                                      kTransitionInfoKey: TransitionInfo(
+                                        hasTransition: true,
+                                        transitionType: PageTransitionType.fade,
+                                        duration: Duration(milliseconds: 0),
+                                      ),
+                                    },
+                                  );
+                                },
+                              ).animateOnPageLoad(animationsMap[
+                                  'iconButtonOnPageLoadAnimation']!),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Tutoriales',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineMedium
+                                        .override(
+                                          font: GoogleFonts.quicksand(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineMedium
+                                                    .fontStyle,
+                                          ),
+                                          fontSize: 22.0,
+                                          letterSpacing: 0.0,
                                           fontWeight:
                                               FlutterFlowTheme.of(context)
                                                   .headlineMedium
@@ -183,130 +243,137 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                   .headlineMedium
                                                   .fontStyle,
                                         ),
-                                        fontSize: 22.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ].divide(SizedBox(height: 4.0)),
-                            ),
-                            Container(
-                              width: 40.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
+                                  ),
+                                ].divide(SizedBox(height: 4.0)),
                               ),
-                            ),
-                          ],
+                              Container(
+                                width: 40.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 15.0, 0.0, 0.0),
-                              child: Material(
-                                color: Colors.transparent,
-                                elevation: 2.0,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14.0),
-                                ),
-                                child: Container(
-                                  constraints: BoxConstraints(
-                                    maxWidth: 770.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 4.0,
-                                        color: Color(0x33000000),
-                                        offset: Offset(
-                                          0.0,
-                                          2.0,
-                                        ),
-                                      )
-                                    ],
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 15.0, 0.0, 0.0),
+                                child: Material(
+                                  color: Colors.transparent,
+                                  elevation: 2.0,
+                                  shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(14.0),
-                                    border: Border.all(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      width: 1.0,
-                                    ),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        16.0, 12.0, 16.0, 16.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            context.goNamed(
-                                              PageTutorialListaClientesHelpWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'tenderoRef': serializeParam(
-                                                  widget.tenderoRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'nombreTienda': serializeParam(
-                                                  widget.nombreTienda,
-                                                  ParamType.String,
-                                                ),
-                                                'tenderoEmail': serializeParam(
-                                                  widget.tenderoEmail,
-                                                  ParamType.String,
-                                                ),
-                                                'nombreTendero': serializeParam(
-                                                  widget.nombreTendero,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          text: 'Lista de clientes',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            padding: EdgeInsets.all(9.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      font: GoogleFonts.asap(
+                                  child: Container(
+                                    constraints: BoxConstraints(
+                                      maxWidth: 770.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x33000000),
+                                          offset: Offset(
+                                            0.0,
+                                            2.0,
+                                          ),
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(14.0),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          16.0, 12.0, 16.0, 16.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              context.goNamed(
+                                                PageTutorialListaClientesHelpWidget
+                                                    .routeName,
+                                                queryParameters: {
+                                                  'tenderoRef': serializeParam(
+                                                    widget.tenderoRef,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'nombreTienda':
+                                                      serializeParam(
+                                                    widget.nombreTienda,
+                                                    ParamType.String,
+                                                  ),
+                                                  'tenderoEmail':
+                                                      serializeParam(
+                                                    widget.tenderoEmail,
+                                                    ParamType.String,
+                                                  ),
+                                                  'nombreTendero':
+                                                      serializeParam(
+                                                    widget.nombreTendero,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            text: 'Lista de clientes',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              padding: EdgeInsets.all(9.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -318,74 +385,77 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                                 .titleSmall
                                                                 .fontStyle,
                                                       ),
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontStyle,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
                                           ),
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            context.goNamed(
-                                              PageTutorialinfoProdHelpWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'tenderoRef': serializeParam(
-                                                  widget.tenderoRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'nombreTendero': serializeParam(
-                                                  widget.nombreTendero,
-                                                  ParamType.String,
-                                                ),
-                                                'tenderoEmail': serializeParam(
-                                                  widget.tenderoEmail,
-                                                  ParamType.String,
-                                                ),
-                                                'nombreTienda': serializeParam(
-                                                  widget.nombreTienda,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          text:
-                                              'Datos, historiales y productos fiados de un cliente',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            padding: EdgeInsets.all(8.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      font: GoogleFonts.asap(
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              context.goNamed(
+                                                PageTutorialinfoProdHelpWidget
+                                                    .routeName,
+                                                queryParameters: {
+                                                  'tenderoRef': serializeParam(
+                                                    widget.tenderoRef,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'nombreTendero':
+                                                      serializeParam(
+                                                    widget.nombreTendero,
+                                                    ParamType.String,
+                                                  ),
+                                                  'tenderoEmail':
+                                                      serializeParam(
+                                                    widget.tenderoEmail,
+                                                    ParamType.String,
+                                                  ),
+                                                  'nombreTienda':
+                                                      serializeParam(
+                                                    widget.nombreTienda,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            text:
+                                                'Datos, historiales y productos fiados de un cliente',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              padding: EdgeInsets.all(8.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -397,73 +467,76 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                                 .titleSmall
                                                                 .fontStyle,
                                                       ),
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontStyle,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
                                           ),
-                                        ),
-                                        FFButtonWidget(
-                                          onPressed: () async {
-                                            context.goNamed(
-                                              PageTutorialHistorialCPPHelpWidget
-                                                  .routeName,
-                                              queryParameters: {
-                                                'tenderoRef': serializeParam(
-                                                  widget.tenderoRef,
-                                                  ParamType.DocumentReference,
-                                                ),
-                                                'nombreTienda': serializeParam(
-                                                  widget.nombreTienda,
-                                                  ParamType.String,
-                                                ),
-                                                'nombreTendero': serializeParam(
-                                                  widget.nombreTendero,
-                                                  ParamType.String,
-                                                ),
-                                                'tenderoEmail': serializeParam(
-                                                  widget.tenderoEmail,
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                              extra: <String, dynamic>{
-                                                kTransitionInfoKey:
-                                                    TransitionInfo(
-                                                  hasTransition: true,
-                                                  transitionType:
-                                                      PageTransitionType.fade,
-                                                  duration:
-                                                      Duration(milliseconds: 0),
-                                                ),
-                                              },
-                                            );
-                                          },
-                                          text: 'Cuentas por cobrar',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            padding: EdgeInsets.all(8.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      font: GoogleFonts.asap(
+                                          FFButtonWidget(
+                                            onPressed: () async {
+                                              context.goNamed(
+                                                PageTutorialHistorialCPPHelpWidget
+                                                    .routeName,
+                                                queryParameters: {
+                                                  'tenderoRef': serializeParam(
+                                                    widget.tenderoRef,
+                                                    ParamType.DocumentReference,
+                                                  ),
+                                                  'nombreTienda':
+                                                      serializeParam(
+                                                    widget.nombreTienda,
+                                                    ParamType.String,
+                                                  ),
+                                                  'nombreTendero':
+                                                      serializeParam(
+                                                    widget.nombreTendero,
+                                                    ParamType.String,
+                                                  ),
+                                                  'tenderoEmail':
+                                                      serializeParam(
+                                                    widget.tenderoEmail,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            text: 'Cuentas por cobrar',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              padding: EdgeInsets.all(8.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -475,43 +548,31 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                                                 .titleSmall
                                                                 .fontStyle,
                                                       ),
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontWeight,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .fontStyle,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
                                           ),
-                                        ),
-                                      ].divide(SizedBox(height: 20.0)),
+                                        ].divide(SizedBox(height: 20.0)),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Lottie.asset(
-                              'assets/jsons/questions.json',
-                              width: 300.0,
-                              height: 300.0,
-                              fit: BoxFit.fill,
-                              animate: true,
-                            ),
-                          ],
+                              Lottie.asset(
+                                'assets/jsons/questions.json',
+                                width: 300.0,
+                                height: 300.0,
+                                fit: BoxFit.fill,
+                                animate: true,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

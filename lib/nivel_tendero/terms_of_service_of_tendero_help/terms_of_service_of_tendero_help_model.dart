@@ -49,6 +49,8 @@ class TermsOfServiceOfTenderoHelpModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in termsOfServiceOfTenderoHelp widget.
+  bool? isInternetGood;
 
   @override
   void initState(BuildContext context) {}

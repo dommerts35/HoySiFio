@@ -48,6 +48,8 @@ class ClienteMakeInfoModel extends FlutterFlowModel<ClienteMakeInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteMakeInfo widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // State field(s) for fullName widget.

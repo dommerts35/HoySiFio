@@ -34,6 +34,8 @@ class ListaClientesModel extends FlutterFlowModel<ListaClientesWidget> {
   TenderosRecord? tenderoReadLoad;
   // Stores action output result for [Custom Action - retornarStringAInt] action in listaClientes widget.
   int? tiempoResult;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in listaClientes widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconBack widget.
   bool? isLogoff;
   // State field(s) for TabBar widget.

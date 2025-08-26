@@ -21,6 +21,8 @@ class ClienteVincModel extends FlutterFlowModel<ClienteVincWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteVinc widget.
+  bool? isInternetGood;
   // State field(s) for valorUser widget.
   FocusNode? valorUserFocusNode;
   TextEditingController? valorUserTextController;

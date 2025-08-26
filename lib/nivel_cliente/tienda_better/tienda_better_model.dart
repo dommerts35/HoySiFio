@@ -17,6 +17,8 @@ class TiendaBetterModel extends FlutterFlowModel<TiendaBetterWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in tiendaBetter widget.
   List<ClientesRecord>? queryOnLoadClientes;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in tiendaBetter widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // State field(s) for Carousel widget.

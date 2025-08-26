@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 class HistorialPagosModel extends FlutterFlowModel<HistorialPagosWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - checkInternetConnection] action in historialPagos widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // State field(s) for Checkbox widget.

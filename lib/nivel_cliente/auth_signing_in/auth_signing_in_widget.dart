@@ -49,45 +49,58 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.isInternetGood =
-          await marketplace_check_internet_connection_library_vrjzhi_actions
-              .checkInternetConnection();
-      if (_model.isInternetGood == false) {
-        await showDialog(
-          context: context,
-          builder: (dialogContext) {
-            return Dialog(
-              elevation: 0,
-              insetPadding: EdgeInsets.zero,
-              backgroundColor: Colors.transparent,
-              alignment: AlignmentDirectional(0.0, 0.0)
-                  .resolve(Directionality.of(context)),
-              child: GestureDetector(
-                onTap: () {
-                  FocusScope.of(dialogContext).unfocus();
-                  FocusManager.instance.primaryFocus?.unfocus();
-                },
-                child: DialogBtnWidget(
-                  titulo: '¡Alerta!',
-                  mensaje: 'No se ha podido detectar una conexión a internet.',
-                ),
+      await Future.wait([
+        Future(() async {
+          _model.playerIdResult = await actions.getPlayerId();
+          _model.getFCMTokenResult = await actions.getFCMToken();
+          FFAppState().playerId = _model.playerIdResult!;
+          safeSetState(() {});
+          unawaited(
+            () async {
+              await actions.enterImmersiveMode();
+            }(),
+          );
+        }),
+        Future(() async {
+          while (true) {
+            await Future.delayed(
+              Duration(
+                milliseconds: 5000,
               ),
             );
-          },
-        );
+            _model.isInternetGood =
+                await marketplace_check_internet_connection_library_vrjzhi_actions
+                    .checkInternetConnection();
+            if (_model.isInternetGood == false) {
+              await showDialog(
+                context: context,
+                builder: (dialogContext) {
+                  return Dialog(
+                    elevation: 0,
+                    insetPadding: EdgeInsets.zero,
+                    backgroundColor: Colors.transparent,
+                    alignment: AlignmentDirectional(0.0, 0.0)
+                        .resolve(Directionality.of(context)),
+                    child: GestureDetector(
+                      onTap: () {
+                        FocusScope.of(dialogContext).unfocus();
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      },
+                      child: DialogBtnWidget(
+                        titulo: '¡Alerta!',
+                        mensaje:
+                            'No se ha podido detectar una conexión a internet. Por favor, verifica tu red y vuelve a ingresar.',
+                      ),
+                    ),
+                  );
+                },
+              );
 
-        safeSetState(() {});
-        return;
-      }
-      _model.playerIdResult = await actions.getPlayerId();
-      _model.getFCMTokenResult = await actions.getFCMToken();
-      FFAppState().playerId = _model.playerIdResult!;
-      safeSetState(() {});
-      unawaited(
-        () async {
-          await actions.enterImmersiveMode();
-        }(),
-      );
+              safeSetState(() {});
+            }
+          }
+        }),
+      ]);
     });
 
     _model.tabInicioSesionController = TabController(
@@ -3275,7 +3288,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                           titulo:
                                                                               '¡Datos incorrectos!',
                                                                           mensaje:
-                                                                              'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
+                                                                              'Los datos ingresados son inválidos.',
                                                                         ),
                                                                       ),
                                                                     );
@@ -3397,7 +3410,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                             child:
                                                                                 DialogWidget(
                                                                               titulo: '¡Datos incorrectos!',
-                                                                              mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
+                                                                              mensaje: 'Los datos ingresados son inválidos.',
                                                                             ),
                                                                           ),
                                                                         );
@@ -3752,7 +3765,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
                                                                               height: 200.0,
                                                                               child: DialogWidget(
                                                                                 titulo: '¡Datos incorrectos!',
-                                                                                mensaje: 'Los datos ingresados son inválidos. Compruebe su conexión y vuelva a intentar.',
+                                                                                mensaje: 'Los datos ingresados son inválidos.',
                                                                               ),
                                                                             ),
                                                                           ),

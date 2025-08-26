@@ -32,6 +32,8 @@ class ClienteProdSelectPagoModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteProd-SelectPago widget.
+  bool? isInternetGood;
   // State field(s) for checkTransfer widget.
   bool? checkTransferValue;
   // State field(s) for checkEfectivo widget.

@@ -13,6 +13,8 @@ class TenderoBankSecModel extends FlutterFlowModel<TenderoBankSecWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in tenderoBankSec widget.
+  bool? isInternetGood;
   // State field(s) for NumCuentaSec_tendero widget.
   FocusNode? numCuentaSecTenderoFocusNode;
   TextEditingController? numCuentaSecTenderoTextController;

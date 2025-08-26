@@ -48,6 +48,8 @@ class TermsOfServiceLoginModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in termsOfServiceLogin widget.
+  bool? isInternetGood;
 
   @override
   void initState(BuildContext context) {}

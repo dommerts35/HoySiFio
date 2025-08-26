@@ -26,6 +26,8 @@ class TenderoFirstLoginModel extends FlutterFlowModel<TenderoFirstLoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in tenderoFirstLogin widget.
+  bool? isInternetGood;
   // State field(s) for codigoFirstLogin_Cliente widget.
   FocusNode? codigoFirstLoginClienteFocusNode;
   TextEditingController? codigoFirstLoginClienteTextController;

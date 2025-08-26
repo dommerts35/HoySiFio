@@ -18,6 +18,8 @@ class ForgotMyPasswordModel extends FlutterFlowModel<ForgotMyPasswordWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in forgotMyPassword widget.
+  bool? isInternetGood;
   // State field(s) for emailAddress_forgot widget.
   FocusNode? emailAddressForgotFocusNode;
   TextEditingController? emailAddressForgotTextController;

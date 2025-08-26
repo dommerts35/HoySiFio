@@ -49,6 +49,8 @@ class TermsOfServiceOfClienteMakeModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in termsOfServiceOfClienteMake widget.
+  bool? isInternetGood;
 
   @override
   void initState(BuildContext context) {}

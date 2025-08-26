@@ -22,6 +22,8 @@ class ClienteProdValorPagoModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteProd-ValorPago widget.
+  bool? isInternetGood;
   // State field(s) for valorAP widget.
   FocusNode? valorAPFocusNode;
   TextEditingController? valorAPTextController;

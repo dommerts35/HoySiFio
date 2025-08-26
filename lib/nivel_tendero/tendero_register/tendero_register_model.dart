@@ -37,6 +37,8 @@ class TenderoRegisterModel extends FlutterFlowModel<TenderoRegisterWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in tenderoRegister widget.
+  bool? isInternetGood;
   // State field(s) for tiendaNombre_Tendero widget.
   FocusNode? tiendaNombreTenderoFocusNode;
   TextEditingController? tiendaNombreTenderoTextController;

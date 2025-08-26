@@ -15,6 +15,8 @@ class TenderoEditInfoModel extends FlutterFlowModel<TenderoEditInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in tenderoEditInfo widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // State field(s) for tiendaNameEdit widget.

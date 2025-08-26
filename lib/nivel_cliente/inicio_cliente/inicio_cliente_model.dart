@@ -25,6 +25,8 @@ class InicioClienteModel extends FlutterFlowModel<InicioClienteWidget> {
   List<ClientesRecord>? queryOnLoadClientes;
   // Stores action output result for [Custom Action - retornarStringAInt] action in inicioCliente widget.
   int? tiempoResultCliente;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in inicioCliente widget.
+  bool? isInternetGood;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;

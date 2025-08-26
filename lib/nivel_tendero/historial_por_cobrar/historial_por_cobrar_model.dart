@@ -12,6 +12,8 @@ class HistorialPorCobrarModel
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - checkInternetConnection] action in historialPorCobrar widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // Models for checkCuentasComp dynamic component.

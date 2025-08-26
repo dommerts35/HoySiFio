@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 
 class PoliticaPrivSubPageToViewModel
     extends FlutterFlowModel<PoliticaPrivSubPageToViewWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Custom Action - checkInternetConnection] action in politicaPrivSubPageToView widget.
+  bool? isInternetGood;
+
   @override
   void initState(BuildContext context) {}
 

@@ -37,6 +37,8 @@ class HistorialFullVoucherPagoModel
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in historialFullVoucherPago widget.
+  bool? isInternetGood;
   // State field(s) for PageView widget.
   PageController? pageViewController;
 

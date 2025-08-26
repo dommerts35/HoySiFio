@@ -27,6 +27,8 @@ class ClienteFirstLoginModel extends FlutterFlowModel<ClienteFirstLoginWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteFirstLogin widget.
+  bool? isInternetGood;
   // State field(s) for codigoFirstLogin_Cliente widget.
   FocusNode? codigoFirstLoginClienteFocusNode;
   TextEditingController? codigoFirstLoginClienteTextController;

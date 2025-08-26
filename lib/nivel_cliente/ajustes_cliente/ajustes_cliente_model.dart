@@ -10,6 +10,8 @@ class AjustesClienteModel extends FlutterFlowModel<AjustesClienteWidget> {
 
   // Stores action output result for [Firestore Query - Query a collection] action in ajustesCliente widget.
   ClientesRecord? queryClienteAjustes;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in ajustesCliente widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // Model for navBarCliente component.

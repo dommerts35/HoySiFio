@@ -50,6 +50,8 @@ class HistorialVouchersModel extends FlutterFlowModel<HistorialVouchersWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Custom Action - checkInternetConnection] action in historialVouchers widget.
+  bool? isInternetGood;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.
   bool? isLogoff;
   // Models for razonNegadoC dynamic component.

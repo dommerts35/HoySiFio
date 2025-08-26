@@ -20,6 +20,8 @@ class ClienteEditInfoModel extends FlutterFlowModel<ClienteEditInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteEditInfo widget.
+  bool? isInternetGood;
   // State field(s) for fullNameEdit widget.
   FocusNode? fullNameEditFocusNode;
   TextEditingController? fullNameEditTextController;

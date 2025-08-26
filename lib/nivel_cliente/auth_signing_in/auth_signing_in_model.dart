@@ -34,12 +34,12 @@ class AuthSigningInModel extends FlutterFlowModel<AuthSigningInWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Custom Action - checkInternetConnection] action in authSigningIn widget.
-  bool? isInternetGood;
   // Stores action output result for [Custom Action - getPlayerId] action in authSigningIn widget.
   String? playerIdResult;
   // Stores action output result for [Custom Action - getFCMToken] action in authSigningIn widget.
   String? getFCMTokenResult;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in authSigningIn widget.
+  bool? isInternetGood;
   // State field(s) for tabInicioSesion widget.
   TabController? tabInicioSesionController;
   int get tabInicioSesionCurrentIndex =>

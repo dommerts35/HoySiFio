@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 
 class PoliticaPrivOfTenderoHelpModel
     extends FlutterFlowModel<PoliticaPrivOfTenderoHelpWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Custom Action - checkInternetConnection] action in politicaPrivOfTenderoHelp widget.
+  bool? isInternetGood;
+
   @override
   void initState(BuildContext context) {}
 

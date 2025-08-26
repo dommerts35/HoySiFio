@@ -40,6 +40,8 @@ class ClienteInfoEditModel extends FlutterFlowModel<ClienteInfoEditWidget> {
   ClientesRecord? queryOnLoad;
   // Stores action output result for [Custom Action - normalizarValorNumerico] action in clienteInfoEdit widget.
   double? totalDeudaCompletaFR;
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteInfoEdit widget.
+  bool? isInternetGood;
   // Stores action output result for [Backend Call - Read Document] action in iconoBack widget.
   TenderosRecord? readTendero;
   // Stores action output result for [Alert Dialog - Custom Dialog] action in iconLogOff widget.

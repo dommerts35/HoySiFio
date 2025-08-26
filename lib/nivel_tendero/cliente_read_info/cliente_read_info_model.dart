@@ -7,6 +7,8 @@ class ClienteReadInfoModel extends FlutterFlowModel<ClienteReadInfoWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Custom Action - checkInternetConnection] action in clienteReadInfo widget.
+  bool? isInternetGood;
   // State field(s) for fullNameRead widget.
   FocusNode? fullNameReadFocusNode;
   TextEditingController? fullNameReadTextController;
