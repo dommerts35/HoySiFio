@@ -338,7 +338,7 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                         ),
                                         FFButtonWidget(
                                           onPressed: () async {
-                                            context.pushNamed(
+                                            context.goNamed(
                                               PageTutorialinfoProdHelpWidget
                                                   .routeName,
                                               queryParameters: {

@@ -619,7 +619,7 @@ class _PageTutorialForClienteHelpWidgetState
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: Image.asset(
-                                                  'assets/images/imagen_2025-08-17_181457000.png',
+                                                  'assets/images/imagen_2025-08-23_192524365.png',
                                                   width: 200.0,
                                                   fit: BoxFit.cover,
                                                 ),

@@ -975,10 +975,6 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                               hoverColor: Colors.transparent,
                                                                               highlightColor: Colors.transparent,
                                                                               onTap: () async {
-                                                                                if (animationsMap['columnOnActionTriggerAnimation'] != null) {
-                                                                                  await animationsMap['columnOnActionTriggerAnimation']!.controller.forward(from: 0.0);
-                                                                                }
-
                                                                                 context.goNamed(
                                                                                   ClienteInfoEditWidget.routeName,
                                                                                   queryParameters: {
@@ -1027,6 +1023,13 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                                       ParamType.DocumentReference,
                                                                                     ),
                                                                                   }.withoutNulls,
+                                                                                  extra: <String, dynamic>{
+                                                                                    kTransitionInfoKey: TransitionInfo(
+                                                                                      hasTransition: true,
+                                                                                      transitionType: PageTransitionType.fade,
+                                                                                      duration: Duration(milliseconds: 0),
+                                                                                    ),
+                                                                                  },
                                                                                 );
                                                                               },
                                                                               child: Material(

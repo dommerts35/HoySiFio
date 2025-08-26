@@ -3706,7 +3706,7 @@ class _ClienteMakeInfoWidgetState extends State<ClienteMakeInfoWidget>
                         model: _model.navBarModel,
                         updateCallback: () => safeSetState(() {}),
                         child: NavBarWidget(
-                          activePage: 'Añadir',
+                          activePage: 'Añadir Cliente',
                           nombreTienda: widget.nombreTienda,
                           emailTendero: widget.tenderoEmail,
                           nombreTendero: widget.nombreTendero,

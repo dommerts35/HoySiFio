@@ -348,7 +348,7 @@ class _HistorialFullVoucherPagoWidgetState
 
                                                     return Container(
                                                       width: 280.0,
-                                                      height: 210.0,
+                                                      height: 200.0,
                                                       child: Stack(
                                                         children: [
                                                           Padding(

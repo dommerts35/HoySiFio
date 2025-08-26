@@ -1656,18 +1656,24 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                   width: double.infinity,
                                                   height: 40.0,
                                                   decoration: BoxDecoration(
-                                                    color: resumenFiadoClienProdsNewClientesRecord
-                                                                .cliente
-                                                                .historialPorPagarProd
-                                                                .where((e) => e
-                                                                    .isVoucherSent)
-                                                                .toList()
-                                                                .length >
-                                                            0
-                                                        ? Color(0xFFFFBEA1)
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .tertiary,
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      resumenFiadoClienProdsNewClientesRecord
+                                                                  .cliente
+                                                                  .historialPorPagarProd
+                                                                  .where((e) => e
+                                                                      .isVoucherSent)
+                                                                  .toList()
+                                                                  .length >
+                                                              0
+                                                          ? Color(0xFFFFBEA1)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .tertiary,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .tertiary,
+                                                    ),
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             8.0),

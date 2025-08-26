@@ -578,74 +578,6 @@ class _HistorialVouchersClienteWidgetState
                                                         ),
                                                         child: Stack(
                                                           children: [
-                                                            Opacity(
-                                                              opacity: listaVouchersItem
-                                                                          .estadoVoucher ==
-                                                                      'Negado'
-                                                                  ? 0.5
-                                                                  : 1.0,
-                                                              child: InkWell(
-                                                                splashColor: Colors
-                                                                    .transparent,
-                                                                focusColor: Colors
-                                                                    .transparent,
-                                                                hoverColor: Colors
-                                                                    .transparent,
-                                                                highlightColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                onTap:
-                                                                    () async {
-                                                                  await Navigator
-                                                                      .push(
-                                                                    context,
-                                                                    PageTransition(
-                                                                      type: PageTransitionType
-                                                                          .fade,
-                                                                      child:
-                                                                          FlutterFlowExpandedImageView(
-                                                                        image: Image
-                                                                            .network(
-                                                                          listaVouchersItem
-                                                                              .imgVoucher,
-                                                                          fit: BoxFit
-                                                                              .contain,
-                                                                        ),
-                                                                        allowRotation:
-                                                                            false,
-                                                                        tag: listaVouchersItem
-                                                                            .imgVoucher,
-                                                                        useHeroAnimation:
-                                                                            true,
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                                child: Hero(
-                                                                  tag: listaVouchersItem
-                                                                      .imgVoucher,
-                                                                  transitionOnUserGestures:
-                                                                      true,
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      listaVouchersItem
-                                                                          .imgVoucher,
-                                                                      width:
-                                                                          200.0,
-                                                                      height:
-                                                                          200.0,
-                                                                      fit: BoxFit
-                                                                          .cover,
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            ),
                                                             Lottie.asset(
                                                               'assets/jsons/actualHoySiFioLoad.json',
                                                               width: 200.0,
@@ -653,6 +585,67 @@ class _HistorialVouchersClienteWidgetState
                                                               fit: BoxFit
                                                                   .contain,
                                                               animate: true,
+                                                            ),
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                await Navigator
+                                                                    .push(
+                                                                  context,
+                                                                  PageTransition(
+                                                                    type: PageTransitionType
+                                                                        .fade,
+                                                                    child:
+                                                                        FlutterFlowExpandedImageView(
+                                                                      image: Image
+                                                                          .network(
+                                                                        listaVouchersItem
+                                                                            .imgVoucher,
+                                                                        fit: BoxFit
+                                                                            .contain,
+                                                                      ),
+                                                                      allowRotation:
+                                                                          false,
+                                                                      tag: listaVouchersItem
+                                                                          .imgVoucher,
+                                                                      useHeroAnimation:
+                                                                          true,
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                              child: Hero(
+                                                                tag: listaVouchersItem
+                                                                    .imgVoucher,
+                                                                transitionOnUserGestures:
+                                                                    true,
+                                                                child:
+                                                                    ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              8.0),
+                                                                  child: Image
+                                                                      .network(
+                                                                    listaVouchersItem
+                                                                        .imgVoucher,
+                                                                    width:
+                                                                        200.0,
+                                                                    height:
+                                                                        200.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ],
                                                         ),
