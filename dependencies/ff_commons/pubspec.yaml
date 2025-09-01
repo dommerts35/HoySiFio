@@ -20,4 +20,10 @@ dependencies:
   http: 1.4.0
   mime_type: 1.0.0
 
+dependency_overrides:
+  http: 1.4.0
+  rxdart: 0.27.7
+  uuid: ^4.0.0
+
+
 flutter:
