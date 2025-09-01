@@ -78,7 +78,7 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget>
       while (true) {
         await Future.delayed(
           Duration(
-            milliseconds: 5000,
+            milliseconds: 30000,
           ),
         );
         _model.isInternetGood =
@@ -184,295 +184,598 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget>
                 key: scaffoldKey,
                 backgroundColor:
                     FlutterFlowTheme.of(context).secondaryBackground,
-                body: SafeArea(
-                  top: true,
-                  child: Form(
-                    key: _model.formKey,
-                    autovalidateMode: AutovalidateMode.disabled,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          elevation: 2.0,
-                          child: Container(
-                            height: 80.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 4.0,
-                                  color: Color(0x33000000),
-                                  offset: Offset(
-                                    0.0,
-                                    2.0,
-                                  ),
-                                )
-                              ],
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 8.0, 12.0, 8.0),
-                                    child: FlutterFlowIconButton(
-                                      borderRadius: 12.0,
-                                      borderWidth: 1.0,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      icon: Icon(
-                                        Icons.arrow_back,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 24.0,
-                                      ),
-                                      onPressed: () async {
-                                        context.goNamed(
-                                          HistorialPorCobrarWidget.routeName,
-                                          queryParameters: {
-                                            'idCliente': serializeParam(
-                                              widget.idCliente,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'idTendero': serializeParam(
-                                              widget.tenderoRef,
-                                              ParamType.DocumentReference,
-                                            ),
-                                            'nombre': serializeParam(
-                                              widget.nombre,
-                                              ParamType.String,
-                                            ),
-                                            'telf': serializeParam(
-                                              widget.telf,
-                                              ParamType.String,
-                                            ),
-                                            'isFiando': serializeParam(
-                                              widget.isFiando,
-                                              ParamType.bool,
-                                            ),
-                                            'apellido': serializeParam(
-                                              widget.apellido,
-                                              ParamType.String,
-                                            ),
-                                            'cedula': serializeParam(
-                                              widget.cedula,
-                                              ParamType.String,
-                                            ),
-                                            'direccionDomicilio':
-                                                serializeParam(
-                                              widget.direccionDomicilio,
-                                              ParamType.String,
-                                            ),
-                                            'viviendaAlq': serializeParam(
-                                              widget.viviendaAlq,
-                                              ParamType.bool,
-                                            ),
-                                            'viviendaProp': serializeParam(
-                                              widget.vivendaProp,
-                                              ParamType.bool,
-                                            ),
-                                            'emailCliente': serializeParam(
-                                              widget.emailCliente,
-                                              ParamType.String,
-                                            ),
-                                            'totalPassed': serializeParam(
-                                              widget.totalPassed,
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
-                                            ),
-                                          },
-                                        );
-                                      },
-                                    ).animateOnPageLoad(animationsMap[
-                                        'iconButtonOnPageLoadAnimation']!),
-                                  ),
-                                  Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Total: \$${formatNumber(
-                                          clienteProdFullPagoClientesRecord
-                                              .cliente.totalDeudaCompleta,
-                                          formatType: FormatType.custom,
-                                          format: '#0.00',
-                                          locale: '',
-                                        )}',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              font: GoogleFonts.readexPro(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 24.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                      Text(
-                                        'Total por cobrar: \$${formatNumber(
-                                          clienteProdFullPagoClientesRecord
-                                              .cliente.totalDeudaCompleta,
-                                          formatType: FormatType.custom,
-                                          format: '#0.00',
-                                          locale: '',
-                                        )}',
-                                        maxLines: 2,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              font: GoogleFonts.asap(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelLarge
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                      Text(
-                                        'del cliente: ${clienteProdFullPagoClientesRecord.cliente.nombre}',
-                                        maxLines: 2,
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              font: GoogleFonts.asap(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium
-                                                        .fontStyle,
-                                              ),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    width: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                body: Form(
+                  key: _model.formKey,
+                  autovalidateMode: AutovalidateMode.disabled,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Material(
+                        color: Colors.transparent,
+                        elevation: 2.0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 4.0,
+                                color: Color(0x33000000),
+                                offset: Offset(
+                                  0.0,
+                                  2.0,
+                                ),
+                              )
+                            ],
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 20.0, 10.0, 10.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 12.0, 8.0),
+                                  child: FlutterFlowIconButton(
+                                    borderRadius: 12.0,
+                                    borderWidth: 1.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.arrow_back,
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      size: 24.0,
                                     ),
+                                    onPressed: () async {
+                                      context.goNamed(
+                                        HistorialPorCobrarWidget.routeName,
+                                        queryParameters: {
+                                          'idCliente': serializeParam(
+                                            widget.idCliente,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'idTendero': serializeParam(
+                                            widget.tenderoRef,
+                                            ParamType.DocumentReference,
+                                          ),
+                                          'nombre': serializeParam(
+                                            widget.nombre,
+                                            ParamType.String,
+                                          ),
+                                          'telf': serializeParam(
+                                            widget.telf,
+                                            ParamType.String,
+                                          ),
+                                          'isFiando': serializeParam(
+                                            widget.isFiando,
+                                            ParamType.bool,
+                                          ),
+                                          'apellido': serializeParam(
+                                            widget.apellido,
+                                            ParamType.String,
+                                          ),
+                                          'cedula': serializeParam(
+                                            widget.cedula,
+                                            ParamType.String,
+                                          ),
+                                          'direccionDomicilio': serializeParam(
+                                            widget.direccionDomicilio,
+                                            ParamType.String,
+                                          ),
+                                          'viviendaAlq': serializeParam(
+                                            widget.viviendaAlq,
+                                            ParamType.bool,
+                                          ),
+                                          'viviendaProp': serializeParam(
+                                            widget.vivendaProp,
+                                            ParamType.bool,
+                                          ),
+                                          'emailCliente': serializeParam(
+                                            widget.emailCliente,
+                                            ParamType.String,
+                                          ),
+                                          'totalPassed': serializeParam(
+                                            widget.totalPassed,
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
+                                          ),
+                                        },
+                                      );
+                                    },
+                                  ).animateOnPageLoad(animationsMap[
+                                      'iconButtonOnPageLoadAnimation']!),
+                                ),
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Total: \$${formatNumber(
+                                        clienteProdFullPagoClientesRecord
+                                            .cliente.totalDeudaCompleta,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      )}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .titleLarge
+                                          .override(
+                                            font: GoogleFonts.readexPro(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 24.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleLarge
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      'Total por cobrar: \$${formatNumber(
+                                        clienteProdFullPagoClientesRecord
+                                            .cliente.totalDeudaCompleta,
+                                        formatType: FormatType.custom,
+                                        format: '#0.00',
+                                        locale: '',
+                                      )}',
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .override(
+                                            font: GoogleFonts.asap(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelLarge
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                    Text(
+                                      'del cliente: ${clienteProdFullPagoClientesRecord.cliente.nombre}',
+                                      maxLines: 2,
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            font: GoogleFonts.asap(
+                                              fontWeight:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontWeight,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .fontStyle,
+                                            ),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .fontStyle,
+                                          ),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(0.0, -1.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        24.0, 10.0, 24.0, 0.0),
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      elevation: 2.0,
-                                      shape: RoundedRectangleBorder(
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 10.0, 24.0, 0.0),
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 2.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12.0),
+                                    ),
+                                    child: Container(
+                                      constraints: BoxConstraints(
+                                        maxWidth: 770.0,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            blurRadius: 4.0,
+                                            color: Color(0x33000000),
+                                            offset: Offset(
+                                              0.0,
+                                              2.0,
+                                            ),
+                                          )
+                                        ],
                                         borderRadius:
                                             BorderRadius.circular(12.0),
-                                      ),
-                                      child: Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 770.0,
-                                        ),
-                                        decoration: BoxDecoration(
+                                        border: Border.all(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 4.0,
-                                              color: Color(0x33000000),
-                                              offset: Offset(
-                                                0.0,
-                                                2.0,
-                                              ),
-                                            )
-                                          ],
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                          ),
+                                              .tertiary,
                                         ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  24.0, 0.0, 24.0, 0.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                'Seleccione tipo de pago:',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Seleccione tipo de pago:',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelLarge
+                                                      .override(
+                                                        font: GoogleFonts.asap(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelLarge
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .labelLarge
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        'Transferencia',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Transform.scale(
+                                                      scaleX: 1.5,
+                                                      scaleY: 1.5,
+                                                      child: Theme(
+                                                        data: ThemeData(
+                                                          checkboxTheme:
+                                                              CheckboxThemeData(
+                                                            visualDensity:
+                                                                VisualDensity
+                                                                    .standard,
+                                                            materialTapTargetSize:
+                                                                MaterialTapTargetSize
+                                                                    .padded,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          4.0),
+                                                            ),
+                                                          ),
+                                                          unselectedWidgetColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        child: Checkbox(
+                                                          value: _model
+                                                                  .checkTransferValue ??=
+                                                              false,
+                                                          onChanged:
+                                                              (newValue) async {
+                                                            safeSetState(() =>
+                                                                _model.checkTransferValue =
+                                                                    newValue!);
+                                                            if (newValue!) {
+                                                              if (_model
+                                                                      .checkEfectivoValue ==
+                                                                  true) {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkTransferValue =
+                                                                      true;
+                                                                });
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkEfectivoValue =
+                                                                      false;
+                                                                });
+                                                              } else {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkTransferValue =
+                                                                      true;
+                                                                });
+                                                              }
+                                                            }
+                                                          },
+                                                          side: (FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate !=
+                                                                  null)
+                                                              ? BorderSide(
+                                                                  width: 2,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                                )
+                                                              : null,
+                                                          activeColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          checkColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .info,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 118.0,
+                                                    ),
+                                                  ],
+                                                ),
+                                                SizedBox(
+                                                  height: 100.0,
+                                                  child: VerticalDivider(
+                                                    thickness: 2.0,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
+                                                ),
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        'Efectivo',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .asap(
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                    Transform.scale(
+                                                      scaleX: 1.5,
+                                                      scaleY: 1.5,
+                                                      child: Theme(
+                                                        data: ThemeData(
+                                                          checkboxTheme:
+                                                              CheckboxThemeData(
+                                                            visualDensity:
+                                                                VisualDensity
+                                                                    .standard,
+                                                            materialTapTargetSize:
+                                                                MaterialTapTargetSize
+                                                                    .padded,
+                                                            shape:
+                                                                RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          4.0),
+                                                            ),
+                                                          ),
+                                                          unselectedWidgetColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                        ),
+                                                        child: Checkbox(
+                                                          value: _model
+                                                                  .checkEfectivoValue ??=
+                                                              false,
+                                                          onChanged:
+                                                              (newValue) async {
+                                                            safeSetState(() =>
+                                                                _model.checkEfectivoValue =
+                                                                    newValue!);
+                                                            if (newValue!) {
+                                                              if (_model
+                                                                      .checkTransferValue ==
+                                                                  true) {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkEfectivoValue =
+                                                                      true;
+                                                                });
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkTransferValue =
+                                                                      false;
+                                                                });
+                                                              } else {
+                                                                safeSetState(
+                                                                    () {
+                                                                  _model.checkEfectivoValue =
+                                                                      true;
+                                                                });
+                                                              }
+                                                            }
+                                                          },
+                                                          side: (FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate !=
+                                                                  null)
+                                                              ? BorderSide(
+                                                                  width: 2,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .alternate,
+                                                                )
+                                                              : null,
+                                                          activeColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          checkColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .info,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 118.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            if (_model.checkTransferValue ==
+                                                true)
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    'Ingrese el número del comprobante:',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .labelLarge
                                                         .override(
                                                           font:
@@ -500,577 +803,209 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget>
                                                                   .labelLarge
                                                                   .fontStyle,
                                                         ),
+                                                  ),
+                                                  TextFormField(
+                                                    controller: _model
+                                                        .comprobanteNumTFTextController,
+                                                    focusNode: _model
+                                                        .comprobanteNumTFFocusNode,
+                                                    autofocus: false,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      isDense: true,
+                                                      labelStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                      alignLabelWithHint: true,
+                                                      hintText:
+                                                          'N# Comprobante',
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelSmall
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelSmall
+                                                                      .fontStyle,
+                                                                ),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .fontStyle,
+                                                              ),
+                                                      enabledBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      focusedBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      errorBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          UnderlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 2.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      contentPadding:
+                                                          EdgeInsets.all(14.0),
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                    maxLength: 15,
+                                                    maxLengthEnforcement:
+                                                        MaxLengthEnforcement
+                                                            .enforced,
+                                                    buildCounter: (context,
+                                                            {required currentLength,
+                                                            required isFocused,
+                                                            maxLength}) =>
+                                                        null,
+                                                    cursorColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    validator: _model
+                                                        .comprobanteNumTFTextControllerValidator
+                                                        .asValidator(context),
+                                                  ),
+                                                ].divide(SizedBox(height: 5.0)),
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
+                                            if (_model.checkTransferValue ==
+                                                false)
+                                              Divider(
+                                                thickness: 2.0,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
                                                 children: [
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Text(
-                                                          'Transferencia',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Transform.scale(
-                                                        scaleX: 1.5,
-                                                        scaleY: 1.5,
-                                                        child: Theme(
-                                                          data: ThemeData(
-                                                            checkboxTheme:
-                                                                CheckboxThemeData(
-                                                              visualDensity:
-                                                                  VisualDensity
-                                                                      .standard,
-                                                              materialTapTargetSize:
-                                                                  MaterialTapTargetSize
-                                                                      .padded,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            4.0),
-                                                              ),
-                                                            ),
-                                                            unselectedWidgetColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                          ),
-                                                          child: Checkbox(
-                                                            value: _model
-                                                                    .checkTransferValue ??=
-                                                                false,
-                                                            onChanged:
-                                                                (newValue) async {
-                                                              safeSetState(() =>
-                                                                  _model.checkTransferValue =
-                                                                      newValue!);
-                                                              if (newValue!) {
-                                                                if (_model
-                                                                        .checkEfectivoValue ==
-                                                                    true) {
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkTransferValue =
-                                                                        true;
-                                                                  });
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkEfectivoValue =
-                                                                        false;
-                                                                  });
-                                                                } else {
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkTransferValue =
-                                                                        true;
-                                                                  });
-                                                                }
-                                                              }
-                                                            },
-                                                            side: (FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate !=
-                                                                    null)
-                                                                ? BorderSide(
-                                                                    width: 2,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                  )
-                                                                : null,
-                                                            activeColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            checkColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        width: 118.0,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: 100.0,
-                                                    child: VerticalDivider(
-                                                      thickness: 2.0,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .alternate,
-                                                    ),
-                                                  ),
-                                                  Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0),
-                                                        child: Text(
-                                                          'Efectivo',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Transform.scale(
-                                                        scaleX: 1.5,
-                                                        scaleY: 1.5,
-                                                        child: Theme(
-                                                          data: ThemeData(
-                                                            checkboxTheme:
-                                                                CheckboxThemeData(
-                                                              visualDensity:
-                                                                  VisualDensity
-                                                                      .standard,
-                                                              materialTapTargetSize:
-                                                                  MaterialTapTargetSize
-                                                                      .padded,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            4.0),
-                                                              ),
-                                                            ),
-                                                            unselectedWidgetColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .alternate,
-                                                          ),
-                                                          child: Checkbox(
-                                                            value: _model
-                                                                    .checkEfectivoValue ??=
-                                                                false,
-                                                            onChanged:
-                                                                (newValue) async {
-                                                              safeSetState(() =>
-                                                                  _model.checkEfectivoValue =
-                                                                      newValue!);
-                                                              if (newValue!) {
-                                                                if (_model
-                                                                        .checkTransferValue ==
-                                                                    true) {
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkEfectivoValue =
-                                                                        true;
-                                                                  });
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkTransferValue =
-                                                                        false;
-                                                                  });
-                                                                } else {
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model.checkEfectivoValue =
-                                                                        true;
-                                                                  });
-                                                                }
-                                                              }
-                                                            },
-                                                            side: (FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate !=
-                                                                    null)
-                                                                ? BorderSide(
-                                                                    width: 2,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
-                                                                  )
-                                                                : null,
-                                                            activeColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            checkColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Container(
-                                                        width: 118.0,
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                              if (_model.checkTransferValue ==
-                                                  true)
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      'Ingrese el número del comprobante:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                    TextFormField(
-                                                      controller: _model
-                                                          .comprobanteNumTFTextController,
-                                                      focusNode: _model
-                                                          .comprobanteNumTFFocusNode,
-                                                      autofocus: false,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        isDense: true,
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                        alignLabelWithHint:
-                                                            true,
-                                                        hintText:
-                                                            'N# Comprobante',
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelSmall
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .fontStyle,
-                                                                ),
-                                                        enabledBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .alternate,
-                                                            width: 2.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                        ),
-                                                        focusedBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            width: 2.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                        ),
-                                                        errorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 2.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            UnderlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 2.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                        ),
-                                                        contentPadding:
-                                                            EdgeInsets.all(
-                                                                14.0),
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                      maxLength: 15,
-                                                      maxLengthEnforcement:
-                                                          MaxLengthEnforcement
-                                                              .enforced,
-                                                      buildCounter: (context,
-                                                              {required currentLength,
-                                                              required isFocused,
-                                                              maxLength}) =>
-                                                          null,
-                                                      cursorColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
-                                                      validator: _model
-                                                          .comprobanteNumTFTextControllerValidator
-                                                          .asValidator(context),
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(height: 5.0)),
-                                                ),
-                                              if (_model.checkTransferValue ==
-                                                  false)
-                                                Divider(
-                                                  thickness: 2.0,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .alternate,
-                                                ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Text(
-                                                          'Fecha de pago registrado:',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .labelLarge
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelLarge
-                                                                      .fontStyle,
-                                                                ),
-                                                                fontSize: 18.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelLarge
-                                                                    .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: Text(
-                                                        dateTimeFormat(
-                                                          "d/M/y",
-                                                          getCurrentTimestamp,
-                                                          locale:
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode,
-                                                        ),
+                                                        'Fecha de pago registrado:',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .labelLarge
@@ -1102,428 +1037,100 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget>
                                                             ),
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      dateTimeFormat(
+                                                        "d/M/y",
+                                                        getCurrentTimestamp,
+                                                        locale:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelLarge
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .asap(
+                                                                  fontWeight: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontWeight,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelLarge
+                                                                      .fontStyle,
+                                                                ),
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelLarge
+                                                                    .fontStyle,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Builder(
-                                                  builder: (context) =>
-                                                      FFButtonWidget(
-                                                    onPressed: () async {
-                                                      var _shouldSetState =
-                                                          false;
-                                                      final firestoreBatch =
-                                                          FirebaseFirestore
-                                                              .instance
-                                                              .batch();
-                                                      try {
-                                                        _model.totalDeudaCompletaConv =
-                                                            await actions
-                                                                .normalizarValorNumerico(
-                                                          formatNumber(
-                                                            clienteProdFullPagoClientesRecord
-                                                                .cliente
-                                                                .totalDeudaCompleta,
-                                                            formatType:
-                                                                FormatType
-                                                                    .custom,
-                                                            format: '#0.00',
-                                                            locale: '',
-                                                          ),
-                                                        );
-                                                        _shouldSetState = true;
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Builder(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: () async {
+                                                    var _shouldSetState = false;
+                                                    final firestoreBatch =
+                                                        FirebaseFirestore
+                                                            .instance
+                                                            .batch();
+                                                    try {
+                                                      _model.totalDeudaCompletaConv =
+                                                          await actions
+                                                              .normalizarValorNumerico(
+                                                        formatNumber(
+                                                          clienteProdFullPagoClientesRecord
+                                                              .cliente
+                                                              .totalDeudaCompleta,
+                                                          formatType:
+                                                              FormatType.custom,
+                                                          format: '#0.00',
+                                                          locale: '',
+                                                        ),
+                                                      );
+                                                      _shouldSetState = true;
+                                                      _model.validarFormPago =
+                                                          true;
+                                                      if (_model.formKey
+                                                                  .currentState ==
+                                                              null ||
+                                                          !_model.formKey
+                                                              .currentState!
+                                                              .validate()) {
                                                         _model.validarFormPago =
-                                                            true;
-                                                        if (_model.formKey
-                                                                    .currentState ==
-                                                                null ||
-                                                            !_model.formKey
-                                                                .currentState!
-                                                                .validate()) {
-                                                          _model.validarFormPago =
-                                                              false;
-                                                        }
-                                                        _shouldSetState = true;
-                                                        if (_model
-                                                                .validarFormPago ==
-                                                            true) {
-                                                          if ((_model.checkTransferValue ==
-                                                                  false) &&
-                                                              (_model.checkEfectivoValue ==
-                                                                  false)) {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          200.0,
-                                                                      child:
-                                                                          DialogBtnWidget(
-                                                                        titulo:
-                                                                            '¡Alerta!',
-                                                                        mensaje:
-                                                                            'Ingrese el método de pago.',
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            );
-                                                          } else {
-                                                            if ((_model.checkTransferValue ==
-                                                                    true) &&
-                                                                (_model.comprobanteNumTFTextController
-                                                                            .text ==
-                                                                        '')) {
-                                                              await showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (dialogContext) {
-                                                                  return Dialog(
-                                                                    elevation:
-                                                                        0,
-                                                                    insetPadding:
-                                                                        EdgeInsets
-                                                                            .zero,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    alignment: AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                    child:
-                                                                        GestureDetector(
-                                                                      onTap:
-                                                                          () {
-                                                                        FocusScope.of(dialogContext)
-                                                                            .unfocus();
-                                                                        FocusManager
-                                                                            .instance
-                                                                            .primaryFocus
-                                                                            ?.unfocus();
-                                                                      },
-                                                                      child:
-                                                                          Container(
-                                                                        height:
-                                                                            200.0,
-                                                                        child:
-                                                                            DialogBtnWidget(
-                                                                          titulo:
-                                                                              '¡Alerta!',
-                                                                          mensaje:
-                                                                              ' ingrese el número de comprobante.',
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              );
-
-                                                              if (_shouldSetState)
-                                                                safeSetState(
-                                                                    () {});
-                                                              return;
-                                                            } else {
-                                                              _model.dtProdHistorialListAfter =
-                                                                  clienteProdFullPagoClientesRecord
-                                                                      .cliente
-                                                                      .historialPorPagarProd
-                                                                      .toList()
-                                                                      .cast<
-                                                                          DataTypeHistorialPagoStruct>();
-                                                              safeSetState(
-                                                                  () {});
-
-                                                              firestoreBatch.update(
-                                                                  widget.idCliente!,
-                                                                  createClientesRecordData(
-                                                                    cliente:
-                                                                        createDataTypeClienteStruct(
-                                                                      fieldValues: {
-                                                                        'historialPorPagarProd':
-                                                                            FieldValue.delete(),
-                                                                      },
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                    ),
-                                                                  ));
-                                                              for (int loop1Index =
-                                                                      0;
-                                                                  loop1Index <
-                                                                      _model
-                                                                          .dtProdHistorialListAfter
-                                                                          .length;
-                                                                  loop1Index++) {
-                                                                final currentLoop1Item =
-                                                                    _model.dtProdHistorialListAfter[
-                                                                        loop1Index];
-                                                                _model
-                                                                    .updateDtProdHistorialListAfterAtIndex(
-                                                                  loop1Index,
-                                                                  (e) => e
-                                                                    ..transferencia =
-                                                                        _model
-                                                                            .checkTransferValue
-                                                                    ..efectivo =
-                                                                        _model
-                                                                            .checkEfectivoValue
-                                                                    ..numVoucher =
-                                                                        int.tryParse(_model
-                                                                            .comprobanteNumTFTextController
-                                                                            .text)
-                                                                    ..totalPorPagar =
-                                                                        0.0
-                                                                    ..fechaDeCobro =
-                                                                        getCurrentTimestamp,
-                                                                );
-                                                                safeSetState(
-                                                                    () {});
-
-                                                                firestoreBatch
-                                                                    .update(
-                                                                        widget
-                                                                            .idCliente!,
-                                                                        createClientesRecordData(
-                                                                          cliente:
-                                                                              createDataTypeClienteStruct(
-                                                                            fieldValues: {
-                                                                              'historialPagadosProd': FieldValue.arrayUnion([
-                                                                                getDataTypeHistorialPagoFirestoreData(
-                                                                                  updateDataTypeHistorialPagoStruct(
-                                                                                    currentLoop1Item,
-                                                                                    clearUnsetFields: false,
-                                                                                  ),
-                                                                                  true,
-                                                                                )
-                                                                              ]),
-                                                                            },
-                                                                            clearUnsetFields:
-                                                                                false,
-                                                                          ),
-                                                                        ));
-                                                              }
-
-                                                              firestoreBatch.update(
-                                                                  widget.idCliente!,
-                                                                  createClientesRecordData(
-                                                                    cliente:
-                                                                        createDataTypeClienteStruct(
-                                                                      totalDeudaCompleta:
-                                                                          0.0,
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                    ),
-                                                                  ));
-                                                            }
-
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (dialogContext) {
-                                                                return Dialog(
-                                                                  elevation: 0,
-                                                                  insetPadding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  backgroundColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  alignment: AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0)
-                                                                      .resolve(
-                                                                          Directionality.of(
-                                                                              context)),
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () {
-                                                                      FocusScope.of(
-                                                                              dialogContext)
-                                                                          .unfocus();
-                                                                      FocusManager
-                                                                          .instance
-                                                                          .primaryFocus
-                                                                          ?.unfocus();
-                                                                    },
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          200.0,
-                                                                      child:
-                                                                          DialogBtnWidget(
-                                                                        titulo:
-                                                                            '¡Pago completo guardado exitosamente!',
-                                                                        mensaje:
-                                                                            'El pago ha sido registrado.',
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            );
-
-                                                            _model.tenderoRead =
-                                                                await TenderosRecord
-                                                                    .getDocumentOnce(
-                                                                        widget
-                                                                            .tenderoRef!);
-                                                            _shouldSetState =
-                                                                true;
-                                                            for (int loop1Index =
-                                                                    0;
-                                                                loop1Index <
-                                                                    clienteProdFullPagoClientesRecord
-                                                                        .playerIds
-                                                                        .length;
-                                                                loop1Index++) {
-                                                              final currentLoop1Item =
-                                                                  clienteProdFullPagoClientesRecord
-                                                                          .playerIds[
-                                                                      loop1Index];
-                                                              unawaited(
-                                                                () async {
-                                                                  await actions
-                                                                      .sendNotificationToPlayer(
-                                                                    currentLoop1Item,
-                                                                    '${clienteProdFullPagoClientesRecord.cliente.nombre}: ¡Se ha registrado un pago completo de los todos productos que fiados actualmente en la tienda: ${_model.tenderoRead?.displayName}!',
-                                                                  );
-                                                                }(),
-                                                              );
-                                                            }
-                                                            unawaited(
-                                                              () async {}(),
-                                                            );
-
-                                                            context.goNamed(
-                                                              ClienteInfoEditWidget
-                                                                  .routeName,
-                                                              queryParameters: {
-                                                                'nombre':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .nombre,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'telf':
-                                                                    serializeParam(
-                                                                  widget.telf,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'isFiando':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .isFiando,
-                                                                  ParamType
-                                                                      .bool,
-                                                                ),
-                                                                'idCliente':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .idCliente,
-                                                                  ParamType
-                                                                      .DocumentReference,
-                                                                ),
-                                                                'apellido':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .apellido,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'cedula':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .cedula,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'tenderoRef':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .tenderoRef,
-                                                                  ParamType
-                                                                      .DocumentReference,
-                                                                ),
-                                                                'direccionDomicilio':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .direccionDomicilio,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                                'viviendaAlq':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .viviendaAlq,
-                                                                  ParamType
-                                                                      .bool,
-                                                                ),
-                                                                'viviendaProp':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .vivendaProp,
-                                                                  ParamType
-                                                                      .bool,
-                                                                ),
-                                                                'emailCliente':
-                                                                    serializeParam(
-                                                                  widget
-                                                                      .emailCliente,
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                              }.withoutNulls,
-                                                              extra: <String,
-                                                                  dynamic>{
-                                                                kTransitionInfoKey:
-                                                                    TransitionInfo(
-                                                                  hasTransition:
-                                                                      true,
-                                                                  transitionType:
-                                                                      PageTransitionType
-                                                                          .fade,
-                                                                  duration: Duration(
-                                                                      milliseconds:
-                                                                          0),
-                                                                ),
-                                                              },
-                                                            );
-                                                          }
-                                                        } else {
+                                                            false;
+                                                      }
+                                                      _shouldSetState = true;
+                                                      if (_model
+                                                              .validarFormPago ==
+                                                          true) {
+                                                        if ((_model.checkTransferValue ==
+                                                                false) &&
+                                                            (_model.checkEfectivoValue ==
+                                                                false)) {
                                                           await showDialog(
                                                             context: context,
                                                             builder:
@@ -1569,100 +1176,453 @@ class _ClienteProdFullPagoWidgetState extends State<ClienteProdFullPagoWidget>
                                                               );
                                                             },
                                                           );
-                                                        }
-                                                      } finally {
-                                                        await firestoreBatch
-                                                            .commit();
-                                                      }
+                                                        } else {
+                                                          if ((_model.checkTransferValue ==
+                                                                  true) &&
+                                                              (_model.comprobanteNumTFTextController
+                                                                          .text ==
+                                                                      '')) {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Dialog(
+                                                                  elevation: 0,
+                                                                  insetPadding:
+                                                                      EdgeInsets
+                                                                          .zero,
+                                                                  backgroundColor:
+                                                                      Colors
+                                                                          .transparent,
+                                                                  alignment: AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () {
+                                                                      FocusScope.of(
+                                                                              dialogContext)
+                                                                          .unfocus();
+                                                                      FocusManager
+                                                                          .instance
+                                                                          .primaryFocus
+                                                                          ?.unfocus();
+                                                                    },
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          200.0,
+                                                                      child:
+                                                                          DialogBtnWidget(
+                                                                        titulo:
+                                                                            '¡Alerta!',
+                                                                        mensaje:
+                                                                            ' ingrese el número de comprobante.',
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            );
 
-                                                      if (_shouldSetState)
-                                                        safeSetState(() {});
-                                                    },
-                                                    text: 'Registrar pago',
-                                                    options: FFButtonOptions(
-                                                      width: 280.0,
-                                                      height: 40.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiary,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .asap(
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
+                                                            if (_shouldSetState)
+                                                              safeSetState(
+                                                                  () {});
+                                                            return;
+                                                          } else {
+                                                            _model.dtProdHistorialListAfter =
+                                                                clienteProdFullPagoClientesRecord
+                                                                    .cliente
+                                                                    .historialPorPagarProd
+                                                                    .toList()
+                                                                    .cast<
+                                                                        DataTypeHistorialPagoStruct>();
+                                                            safeSetState(() {});
+
+                                                            firestoreBatch.update(
+                                                                widget.idCliente!,
+                                                                createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    fieldValues: {
+                                                                      'historialPorPagarProd':
+                                                                          FieldValue
+                                                                              .delete(),
+                                                                    },
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
+                                                            for (int loop1Index =
+                                                                    0;
+                                                                loop1Index <
+                                                                    _model
+                                                                        .dtProdHistorialListAfter
+                                                                        .length;
+                                                                loop1Index++) {
+                                                              final currentLoop1Item =
+                                                                  _model.dtProdHistorialListAfter[
+                                                                      loop1Index];
+                                                              _model
+                                                                  .updateDtProdHistorialListAfterAtIndex(
+                                                                loop1Index,
+                                                                (e) => e
+                                                                  ..transferencia =
+                                                                      _model
+                                                                          .checkTransferValue
+                                                                  ..efectivo =
+                                                                      _model
+                                                                          .checkEfectivoValue
+                                                                  ..numVoucher =
+                                                                      int.tryParse(_model
+                                                                          .comprobanteNumTFTextController
+                                                                          .text)
+                                                                  ..totalPorPagar =
+                                                                      0.0
+                                                                  ..fechaDeCobro =
+                                                                      getCurrentTimestamp,
+                                                              );
+                                                              safeSetState(
+                                                                  () {});
+
+                                                              firestoreBatch.update(
+                                                                  widget.idCliente!,
+                                                                  createClientesRecordData(
+                                                                    cliente:
+                                                                        createDataTypeClienteStruct(
+                                                                      fieldValues: {
+                                                                        'historialPagadosProd':
+                                                                            FieldValue.arrayUnion([
+                                                                          getDataTypeHistorialPagoFirestoreData(
+                                                                            updateDataTypeHistorialPagoStruct(
+                                                                              currentLoop1Item,
+                                                                              clearUnsetFields: false,
+                                                                            ),
+                                                                            true,
+                                                                          )
+                                                                        ]),
+                                                                      },
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                  ));
+                                                            }
+
+                                                            firestoreBatch.update(
+                                                                widget.idCliente!,
+                                                                createClientesRecordData(
+                                                                  cliente:
+                                                                      createDataTypeClienteStruct(
+                                                                    totalDeudaCompleta:
+                                                                        0.0,
+                                                                    clearUnsetFields:
+                                                                        false,
+                                                                  ),
+                                                                ));
+                                                          }
+
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      Container(
+                                                                    height:
+                                                                        200.0,
+                                                                    child:
+                                                                        DialogBtnWidget(
+                                                                      titulo:
+                                                                          '¡Pago completo guardado exitosamente!',
+                                                                      mensaje:
+                                                                          'El pago ha sido registrado.',
+                                                                    ),
+                                                                  ),
                                                                 ),
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight: FlutterFlowTheme.of(
+                                                              );
+                                                            },
+                                                          );
+
+                                                          _model.tenderoRead =
+                                                              await TenderosRecord
+                                                                  .getDocumentOnce(
+                                                                      widget
+                                                                          .tenderoRef!);
+                                                          _shouldSetState =
+                                                              true;
+                                                          for (int loop1Index =
+                                                                  0;
+                                                              loop1Index <
+                                                                  clienteProdFullPagoClientesRecord
+                                                                      .playerIds
+                                                                      .length;
+                                                              loop1Index++) {
+                                                            final currentLoop1Item =
+                                                                clienteProdFullPagoClientesRecord
+                                                                        .playerIds[
+                                                                    loop1Index];
+                                                            unawaited(
+                                                              () async {
+                                                                await actions
+                                                                    .sendNotificationToPlayer(
+                                                                  currentLoop1Item,
+                                                                  '${clienteProdFullPagoClientesRecord.cliente.nombre}: ¡Se ha registrado un pago completo de los todos productos que fiados actualmente en la tienda: ${_model.tenderoRead?.displayName}!',
+                                                                );
+                                                              }(),
+                                                            );
+                                                          }
+                                                          unawaited(
+                                                            () async {}(),
+                                                          );
+
+                                                          context.goNamed(
+                                                            ClienteInfoEditWidget
+                                                                .routeName,
+                                                            queryParameters: {
+                                                              'nombre':
+                                                                  serializeParam(
+                                                                widget.nombre,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'telf':
+                                                                  serializeParam(
+                                                                widget.telf,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'isFiando':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .isFiando,
+                                                                ParamType.bool,
+                                                              ),
+                                                              'idCliente':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .idCliente,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                              'apellido':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .apellido,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'cedula':
+                                                                  serializeParam(
+                                                                widget.cedula,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'tenderoRef':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .tenderoRef,
+                                                                ParamType
+                                                                    .DocumentReference,
+                                                              ),
+                                                              'direccionDomicilio':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .direccionDomicilio,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                              'viviendaAlq':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .viviendaAlq,
+                                                                ParamType.bool,
+                                                              ),
+                                                              'viviendaProp':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .vivendaProp,
+                                                                ParamType.bool,
+                                                              ),
+                                                              'emailCliente':
+                                                                  serializeParam(
+                                                                widget
+                                                                    .emailCliente,
+                                                                ParamType
+                                                                    .String,
+                                                              ),
+                                                            }.withoutNulls,
+                                                            extra: <String,
+                                                                dynamic>{
+                                                              kTransitionInfoKey:
+                                                                  TransitionInfo(
+                                                                hasTransition:
+                                                                    true,
+                                                                transitionType:
+                                                                    PageTransitionType
+                                                                        .fade,
+                                                                duration: Duration(
+                                                                    milliseconds:
+                                                                        0),
+                                                              ),
+                                                            },
+                                                          );
+                                                        }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          dialogContext)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child:
+                                                                    Container(
+                                                                  height: 200.0,
+                                                                  child:
+                                                                      DialogBtnWidget(
+                                                                    titulo:
+                                                                        '¡Alerta!',
+                                                                    mensaje:
+                                                                        'Ingrese el método de pago.',
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        );
+                                                      }
+                                                    } finally {
+                                                      await firestoreBatch
+                                                          .commit();
+                                                    }
+
+                                                    if (_shouldSetState)
+                                                      safeSetState(() {});
+                                                  },
+                                                  text: 'Registrar pago',
+                                                  options: FFButtonOptions(
+                                                    width: 280.0,
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .tertiary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.asap(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .fontWeight,
-                                                                fontStyle: FlutterFlowTheme.of(
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .titleSmall
                                                                     .fontStyle,
-                                                              ),
-                                                      elevation: 0.0,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
+                                                          ),
+                                                          color: Colors.white,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .fontStyle,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
                                                   ),
                                                 ),
                                               ),
-                                            ]
-                                                .divide(SizedBox(height: 15.0))
-                                                .addToStart(
-                                                    SizedBox(height: 20.0))
-                                                .addToEnd(
-                                                    SizedBox(height: 20.0)),
-                                          ),
+                                            ),
+                                          ]
+                                              .divide(SizedBox(height: 15.0))
+                                              .addToStart(
+                                                  SizedBox(height: 20.0))
+                                              .addToEnd(SizedBox(height: 20.0)),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        Lottie.asset(
-                          'assets/jsons/coinAnimated.json',
-                          width: 200.0,
-                          height: 200.0,
-                          fit: BoxFit.none,
-                          animate: true,
-                        ),
-                      ].addToEnd(SizedBox(height: 20.0)),
-                    ),
+                      ),
+                      Lottie.asset(
+                        'assets/jsons/coinAnimated.json',
+                        width: 200.0,
+                        height: 200.0,
+                        fit: BoxFit.none,
+                        animate: true,
+                      ),
+                    ].addToEnd(SizedBox(height: 20.0)),
                   ),
                 ),
               ),

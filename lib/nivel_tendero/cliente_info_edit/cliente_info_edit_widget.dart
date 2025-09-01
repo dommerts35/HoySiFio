@@ -149,6 +149,13 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
                   ParamType.String,
                 ),
               }.withoutNulls,
+              extra: <String, dynamic>{
+                kTransitionInfoKey: TransitionInfo(
+                  hasTransition: true,
+                  transitionType: PageTransitionType.fade,
+                  duration: Duration(milliseconds: 0),
+                ),
+              },
             );
 
             return;
@@ -234,7 +241,7 @@ class _ClienteInfoEditWidgetState extends State<ClienteInfoEditWidget>
           while (true) {
             await Future.delayed(
               Duration(
-                milliseconds: 5000,
+                milliseconds: 30000,
               ),
             );
             _model.isInternetGood =

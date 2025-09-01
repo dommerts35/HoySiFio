@@ -67,7 +67,7 @@ class _HistorialVouchersClienteWidgetState
       while (true) {
         await Future.delayed(
           Duration(
-            milliseconds: 5000,
+            milliseconds: 30000,
           ),
         );
         _model.isInternetGood =

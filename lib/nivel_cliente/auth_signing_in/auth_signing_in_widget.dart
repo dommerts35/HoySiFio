@@ -65,7 +65,7 @@ class _AuthSigningInWidgetState extends State<AuthSigningInWidget>
           while (true) {
             await Future.delayed(
               Duration(
-                milliseconds: 5000,
+                milliseconds: 10000,
               ),
             );
             _model.isInternetGood =

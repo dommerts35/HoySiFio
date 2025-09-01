@@ -1168,6 +1168,17 @@ class _PageTutorialForClienteHelpWidgetState
                                                       isList: true,
                                                     ),
                                                   }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
+                                                  },
                                                 );
                                               },
                                               text: 'Continuar',
@@ -1291,6 +1302,13 @@ class _PageTutorialForClienteHelpWidgetState
                               isList: true,
                             ),
                           }.withoutNulls,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
                         );
                       },
                       text: 'Saltar',

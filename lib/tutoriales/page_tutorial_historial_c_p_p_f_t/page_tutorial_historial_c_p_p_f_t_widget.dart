@@ -768,6 +768,17 @@ class _PageTutorialHistorialCPPFTWidgetState
                                                         ParamType.String,
                                                       ),
                                                     }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
                                                   );
                                                 },
                                                 text: 'Continuar',
@@ -926,6 +937,13 @@ class _PageTutorialHistorialCPPFTWidgetState
                                 ParamType.String,
                               ),
                             }.withoutNulls,
+                            extra: <String, dynamic>{
+                              kTransitionInfoKey: TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.fade,
+                                duration: Duration(milliseconds: 0),
+                              ),
+                            },
                           );
                         },
                         text: 'Saltar',

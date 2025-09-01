@@ -182,19 +182,19 @@ class _TenderoAyudaWidgetState extends State<TenderoAyudaWidget>
                                 ),
                                 onPressed: () async {
                                   context.goNamed(
-                                    ListaClientesWidget.routeName,
+                                    AyudaWidget.routeName,
                                     queryParameters: {
-                                      'tenderoRef': serializeParam(
-                                        widget.tenderoRef,
-                                        ParamType.DocumentReference,
-                                      ),
                                       'nombreTienda': serializeParam(
                                         widget.nombreTienda,
                                         ParamType.String,
                                       ),
-                                      'tenderoEmail': serializeParam(
+                                      'emailTendero': serializeParam(
                                         widget.tenderoEmail,
                                         ParamType.String,
+                                      ),
+                                      'tenderoRef': serializeParam(
+                                        widget.tenderoRef,
+                                        ParamType.DocumentReference,
                                       ),
                                       'nombreTendero': serializeParam(
                                         widget.nombreTendero,

@@ -67,7 +67,7 @@ class _ResumenFiadoClienProdsNewWidgetState
       while (true) {
         await Future.delayed(
           Duration(
-            milliseconds: 5000,
+            milliseconds: 30000,
           ),
         );
         _model.isInternetGood =
@@ -1479,6 +1479,56 @@ class _ResumenFiadoClienProdsNewWidgetState
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     var _shouldSetState = false;
+                                                    if (resumenFiadoClienProdsNewClientesRecord
+                                                            .cliente
+                                                            .totalDeudaCompleta ==
+                                                        0.0) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () {
+                                                                FocusScope.of(
+                                                                        dialogContext)
+                                                                    .unfocus();
+                                                                FocusManager
+                                                                    .instance
+                                                                    .primaryFocus
+                                                                    ?.unfocus();
+                                                              },
+                                                              child: Container(
+                                                                height: 600.0,
+                                                                child:
+                                                                    DialogBtnWidget(
+                                                                  titulo:
+                                                                      '¡Alerta!',
+                                                                  mensaje:
+                                                                      'No puede enviar comprobantes porque no hay deudas en su cuenta actualmente.',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      );
+
+                                                      if (_shouldSetState)
+                                                        safeSetState(() {});
+                                                      return;
+                                                    }
                                                     await showDialog(
                                                       context: context,
                                                       builder: (dialogContext) {

@@ -4646,7 +4646,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                 },
                                                                 child:
                                                                     Container(
-                                                                  height: 200.0,
+                                                                  height: 600.0,
                                                                   child:
                                                                       DialogTwoBtnsWidget(
                                                                     titulo:
@@ -4714,7 +4714,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                   child:
                                                                       Container(
                                                                     height:
-                                                                        300.0,
+                                                                        200.0,
                                                                     child:
                                                                         DialogTwoBtnsWidget(
                                                                       titulo:
@@ -4876,7 +4876,7 @@ class _TenderoEditInfoWidgetState extends State<TenderoEditInfoWidget>
                                                                   child:
                                                                       Container(
                                                                     height:
-                                                                        300.0,
+                                                                        200.0,
                                                                     child:
                                                                         DialogTwoBtnsWidget(
                                                                       titulo:
