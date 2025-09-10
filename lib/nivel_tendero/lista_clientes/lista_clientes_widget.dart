@@ -850,6 +850,7 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                           elevation: 2.0,
                                           child: ClipRRect(
                                             child: Container(
+                                              height: double.infinity,
                                               decoration: BoxDecoration(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -1667,6 +1668,13 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                                 ),
                                                                                 child: Stack(
                                                                                   children: [
+                                                                                    Lottie.asset(
+                                                                                      'assets/jsons/actualHoySiFioLoad.json',
+                                                                                      width: 200.0,
+                                                                                      height: 200.0,
+                                                                                      fit: BoxFit.contain,
+                                                                                      animate: true,
+                                                                                    ),
                                                                                     Container(
                                                                                       width: 80.0,
                                                                                       height: 80.0,
@@ -1678,13 +1686,6 @@ class _ListaClientesWidgetState extends State<ListaClientesWidget>
                                                                                         listViewClientesRecord.profileUrl,
                                                                                         fit: BoxFit.cover,
                                                                                       ),
-                                                                                    ),
-                                                                                    Lottie.asset(
-                                                                                      'assets/jsons/actualHoySiFioLoad.json',
-                                                                                      width: 200.0,
-                                                                                      height: 200.0,
-                                                                                      fit: BoxFit.contain,
-                                                                                      animate: true,
                                                                                     ),
                                                                                   ],
                                                                                 ),

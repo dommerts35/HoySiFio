@@ -509,7 +509,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                                             ),
                                             TextSpan(
                                               text:
-                                                  '\n      Significa una cuenta única creada para que usted acceda a nuestro servicio o partes de nuestro dervicio.',
+                                                  '\n      Significa una cuenta única creada para que usted acceda a nuestro servicio o partes de nuestro servicio.',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -1639,7 +1639,7 @@ class _PoliticaPrivSubPageToAcceptWidgetState
                                             ),
                                             TextSpan(
                                               text:
-                                                  '\n\n     Notificaremos actualizaciones publicando la nueva política en esta página y actualizando la fecha de \"última actualización\". Se recomienda revisarla periódicamente. ',
+                                                  '\n\n     Notificaremos actualizaciones publicando la nueva política en esta página y actualizando la fecha de \"última actualización\". Se recomienda revisar periódicamente. ',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge

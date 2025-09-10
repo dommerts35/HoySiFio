@@ -124,26 +124,6 @@ class _HistorialPagosClienteWidgetState
           ),
         ],
       ),
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'textOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -1573,12 +1553,9 @@ class _HistorialPagosClienteWidgetState
                   ),
                 ],
               ),
-            )
-                .animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['containerOnActionTriggerAnimation']!,
-                ),
+            ).animateOnActionTrigger(
+              animationsMap['containerOnActionTriggerAnimation']!,
+            ),
           ),
         ),
       ),

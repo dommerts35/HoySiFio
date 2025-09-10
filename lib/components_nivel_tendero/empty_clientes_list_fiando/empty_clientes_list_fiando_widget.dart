@@ -79,7 +79,7 @@ class _EmptyClientesListFiandoWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                 child: Text(
                   'No hay clientes fiando.',
                   style: FlutterFlowTheme.of(context).titleSmall.override(

@@ -288,7 +288,7 @@ class _InicioClienteWidgetState extends State<InicioClienteWidget>
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.asset(
-                                          'assets/images/imagen_2025-08-21_190322408.png',
+                                          'assets/images/reTendero.jpg',
                                           width: double.infinity,
                                           height: 400.0,
                                           fit: BoxFit.cover,

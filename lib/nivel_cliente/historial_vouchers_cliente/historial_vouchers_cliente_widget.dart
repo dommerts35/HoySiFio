@@ -106,26 +106,6 @@ class _HistorialVouchersClienteWidgetState
     });
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        applyInitialState: true,
-        effectsBuilder: () => [
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: Offset(0.0, -17.0),
-            end: Offset(0.0, 0.0),
-          ),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
       'containerOnActionTriggerAnimation': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
@@ -709,275 +689,239 @@ class _HistorialVouchersClienteWidgetState
                                                             ],
                                                           ),
                                                         ),
-                                                        if ((listaVouchersItem
-                                                                    .estadoVoucher ==
-                                                                'Pendiente') &&
-                                                            (listaVouchersItem
-                                                                    .historialPagoParaEliminar !=
-                                                                null))
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        5.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
-                                                                  listaVouchersItem
-                                                                      .historialPagoParaEliminar
-                                                                      .totalPorPagar,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  format:
-                                                                      '#0.00',
-                                                                  locale: '',
-                                                                ) : formatNumber(
-                                                                  mainHistorialViewClientesRecord
-                                                                      .cliente
-                                                                      .totalDeudaCompleta,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  format:
-                                                                      '#0.00',
-                                                                  locale: '',
-                                                                )}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .asap(
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
-                                                                    ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            width: 280.0,
+                                                            height: 120.0,
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: 300.0,
+                                                              maxHeight: 150.0,
                                                             ),
-                                                          ),
-                                                        if ((listaVouchersItem
-                                                                    .estadoVoucher ==
-                                                                'Pendiente') &&
-                                                            (listaVouchersItem
-                                                                    .historialPagoParaEliminar !=
-                                                                null))
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        5.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: Text(
-                                                              'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
-                                                                  listaVouchersItem
-                                                                      .montoAPagar,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  format:
-                                                                      '#0.00',
-                                                                  locale: '',
-                                                                ) : formatNumber(
-                                                                  mainHistorialViewClientesRecord
-                                                                      .cliente
-                                                                      .totalDeudaCompleta,
-                                                                  formatType:
-                                                                      FormatType
-                                                                          .custom,
-                                                                  format:
-                                                                      '#0.00',
-                                                                  locale: '',
-                                                                )}',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .labelMedium
-                                                                  .override(
-                                                                    font: GoogleFonts
-                                                                        .asap(
-                                                                      fontWeight: FlutterFlowTheme.of(
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                if ((listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Pendiente') &&
+                                                                    (listaVouchersItem
+                                                                            .historialPagoParaEliminar !=
+                                                                        null))
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Total a pagar de esta cuenta: \$${listaVouchersItem.isFullPago == false ? formatNumber(
+                                                                          listaVouchersItem
+                                                                              .historialPagoParaEliminar
+                                                                              .totalPorPagar,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        ) : formatNumber(
+                                                                          mainHistorialViewClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        )}',
+                                                                      style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .labelMedium
-                                                                          .fontStyle,
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.asap(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
                                                                     ),
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
                                                                   ),
+                                                                if ((listaVouchersItem
+                                                                            .estadoVoucher ==
+                                                                        'Pendiente') &&
+                                                                    (listaVouchersItem
+                                                                            .historialPagoParaEliminar !=
+                                                                        null))
+                                                                  Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Total de pago enviado: \$${listaVouchersItem.historialPagoParaEliminar != null ? formatNumber(
+                                                                          listaVouchersItem
+                                                                              .montoAPagar,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        ) : formatNumber(
+                                                                          mainHistorialViewClientesRecord
+                                                                              .cliente
+                                                                              .totalDeudaCompleta,
+                                                                          formatType:
+                                                                              FormatType.custom,
+                                                                          format:
+                                                                              '#0.00',
+                                                                          locale:
+                                                                              '',
+                                                                        )}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.asap(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                Flexible(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        AutoSizeText(
+                                                                      'Tipo de comprobante: ${listaVouchersItem.tipoVoucher}',
+                                                                      minFontSize:
+                                                                          4.0,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.asap(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            color: listaVouchersItem.estadoVoucher == 'Negado'
+                                                                                ? FlutterFlowTheme.of(context).secondaryBackground
+                                                                                : FlutterFlowTheme.of(context).secondaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Flexible(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .labelMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.asap(
+                                                                              fontWeight: FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                            ),
+                                                                            color: listaVouchersItem.estadoVoucher == 'Negado'
+                                                                                ? FlutterFlowTheme.of(context).secondaryBackground
+                                                                                : FlutterFlowTheme.of(context).secondaryText,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Text(
+                                                                    'Estado del Comprobante: ${listaVouchersItem.estadoVoucher}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .labelMedium
+                                                                        .override(
+                                                                          font:
+                                                                              GoogleFonts.asap(
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                                                                          ),
+                                                                          color: listaVouchersItem.estadoVoucher == 'Negado'
+                                                                              ? FlutterFlowTheme.of(context).secondaryBackground
+                                                                              : FlutterFlowTheme.of(context).secondaryText,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .labelMedium
+                                                                              .fontStyle,
+                                                                        ),
+                                                                  ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                          ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Tipo de comprobante: ${listaVouchersItem.tipoVoucher}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: listaVouchersItem
-                                                                              .estadoVoucher ==
-                                                                          'Negado'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Num. Comprobante: ${listaVouchersItem.numVoucher.toString()}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: listaVouchersItem
-                                                                              .estadoVoucher ==
-                                                                          'Negado'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            'Estado del Comprobante: ${listaVouchersItem.estadoVoucher}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .labelMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .asap(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: listaVouchersItem
-                                                                              .estadoVoucher ==
-                                                                          'Negado'
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryBackground
-                                                                      : FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelMedium
-                                                                      .fontStyle,
-                                                                ),
                                                           ),
                                                         ),
                                                         if (listaVouchersItem
@@ -1055,12 +999,9 @@ class _HistorialVouchersClienteWidgetState
                   ),
                 ],
               ),
-            )
-                .animateOnPageLoad(
-                    animationsMap['containerOnPageLoadAnimation']!)
-                .animateOnActionTrigger(
-                  animationsMap['containerOnActionTriggerAnimation']!,
-                ),
+            ).animateOnActionTrigger(
+              animationsMap['containerOnActionTriggerAnimation']!,
+            ),
           ),
         ),
       ),
