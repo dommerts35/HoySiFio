@@ -1,6 +1,7 @@
 # HoySiFio
 HoySíFio es una aplicación móvil gratuita diseñada para los dueños de tiendas de barrio ecuatorianas, con el objetivo de facilitar la gestión de productos fiados y clientes.
 Permite llevar un control claro de los productos vendidos a crédito, las cantidades, los montos a pagar y las fechas de cobro, mejorando así la administración del negocio.
+Puede descargar el APK a través de este enlace: https://drive.google.com/file/d/1hQAtXDYmXUgFoaQkNQdbn1SvHRZyxm57/view?usp=sharing
 
 # Tecnologías utilizadas
 - Flutterflow: desarrollo visual de la app
