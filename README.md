@@ -17,7 +17,7 @@ Permite llevar un control claro de los productos vendidos a crédito, las cantid
 
 # Capturas del proyecto
 
-Menú principal del usuario tendero: ![TiendaGIF](https://github.com/user-attachments/assets/cd567db7-ef04-4996-85ae-903272f008ea)
+Menú principal del usuario tendero: <p align="center"> <img src="https://github.com/user-attachments/assets/cd567db7-ef04-4996-85ae-903272f008ea" alt="TiendaGIF" width="320" /> </p>
 
 Envío de correos electrónicos: ![Screenshot_2025-06-07-19-29-52-682_com google android gm](https://github.com/user-attachments/assets/b9e17248-cb53-4e9b-9abe-7b1dbc71f68c)
 
