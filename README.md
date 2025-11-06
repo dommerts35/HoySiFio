@@ -19,9 +19,9 @@ Permite llevar un control claro de los productos vendidos a crédito, las cantid
 
 Menú principal del usuario tendero: <p align="center"> <img src="https://github.com/user-attachments/assets/cd567db7-ef04-4996-85ae-903272f008ea" alt="TiendaGIF" width="320" /> </p>
 
-Envío de correos electrónicos: ![Screenshot_2025-06-07-19-29-52-682_com google android gm](https://github.com/user-attachments/assets/b9e17248-cb53-4e9b-9abe-7b1dbc71f68c)
+Envío de correos electrónicos: <p align="center"> <img src="https://github.com/user-attachments/assets/b9e17248-cb53-4e9b-9abe-7b1dbc71f68c" alt="EmailScreenshot" width="320" /> </p>
 
-Menú principal del usuario cliente: <img width="281" height="539" alt="clientreScr2" src="https://github.com/user-attachments/assets/575ff920-e399-4d8e-81bd-2169ed27c7d7" />
+Menú principal del usuario cliente: <p align="center"> <img src="https://github.com/user-attachments/assets/575ff920-e399-4d8e-81bd-2169ed27c7d7" alt="ClienteScreen" width="280" height="540" /> </p>
 
 # Autoría
 Desarrollado por Mario Adrián Ron Villenas (dommerts35), 2025.
